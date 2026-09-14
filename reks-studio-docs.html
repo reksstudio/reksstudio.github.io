@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation — REKS Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F5F2;
+    --bg-raised: #EFEEE9;
+    --ink: #14181F;
+    --ink-soft: #4A5160;
+    --ink-faint: #8A8F98;
+    --blue: #2A4B8D;
+    --copper: #B5502A;
+    --line: #D8D6CD;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+  body{ margin:0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a{ color: inherit; }
+  .wrap{ max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 700px){ .wrap{ padding: 0 24px; } }
+  h1,h2,h3,h4{ font-family: var(--serif); font-weight: 600; color: var(--ink); margin: 0; }
+
+  nav{ position: sticky; top: 0; z-index: 50; background: rgba(245,245,242,0.86); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav .wrap{ display:flex; align-items:center; justify-content: space-between; height: 64px; }
+  .logo{ font-family: var(--serif); font-weight: 600; font-size: 1.15rem; display:flex; align-items:baseline; gap:6px; text-decoration:none; }
+  .logo .dot{ color: var(--copper); }
+  .navlinks{ display:flex; gap: 28px; font-size: 0.92rem; }
+  .navlinks a{ text-decoration:none; color: var(--ink-soft); padding: 6px 0; border-bottom: 1px solid transparent; transition: color 0.15s ease, border-color 0.15s ease; }
+  .navlinks a:hover{ color: var(--ink); border-color: var(--copper); }
+  @media (max-width: 720px){ .navlinks{ display:none; } }
+
+  header.docshero{ padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+  .kicker{ font-size: 0.86rem; color: var(--copper); font-weight: 500; letter-spacing: 0.02em; margin-bottom: 14px; }
+  header.docshero h1{ font-size: clamp(1.9rem, 4vw, 2.7rem); max-width: 20ch; }
+  header.docshero p{ margin-top: 16px; color: var(--ink-soft); max-width: 56ch; font-size: 1.05rem; }
+
+  .docs-layout{ display:grid; grid-template-columns: 200px 1fr; gap: 56px; padding: 56px 0 96px; align-items:start; }
+  @media (max-width: 860px){ .docs-layout{ grid-template-columns: 1fr; } }
+
+  .toc{ position: sticky; top: 88px; display:flex; flex-direction:column; gap: 2px; }
+  @media (max-width: 860px){ .toc{ position:static; flex-direction:row; flex-wrap:wrap; gap: 14px; margin-bottom: 8px; } }
+  .toc a{ text-decoration:none; color: var(--ink-faint); font-size: 0.88rem; padding: 6px 0; border-left: 2px solid transparent; padding-left: 12px; transition: color 0.15s ease, border-color 0.15s ease; }
+  @media (max-width: 860px){ .toc a{ border-left:none; padding-left:0; border-bottom: 1px solid var(--line); padding-bottom: 4px; } }
+  .toc a:hover{ color: var(--ink); border-color: var(--copper); }
+
+  .docsec{ margin-bottom: 72px; scroll-margin-top: 88px; }
+  .docsec:last-child{ margin-bottom: 0; }
+  .docsec h2{ font-size: 1.5rem; margin-bottom: 18px; }
+  .docsec .prose p{ color: var(--ink-soft); max-width: 68ch; }
+  .prose p{ color: var(--ink-soft); }
+
+  .terminal{ background: #10131A; border-radius: 6px; padding: 24px 26px; margin: 20px 0; font-family: var(--mono); font-size: 0.85rem; color: #E7E6E2; overflow-x:auto; line-height:1.7; }
+  .terminal .c{ color: #6E7686; }
+  .terminal .s{ color: #E7A98A; }
+  .terminal .k{ color: #7FA0DE; }
+
+  .kwgroup{ margin-top: 28px; }
+  .kwgroup h3{ font-family: var(--sans); font-weight: 600; font-size: 0.95rem; color: var(--ink); margin-bottom: 4px; letter-spacing: 0.01em; }
+  .kwgroup .kwgroup-note{ font-size: 0.88rem; color: var(--ink-faint); margin-bottom: 12px; max-width: 62ch; }
+  .kwlist{ border-top: 1px solid var(--line); }
+  .kwrow{ display:grid; grid-template-columns: 230px 1fr; gap: 22px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  @media (max-width: 700px){ .kwrow{ grid-template-columns: 1fr; gap: 4px; } }
+  .kwrow .kwname{ font-family: var(--mono); font-size: 0.86rem; color: var(--blue); }
+  .kwrow .kwalias{ display:block; font-size: 0.74rem; color: var(--ink-faint); margin-top: 4px; }
+  .kwrow p{ margin:0; color: var(--ink-soft); font-size: 0.93rem; }
+
+  .note{ border-left: 3px solid var(--copper); background: var(--bg-raised); padding: 14px 18px; font-size: 0.92rem; color: var(--ink-soft); margin-top: 24px; max-width: 68ch; }
+  .note strong{ color: var(--ink); }
+
+  footer{ padding: 40px 0 56px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--ink-faint); }
+  footer a{ text-decoration:none; color: var(--ink-soft); }
+  footer a:hover{ color: var(--ink); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="reks-studio.html">REKS<span class="dot">·</span>Studio</a>
+    <div class="navlinks">
+      <a href="reks-studio.html">Overview</a>
+      <a href="#install">Install</a>
+      <a href="#running">Running a job</a>
+      <a href="#keywords">Keyword reference</a>
+    </div>
+  </div>
+</nav>
+
+<header class="docshero">
+  <div class="wrap">
+    <div class="kicker">Documentation</div>
+    <h1>Installing REKS Studio and configuring an ensemble</h1>
+    <p>A working reference for building the package and controlling the state-averaged and state-interaction ensembles it runs. For the method itself — why REKS Studio exists and how it stays fast — see the <a href="reks-studio.html" style="text-decoration:underline;">overview page</a>.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="docs-layout">
+    <div class="toc">
+      <a href="#install">Installation</a>
+      <a href="#running">Running a job</a>
+      <a href="#keywords">Keyword reference</a>
+      <a href="#active-space">Active space</a>
+      <a href="#sa">SA ensemble</a>
+      <a href="#si">SI ensemble</a>
+      <a href="#solver">Solver & convergence</a>
+    </div>
+
+    <div>
+      <section id="install" class="docsec">
+        <h2>Installation</h2>
+        <div class="prose">
+          <p>REKS Studio is currently a development branch of Psi4, not yet a standalone package or conda release. Building it follows Psi4's own CMake-based build process. A working-equations catalogue is generated and compiled in automatically — nothing extra to run afterward.</p>
+        </div>
+        <div class="terminal">
+<span class="c"># clone the branch</span><br>
+git clone --branch kk/reks.studio https://github.com/ConstLike/psi4.git<br>
+cd psi4<br><br>
+<span class="c"># set up build dependencies</span><br>
+conda env create -f environment.yml -n p4env311<br>
+conda activate p4env311<br><br>
+<span class="c"># configure and build</span><br>
+cmake -S. -Bobjdir -DCMAKE_INSTALL_PREFIX=/path/to/install<br>
+cmake --build objdir --target install -j$(nproc)<br>
+</div>
+        <div class="note"><strong>Note.</strong> This branch is research software under active development. Interfaces and keyword names may change before it's merged upstream.</div>
+      </section>
+
+      <section id="running" class="docsec">
+        <h2>Running a job</h2>
+        <div class="prose">
+          <p>Once built, REKS runs as an ordinary Psi4 reference — no separate binary or import. Set <code>reference</code> to <code>reks</code>, give the active space as <code>[N, M]</code>, and call <code>psi4.energy()</code> as usual.</p>
+        </div>
+        <div class="terminal">
+<span class="c">import psi4</span><br><br>
+mol = psi4.geometry(<span class="s">"""</span><br>
+<span class="s">0 1</span><br>
+<span class="s">C   0.000000   1.301509  -2.315529</span><br>
+<span class="s">C   0.000000  -1.301509  -2.315529</span><br>
+<span class="s">...</span><br>
+<span class="s">units bohr</span><br>
+<span class="s">"""</span>)<br><br>
+psi4.set_options({<br>
+&nbsp;&nbsp;<span class="s">"basis"</span>: <span class="s">"aug-cc-pVTZ"</span>,<br>
+&nbsp;&nbsp;<span class="s">"reference"</span>: <span class="s">"reks"</span>,<br>
+&nbsp;&nbsp;<span class="s">"reks"</span>: [4, 4],<br><br>
+&nbsp;&nbsp;<span class="s">"sa_reks_configs"</span>: [<span class="s">"PPS1"</span>, <span class="s">"OSS1"</span>, <span class="s">"OSS2"</span>],<br>
+&nbsp;&nbsp;<span class="s">"sa_reks_extra"</span>: [[1, 1, 1, 1, 0, 0, 0, 0]],<br>
+&nbsp;&nbsp;<span class="s">"si_reks_configs"</span>: [<span class="s">"PPS1"</span>, <span class="s">"OSS1"</span>, <span class="s">"OSS2"</span>, <span class="s">"OSS3"</span>, <span class="s">"OSS4"</span>],<br>
+})<br><br>
+E, wfn = psi4.energy(<span class="s">"bhhlyp"</span>, return_wfn=<span class="k">True</span>)<br>
+</div>
+      </section>
+
+      <section id="keywords" class="docsec">
+        <h2>Keyword reference</h2>
+        <div class="prose">
+          <p>Every keyword below has a <code>REKS_*</code>-prefixed alias (e.g. <code>sa_reks_configs</code> / <code>reks_sa_configs</code>) — set one or the other, never both. Defaults are noted where a keyword can be left out entirely.</p>
+        </div>
+
+        <div id="active-space" class="kwgroup">
+          <h3>Reference & active space</h3>
+          <div class="kwlist">
+            <div class="kwrow"><div class="kwname">reference</div><p>Set to <code>reks</code> to enable the method.</p></div>
+            <div class="kwrow"><div class="kwname">reks<span class="kwalias">[N, M]</span></div><p>Active space as electrons and orbitals. Molecule multiplicity follows the canonical value automatically — spin manifolds are chosen through the SA/SI keywords below, not the molecule block.</p></div>
+          </div>
+        </div>
+
+        <div id="sa" class="kwgroup">
+          <h3>State-averaged (SA) ensemble</h3>
+          <div class="kwgroup-note">The configurations whose orbitals are jointly optimized in the SCF step.</div>
+          <div class="kwlist">
+            <div class="kwrow"><div class="kwname">sa_reks_configs<span class="kwalias">alias: reks_sa_configs</span></div><p>The SA configuration pool — a flat list for one spin manifold, or a list of lists to declare a block per manifold. Left unset, a sensible default pool is used for the active space's lowest manifold.</p></div>
+            <div class="kwrow"><div class="kwname">sa_reks_2spin<span class="kwalias">alias: reks_sa_2spin</span></div><p>Which spin manifold(s) the SA blocks belong to, as 2S values. Only needed when more than the default manifold is in play.</p></div>
+            <div class="kwrow"><div class="kwname">sa_reks_weights<span class="kwalias">alias: reks_sa_weights</span></div><p>Weight for each SA pool entry, configurations first, then any extra determinants. Must be non-negative and sum to 1. Left unset, weights are distributed equally.</p></div>
+            <div class="kwrow"><div class="kwname">sa_reks_extra<span class="kwalias">alias: reks_sa_extra</span></div><p>Extra determinants — such as a high-spin state — given as explicit occupation vectors. Each carries its own SA weight to help SCF convergence, but is excluded from the SI step.</p></div>
+          </div>
+        </div>
+
+        <div id="si" class="kwgroup">
+          <h3>State-interaction (SI) ensemble</h3>
+          <div class="kwgroup-note">Defined independently of the SA pool — mixed afterward to produce the final multi-state energies.</div>
+          <div class="kwlist">
+            <div class="kwrow"><div class="kwname">si_reks_configs<span class="kwalias">alias: reks_si_configs</span></div><p>The SI configuration groups ("cassettes") that form the secular equations. Left unset, one cassette spans the full config block of the lowest manifold.</p></div>
+            <div class="kwrow"><div class="kwname">si_reks_2spin<span class="kwalias">alias: reks_si_2spin</span></div><p>Which spin manifold each SI group belongs to, mirroring sa_reks_2spin.</p></div>
+            <div class="kwrow"><div class="kwname">si_reks_report_states<span class="kwalias">alias: reks_si_report_states</span></div><p>Caps how many SI states are reported per cassette. All downstream per-state properties (natural orbitals, dipoles, RDMs) are computed only for the reported states. Left unset, every state is reported.</p></div>
+          </div>
+        </div>
+
+        <div id="solver" class="kwgroup">
+          <h3>Solver & convergence</h3>
+          <div class="kwgroup-note">Controls for the orbital/FON optimizer — the defaults work well for most systems.</div>
+          <div class="kwlist">
+            <div class="kwrow"><div class="kwname">reks_use_trah</div><p>Use trust-region orbital optimization as a warmup (or the whole SCF, if reks_gvb_diis is off). Default false.</p></div>
+            <div class="kwrow"><div class="kwname">reks_gvb_diis</div><p>Use the GVB-DIIS accelerator for orbital optimization. Default true.</p></div>
+            <div class="kwrow"><div class="kwname">reks_fon_interp_delta</div><p>Interpolation parameter bridging the closed- and open-shell limits of each geminal's fractional occupation. Default 0.4.</p></div>
+            <div class="kwrow"><div class="kwname">reks_report_level</div><p>Verbosity of the REKS run report, from fatal-only up to full per-state diagnostics. Default 2.</p></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="reks-studio.html">← Back to REKS Studio overview</a>
+  </div>
+</footer>
+
+</body>
+</html>

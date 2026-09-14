@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REKS Studio — Ensemble DFT for strongly correlated systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F5F2;
+    --bg-raised: #EFEEE9;
+    --ink: #14181F;
+    --ink-soft: #4A5160;
+    --ink-faint: #8A8F98;
+    --blue: #2A4B8D;
+    --copper: #B5502A;
+    --line: #D8D6CD;
+    --navy-900: #0A1626;
+    --navy-800: #123055;
+    --navy-700: #1D3E68;
+    --mint: #D6E6DC;
+    --copper-bright: #DE7F3D;
+    --gold: #D9B36C;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{ max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 700px){ .wrap{ padding: 0 24px; } }
+
+  .prose{ max-width: 640px; }
+  .prose p{ color: var(--ink-soft); font-size: 1.05rem; }
+
+  h1,h2,h3{ font-family: var(--serif); font-weight: 600; color: var(--ink); margin: 0; }
+  a{ color: inherit; }
+
+  /* ---------- nav ---------- */
+  nav{
+    position: sticky; top: 0; z-index: 50;
+    background: var(--navy-900);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo{
+    font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.3rem;
+    letter-spacing: 0.01em; color: var(--mint); text-decoration:none;
+    display:flex; align-items:baseline; gap:6px;
+  }
+  .logo .dot{ color: var(--copper-bright); }
+  .navlinks{ display:flex; gap: 28px; font-size: 0.92rem; }
+  .navlinks a{
+    text-decoration:none; color: rgba(255,255,255,0.82);
+    padding: 6px 0; border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .navlinks a:hover{ color: #fff; border-color: var(--copper-bright); }
+  .navlinks a.hl{ color: var(--copper-bright); }
+  .navlinks a.hl2{ color: var(--gold); }
+  @media (max-width: 720px){ .navlinks{ display:none; } }
+
+  /* ---------- hero ---------- */
+  header.hero{
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
+    padding: 100px 0 120px;
+  }
+  .hero-rings-wrap{ display:flex; align-items:center; justify-content:center; min-width:0; }
+  .hero-rings{ width: 100%; max-width: 640px; height:auto; opacity: 0.55; pointer-events:none; display:block; }
+  .hero .wrap{
+    max-width: 1360px;
+    display:grid; grid-template-columns: 0.35fr 0.85fr 1.3fr; gap: 28px; align-items:center;
+  }
+  @media (max-width: 860px){
+    .hero .wrap{ grid-template-columns: 1fr; max-width: 1160px; }
+    header.hero{ padding: 64px 0 72px; }
+    .hero-mark{ display:none; }
+    .hero-rings-wrap{ order: 3; margin-top: 8px; }
+    .hero-rings{ max-width: 340px; opacity: 0.4; }
+  }
+  .hero-mark{
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: clamp(6rem, 13vw, 10rem); color: var(--mint); line-height: 0.8;
+    opacity: 0.92; text-align:center;
+  }
+  .kicker{
+    font-size: 0.86rem; color: var(--copper); font-weight: 500;
+    letter-spacing: 0.02em; margin-bottom: 18px;
+  }
+  .hero .kicker{ color: var(--copper-bright); }
+  h1.display{
+    font-family: var(--sans); font-weight: 600; text-transform: uppercase;
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    line-height: 1.3; letter-spacing: 0.01em; color: #F2F4F1;
+    max-width: 18ch; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,0.25);
+  }
+  .hero p.lede{
+    margin-top: 24px; color: #C7CFDA; font-size: 1.08rem;
+    max-width: 50ch;
+  }
+  .cta-row{ display:flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+  .btn{
+    font-family: var(--sans); font-size: 0.95rem; font-weight: 500;
+    padding: 12px 22px; border-radius: 3px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-primary{ background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+  .btn-primary:hover{ background: rgba(255,255,255,0.2); }
+  .btn-ghost{ background: var(--copper-bright); color: #1A1206; border: 1px solid var(--copper-bright); font-weight:600; }
+  .btn-ghost:hover{ background: #EA9257; }
+
+  /* decorative motion */
+  .orbital-spin{ animation: spin 22s linear infinite; }
+  .orbital-pulse{ animation: pulse 5.5s ease-in-out infinite; }
+  @keyframes spin{ from{ transform: rotate(0deg);} to{ transform: rotate(360deg);} }
+  @keyframes pulse{ 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.045);} }
+
+  /* ---------- generic section ---------- */
+  section{ padding: 88px 0; border-top: 1px solid var(--line); }
+  @media (max-width: 700px){ section{ padding: 56px 0; } }
+  .section-head{ margin-bottom: 40px; }
+  .section-head h2{ font-size: clamp(1.5rem, 3vw, 2.1rem); max-width: 20ch; }
+  .section-head .kicker{ margin-bottom: 12px; }
+
+  .reveal{ opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+
+  /* problem section: schematic growth chart */
+  .growth-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items:center; }
+  @media (max-width: 860px){ .growth-row{ grid-template-columns: 1fr; gap: 36px; } }
+  .chart{ display:flex; align-items:flex-end; gap: 18px; height: 200px; padding-bottom: 28px; border-bottom: 1px solid var(--line); position: relative; }
+  .bar-col{ display:flex; flex-direction:column; align-items:center; gap:10px; flex:1; }
+  .bar{ width: 100%; max-width: 44px; background: linear-gradient(180deg, var(--blue), var(--copper)); border-radius: 2px 2px 0 0; }
+  .bar-label{ font-family: var(--mono); font-size: 0.74rem; color: var(--ink-faint); }
+  .chart-note{ font-size: 0.8rem; color: var(--ink-faint); margin-top: 10px; font-style: italic; }
+
+  /* architecture diagram */
+  .arch{ display:flex; align-items:center; justify-content:space-between; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .arch-node{
+    flex: 1; min-width: 150px; border: 1px solid var(--line); background: var(--bg-raised);
+    border-radius: 4px; padding: 20px 18px; text-align:left;
+  }
+  .arch-node h4{ font-family: var(--sans); font-weight:600; font-size: 0.98rem; margin:0 0 6px; }
+  .arch-node p{ font-size: 0.86rem; color: var(--ink-soft); margin:0; }
+  .arch-arrow{ flex: 0 0 auto; color: var(--ink-faint); font-size: 1.3rem; padding: 0 4px; }
+  @media (max-width: 780px){
+    .arch{ flex-direction: column; align-items: stretch; }
+    .arch-arrow{ align-self:center; transform: rotate(90deg); }
+  }
+
+  /* stats */
+  .stats{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 8px; }
+  @media (max-width: 700px){ .stats{ grid-template-columns: 1fr; gap: 28px; } }
+  .stat-num{ font-family: var(--serif); font-size: 2.6rem; color: var(--ink); line-height:1; }
+  .stat-label{ margin-top: 10px; color: var(--ink-soft); font-size: 0.95rem; max-width: 26ch; }
+
+  /* system log list */
+  .syslist{ margin-top: 8px; border-top: 1px solid var(--line); }
+  .sysrow{ display:grid; grid-template-columns: 240px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  @media (max-width: 700px){ .sysrow{ grid-template-columns: 1fr; gap: 6px; } }
+  .sysrow .sysname{ font-family: var(--mono); font-size: 0.9rem; color: var(--blue); }
+  .sysrow p{ margin:0; color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* case study */
+  .case{ background: linear-gradient(135deg, var(--navy-900), var(--navy-700)); color: var(--bg); border-radius: 6px; padding: 56px; }
+  @media (max-width: 700px){ .case{ padding: 32px 24px; } }
+  .case .kicker{ color: var(--copper-bright); }
+  .case h2{ color: var(--mint); }
+  .case p{ color: #C7CFDA; }
+  .case-figure{ margin-top: 32px; display:flex; align-items:flex-start; gap: 40px; flex-wrap: wrap; }
+  .fig-card{ background: #fff; border-radius: 8px; padding: 20px; max-width: 460px; }
+  .fig-card img{ display:block; width: 100%; height: auto; }
+  .fig-caption{ margin-top: 14px; font-size: 0.86rem; color: #9AA6B5 !important; max-width: 420px; line-height: 1.6; }
+
+  /* install */
+  .terminal{
+    background: #10131A; border-radius: 6px; padding: 26px 28px; margin-top: 8px;
+    font-family: var(--mono); font-size: 0.88rem; color: #E7E6E2; overflow-x:auto;
+  }
+  .terminal .c{ color: #6E7686; }
+  .terminal .s{ color: #E7A98A; }
+  .terminal .k{ color: #7FA0DE; }
+
+  /* roadmap */
+  .roadmap{ margin-top: 8px; }
+  .rmap-row{ display:grid; grid-template-columns: 90px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .rmap-row:first-child{ border-top: 1px solid var(--line); }
+  .rmap-num{ font-family: var(--serif); font-size: 1.3rem; color: var(--ink-faint); }
+  .rmap-row.current .rmap-num{ color: var(--copper); }
+  .rmap-row h4{ font-family: var(--sans); font-weight: 600; margin: 0 0 6px; font-size: 1rem; }
+  .rmap-row p{ margin:0; color: var(--ink-soft); font-size: 0.92rem; }
+
+  /* literature */
+  .pubs-list{ margin-top: 8px; border-top: 1px solid var(--line); }
+  .pub-row{ display:grid; grid-template-columns: 64px 1fr; gap: 22px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  @media (max-width: 700px){ .pub-row{ grid-template-columns: 1fr; gap: 4px; } }
+  .pub-year{ font-family: var(--mono); font-size: 0.86rem; color: var(--blue); padding-top: 2px; }
+  .pub-cite{ margin: 0; color: var(--ink-soft); font-size: 0.94rem; line-height: 1.55; }
+  .pub-cite em{ color: var(--ink); font-style: italic; }
+  .pub-journal{ color: var(--ink-faint); }
+  .pub-link{ display:inline-block; margin-top: 4px; font-size: 0.82rem; color: var(--copper); text-decoration:none; }
+  .pub-link:hover{ text-decoration: underline; }
+
+  /* footer */
+  footer{ padding: 64px 0 40px; border-top: 1px solid var(--line); }
+  .foot-cols{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align:center; }
+  @media (max-width: 780px){ .foot-cols{ grid-template-columns: 1fr; gap: 32px; } }
+  .foot-label{ font-size: 0.78rem; color: var(--copper); font-weight: 600; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .foot-cols a{ display:block; text-decoration:none; color: var(--ink-soft); font-size: 0.92rem; margin-top: 4px; }
+  .foot-cols a:hover{ color: var(--ink); }
+  .cite-block{
+    font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft);
+    line-height: 1.7; text-align:center;
+  }
+  .foot-bottom{
+    margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);
+    display:flex; justify-content:space-between; gap: 16px; flex-wrap:wrap;
+    font-size: 0.82rem; color: var(--ink-faint);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">REKS<span class="dot">·</span>Studio</a>
+    <div class="navlinks">
+      <a href="#problem">The problem</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#results">Results</a>
+      <a href="#literature">Literature</a>
+      <a href="#install" class="hl">Install</a>
+      <a href="#cite">Cite</a>
+      <a href="reks-studio-docs.html" class="hl2">Docs</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-mark" aria-hidden="true">RS</div>
+    <div>
+      <div class="kicker">Ensemble DFT, generated not derived</div>
+      <h1 class="display">Strongly correlated chemistry, at DFT cost</h1>
+      <p class="lede">REKS Studio automatically derives and compiles the working equations of ensemble density functional theory for any active space - turning a twenty-year manual bottleneck into a binary catalogue.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#architecture">Explore the method</a>
+        <a class="btn btn-ghost" href="https://github.com/ConstLike/psi4/tree/kk/reks.studio">Source ↗</a>
+      </div>
+    </div>
+    <div class="hero-rings-wrap">
+      <svg class="hero-rings" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g class="orbital-spin" style="animation-duration:90s; transform-origin: 300px 300px;" stroke="var(--mint)" fill="none" stroke-width="1.4">
+          <circle cx="330" cy="260" r="90" opacity="0.5"/>
+          <circle cx="330" cy="260" r="120" opacity="0.4"/>
+          <circle cx="330" cy="260" r="150" opacity="0.3"/>
+          <circle cx="330" cy="260" r="180" opacity="0.22"/>
+          <circle cx="420" cy="340" r="90" opacity="0.4"/>
+          <circle cx="420" cy="340" r="130" opacity="0.28"/>
+          <circle cx="420" cy="340" r="170" opacity="0.18"/>
+          <circle cx="250" cy="360" r="60" opacity="0.35"/>
+          <circle cx="250" cy="360" r="100" opacity="0.22"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The bottleneck</div>
+      <h2>Two&nbsp;electrons,&nbsp;two&nbsp;orbitals&nbsp;- for twenty years</h2>
+    </div>
+    <div class="growth-row">
+      <div class="prose reveal">
+        <p>REKS and its extensions, SA-REKS and SSR, treat strong electron correlation by letting orbitals take fractional occupations across an ensemble of electronic configurations - an accurate, low-cost alternative to expensive wavefunction methods.</p>
+        <p>But every larger active space needs its own working equations, derived by hand from scratch. The number of configurations and orbital-pairing schemes grows combinatorially with active-space size, so the derivation quickly becomes unmanageable. In practice, that has confined the method to its smallest case: two electrons in two orbitals.</p>
+      </div>
+      <div class="reveal">
+        <div class="chart" aria-hidden="true">
+          <div class="bar-col"><div class="bar"></div><div class="bar-label" style="height:8px; font-size:0.80rem;">3</div><div class="bar-label" style="font-size:1.00rem;">(2,2)</div></div>
+          <div class="bar-col"><div class="bar"></div><div class="bar-label" style="height:10px; font-size:0.85rem;">18</div><div class="bar-label" style="font-size:1.00rem;">(4,4)</div></div>
+          <div class="bar-col"><div class="bar"></div><div class="bar-label" style="height:20px; font-size:0.95rem;">161</div><div class="bar-label" style="font-size:1.00rem;">(6,6)</div></div>
+          <div class="bar-col"><div class="bar"></div><div class="bar-label" style="height:60px; font-size:1.40rem;">1934</div><div class="bar-label" style="font-size:1.00rem;">(8,8)</div></div>
+          <div class="bar-col"><div class="bar"></div><div class="bar-label" style="height:170px; font-size:2.00rem;">29082</div><div class="bar-label" style="font-size:1.00rem;">(10,10)</div></div>
+        </div>
+        <div class="chart-note">Configurations to derive by hand, schematic - not to scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Why it's fast</div>
+      <h2>One set of integrals, many electronic configurations</h2>
+    </div>
+    <div class="prose reveal">
+      <p>The expensive parts of any electronic structure calculation are the two-electron integrals and the DFT quadrature grid. A naive implementation recomputes both for every configuration in the ensemble - which is exactly what makes it unfeasible.</p>
+      <p>REKS Studio computes them once per calculation and reuses them across every microstate, assembling each configuration's Fock matrix by weighted addition rather than running an independent KS-DFT calculation for it. That reuse, not any single algorithmic trick, is what brings a fully multiconfigurational treatment down to a cost comparable to ordinary DFT.</p>
+      <p>Making that reuse work for an arbitrary active space still requires the right working equations for each case. Those are generated automatically by a symbolic-algebra engine rather than derived by hand - necessary groundwork, but the speed comes from what happens with the equations afterward.</p>
+    </div>
+    <div class="arch reveal" style="margin-top:36px;">
+      <div class="arch-node">
+        <h4>Integrals & grids</h4>
+        <p>Computed once per calculation, regardless of how many configurations the active space produces.</p>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <h4>Shared across microstates</h4>
+        <p>Every configuration in the ensemble draws on the same integrals and grid, never recomputing them.</p>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <h4>Weighted Fock assembly</h4>
+        <p>Configuration energies combine by weighted addition instead of separate SCF calculations.</p>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <h4>Ensemble energy</h4>
+        <p>Multiconfigurational accuracy at a cost that tracks ordinary Kohn–Sham DFT.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Validated at scale</div>
+      <h2>Active spaces up to ten electrons in ten orbitals</h2>
+    </div>
+    <div class="stats reveal">
+      <div>
+        <div class="stat-num">67</div>
+        <div class="stat-label">molecules from the QUEST benchmark set, checked against theoretical best estimates</div>
+      </div>
+      <div>
+        <div class="stat-num">10e,10o</div>
+        <div class="stat-label">largest active space validated — previously inaccessible to routine calculation</div>
+      </div>
+      <div>
+        <div class="stat-num">≈ KS-DFT</div>
+        <div class="stat-label">computational cost, by sharing integrals and grids across all microstates</div>
+      </div>
+    </div>
+    <div class="syslist reveal">
+      <div class="sysrow"><div class="sysname">H₂ · H₄ · H₆ · H₈</div><p>Sequential bond dissociation benchmarked directly against full configuration interaction.</p></div>
+      <div class="sysrow"><div class="sysname">C₂H₄ · N₂ · C₂H₂</div><p>Single, double, and triple bond breaking along full potential energy curves.</p></div>
+      <div class="sysrow"><div class="sysname">C₂ (carbon dimer)</div><p>Benchmarked against FCI and experimental spectroscopic constants.</p></div>
+      <div class="sysrow"><div class="sysname">Zethrene series</div><p>Open-shell diradical character tracked across increasing active-space size.</p></div>
+      <div class="sysrow"><div class="sysname">Tetra[3]trianguleno[3]rhombene</div><p>A synthesized magnetic quantum material — see below.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="case">
+  <div class="wrap">
+    <div class="case reveal">
+      <div class="kicker">Real material, real spectrum</div>
+      <h2>Reproducing the magnetic ladder of a synthesized quantum material</h2>
+      <p style="max-width:56ch; margin-top:18px;">Tetra[3]trianguleno[3]rhombene is an open-shell nanographene whose magnetic energy levels have been mapped experimentally by scanning tunneling microscopy — but only partly explained by earlier calculations. Pushing the active space from four to ten electrons resolves the same magnetic ladder seen in the experiment, something smaller active spaces couldn't capture.</p>
+      <div class="case-figure">
+        <div class="fig-card">
+          <img src="BFN_energies.svg" alt="Computed S0, T1, Q1, and H1 state energies across three active-space treatments">
+        </div>
+        <p class="fig-caption">Computed ground (S0) and low-lying triplet, quintet, and heptet (T1, Q1, H1) state energies, in eV, across three treatments of the active space — the same widening that resolves the magnetic ladder against experiment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Get started</div>
+      <h2>Build from source, then run any Psi4 input</h2>
+    </div>
+    <div class="prose reveal">
+      <p>REKS Studio is currently a development branch of Psi4, not yet a separate package or conda release. Building it follows Psi4's own build process — a working equations catalogue is generated and compiled in as part of the build, so no extra step is needed afterward.</p>
+    </div>
+    <div class="terminal reveal">
+<span class="c"># clone the branch</span><br>
+git clone --branch kk/reks.studio https://github.com/ConstLike/psi4.git<br>
+cd psi4<br><br>
+<span class="c"># set up build dependencies</span><br>
+conda env create -f environment.yml -n p4env311<br>
+conda activate p4env311<br><br>
+<span class="c"># configure and build</span><br>
+cmake -S. -Bobjdir -DCMAKE_INSTALL_PREFIX=/path/to/install<br>
+cmake --build objdir --target install -j$(nproc)<br>
+</div>
+    <div class="prose reveal" style="margin-top:32px;">
+      <p>Once built, REKS runs as an ordinary reference option — no separate binary or import. Below is a simplified REKS(4,4) job, adapted from a real input file.</p>
+    </div>
+    <div class="terminal reveal">
+<span class="c">import psi4</span><br><br>
+mol = psi4.geometry(<span class="s">"""</span><br>
+<span class="s">0 1</span><br>
+<span class="s">C   0.000000   1.301509  -2.315529</span><br>
+<span class="s">C   0.000000  -1.301509  -2.315529</span><br>
+<span class="s">...</span><br>
+<span class="s">units bohr</span><br>
+<span class="s">"""</span>)<br><br>
+psi4.set_options({<br>
+&nbsp;&nbsp;<span class="s">"basis"</span>: <span class="s">"aug-cc-pVTZ"</span>,<br>
+&nbsp;&nbsp;<span class="s">"reference"</span>: <span class="s">"reks"</span>,<br>
+&nbsp;&nbsp;<span class="s">"reks"</span>: [4, 4],  <span class="c"># active space: 4 electrons, 4 orbitals</span><br><br>
+&nbsp;&nbsp;<span class="c"># state-averaged ensemble — the configurations entering orbital optimization</span><br>
+&nbsp;&nbsp;<span class="s">"sa_reks_configs"</span>: [<span class="s">"PPS1"</span>, <span class="s">"OSS1"</span>, <span class="s">"OSS2"</span>],<br><br>
+&nbsp;&nbsp;<span class="c"># an extra determinant (e.g. a high-spin state), given its own weight</span><br>
+&nbsp;&nbsp;<span class="c"># in the SA ensemble to help SCF convergence, but left out of SI</span><br>
+&nbsp;&nbsp;<span class="s">"sa_reks_extra"</span>: [[1, 1, 1, 1, 0, 0, 0, 0]],<br><br>
+&nbsp;&nbsp;<span class="c"># state-interaction ensemble — set independently from sa_reks_configs,</span><br>
+&nbsp;&nbsp;<span class="c"># mixed afterward to produce the final multi-state energies</span><br>
+&nbsp;&nbsp;<span class="s">"si_reks_configs"</span>: [<span class="s">"PPS1"</span>, <span class="s">"OSS1"</span>, <span class="s">"OSS2"</span>, <span class="s">"OSS3"</span>, <span class="s">"OSS4"</span>],<br>
+})<br><br>
+E, wfn = psi4.energy(<span class="s">"bhhlyp"</span>, return_wfn=<span class="k">True</span>)<br>
+</div>
+    <div class="syslist reveal" style="margin-top:36px;">
+      <div class="sysrow"><div class="sysname">reference / reks</div><p>Turns on the REKS method and sets the active space as [electrons, orbitals].</p></div>
+      <div class="sysrow"><div class="sysname">sa_reks_configs</div><p>The state-averaged ensemble: which configurations participate in orbital optimization.</p></div>
+      <div class="sysrow"><div class="sysname">si_reks_configs</div><p>The state-interaction ensemble, defined independently of the SA set, mixed afterward for the final multi-state energies.</p></div>
+      <div class="sysrow"><div class="sysname">sa_reks_extra</div><p>Extra determinants — such as a high-spin state — carrying their own weight in the SA ensemble to help SCF convergence, while staying out of the state-interaction step.</p></div>
+    </div>
+    <p style="margin-top:24px; font-size:0.92rem;"><a href="reks-studio-docs.html" style="color:var(--blue); text-decoration:underline;">Full keyword reference and build instructions →</a></p>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">What's next</div>
+      <h2>First in a series</h2>
+    </div>
+    <div class="roadmap reveal">
+      <div class="rmap-row current">
+        <div class="rmap-num">01</div>
+        <div><h4>Automated derivation & scalable energies — this release</h4><p>Working equations for arbitrary active spaces, compiled into a shared runtime at KS-DFT cost.</p></div>
+      </div>
+      <div class="rmap-row">
+        <div class="rmap-num">02</div>
+        <div><h4>Analytic energy gradients</h4><p>Extending the symbolic engine to derive gradients, enabling automated geometry optimization.</p></div>
+      </div>
+      <div class="rmap-row">
+        <div class="rmap-num">03</div>
+        <div><h4>Excited-state dynamics</h4><p>Simulating energy flow, bond rearrangement, and relaxation in strongly correlated excited states.</p></div>
+      </div>
+      <div class="rmap-row">
+        <div class="rmap-num">04</div>
+        <div><h4>eDFT-specific functionals</h4><p>Exchange-correlation functionals designed for dynamic correlation alone, freed from also describing strong correlation.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="literature">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Selected literature</div>
+      <h2>Key papers behind the REKS/SSR method</h2>
+    </div>
+    <div class="prose reveal">
+      <p>REKS Studio automates and scales a method built up over two decades, largely by Michael Filatov and collaborators. The papers below trace it from its restricted-ensemble formulation through the multi-pair extensions and analytic derivatives REKS Studio generalizes.</p>
+    </div>
+    <div class="pubs-list reveal">
+      <div class="pub-row">
+        <div class="pub-year">2015</div>
+        <div>
+          <p class="pub-cite">M. Filatov. <em>Spin Restricted Ensemble Referenced Kohn–Sham Method: Basic Principles and Application to Strongly Correlated Ground and Excited States of Molecules.</em> <span class="pub-journal">WIREs Computational Molecular Science</span>, 5:146–167.</p>
+          <a class="pub-link" href="https://doi.org/10.1002/wcms.1209">doi.org/10.1002/wcms.1209 ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2016</div>
+        <div>
+          <p class="pub-cite">M. Filatov. <em>Ensemble DFT Approach to Excited States of Strongly Correlated Molecular Systems.</em> <span class="pub-journal">Topics in Current Chemistry: Density-Functional Methods for Excited States</span>, 368:97–124.</p>
+          <a class="pub-link" href="http://link.springer.com/chapter/10.1007/128_2015_630">link.springer.com/chapter/10.1007/128_2015_630 ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2016</div>
+        <div>
+          <p class="pub-cite">M. Filatov, T. J. Martínez, K. S. Kim. <em>Using the GVB Ansatz to Develop Ensemble DFT Method for Describing Multiple Strongly Correlated Electron Pairs.</em> <span class="pub-journal">Physical Chemistry Chemical Physics</span>, 18:21040–21050.</p>
+          <a class="pub-link" href="http://pubs.rsc.org/en/content/articlepdf/2016/CP/C6CP00236F">pubs.rsc.org/en/content/articlepdf/2016/CP/C6CP00236F ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2016</div>
+        <div>
+          <p class="pub-cite">M. Filatov, F. Liu, K. S. Kim, T. J. Martínez. <em>Self-Consistent Implementation of Ensemble Density Functional Theory Method for Multiple Strongly Correlated Electron Pairs.</em> <span class="pub-journal">Journal of Chemical Physics</span>, 145:244104.</p>
+          <a class="pub-link" href="http://aip.scitation.org/doi/full/10.1063/1.4972174">aip.scitation.org/doi/full/10.1063/1.4972174 ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2017</div>
+        <div>
+          <p class="pub-cite">M. Filatov, F. Liu, T. J. Martínez. <em>Analytical Derivatives of the Individual State Energies in Ensemble Density Functional Theory Method. I. General Formalism.</em> <span class="pub-journal">Journal of Chemical Physics</span>, 147:034113.</p>
+          <a class="pub-link" href="http://aip.scitation.org/doi/10.1063/1.4994542">aip.scitation.org/doi/10.1063/1.4994542 ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2017</div>
+        <div>
+          <p class="pub-cite">M. Filatov, T. J. Martínez, K. S. Kim. <em>Description of Ground and Excited Electronic States by Ensemble Density Functional Method with Extended Active Space.</em> <span class="pub-journal">Journal of Chemical Physics</span>, 147:064104.</p>
+          <a class="pub-link" href="http://aip.scitation.org/doi/10.1063/1.4996873">aip.scitation.org/doi/10.1063/1.4996873 ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2020</div>
+        <div>
+          <p class="pub-cite">M. Filatov, S. Lee, C. H. Choi. <em>Computation of Molecular Ionization Energies Using an Ensemble Density Functional Theory Method.</em> <span class="pub-journal">Journal of Chemical Theory and Computation</span>, 16:4489–4504.</p>
+          <a class="pub-link" href="https://pubs.acs.org/doi/10.1021/acs.jctc.0c00218">doi.org/10.1021/acs.jctc.0c00218 ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2020</div>
+        <div>
+          <p class="pub-cite">M. Filatov, S. Lee, H. Nakata, C. H. Choi. <em>Computation of Molecular Electron Affinities Using an Ensemble Density Functional Theory Method.</em> <span class="pub-journal">Journal of Physical Chemistry A</span>, 124:7795–7804.</p>
+          <a class="pub-link" href="https://doi.org/10.1021/acs.jpca.0c06976">doi.org/10.1021/acs.jpca.0c06976 ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2021</div>
+        <div>
+          <p class="pub-cite">F. Liu, M. Filatov, T. J. Martínez. <em>Analytical Derivatives of the Individual State Energies in Ensemble Density Functional Theory. II. Implementation on Graphical Processing Units (GPUs).</em> <span class="pub-journal">Journal of Chemical Physics</span>, 154:104108.</p>
+          <a class="pub-link" href="https://aip.scitation.org/doi/full/10.1063/5.0041389">aip.scitation.org/doi/full/10.1063/5.0041389 ↗</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2021</div>
+        <div>
+          <p class="pub-cite">M. Filatov, S. Lee, C. H. Choi. <em>Description of Sudden Polarization in the Excited Electronic States with an Ensemble Density Functional Theory Method.</em> <span class="pub-journal">Journal of Chemical Theory and Computation</span>, 17:5123–5139.</p>
+          <a class="pub-link" href="https://doi.org/10.1021/acs.jctc.1c00479">doi.org/10.1021/acs.jctc.1c00479 ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="cite">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <div class="foot-label">CONTACT</div>
+        <a href="#" onclick="return false;">contact@reksstudio.org</a>
+      </div>
+      <div>
+        <div class="foot-label">CITE THIS WORK</div>
+        <div class="cite-block">
+          Komarov, K.; Filatov (Gulak), M.; Min, S. K.<br>
+          <em>Automated Symbolic Derivation Enables Scalable Ensemble DFT<br>
+          for Strongly Correlated Molecules and Materials.</em><br>
+          UNIST & IBS, Republic of Korea.
+        </div>
+      </div>
+      <div>
+        <div class="foot-label">LINKS</div>
+        <a href="https://github.com/ConstLike/psi4/tree/kk/reks.studio">GitHub</a>
+        <a href="reks-studio-docs.html">Documentation</a>
+        <a href="#" onclick="return false;">Paper</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Copyright © 2026, REKS Studio developers</span>
+      <span>Site built with plain HTML &amp; CSS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
