@@ -133,7 +133,7 @@
   .btn-ghost:hover{ background: #EA9257; }
 
   /* decorative motion */
-  .orbital-spin{ animation: spin 22s linear infinite; }
+  .orbital-spin{ animation: spin 22s linear infinite; will-change: transform; }
   .orbital-pulse{ animation: pulse 5.5s ease-in-out infinite; }
   @keyframes spin{ from{ transform: rotate(0deg);} to{ transform: rotate(360deg);} }
   @keyframes pulse{ 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.045);} }
@@ -272,19 +272,21 @@
       </div>
     </div>
     <div class="hero-rings-wrap">
-      <svg class="hero-rings" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <g class="orbital-spin" style="animation-duration:90s; transform-origin: 300px 300px;" stroke="var(--mint)" fill="none" stroke-width="1.4">
-          <circle cx="330" cy="260" r="90" opacity="0.5"/>
-          <circle cx="330" cy="260" r="120" opacity="0.4"/>
-          <circle cx="330" cy="260" r="150" opacity="0.3"/>
-          <circle cx="330" cy="260" r="180" opacity="0.22"/>
-          <circle cx="420" cy="340" r="90" opacity="0.4"/>
-          <circle cx="420" cy="340" r="130" opacity="0.28"/>
-          <circle cx="420" cy="340" r="170" opacity="0.18"/>
-          <circle cx="250" cy="360" r="60" opacity="0.35"/>
-          <circle cx="250" cy="360" r="100" opacity="0.22"/>
-        </g>
-      </svg>
+      <div class="orbital-spin" style="width:100%; min-width:0; animation-duration:90s;">
+        <svg class="hero-rings" width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" shape-rendering="optimizeSpeed">
+          <g stroke="var(--mint)" fill="none" stroke-width="1.4">
+            <circle cx="330" cy="260" r="90" opacity="0.5"/>
+            <circle cx="330" cy="260" r="120" opacity="0.4"/>
+            <circle cx="330" cy="260" r="150" opacity="0.3"/>
+            <circle cx="330" cy="260" r="180" opacity="0.22"/>
+            <circle cx="420" cy="340" r="90" opacity="0.4"/>
+            <circle cx="420" cy="340" r="130" opacity="0.28"/>
+            <circle cx="420" cy="340" r="170" opacity="0.18"/>
+            <circle cx="250" cy="360" r="60" opacity="0.35"/>
+            <circle cx="250" cy="360" r="100" opacity="0.22"/>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </header>
@@ -583,7 +585,7 @@ E, wfn = psi4.energy(<span class="s">"bhhlyp"</span>, return_wfn=<span class="k"
         <div class="foot-label">LINKS</div>
         <a href="https://github.com/ConstLike/psi4/tree/kk/reks.studio">GitHub</a>
         <a href="reks-studio-docs.html">Documentation</a>
-        <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15008475/v1" target="_blank" rel="noopener noreferrer">Paper</a>
+        <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15008475/v1">Paper</a>
       </div>
     </div>
     <div class="foot-bottom">
