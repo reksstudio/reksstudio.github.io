@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team — REKS Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F5F2;
+    --bg-raised: #EFEEE9;
+    --ink: #14181F;
+    --ink-soft: #4A5160;
+    --ink-faint: #8A8F98;
+    --blue: #2A4B8D;
+    --copper: #B5502A;
+    --line: #D8D6CD;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+  body{ margin:0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a{ color: inherit; }
+  .wrap{ max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 700px){ .wrap{ padding: 0 24px; } }
+  h1,h2,h3,h4{ font-family: var(--serif); font-weight: 600; color: var(--ink); margin: 0; }
+
+  nav{ position: sticky; top: 0; z-index: 50; background: rgba(245,245,242,0.86); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav .wrap{ display:flex; align-items:center; justify-content: space-between; height: 64px; }
+  .logo{ font-family: var(--serif); font-weight: 600; font-size: 1.15rem; display:flex; align-items:baseline; gap:6px; text-decoration:none; }
+  .logo .dot{ color: var(--copper); }
+  .navlinks{ display:flex; gap: 28px; font-size: 0.92rem; }
+  .navlinks a{ text-decoration:none; color: var(--ink-soft); padding: 6px 0; border-bottom: 1px solid transparent; transition: color 0.15s ease, border-color 0.15s ease; }
+  .navlinks a:hover{ color: var(--ink); border-color: var(--copper); }
+  @media (max-width: 720px){ .navlinks{ display:none; } }
+
+  header.docshero{ padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+  .kicker{ font-size: 0.86rem; color: var(--copper); font-weight: 500; letter-spacing: 0.02em; margin-bottom: 14px; }
+  header.docshero h1{ font-size: clamp(1.9rem, 4vw, 2.7rem); max-width: 20ch; }
+  header.docshero p{ margin-top: 16px; color: var(--ink-soft); max-width: 56ch; font-size: 1.05rem; }
+
+  .docs-layout{ display:grid; grid-template-columns: 200px 1fr; gap: 56px; padding: 56px 0 96px; align-items:start; }
+  @media (max-width: 860px){ .docs-layout{ grid-template-columns: 1fr; } }
+
+  .toc{ position: sticky; top: 88px; display:flex; flex-direction:column; gap: 2px; }
+  @media (max-width: 860px){ .toc{ position:static; flex-direction:row; flex-wrap:wrap; gap: 14px; margin-bottom: 8px; } }
+  .toc a{ text-decoration:none; color: var(--ink-faint); font-size: 0.88rem; padding: 6px 0; border-left: 2px solid transparent; padding-left: 12px; transition: color 0.15s ease, border-color 0.15s ease; }
+  @media (max-width: 860px){ .toc a{ border-left:none; padding-left:0; border-bottom: 1px solid var(--line); padding-bottom: 4px; } }
+  .toc a:hover{ color: var(--ink); border-color: var(--copper); }
+
+  .docsec{ margin-bottom: 72px; scroll-margin-top: 88px; }
+  .docsec:last-child{ margin-bottom: 0; }
+  .docsec h2{ font-size: 1.5rem; margin-bottom: 18px; }
+  .docsec .prose p{ color: var(--ink-soft); max-width: 68ch; }
+  .prose p{ color: var(--ink-soft); }
+
+  .terminal{ background: #10131A; border-radius: 6px; padding: 24px 26px; margin: 20px 0; font-family: var(--mono); font-size: 0.85rem; color: #E7E6E2; overflow-x:auto; line-height:1.7; }
+  .terminal .c{ color: #6E7686; }
+  .terminal .s{ color: #E7A98A; }
+  .terminal .k{ color: #7FA0DE; }
+
+  .kwgroup{ margin-top: 28px; }
+  .kwgroup h3{ font-family: var(--sans); font-weight: 600; font-size: 0.95rem; color: var(--ink); margin-bottom: 4px; letter-spacing: 0.01em; }
+  .kwgroup .kwgroup-note{ font-size: 0.88rem; color: var(--ink-faint); margin-bottom: 12px; max-width: 62ch; }
+  .kwlist{ border-top: 1px solid var(--line); }
+  .kwrow{ display:grid; grid-template-columns: 230px 1fr; gap: 22px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  @media (max-width: 700px){ .kwrow{ grid-template-columns: 1fr; gap: 4px; } }
+  .kwrow .kwname{ font-family: var(--mono); font-size: 0.86rem; color: var(--blue); }
+  .kwrow .kwalias{ display:block; font-size: 0.74rem; color: var(--ink-faint); margin-top: 4px; }
+  .kwrow p{ margin:0; color: var(--ink-soft); font-size: 0.93rem; }
+
+  .note{ border-left: 3px solid var(--copper); background: var(--bg-raised); padding: 14px 18px; font-size: 0.92rem; color: var(--ink-soft); margin-top: 24px; max-width: 68ch; }
+  .note strong{ color: var(--ink); }
+
+  footer{ padding: 40px 0 56px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--ink-faint); }
+  footer a{ text-decoration:none; color: var(--ink-soft); }
+  footer a:hover{ color: var(--ink); }
+  
+          /* This container turns on flexbox and aligns items side-by-side */
+        .media-container {
+            display: flex;
+            align-items: center; /* Aligns photo and text vertically in the middle */
+            gap: 20px;           /* Adds a 20px space between the photo and the text */
+            max-width: 800px;    /* Keeps the layout clean on wider screens */
+            margin: 20px auto;   /* Centers the entire container on the page */
+        }
+
+        /* Controls the size of the image */
+        .media-image {
+            width: 300px;        /* Set your preferred image width */
+            height: auto;        /* Keeps the image proportions from stretching */
+            border-radius: 8px;  /* Optional: rounds the corners of the image */
+        }
+
+        /* Controls the text styling */
+        .media-text {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Spacing between the stacked blocks */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;           /* Adds 40px of vertical space between each block */
+            max-width: 800px;
+            margin: 10px auto;   
+        }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="reks-studio.html">REKS<span class="dot">·</span>Studio</a>
+    <div class="navlinks">
+      <a href="reks-studio.html">Overview</a>
+    </div>
+  </div>
+</nav>
+
+<header class="docshero">
+  <div class="wrap">
+    <div class="kicker">Team Members</div>
+    <h1 style="max-width:80ch; margin-top:18px;">Current members of REKS&nbsp;Studio developers team</h1>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="docs-layout">
+
+  <div class="wrapper">
+    <div class="media-container">
+        <!-- The Photo on the left -->
+        <img style="scale:60%" class="media-image" src="kkomarov.jpg" alt="Konstantin Komarov">
+        <!-- The Text on the right -->
+        <div class="media-text">
+            <h2 style="max-width:200px; margin-top:1px;">Dr.&nbsp;Konstantin&nbsp;Komarov</h2>
+            <p>Email:&nbsp;constlike_at_gmail.com</p>
+        </div>
+    </div>
+  
+    <div class="media-container">
+        <!-- The Photo on the left -->
+        <img style="scale:60%" class="media-image" src="mfilatov.png" alt="Michael Filatov">
+        <!-- The Text on the right -->
+        <div class="media-text">
+            <h2 style="max-width:200px; margin-top:1px;">Dr.&nbsp;Michael&nbsp;Filatov</h2>
+            <p>Email:&nbsp;mike.filatov_at_gmail.com</p>
+        </div>
+    </div>
+
+    <div class="media-container">
+        <!-- The Photo on the left -->
+        <img style="scale:60%" class="media-image" src="skmin.jpg" alt="Seung Kyu Min">
+        <!-- The Text on the right -->
+        <div class="media-text">
+            <h2 style="max-width:200px; margin-top:1px;">Prof.&nbsp;Seung&nbsp;Kyu&nbsp;Min</h2>
+            <p>Email:&nbsp;skmin_at_unist.ac.kr</p>
+        </div>
+    </div>
+
+   </div> 
+
+  </div>
+
+ 
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="reks-studio.html">← Back to REKS Studio overview</a>
+  </div>
+</footer>
+
+</body>
+</html>
