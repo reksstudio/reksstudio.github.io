@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REKS Studio — User Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F5F2;
+    --bg-raised: #EFEEE9;
+    --ink: #14181F;
+    --ink-soft: #4A5160;
+    --ink-faint: #8A8F98;
+    --blue: #2A4B8D;
+    --copper: #B5502A;
+    --line: #D8D6CD;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+  body{ margin:0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a{ color: inherit; }
+  .wrap{ max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 700px){ .wrap{ padding: 0 24px; } }
+  h1,h2,h3,h4{ font-family: var(--serif); font-weight: 600; color: var(--ink); margin: 0; }
+
+  nav{ position: sticky; top: 0; z-index: 50; background: rgba(245,245,242,0.86); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav .wrap{ display:flex; align-items:center; justify-content: space-between; height: 64px; }
+  .logo{ font-family: var(--serif); font-weight: 600; font-size: 1.15rem; display:flex; align-items:baseline; gap:6px; text-decoration:none; }
+  .logo .dot{ color: var(--copper); }
+  .navlinks{ display:flex; gap: 28px; font-size: 0.92rem; }
+  .navlinks a{ text-decoration:none; color: var(--ink-soft); padding: 6px 0; border-bottom: 1px solid transparent; transition: color 0.15s ease, border-color 0.15s ease; }
+  .navlinks a:hover{ color: var(--ink); border-color: var(--copper); }
+  @media (max-width: 720px){ .navlinks{ display:none; } }
+
+  header.docshero{ padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+  .kicker{ font-size: 0.86rem; color: var(--copper); font-weight: 500; letter-spacing: 0.02em; margin-bottom: 14px; }
+  header.docshero h1{ font-size: clamp(1.9rem, 4vw, 2.7rem); max-width: 30ch; }
+  header.docshero .tagline{ margin-top: 16px; color: var(--ink-soft); max-width: 62ch; font-size: 1.05rem; }
+  header.docshero .branch{ margin-top: 6px; color: var(--ink-faint); font-size: 0.9rem; font-family: var(--mono); }
+  .banner{ margin-top: 26px; border-left: 3px solid var(--copper); background: var(--bg-raised); padding: 16px 20px; font-size: 0.92rem; color: var(--ink-soft); max-width: 62ch; line-height: 1.7; }
+
+  .docs-layout{ display:grid; grid-template-columns: 240px 1fr; gap: 56px; padding: 56px 0 96px; align-items:start; }
+  @media (max-width: 860px){ .docs-layout{ grid-template-columns: 1fr; } }
+
+  .toc{ position: sticky; top: 88px; display:flex; flex-direction:column; gap: 2px; max-height: calc(100vh - 110px); overflow-y:auto; }
+  @media (max-width: 860px){ .toc{ position:static; flex-direction:row; flex-wrap:wrap; gap: 14px; margin-bottom: 8px; max-height:none; } }
+  .toc a{ text-decoration:none; color: var(--ink-faint); font-size: 0.85rem; padding: 6px 0; border-left: 2px solid transparent; padding-left: 12px; transition: color 0.15s ease, border-color 0.15s ease; }
+  @media (max-width: 860px){ .toc a{ border-left:none; padding-left:0; border-bottom: 1px solid var(--line); padding-bottom: 4px; } }
+  .toc a:hover{ color: var(--ink); border-color: var(--copper); }
+
+  .docsec{ margin-bottom: 72px; scroll-margin-top: 88px; }
+  .docsec:last-child{ margin-bottom: 0; }
+  .docsec h2{ font-size: 1.5rem; margin-bottom: 18px; }
+  .docsec h3{ font-size: 1.12rem; margin: 30px 0 12px; }
+  .prose p{ color: var(--ink-soft); max-width: 74ch; margin: 0 0 16px; }
+  .prose ul, .prose ol{ color: var(--ink-soft); max-width: 74ch; margin: 0 0 16px; padding-left: 22px; }
+  .prose li{ margin-bottom: 8px; }
+  .prose li > ul, .prose li > ol{ margin-top: 8px; }
+  .prose strong{ color: var(--ink); }
+
+  code{ font-family: var(--mono); font-size: 0.86em; background: var(--bg-raised); border: 1px solid var(--line); border-radius: 4px; padding: 0.1em 0.4em; }
+  pre{ background: #10131A; border-radius: 6px; padding: 20px 22px; margin: 0 0 20px; overflow-x: auto; }
+  pre code{ background: none; border: none; padding: 0; color: #E7E6E2; font-size: 0.85rem; line-height: 1.7; }
+
+  .reftable-wrap{ overflow-x: auto; margin: 8px 0 24px; }
+  table{ border-collapse: collapse; width: 100%; min-width: 480px; font-size: 0.9rem; }
+  thead th{ text-align: left; font-family: var(--sans); font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--ink-faint); padding: 8px 16px 8px 0; white-space: nowrap; }
+  tbody td{ vertical-align: top; padding: 10px 16px 10px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+  tbody td:first-child{ font-family: var(--mono); font-size: 0.82rem; color: var(--blue); white-space: nowrap; }
+  tbody tr:last-child td{ border-bottom: none; }
+
+  .note{ border-left: 3px solid var(--copper); background: var(--bg-raised); padding: 14px 18px; font-size: 0.92rem; color: var(--ink-soft); margin-top: 24px; max-width: 68ch; }
+  .note strong{ color: var(--ink); }
+
+  footer{ padding: 40px 0 56px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--ink-faint); }
+  footer a{ text-decoration:none; color: var(--ink-soft); }
+  footer a:hover{ color: var(--ink); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="reks-studio.html">REKS<span class="dot">·</span>Studio</a>
+    <div class="navlinks">
+      <a href="reks-studio.html">Overview</a>
+      <a href="reks-studio-docs.html">Documentation</a>
+      <a href="#1-what-reks-studio-is">Manual</a>
+    </div>
+  </div>
+</nav>
+
+<header class="docshero">
+  <div class="wrap">
+    <div class="kicker">User Manual</div>
+    <h1>REKS Studio — User Manual</h1>
+    <p class="tagline">A guide to the REKS(N,M) / SA-REKS / SI-REKS implementation in Psi4</p>
+    <p class="branch">(branch <code>kk/reks.studio</code>, repository <code>ConstLike/psi4</code>)</p>
+    <div class="banner">Spin-Restricted Ensemble-referenced Kohn-Sham DFT — State-Averaged (SA) and State-Interaction (SI);<br>Konstantin Komarov, Michael Filatov, Seung Kyu Min,<br>Ulsan National Institute of Science and Technology (UNIST), South Korea</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="docs-layout">
+    <div class="toc">
+      <a href="#1-what-reks-studio-is">1. What REKS Studio Is</a>
+      <a href="#2-minimal-working-example">2. Minimal Working Example</a>
+      <a href="#3-anatomy-of-a-reks-studio-input">3. Anatomy of a REKS Studio Input</a>
+      <a href="#4-the-configuration-catalog-and-naming-convention">4. The Configuration Catalog and Naming Convention</a>
+      <a href="#5-selecting-configurations-sa_reks_configs-and-si_reks_configs">5. Selecting Configurations: SA_REKS_CONFIGS and SI_REKS_CONFIGS</a>
+      <a href="#6-bulk-tokens-and-pattern-syntax">6. Bulk Tokens and Pattern Syntax</a>
+      <a href="#7-spin-manifolds-2s-and-multi-sector-runs">7. Spin Manifolds (2S) and Multi-Sector Runs</a>
+      <a href="#8-guesses-restarts-and-checkpointing">8. Guesses, Restarts, and Checkpointing</a>
+      <a href="#9-fractional-occupation-numbers-fons">9. Fractional Occupation Numbers (FONs)</a>
+      <a href="#10-the-scf-convergence-engines">10. The SCF Convergence Engines</a>
+      <a href="#11-delocalization-ipr-penalty">11. Delocalization (IPR) Penalty</a>
+      <a href="#12-reporting-and-output-verbosity">12. Reporting and Output Verbosity</a>
+      <a href="#13-worked-example-1-annotated-azln_reks44py">13. Worked Example 1 — Annotated: azln_reks44.py</a>
+      <a href="#14-worked-example-2-annotated-cu2cl6mm_reks66py">14. Worked Example 2 — Annotated: cu2cl6mm_reks66.py</a>
+      <a href="#15-reading-reks-studio-output">15. Reading REKS Studio Output</a>
+      <a href="#16-troubleshooting-and-convergence-tips">16. Troubleshooting and Convergence Tips</a>
+      <a href="#17-full-option-quick-reference">17. Full Option Quick-Reference</a>
+      <a href="#18-references">18. References</a>
+    </div>
+
+    <div>
+<section class="docsec" id="1-what-reks-studio-is">
+<h2 id="1-what-reks-studio-is">1. What REKS Studio Is</h2>
+<div class="prose">
+<p><strong>REKS Studio</strong> is the code name (printed in the output banner) for a from-scratch,
+heavily engineered rewrite of the REKS (Restricted Ensemble-referenced Kohn-Sham)
+solver inside this Psi4 branch, living almost entirely under
+<code>psi4/src/psi4/libscf_solver/reks*</code>. It implements:</p>
+<ul>
+<li><strong>REKS(N,M)</strong> — the ensemble DFT method of Filatov and co-workers, in which
+  <code>N</code> active electrons are distributed over <code>M</code> active orbitals as a set of
+  GVB-like geminal (paired-orbital) configurations, each with its own
+  fractional occupation numbers (FONs), optimized self-consistently together
+  with the orbitals.</li>
+<li><strong>SA-REKS</strong> (State-Averaged REKS) — an ensemble of several such
+  configurations, averaged with fixed or optimized weights, used as the SCF
+  reference (this is what actually gets optimized every SCF iteration).</li>
+<li><strong>SI-REKS</strong> (State-Interaction REKS) — a post-SCF step that diagonalizes an
+  effective Hamiltonian in the basis of the SA configurations (or a
+  user-chosen subset — a <em>cassette</em>) to obtain adiabatic (physical) state
+  energies, densities and transition properties — this is how REKS delivers
+  more than one electronic state (e.g. ground and excited states, conical
+  intersections) from a single SCF.</li>
+</ul>
+<p>Architecturally, <code>REKS</code> is a C++ class (<code>psi::scf::REKS</code>) that derives from
+Psi4's ordinary <code>HF</code> class and plugs into the normal <code>psi4.energy(...)</code> /
+<code>scf_type</code> / DFT-functional machinery — it reuses <code>libmints</code> (integrals,
+basis sets), <code>libfock</code> (JK builds, DFT quadrature/functionals via <code>libfock/v.h</code>),
+and <code>libqt</code> (BLAS/LAPACK wrappers, DIIS/linear-algebra primitives) exactly as
+RHF/UHF/ROHF do. What is unique to REKS Studio lives in <code>libscf_solver</code>:</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>File(s)</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reks.cc</code> / <code>reks.h</code></td>
+<td>The <code>REKS</code> SCF class itself: option parsing, the SCF driver loop, energy/gradient assembly.</td>
+</tr>
+<tr>
+<td><code>reks_arch.cc/.h</code></td>
+<td>The <strong>catalog</strong> ABI: a versioned, memory-mapped binary format (<code>reksNM.bin</code>) that enumerates every symmetry-inequivalent configuration for a given <code>(N,M)</code> and spin manifold, generated offline (this is why <code>(N,M)</code> can't be arbitrary — see §4).</td>
+</tr>
+<tr>
+<td><code>reks_cassette.cc/.h</code></td>
+<td>A <strong>Cassette</strong>: a chosen subset/ordering of catalog configurations — the SA pool, or one SI group — with the bookkeeping to map local indices to global ones.</td>
+</tr>
+<tr>
+<td><code>reks_reel.cc/.h</code></td>
+<td>Runtime storage: per-microstate Fock matrices, energies, Lagrangians, FONs.</td>
+</tr>
+<tr>
+<td><code>reks_fon_solver.h</code>, <code>reks_fon_relax.cc/.h</code></td>
+<td>The 1-D Newton-Raphson / golden-section solver that optimizes FONs for each geminal each SCF iteration.</td>
+</tr>
+<tr>
+<td><code>reks_gvb_diis.h</code>, <code>reks_orbital_diis.h</code>, <code>reks_diis_*.h</code></td>
+<td>Two alternative DIIS convergence accelerators for the orbital optimization (see §10).</td>
+</tr>
+<tr>
+<td><code>reks_trah_solver.h</code>, <code>reks_gradient_engine.h</code>, <code>reks_minres.h</code></td>
+<td>A Trust-Region Augmented-Hessian (TRAH) solver usable as a warm-up or standalone optimizer.</td>
+</tr>
+<tr>
+<td><code>reks_si.cc/.h</code>, <code>reks_si_types.h</code></td>
+<td>The SI Hamiltonian build, generalized eigenproblem, and adiabatic-state properties.</td>
+</tr>
+<tr>
+<td><code>reks_rdm.cc/.h</code>, <code>reks_naturals.cc/.h</code></td>
+<td>Reduced density matrices and natural orbitals/occupations per state.</td>
+</tr>
+<tr>
+<td><code>reks_report.cc/.h</code></td>
+<td>All formatted output (the banner, setup tables, SCF trace, state/microstate energy tables).</td>
+</tr>
+<tr>
+<td><code>reks_objectives.cc/.h</code>, <code>reks_math.h</code></td>
+<td>Shared energy/gradient objective functions and math kernels.</td>
+</tr>
+<tr>
+<td><code>reks_catalog/</code></td>
+<td>The pre-generated catalog binaries (<code>reks22.bin</code>, <code>reks44.bin</code>, <code>reks66.bin</code>, …) plus <code>reks_layout.json</code> describing the binary ABI.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Because REKS is registered as <code>"REFERENCE": "REKS"</code> alongside <code>RHF/ROHF/UHF/CUHF/RKS/UKS</code>,
+it is driven through the ordinary DFT/HF machinery: you still choose a
+functional (e.g. <code>bhhlyp</code>), a basis, an SCF type, etc. — REKS only changes how
+the electronic wavefunction is parametrized and optimized once those are set.</p>
+
+</div>
+</section>
+<section class="docsec" id="2-minimal-working-example">
+<h2 id="2-minimal-working-example">2. Minimal Working Example</h2>
+<div class="prose">
+<p>This is the built-in "how do I even start" example that REKS Studio itself
+prints whenever it hits a fatal input error (<code>reks_report.cc</code>,
+<code>input_usage_examples()</code>):</p>
+<pre><code class="language-python">psi4.set_options({
+    'reference':       'reks',
+    'reks':            [4, 4],
+    'sa_reks_configs': ['PPS1', 'OSS1', 'OSS2'],
+    'sa_reks_weights': [0.5, 0.25, 0.25],
+    'si_reks_configs': [['PPS1', 'OSS1'], ['PPS2', 'OSS3']],
+})
+psi4.energy('scf')
+</code></pre>
+<p>or as PSithon (<code>.dat</code>) input:</p>
+<pre><code>set {
+    reference        reks
+    reks             [ 4, 4 ]
+    sa_reks_configs  [ PPS1, OSS1, OSS2 ]
+    sa_reks_weights  [ 0.5, 0.25, 0.25 ]
+    si_reks_configs  [ [PPS1, OSS1], [PPS2, OSS3] ]
+}
+energy('scf')
+</code></pre>
+<p><code>sa_reks_configs</code>, <code>sa_reks_weights</code> and <code>si_reks_configs</code> are all optional:
+absent, they default to the <code>(N,M)</code> variant's built-in pool (see §5) and a
+uniform weight distribution. The only options you must always supply are
+<code>reference reks</code> and <code>reks [N, M]</code>.</p>
+
+</div>
+</section>
+<section class="docsec" id="3-anatomy-of-a-reks-studio-input">
+<h2 id="3-anatomy-of-a-reks-studio-input">3. Anatomy of a REKS Studio Input</h2>
+<div class="prose">
+<p>A REKS Studio input is an ordinary Psi4 input with three parts:</p>
+<ol>
+<li>
+<p><strong>Molecule</strong> (<code>psi4.geometry(...)</code>) — nothing REKS-specific here. Both
+   example scripts use <code>symmetry c1</code>; REKS Studio always treats the active
+   space as <code>C1</code> internally regardless of the molecule's true point group
+   (the setup table prints active MO irreps as <code>"A"</code> for this reason — see §15).</p>
+</li>
+<li>
+<p><strong>Standard SCF/DFT options</strong> (<code>psi4.set_options({...})</code>) — basis, <code>scf_type</code>,
+   convergence thresholds, level shift, <code>guess</code>, <code>molden_write</code>, DFT grid, etc.
+   These behave exactly as for any other DFT reference.</p>
+</li>
+<li>
+<p><strong>REKS-specific options</strong>, all documented in this manual, split into:
+   - <strong>what the active space is and which configurations participate</strong>
+     (<code>reks</code>, <code>sa_reks_configs</code>, <code>si_reks_configs</code>, …, §5–§7),
+   - <strong>how to seed/restart the orbitals</strong> (<code>guess read</code>, <code>guess_mo_swaps</code>,
+     <code>guess_active_window</code>, restart files, §8),
+   - <strong>how the FONs are optimized/constrained</strong> (<code>reks_*_fon</code>, §9),
+   - <strong>which convergence engine and how aggressively it runs</strong> (<code>reks_use_trah</code>,
+     <code>reks_gvb_diis</code>, <code>reks_diis_formulation</code>, …, §10),
+   - <strong>how much REKS Studio prints</strong> (<code>reks_report_level</code>, §12).</p>
+</li>
+</ol>
+<p>The energy call itself is unchanged: <code>psi4.energy("&lt;functional&gt;", ...)</code>. The
+functional name (<code>"bhhlyp"</code> in both provided examples) selects the DFT
+exchange-correlation functional used to build the Fock/Kohn-Sham matrices for
+each configuration — REKS is compatible with (and was designed around) hybrid
+functionals like BHandHLYP, not just HF-like references.</p>
+
+</div>
+</section>
+<section class="docsec" id="4-the-configuration-catalog-and-naming-convention">
+<h2 id="4-the-configuration-catalog-and-naming-convention">4. The Configuration Catalog and Naming Convention</h2>
+<div class="prose">
+<p>For a chosen active space <code>(N,M)</code>, the number of physically distinct
+GVB-paired configurations grows combinatorially. Rather than enumerate them at
+run time, REKS Studio ships <strong>pre-generated binary catalogs</strong>
+(<code>reks_catalog/reks22.bin</code>, <code>reks44.bin</code>, <code>reks66.bin</code>, …) — one per <code>(N,M)</code> —
+built by an offline generator and loaded read-only at run time
+(<code>reks_arch.cc</code>/<code>.h</code>). Each catalog lists every symmetry/spin-inequivalent
+configuration for that active space, across every spin manifold (singlet,
+triplet, …), tagged with a <strong>name</strong> and a <strong>type</strong>.</p>
+<p><strong>Practical consequence:</strong> you can only run the <code>(N,M)</code> combinations for which
+a catalog file has been generated and shipped (<code>reks22</code>, <code>reks44</code>, <code>reks66</code>
+are present in this checkout). Requesting an ungenerated <code>(N,M)</code> fails at
+catalog load time.</p>
+<h3 id="naming-convention">Naming convention</h3>
+<p>Every configuration in the catalog has a name of the form <code>&lt;TYPE&gt;&lt;index&gt;</code>,
+e.g. <code>PPS1</code>, <code>OSS2</code>, <code>DOSS_SPS1_0</code>, <code>T_PPS3</code>. The type prefix encodes, per the
+code's own naming-convention comment (<code>reks_arch.cc</code>):</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Prefix family</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PPS</code></td>
+<td>The <strong>perfectly-paired singlet</strong> — the closed-shell-like reference configuration (all geminals in generation 0, the "n" openness order). Every <code>(N,M)</code> catalog has at least one <code>PPS</code> config.</td>
+</tr>
+<tr>
+<td><code>OSS</code>, <code>DOSS</code>, <code>TOSS</code>, <code>QOSS</code>, <code>QUOSS</code>, <code>SOSS</code>, <code>SPOSS</code>, <code>OOSS</code>, <code>NOSS</code></td>
+<td>Configurations with <strong>1, 2, 3, 4, 5, 6, 7, 8, 9</strong> open-shell-singlet (Ψ₁) geminals, respectively (<code>O</code>=1, <code>D</code>=2, <code>T</code>=3, <code>Q</code>=4, <code>QU</code>=5, <code>S</code>=6, <code>SP</code>=7, <code>O</code>=8, <code>N</code>=9 — the code calls these "geminal-multiplicity markers"). These correspond to generation-1 ("m") openness.</td>
+</tr>
+<tr>
+<td><code>DES</code>, <code>DDES</code>, <code>TDES</code>, <code>QDES</code>, <code>QUDES</code>, <code>SDES</code>, <code>SPDES</code>, <code>ODES</code>, <code>NDES</code></td>
+<td>The same multiplicity ladder (1…9), but for <strong>doubly-excited closed-shell (Ψ₂) geminals</strong> rather than open-shell-singlet ones — generation-2 ("u") openness and beyond.</td>
+</tr>
+<tr>
+<td>A leading run of <code>T</code> (e.g. <code>T_PPS3</code>)</td>
+<td>Marks the configuration as belonging to the sector's <strong>triplet background</strong> rather than the singlet manifold.</td>
+</tr>
+<tr>
+<td><code>SPS</code> (as in <code>DOSS_SPS1_0</code>)</td>
+<td>A <strong>spin-projected</strong> tag: the configuration is a spin-projected combination built from one parent expansion (a spin-projected config carries no Ψ₂/generation-2 count by construction).</td>
+</tr>
+<tr>
+<td>Compound names (e.g. <code>DOSS_SPS1_0</code>)</td>
+<td>Combine the above markers with <code>_</code>-separated parts (e.g. 2 open-shell geminals, spin-projected, sub-index <code>1</code>, member <code>0</code>).</td>
+</tr>
+</tbody>
+</table></div>
+<p>You are not expected to memorize the full catalog for a given <code>(N,M)</code> — see
+§6 for bulk selection tokens (<code>full</code>, a type name, <code>single-scheme:N</code>, name
+patterns) that avoid spelling out every name, and note that REKS Studio's own
+error messages print the full, valid name/type list for the active <code>(N,M)</code>
+whenever an unknown token is used (<code>config_names_csv</code>, <code>config_types_csv</code> in
+<code>reks_arch.cc</code>).</p>
+<h3 id="geminal-pairing-schemes">Geminal-pairing "schemes"</h3>
+<p>For a fixed <code>(N,M)</code>, there can be more than one way to pair up the <code>M</code> active
+orbitals into geminals — the catalog calls these <strong>schemes</strong> (numbered from
+0). The scheme actually optimized in the SCF is <em>not</em> a separate option: it
+is selected implicitly by which configs your <code>sa_reks_configs</code> pool draws
+from (see the <code>single-scheme:N</code> / <code>mixed-scheme:N</code> bulk tokens, §6). REKS
+Studio prints the schemes available for the run's active space under
+"<strong>Pairing schemes (GVB(2,2) geminal pairs)</strong>" in the setup report (§15).</p>
+
+</div>
+</section>
+<section class="docsec" id="5-selecting-configurations-sa_reks_configs-and-si_reks_configs">
+<h2 id="5-selecting-configurations-sa_reks_configs-and-si_reks_configs">5. Selecting Configurations: <code>SA_REKS_CONFIGS</code> and <code>SI_REKS_CONFIGS</code></h2>
+<div class="prose">
+<h3 id="reks-the-active-space-required"><code>REKS</code> — the active space (required)</h3>
+<pre><code class="language-python">&quot;reks&quot;: [N, M]   # N = active electrons, M = active orbitals
+</code></pre>
+<p>Exactly two integers. The molecule's overall multiplicity is <strong>not</strong> set
+through <code>psi4.geometry</code>'s charge/multiplicity line for REKS purposes — it is
+always the canonical symmetric-Mₛ value (even <code>N</code> → singlet-type Mₛ=0 setup,
+odd <code>N</code> → doublet-type). Which <strong>spin manifold</strong> (2S) actually runs is chosen
+separately, via <code>SA_REKS_2SPIN</code> / <code>SI_REKS_2SPIN</code> or the ladder position of
+your config blocks (§7) — never via the molecule's multiplicity line.</p>
+<h3 id="sa_reks_configs-alias-reks_sa_configs-the-scf-state-averaged-pool"><code>SA_REKS_CONFIGS</code> (alias <code>REKS_SA_CONFIGS</code>) — the SCF (state-averaged) pool</h3>
+<p>This is the set of configurations whose ensemble average is actually
+optimized by the SCF. Two input forms:</p>
+<ul>
+<li><strong>Flat list</strong> = one block on one spin manifold, e.g.
+  <code>["PPS1", "OSS1", "OSS2"]</code> or by local index <code>[0, 1, 2]</code>.
+  Elements may be config names, local integer indices, or <strong>bulk tokens</strong>
+  (§6). A config may not repeat within a block (that's an input error — an
+  SA block is a <em>weighted list</em>, so a duplicate has no well-defined weight).</li>
+<li><strong>Nested list-of-lists</strong> = one block per spin manifold, e.g.
+  <code>[["PPS1","OSS1"], ["T_PPS1"]]</code> (first block = lowest 2S available, second
+  = next, in <em>ladder mode</em> — i.e. when <code>SA_REKS_2SPIN</code> is absent). An empty
+  inner block <code>[]</code> simply skips that rung. If <code>SA_REKS_2SPIN</code> <strong>is</strong> given,
+  block <code>i</code> belongs to the manifold named by the <code>i</code>-th entry of
+  <code>SA_REKS_2SPIN</code> instead, and an explicit empty block <code>[]</code> there <em>declares</em>
+  that manifold as participating (SA-empty) rather than skipping it.</li>
+</ul>
+<p>If omitted entirely, REKS Studio falls back to the catalog's built-in
+<code>sa_default</code> pool for the run's lowest (or explicitly chosen) manifold — for
+example <code>REKS(4,4)</code> defaults to <code>[PPS1, OSS1, OSS2]</code>, <code>REKS(6,6)</code> to
+<code>[PPS1, OSS1, OSS2, OSS3]</code>.</p>
+<h3 id="sa_reks_weights-alias-reks_sa_weights"><code>SA_REKS_WEIGHTS</code> (alias <code>REKS_SA_WEIGHTS</code>)</h3>
+<p>One non-negative weight per SA pool entry, <strong>in the order you typed them</strong>
+(concatenated block order, plus any <code>SA_REKS_EXTRA</code> determinants appended at
+the end), summing to 1.0 (tolerance <code>1e-8</code>). Omitted → uniform <code>1/n</code>. Note
+that if <code>SA_REKS_2SPIN</code> lists manifolds out of ascending-2S order, configs
+<em>and</em> their weights are jointly re-sorted internally into ascending-2S order
+— but you still type them (and match a weight to a config) in your own,
+as-written order.</p>
+<h3 id="sa_reks_extra-alias-reks_sa_extra-raw-extra-determinants"><code>SA_REKS_EXTRA</code> (alias <code>REKS_SA_EXTRA</code>) — raw extra determinants</h3>
+<p>A list of hand-specified Slater determinants, each an occupation vector
+<code>[alpha(M) | beta(M)]</code> of length <code>2M</code> (0/1 entries summing to <code>N</code>). Each such
+determinant is folded into the SA ensemble with its own fixed weight (from
+the tail of <code>SA_REKS_WEIGHTS</code>) — it is optimized alongside the catalog
+configs — but it is <strong>not</strong> a catalog config, so it never appears in the SI
+Hamiltonian; it only affects the orbital-averaging SCF. Use this when you
+need to bias the SCF ensemble toward a specific determinant the catalog
+doesn't name. The catalog itself is unmodified.</p>
+<p>Example (from <code>cu2cl6mm_reks66.py</code>, commented out but illustrative):</p>
+<pre><code class="language-python">&quot;sa_reks_extra&quot;: [[1,1,1,1,0,0,0,0]],   # one extra determinant, REKS(4,4)-sized vector
+</code></pre>
+<h3 id="si_reks_configs-alias-reks_si_configs-the-si-post-scf-cassettes"><code>SI_REKS_CONFIGS</code> (alias <code>REKS_SI_CONFIGS</code>) — the SI (post-SCF) cassette(s)</h3>
+<p>Defines the subspace(s) diagonalized after SCF to get adiabatic state
+energies. Two input forms:</p>
+<ul>
+<li><strong>2-level</strong> <code>[[...], [...], ...]</code> — a list of <strong>cassettes</strong> forming ONE
+  group (one spin manifold). Each cassette is itself a list of config
+  names/indices/bulk-tokens (§6), unioned within the cassette (unlike an SA
+  block, a repeated/overlapping selection inside one cassette is fine — it's
+  a <em>set</em>, kept at its first-seen position).</li>
+<li><strong>3-level</strong> <code>[[[...]], [[...]], ...]</code> — one <strong>group of cassettes per outer
+  entry</strong>, each group mapping to a spin manifold exactly like SA blocks do
+  (ladder mode by position, or explicit via <code>SI_REKS_2SPIN</code>). The 2-level
+  form is only legal when <code>SI_REKS_2SPIN</code> is absent or has length 1.</li>
+</ul>
+<p>If omitted, REKS Studio defaults to <strong>one cassette spanning the whole config
+block</strong> of the run's lowest (or <code>SI_REKS_2SPIN</code>-chosen) manifold.</p>
+<p>Example — two separate SI cassettes on the same manifold, each giving its own
+set of adiabatic states:</p>
+<pre><code class="language-python">&quot;si_reks_configs&quot;: [[&quot;PPS1&quot;, &quot;OSS1&quot;], [&quot;PPS2&quot;, &quot;OSS3&quot;]],
+</code></pre>
+<h3 id="si_reks_2spin-sa_reks_2spin-aliases-reks_si_2spin-reks_sa_2spin"><code>SI_REKS_2SPIN</code> / <code>SA_REKS_2SPIN</code> (aliases <code>REKS_SI_2SPIN</code> / <code>REKS_SA_2SPIN</code>)</h3>
+<p>One integer 2S per SA block / SI group, telling REKS Studio explicitly which
+spin manifold that block/group belongs to (rather than relying on ladder
+position). Pairwise distinct entries; any order (internally re-sorted
+ascending). An <strong>explicitly labeled empty block/group <code>[]</code></strong> here <em>declares</em>
+that manifold as participating (with no configs) — this is different from an
+empty block in plain ladder mode, which just skips a rung and declares
+nothing.</p>
+<h3 id="si_reks_report_states-alias-reks_si_report_states"><code>SI_REKS_REPORT_STATES</code> (alias <code>REKS_SI_REPORT_STATES</code>)</h3>
+<p>One positive integer per SI cassette (ascending spin-manifold cassette order,
+labeled <code>K=0,1,2,...</code> in the output — not necessarily your typed order),
+capping how many adiabatic states are <em>reported</em> (and how many get natural
+orbitals, dipoles, oscillator strengths, per-state RDMs, and wfn-file
+entries computed). The SI eigenproblem itself is always solved at full
+cassette dimension with every root found — the cap only trims what is
+computed/printed <em>downstream</em> of the eigensolve, for speed/memory. An entry
+cannot exceed its own cassette's dimension, and is silently clamped to the
+number of physical (non-null-space) states if the overlap is rank-deficient.</p>
+
+</div>
+</section>
+<section class="docsec" id="6-bulk-tokens-and-pattern-syntax">
+<h2 id="6-bulk-tokens-and-pattern-syntax">6. Bulk Tokens and Pattern Syntax</h2>
+<div class="prose">
+<p>Instead of spelling out config names one by one, any position that accepts a
+config name (in <code>SA_REKS_CONFIGS</code>, <code>SI_REKS_CONFIGS</code>, or the exclude clause
+below) also accepts these tokens:</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Expands to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"full"</code></td>
+<td>The entire config block of that manifold.</td>
+</tr>
+<tr>
+<td>A config <strong>type</strong> name, e.g. <code>"PPS"</code>, <code>"OSS"</code>, <code>"DOSS"</code></td>
+<td>Every config of that type in the manifold.</td>
+</tr>
+<tr>
+<td><code>"single-scheme:N"</code> (PSithon: <code>"single-scheme-N"</code> or <code>"single-scheme_N"</code>)</td>
+<td>Every config belonging to geminal-pairing scheme <code>N</code> (defaults to scheme 0 if <code>:N</code> omitted). The spin-projected base configs are shared across schemes and ride along regardless of which scheme you pick — so a one-scheme selection is the same size whichever scheme is named.</td>
+</tr>
+<tr>
+<td><code>"mixed-scheme:N"</code></td>
+<td>The SSR state set on scheme <code>N</code>: that scheme's single-excitation configs <em>plus every open-shell-singlet config of the manifold</em> (this differs from <code>single-scheme</code>, which stays within one scheme).</td>
+</tr>
+<tr>
+<td><code>"sps"</code></td>
+<td>Just the spin-projected base configs.</td>
+</tr>
+<tr>
+<td>A pattern with <code>*</code> or <code>?</code></td>
+<td>Every config name it glob-matches.</td>
+</tr>
+<tr>
+<td><code>"exclude:X"</code> (also <code>exclude-X</code> / <code>exclude_X</code>)</td>
+<td><strong>SI cassettes only.</strong> Subtracts whatever <code>X</code> names (any of the forms above) from everything else the cassette has already added, regardless of order — e.g. <code>["full", "exclude:sps"]</code> = the whole manifold minus the spin-projected base. SA blocks do not accept <code>exclude:</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A scheme token may union several indices in one go:
+<code>"single-scheme-1-2-3"</code> (or <code>"single-scheme:1,2,3"</code> in the Python API — a
+literal <code>:</code> cannot be used inside a PSithon <code>.dat</code> array element, since
+PSithon's array parser itself splits on <code>:</code>).</p>
+<p><strong>Important asymmetry between SA and SI:</strong> an SA block is a <em>weighted list</em> —
+naming the same config twice (directly, or via two overlapping tokens) is an
+input error, so overlapping selections must be combined into one multi-index
+token. An SI cassette is a <em>set</em> — overlapping tokens simply compose by
+union, and <code>exclude:</code> is only meaningful there.</p>
+
+</div>
+</section>
+<section class="docsec" id="7-spin-manifolds-2s-and-multi-sector-runs">
+<h2 id="7-spin-manifolds-2s-and-multi-sector-runs">7. Spin Manifolds (2S) and Multi-Sector Runs</h2>
+<div class="prose">
+<p>A REKS Studio run's <strong>sectors</strong> are the union of every spin manifold (2S)
+touched by any SA block or SI group — ordered internally by ascending 2S,
+regardless of the order you typed them in. Two ways to address a manifold:</p>
+<ul>
+<li><strong>Ladder mode</strong> (no <code>SA_REKS_2SPIN</code>/<code>SI_REKS_2SPIN</code> given): block/group <code>i</code>
+  (0-based, in the order you wrote it) maps to the <code>i</code>-th manifold available
+  in the <code>(N,M)</code> catalog, in ascending 2S. An empty block <code>[]</code> here just
+  skips that rung.</li>
+<li><strong>Explicit mode</strong> (<code>SA_REKS_2SPIN</code>/<code>SI_REKS_2SPIN</code> given): block/group <code>i</code>
+  belongs to whichever manifold its <code>i</code>-th entry names. An explicit empty
+  block <code>[]</code> here <em>declares</em> that manifold (it participates with no
+  configs), which is different from ladder mode's "skip".</li>
+</ul>
+<p>This lets you, for instance, run a singlet SA-REKS pool and a triplet SA-REKS
+pool in the <em>same</em> calculation (both sectors optimized jointly by the shared
+SCF), each with its own SI cassette — the "Pairing schemes" and "SA pool" /
+"SI pool" sections of the printed report are per-sector (§15).</p>
+
+</div>
+</section>
+<section class="docsec" id="8-guesses-restarts-and-checkpointing">
+<h2 id="8-guesses-restarts-and-checkpointing">8. Guesses, Restarts, and Checkpointing</h2>
+<div class="prose">
+<p>REKS calculations converge much faster — and much more reliably — from a
+good starting guess, so both example scripts are built entirely around a
+<strong>restart workflow</strong>. This is standard Psi4 machinery combined with two
+REKS-specific guess options.</p>
+<h3 id="the-restart-mechanism-standard-psi4">The restart mechanism (standard Psi4)</h3>
+<pre><code class="language-python">old_wfn = psi4.core.Wavefunction.from_file(&quot;name.wfn.npy&quot;)   # load a checkpoint...
+...
+psi4.set_options({&quot;guess&quot;: &quot;read&quot;, ...})                      # ...tell SCF to use it...
+E, wfn = psi4.energy(&quot;bhhlyp&quot;, restart_file=&quot;name.wfn.npy&quot;, return_wfn=True)
+wfn.to_file(&quot;name.wfn&quot;)                                        # ...and save a new one
+</code></pre>
+<ul>
+<li><code>Wavefunction.from_file(...)</code> / <code>restart_file=...</code> load a previously
+  serialized <code>Wavefunction</code> (a NumPy-backed <code>.wfn.npy</code> file, Psi4's native
+  checkpoint format) and stage it so the SCF guess routine can read it.</li>
+<li><code>"guess": "read"</code> (with <code>"df_scf_guess": False</code>, as in both examples — this
+  disables the density-fitted "quick and dirty" SCF pre-guess that would
+  otherwise run first and override the read guess) tells the SCF to actually
+  use those loaded orbitals rather than a SAD/core guess.</li>
+<li><code>wfn.to_file("name.wfn")</code> at the end serializes the <em>converged</em> wavefunction
+  for the next restart (note: this call uses a plain <code>.wfn</code> name in both
+  examples, while the file that gets re-loaded next time is <code>.wfn.npy</code> — make
+  sure your restart chain is internally consistent about which suffix you
+  read back with <code>from_file</code>/<code>restart_file</code>).</li>
+</ul>
+<p>This pattern is essential for REKS because production active-space DFT runs
+(large basis sets, <code>aug-cc-pVTZ</code> / <code>def2-TZVP</code>, big active spaces) are
+typically restarted many times — from a previous point on a geometry scan, a
+lower-level pre-optimization, or simply to extend a run that hit <code>maxiter</code>
+(note both examples set <code>"fail_on_maxiter": False</code>, so a non-converged SCF
+returns its best iterate rather than throwing, specifically so you <em>can</em>
+restart from it).</p>
+<h3 id="reks-specific-guess-refinements">REKS-specific guess refinements</h3>
+<ul>
+<li><strong><code>GUESS_MO_SWAPS</code></strong> — reorder columns of the <em>read</em> guess before SCF
+  starts, as a comma-separated list of swap pairs, e.g.
+  <code>"HOMO-1 HOMO, LUMO+2 LUMO+3"</code>. Tokens: integer 0-based MO index, or
+  <code>HOMO</code> / <code>LUMO</code> / <code>HOMO-k</code> / <code>LUMO+k</code> resolved against the loaded
+  wavefunction's alpha occupation. <code>nirrep=1</code> only (i.e. <code>symmetry c1</code>, as
+  both examples use). Applied identically to alpha and beta.</li>
+<li><strong><code>GUESS_ACTIVE_WINDOW</code></strong> — REKS-only: fills <em>just the active-space MO
+  columns</em> from the read guess, one token per active orbital, in
+  active-column order (same token vocabulary as <code>GUESS_MO_SWAPS</code>). This is
+  the more targeted tool when only the active window is misplaced, e.g. for
+  <code>reks [4,4]</code>:
+  <code>python
+  "guess_active_window": ["HOMO-1", "HOMO", "LUMO", "LUMO+1"]</code>
+  Requires <code>reference reks</code> and <code>guess read</code>; mutually exclusive with
+  <code>GUESS_MO_SWAPS</code> (pick one). Both examples leave this commented out,
+  meaning they trust the restart file's own active-orbital placement — reach
+  for it when a restart lands the wrong orbitals in the active window (a
+  common symptom: SCF converges instantly to the <em>wrong</em> state/energy).</li>
+<li><strong><code>MOLDEN_WRITE</code> / <code>MOLDEN_WRITE_INTERVAL</code></strong> — both examples turn on Molden
+  output (<code>molden_write: True</code>, <code>molden_write_interval: -1</code>, i.e. write only
+  at the end) purely so the orbitals can be visually inspected — useful for
+  diagnosing exactly the kind of active-window mis-assignment
+  <code>GUESS_ACTIVE_WINDOW</code> exists to fix.</li>
+</ul>
+
+</div>
+</section>
+<section class="docsec" id="9-fractional-occupation-numbers-fons">
+<h2 id="9-fractional-occupation-numbers-fons">9. Fractional Occupation Numbers (FONs)</h2>
+<div class="prose">
+<p>Each geminal pair in a REKS configuration carries a pair of FONs <code>(n_p, n_q)</code>
+with <code>n_p + n_q = 2</code>, interpolated between the closed-shell (<code>n_p=2, n_q=0</code>)
+and fully-open (<code>n_p=n_q=1</code>) limits by</p>
+<pre><code>f(x) = x^(1 - (x+δ)/(2(1+δ))),   x = n_p·n_q ∈ [0,1]
+</code></pre>
+<p>controlled by <code>REKS_FON_INTERP_DELTA</code> (default <code>0.4</code>, must be ≥ 0). FONs are
+optimized every SCF iteration by a dedicated 1-D Newton-Raphson / golden-ratio
+line-search micro-solver (<code>reks_fon_solver.h</code>), one geminal block at a time,
+generation by generation.</p>
+<p><strong>Generations.</strong> Geminals are grouped by "openness order": generation 0 (<code>n</code>,
+the PPS/perfectly-paired geminals), generation 1 (<code>m</code>, OSS-type), generation
+2 (<code>u</code>, DOSS-type), up through generation 7 (<code>z</code>) — <code>kMaxGen = 8</code>, enough for
+active spaces up to <code>REKS(16,16)</code>. Each generation has its own <strong>lower FON
+bound</strong> option, all sharing the semantics of the first:</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Generation</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_N_FON</code></td>
+<td>0 (PPS)</td>
+<td><code>-1.0</code> (disabled)</td>
+</tr>
+<tr>
+<td><code>REKS_M_FON</code></td>
+<td>1 (OSS)</td>
+<td><code>-1.0</code> (disabled)</td>
+</tr>
+<tr>
+<td><code>REKS_U_FON</code></td>
+<td>2 (DOSS)</td>
+<td><code>-1.0</code> (disabled)</td>
+</tr>
+<tr>
+<td><code>REKS_V_FON</code></td>
+<td>3</td>
+<td><code>-1.0</code> (disabled)</td>
+</tr>
+<tr>
+<td><code>REKS_W_FON</code></td>
+<td>4</td>
+<td><code>-1.0</code> (disabled)</td>
+</tr>
+<tr>
+<td><code>REKS_X_FON</code></td>
+<td>5</td>
+<td><code>-1.0</code> (disabled)</td>
+</tr>
+<tr>
+<td><code>REKS_Y_FON</code></td>
+<td>6</td>
+<td><code>-1.0</code> (disabled)</td>
+</tr>
+<tr>
+<td><code>REKS_Z_FON</code></td>
+<td>7</td>
+<td><code>-1.0</code> (disabled)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A non-negative value sets a <strong>lower bound</strong> on every active FON of that
+generation, which is then free to vary anywhere in
+<code>[value, 2 − REKS_FON_MICRO_BOUND_MARGIN]</code> (the upper end is clamped to
+<code>2 − 1e-8</code> with a warning if you push it further) — it is a floor, not a pin
+to a single value. Negative (the default) disables the bound entirely.
+<code>azln_reks44.py</code> sets <code>"reks_m_fon": 1.00000000</code>, so every generation-1
+(OSS) geminal FON is restricted to <code>[1.0, 2 − 1e-8]</code> — i.e. it is kept on the
+<em>open-shell side</em> of the interpolation (never allowed to relax back toward
+the closed-shell limit <code>n_p=2, n_q=0</code>) but is still optimized within that
+range, not fixed at <code>n_p=n_q=1</code>; <code>cu2cl6mm_reks66.py</code> sets the same option
+identically. This is a common way to prevent an OSS-type configuration from
+SCF-collapsing back toward closed-shell during a difficult convergence,
+without freezing its FON outright.</p>
+<p>Remaining FON micro-solver knobs (defaults are usually fine; touch these only
+if the FON sub-iterations themselves are the convergence bottleneck, visible
+at <code>REKS_REPORT_LEVEL &gt;= 4</code>):</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_FON_MICRO_MAX_NR_ITER</code></td>
+<td>20</td>
+<td>Newton-Raphson iteration cap per geminal block per SCF iteration.</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_MAX_LS_ITER</code></td>
+<td>20</td>
+<td>Golden-ratio line-search cap inside one Newton step.</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_CONV_TOL</code></td>
+<td><code>1e-12</code></td>
+<td>Step-norm convergence threshold.</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_MIN_EIGENVALUE</code></td>
+<td><code>1e-8</code></td>
+<td>Hessian eigenvalue floor in line-search mode (below which modes are lifted).</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_BOUND_MARGIN</code></td>
+<td><code>1e-8</code></td>
+<td>Interior margin: FONs are optimized over <code>[margin, 2-margin]</code>, not the closed <code>[0,2]</code>; a generation floor (<code>REKS_*_FON</code>) overrides the lower end.</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_BOUNDARY_SKIN</code></td>
+<td><code>0.05</code></td>
+<td>A generation-0 multi-start seed landing within this distance of 0 or 2 counts as "boundary-trapped" and loses to an interior minimum.</td>
+</tr>
+</tbody>
+</table></div>
+
+</div>
+</section>
+<section class="docsec" id="10-the-scf-convergence-engines">
+<h2 id="10-the-scf-convergence-engines">10. The SCF Convergence Engines</h2>
+<div class="prose">
+<p>REKS's orbital optimization is materially harder than ordinary HF/DFT: it
+must jointly optimize orbitals <em>and</em> FONs for an ensemble of configurations,
+so REKS Studio ships three cooperating engines, all tunable but with
+sensible defaults — <strong>most users should not need to touch anything in this
+section beyond <code>LEVEL_SHIFT</code> and (occasionally) <code>REKS_USE_TRAH</code>.</strong></p>
+<h3 id="the-three-engines-in-the-order-they-can-run">The three engines, in the order they can run</h3>
+<ol>
+<li><strong>Plain <code>F_reks</code> burn-in</strong> — the first <code>REKS_GVB_DIIS_START</code> iterations
+   (default 3) with no accelerator, just a level-shifted effective Fock
+   build, if neither TRAH nor GVB-DIIS is active yet.</li>
+<li><strong>TRAH</strong> (<code>REKS_USE_TRAH</code>, default <code>false</code>) — a Trust-Region
+   Augmented-Hessian solver (<code>reks_trah_solver.h</code>) that jointly optimizes
+   orbital rotations and FONs by a box-constrained trust-region Newton step,
+   eigendecomposing the (approximate) Hessian and bisecting on a level shift
+   until the step norm matches the trust radius (Nocedal &amp; Wright Ch. 4;
+   Moré &amp; Sorensen 1983; Helmich-Paris 2021/2022). If <code>REKS_GVB_DIIS</code> is
+   also on (the default), TRAH is only the <strong>warm-up</strong>: the SCF switches to
+   GVB-DIIS once <code>REKS_GVB_DIIS_START</code> is reached and the active formulation's
+   activation gate is satisfied. With <code>REKS_GVB_DIIS</code> off, TRAH runs the
+   <em>entire</em> SCF alone.</li>
+<li><strong>GVB-DIIS</strong> (<code>REKS_GVB_DIIS</code>, default <code>true</code>) — the default accelerator,
+   implementing the multishell-Fock DIIS extrapolation of Muller et al.
+   (<em>J. Chem. Phys.</em> 1994, 100, 1226), where every active orbital is its own
+   "shell" (core = 1 shell, virtual = 1 shell). Selected by
+   <strong><code>REKS_DIIS_FORMULATION</code></strong> (<code>"CFM"</code> or <code>"ORBITAL"</code>, default <code>"ORBITAL"</code>):
+   - <code>CFM</code> extrapolates the composite multishell Fock matrix itself (closer
+     to the original GVB-DIIS paper); gated on by
+     <code>REKS_DIIS_CFM_ACTIVATION_GORB</code> (default <code>1e-3</code>, the orbital-gradient
+     norm below which CFM engages once <code>REKS_GVB_DIIS_START</code> is reached —
+     inert without <code>REKS_USE_TRAH</code>).
+   - <code>ORBITAL</code> (the default) instead extrapolates skew-symmetric rotation
+     generators κ directly in the MO basis and bypasses Fock diagonalization
+     each step (Ionova &amp; Carter 1995; the "r-GDIIS" variant of Sethio et al.
+     2024). Both examples' commented-out line
+     <code>#"reks_diis_formulation": "CFM"</code> shows the alternative was tried.</li>
+</ol>
+<p>A <strong>miniTRAH episode</strong> can also be triggered <em>inside</em> GVB-DIIS
+(<code>REKS_GVB_NK</code>, default <code>true</code>): a short, bounded Newton-Krylov solve of the
+reduced orbital-gradient equations, entered when GVB-DIIS shows a genuine
+stall signature (flat step, non-flat gradient, unmet D-convergence gate for
+<code>REKS_GVB_NK_TRIGGER</code> consecutive iterations, default 4) and exited once
+<code>||g_orb||</code> falls below <code>REKS_GVB_NK_EXIT_FACTOR × D_CONVERGENCE</code> or a
+resource budget (<code>REKS_GVB_NK_MAX_GRAD</code>/<code>_MAX_MACRO</code>/<code>_MAX_INNER</code>) is spent.</p>
+<h3 id="level-shift">Level shift</h3>
+<p>REKS reuses Psi4's standard <code>LEVEL_SHIFT</code> / <code>LEVEL_SHIFT_CUTOFF</code> machinery
+(both examples: <code>level_shift: 0.5</code>, <code>level_shift_cutoff: 0.0</code> — i.e. never
+auto-disable), but layers an <strong>adaptive "staircase" shift</strong>
+(<code>reks_convergence.h</code>'s <code>OrbitalGuard</code>) on top, controlled by
+<code>LEVEL_SHIFT_ADAPT</code> (default <code>true</code>, as both examples confirm via
+<code>level_shift_adapt: True</code>): the pair-aware staircase shift decays toward a
+floor when orbital mixing is small, and grows back toward your <code>LEVEL_SHIFT</code>
+when GVB-pair inversion/scrambling is detected in the pre-diagonalization
+Fock. Setting <code>LEVEL_SHIFT_ADAPT: False</code> freezes the staircase at your
+literal <code>LEVEL_SHIFT</code> for every iteration instead. <code>REKS_GVB_LEVEL_SHIFT</code>
+(default <code>1.0</code>) is a <em>separate</em>, artificial shell-gap parameter used only
+inside the CFM multishell Fock construction — irrelevant when
+<code>REKS_DIIS_FORMULATION=ORBITAL</code> (the default, and what both examples use).</p>
+<h3 id="the-rest-of-the-gvb-diis-conditioningmonitoring-stack">The rest of the GVB-DIIS conditioning/monitoring stack</h3>
+<p>The remaining ~35 <code>REKS_DIIS_*</code>/<code>REKS_GVB_*</code> options (angle filtering,
+SVD-on-F conditioning, Tikhonov ridging, "verdict" rewind/restart monitors,
+cycle detection, basin-transition guards) are <strong>expert-level stabilizers</strong>
+around GVB-DIIS that fire automatically on ill-conditioned or non-monotone
+steps; their defaults were tuned by the developers and are not meant to be
+routinely edited. Consult §17 for the full list with defaults if a specific
+pathology (oscillation, cycling, a stalled non-monotone SCF) needs to be
+worked around, and consider raising <code>REKS_REPORT_LEVEL</code> to 4 first to see
+which monitor is actually firing before changing anything.</p>
+
+</div>
+</section>
+<section class="docsec" id="11-delocalization-ipr-penalty">
+<h2 id="11-delocalization-ipr-penalty">11. Delocalization (IPR) Penalty</h2>
+<div class="prose">
+<p><code>REKS_DELOC_IPR_PENALTY</code> (default <code>0.0</code>, i.e. off) adds a penalty term</p>
+<pre><code>E_pen = λ · Σᵢ Σ_A p_A(i)²
+</code></pre>
+<p>to the SA energy, where <code>p_A(i)</code> is the atomic population of active MO <code>i</code> on
+atom <code>A</code> (an inverse-participation-ratio-style measure) —a positive <code>λ</code>
+(in Hartree) discourages active orbitals from delocalizing over many atoms,
+which can help steer SCF toward a physically localized diradical/pair
+solution. Population analysis is chosen by <code>REKS_DELOC_IPR_METHOD</code>
+(<code>LOWDIN</code>, using an S^½ transform, or <code>MULLIKEN</code>; default <code>LOWDIN</code>). A basin
+guard (<code>REKS_DELOC_IPR_GUARD_STREAK_LIMIT</code>, default 10) self-disables the
+penalty for the rest of the SCF if it fires repeatedly without reducing IPR.</p>
+
+</div>
+</section>
+<section class="docsec" id="12-reporting-and-output-verbosity">
+<h2 id="12-reporting-and-output-verbosity">12. Reporting and Output Verbosity</h2>
+<div class="prose">
+<p><code>REKS_REPORT_LEVEL</code> (default <code>2</code>) controls everything REKS Studio prints:</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fatal diagnostics only.</td>
+</tr>
+<tr>
+<td><strong>2 (default)</strong></td>
+<td>The run report: setup, pools, SCF trace, adiabatic states, properties, and the 15 lowest microstate energies.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>+ full microstate list, and config-axis wavefunction arrays (SSR coefficients/Hamiltonian/overlap/1-RDM — quadratic in cassette dimension).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>+ per-iteration traces, pool maps, solver internals, and SI matrices wider than 150 configs.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>+ matrices over the config, microstate <em>and</em> orbital axes.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Levels 4–5 can produce very large output for big active spaces/cassettes —
+reserve them for debugging a specific run.</p>
+
+</div>
+</section>
+<section class="docsec" id="13-worked-example-1-annotated-azln_reks44py">
+<h2 id="13-worked-example-1-annotated-azln_reks44py">13. Worked Example 1 — Annotated: <code>azln_reks44.py</code></h2>
+<div class="prose">
+<pre><code class="language-python">import os, shutil, subprocess
+from pathlib import Path
+import numpy as np
+import psi4
+
+procs = os.cpu_count()
+psi4.set_num_threads(int(procs/2))        # half the logical cores
+psi4.set_memory(&quot;8 GB&quot;)
+
+psi4.core.set_output_file(&quot;azln_reks44.out&quot;, False)
+
+old_wfn = psi4.core.Wavefunction.from_file(&quot;azln_reks44.wfn.npy&quot;)   # stage restart (§8)
+
+mol = psi4.geometry(&quot;&quot;&quot;
+0 1
+... 18-atom acene/azaacene-like C10H8 skeleton in Bohr, C1 symmetry ...
+units bohr
+symmetry c1
+&quot;&quot;&quot;)
+
+psi4.set_options({
+    &quot;basis&quot;: &quot;aug-cc-pvtz&quot;,
+    &quot;scf_type&quot;: &quot;mem_df&quot;, &quot;scf_subtype&quot;: &quot;incore&quot;,
+    &quot;maxiter&quot;: 150, &quot;e_convergence&quot;: 7, &quot;d_convergence&quot;: 5,
+    &quot;df_scf_guess&quot;: False, &quot;guess&quot;: &quot;read&quot;,             # §8: use the restart, skip the DF pre-guess
+    &quot;diis&quot;: False, &quot;soscf&quot;: False,                       # ordinary SCF DIIS/SOSCF are off; REKS's own
+                                                            # GVB-DIIS (§10) handles convergence instead
+    &quot;level_shift&quot;: 0.5, &quot;level_shift_cutoff&quot;: 0.0, &quot;level_shift_adapt&quot;: True,   # §10
+    &quot;molden_write&quot;: True, &quot;molden_write_interval&quot;: -1,    # visualize final orbitals
+    &quot;dft_grid_name&quot;: &quot;SG1&quot;,                                # coarser standard grid
+    &quot;reks_gvb_diis&quot;: True, &quot;reks_diis_formulation&quot;: &quot;ORBITAL&quot;,   # §10, both defaults made explicit
+    &quot;reks_use_trah&quot;: False,
+    &quot;fail_on_maxiter&quot;: False,                              # §8: don't throw on non-convergence
+    &quot;reks_m_fon&quot;: 1.00000000,                              # §9: floor OSS geminal FONs at 1.0 (open-shell side)
+    &quot;reference&quot;: &quot;reks&quot;,
+    &quot;reks&quot;: [4, 4],                                        # 4 active electrons, 4 active orbitals
+    &quot;sa_reks_configs&quot;: [&quot;PPS1&quot;, &quot;OSS1&quot;, &quot;OSS2&quot;],           # the (4,4) default pool, written explicitly
+    &quot;sa_reks_extra&quot;: [[1,1,1,1,0,0,0,0]],                  # §5: one extra fixed-weight determinant
+})
+
+E_sa, wfn = psi4.energy(&quot;bhhlyp&quot;, restart_file=&quot;azln_reks44.wfn.npy&quot;, return_wfn=True)
+wfn.to_file(&quot;azln_reks44.wfn&quot;)
+print(f&quot;SA energy = {E_sa:.10f}&quot;)
+</code></pre>
+<p><strong>What this run does:</strong> an SA-REKS(4,4) calculation with the standard
+3-configuration pool (<code>PPS1, OSS1, OSS2</code>) plus one hand-picked extra
+determinant riding along in the ensemble at a fixed weight, on a
+polyaromatic-hydrocarbon-like molecule, using BHandHLYP/aug-cc-pVTZ, with the
+OSS geminal FONs floored at 1.0 (kept on the open-shell side, though still
+free to vary up to <code>2 − 1e-8</code>) and restarted from a previous converged
+wavefunction. No <code>sa_reks_weights</code> is given, so all four ensemble members
+(3 catalog configs + 1 extra determinant) share equal weight <code>0.25</code> by
+default. Since no <code>si_reks_configs</code> is given either, REKS Studio will still
+run its default single SI cassette (the full <code>(4,4)</code> config block on the
+lowest manifold) after SCF and report adiabatic states from it — the script
+just doesn't print/use those states beyond the default report.</p>
+
+</div>
+</section>
+<section class="docsec" id="14-worked-example-2-annotated-cu2cl6mm_reks66py">
+<h2 id="14-worked-example-2-annotated-cu2cl6mm_reks66py">14. Worked Example 2 — Annotated: <code>cu2cl6mm_reks66.py</code></h2>
+<div class="prose">
+<pre><code class="language-python">template_options = {
+    &quot;basis&quot;: &quot;def2-TZVP&quot;,
+    &quot;scf_type&quot;: &quot;mem_df&quot;, &quot;scf_subtype&quot;: &quot;incore&quot;,
+    &quot;maxiter&quot;: 150, &quot;e_convergence&quot;: 7, &quot;d_convergence&quot;: 5,
+    &quot;df_scf_guess&quot;: False, &quot;guess&quot;: &quot;read&quot;,
+    &quot;diis&quot;: False, &quot;soscf&quot;: False,
+    &quot;level_shift&quot;: 0.5, &quot;level_shift_cutoff&quot;: 0.0, &quot;level_shift_adapt&quot;: True,
+    &quot;molden_write&quot;: True, &quot;molden_write_interval&quot;: -1,
+    &quot;dft_radial_points&quot;: 99, &quot;dft_spherical_points&quot;: 590, &quot;dft_pruning_scheme&quot;: &quot;robust&quot;,  # finer/pruned grid
+    &quot;reks_gvb_diis&quot;: True, &quot;reks_diis_formulation&quot;: &quot;ORBITAL&quot;,
+    &quot;reks_use_trah&quot;: False,
+    &quot;fail_on_maxiter&quot;: False,
+    &quot;reks_m_fon&quot;: 1.00000000,
+    &quot;reference&quot;: &quot;reks&quot;,
+    &quot;reks&quot;: [6, 6],                                          # larger active space than Example 1
+    &quot;sa_reks_configs&quot;: [[&quot;PPS1&quot;,&quot;PPS3&quot;], [&quot;T_PPS3&quot;,&quot;T_PPS9&quot;]],  # §7: TWO manifolds, ladder mode
+    &quot;si_reks_2spin&quot;: [0, 2],                                  # §7: explicit SI manifolds, singlet + triplet
+    &quot;si_reks_configs&quot;: [[[&quot;full&quot;]], [[&quot;full&quot;]]],              # §5/§7: one full-manifold SI cassette per group
+}
+
+template_geom = &quot;&quot;&quot;
+-2 1
+Cu Cl Cl Cu Cl Cl Cl Cl      (planar Cu2Cl6 dimer skeleton)
+symmetry c1
+&quot;&quot;&quot;
+
+mol = psi4.geometry(template_geom)
+psi4.set_options(template_options)
+old_wfn = psi4.core.Wavefunction.from_file(&quot;cu2cl6mm_reks66.wfn.npy&quot;)
+energy, wfn = psi4.energy(&quot;bhhlyp&quot;, restart_file=&quot;cu2cl6mm_reks66.wfn.npy&quot;, return_wfn=True)
+wfn.to_file(&quot;cu2cl6mm_reks66.wfn&quot;)
+psi4.core.clean()
+</code></pre>
+<p><strong>What this run does:</strong> a larger REKS(6,6) active space on a
+di-μ-chloro-bridged dicopper(II) hexachloride dianion (<code>Cu2Cl6²⁻</code>, a classic
+antiferromagnetically-coupled binuclear transition-metal system — hence the
+<code>-2 1</code> charge/multiplicity line and the interest in <em>both</em> spin states).
+Unlike Example 1, this run explicitly declares <strong>two spin manifolds</strong>:</p>
+<ul>
+<li>The <code>SA_REKS_CONFIGS</code> nested list <code>[["PPS1","PPS3"], ["T_PPS3","T_PPS9"]]</code>
+  is in <strong>ladder mode</strong> (no <code>SA_REKS_2SPIN</code>), so block 0 (<code>PPS1, PPS3</code>) is
+  the run's lowest manifold (singlet, 2S=0) and block 1 (<code>T_PPS3, T_PPS9</code>,
+  note the triplet-background <code>T_</code> prefix) is its next-lowest manifold
+  (triplet, 2S=2) — both optimized <em>jointly</em> in one SA-SCF.</li>
+<li><code>SI_REKS_2SPIN: [0, 2]</code> then explicitly assigns the two <code>SI_REKS_CONFIGS</code>
+  groups to manifolds 2S=0 and 2S=2 respectively, each with one SI cassette
+  built from the <code>"full"</code> bulk token (the entire config block of that
+  manifold) — so this run reports adiabatic singlet states <em>and</em> adiabatic
+  triplet states from the same SCF, useful for e.g. singlet-triplet gaps in
+  the exchange-coupled dimer.</li>
+<li>The finer, explicitly pruned DFT grid (<code>dft_radial_points</code>/
+  <code>dft_spherical_points</code>/<code>dft_pruning_scheme</code>, vs. the coarser <code>SG1</code> preset
+  in Example 1) reflects the greater sensitivity of transition-metal
+  exchange couplings to integration-grid quality.</li>
+<li>The commented-out <code>#a_values = np.linspace(...)</code> / loop at the bottom shows
+  this script began life as (or is intended to become) a <strong>relaxed/rigid
+  scan</strong> template — looping over a geometric parameter <code>**A**</code> substituted
+  into <code>template_geom</code>, re-running <code>psi4.geometry</code>/<code>set_options</code>/<code>energy</code> at
+  each point, and presumably chaining <code>.wfn.npy</code> restarts between points for
+  smooth convergence along the scan (the pattern used throughout this
+  manual's restart discussion, §8).</li>
+<li><code>psi4.core.clean()</code> at the end clears Psi4's scratch files — good practice
+  when this script is one point of a longer scan/restart chain.</li>
+</ul>
+
+</div>
+</section>
+<section class="docsec" id="15-reading-reks-studio-output">
+<h2 id="15-reading-reks-studio-output">15. Reading REKS Studio Output</h2>
+<div class="prose">
+<p>With the default <code>REKS_REPORT_LEVEL = 2</code>, a run's <code>.out</code> file contains, in
+order:</p>
+<ol>
+<li><strong>Banner</strong> — the "REKS Studio" title block (§ front matter of this manual).</li>
+<li><strong><code>REKS Studio Setup</code></strong> — the resolved variant (<code>REKS(N,M) scheme S spin s</code>),
+   active space size, core-orbital count, and the 1-based active MO indices
+   (always printed with irrep label <code>"A"</code>, since REKS forces <code>C1</code> internally
+   regardless of the molecule's actual symmetry).</li>
+<li><strong><code>REKS Sector Map</code></strong> — one line per participating spin manifold (2S),
+   its SA config count (or "SA-empty"), SI cassette count, and generation
+   count — this is where you confirm a multi-manifold run like Example 2
+   actually declared the sectors you intended.</li>
+<li><strong><code>Pairing schemes (GVB(2,2) geminal pairs)</code></strong> — the geminal-pairing
+   scheme(s) available for the active space (§4), needed to interpret
+   <code>single-scheme:N</code>/<code>mixed-scheme:N</code> tokens.</li>
+<li><strong><code>SA pool</code></strong> — the resolved list of SA configurations (names, weights)
+   actually entering the SCF, per sector.</li>
+<li><strong>SCF iteration trace</strong> (as for any Psi4 SCF).</li>
+<li><strong><code>SI pool</code></strong> — the resolved SI cassette(s): which configs each contains.</li>
+<li><strong><code>SA-REKS Energy Decomposition</code></strong> — total energy plus, when active, the
+   IPR penalty energy (§11) and/or VV10 nonlocal correlation energy
+   contributions, each on its own labeled line.</li>
+<li><strong><code>Adiabatic State Energies</code></strong> — the SI-diagonalized state energies,
+   labeled <code>SSR State S0, S1, ...</code>, one block per SI cassette (with a note
+   if <code>SI_REKS_REPORT_STATES</code> truncated the list, §5).</li>
+<li><strong><code>Microstate Energies (sorted by energy)</code></strong> — the individual
+    configuration/microstate energies that fed the SA ensemble, truncated to
+    the 15 lowest at <code>REKS_REPORT_LEVEL 2</code> (raise to 3 for the full list).</li>
+</ol>
+<p>At <code>REKS_REPORT_LEVEL &gt;= 3–5</code>, additional tables appear: the full microstate
+list; SSR (state-specific/response) coefficient, Hamiltonian, overlap and
+1-RDM matrices over the config axis; a <code>Lagrangian eps_pq and ERI (pq|st)</code>
+table used to build the SSR Hamiltonian; and, at level 4+ for cassettes wider
+than 150 configs, block-tiled printouts of the SI matrices themselves
+(18 columns per block, per <code>kSIBlockColumns</code>).</p>
+
+</div>
+</section>
+<section class="docsec" id="16-troubleshooting-and-convergence-tips">
+<h2 id="16-troubleshooting-and-convergence-tips">16. Troubleshooting and Convergence Tips</h2>
+<div class="prose">
+<ul>
+<li><strong>SCF converges instantly to a suspiciously wrong energy after a restart.</strong>
+  The active-window orbitals from the loaded <code>.wfn.npy</code> likely landed in the
+  wrong columns. Inspect the Molden file, then fix with <code>GUESS_ACTIVE_WINDOW</code>
+  (or the coarser <code>GUESS_MO_SWAPS</code>) — §8.</li>
+<li><strong>SCF hits <code>MAXITER</code> without converging.</strong> With <code>fail_on_maxiter: False</code>
+  (as both examples set), you still get a wavefunction back — save it with
+  <code>wfn.to_file(...)</code> and restart from it rather than starting over; REKS SCF
+  convergence is iterative-refinement-friendly across restarts. Consider
+  raising <code>MAXITER</code>, or temporarily raising <code>REKS_REPORT_LEVEL</code> to 4 to see
+  which GVB-DIIS monitor (verdict rewind, cycle detection, basin guard) is
+  repeatedly firing.</li>
+<li><strong>SCF oscillates or cycles without converging.</strong> This is exactly what the
+  GVB-DIIS monitoring stack (§10) is designed to catch and restart from —
+  but if it's still unproductive, try <code>REKS_USE_TRAH: True</code> as a more robust
+  (if slower) warm-up/fallback, or switch <code>REKS_DIIS_FORMULATION</code> between
+  <code>"ORBITAL"</code> and <code>"CFM"</code>.</li>
+<li><strong>A geminal keeps collapsing back to closed-shell (or won't leave a
+  boundary FON).</strong> Floor its generation's FON with the matching
+  <code>REKS_*_FON</code> option (§9) — this keeps it on the open-shell side of the
+  interpolation without fixing it to a single value — as both example
+  scripts do for OSS geminals via <code>reks_m_fon: 1.0</code>.</li>
+<li><strong>Active orbitals delocalize across the whole molecule instead of
+  localizing on the intended fragment/bond.</strong> Try a positive
+  <code>REKS_DELOC_IPR_PENALTY</code> (§11).</li>
+<li><strong>Unknown config name/type error.</strong> REKS Studio's own error message lists
+  every valid name and type for your <code>(N,M)</code> and manifold — read it; it is
+  generated from the same catalog this manual describes (§4).</li>
+<li><strong>Requested <code>(N,M)</code> immediately fails to load.</strong> No catalog file exists for
+  that active space in <code>reks_catalog/</code>; only the shipped ones (<code>(2,2)</code>,
+  <code>(4,4)</code>, <code>(6,6)</code> in this checkout) are available without generating a new
+  catalog offline.</li>
+</ul>
+
+</div>
+</section>
+<section class="docsec" id="17-full-option-quick-reference">
+<h2 id="17-full-option-quick-reference">17. Full Option Quick-Reference</h2>
+<div class="prose">
+<p>All options below are read in <code>psi4/src/read_options.cc</code> under
+<code>SUBSECTION REKS</code>. Every array-valued option in the first table has an
+<code>REKS_</code>-prefixed alias (e.g. <code>SA_REKS_CONFIGS</code> ↔ <code>REKS_SA_CONFIGS</code>); setting
+both simultaneously is an error.</p>
+<h3 id="active-space-configuration-selection">Active space &amp; configuration selection</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS</code></td>
+<td><code>[N, M]</code></td>
+<td>— (required)</td>
+<td>§5</td>
+</tr>
+<tr>
+<td><code>SA_REKS_CONFIGS</code></td>
+<td>array</td>
+<td>catalog <code>sa_default</code></td>
+<td>§5</td>
+</tr>
+<tr>
+<td><code>SA_REKS_2SPIN</code></td>
+<td>array</td>
+<td>ladder, lowest manifold</td>
+<td>§5, §7</td>
+</tr>
+<tr>
+<td><code>SA_REKS_WEIGHTS</code></td>
+<td>array</td>
+<td>uniform <code>1/n</code></td>
+<td>§5</td>
+</tr>
+<tr>
+<td><code>SA_REKS_EXTRA</code></td>
+<td>array of arrays</td>
+<td>none</td>
+<td>§5</td>
+</tr>
+<tr>
+<td><code>SI_REKS_CONFIGS</code></td>
+<td>array</td>
+<td>one full-block cassette, lowest manifold</td>
+<td>§5</td>
+</tr>
+<tr>
+<td><code>SI_REKS_2SPIN</code></td>
+<td>array</td>
+<td>ladder, lowest manifold</td>
+<td>§5, §7</td>
+</tr>
+<tr>
+<td><code>SI_REKS_REPORT_STATES</code></td>
+<td>array of int</td>
+<td>all states</td>
+<td>§5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="guess">Guess</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GUESS_MO_SWAPS</code></td>
+<td>string</td>
+<td><code>""</code> (off)</td>
+<td>§8</td>
+</tr>
+<tr>
+<td><code>GUESS_ACTIVE_WINDOW</code></td>
+<td>array</td>
+<td><code>[]</code> (off)</td>
+<td>§8</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="fons">FONs</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_FON_INTERP_DELTA</code></td>
+<td>double</td>
+<td><code>0.4</code></td>
+<td>§9</td>
+</tr>
+<tr>
+<td><code>REKS_N_FON</code> … <code>REKS_Z_FON</code> (8 options)</td>
+<td>double</td>
+<td><code>-1.0</code> each</td>
+<td>§9</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_MAX_NR_ITER</code></td>
+<td>int</td>
+<td><code>20</code></td>
+<td>§9</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_MAX_LS_ITER</code></td>
+<td>int</td>
+<td><code>20</code></td>
+<td>§9</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_CONV_TOL</code></td>
+<td>double</td>
+<td><code>1e-12</code></td>
+<td>§9</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_MIN_EIGENVALUE</code></td>
+<td>double</td>
+<td><code>1e-8</code></td>
+<td>§9</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_BOUND_MARGIN</code></td>
+<td>double</td>
+<td><code>1e-8</code></td>
+<td>§9</td>
+</tr>
+<tr>
+<td><code>REKS_FON_MICRO_BOUNDARY_SKIN</code></td>
+<td>double</td>
+<td><code>0.05</code></td>
+<td>§9</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="delocalization-penalty">Delocalization penalty</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_DELOC_IPR_PENALTY</code></td>
+<td>double</td>
+<td><code>0.0</code> (off)</td>
+<td>§11</td>
+</tr>
+<tr>
+<td><code>REKS_DELOC_IPR_METHOD</code></td>
+<td><code>LOWDIN</code>|<code>MULLIKEN</code></td>
+<td><code>LOWDIN</code></td>
+<td>§11</td>
+</tr>
+<tr>
+<td><code>REKS_DELOC_IPR_GUARD_STREAK_LIMIT</code></td>
+<td>int</td>
+<td><code>10</code></td>
+<td>§11</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="reporting">Reporting</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_REPORT_LEVEL</code></td>
+<td>int (1–5)</td>
+<td><code>2</code></td>
+<td>§12</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="convergence-engines-top-level">Convergence engines — top level</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_USE_TRAH</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>§10</td>
+</tr>
+<tr>
+<td><code>REKS_GVB_DIIS</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>§10</td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_FORMULATION</code></td>
+<td><code>CFM</code>|<code>ORBITAL</code></td>
+<td><code>ORBITAL</code></td>
+<td>§10</td>
+</tr>
+<tr>
+<td><code>REKS_GVB_DIIS_START</code></td>
+<td>int</td>
+<td><code>3</code></td>
+<td>§10</td>
+</tr>
+<tr>
+<td><code>REKS_GVB_LEVEL_SHIFT</code></td>
+<td>double</td>
+<td><code>1.0</code> (CFM only)</td>
+<td>§10</td>
+</tr>
+<tr>
+<td><code>LEVEL_SHIFT_ADAPT</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>§10</td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_CFM_ACTIVATION_GORB</code></td>
+<td>double</td>
+<td><code>1e-3</code> (CFM only)</td>
+<td>§10</td>
+</tr>
+<tr>
+<td><code>REKS_GVB_ROBUST_VERDICT</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>§10</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="gvb-diis-conditioning-chain-expert">GVB-DIIS conditioning chain (expert)</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_DIIS_COND_ANGLE_FILTER</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_COND_ANGLE_TOL</code></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_COND_STALE_DELTA</code></td>
+<td><code>1e-4</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_COND_KAPPA_BYPASS</code></td>
+<td><code>1e9</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_COND_SVD_RCOND</code></td>
+<td><code>1e-8</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_COND_COEFF_NORM_MAX</code></td>
+<td><code>1e3</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_COND_TIKHONOV</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_COND_TIKHONOV_SCALE</code></td>
+<td><code>0.0</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="gvb-diis-monitors-verdicts-expert">GVB-DIIS monitors / verdicts (expert)</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_DIIS_MON_VERDICT_RHO</code></td>
+<td><code>1.5</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_MON_VERDICT_STREAK</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_MON_SUPPRESS_WINDOW</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_MON_NONMONOTONE_M</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_GATE_STREAK</code></td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_GUARD_LATCH_GRACE</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_GUARD_BAND_B</code></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_GUARD_LANDING_RTOL</code></td>
+<td><code>1e-12</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_MON_PROGRESS_EPS</code></td>
+<td><code>1e-2</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_FON_BRANCH_TOL</code></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_RESTART_BUDGET</code></td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_MON_CYCLE</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_MON_CYCLE_WINDOW</code></td>
+<td><code>12</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_MON_CYCLE_CAP_STREAK</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>REKS_DIIS_ORB_BASE_MAP_DAMP</code></td>
+<td><code>0.6</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="minitrah-episode-inside-gvb-diis-expert">miniTRAH episode inside GVB-DIIS (expert)</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS_GVB_NK</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_TRIGGER</code></td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_MIN_LANDINGS</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_MAX_REJECT</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_FON_MICRO</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_REQUIRE_ACTIVE_FON</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_MAX_GRAD</code></td>
+<td><code>150</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_MAX_MACRO</code></td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_MAX_INNER</code></td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_FD_H</code></td>
+<td><code>0.0</code> (auto)</td>
+</tr>
+<tr>
+<td><code>REKS_GVB_NK_EXIT_FACTOR</code></td>
+<td><code>0.5</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(All defaults and semantics above are transcribed directly from the
+docstrings in <code>psi4/src/read_options.cc</code>; consult that file — or the
+<code>input_usage_examples()</code> text REKS Studio itself prints on an input error —
+for the canonical, always-current wording.)</em></p>
+
+</div>
+</section>
+<section class="docsec" id="18-references">
+<h2 id="18-references">18. References</h2>
+<div class="prose">
+<ul>
+<li>REKS Studio banner authorship: Konstantin Komarov, Michael Filatov, Seung
+  Kyu Min — Ulsan National Institute of Science and Technology (UNIST),
+  South Korea (<code>reks_report.cc</code>).</li>
+<li>GVB-DIIS multishell Fock extrapolation: Muller, R. P. et al.
+  <em>J. Chem. Phys.</em> <strong>1994</strong>, <em>100</em>, 1226.</li>
+<li>Orbital-rotation DIIS: Ionova, I. V.; Carter, E. A. <em>J. Chem. Phys.</em>
+  <strong>1995</strong>, <em>102</em>, 1251; r-GDIIS extension: Sethio, D. et al.
+  <em>J. Phys. Chem. A</em> <strong>2024</strong>, <em>128</em>, 2472.</li>
+<li>Trust-region subproblem algorithm: Nocedal, J.; Wright, S. J.
+  <em>Numerical Optimization</em>, 2nd ed.; Springer: New York, 2006, Ch. 4;
+  Moré, J. J.; Sorensen, D. C. <em>SIAM J. Sci. Stat. Comput.</em> <strong>1983</strong>, <em>4</em>, 553;
+  Helmich-Paris, B. <em>J. Chem. Phys.</em> <strong>2021</strong>, <em>154</em>, 164104 and <strong>2022</strong>,
+  <em>156</em>, 204104.</li>
+<li>The underlying REKS/SA-REKS/SI-REKS methodology itself (ensemble DFT,
+  geminal-paired active spaces, state-interaction) is due to the long-running
+  program of Filatov and co-workers; this manual documents the <em>Psi4
+  implementation</em> (REKS Studio) rather than re-deriving the theory — consult
+  the primary REKS/SI-REKS literature for the underlying formalism.</li>
+</ul>
+
+<p><em>This manual reflects the state of the <code>kk/reks.studio</code> branch of
+<code>ConstLike/psi4</code> at the time of writing. Because this is an active
+development branch, option names, defaults, and behavior may change —
+the most current source of truth is always <code>psi4/src/read_options.cc</code> and
+the <code>input_usage_examples()</code> text printed by REKS Studio itself.</em></p></div>
+</section>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="reks-studio-docs.html">← Back to REKS Studio documentation</a>
+  </div>
+</footer>
+
+</body>
+</html>
