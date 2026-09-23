@@ -210,6 +210,7 @@
   .rmap-row:first-child{ border-top: 1px solid var(--line); }
   .rmap-num{ font-family: var(--serif); font-size: 1.3rem; color: var(--ink-faint); }
   .rmap-row.current .rmap-num{ color: var(--copper); }
+  .rmap-row.next .rmap-num{ color: var(--copper-bright); }
   .rmap-row h4{ font-family: var(--sans); font-weight: 600; margin: 0 0 6px; font-size: 1rem; }
   .rmap-row p{ margin:0; color: var(--ink-soft); font-size: 0.92rem; }
 
@@ -465,9 +466,9 @@ E, wfn = psi4.energy(<span class="s">"bhhlyp"</span>, return_wfn=<span class="k"
         <div class="rmap-num">01</div>
         <div><h4>Automated derivation & scalable energies — this release</h4><p>Working equations for arbitrary active spaces, compiled into a shared runtime at KS-DFT cost.</p></div>
       </div>
-      <div class="rmap-row">
+      <div class="rmap-row next">
         <div class="rmap-num">02</div>
-        <div><h4>Analytic energy gradients</h4><p>Extending the symbolic engine to derive gradients, enabling automated geometry optimization.</p></div>
+        <div><h4>Analytic energy gradients — next release</h4><p>Extending the symbolic engine to derive gradients, enabling automated geometry optimization.</p></div>
       </div>
       <div class="rmap-row">
         <div class="rmap-num">03</div>
