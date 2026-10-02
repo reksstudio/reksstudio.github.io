@@ -277,7 +277,7 @@ uniform weight distribution. The only options you must always supply are
 <p><strong>REKS-specific options</strong>, all documented in this manual, split into:
    - <strong>what the active space is and which configurations participate</strong>
      (<code>reks</code>, <code>sa_reks_configs</code>, <code>si_reks_configs</code>, …, §5–§7),
-   - <strong>how to seed/restart the orbitals</strong> (<code>guess read</code>, <code>guess_mo_swaps</code>,
+   - <strong>how to seed/restart the orbitals</strong> (<code>guess read</code>, 
      <code>guess_active_window</code>, restart files, §8),
    - <strong>how the FONs are optimized/constrained</strong> (<code>reks_*_fon</code>, §9),
    - <strong>which convergence engine and how aggressively it runs</strong> (<code>reks_use_trah</code>,
@@ -573,21 +573,14 @@ returns its best iterate rather than throwing, specifically so you <em>can</em>
 restart from it).</p>
 <h3 id="reks-specific-guess-refinements">REKS-specific guess refinements</h3>
 <ul>
-<li><strong><code>GUESS_MO_SWAPS</code></strong> — reorder columns of the <em>read</em> guess before SCF
-  starts, as a comma-separated list of swap pairs, e.g.
-  <code>"HOMO-1 HOMO, LUMO+2 LUMO+3"</code>. Tokens: integer 0-based MO index, or
-  <code>HOMO</code> / <code>LUMO</code> / <code>HOMO-k</code> / <code>LUMO+k</code> resolved against the loaded
-  wavefunction's alpha occupation. <code>nirrep=1</code> only (i.e. <code>symmetry c1</code>, as
-  both examples use). Applied identically to alpha and beta.</li>
 <li><strong><code>GUESS_ACTIVE_WINDOW</code></strong> — REKS-only: fills <em>just the active-space MO
   columns</em> from the read guess, one token per active orbital, in
-  active-column order (same token vocabulary as <code>GUESS_MO_SWAPS</code>). This is
+  active-column order. This is
   the more targeted tool when only the active window is misplaced, e.g. for
   <code>reks [4,4]</code>:
   <code>python
   "guess_active_window": ["HOMO-1", "HOMO", "LUMO", "LUMO+1"]</code>
-  Requires <code>reference reks</code> and <code>guess read</code>; mutually exclusive with
-  <code>GUESS_MO_SWAPS</code> (pick one). Both examples leave this commented out,
+  Requires <code>reference reks</code> and <code>guess read</code>. Both examples leave this commented out,
   meaning they trust the restart file's own active-orbital placement — reach
   for it when a restart lands the wrong orbitals in the active window (a
   common symptom: SCF converges instantly to the <em>wrong</em> state/energy).</li>
@@ -1036,8 +1029,7 @@ than 150 configs, block-tiled printouts of the SI matrices themselves
 <ul>
 <li><strong>SCF converges instantly to a suspiciously wrong energy after a restart.</strong>
   The active-window orbitals from the loaded <code>.wfn.npy</code> likely landed in the
-  wrong columns. Inspect the Molden file, then fix with <code>GUESS_ACTIVE_WINDOW</code>
-  (or the coarser <code>GUESS_MO_SWAPS</code>) — §8.</li>
+  wrong columns. Inspect the Molden file, then fix with <code>GUESS_ACTIVE_WINDOW</code> — §8.</li>
 <li><strong>SCF hits <code>MAXITER</code> without converging.</strong> With <code>fail_on_maxiter: False</code>
   (as both examples set), you still get a wavefunction back — save it with
   <code>wfn.to_file(...)</code> and restart from it rather than starting over; REKS SCF
@@ -1149,7 +1141,6 @@ both simultaneously is an error.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>GUESS_MO_SWAPS</code></td>
 <td>string</td>
 <td><code>""</code> (off)</td>
 <td>§8</td>
