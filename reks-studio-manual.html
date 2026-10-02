@@ -584,8 +584,8 @@ restart from it).</p>
   meaning they trust the restart file's own active-orbital placement — reach
   for it when a restart lands the wrong orbitals in the active window (a
   common symptom: SCF converges instantly to the <em>wrong</em> state/energy).</li>
-<li><strong><code>MOLDEN_WRITE</code> / <code>MOLDEN_WRITE_INTERVAL</code></strong> — both examples turn on Molden
-  output (<code>molden_write: True</code>, <code>molden_write_interval: -1</code>, i.e. write only
+<li><strong><code>MOLDEN_WRITE</code></strong> — both examples turn on Molden
+  output (<code>molden_write: True</code>, i.e. write molden file
   at the end) purely so the orbitals can be visually inspected — useful for
   diagnosing exactly the kind of active-window mis-assignment
   <code>GUESS_ACTIVE_WINDOW</code> exists to fix.</li>
@@ -881,7 +881,7 @@ psi4.set_options({
     &quot;diis&quot;: False, &quot;soscf&quot;: False,                       # ordinary SCF DIIS/SOSCF are off; REKS's own
                                                             # GVB-DIIS (§10) handles convergence instead
     &quot;level_shift&quot;: 0.5, &quot;level_shift_cutoff&quot;: 0.0, &quot;level_shift_adapt&quot;: True,   # §10
-    &quot;molden_write&quot;: True, &quot;molden_write_interval&quot;: -1,    # visualize final orbitals
+    &quot;molden_write&quot;: True,    # visualize final orbitals
     &quot;dft_grid_name&quot;: &quot;SG1&quot;,                                # coarser standard grid
     &quot;reks_gvb_diis&quot;: True, &quot;reks_diis_formulation&quot;: &quot;ORBITAL&quot;,   # §10, both defaults made explicit
     &quot;reks_use_trah&quot;: False,
@@ -922,7 +922,7 @@ just doesn't print/use those states beyond the default report.</p>
     &quot;df_scf_guess&quot;: False, &quot;guess&quot;: &quot;read&quot;,
     &quot;diis&quot;: False, &quot;soscf&quot;: False,
     &quot;level_shift&quot;: 0.5, &quot;level_shift_cutoff&quot;: 0.0, &quot;level_shift_adapt&quot;: True,
-    &quot;molden_write&quot;: True, &quot;molden_write_interval&quot;: -1,
+    &quot;molden_write&quot;: True,
     &quot;dft_radial_points&quot;: 99, &quot;dft_spherical_points&quot;: 590, &quot;dft_pruning_scheme&quot;: &quot;robust&quot;,  # finer/pruned grid
     &quot;reks_gvb_diis&quot;: True, &quot;reks_diis_formulation&quot;: &quot;ORBITAL&quot;,
     &quot;reks_use_trah&quot;: False,
