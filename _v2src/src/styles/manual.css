@@ -1,40 +1,132 @@
 header.docshero h1{ max-width: 30ch; }
 header.docshero .tagline{ margin-top: 16px; color: var(--ink-soft); max-width: 62ch; font-size: 1.05rem; }
 header.docshero .branch{ margin-top: 6px; color: var(--ink-faint); font-size: 0.9rem; font-family: var(--mono); }
-.banner{ margin-top: 26px; border-left: 3px solid var(--copper); background: var(--bg-raised); padding: 16px 20px; font-size: 0.92rem; color: var(--ink-soft); max-width: 62ch; line-height: 1.7; }
+.banner{ margin-top: 12px; border-left: 3px solid var(--copper); background: var(--bg-raised); padding: 8px 14px; font-size: 0.8rem; color: var(--ink-soft); width: fit-content; max-width: 100%; line-height: 1.5; }
+/* chapter pages: compact header */
+header.pagehead{ padding: 40px 0 28px; border-bottom: 1px solid var(--line); }
+header.pagehead h1{ font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
+header.pagehead p{ margin: 10px 0 0; color: var(--ink-soft); }
 
 .docs-layout{ --toc-width: 240px; }
-/* content column width independent of which sections are rendered: wide tables scroll inside .reftable-wrap */
-.docs-layout > :last-child{ min-width: 0; }
 .toc{ max-height: calc(100vh - 110px); overflow-y: auto; }
 @media (max-width: 860px){ .toc{ max-height: none; } }
+/* sidebar: page list; the current page is marked and lists its chapters (hanging numbers) and sections */
 .toc a{ font-size: 0.85rem; }
+.toc a[aria-current]{ color: var(--ink); font-weight: 600; border-color: var(--copper); }
+.toc .sub{ display: flex; flex-direction: column; gap: 2px; margin-bottom: 6px; }
+.toc .sub a{ padding-left: calc(24px + 1.4em); text-indent: -1.4em; }
+.toc .sub a.h3{ font-size: 0.8rem; text-indent: 0; padding-top: 3px; padding-bottom: 3px; }
+.toc .sub a.h4{ font-size: 0.75rem; text-indent: 0; padding-top: 1px; padding-bottom: 1px; padding-left: calc(24px + 2.4em); color: var(--ink-faint); overflow-wrap: anywhere; }
+@media (max-width: 860px){
+  .toc a[aria-current]{ border-left: 2px solid var(--copper); padding-left: 10px; }
+  .toc .sub a{ padding-left: calc(12px + 1.4em); }
+  .toc .sub a.h4{ padding-left: calc(12px + 2.4em); }
+}
 
-/* off-screen sections skip rendering; containment keeps trailing child margins inside the
-   section, so they are zeroed to keep the gap between sections at 72px */
-.docsec{ content-visibility: auto; contain-intrinsic-block-size: auto 1200px; }
-.docsec:not(:last-child) .prose > :last-child,
-.docsec:not(:last-child) .prose > :last-child > li:last-child{ margin-bottom: 0; }
-.docsec h2, .docsec h3{ scroll-margin-top: 88px; }
+.docsec h2, .docsec h3, .docsec h4{ scroll-margin-top: 88px; }
 .docsec h3{ font-size: 1.12rem; margin: 30px 0 12px; }
+/* entries (options, properties, diagnose): h4 + dl.fields, code, lists, separated by a rule */
+.docsec h4{ font: 600 1.02rem/1.4 var(--serif); color: var(--ink); margin: 28px 0 10px; padding-top: 22px; border-top: 1px solid var(--line); }
+.docsec h3 + h4{ border-top: none; padding-top: 0; }
+h4 code:only-child{ font-size: 0.92em; font-weight: 600; }
+.fields{ display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 18px; margin: 0 0 20px; max-width: 74ch; color: var(--ink-soft); }
+.fields dt{ font: 600 0.74rem/2.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; }
+.fields dd{ margin: 0; }
+@media (max-width: 700px){
+  .fields{ display: block; }
+  .fields dt{ float: left; margin-right: 0.7em; }
+  .fields dd{ margin-bottom: 8px; }
+}
 
 .docsec .prose p{ max-width: 74ch; margin: 0 0 16px; }
 .prose ul, .prose ol{ color: var(--ink-soft); max-width: 74ch; margin: 0 0 16px; padding-left: 22px; }
+.prose ol{ padding-left: 2em; }
 .prose li{ margin-bottom: 8px; }
 .prose strong{ color: var(--ink); }
 
-code{ font-family: var(--mono); font-size: 0.86em; background: var(--bg-raised); border: 1px solid var(--line); border-radius: 4px; padding: 0.1em 0.4em; }
-pre{ border-radius: 6px; padding: 20px 22px; margin: 0 0 20px; }
-pre code{ background: none; border: none; padding: 0; font-size: 0.85rem; line-height: 1.7; }
+h2 code, h3 code, h4 code{ background: none; padding: 0; font-size: 0.9em; }
 
-.reftable-wrap{ overflow-x: auto; margin: 8px 0 24px; }
+/* MathML (temml): system math fonts; display math centred, scrolls when wider than the column */
+math{ font-family: 'STIX Two Math', 'Cambria Math', 'Noto Sans Math', math; }
+math[display="block"]{ max-width: 74ch; overflow-x: auto; overflow-y: hidden; margin: 4px 0 18px; padding: 2px 0; font-size: 1.15em; text-align: center; }
+.tml-right{ text-align: right; }
+.tml-left{ text-align: left; }
+.tml-jot > mtr > mtd{ padding-block: 0.35ex; }
+/* Chromium only (WebKit and Gecko excluded): mtd alignment needs the -webkit- values */
+@supports (not (-webkit-backdrop-filter: blur(1px))) and (not (-moz-appearance: none)){
+  .tml-right{ text-align: -webkit-right; }
+  .tml-left{ text-align: -webkit-left; }
+}
+
+/* code blocks: right-edge shade while a line overflows (gradient scrolls with content, shade stays) */
+pre{ border-radius: 6px; padding: 20px 22px; margin: 0 0 20px; }
+pre[data-language="text"]{ font-size: 0.78rem; }
+pre.astro-code{
+  background-image: linear-gradient(to left, #10131A 30%, rgba(16,19,26,0)),
+                    linear-gradient(to left, rgba(255,255,255,0.22), rgba(255,255,255,0));
+  background-position: right center, right center;
+  background-size: 40px 100%, 16px 100%;
+  background-repeat: no-repeat;
+  background-attachment: local, scroll;
+}
+@media (max-width: 700px){
+  pre.astro-code{ padding: 14px; margin-inline: -24px; border-radius: 0; }
+}
+
+/* tables: right-edge shade while the table overflows (same scheme as pre.astro-code) */
+.reftable-wrap{ overflow-x: auto; margin: 8px 0 24px;
+  background: linear-gradient(to left, var(--bg) 30%, rgba(245,245,242,0)) right / 40px 100% no-repeat local,
+              linear-gradient(to left, rgba(20,24,31,0.12), rgba(20,24,31,0)) right / 12px 100% no-repeat scroll; }
 table{ border-collapse: collapse; width: 100%; min-width: 480px; font-size: 0.9rem; }
 thead th{ text-align: left; font-family: var(--sans); font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--ink-faint); padding: 8px 16px 8px 0; white-space: nowrap; }
 tbody td{ vertical-align: top; padding: 10px 16px 10px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
-tbody td:first-child{ font-family: var(--mono); font-size: 0.82rem; color: var(--blue); white-space: nowrap; }
+/* first column: prose in the body font, names in mono; wraps between items, each name stays whole */
+tbody td:first-child code{ color: var(--blue); background: none; padding: 0; font-size: 0.86rem; white-space: nowrap; }
 tbody tr:last-child td{ border-bottom: none; }
 @media (max-width: 860px){
   table{ min-width: 0; }
-  tbody td:first-child{ white-space: normal; }
-  tbody td:first-child code{ white-space: nowrap; }
+  tbody td:first-child code{ white-space: normal; }
+}
+
+/* pager: previous / next page, stacked on phones */
+.pager{ position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); }
+.pager a{ text-decoration: none; font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+.pager a[rel="next"]{ grid-column: 2; text-align: right; }
+.pager small{ display: block; font: 0.8rem var(--sans); color: var(--ink-soft); }
+@media (max-width: 560px){
+  .pager{ grid-template-columns: 1fr; }
+  .pager a[rel="next"]{ grid-column: 1; }
+}
+
+/* overview: contents of every page */
+.contents h3{ font-size: 1.12rem; margin: 30px 0 8px; }
+.contents h3 a{ text-decoration: none; }
+.contents ul{ list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; font-size: 0.9rem; }
+.contents li{ break-inside: avoid; padding: 2px 0; }
+.contents li.h3{ padding-left: 1.4em; font-size: 0.85rem; }
+.contents li a{ color: var(--ink-soft); text-decoration: none; }
+.contents li a:hover{ color: var(--ink); }
+
+/* reference: A-Z index, letter row + letter groups in columns; a term with several targets lists their pages */
+.az-letters{ display: flex; flex-wrap: wrap; gap: 4px 12px; font-weight: 600; }
+.az-letters a{ text-decoration: none; }
+.az-cols{ columns: 3 220px; column-gap: 32px; font-size: 0.85rem; line-height: 1.35; }
+.az h3{ font-size: 1rem; margin: 14px 0 4px; break-after: avoid; }
+.az h3:first-child{ margin-top: 0; }
+.az ul{ list-style: none; margin: 0; padding: 0; }
+.az li{ break-inside: avoid; padding: 1px 0 1px 1em; text-indent: -1em; overflow-wrap: anywhere; }
+.az li a{ color: var(--ink-soft); text-decoration: none; }
+.az li a:hover{ color: var(--ink); }
+.az code{ font-size: 0.92em; background: none; padding: 0; }
+.az .az-page{ font-size: 0.8em; color: var(--ink-faint); margin-left: 4px; }
+
+/* option table: one column grid for all tables; two-column tables fit their content */
+section:has(> h2[id$="option-table"]) table{ table-layout: fixed; }
+section:has(> h2[id$="option-table"]) table th:nth-child(1){ width: 36%; }
+section:has(> h2[id$="option-table"]) table th:nth-child(2){ width: 16%; }
+section:has(> h2[id$="option-table"]) table th:nth-child(3){ width: 26%; }
+section:has(> h2[id$="option-table"]) table th:nth-child(4){ width: 22%; }
+section:has(> h2[id$="option-table"]) table:has(th:nth-child(2):last-child){ width: auto; table-layout: auto; }
+@media (max-width: 860px){
+  section:has(> h2[id$="option-table"]) tbody td:first-child code{ white-space: normal; overflow-wrap: anywhere; }
 }

@@ -3,6 +3,9 @@
 
 .kwgroup{ margin-top: 28px; }
 .kwgroup h3{ font-family: var(--sans); font-weight: 600; font-size: 0.95rem; color: var(--ink); margin-bottom: 4px; letter-spacing: 0.01em; }
+/* "Manual §N" link after a heading */
+.manref{ font: 400 0.78rem var(--sans); color: var(--blue); margin-left: 0.6em; white-space: nowrap; text-decoration: none; }
+.manref:hover{ text-decoration: underline; }
 .kwgroup .kwgroup-note{ font-size: 0.88rem; color: var(--ink-faint); margin-bottom: 12px; max-width: 62ch; }
 .kwlist{ border-top: 1px solid var(--line); }
 .kwrow{ display: grid; grid-template-columns: 230px 1fr; gap: 22px; padding: 16px 0; border-bottom: 1px solid var(--line); }

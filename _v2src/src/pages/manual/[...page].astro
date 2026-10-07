@@ -1,0 +1,143 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import FooterBack from '../../components/FooterBack.astro';
+import { PAGES, manualIndex, pagePath } from '../../lib/manual-pages.mjs';
+import '../../styles/docs.css';
+import '../../styles/manual.css';
+
+export function getStaticPaths() {
+  const base = import.meta.env.BASE_URL;
+  const modules = import.meta.glob('../../content/manual/*.md', { eager: true });
+  const byFile = new Map(Object.entries(modules).map(([path, mod]) => [path.match(/([^/]+)\.md$/)[1], mod]));
+  const listed = PAGES.map((p) => p.file);
+  if (byFile.size !== listed.length || listed.some((file) => !byFile.has(file))) {
+    throw new Error(`manual: content files [${[...byFile.keys()]}] differ from the page list [${listed}]`);
+  }
+  const pages = PAGES.map(({ slug, file, tocDepth = 3, index }) => {
+    const mod = byFile.get(file);
+    const headings = mod.getHeadings().filter((h) => h.depth >= 2 && h.depth <= 4);
+    const contents = headings.filter((h) => h.depth <= 3);
+    const toc = headings.filter((h) => h.depth <= tocDepth);
+    if (index) toc.push({ depth: 2, slug: 'index', text: 'Index' });
+    const chapters = headings.filter((h) => h.depth === 2).map((h) => Number(h.text.match(/^(\d+)\./)[1]));
+    return { slug, title: mod.frontmatter.title, href: `${base}${pagePath(slug)}`, headings, contents, toc, index, chapters, Content: mod.Content };
+  });
+  return pages.map((page, index) => ({ params: { page: page.slug || undefined }, props: { pages, index } }));
+}
+
+// [9, 10, 11, 12, 15] -> "Chapters 9-12 and 15" (en dash in the output)
+function chapterSpan(nums) {
+  const runs = [];
+  for (const n of nums) {
+    const run = runs.at(-1);
+    if (run && n === run[1] + 1) run[1] = n;
+    else runs.push([n, n]);
+  }
+  const parts = runs.map(([a, b]) => (a === b ? `${a}` : `${a}–${b}`));
+  const list = parts.length > 1 ? `${parts.slice(0, -1).join(', ')} and ${parts.at(-1)}` : parts[0];
+  return `${nums.length > 1 ? 'Chapters' : 'Chapter'} ${list}`;
+}
+
+const { pages, index } = Astro.props;
+const page = pages[index];
+const prev = pages[index - 1];
+const next = pages[index + 1];
+const { Content } = page;
+const base = import.meta.env.BASE_URL;
+const azIndex = page.index ? manualIndex(pages, page.slug, base) : [];
+const navLinks = [
+  { href: base, label: 'Overview' },
+  { href: `${base}docs/`, label: 'Documentation' },
+  { href: `${base}manual/`, label: 'Manual' },
+];
+---
+<Base title={`${page.title} — REKS Studio Manual`}>
+<Nav variant="light" logoHref={base} links={navLinks} />
+
+{index === 0 ? (
+  <header class="docshero">
+    <div class="wrap">
+      <div class="kicker">User Manual</div>
+      <h1>REKS Studio — User Manual</h1>
+      <p class="tagline">A guide to the REKS(N,M) / SA-REKS / SI-REKS implementation in Psi4</p>
+      <p class="branch">(branch <code>kk/reks.studio</code>, repository <code>ConstLike/psi4</code>)</p>
+      <div class="banner">Spin-Restricted Ensemble-referenced Kohn-Sham DFT — State-Averaged (SA) and State-Interaction (SI)<br>Konstantin Komarov, Michael Filatov, Seung Kyu Min<br>Ulsan National Institute of Science and Technology (UNIST), South Korea</div>
+    </div>
+  </header>
+) : (
+  <header class="pagehead">
+    <div class="wrap">
+      <div class="kicker">User Manual</div>
+      <h1>{page.title}</h1>
+      <p>{chapterSpan(page.chapters)} of the REKS Studio user manual</p>
+    </div>
+  </header>
+)}
+
+<div class="wrap">
+  <div class="docs-layout">
+    <details class="toc">
+      <summary>Contents · {page.title} ({index + 1} of {pages.length})</summary>
+      <nav class="toc-list">
+        {pages.map((p) => p === page ? (
+          <>
+            <a href={p.href} aria-current="page">{p.title}</a>
+            <div class="sub">
+              {p.toc.map((h) => <a class={`h${h.depth}`} href={`#${h.slug}`}>{h.text}</a>)}
+            </div>
+          </>
+        ) : (
+          <a href={p.href}>{p.title}</a>
+        ))}
+      </nav>
+    </details>
+
+    <div>
+      <Content />
+      {index === 0 && (
+        <section class="docsec contents">
+          <h2 id="contents">Contents</h2>
+          {pages.map((p) => (
+            <div class="contents-page">
+              <h3><a href={p.href}>{p.title}</a></h3>
+              <ul>
+                {p.contents.map((h) => <li class={`h${h.depth}`}><a href={`${p.href}#${h.slug}`}>{h.text}</a></li>)}
+              </ul>
+            </div>
+          ))}
+        </section>
+      )}
+      {page.index && (
+        <section class="docsec az">
+          <h2 id="index">Index</h2>
+          <p class="az-letters">{azIndex.map(({ letter }) => <a href={`#index-${letter.toLowerCase()}`}>{letter}</a>)}</p>
+          <div class="az-cols">
+            {azIndex.map(({ letter, terms }) => (
+              <>
+                <h3 id={`index-${letter.toLowerCase()}`}>{letter}</h3>
+                <ul>
+                  {terms.map((t) => {
+                    const text = t.code ? <code>{t.text}</code> : t.text;
+                    return t.targets.length === 1 ? (
+                      <li><a href={t.targets[0].href}>{text}</a></li>
+                    ) : (
+                      <li>{text} {t.targets.map((x) => <a class="az-page" href={x.href}>{x.label}</a>)}</li>
+                    );
+                  })}
+                </ul>
+              </>
+            ))}
+          </div>
+        </section>
+      )}
+      <nav class="pager" aria-label="Manual pages">
+        {prev && <a rel="prev" href={prev.href}><small>Previous</small>{prev.title}</a>}
+        {next && <a rel="next" href={next.href}><small>Next</small>{next.title}</a>}
+      </nav>
+    </div>
+  </div>
+</div>
+
+<FooterBack href={`${base}docs/`} label="Back to REKS Studio documentation" />
+</Base>

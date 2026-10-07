@@ -1,0 +1,16 @@
+#! SA-REKS(2,2) and SI-SA-REKS(2,2) of H2, BH&HLYP/cc-pVDZ, default SA and SI pools.
+
+molecule h2 {
+0 1
+H 0.0 0.0 0.0
+H 0.0 0.0 0.74
+symmetry c1
+}
+
+set {
+  basis      cc-pvdz
+  reference  reks
+  reks       [2, 2]
+}
+
+energy('bhhlyp')

@@ -10,6 +10,7 @@
   "dependencies": {
     "@astrojs/markdown-satteri": "0.4.3",
     "astro": "7.3.6",
-    "github-slugger": "2.0.0"
+    "github-slugger": "2.0.0",
+    "temml": "0.13.5"
   }
 }

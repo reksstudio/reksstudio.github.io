@@ -6,8 +6,24 @@ import Code from '../components/Code.astro';
 import { buildFromSource, docsJob, docsRestart } from '../data/snippets';
 import '../styles/docs.css';
 import '../styles/docs-page.css';
+import { kwRows } from '../lib/reference.mjs';
+import { entryHref, sectionHref } from '../lib/manual-pages.mjs';
 
 const base = import.meta.env.BASE_URL;
+const manual = (num) => sectionHref(num, null, base);
+const entry = (id) => entryHref(id, null, base);
+const diagnose = [
+  ['diag-wrong-window', 'Instant convergence to a wrong energy after a restart'],
+  ['diag-maxiter', 'SCF hits maxiter or continues unconverged'],
+  ['diag-oscillation', 'SCF oscillates or cycles'],
+  ['diag-fon-inverted', 'The FONs of a geminal invert (n_p < n_q)'],
+  ['diag-fon-pinned', 'A FON pinned at a bound, symmetry-broken charges'],
+  ['diag-localized', 'Active orbitals localize on one fragment'],
+  ['diag-unknown-token', 'Unknown configuration name or type'],
+  ['diag-catalog', 'An (N, M) that fails to load'],
+  ['diag-ghost-states', 'Ghost states and a collapsed SI spectrum'],
+  ['diag-quasi-degenerate', 'Quasi-degenerate roots'],
+];
 const navLinks = [
   { href: base, label: 'Overview' },
   { href: '#install', label: 'Install' },
@@ -23,6 +39,8 @@ const toc = [
   ['naming', 'Config names & tokens'],
   ['sa', 'SA ensemble'],
   ['si', 'SI ensemble'],
+  ['spin', 'Spin manifolds (2S > 0)'],
+  ['response', 'Gradients & couplings'],
   ['restart', 'Guesses & restarts'],
   ['fon', 'Fractional occupations'],
   ['deloc', 'Delocalization penalty'],
@@ -44,22 +62,23 @@ const toc = [
 
 <div class="wrap">
   <div class="docs-layout">
-    <div class="toc">
-      {toc.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}
-    </div>
+    <details class="toc">
+      <summary>Contents</summary>
+      <nav class="toc-list">{toc.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}</nav>
+    </details>
 
     <div>
       <section id="install" class="docsec">
         <h2>Installation</h2>
         <div class="prose">
-          <p>REKS Studio is currently a development branch of Psi4, not yet a standalone package or conda release. Building it follows Psi4's own CMake-based build process. A working-equations catalogue is generated and compiled in automatically — nothing extra to run afterward.</p>
+          <p>REKS Studio is currently a development branch of Psi4, not yet a standalone package or conda release. Building it follows Psi4's own CMake-based build process. The configuration catalogues are shipped as binary files in <code>psi4/share/psi4/reks_catalog/</code> and installed with Psi4 — nothing extra to run afterward.</p>
         </div>
         <Code code={buildFromSource} lang="bash" />
         <div class="note"><strong>Note.</strong> This branch is research software under active development. Interfaces and keyword names may change before it's merged upstream.</div>
       </section>
 
       <section id="running" class="docsec">
-        <h2>Running a job</h2>
+        <h2>Running a job <a class="manref" href={manual(1)}>Manual §1</a></h2>
         <div class="prose">
           <p>Once built, REKS runs as an ordinary Psi4 reference — no separate binary or import. Set <code>reference</code> to <code>reks</code>, give the active space as <code>[N, M]</code>, and call <code>psi4.energy()</code> as usual.</p>
         </div>
@@ -69,122 +88,86 @@ const toc = [
       <section id="keywords" class="docsec">
         <h2>Keyword reference</h2>
         <div class="prose">
-          <p>Every keyword below has a <code>REKS_*</code>-prefixed alias (e.g. <code>sa_reks_configs</code> / <code>reks_sa_configs</code>) — set one or the other, never both. Defaults are noted where a keyword can be left out entirely.</p>
+          <p>Keywords marked with an alias have a <code>REKS_*</code>-prefixed second name (e.g. <code>sa_reks_configs</code> / <code>reks_sa_configs</code>) — set one or the other, never both. Defaults are noted where a keyword can be left out entirely.</p>
         </div>
 
         <div id="active-space" class="kwgroup">
-          <h3>Reference & active space</h3>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">reference</div><p>Set to <code>reks</code> to enable the method.</p></div>
-            <div class="kwrow"><div class="kwname">reks<span class="kwalias">[N, M]</span></div><p>Active space as electrons and orbitals. Molecule multiplicity follows the canonical value automatically — spin manifolds are chosen through the SA/SI keywords below, not the molecule block.</p></div>
-          </div>
-          <div class="note"><strong>Note.</strong> Each <code>(N, M)</code> is backed by a pre-generated configuration catalogue shipped with REKS Studio (currently <code>(2,2)</code>, <code>(4,4)</code> and <code>(6,6)</code>). Requesting an active space with no catalogue on disk fails at load time — it isn't assembled on the fly.</div>
+          <h3>Reference & active space <a class="manref" href={manual(4)}>Manual §4</a></h3>
+          <div class="kwlist" set:html={kwRows(['reference', 'REKS', 'REKS_GEMINAL_WIDTHS'])} />
+          <div class="note"><strong>Note.</strong> Each active space is a pre-generated catalogue: <code>(2,2)</code>, <code>(4,4)</code>, <code>(6,6)</code>, and with <code>reks_geminal_widths</code> <code>(2,3)[3]</code>, <code>(2,4)[4]</code>, <code>(4,5)[2,3]</code>, <code>(4,6)[3,3]</code>. Any other <code>(N, M)</code> fails at load time.</div>
         </div>
 
         <div id="naming" class="kwgroup">
-          <h3>Configuration names & bulk tokens</h3>
-          <div class="kwgroup-note">Every configuration in the catalogue has a name of the form <code>&lt;TYPE&gt;&lt;index&gt;</code>, e.g. <code>PPS1</code>, <code>OSS2</code>, <code>T_PPS3</code>, <code>DOSS_SPS1_0</code>. You rarely need the full list — an unknown name in a config keyword makes REKS Studio print every valid name and type for your active space — but the type prefixes are worth knowing:</div>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">PPS</div><p>The perfectly-paired singlet — the closed-shell-like reference configuration (every geminal in generation 0). Every catalogue has at least one.</p></div>
-            <div class="kwrow"><div class="kwname">OSS, DOSS, TOSS, QOSS …</div><p>Configurations with 1, 2, 3, 4 … open-shell-singlet geminals (generation 1 and up).</p></div>
-            <div class="kwrow"><div class="kwname">DES, DDES, TDES, QDES …</div><p>The same 1, 2, 3, 4 … ladder, but for doubly-excited closed-shell geminals rather than open-shell ones.</p></div>
-            <div class="kwrow"><div class="kwname">T_ prefix</div><p>Marks a configuration as belonging to the sector's triplet background rather than the singlet manifold, e.g. <code>T_PPS3</code>.</p></div>
-            <div class="kwrow"><div class="kwname">SPS tag</div><p>Marks a spin-projected configuration, built from one parent expansion — appears combined with other markers, e.g. <code>DOSS_SPS1_0</code>.</p></div>
-          </div>
+          <h3>Configuration names & bulk tokens <a class="manref" href={manual(3)}>Manual §3</a></h3>
+          <div class="kwgroup-note">Every configuration in the catalogue has a name of the form <code>&lt;TYPE&gt;&lt;index&gt;</code>, e.g. <code>PPS1</code>, <code>OSS2</code>, <code>T_PPS3</code>; a member of a spin-polarized set is named <code>&lt;TYPE&gt;_&lt;k&gt;</code>, e.g. <code>DOSS_SPS_0</code>. You rarely need the full list — an unknown name in a config keyword makes REKS Studio print every valid name and type of the manifold the block is bound to — but the type prefixes are worth knowing:</div>
+          <div class="kwlist" set:html={kwRows(['pps', 'oss-doss-toss', 'des-ddes-tdes', 't-tt-ttt-prefix', 'sps-tag'])} />
           <div class="kwgroup-note" style="margin-top:22px;">Anywhere a config name is expected — in <code>sa_reks_configs</code> or <code>si_reks_configs</code> — these bulk tokens also work, so you rarely have to spell out individual names:</div>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">"full"</div><p>The entire configuration block of that manifold.</p></div>
-            <div class="kwrow"><div class="kwname">a type name<span class="kwalias">"PPS", "OSS", "DOSS" …</span></div><p>Every configuration of that type in the manifold.</p></div>
-            <div class="kwrow"><div class="kwname">"single-scheme:N"</div><p>Every configuration of geminal-pairing scheme <code>N</code> (default scheme 0). Several indices can be unioned: <code>"single-scheme-1-2-3"</code>.</p></div>
-            <div class="kwrow"><div class="kwname">"mixed-scheme:N"</div><p>The SSR state set on scheme <code>N</code> — that scheme's single-excitation configs plus every open-shell-singlet config of the manifold.</p></div>
-            <div class="kwrow"><div class="kwname">"sps"</div><p>Just the spin-projected base configurations.</p></div>
-            <div class="kwrow"><div class="kwname">a pattern<span class="kwalias">"*" / "?"</span></div><p>Every configuration name it glob-matches.</p></div>
-            <div class="kwrow"><div class="kwname">"exclude:X"<span class="kwalias">SI cassettes only</span></div><p>Subtracts whatever <code>X</code> names (any token above) from the rest of the cassette, e.g. <code>["full", "exclude:sps"]</code>. An SA block, being a weighted list rather than a set, doesn't accept <code>exclude:</code>.</p></div>
-          </div>
+          <div class="kwlist" set:html={kwRows(['full', 'a-type-name', 'single-scheme-n', 'mixed-scheme-n', 'sps', 'a-pattern', 'exclude-x'])} />
           <div class="note"><strong>Note.</strong> A PSithon (<code>.dat</code>) input can't use a literal <code>:</code> inside an array element — write scheme indices with <code>-</code> or <code>_</code> instead, e.g. <code>single-scheme-1-2</code>.</div>
         </div>
 
         <div id="sa" class="kwgroup">
-          <h3>State-averaged (SA) ensemble</h3>
+          <h3>State-averaged (SA) ensemble <a class="manref" href={manual(4)}>Manual §4</a></h3>
           <div class="kwgroup-note">The configurations whose orbitals are jointly optimized in the SCF step.</div>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">sa_reks_configs<span class="kwalias">alias: reks_sa_configs</span></div><p>The SA configuration pool — a flat list for one spin manifold, or a list of lists to declare a block per manifold. Left unset, a sensible default pool is used for the active space's lowest manifold.</p></div>
-            <div class="kwrow"><div class="kwname">sa_reks_2spin<span class="kwalias">alias: reks_sa_2spin</span></div><p>Which spin manifold(s) the SA blocks belong to, as 2S values. Only needed when more than the default manifold is in play.</p></div>
-            <div class="kwrow"><div class="kwname">sa_reks_weights<span class="kwalias">alias: reks_sa_weights</span></div><p>Weight for each SA pool entry, configurations first, then any extra determinants. Must be non-negative and sum to 1. Left unset, weights are distributed equally.</p></div>
-            <div class="kwrow"><div class="kwname">sa_reks_extra<span class="kwalias">alias: reks_sa_extra</span></div><p>Extra determinants — such as a high-spin state — given as explicit occupation vectors. Each carries its own SA weight to help SCF convergence, but is excluded from the SI step.</p></div>
-          </div>
+          <div class="kwlist" set:html={kwRows(['SA_REKS_CONFIGS', 'SA_REKS_2SPIN', 'SA_REKS_WEIGHTS', 'SA_REKS_EXTRA'])} />
         </div>
 
         <div id="si" class="kwgroup">
-          <h3>State-interaction (SI) ensemble</h3>
+          <h3>State-interaction (SI) ensemble <a class="manref" href={manual(4)}>Manual §4</a></h3>
           <div class="kwgroup-note">Defined independently of the SA pool — mixed afterward to produce the final multi-state energies.</div>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">si_reks_configs<span class="kwalias">alias: reks_si_configs</span></div><p>The SI configuration groups ("cassettes") that form the secular equations. Left unset, one cassette spans the full config block of the lowest manifold.</p></div>
-            <div class="kwrow"><div class="kwname">si_reks_2spin<span class="kwalias">alias: reks_si_2spin</span></div><p>Which spin manifold each SI group belongs to, mirroring sa_reks_2spin.</p></div>
-            <div class="kwrow"><div class="kwname">si_reks_report_states<span class="kwalias">alias: reks_si_report_states</span></div><p>Caps how many SI states are reported per cassette. All downstream per-state properties (natural orbitals, dipoles, RDMs) are computed only for the reported states. Left unset, every state is reported.</p></div>
-          </div>
+          <div class="kwlist" set:html={kwRows(['SI_REKS_CONFIGS', 'SI_REKS_2SPIN', 'SI_REKS_PRINT_STATES', 'SI_REKS_STORE_STATES', 'SI_REKS_ANALYSIS', 'SI_REKS_ANALYSIS_CHANGE_MIN', 'SI_REKS_OVERLAP_CUTOFF'])} />
+        </div>
+
+        <div id="spin" class="kwgroup">
+          <h3>Spin manifolds (2S &gt; 0) <a class="manref" href={manual(6)}>Manual §6</a></h3>
+          <div class="kwgroup-note">Every configuration is the total M<sub>S</sub> = 0 component of its manifold, so one set of orbitals serves every manifold. A run's sectors are the union of the 2S values declared by SA blocks and SI groups.</div>
+          <div class="kwlist" set:html={kwRows(['high-spin-only', 'several-manifolds', 'state-labels', 'output'])} />
+        </div>
+
+        <div id="response" class="kwgroup">
+          <h3>Gradients, couplings & relaxed properties <a class="manref" href={manual(4)}>Manual §4</a></h3>
+          <div class="kwgroup-note">Analytic SI-state gradients and nonadiabatic couplings via the coupled-perturbed REKS (CP-REKS) response. List-of-lists options mirror <code>si_reks_configs</code>: inner list <code>e</code> refers to cassette <code>e</code>.</div>
+          <div class="kwlist" set:html={kwRows(['SI_REKS_GRAD', 'SI_REKS_NAC', 'SI_REKS_PROPERTY_FOR', 'REKS_EKT', 'REKS_CPREKS_CONV', 'REKS_GRAD_DEGEN_TOL', 'REKS_CI_TOPOGRAPHY_GAP'])} />
         </div>
 
         <div id="restart" class="kwgroup">
-          <h3>Guesses & restarts</h3>
-          <div class="kwgroup-note">REKS jobs converge far more reliably from a previous wavefunction than from a cold guess, so most production runs are chained restarts. Restarting itself uses ordinary Psi4 machinery; the two keywords below refine <em>where in the read guess the active space lands</em>.</div>
+          <h3>Guesses & restarts <a class="manref" href={manual(7)}>Manual §7</a></h3>
+          <div class="kwgroup-note">REKS jobs converge far more reliably from a previous wavefunction than from a cold guess, so most production runs are chained restarts. Restarting uses ordinary Psi4 machinery; the keyword below selects which read orbitals form the active space.</div>
           <Code code={docsRestart} lang="python" />
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">guess_mo_swaps</div><p>Reorder columns of the read guess before SCF, as comma-separated swap pairs (<code>"HOMO-1 HOMO, LUMO+2 LUMO+3"</code>). Applies to alpha and beta identically. <code>C1</code> symmetry only.</p></div>
-            <div class="kwrow"><div class="kwname">guess_active_window</div><p>REKS-only: fills just the active-space columns from the read guess, one token per active orbital in active-column order — the targeted fix when a restart's active window lands on the wrong orbitals. Mutually exclusive with <code>guess_mo_swaps</code>. Requires <code>guess read</code>.</p></div>
-          </div>
+          <div class="kwlist" set:html={kwRows(['GUESS_ACTIVE_WINDOW'])} />
           <div class="note"><strong>Tip.</strong> If SCF converges instantly to a suspiciously wrong energy right after a restart, this is almost always the symptom — check the Molden output, then fix the active window rather than the whole guess.</div>
         </div>
 
         <div id="fon" class="kwgroup">
-          <h3>Fractional occupation numbers (FONs)</h3>
-          <div class="kwgroup-note">Each geminal pair carries FONs <code>(n_p, n_q)</code> with <code>n_p + n_q = 2</code>, optimized every SCF iteration between the closed-shell and fully-open limits.</div>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">reks_fon_interp_delta</div><p>Interpolation parameter δ bridging the closed- and open-shell limits of each geminal. Default 0.4.</p></div>
-            <div class="kwrow"><div class="kwname">reks_n_fon … reks_z_fon<span class="kwalias">8 keywords, one per FON generation</span></div><p>A <strong>lower bound</strong> on every active FON of that generation. Setting <code>reks_m_fon: 1.0</code>, for instance, restricts every generation-1 (OSS) geminal FON to <code>[1.0, 2 − 1e-8]</code> — it stays free to vary and is optimized within that range, it is <em>not</em> fixed at <code>n_p = n_q = 1</code>. Negative (the default) disables the bound. Useful when an open-shell-type configuration keeps collapsing back toward closed-shell during a difficult convergence.</p></div>
-          </div>
+          <h3>Fractional occupation numbers (FONs) <a class="manref" href={manual(8)}>Manual §8</a></h3>
+          <div class="kwgroup-note">Each geminal pair carries FONs <code>(n_p, n_q)</code> with <code>n_p + n_q = 2</code>, optimized every SCF iteration with <code>n_p</code> in <code>[floor, 2 − margin]</code>.</div>
+          <div class="kwlist" set:html={kwRows(['REKS_FON_INTERP_DELTA', 'REKS_N_FON'])} />
         </div>
 
         <div id="deloc" class="kwgroup">
-          <h3>Delocalization penalty</h3>
-          <div class="kwgroup-note">An optional energy term that discourages active orbitals from spreading over many atoms — useful for steering SCF toward a localized diradical/pair solution.</div>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">reks_deloc_ipr_penalty</div><p>Coefficient λ (Ha) of an inverse-participation-ratio penalty on the active orbitals' atomic populations. Default 0.0 (off).</p></div>
-            <div class="kwrow"><div class="kwname">reks_deloc_ipr_method</div><p>Population analysis used by the penalty: <code>LOWDIN</code> or <code>MULLIKEN</code>. Default <code>LOWDIN</code>.</p></div>
-          </div>
+          <h3>Delocalization penalty <a class="manref" href={manual(10)}>Manual §10</a></h3>
+          <div class="kwgroup-note">An optional energy term <code>E_pen = λ Σ<sub>i</sub> Σ<sub>A</sub> p<sub>A</sub>(i)²</code> added to the SA energy, with <code>p<sub>A</sub>(i)</code> the population of active MO <code>i</code> on atom <code>A</code>. A positive λ penalizes localization and drives the SCF to the delocalized solution, the intended REKS solution: <code>Σ p²</code> decreases (H<sub>4</sub>, REKS(4,4): 1.1128 at λ = 0, 1.0669 at λ = 0.05).</div>
+          <div class="kwlist" set:html={kwRows(['REKS_DELOC_IPR_PENALTY', 'REKS_DELOC_IPR_METHOD'])} />
         </div>
 
         <div id="solver" class="kwgroup">
-          <h3>Solver & convergence</h3>
+          <h3>Solver & convergence <a class="manref" href={manual(9)}>Manual §9</a></h3>
           <div class="kwgroup-note">Three cooperating engines drive REKS's orbital/FON optimization — a plain level-shifted burn-in, an optional trust-region warmup, and the GVB-DIIS accelerator that normally finishes the job. Defaults work well for most systems; most users only ever touch <code>level_shift</code>.</div>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">reks_use_trah</div><p>Use trust-region (TRAH) orbital+FON optimization as a warmup before GVB-DIIS takes over, or as the whole SCF if <code>reks_gvb_diis</code> is off. Default false.</p></div>
-            <div class="kwrow"><div class="kwname">reks_gvb_diis</div><p>Use the GVB-DIIS accelerator (Muller et al. 1994) for orbital optimization — the default engine. Default true.</p></div>
-            <div class="kwrow"><div class="kwname">reks_diis_formulation<span class="kwalias">"CFM" | "ORBITAL"</span></div><p><code>ORBITAL</code> (default) extrapolates skew-symmetric rotation generators directly and skips Fock diagonalization each step. <code>CFM</code> extrapolates the composite multishell Fock matrix instead, closer to the original GVB-DIIS formulation.</p></div>
-            <div class="kwrow"><div class="kwname">reks_gvb_diis_start</div><p>SCF iteration at which GVB-DIIS takes over from the burn-in (or from TRAH). Default 3.</p></div>
-            <div class="kwrow"><div class="kwname">level_shift_adapt</div><p>When true (default), REKS's pair-aware staircase level shift decays toward a floor when orbital mixing is small and grows back toward your <code>level_shift</code> when GVB-pair scrambling is detected. False freezes it at your literal <code>level_shift</code> every iteration.</p></div>
-          </div>
-          <div class="note"><strong>Note.</strong> Beneath these sit roughly thirty further <code>reks_diis_*</code> / <code>reks_gvb_*</code> knobs — angle filtering, SVD conditioning, rewind/restart monitors, a bounded Newton-Krylov "miniTRAH" episode for stalls — that fire automatically and are tuned by the developers. Reach for them only when a specific pathology shows up; raise <code>reks_report_level</code> to 4 first to see which monitor is actually firing.</div>
+          <div class="kwlist" set:html={kwRows(['REKS_USE_TRAH', 'REKS_GVB_DIIS', 'REKS_DIIS_FORMULATION', 'REKS_GVB_DIIS_START', 'LEVEL_SHIFT_ADAPT'])} />
+          <div class="note"><strong>Note.</strong> 23 further <code>reks_diis_*</code> / <code>reks_gvb_*</code> options (angle filter, SVD conditioning, rewind and restart monitors) are expert settings; see the <a href={manual(14)}>manual</a>. <code>reks_report_level 4</code> shows which monitor fires.</div>
         </div>
 
         <div id="reporting" class="kwgroup">
-          <h3>Reporting</h3>
-          <div class="kwlist">
-            <div class="kwrow"><div class="kwname">reks_report_level<span class="kwalias">1–5</span></div><p>Verbosity of the run report. 1 = fatal diagnostics only. 2 (default) = setup, pools, SCF trace, adiabatic states, and the 15 lowest microstate energies. 3 = the full microstate list plus config-axis wavefunction arrays. 4 = per-iteration solver traces and wide SI matrices. 5 = matrices over the config, microstate, and orbital axes too.</p></div>
-          </div>
+          <h3>Reporting <a class="manref" href={manual(11)}>Manual §11</a></h3>
+          <div class="kwlist" set:html={kwRows(['REKS_REPORT_LEVEL'])} />
         </div>
       </section>
 
       <section id="troubleshooting" class="docsec">
-        <h2>Troubleshooting</h2>
-        <div class="prose"><p>Common convergence symptoms and where to look first.</p></div>
-        <div class="kwlist">
-          <div class="kwrow"><div class="kwname">Instant convergence to a wrong energy after restart</div><p>The active window likely landed on the wrong orbitals from the read guess. Check the Molden output, then fix with <code>guess_active_window</code>.</p></div>
-          <div class="kwrow"><div class="kwname">Hits maxiter without converging</div><p>With <code>fail_on_maxiter: false</code> you still get a wavefunction back — save it and restart from it rather than starting over. Raise <code>reks_report_level</code> to 4 to see which monitor is firing.</p></div>
-          <div class="kwrow"><div class="kwname">SCF oscillates or cycles</div><p>Try <code>reks_use_trah: true</code> as a more robust warmup, or switch <code>reks_diis_formulation</code> between <code>ORBITAL</code> and <code>CFM</code>.</p></div>
-          <div class="kwrow"><div class="kwname">A geminal keeps collapsing to closed-shell</div><p>Floor its generation's FON with the matching <code>reks_*_fon</code> keyword — see <a href="#fon">Fractional occupations</a>.</p></div>
-          <div class="kwrow"><div class="kwname">Active orbitals delocalize over the whole molecule</div><p>Try a positive <code>reks_deloc_ipr_penalty</code>.</p></div>
-          <div class="kwrow"><div class="kwname">Unknown config name/type, or an (N, M) that fails to load</div><p>REKS Studio's own error lists every valid name for your active space; an unrecognized <code>(N, M)</code> simply has no catalogue shipped yet.</p></div>
+        <h2>Troubleshooting <a class="manref" href={manual(12)}>Manual §12</a></h2>
+        <div class="prose">
+          <p>Each symptom links to its entry in the manual: what the output prints, then what to do.</p>
+          <ul>{diagnose.map(([id, label]) => <li><a href={entry(id)}>{label}</a></li>)}</ul>
         </div>
       </section>
     </div>

@@ -1,0 +1,526 @@
+{
+ "properties": [
+  {
+   "id": "sa-energy", "stage": "scf",
+   "name": "SA-REKS ensemble energy and configuration energies",
+   "brief": "Weighted sum of the energies E_{X} of the SA-pool configurations, with the weights w_{X} of `SA_REKS_WEIGHTS`.",
+   "on": "every REKS run",
+   "units": "E_{h}",
+   "formulas": ["E_{\\mathrm{SA}} = \\sum_X w_X E_X"],
+   "fragments": ["energetics", "sa-decomposition"],
+   "variables": "`SCF TOTAL ENERGY`, `CURRENT REFERENCE ENERGY`, `CURRENT ENERGY` (§si_reks_grad), `REKS SA_WEIGHTS`, `REKS W_PPS`, `NUCLEAR REPULSION ENERGY`, `ONE-ELECTRON ENERGY`, `TWO-ELECTRON ENERGY`, `DFT XC ENERGY`",
+   "bullets": [
+    "The configuration energies E_{X} are printed, not stored.",
+    "`Total Energy` of `Energetics` equals `@REKS Final Energy` and the `Total energy` row of the decomposition; without an IPR penalty it equals `E[SA-REKS]`.",
+    "With `REKS_DELOC_IPR_PENALTY` > 0 both blocks add a penalty row, and `Total energy` = `E[SA-REKS]` + `IPR penalty energy` (§reks_deloc_ipr_penalty)."
+   ]
+  },
+  {
+   "id": "sa-fons", "stage": "scf",
+   "name": "Fractional occupation numbers of the SA-REKS ensemble",
+   "brief": "FONs n_{p}, n_{q} (n_{p} + n_{q} = 2) of the active orbitals of each geminal (p,q), one set per FON generation (§3).",
+   "on": "every REKS run",
+   "for": "every generation with at least one active geminal in the SA ensemble",
+   "units": "electrons",
+   "fragments": ["post-iterations"],
+   "variables": "`REKS FON`, `REKS <L>_FON` (L = M, U, V, W, X, Y, Z), `REKS FON META`, `REKS <L>_FON META`; `REKS N ACTIVE ELECTRONS`, `REKS N ACTIVE ORBITALS`, `REKS G`, `REKS N SECTORS`",
+   "files": "`<prefix>.molden` (`MOLDEN_WRITE`): `Occup` of the active MOs = FONs of set n, not natural occupations",
+   "bullets": [
+    "FON arrays: (u − 1) × n_{g}, u = widest geminal width, n_{g} = geminals of the generation; row r = free FON n_{r}, the last FON is 2 − Σ; unused cells −1. META arrays: (1 + u) × n_{g}, pairing scheme (row 0) and MO indices (rows 1..).",
+    "Check: the MOs of `Pairing scheme 0` equal `Active MO indices` of the setup (§diag-wrong-window); `2.000000`/`0.000000` lie at the bound (§diag-fon-pinned)."
+   ]
+  },
+  {
+   "id": "convergence-quality", "stage": "scf",
+   "name": "GVB-DIIS convergence quality",
+   "brief": "Diagnostics of the finished GVB-DIIS run: final orbital-gradient norms, landings, verdict trips, highest fallback rung (0 ARMED, 1 RETAIN, 2 FALLBACK), basin fires, and GRAZING = 1 when the final iterate landed within a decade of a convergence gate (CLEAN otherwise).",
+   "on": "`REKS_GVB_DIIS` true", "default": "on",
+   "units": "a.u. (gradient norms); counts; 0/1 flag",
+   "variables": "`REKS QUALITY GORB FRO`, `REKS QUALITY GORB RMS`, `REKS QUALITY LANDINGS`, `REKS QUALITY VERDICT TRIPS`, `REKS QUALITY MAX RUNG`, `REKS QUALITY BASIN FIRES`, `REKS QUALITY GRAZING`; `REKS GORB FRO`, `REKS GATE RMS`; `SCF ITERATIONS`",
+   "bullets": [
+    "Printed only at `REKS_REPORT_LEVEL` ≥ 4, as one `[QUALITY]` trace line.",
+    "`REKS GORB FRO` and `REKS GATE RMS` hold the value of the last SCF iteration that set them (TRAH after iteration 0; GVB-DIIS with a nonzero orbital gradient, the witnessed gradient norm)."
+   ]
+  },
+  {
+   "id": "si-fons", "stage": "si",
+   "name": "FONs of the SI-only geminals",
+   "brief": "FONs of geminals that enter only SI configurations, optimized after the SCF at fixed SA-REKS orbitals (§2).",
+   "on": "SI present",
+   "for": "SI configurations with geminals absent from the SA ensemble",
+   "units": "electrons",
+   "fragments": ["fon-after-scf"],
+   "variables": "`REKS FON K=<e>`, `REKS <L>_FON K=<e>`, `REKS FON META K=<e>`, `REKS <L>_FON META K=<e>` (sector form `REKS SECTOR <s> …`); per SI cassette, per generation whose FON layer holds all geminals of the cassette",
+   "bullets": [
+    "No bare (cassette 0) alias.",
+    "Read the `Residual` column. Geminals without `*` printed as `2.000000/0.000000` lie at the bound, as scheme 1 `(a,c)` above; compare the same columns between runs."
+   ]
+  },
+  {
+   "id": "ssr-energies", "stage": "si",
+   "name": "SSR state energies",
+   "brief": "Eigenvalues of the SI eigenproblem of each cassette after removal of the overlap null modes (§2); states ordered by energy, root index 0-based.",
+   "on": "SI present",
+   "for": "every physical root of every SI cassette with at least one configuration, independent of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`",
+   "units": "E_{h} (stored); E_{h} and eV relative to the lowest state of the first typed SI cassette, S0 when that cassette is a singlet (printed)",
+   "fragments": ["adiabatic-states", "state-summary"],
+   "variables": "`SSR ENERGIES K=<e>`; bookkeeping `SSR SI LIST`, `SSR CASSETTE 2S K=<e>`, `SSR STORED STATES K=<e>`, `SSR ACTIVE ORBITALS K=<e>`, `SSR CASSETTE SECTOR K=<e>`",
+   "bullets": [
+    "The four bookkeeping scalars never take the sector prefix.",
+    "`Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats S0 of cassette 0.",
+    "`State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.",
+    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots."
+   ]
+  },
+  {
+   "id": "ssr-composition", "stage": "si",
+   "name": "SSR eigenvectors and Chirgwin–Coulson weights",
+   "brief": "Eigenvector c of each state over the configurations of its cassette, and the Chirgwin–Coulson weights ω_{j} (§2), printed in `Adiabatic states` (§ssr-energies).",
+   "on": "SI present",
+   "units": "dimensionless (coefficients); % (printed weights)",
+   "variables": "`SSR COEFFICIENTS K=<e>` (`REKS_REPORT_LEVEL` ≥ 3)",
+   "bullets": [
+    "The weights are printed, not stored.",
+    "No bare (cassette 0) alias."
+   ]
+  },
+  {
+   "id": "si-matrices", "stage": "si",
+   "name": "SI Hamiltonian and overlap",
+   "brief": "Hamiltonian H and overlap S of the cassette over its configurations, before diagonalization; the printed block gives dimensions, the number of overlapping pairs and the rank after Löwdin regularization.",
+   "on": "SI present",
+   "units": "E_{h} (H); dimensionless (S)",
+   "formulas": ["V_{ij} = H_{ij} - S_{ij}\\,\\frac{H_{ii} + H_{jj}}{2}"],
+   "fragments": ["hamiltonian", "consistency"],
+   "variables": "`SSR HAMILTONIAN K=<e>`, `SSR OVERLAP SPARSE K=<e>` (rows [i n_{cfg} + j, S_{ij}]), stored at `REKS_REPORT_LEVEL` ≥ 3",
+   "bullets": [
+    "Matrices printed only at `REKS_REPORT_LEVEL` ≥ 4. No bare (cassette 0) alias.",
+    "`Independent states` = `Configurations` − overlap null modes − ghost states. A `Regularization` line appears when null modes are removed, a `Ghost states` line when roots more than 100 E_{h} above the lowest are removed (§diag-ghost-states).",
+    "Two configurations with |S_{ij}| close to 1 are nearly the same function; their coupling should then follow from the overlap, H_{ij} ≈ S_{ij} (H_{ii} + H_{jj})/2, and V_{ij} vanishes for two identical functions.",
+    "The `Consistency` line (second fragment, H_{4} REKS(4,4)) gives the largest |V_{ij}| in mE_{h} over the pairs with |S_{ij}| > 0.99 (a fixed bound, not an option) and the pair where it occurs; without such a pair the line is absent."
+   ]
+  },
+  {
+   "id": "si-orbitals", "stage": "si",
+   "name": "Orbitals of the SI step",
+   "brief": "MO coefficients of the SI state-property evaluation (the Fock-snapshot orbitals when present, else the SCF orbitals; the basis of the Dyson MO arrays) and the number of core orbitals.",
+   "on": "SI present",
+   "units": "AO coefficients",
+   "printed": false,
+   "variables": "`REKS C PATH B K=<e>`, `REKS NCORE K=<e>`",
+   "bullets": ["Sector form drops the leading `REKS `: `REKS SECTOR <s> C PATH B K=<e>`."]
+  },
+  {
+   "id": "transition-dipole", "stage": "unrelaxed",
+   "name": "Transition dipole moments and length-form oscillator strengths",
+   "brief": "Transition dipoles between adiabatic states from the unrelaxed transition densities, and the length-form oscillator strengths.",
+   "on": "`SI_REKS_ANALYSIS` `TRANSITION_DIPOLE`", "default": "always",
+   "for": "pairs I < J",
+   "units": "e a_{0} (stored); e a_{0} and D (printed); f dimensionless",
+   "formulas": [
+    "\\Delta E = E_J - E_I, \\qquad \\lambda = hc/\\Delta E",
+    "\\boldsymbol\\mu_{IJ} = \\langle I|\\hat{\\boldsymbol\\mu}|J\\rangle, \\qquad \\hat{\\boldsymbol\\mu} = -\\sum_i \\mathbf r_i",
+    "f_{\\mathrm{len}} = \\tfrac{2}{3}\\,\\Delta E\\,|\\boldsymbol\\mu_{IJ}|^2 \\quad (\\Delta E \\text{ in } E_{\\mathrm h})"
+   ],
+   "fragments": ["transitions"],
+   "variables": "`SSR TRANSITION DIPOLES K=<e>`, `SSR OSCILLATOR STRENGTHS K=<e>`",
+   "bullets": [
+    "The `*` flag after f_{len} (length and velocity forms differ by more than a factor of 3, tested when f_{len} or f_{vel} exceeds 10^{-3}) appears only when the velocity table is computed too (`E_TDM_VEL` or `M_TDM`).",
+    "λ prints `-` for a gap that prints as 0.000 eV."
+   ]
+  },
+  {
+   "id": "transition-velocity", "stage": "unrelaxed",
+   "name": "Velocity-form transition moments and oscillator strengths",
+   "brief": "Velocity-form transition moments and oscillator strengths, printed with the magnetic moments (§transition-magnetic).",
+   "on": "`SI_REKS_ANALYSIS` `E_TDM_VEL`", "default": "on",
+   "for": "pairs I < J",
+   "units": "a.u.; f dimensionless",
+   "formulas": ["\\mathbf p_{IJ} = \\langle I|\\nabla|J\\rangle, \\qquad f_{\\mathrm{vel}} = \\frac{2}{3\\,\\Delta E}\\,|\\mathbf p_{IJ}|^2"],
+   "fragments": ["velocity-magnetic"],
+   "variables": "`SSR VELOCITY TRANSITION DIPOLES K=<e>`, `SSR OSCILLATOR STRENGTHS VELOCITY K=<e>`",
+   "bullets": [
+    "`*` after f_{vel}: same test as after f_{len} (§transition-dipole).",
+    "The NAC sum-rule check against −p (§nac) is printed only when these moments exist."
+   ]
+  },
+  {
+   "id": "transition-magnetic", "stage": "unrelaxed",
+   "name": "Magnetic transition moments and rotatory strengths",
+   "brief": "Magnetic transition moments and velocity-form rotatory strengths, printed in the velocity table (§transition-velocity).",
+   "on": "`SI_REKS_ANALYSIS` `M_TDM`", "default": "on",
+   "for": "pairs I < J; `M_TDM` also computes the transition dipoles",
+   "units": "a.u.",
+   "formulas": ["\\mathbf m_{IJ} = -\\tfrac12\\,\\langle I|\\mathbf r\\times\\nabla|J\\rangle, \\qquad R_{\\mathrm{len}} = \\boldsymbol\\mu_{IJ}\\cdot\\mathbf m_{IJ}, \\qquad R_{\\mathrm{vel}} = -\\frac{\\mathbf p_{IJ}\\cdot\\mathbf m_{IJ}}{\\Delta E}"],
+   "variables": "`SSR MAGNETIC TRANSITION DIPOLES K=<e>`, `SSR ROTATORY STRENGTHS K=<e>` (columns [R_{len}, R_{vel}])",
+   "bullets": [
+    "m is real: the factor i of the magnetic-moment operator is dropped, as in Psi4 TDSCF; the sign convention of R follows Psi4.",
+    "R_{len} is stored, not printed; the table prints R_{vel}."
+   ]
+  },
+  {
+   "id": "natural-orbitals", "stage": "unrelaxed",
+   "name": "Natural orbitals and occupations of the active space",
+   "brief": "Eigenvectors and eigenvalues of the active 1-RDM of each state; orbitals expanded over the active MOs.",
+   "on": "`SI_REKS_ANALYSIS` `NO_OCCUPATIONS`", "default": "always",
+   "units": "electrons (occupations)",
+   "fragments": ["natural-orbitals"],
+   "variables": "`SSR NATURAL OCCUPATIONS K=<e>`, `SSR NATURAL ORBITALS ACTIVE STATE=<k> K=<e>`, `SSR NATURAL ORBITALS AO STATE=<k> K=<e>`",
+   "files": "`<prefix>.no.<label>_cassette<e>.molden` (`MOLDEN_WRITE`, stored states above 0)",
+   "bullets": [
+    "Stored occupations are in descending order (NO 1 = largest); the printed rows follow the active MOs, each NO on the row of its dominant MO coefficient, and the occ header follows that row order.",
+    "The occupations of each state sum to the number of active electrons."
+   ]
+  },
+  {
+   "id": "radical-character", "stage": "unrelaxed",
+   "name": "Radical character",
+   "brief": "Indices y_{0}, y_{1} (occupations of the LUNO and LUNO+1) and the effective numbers of unpaired electrons, over the active natural occupations n_{a} of the state (descending).",
+   "on": "`SI_REKS_ANALYSIS` `RADICAL`", "default": "on",
+   "units": "y dimensionless; N electrons",
+   "formulas": [
+    "y_i = n_{\\mathrm{LUNO}+i}, \\qquad \\mathrm{LUNO} = N_{\\mathrm{act}}/2 \\ (\\text{0-based}), \\qquad i = 0, 1",
+    "N_D = \\sum_a n_a(2-n_a), \\qquad N_U = \\sum_a \\min(n_a,\\, 2-n_a), \\qquad N_{U,\\mathrm{nl}} = \\sum_a n_a^2(2-n_a)^2"
+   ],
+   "fragments": ["radical-character"],
+   "variables": "`SSR RADICAL INDICES K=<e>` (columns [y0, y1, N_D, N_U, N_U,nl]), `SSR UNPAIRED ATOMIC POPULATIONS K=<e>`",
+   "bullets": [
+    "Unpaired atomic populations are stored, not printed.",
+    "y_{0}, y_{1} equal the corresponding occupations in `Natural orbitals` (§natural-orbitals); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1."
+   ],
+   "ref": "N_{D}: Takatsuka–Fueno–Yamaguchi; N_{U} (linear) and N_{U,nl} (nonlinear): Head-Gordon 2003 (§15)."
+  },
+  {
+   "id": "permanent-dipole", "stage": "unrelaxed",
+   "name": "Permanent and difference dipole moments (unrelaxed)",
+   "brief": "Dipole moment of each state from the unrelaxed state density, origin 0, and the difference dipole relative to S0.",
+   "on": "`SI_REKS_ANALYSIS` `DIPOLE` (or `MULTIPOLE(n)`)", "default": "on",
+   "for": "difference dipoles: two or more states",
+   "units": "e a_{0} (stored); e a_{0} and D (printed)",
+   "formulas": [
+    "\\boldsymbol\\mu_I = \\sum_A Z_A \\mathbf R_A - \\langle I|\\textstyle\\sum_i \\mathbf r_i|I\\rangle",
+    "\\Delta\\boldsymbol\\mu_I = \\boldsymbol\\mu_I - \\boldsymbol\\mu_{S_0}"
+   ],
+   "fragments": ["dipole-unrelaxed"],
+   "variables": "`SSR PERMANENT DIPOLES K=<e>`, `SSR DIFFERENCE DIPOLES K=<e>`"
+  },
+  {
+   "id": "quadrupole", "stage": "unrelaxed",
+   "name": "Quadrupole moments of the states (unrelaxed)",
+   "brief": "Full Cartesian quadrupole of each state (nuclei and electrons, origin 0) from the unrelaxed state density, and its traceless part.",
+   "on": "`SI_REKS_ANALYSIS` `QUADRUPOLE` (or `MULTIPOLE(n)`, n ≥ 2)", "default": "on",
+   "units": "e a_{0}^{2}",
+   "formulas": ["Q_{\\mathrm{tl},ij} = Q_{ij} - \\tfrac13\\,\\mathrm{tr}(Q)\\,\\delta_{ij}"],
+   "fragments": ["quadrupole-unrelaxed"],
+   "variables": "`SSR QUADRUPOLES K=<e>`, `SSR TRACELESS QUADRUPOLES K=<e>`",
+   "bullets": ["Components xx, xy, xz, yy, yz, zz."]
+  },
+  {
+   "id": "transition-second-moments", "stage": "unrelaxed",
+   "name": "Transition second moments",
+   "brief": "Cartesian second moments of the transition density of each pair, trace included.",
+   "on": "`SI_REKS_ANALYSIS` `TRANSITION_QUADRUPOLE` (or `MULTIPOLE(n)`, n ≥ 2)", "default": "on",
+   "for": "pairs I < J",
+   "units": "e a_{0}^{2}",
+   "formulas": ["\\langle I|\\textstyle -\\sum r_i r_j|J\\rangle, \\qquad i, j = x, y, z"],
+   "fragments": ["transition-second-moments"],
+   "variables": "`SSR TRANSITION QUADRUPOLES K=<e>`"
+  },
+  {
+   "id": "multipoles", "stage": "unrelaxed",
+   "name": "Cartesian multipole moments of order l ≥ 3",
+   "brief": "Cartesian multipole moments of order l of each state (nuclei included) and of each transition; components x^{a} y^{b} z^{c}, a + b + c = l, in lexicographic order, origin 0, trace included.",
+   "on": "`SI_REKS_ANALYSIS` `MULTIPOLE(n)`, n ≥ 3", "default": "off",
+   "for": "one table per order l = 3..n",
+   "units": "e a_{0}^{l}",
+   "formulas": [
+    "M_I = \\sum_A Z_A\\, x_A^a y_A^b z_A^c - \\langle I|\\textstyle\\sum_i x_i^a y_i^b z_i^c|I\\rangle",
+    "M_{IJ} = \\langle I|\\textstyle -\\sum_i x_i^a y_i^b z_i^c|J\\rangle"
+   ],
+   "fragments": ["multipoles"],
+   "variables": "`SSR MULTIPOLES L=<l> K=<e>`, `SSR TRANSITION MULTIPOLES L=<l> K=<e>`"
+  },
+  {
+   "id": "atomic-charges", "stage": "unrelaxed",
+   "name": "Atomic charges of the states (unrelaxed)",
+   "brief": "Mulliken and Löwdin charges of each state from the spin-summed unrelaxed state density P^{(I)} = D^{c} + C_{a} ρ^{(II)} C_{a}^{T} (core D^{c} included).",
+   "on": "`SI_REKS_ANALYSIS` `MULLIKEN_CHARGES` / `LOWDIN_CHARGES`", "default": "on",
+   "units": "e",
+   "formulas": ["q^{\\mathrm M}_A = Z_A - \\sum_{\\mu\\in A}(\\mathbf P^{(I)}\\mathbf S)_{\\mu\\mu}, \\qquad q^{\\mathrm L}_A = Z_A - \\sum_{\\mu\\in A}(\\mathbf S^{1/2}\\mathbf P^{(I)}\\mathbf S^{1/2})_{\\mu\\mu}"],
+   "fragments": ["atomic-charges"],
+   "variables": "`SSR MULLIKEN CHARGES K=<e>`, `SSR LOWDIN CHARGES K=<e>`",
+   "bullets": [
+    "Change tables X(S_{j}) − X(S_{i}) print entries with |change| ≥ `SI_REKS_ANALYSIS_CHANGE_MIN` (default 0.1); rows and tables without such a change are omitted.",
+    "The charges of each state sum to the molecular charge."
+   ]
+  },
+  {
+   "id": "transition-charges", "stage": "unrelaxed",
+   "name": "Transition charges",
+   "brief": "Mulliken and Löwdin atomic charges of the transition density ρ^{(IJ)} of each pair I → J: the formulas of §atomic-charges with P^{(I)} replaced by C_{a} ρ^{(IJ)} C_{a}^{T}, without Z_{A}; the charges of a pair sum to 0.",
+   "on": "`SI_REKS_ANALYSIS` `TRANSITION_CHARGES`", "default": "on",
+   "for": "pairs I < J",
+   "units": "e",
+   "fragments": ["transition-charges"],
+   "variables": "`SSR TRANSITION MULLIKEN CHARGES K=<e>`, `SSR TRANSITION LOWDIN CHARGES K=<e>`"
+  },
+  {
+   "id": "bond-indices", "stage": "unrelaxed",
+   "name": "Bond indices of the states (unrelaxed)",
+   "brief": "Mayer and Wiberg–Löwdin bond indices of each atom pair A ≠ B from the spin-summed unrelaxed state density P^{(I)} (§atomic-charges).",
+   "on": "`SI_REKS_ANALYSIS` `MAYER_INDICES` / `WIBERG_LOWDIN_INDICES`", "default": "on",
+   "for": "printed rows: pairs with index ≥ 0.10 in any state; change tables as for the charges (§atomic-charges)",
+   "units": "dimensionless",
+   "formulas": ["B^{\\mathrm{Mayer}}_{AB} = \\sum_{\\mu\\in A}\\sum_{\\nu\\in B}(\\mathbf P\\mathbf S)_{\\mu\\nu}(\\mathbf P\\mathbf S)_{\\nu\\mu}, \\qquad B^{\\mathrm{WL}}_{AB} = \\sum_{\\mu\\in A}\\sum_{\\nu\\in B}\\big[(\\mathbf S^{1/2}\\mathbf P\\mathbf S^{1/2})_{\\mu\\nu}\\big]^2"],
+   "fragments": ["bond-indices"],
+   "variables": "`SSR MAYER INDICES K=<e>`, `SSR WIBERG LOWDIN INDICES K=<e>` (m × natom^{2}, column A·natom + B)",
+   "bullets": ["No spin-density term: for open-shell states this is not the open-shell Mayer index."],
+   "ref": "Mayer 1983 (§15)."
+  },
+  {
+   "id": "nto", "stage": "unrelaxed",
+   "name": "Natural transition orbitals",
+   "brief": "Hole/particle orbital pairs of the transition density T_{pq} with weights w_{k}, the participation ratio PR, and the magnitude Ω of the transition density.",
+   "on": "`SI_REKS_ANALYSIS` `NTO`", "default": "on",
+   "for": "pairs I < J",
+   "units": "dimensionless (weights); AO coefficients (orbitals)",
+   "formulas": [
+    "\\mathbf T = \\boldsymbol\\rho^{(IJ)} = \\mathbf U\\,\\mathrm{diag}(s_k)\\,\\mathbf V^{\\mathsf T}, \\qquad w_k = \\frac{s_k^2}{\\sum_l s_l^2}, \\qquad \\mathrm{PR} = \\Big(\\sum_k w_k^2\\Big)^{-1}",
+    "\\Omega = \\tfrac12 \\sum_{pq} T_{pq}^2 = \\tfrac12 \\sum_k s_k^2"
+   ],
+   "fragments": ["nto"],
+   "variables": "`SSR NTO WEIGHTS K=<e>`, `SSR NTO HOLES AO ROOT <I> -> ROOT <J> K=<e>`, `SSR NTO PARTICLES AO ROOT <I> -> ROOT <J> K=<e>`",
+   "files": "`<prefix>.nto.<label I>-<label J>_cassette<e>.molden` (`MOLDEN_WRITE`, stored states above 0); cube `CUBEPROP_TASKS` `SSR_NTOS` (pairs with w ≥ 0.1)",
+   "bullets": [
+    "Holes: columns of U, particles: columns of V (active MOs; AO form C_{a}U, C_{a}V). T is spin-summed, so a pure singlet single excitation has Ω = 1. The first three weights are printed; weights and PR print `-` when Ω < 0.05.",
+    "The bare alias of `SSR NTO HOLES`/`PARTICLES` exists only for pairs 0 → J of cassette 0; `SSR NTO WEIGHTS` has the full bare alias."
+   ],
+   "ref": "Martin 2003 (§15)."
+  },
+  {
+   "id": "exciton", "stage": "unrelaxed",
+   "name": "Exciton descriptors, hole and electron populations, natural difference orbitals",
+   "brief": "Descriptors of the transition density (d_{h→e}, σ_{h}, σ_{e}, d_{exc}, R_{eh}, p_{prom}), Löwdin hole and electron populations per atom, and the eigenpairs of the difference density ρ^{(JJ)} − ρ^{(II)}.",
+   "on": "`SI_REKS_ANALYSIS` `EXCITON`", "default": "on",
+   "for": "pairs I < J",
+   "units": "distances a_{0}; R_{eh} dimensionless; populations and p_{prom} electrons",
+   "formulas": [
+    "\\Omega_{AB} = \\tfrac12\\sum_{\\mu\\in A}\\sum_{\\nu\\in B}\\big[(\\mathbf X\\mathbf T\\mathbf X^{\\mathsf T})_{\\mu\\nu}\\big]^2, \\quad \\mathbf X = \\mathbf S^{1/2}\\mathbf C_a, \\qquad h_A = \\sum_B \\Omega_{AB}, \\quad e_B = \\sum_A \\Omega_{AB}",
+    "\\langle \\mathbf r\\rangle_h = \\frac{\\mathrm{tr}(\\mathbf T^{\\mathsf T}\\mathbf r\\,\\mathbf T)}{2\\Omega}, \\quad \\langle \\mathbf r\\rangle_e = \\frac{\\mathrm{tr}(\\mathbf T\\,\\mathbf r\\,\\mathbf T^{\\mathsf T})}{2\\Omega}, \\quad \\langle r^2\\rangle_h = \\frac{\\mathrm{tr}(\\mathbf T^{\\mathsf T}\\mathbf r^2\\,\\mathbf T)}{2\\Omega}, \\quad \\langle \\mathbf r_h\\cdot\\mathbf r_e\\rangle = \\frac{\\sum_a \\mathrm{tr}(\\mathbf T^{\\mathsf T} \\mathbf x_a \\mathbf T \\mathbf x_a)}{2\\Omega}",
+    "d_{h\\to e} = |\\langle\\mathbf r\\rangle_e - \\langle\\mathbf r\\rangle_h|, \\qquad \\sigma_{h} = \\sqrt{\\langle r^2\\rangle_{h} - |\\langle\\mathbf r\\rangle_{h}|^2}, \\qquad \\sigma_{e} = \\sqrt{\\langle r^2\\rangle_{e} - |\\langle\\mathbf r\\rangle_{e}|^2}",
+    "d_{\\mathrm{exc}} = \\sqrt{\\langle r^2\\rangle_h + \\langle r^2\\rangle_e - 2\\langle\\mathbf r_h\\cdot\\mathbf r_e\\rangle}, \\qquad R_{eh} = \\frac{\\langle\\mathbf r_h\\cdot\\mathbf r_e\\rangle - \\langle\\mathbf r\\rangle_h\\cdot\\langle\\mathbf r\\rangle_e}{\\sigma_h\\sigma_e}",
+    "\\boldsymbol\\rho^{(JJ)} - \\boldsymbol\\rho^{(II)} = \\sum_k \\lambda_k \\mathbf v_k\\mathbf v_k^{\\mathsf T}, \\qquad p_{\\mathrm{prom}} = \\sum_{\\lambda_k > 0}\\lambda_k"
+   ],
+   "fragments": ["exciton-descriptors", "hole-electron"],
+   "variables": "`SSR EXCITON DESCRIPTORS K=<e>` (columns [Ω, d_{h→e}, σ_{h}, σ_{e}, d_{exc}, R_{eh}, p]), `SSR DIFFERENCE DENSITY EIGENVALUES K=<e>`, `SSR CT OMEGA ATOMS K=<e>`, `SSR EXCITON HOLE POPULATIONS K=<e>`, `SSR EXCITON PARTICLE POPULATIONS K=<e>`, `SSR NDO AO ROOT <I> -> ROOT <J> K=<e>`",
+   "files": "`<prefix>.ndo.<label I>-<label J>_cassette<e>.molden` (`MOLDEN_WRITE`, stored states above 0); cube `CUBEPROP_TASKS` `SSR_NDOS` (|λ| ≥ 0.1), `SSR_ATTACHMENT_DETACHMENT`",
+   "bullets": [
+    "`-` in the d_{h→e} … R_{eh} columns = Ω below 0.05 (or a zero transition density); p_{prom} is printed for every pair.",
+    "x_{a}, r and r^{2} are the AO dipole and second-moment integrals in the active MO basis; Ω_{AB} is the Löwdin form, not the Mulliken-type Ω of Plasser–Lischka. h_{A}, e_{B} are not normalized; each sums to Ω. NDOs are C_{a} v_{k}.",
+    "`SSR CT OMEGA ATOMS`, the hole/particle populations and `SSR NDO AO` have no bare (cassette 0) alias."
+   ],
+   "ref": "Plasser–Wormit–Dreuw 2014; Bäppler et al. 2014 (§15)."
+  },
+  {
+   "id": "fragment-ct", "stage": "unrelaxed",
+   "name": "Fragment charge-transfer descriptors",
+   "brief": "Charge moved between fragments, TheoDORE CT number (h/e split), participation ratios PR_{i}, PR_{f}, PR_{F}, DEL, localization POS, and Löwdin hole and electron populations per fragment.",
+   "on": "`SI_REKS_ANALYSIS` `EXCITON`", "default": "on",
+   "for": "a molecule of at least 2 fragments (`--` separators), no ghost fragments or atoms; pairs I < J",
+   "units": "q_{moved}, ΔN_{F} in e; other columns dimensionless",
+   "formulas": [
+    "\\tilde\\Omega_{FG} = \\Omega_{FG}/\\Omega, \\qquad r_F = \\sum_G \\tilde\\Omega_{FG}, \\qquad c_F = \\sum_G \\tilde\\Omega_{GF}, \\qquad \\mathrm{CT} = \\sum_{F\\ne G}\\tilde\\Omega_{FG}",
+    "\\mathrm{PR}_i = \\Big(\\sum_F r_F^2\\Big)^{-1}, \\qquad \\mathrm{PR}_f = \\Big(\\sum_F c_F^2\\Big)^{-1}, \\qquad \\mathrm{PR} = \\tfrac12(\\mathrm{PR}_i + \\mathrm{PR}_f)",
+    "\\mathrm{DEL} = \\Big(\\sum_F \\big[\\tfrac12(r_F + c_F)\\big]^2\\Big)^{-1}, \\qquad \\mathrm{POS} = \\sum_F F\\,\\tfrac12(r_F + c_F)",
+    "\\Delta N_F = N^{\\mathrm L}_F(J) - N^{\\mathrm L}_F(I), \\qquad q_{\\mathrm{moved}} = \\sum_F \\max(0, \\Delta N_F)"
+   ],
+   "fragments": ["fragment-ct", "fragment-hole-electron"],
+   "variables": "`SSR CT FRAGMENT DESCRIPTORS K=<e>` (columns [CT, PRi, PRf, PR, DEL, POS]), `SSR CT FRAGMENT HOLE POPULATIONS K=<e>`, `SSR CT FRAGMENT PARTICLE POPULATIONS K=<e>`",
+   "bullets": [
+    "q_{moved} and Net ΔN_{F} are printed, not stored; stored column CT is the printed h/e split. The fragment populations have no bare (cassette 0) alias.",
+    "Ω_{FG} sums the atom-pair Ω_{AB} of §exciton over the fragments; F in POS is 1-based; N^{L}_{F} is the Löwdin active population of fragment F. Printed headers: `h/e split` for CT, `PR_F` for PR. CT to POS print `-` when Ω < 0.05; q_{moved} is always printed.",
+    "The fragment line (`F1 = atoms 1-3, F2 = atoms 4-6`) shows the partition used."
+   ],
+   "ref": "Plasser–Lischka 2012; Plasser 2020 (TheoDORE) (§15)."
+  },
+  {
+   "id": "fragment-couplings", "stage": "unrelaxed",
+   "name": "Fragment couplings (FCD, FED)",
+   "brief": "Diabatic coupling V_{F} between fragments F and G: FCD from the charge difference D = q(F) − q(G) (Löwdin and Mulliken charges), FED from the excitation difference D = x(F) − x(G) between excited states.",
+   "on": "`SI_REKS_ANALYSIS` `FRAGMENT_COUPLINGS`", "default": "on",
+   "for": "a molecule of at least 2 fragments (`--` separators), no ghost fragments or atoms; FED needs at least 2 excited states; printed: pairs with |D_{I} − D_{J}| ≥ 0.1",
+   "units": "E_{h} (stored); E_{h} and meV (printed)",
+   "formulas": [
+    "V_{mn} = \\frac{(E_n - E_m)\\,D_{mn}}{\\sqrt{(D_{mm} - D_{nn})^2 + 4D_{mn}^2}}",
+    "\\text{FCD:}\\ D_{mn} = q^F_{mn} - q^G_{mn}, \\quad q^F_{mm} = \\sum_{A\\in F} q_A(m), \\quad q^F_{mn} = \\sum_{A\\in F} q_A(m\\to n)",
+    "\\text{FED:}\\ D_{mn} = x^F_{mn} - x^G_{mn}, \\quad x^F_{mn} = \\tfrac12\\,\\mathrm{tr}\\big[\\mathbf T_m^{\\mathsf T}(\\mathbf G^F\\mathbf T_n + \\mathbf T_n\\mathbf G^F)\\big], \\quad \\mathbf T_m = \\boldsymbol\\rho^{(0m)}, \\quad m, n \\ge 1"
+   ],
+   "fragments": ["fragment-couplings"],
+   "variables": "`SSR FCD LOWDIN COUPLINGS <F> <G> K=<e>`, `SSR FCD MULLIKEN COUPLINGS <F> <G> K=<e>`, `SSR FED COUPLINGS <F> <G> K=<e>`",
+   "bullets": [
+    "States m < n of one cassette, fragments F < G; q_{A} are the state and transition charges (§atomic-charges, §transition-charges), G^{F} the Löwdin projector on the atoms of F. V carries the sign of D_{mn}, which follows the state phases; compare |V| with literature values. `*` marks a row where the Löwdin and Mulliken FCD values differ in sign or by more than a factor of 2.",
+    "Computes the state and transition charges without storing them when those blocks are not listed. No bare alias."
+   ],
+   "ref": "FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008 (§15)."
+  },
+  {
+   "id": "active-rdm", "stage": "unrelaxed",
+   "name": "Active one-particle density matrices",
+   "brief": "Active 1-RDMs of the adiabatic states (bra I) and diabatic 1-RDMs over the configurations.",
+   "on": "`SI_REKS_ANALYSIS` `DENSITIES`; diabatic: `REKS_REPORT_LEVEL` ≥ 3", "default": "on",
+   "for": "`SSR 1-RDM ACTIVE STATE=<k>`: k below the number of stored states",
+   "units": "electrons",
+   "printed": false,
+   "formulas": ["\\rho^{(IJ)}_{pq} = \\langle I|\\hat E_{pq}|J\\rangle"],
+   "variables": "`SSR 1-RDM ACTIVE STATE=<k> K=<e>`, `SSR 1-RDM ADIABATIC K=<e>` (row I·m + J, column p·N + q), `SSR 1-RDM DIABATIC SPARSE K=<e>`",
+   "files": "cube files via `psi4.cubeprop(wfn)` with `CUBEPROP_TASKS` `SSR_DENSITIES` (`SSR_D_<label>_cassette<e>.cube`), `SSR_DIFFERENCE_DENSITIES` (`SSR_DD_<label>-<label 0>_cassette<e>.cube`), `SSR_TRANSITION_DENSITIES` (`SSR_TD_<label I>-<label J>_cassette<e>.cube`)",
+   "bullets": ["`REKS_REPORT_LEVEL` 5 dumps ρ^{(k)} and the diabatic blocks as `[DEBUG]` text."]
+  },
+  {
+   "id": "relaxed-properties", "stage": "relaxed",
+   "name": "Relaxed dipole, quadrupole and atomic charges",
+   "brief": "Dipole, quadrupole (full Cartesian tensor and traceless part) and Mulliken and Löwdin charges of the relaxed density P^{r} of the CP-REKS (Z-vector) response of a state (§2).",
+   "on": "`SI_REKS_PROPERTY_FOR` lists the state", "default": "off",
+   "for": "`energy()` and `gradient()`; one CP-REKS solve shared with the gradient and NAC targets",
+   "units": "e a_{0} (dipole; printed also D); e a_{0}^{2} (quadrupole); e (charges)",
+   "fragments": ["relaxed-dipole", "relaxed-quadrupole", "relaxed-charges"],
+   "variables": "`SSR ROOT <r> RELAXED DIPOLE CASSETTE <e>`, `SSR ROOT <r> RELAXED QUADRUPOLES CASSETTE <e>`, `SSR ROOT <r> RELAXED MULLIKEN CHARGES CASSETTE <e>`, `SSR ROOT <r> RELAXED LOWDIN CHARGES CASSETTE <e>`, `SSR ROOT <r> RELAXED DENSITY CASSETTE <e>` (AO); `CURRENT DIPOLE` = relaxed dipole of the followed root when it is listed, otherwise unset",
+   "files": "cube `CUBEPROP_TASKS` `SSR_DENSITIES`: `SSR_D_<label>_relaxed_cassette<e>.cube`",
+   "bullets": [
+    "The charges of each state sum to the molecular charge.",
+    "P^{r} is not N-representable; the EKT block prints the count of its negative natural occupations (§ekt-states)."
+   ]
+  },
+  {
+   "id": "relaxed-bond-indices", "stage": "relaxed",
+   "name": "Bond indices of the relaxed density",
+   "brief": "Mayer and Wiberg–Löwdin indices of P^{r}.",
+   "on": "`SI_REKS_PROPERTY_FOR` lists the state", "default": "off",
+   "units": "dimensionless",
+   "printed": false,
+   "variables": "`SSR ROOT <r> RELAXED MAYER INDICES CASSETTE <e>`, `SSR ROOT <r> RELAXED WIBERG LOWDIN INDICES CASSETTE <e>` (natom × natom)",
+   "bullets": ["Not printed because P^{r} is not the density of a wavefunction."]
+  },
+  {
+   "id": "ekt-states", "stage": "relaxed",
+   "name": "EKT ionization energies, pole strengths and Dyson orbitals of SI states",
+   "brief": "Extended Koopmans' theorem on the relaxed energy-weighted density W and the relaxed density P^{r} of a state: IP, ε, pole strength per spin orbital, Dyson orbitals; ref = lowest state of the first typed SI cassette (S0 for a singlet cassette).",
+   "on": "`REKS_EKT` true and `SI_REKS_PROPERTY_FOR` lists the state", "default": "off",
+   "for": "natural orbitals of P^{r} with occupation above `REKS_EKT_OCC_TOL` (10^{-6})",
+   "units": "E_{h} (stored); eV (printed IP), E_{h} (printed ε)",
+   "formulas": [
+    "\\mathbf W\\mathbf c_k = \\varepsilon_k\\,\\mathbf P\\mathbf c_k, \\qquad \\mathbf c_k^{\\mathsf T}\\mathbf P\\mathbf c_k = 1, \\qquad \\mathrm{IP}_k = -\\varepsilon_k",
+    "\\mathbf d_k = \\mathbf P\\mathbf c_k, \\qquad \\phi^{\\mathrm{Dyson}}_k = \\mathbf d_k/\\sqrt2, \\qquad \\mathrm{pole}_k = \\tfrac12|\\mathbf d_k|^2, \\qquad \\sum_k \\mathrm{pole}_k = \\tfrac12\\sum_{a\\,\\mathrm{kept}} p_a",
+    "E_{\\mathrm{cation}} - E_{\\mathrm{ref}} = \\mathrm{IP} + E_{\\mathrm{state}} - E_{\\mathrm{ref}}"
+   ],
+   "fragments": ["ekt"],
+   "variables": "`SSR EKT IONIZATION ENERGIES ROOT <r> CASSETTE <e>`, `SSR EKT POLE STRENGTHS ROOT <r> CASSETTE <e>`, `SSR EKT NATURAL OCCUPATIONS ROOT <r> CASSETTE <e>`, `SSR DYSON ORBITALS MO ROOT <r> CASSETTE <e>`, `SSR DYSON ORBITALS AO ROOT <r> CASSETTE <e>`",
+   "files": "`<prefix>.dyson.<label>_cassette<e>.molden` (`MOLDEN_WRITE`; Ene = −IP, Occup = pole strength)",
+   "bullets": [
+    "W is the symmetrized energy-weighted density of the state's response, P = P^{r} in the MO basis. The problem is solved in the natural orbitals of P with occupations p_{a} above `REKS_EKT_OCC_TOL`; smaller and negative ones are dropped.",
+    "One table per state at `REKS_REPORT_LEVEL` 2; level 3 adds the dropped eigenvalues and the Dyson MO block.",
+    "Check `sum of strengths` against half the sum of the occupations, the count of negative natural occupations of P^{r}, and the `Flag` column; strengths lie outside 0..1 by up to the lowest negative occupation."
+   ],
+   "ref": "Filatov et al., J. Chem. Theory Comput. 2020, 16, 4489."
+  },
+  {
+   "id": "ekt-ensemble", "stage": "relaxed",
+   "name": "EKT ionization energies of the SA-REKS ensemble",
+   "brief": "Extended Koopmans' theorem on the generalized Fock matrix W and the fractional-occupation density D of the SA-REKS ensemble, in the block `==> Ionization energies (EKT) and Dyson orbitals, SA-REKS ensemble <==`.",
+   "on": "`REKS_EKT` true and no state listed in `SI_REKS_PROPERTY_FOR`", "default": "off",
+   "for": "the SCF finalize of `energy()` and `gradient()`",
+   "units": "E_{h} (stored); eV (printed IP), E_{h} (printed ε)",
+   "variables": "`REKS EKT IONIZATION ENERGIES`, `REKS EKT POLE STRENGTHS`, `REKS EKT NATURAL OCCUPATIONS`, `REKS DYSON ORBITALS MO`, `REKS DYSON ORBITALS AO` (sector form `REKS SECTOR <s> EKT ...` when the SA ensemble lies in run sector s above 0)",
+   "files": "`<prefix>.dyson.sa.molden` (`sector<s>_sa` for s above 0) (`MOLDEN_WRITE`)",
+   "bullets": [
+    "The equations of §ekt-states with W the symmetrized generalized Fock matrix and P = diag(2f), f = 1 (core), n/2 (active), 0 (virtual).",
+    "The `State analysis` line of `REKS_EKT` then names the SA-REKS ensemble."
+   ]
+  },
+  {
+   "id": "state-gradient", "stage": "gradient",
+   "name": "Nuclear gradients of SSR states",
+   "brief": "Gradient of an adiabatic SSR state from the CP-REKS response.",
+   "on": "`SI_REKS_GRAD` names the root", "default": "off",
+   "for": "`gradient()`; roots of `SI_REKS_NAC` pairs join the targets without being listed",
+   "units": "E_{h}/a_{0}",
+   "formulas": ["\\mathbf g = \\frac{\\mathrm dE}{\\mathrm d\\mathbf R}, \\qquad \\text{force} = -\\mathbf g"],
+   "fragments": ["gradient-targets", "gradient-of", "returned-gradient"],
+   "variables": "`SSR ROOT <r> GRADIENT CASSETTE <e>`; `CURRENT ENERGY` and `REKS TARGET STATE ENERGY` (followed root, set in `energy()` too); `CURRENT GRADIENT`, `SCF TOTAL GRADIENT` (followed root)",
+   "bullets": [
+    "The followed state (`*`) and `CURRENT ENERGY`: §si_reks_grad.",
+    "A root within `REKS_GRAD_DEGEN_TOL` (10^{-6} E_{h}) of another physical root of its cassette is computed with a warning. A meta-GGA functional raises an error: no analytic SI gradient.",
+    "`E` of a `Gradient of` block equals the state's energy in `Adiabatic states`; `Returned gradient` names the `*` state and repeats its table.",
+    "Converged response: `Remain` reaches 0 in the CP-REKS solver block (§reks_cpreks_conv); each gradient prints `|sum over atoms|` near zero."
+   ]
+  },
+  {
+   "id": "sa-gradient", "stage": "gradient",
+   "name": "Nuclear gradient of the SA-REKS ensemble",
+   "brief": "Gradient of E_{SA}, returned by `gradient()` when no SI root is ordered; blocks `SA-REKS analytic gradient: targets`, `Gradient of the SA-REKS ensemble`, `Returned gradient`.",
+   "on": "`gradient()` with `SI_REKS_GRAD` and `SI_REKS_NAC` not set",
+   "units": "E_{h}/a_{0}",
+   "formulas": ["\\mathbf g = \\frac{\\mathrm dE_{\\mathrm{SA}}}{\\mathrm d\\mathbf R}"],
+   "variables": "`CURRENT GRADIENT`, `SCF TOTAL GRADIENT` (stock psi4 names)",
+   "bullets": ["`CURRENT DIPOLE` is unset."]
+  },
+  {
+   "id": "nac", "stage": "gradient",
+   "name": "Nonadiabatic coupling vectors",
+   "brief": "Derivative coupling between two adiabatic states of one cassette: a model part from the SI matrices and a residual part, the derivative of the configuration functions (orbital and FON response).",
+   "on": "`SI_REKS_NAC` lists the pair or `ALL`", "default": "off",
+   "for": "`gradient()`",
+   "units": "1/a_{0}",
+   "formulas": [
+    "\\mathbf d_{IJ} = \\langle I|\\tfrac{\\mathrm d}{\\mathrm d\\mathbf R} J\\rangle = \\mathbf d_{\\mathrm{model}} + \\mathbf d_{\\mathrm{residual}}, \\qquad \\mathbf d_{JI} = -\\mathbf d_{IJ}",
+    "\\mathbf d_{\\mathrm{model}} = \\frac{\\mathbf c_I^{\\mathsf T}\\big(\\mathrm d\\mathbf H/\\mathrm d\\mathbf R - E_J\\,\\mathrm d\\mathbf S/\\mathrm d\\mathbf R\\big)\\,\\mathbf c_J}{E_J - E_I}",
+    "\\textstyle\\sum_A \\mathbf d_{IJ}(A) = -\\mathbf p_{IJ}"
+   ],
+   "fragments": ["nac"],
+   "variables": "`SSR NAC <I> <J> CASSETTE <e>`, `SSR NAC MODEL <I> <J> CASSETTE <e>`, `SSR NAC RESIDUAL <I> <J> CASSETTE <e>`; the root gradients `SSR ROOT <I> GRADIENT CASSETTE <e>`, `SSR ROOT <J> GRADIENT CASSETTE <e>`",
+   "bullets": [
+    "The sum rule is checked against −p from the velocity moments only when `SI_REKS_ANALYSIS` computes them (`E_TDM_VEL` or `M_TDM`); the line ends with `consistent` when the deviation is ≤ 10^{-6}, otherwise it reads `deviation …` without `consistent`. Without the moments the legend prints `-p_12 requires SI_REKS_ANALYSIS E_TDM_VEL`.",
+    "The header prints the gap of the pair (§diag-quasi-degenerate)."
+   ]
+  },
+  {
+   "id": "ci-topography", "stage": "gradient",
+   "name": "Conical-intersection topography",
+   "brief": "Topography of the intersection of the pair A, B (lower, upper root) from the pair gradients G and the NAC: g̃, h̃ rotated by φ to mutual orthogonality, tilt s along them, pitch δ_{gh}, asymmetry Δ_{gh}, relative tilt σ, tilt heading θ_{s}, P (below 1 peaked, above 1 sloped), B (below 1 bifurcating, above 1 single path).",
+   "on": "`SI_REKS_NAC` lists the pair", "default": "off",
+   "for": "every NAC pair (both root gradients are computed); table when E_{B} − E_{A} ≤ `REKS_CI_TOPOGRAPHY_GAP` (default 5·10^{-3} E_{h}), one line otherwise; variables at any gap",
+   "units": "E_{h}/a_{0} (|g̃|, |h̃|, s_{x}, s_{y}, δ_{gh}); rad (φ, θ_{s}); dimensionless (Δ_{gh}, σ, P, B); E_{h} (E_{B} − E_{A})",
+   "formulas": [
+    "\\mathbf g = \\tfrac12(\\mathbf G_B - \\mathbf G_A), \\qquad \\mathbf h = (E_B - E_A)\\,\\mathbf d_{AB}, \\qquad \\mathbf s = \\tfrac12(\\mathbf G_A + \\mathbf G_B)",
+    "\\phi = \\tfrac12\\,\\mathrm{atan2}(2\\,\\mathbf g\\cdot\\mathbf h,\\ \\mathbf g\\cdot\\mathbf g - \\mathbf h\\cdot\\mathbf h), \\qquad \\tilde{\\mathbf g} = \\cos\\phi\\,\\mathbf g + \\sin\\phi\\,\\mathbf h, \\qquad \\tilde{\\mathbf h} = -\\sin\\phi\\,\\mathbf g + \\cos\\phi\\,\\mathbf h",
+    "s_x = \\frac{\\mathbf s\\cdot\\tilde{\\mathbf g}}{|\\tilde{\\mathbf g}|}, \\qquad s_y = \\frac{\\mathbf s\\cdot\\tilde{\\mathbf h}}{|\\tilde{\\mathbf h}|}",
+    "\\delta_{gh} = \\sqrt{\\tfrac12\\big(|\\tilde{\\mathbf g}|^2 + |\\tilde{\\mathbf h}|^2\\big)}, \\qquad \\Delta_{gh} = \\frac{|\\tilde{\\mathbf g}|^2 - |\\tilde{\\mathbf h}|^2}{|\\tilde{\\mathbf g}|^2 + |\\tilde{\\mathbf h}|^2}",
+    "\\sigma = \\frac{\\sqrt{s_x^2 + s_y^2}}{\\delta_{gh}}, \\qquad \\theta_s = \\mathrm{atan2}(|s_y|, |s_x|)",
+    "P = \\frac{\\sigma^2}{1 - \\Delta_{gh}^2}\\big(1 - \\Delta_{gh}\\cos 2\\theta_s\\big)",
+    "B =\\Big(\\frac{\\sigma}{2\\Delta_{gh}}\\Big)^{2/3}\\Big[\\big((1+\\Delta_{gh})\\cos^2\\theta_s\\big)^{1/3} + \\big((1-\\Delta_{gh})\\sin^2\\theta_s\\big)^{1/3}\\Big]"
+   ],
+   "bullets": ["A is the lower root; d_{AB} is the full NAC (model + residual). The branch of φ gives |g̃| ≥ |h̃|, so Δ_{gh} ∈ [0, 1] and θ_{s} ∈ [0, π/2]. P is infinite when |h̃| vanishes, B when Δ_{gh} vanishes."],
+   "fragments": ["ci-topography", "ci-not-printed"],
+   "variables": "`SSR CI TOPOGRAPHY <I> <J> CASSETTE <e>` (1 × 12: |g̃|, |h̃|, φ, s_{x}, s_{y}, δ_{gh}, Δ_{gh}, σ, θ_{s}, P, B, E_{B} − E_{A}), `SSR CI G <I> <J> CASSETTE <e>`, `SSR CI H <I> <J> CASSETTE <e>`",
+   "ref": "Fdez. Galván et al. 2016 and 2022 (§15)."
+  },
+  {
+   "id": "spin-state-energetics", "stage": "spin",
+   "name": "Spin-state gaps and Heisenberg J",
+   "brief": "Lowest state of each multiplicity over all cassettes, the gap between manifolds whose 2S differ by 2, the coupling J and the SI lowering of each state.",
+   "on": "SI cassettes on at least 2 spin manifolds",
+   "for": "manifolds with a physical root (a manifold declared by an empty block has none); J and its variables: manifolds whose 2S differ by 2",
+   "units": "E_{h} (stored J); printed E_{h}, eV and cm^{-1}",
+   "formulas": [
+    "\\mathrm{Gap} = E(\\text{high spin}) - E(\\text{low spin}), \\qquad J = -\\frac{\\mathrm{Gap}}{2S_{\\mathrm{high}}} \\quad \\text{for} \\quad \\hat H = -2J\\,\\hat{\\mathbf S}_A\\cdot\\hat{\\mathbf S}_B",
+    "\\mathrm{Lowering} = \\min_i H_{ii} - E"
+   ],
+   "fragments": ["spin-state"],
+   "variables": "`REKS HEISENBERG J`, `REKS HEISENBERG J SPINS` (rows [2S_lo, 2S_hi])",
+   "bullets": [
+    "With three or more manifolds the block prints the ratio J(T/Q)/J(S/T); ratio 1 = one J for all spin pairs (Landé interval rule).",
+    "J is a spin-coupling constant only if the two states have the same open-shell orbitals and similar SI lowering (`Lowering(lo)`, `Lowering(hi)`)."
+   ]
+  }
+ ]
+}

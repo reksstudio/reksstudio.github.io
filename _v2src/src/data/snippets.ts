@@ -34,7 +34,7 @@ psi4.set_options({
 
   # state-interaction ensemble — set independently from sa_reks_configs,
   # mixed afterward to produce the final multi-state energies
-  "si_reks_configs": ["PPS1", "OSS1", "OSS2", "OSS3", "OSS4"],
+  "si_reks_configs": [["PPS1", "OSS1", "OSS2", "OSS3", "OSS4"]],
 })
 
 E, wfn = psi4.energy("bhhlyp", return_wfn=True)`;
@@ -56,13 +56,11 @@ psi4.set_options({
 
   "sa_reks_configs": ["PPS1", "OSS1", "OSS2"],
   "sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],
-  "si_reks_configs": ["PPS1", "OSS1", "OSS2", "OSS3", "OSS4"],
+  "si_reks_configs": [["PPS1", "OSS1", "OSS2", "OSS3", "OSS4"]],
 })
 
 E, wfn = psi4.energy("bhhlyp", return_wfn=True)`;
 
-export const docsRestart = `# load a checkpoint, tell SCF to use it, save a new one
-old_wfn = psi4.core.Wavefunction.from_file("prev.wfn.npy")
-psi4.set_options({"guess": "read", "df_scf_guess": False, ...})
+export const docsRestart = `# restart_file with a .npy file sets guess READ; to_file writes next.wfn.npy
 E, wfn = psi4.energy("bhhlyp", restart_file="prev.wfn.npy", return_wfn=True)
 wfn.to_file("next.wfn")`;

@@ -1,0 +1,266 @@
+{
+ "entries": {
+  "REKS": {"option": true, "type": "`[N, M]`", "default": "— (required)", "tag": "[N, M]", "call": "[4, 4]", "fragments": ["err-multiplicity"],
+   "rules": [
+    "N active electrons in M active orbitals, exactly two integers; a third element (the former spin element) is an input error. Only installed catalogs run (§3).",
+    "Molecule multiplicity: 1 for even N, 2 for odd N (no installed catalog has odd N); any other value is the error above. The spin manifolds are chosen by §sa_reks_2spin / §si_reks_2spin or the ladder (§6)."
+   ],
+   "brief": "Active space: `N` electrons in `M` orbitals. The molecule multiplicity must be the canonical M_{S} value (1 for even `N`, 2 for odd); any other value is an input error. Spin manifolds are selected by `sa_reks_2spin` / `si_reks_2spin`, not by the molecule block."},
+  "SA_REKS_CONFIGS": {"option": true, "type": "array", "default": "catalog `sa_default` pool on 2S = 0", "alias": "REKS_SA_CONFIGS", "call": "[\"PPS1\", \"OSS1\", \"OSS2\"]", "fragments": ["sa-pool"],
+   "rules": [
+    "Flat list = one block on one spin manifold, e.g. `[\"PPS1\", \"OSS1\", \"OSS2\"]` or by local index `[0, 1, 2]`. Elements: configuration names, local integer indices, or bulk tokens (§5).",
+    "A configuration may not repeat within a block: an SA block is a weighted list (§5).",
+    "Nested list = one block per spin manifold, e.g. `[[\"PPS1\", \"OSS1\"], [\"T_PPS1\"]]`, mapped to manifolds by ladder position or by `SA_REKS_2SPIN` (§6).",
+    "Absent: the catalog's `sa_default` pool on 2S = 0. Defaults: `REKS(2,2)` `[PPS1, OSS1]`, `REKS(4,4)` `[PPS1, OSS1, OSS2]`, `REKS(6,6)` `[PPS1, OSS1, OSS2, OSS3]`.",
+    "Check `sum = 1.000000` and that every `SA_REKS_EXTRA` determinant of the input is listed (`Extra1`, …)."
+   ],
+   "see": "§sa_reks_weights, §sa_reks_extra, §2",
+   "brief": "The SA configuration pool — a flat list for one spin manifold, or a list of lists to declare a block per manifold. Unset: the catalog's default 2S = 0 pool (PPS + OSS)."},
+  "SA_REKS_2SPIN": {"option": true, "type": "array", "default": "ladder, lowest manifold", "alias": "REKS_SA_2SPIN", "call": "[0, 2]",
+   "rules": [
+    "One integer 2S per SA block (explicit mode, table above). Entries are pairwise distinct, in any order (re-sorted ascending).",
+    "Without `SA_REKS_CONFIGS` only `[0]` is accepted; any other value is an input error. States of 2S > 0 on the default ensemble: §si_reks_2spin."
+   ],
+   "brief": "2S of each SA block, one integer per block. Without `sa_reks_configs` only `[0]` is accepted (input error otherwise); for higher-spin states on the default ensemble use `si_reks_2spin`."},
+  "SA_REKS_WEIGHTS": {"option": true, "type": "array", "default": "uniform `1/n`", "alias": "REKS_SA_WEIGHTS", "call": "[0.5, 0.25, 0.25]",
+   "rules": [
+    "One non-negative weight per SA pool entry, in the order typed (concatenated block order, then the `SA_REKS_EXTRA` determinants), summing to 1.0 (tolerance 10^{-8}). Omitted: uniform 1/n.",
+    "A configuration or extra determinant with weight 0 leaves the SA ensemble; a zero-weight configuration that is also an SI member has its SI-only geminals' FONs optimized after the SCF.",
+    "If `SA_REKS_2SPIN` lists manifolds out of ascending-2S order, configurations and weights are re-sorted jointly into ascending 2S; a weight still matches the configuration in the order typed."
+   ],
+   "brief": "Weight for each SA pool entry, configurations first, then any extra determinants. Must be non-negative and sum to 1. Left unset, weights are distributed equally."},
+  "SA_REKS_EXTRA": {"option": true, "type": "array of arrays", "default": "none", "alias": "REKS_SA_EXTRA", "call": "[[1, 1, 1, 1, 0, 0, 0, 0]]", "fragments": ["sa-pool-extra"],
+   "rules": [
+    "Each element is a Slater determinant given as an occupation vector `[alpha(M) | beta(M)]` of length 2M, 0/1 entries summing to N; the call above is the all-α determinant of REKS(4,4).",
+    "Each determinant joins the SA ensemble with a fixed weight from the tail of `SA_REKS_WEIGHTS`, adds its Kohn–Sham energy to E_{SA}, carries no FON, and changes the SA orbitals and with them every SI state. It never enters an SI cassette."
+   ],
+   "brief": "Extra determinants — such as the all-α high-spin determinant — given as occupation vectors. Each joins the SA ensemble with its own weight, adds its energy to E_{SA} and shapes the orbitals; it carries no FON and never enters an SI cassette."},
+  "SI_REKS_CONFIGS": {"option": true, "type": "array", "default": "one full-block cassette, lowest manifold", "alias": "REKS_SI_CONFIGS", "call": "[[\"PPS1\", \"OSS1\"], [\"PPS2\", \"OSS3\"]]", "fragments": ["si-pools", "si-setup", "altconf"],
+   "rules": [
+    "2-level `[[...], [...], ...]`: the cassettes of one group (one spin manifold); the call above makes two cassettes, each with its own states. A cassette is a set of names, indices or bulk tokens (§5); a repeated selection is kept at its first position.",
+    "3-level `[[[...]], [[...]], ...]`: one group of cassettes per outer entry, each group mapped to a spin manifold like the SA blocks (ladder position or `SI_REKS_2SPIN`). The 2-level form is legal only when `SI_REKS_2SPIN` is absent or has length 1.",
+    "Absent: one cassette spanning the whole configuration block of the run's lowest (or `SI_REKS_2SPIN`-chosen) manifold. `[[]]` runs no SI step and sets no `SSR` arrays.",
+    "A flat list of names (`[\"PPS1\", \"OSS1\"]`) is an input error: `SI_REKS_CONFIGS: scalar elements are not a cassette form; use a list of cassettes [[...], ...] (2-level) or cassette groups [[[...]], ...] (3-level).`",
+    "`Wfn storage` `none` in `SI pools` means no per-state `SSR … K=e` analysis arrays and no natural-orbital, NTO or NDO Molden files for that cassette (§si_reks_store_states).",
+    "Each cassette opens with a `State interaction: cassette e` header; its 2S tag appears when the run has more than one spin manifold.",
+    "Two or more cassettes of one 2S add `Alternative configuration lists` after `State summary` (third fragment): the states of the later cassettes with energies relative to S0 and to their own lowest state, the closest state of the first list by weight overlap, and the main configurations."
+   ],
+   "see": "§2, §si_reks_2spin, §ssr-energies",
+   "brief": "The SI configuration groups (\"cassettes\") that form the secular equations. Left unset, one cassette spans the full config block of the lowest manifold."},
+  "SI_REKS_2SPIN": {"option": true, "type": "array", "default": "ladder, lowest manifold", "alias": "REKS_SI_2SPIN", "call": "[0, 2]",
+   "rules": [
+    "One integer 2S per SI group (explicit mode, table above), pairwise distinct, in any order; more than one entry requires the 3-level `si_reks_configs` form.",
+    "`[x]` alone: the default SA ensemble on 2S = 0 and the default SI cassette on 2S = x (§input-patterns)."
+   ],
+   "brief": "2S of each SI group; more than one entry requires the 3-level `si_reks_configs` form."},
+  "SI_REKS_PRINT_STATES": {"option": true, "type": "int", "default": "`5`", "tag": "default: 5", "call": "-1",
+   "rules": [
+    "States per cassette listed in the per-state and pair tables; `0` = none, `-1` = all. The SI eigenproblem is always solved in full (§ssr-energies).",
+    "Properties are computed for max(print, store) states (§si_reks_store_states). Counts are clamped to the number of physical states."
+   ],
+   "brief": "States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all."},
+  "SI_REKS_STORE_STATES": {"option": true, "type": "array of int", "default": "all; the first 10 if `M ≥ 6` and > 10 configurations", "alias": "REKS_SI_STORE_STATES", "call": "[-1, 0]",
+   "rules": [
+    "One integer per cassette, in cassette order K = 0, 1, … (ascending 2S): states whose properties are stored on the wavefunction (array variables, Molden and cube files); `0` = none, `-1` = all.",
+    "Roots requested in `SI_REKS_GRAD`, `SI_REKS_NAC`, `SI_REKS_PROPERTY_FOR` keep their eigenvectors regardless."
+   ],
+   "brief": "States per cassette whose properties are stored on the wavefunction (array variables, Molden, cube files); one integer per cassette, 0 = none, -1 = all. Default: all, except 10 for cassettes with M ≥ 6 and more than 10 configurations. The eigenproblem is always solved at full dimension."},
+  "SI_REKS_ANALYSIS": {"option": true, "type": "array", "default": "all blocks except multipoles > 2", "call": "[\"all\"]", "fragments": ["state-analysis"],
+   "rules": [
+    "Property blocks to compute, print and store. Unset: every block except multipoles above order 2. `[]`: `TRANSITION_DIPOLE` and `NO_OCCUPATIONS`. A list: these two plus the listed names.",
+    "Names: `DIPOLE`, `QUADRUPOLE`, `MULTIPOLE(n)`, `TRANSITION_DIPOLE`, `TRANSITION_QUADRUPOLE`, `E_TDM_VEL`, `M_TDM`, `MULLIKEN_CHARGES`, `LOWDIN_CHARGES`, `TRANSITION_CHARGES`, `MAYER_INDICES`, `WIBERG_LOWDIN_INDICES`, `NO_OCCUPATIONS`, `DENSITIES`, `RADICAL`, `NTO`, `EXCITON`, `FRAGMENT_COUPLINGS`, `ALL`; each property entry names its switch (§13).",
+    "`State analysis` lists every name with a description, names not run struck through; with `SI_REKS_PROPERTY_FOR` it adds the states of each cassette that receive relaxed properties (and EKT when `REKS_EKT` is true)."
+   ],
+   "brief": "State-property blocks to compute: `DIPOLE`, `QUADRUPOLE`, `MULTIPOLE(n)`, `TRANSITION_DIPOLE`, `TRANSITION_QUADRUPOLE`, `E_TDM_VEL`, `M_TDM`, `MULLIKEN_CHARGES`, `LOWDIN_CHARGES`, `TRANSITION_CHARGES`, `MAYER_INDICES`, `WIBERG_LOWDIN_INDICES`, `NO_OCCUPATIONS`, `DENSITIES`, `RADICAL`, `NTO`, `EXCITON`, `FRAGMENT_COUPLINGS`, `ALL`. Unset: all blocks except multipoles above order 2. `[]`: `TRANSITION_DIPOLE` and `NO_OCCUPATIONS` only."},
+  "SI_REKS_ANALYSIS_CHANGE_MIN": {"option": true, "type": "double", "default": "`0.1`", "tag": "default: 0.1", "call": "0.05",
+   "rules": ["Smallest state-to-state change of a charge or bond index that is printed (§atomic-charges)."],
+   "brief": "Smallest state-to-state change of a charge or bond index that is printed."},
+  "SI_REKS_OVERLAP_CUTOFF": {"option": true, "type": "double", "default": "`1e-10`", "tag": "default: 1e-10", "call": "1e-8",
+   "rules": [
+    "Eigenvectors of the SI overlap with s ≤ cutoff · s_{max} form the null space and are removed before diagonalization (§si-matrices).",
+    "Roots more than 100 E_{h} above the lowest root are removed from the physical roots (§diag-ghost-states)."
+   ],
+   "brief": "Overlap eigenvalues `s ≤ cutoff · s_{max}` of the SI basis are treated as null space and dropped."},
+  "REKS_GEMINAL_WIDTHS": {"option": true, "type": "array", "default": "`[]` (all 2)", "tag": "default: all 2", "callText": "\"reks\": [4, 5],\n\"reks_geminal_widths\": [2, 3],",
+   "rules": [
+    "Orbital count of each two-electron geminal: N/2 integers, each in [2, 8], summing to M. Empty (default): every geminal spans 2 orbitals.",
+    "A width-w geminal holds 2 electrons in w orbitals; its configurations carry orbital-letter suffixes (`OSSa1`, `DESb1`).",
+    "Selects the catalog `reks{N}{M}_u{w0}{w1}…`; the installed ones are listed above."
+   ],
+   "brief": "Orbital count of each two-electron geminal; length `N/2`, each in `[2, 8]`, sum `M`. Selects the catalogue `reks{N}{M}_u{w0}{w1}…`, e.g. `reks [4, 5]` with `[2, 3]`."},
+  "SI_REKS_GRAD": {"option": true, "type": "array of arrays", "default": "`[]` (SA ensemble)", "call": "[[1, 2], []]", "fragments": ["gradient-request"],
+   "rules": [
+    "Roots whose gradients are computed, one inner list per cassette (inner list e = cassette e); roots are 0-based and sorted by energy. Inner list `[-1]` = all roots of that cassette (`[[-1]]`); a flat `[-1]` is an input error.",
+    "The followed root, marked `*` in `Gradient request`, is the first entry of the first non-empty inner list (`-1` → root 0). Without `SI_REKS_GRAD` it is the lowest root of the first cassette with `SI_REKS_NAC` pairs.",
+    "With a followed root, `CURRENT ENERGY` is its energy, also stored as `REKS TARGET STATE ENERGY`, in `energy()` and `gradient()`; `gradient()` returns its gradient (§state-gradient). Without `SI_REKS_GRAD` and `SI_REKS_NAC`, `CURRENT ENERGY` = `SCF TOTAL ENERGY`. `SCF TOTAL ENERGY` is always E_{SA}, plus E_{pen} with §reks_deloc_ipr_penalty.",
+    "`CURRENT DIPOLE` is the relaxed dipole of the followed root when `SI_REKS_PROPERTY_FOR` lists that root, and is unset otherwise.",
+    "Triplet gradient of `reks [2, 2]`: the triplet-gradient worked input (§1), with `si_reks_grad` `[[], [0]]` following T1 of cassette 1."
+   ],
+   "brief": "0-based roots whose gradients are computed, one inner list per cassette, e.g. `[[1, 0], []]`; an inner list `[-1]` = all roots of that cassette; a scalar element (flat `[-1]`) is an input error. The first root of the first non-empty inner list is followed: it defines `CURRENT ENERGY` and the returned gradient. Unset: SA ensemble, or the lowest root of the first `si_reks_nac` pair list."},
+  "SI_REKS_NAC": {"option": true, "type": "array", "default": "`[]`", "call": "[[[1, 2]], []]",
+   "rules": [
+    "Pairs `[I, J]` per SI cassette, `[[[I, J], ...], ...]`, or `ALL`; the call above couples S1 and S2 of cassette 0. Computed in `gradient()`; the roots of each pair join the gradient targets.",
+    "Publishes `SSR NAC I J CASSETTE e` (1/bohr, §nac) and the conical-intersection topography `SSR CI TOPOGRAPHY I J CASSETTE e` (§ci-topography).",
+    "Without `SI_REKS_GRAD` the lowest root of the first non-empty pair list is followed (§si_reks_grad)."
+   ],
+   "brief": "Root pairs `[I, J]` per SI cassette, `[[[I, J], ...], ...]`, or `ALL`; e.g. `[[[1, 2]], []]` couples S1 and S2 of cassette 0. A flat `[[I, J]]` is an input error. Publishes `SSR NAC I J CASSETTE e` and the conical-intersection topography (g, h, pitch, asymmetry, tilt)."},
+  "SI_REKS_PROPERTY_FOR": {"option": true, "type": "array of arrays", "default": "`[]`", "call": "[[\"S1,S2\"], []]",
+   "rules": [
+    "States evaluated with the relaxed density: dipole, quadrupole, Mulliken/Löwdin charges, Mayer/Wiberg indices (§relaxed-properties, §relaxed-bond-indices).",
+    "Entries: indices or labels, ranges, lists (`\"S0..5\"`, `\"T1\"`), inside the per-cassette inner lists (`[[\"S0..1\"]]`); a flat list is rejected."
+   ],
+   "brief": "States whose properties are evaluated with the relaxed density: dipole, quadrupole, charges, bond indices. Entries: root indices or labels, ranges, lists (`\"S0..5\"`, `\"T1\"`), inside per-cassette inner lists, e.g. `[[\"S0..1\"]]`; a flat list is rejected."},
+  "REKS_EKT": {"option": true, "type": "bool", "default": "`false`", "tag": "default: false", "call": "True",
+   "rules": ["Extended Koopmans ionization energies, pole strengths and Dyson orbitals for the `SI_REKS_PROPERTY_FOR` states (§ekt-states), otherwise for the SA ensemble (§ekt-ensemble)."],
+   "brief": "Extended Koopmans ionization energies, pole strengths and Dyson orbitals for the states of `si_reks_property_for`, otherwise for the SA ensemble. `reks_ekt_occ_tol` (1e-6) drops small density eigenvalues."},
+  "REKS_EKT_OCC_TOL": {"option": true, "type": "double", "default": "`1e-6`", "call": "1e-8",
+   "rules": ["Density eigenvalues at or below this are dropped from the EKT metric."]},
+  "REKS_CPREKS_CONV": {"option": true, "type": "double", "default": "`1e-9`", "tag": "default: 1e-9", "call": "1e-10", "fragments": ["cpreks"],
+   "rules": [
+    "CP-REKS (Z-vector) residual threshold, relative to max(1, ‖b‖). One solve serves the relaxed properties, gradients and NACs of the run.",
+    "The solver block is printed when `SI_REKS_PROPERTY_FOR` names states, or in `gradient()` with `SI_REKS_GRAD` or `SI_REKS_NAC`, at `REKS_REPORT_LEVEL` ≥ 2 and Psi4 `PRINT` ≥ 1 (defaults).",
+    "Converged: `Remain` reaches 0 and the block ends with `Z-vectors converged in N iterations.`. Non-convergence ends the run with `no convergence in N rounds`."
+   ],
+   "brief": "Residual threshold of the CP-REKS (Z-vector) solver. `reks_cpreks_maxiter` (200) bounds its rounds."},
+  "REKS_CPREKS_MAXITER": {"option": true, "type": "int", "default": "`200`", "call": "400",
+   "rules": ["CP-REKS rounds before an error is raised."]},
+  "REKS_GRAD_DEGEN_TOL": {"option": true, "type": "double", "default": "`1e-6`", "tag": "default: 1e-6 Eh", "call": "1e-5",
+   "rules": ["Gap (E_{h}) below which a requested root is computed with a quasi-degeneracy warning."],
+   "brief": "Gap below which a requested root is flagged as quasi-degenerate."},
+  "REKS_CI_TOPOGRAPHY_GAP": {"option": true, "type": "double", "default": "`5e-3`", "tag": "default: 5e-3 Eh", "call": "1e-2",
+   "rules": ["Largest pair gap (E_{h}) at which the topography table of a NAC pair is printed (§ci-topography)."],
+   "brief": "Largest gap at which the topography table of a NAC pair is printed."},
+  "GUESS_ACTIVE_WINDOW": {"option": true, "type": "array", "default": "`[]` (off)", "call": "[\"HOMO-1\", \"HOMO\", \"LUMO\", \"LUMO+1\"]",
+   "rules": [
+    "Moves the listed MOs of the read guess into the active MO columns by column swaps, one token per active orbital, in active-column order; a displaced MO takes the vacated column. The call above is for `reks [4, 4]`.",
+    "Tokens: 0-based MO indices or `HOMO`, `LUMO`, `HOMO-k`, `LUMO+k` of the loaded α occupation. The `GUESS READ: active window` line reports the resolved columns and swaps (§diag-wrong-window).",
+    "Requires `guess read` (a REKS run stops with a `ValidationError` otherwise); a non-REKS reference ignores the option. C1 only.",
+    "If projection onto the current basis drops a read MO as linearly dependent, `REKS READ: WARNING` names it; the later columns shift, and the window may no longer match."
+   ],
+   "brief": "Moves the listed MOs of the read guess into the active columns by column swaps, one token per active orbital in active-column order: 0-based MO indices or `HOMO-k` / `LUMO+k`, e.g. `[\"HOMO-1\", \"HOMO\", \"LUMO\", \"LUMO+1\"]`. Requires `guess read` (set automatically by `restart_file` with a `.npy` file); `C1` only. If basis projection drops a read MO as linearly dependent, REKS warns that the active-window layout may no longer match."},
+  "REKS_FON_INTERP_DELTA": {"option": true, "type": "double", "default": "`0.4`", "call": "0.4",
+   "rules": ["Parameter δ ≥ 0 of the factor f(x), x = n_{p} n_{q}, that multiplies the coupling Δ of each geminal in the energy (§2)."],
+   "brief": "Parameter δ of the factor `f(n_p n_q)` that multiplies the coupling Δ of each geminal in the energy. Default 0.4."},
+  "REKS_N_FON": {"option": true, "id": "reks_l_fon", "title": "REKS_<L>_FON", "names": ["REKS_N_FON", "REKS_M_FON", "REKS_U_FON", "REKS_V_FON", "REKS_W_FON", "REKS_X_FON", "REKS_Y_FON", "REKS_Z_FON"], "type": "double", "default": "`-1.0` each", "tag": "8 keywords, one per FON generation", "label": "reks_n_fon … reks_z_fon", "callText": "\"reks_m_fon\": 1.0,", "fragments": ["fon-floor-l4", "warn-fon-floor"],
+   "rules": [
+    "One option per FON generation (table above). A non-negative value ℓ is the lower end of the box of the free FON n_{p} of every geminal of that generation (§8): n_{p} stays variable in [ℓ, 2 − m], m = `REKS_FON_MICRO_BOUND_MARGIN`.",
+    "The call above restricts n_{p} of every generation-1 geminal to [1, 2 − m]: it excludes n_{p} < n_{q}, and n_{p} may still reach the closed-shell limit 2 (§diag-fon-inverted). At `REKS_REPORT_LEVEL` ≥ 4 an active floor prints the first line above.",
+    "A value above 2 − m is clamped to 2 − m and the FON is frozen there, with the warning above (`REKS_M_FON` 2.5). Negative (the default) disables the bound; the lower end is then m."
+   ],
+   "brief": "A **lower bound** on the free FON `n_p` of every geminal of that generation (FON set `n`: PPS, DES, DDES, TDES; `m`: OSS, OSS_DES, OSS_DDES; `u`: DOSS, DOSS_DES). Setting `reks_m_fon: 1.0`, for instance, restricts `n_p` of every generation-1 geminal to `[1.0, 2 − margin]` (margin = `reks_fon_micro_bound_margin`, 1e-8) — it stays free and is optimized within that range, it is *not* fixed at `n_p = n_q = 1`. A bound of 1.0 excludes `n_p < n_q`; `n_p` may still reach 2. Negative (the default) disables the bound."},
+  "REKS_FON_MICRO_NR_MAXITER": {"option": true, "type": "int", "default": "`20`", "brief": "Newton iteration cap per geminal block per SCF iteration."},
+  "REKS_FON_MICRO_LS_MAXITER": {"option": true, "type": "int", "default": "`20`", "brief": "Armijo backtracking (step halving) cap inside one Newton step."},
+  "REKS_FON_MICRO_CONVERGENCE": {"option": true, "type": "double", "default": "`1e-12`", "brief": "Step-norm convergence threshold."},
+  "REKS_FON_MICRO_MIN_EIGENVALUE": {"option": true, "type": "double", "default": "`1e-8`", "brief": "Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped."},
+  "REKS_FON_MICRO_BOUND_MARGIN": {"option": true, "type": "double", "default": "`1e-8`", "brief": "Margin m of the FON box [ℓ, 2 − m] (§8): the upper end, the lower end when no `REKS_<L>_FON` floor is set, and the clamp of a floor above 2 − m. Must lie in (0, 1); other values are an input error."},
+  "REKS_FON_MICRO_BOUNDARY_SKIN": {"option": true, "type": "double", "default": "`0.05`", "brief": "A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum."},
+  "REKS_DELOC_IPR_PENALTY": {"option": true, "type": "double", "default": "`0.0` (off)", "call": "0.05", "fragments": ["ipr-final", "err-ipr-gradient"],
+   "formulas": [
+    "E_{\\mathrm{pen}} = \\lambda\\,\\mathrm{IPR}_{\\mathrm{total}}, \\qquad \\mathrm{IPR}_{\\mathrm{total}} = \\sum_{i \\in \\mathrm{act}} \\sum_A p_A(i)^2",
+    "p_A(i) = \\sum_{\\mu \\in A} \\big[(\\mathbf S^{1/2}\\mathbf C)_{\\mu i}\\big]^2 \\ (\\texttt{LOWDIN}), \\qquad p_A(i) = \\sum_{\\mu \\in A} C_{\\mu i}(\\mathbf S\\mathbf C)_{\\mu i} \\ (\\texttt{MULLIKEN})",
+    "\\mathrm{can\\_ref} = n_{\\mathrm{act}}/n_{\\mathrm{atom}}, \\qquad \\mathrm{loc\\_ref} = n_{\\mathrm{act}}/2"
+   ],
+   "rules": [
+    "E_{pen} is added to the SA energy; p_{A}(i) is the population of active MO i on atom A, and Σ_{A} p_{A}(i)^{2} = 1 for an orbital on one atom. λ is in E_{h}; λ < 0 is an input error.",
+    "λ > 0 penalizes localization of the active orbitals and drives the SCF to the delocalized solution, the intended REKS solution. Linear H_{4} (1.6 Å), BH&HLYP/6-31G, REKS(4,4): `IPR_total` 1.1128 at λ = 0 and 1.0669 at λ = 0.05.",
+    "The final block gives `IPR_total`, `can_ref` (all active MOs spread over all atoms) and `loc_ref` (each on 2 atoms), E_{pen} with λ, and the basin verdict: `CANONICAL` when `IPR_total` lies below the midpoint of `can_ref` and `loc_ref`, otherwise `LOCALIZED (WARNING)`.",
+    "No analytic nuclear gradient: `gradient()` stops with the second message above; `dertype=0` gives finite differences."
+   ],
+   "brief": "Coefficient λ (Ha) of the penalty. Default 0.0 (off); λ < 0 is an input error. With λ ≠ 0 the analytic gradient is unavailable; `gradient()` requires `dertype=0`."},
+  "REKS_DELOC_IPR_METHOD": {"option": true, "type": "`LOWDIN`|`MULLIKEN`", "default": "`LOWDIN`", "call": "\"MULLIKEN\"",
+   "rules": ["Population analysis of p_{A}(i): `LOWDIN` (S^{½} transform) or `MULLIKEN`."],
+   "brief": "Population analysis used by the penalty: `LOWDIN` or `MULLIKEN`. Default `LOWDIN`."},
+  "REKS_DELOC_IPR_GUARD_STREAK_LIMIT": {"option": true, "type": "int", "default": "`10`", "call": "20",
+   "rules": ["A basin guard fires when the summed IPR rises over three consecutive iterations above a drift limit; after this many firings without a net IPR decrease the guard is disabled for the rest of the SCF, and the penalty stays on."]},
+  "REKS_REPORT_LEVEL": {"option": true, "type": "int (1–5)", "default": "`2`", "tag": "1–5", "call": "4",
+   "rules": ["Selects which REKS blocks appear: the numbers of the run are printed at level 2; levels 3–5 add counters, solver traces and intermediate matrices (table below)."],
+   "brief": "Verbosity of the run report. 1 = no REKS blocks: the Psi4 SCF trace, energetics, the Molden summary and the returned gradient remain. 2 (default) = setup, pools, SCF trace, energetics, SI Hamiltonian summaries, adiabatic states, properties, state summary, spin-state energetics; no microstate energies. 3 = + SI Hamiltonian term counters, a references block, and config-axis arrays (`SSR COEFFICIENTS`, `SSR HAMILTONIAN`, …) stored as wavefunction variables. 4 = + per-iteration solver traces and, per cassette, microstate energies, the FON table, the Lagrangian/ERI table and the SI Hamiltonian and overlap matrices. 5 = + per-iteration Fock active blocks and microstate energy computation."},
+  "REKS_USE_TRAH": {"option": true, "type": "bool", "default": "`false`", "call": "True",
+   "rules": [
+    "Trust-region Newton solver (trace tag `TRAH/SHIFT`) for the stationary point of the SA energy in the active–active orbital rotations and the FONs: a box-constrained damped Newton step from the eigendecomposition of the analytic active–active Hessian, a bisection on the damping until the step norm matches the trust radius, and eigenvector following along the inter-pair modes (Nocedal & Wright Ch. 4 and 11; Baker 1986; Cerjan & Miller 1981; Helmich-Paris 2021; §15).",
+    "Warm-up or whole SCF: table above."
+   ],
+   "brief": "Use trust-region Newton (TRAH) optimization of the active–active orbital rotations and the FONs as a warmup before GVB-DIIS takes over, or as the whole SCF if `reks_gvb_diis` is off. Default false."},
+  "REKS_GVB_DIIS": {"option": true, "type": "bool", "default": "`true`", "call": "False",
+   "rules": ["The GVB-DIIS accelerator, the default engine; its formulation is `REKS_DIIS_FORMULATION`."],
+   "brief": "Use the GVB-DIIS accelerator for orbital optimization — the default engine. Default true."},
+  "REKS_DIIS_FORMULATION": {"option": true, "type": "`CFM`|`ORBITAL`", "default": "`ORBITAL`", "tag": "\"CFM\" | \"ORBITAL\"", "call": "\"CFM\"",
+   "rules": [
+    "`ORBITAL` (default; trace tag `ORB-GVB-DIIS`) extrapolates skew-symmetric rotation generators κ directly in the MO basis and bypasses Fock diagonalization each step (Ionova & Carter 1995; the r-GDIIS variant of Sethio et al. 2024).",
+    "`CFM` (trace tag `CFM-GVB-DIIS/SHIFT`) extrapolates the composite multishell Fock matrix, the multishell-Fock DIIS of Muller et al. 1994, where every active orbital is its own shell (core = 1 shell, virtual = 1 shell)."
+   ],
+   "brief": "`ORBITAL` (default; Ionova & Carter 1995, Sethio et al. 2024) extrapolates skew-symmetric rotation generators directly and skips Fock diagonalization each step. `CFM` extrapolates the composite multishell Fock matrix instead (Muller et al. 1994)."},
+  "REKS_GVB_DIIS_START": {"option": true, "type": "int", "default": "`3`", "call": "5",
+   "rules": ["SCF iteration at which GVB-DIIS takes over from the burn-in or from TRAH (table above)."],
+   "brief": "SCF iteration at which GVB-DIIS takes over from the burn-in (or from TRAH). Default 3."},
+  "REKS_GVB_LEVEL_SHIFT": {"option": true, "type": "double", "default": "`1.0` (CFM only)", "call": "1.0",
+   "rules": ["Artificial shell gap of the CFM multishell Fock matrix, separate from `LEVEL_SHIFT`; unused with `REKS_DIIS_FORMULATION` `ORBITAL` (the default)."]},
+  "LEVEL_SHIFT_ADAPT": {"option": true, "type": "bool", "default": "`true`", "call": "False",
+   "rules": [
+    "True: the base shift equals `LEVEL_SHIFT` through iteration 3; afterwards it decays (factor 0.5–0.95) when the previous iteration had no orbital swaps and maximal active mixing below 0.15, and grows by a factor 1.5 when the previous iteration had swaps or mixing above 0.30; it stays within [0.01, `LEVEL_SHIFT`].",
+    "False holds the base shift at `LEVEL_SHIFT` for every iteration."
+   ],
+   "brief": "When true (default), the base of REKS's staircase level shift equals `level_shift` through iteration 3, then decays toward a floor of 0.01 after iterations without orbital swaps and with small active mixing, and grows by 1.5× (up to `level_shift`) after iterations with swaps or active mixing above 0.30. False holds it at `level_shift` every iteration. Unset, REKS sets `level_shift` 0.6 and `level_shift_cutoff` 0.0. The shift acts on Fock-diagonalization steps only, not on `ORBITAL` GVB-DIIS steps."},
+  "REKS_DIIS_CFM_ACTIVATION_GORB": {"option": true, "type": "double", "default": "`1e-3` (CFM only)", "call": "1e-4",
+   "rules": ["Orbital-gradient norm below which CFM engages once `REKS_GVB_DIIS_START` is reached; inert without `REKS_USE_TRAH`."]},
+  "REKS_GVB_ROBUST_VERDICT": {"option": true, "type": "bool", "default": "`true`", "call": "False",
+   "rules": ["Post-hoc acceptance verdict on extrapolated GVB-DIIS steps; its trip ratio is `REKS_DIIS_MON_VERDICT_RHO` (§14)."]},
+  "REKS_DIIS_COND_ANGLE_FILTER": {"option": true, "default": "`true`"},
+  "REKS_DIIS_COND_ANGLE_CUTOFF": {"option": true, "default": "`0.1`"},
+  "REKS_DIIS_COND_STALE_DELTA": {"option": true, "default": "`1e-4`"},
+  "REKS_DIIS_COND_KAPPA_BYPASS": {"option": true, "default": "`1e9`"},
+  "REKS_DIIS_COND_SVD_RCOND": {"option": true, "default": "`1e-8`"},
+  "REKS_DIIS_COND_COEFF_NORM_MAX": {"option": true, "default": "`1e3`"},
+  "REKS_DIIS_COND_TIKHONOV": {"option": true, "default": "`true`"},
+  "REKS_DIIS_COND_TIKHONOV_SCALE": {"option": true, "default": "`0.0`"},
+  "REKS_DIIS_MON_VERDICT_RHO": {"option": true, "default": "`1.5`"},
+  "REKS_DIIS_MON_VERDICT_STREAK": {"option": true, "default": "`3`"},
+  "REKS_DIIS_MON_SUPPRESS_WINDOW": {"option": true, "default": "`3`"},
+  "REKS_DIIS_MON_NONMONOTONE_M": {"option": true, "default": "`3`"},
+  "REKS_GVB_GATE_STREAK": {"option": true, "default": "`2`"},
+  "REKS_DIIS_GUARD_LATCH_GRACE": {"option": true, "default": "`3`"},
+  "REKS_DIIS_GUARD_BAND_B": {"option": true, "default": "`0.1`"},
+  "REKS_DIIS_GUARD_LANDING_TOLERANCE": {"option": true, "default": "`1e-12`"},
+  "REKS_DIIS_MON_PROGRESS_EPS": {"option": true, "default": "`1e-2`"},
+  "REKS_DIIS_FON_BRANCH_CUTOFF": {"option": true, "default": "`0.1`"},
+  "REKS_DIIS_RESTART_BUDGET": {"option": true, "default": "`2`"},
+  "REKS_DIIS_MON_CYCLE": {"option": true, "default": "`true`"},
+  "REKS_DIIS_MON_CYCLE_WINDOW": {"option": true, "default": "`12`"},
+  "REKS_DIIS_MON_CYCLE_CAP_STREAK": {"option": true, "default": "`3`"},
+  "REKS_DIIS_ORB_BASE_MAP_DAMP": {"option": true, "default": "`0.6`"},
+  "reference": {"label": "reference", "brief": "Set to `reks` to enable the method."},
+  "pps": {"label": "PPS", "brief": "The perfectly-paired singlet: every geminal Φ_{0}. Every catalogue has at least one."},
+  "oss-doss-toss": {"label": "OSS, DOSS, TOSS", "brief": "Configurations with 1, 2, 3 open-shell-singlet geminals. `DOSS` occurs in `(6,6)`; `TOSS` only as `TOSS_SPS` in `(6,6)`."},
+  "des-ddes-tdes": {"label": "DES, DDES, TDES", "brief": "The same 1, 2, 3 count for doubly-excited geminals; `TDES` occurs in `(6,6)` only. Compound types combine both: `OSS_DES`, `DOSS_DES`, `OSS_DDES`."},
+  "t-tt-ttt-prefix": {"label": "T_, TT_, TTT_ prefix", "brief": "Number k of triplet-coupled geminals; the configuration belongs to the manifold 2S = 2k, e.g. `T_PPS3`, `TT_SPS_0`. In `(2,2)` the only 2S = 2 configuration is `T1`."},
+  "sps-tag": {"label": "SPS tag", "brief": "Marks a spin-polarized configuration; the trailing `_k` is its member index in an orthogonalized set, e.g. `DOSS_SPS_0`, `DOSS_SPS_1`."},
+  "full": {"label": "\"full\"", "brief": "The entire configuration block of that manifold."},
+  "a-type-name": {"label": "a type name", "tag": "\"PPS\", \"OSS\", \"DOSS\" …", "brief": "Every configuration of that type in the manifold, case-insensitive; lettered types of the generalized-geminal catalogues (`OSSa`, `Ta`) included."},
+  "single-scheme-n": {"label": "\"single-scheme:N\"", "brief": "Every configuration of geminal-pairing scheme `N` (default scheme 0) plus the spin-polarized base configurations. Several indices can be unioned: `\"single-scheme-1-2-3\"`."},
+  "mixed-scheme-n": {"label": "\"mixed-scheme:N\"", "brief": "The SSR state set on scheme `N` — that scheme's single-excitation configs plus every open-shell-singlet config of the manifold plus the spin-polarized base configurations."},
+  "sps": {"label": "\"sps\"", "brief": "Just the spin-polarized base configurations."},
+  "a-pattern": {"label": "a pattern", "tag": "\"*\" / \"?\"", "brief": "Every configuration name it glob-matches."},
+  "exclude-x": {"label": "\"exclude:X\"", "tag": "SI cassettes only", "brief": "Subtracts whatever `X` names (any token above) from the rest of the cassette, e.g. `[\"full\", \"exclude:sps\"]`. An SA block, being a weighted list rather than a set, doesn't accept `exclude:`."},
+  "high-spin-only": {"label": "triplet states", "brief": "`si_reks_2spin: [2]` without config lists: SA = default 2S = 0 pool, SI = full 2S = 2 block. Add the all-α determinant to the SA ensemble with `sa_reks_extra`, e.g. `[[1, 1, 1, 1, 0, 0, 0, 0]]` for `(4,4)`. `sa_reks_2spin: [2]` without `sa_reks_configs` is an input error."},
+  "several-manifolds": {"label": "several manifolds", "brief": "Nested lists, one block or group per 2S, e.g. `sa_reks_configs [[PPS1, OSS1], [T_PPS1]]`, `si_reks_configs [[[\"full\"]], [[\"full\"]]]`, `si_reks_2spin [0, 2]`. The SA ensemble is optimized jointly; each SI group is diagonalized separately."},
+  "state-labels": {"label": "state labels", "brief": "S0, S1, … for 2S = 0; T1, Q1, Sp1, N1, U1, Tr1 for 2S = 2, 4, 6, 8, 10, 12 (root k → label k+1)."},
+  "output": {"label": "output", "brief": "With two or more manifolds the report prints *Spin-state energetics*: gap and J = −Gap / (2S_{high}) for `H = −2J S_{A}·S_{B}`, between the lowest states of adjacent manifolds. Array variables: `REKS HEISENBERG J`, `REKS HEISENBERG J SPINS`; per-sector energies `REKS SECTOR s SSR ENERGIES K=e` (s > 0)."}
+ },
+ "groups": [
+  {"id": "catalog", "title": "Catalog", "keys": ["REKS_GEMINAL_WIDTHS"]},
+  {"id": "active-space", "title": "Active space", "keys": ["REKS"]},
+  {"id": "sa-pool", "title": "SA pool", "keys": ["SA_REKS_CONFIGS", "SA_REKS_WEIGHTS", "SA_REKS_EXTRA"]},
+  {"id": "si-cassettes", "title": "SI cassettes", "keys": ["SI_REKS_CONFIGS", "SI_REKS_PRINT_STATES", "SI_REKS_STORE_STATES", "SI_REKS_ANALYSIS", "SI_REKS_ANALYSIS_CHANGE_MIN", "SI_REKS_OVERLAP_CUTOFF"]},
+  {"id": "response", "title": "Gradients, couplings, relaxed properties", "keys": ["SI_REKS_GRAD", "SI_REKS_NAC", "SI_REKS_PROPERTY_FOR", "REKS_EKT", "REKS_EKT_OCC_TOL", "REKS_CPREKS_CONV", "REKS_CPREKS_MAXITER", "REKS_GRAD_DEGEN_TOL", "REKS_CI_TOPOGRAPHY_GAP"]},
+  {"id": "spin", "title": "Spin manifolds", "keys": ["SA_REKS_2SPIN", "SI_REKS_2SPIN"]},
+  {"id": "guess", "title": "Guess", "keys": ["GUESS_ACTIVE_WINDOW"]},
+  {"id": "fons", "title": "FONs", "keys": ["REKS_FON_INTERP_DELTA", "REKS_N_FON"]},
+  {"id": "fon-micro", "title": "FON micro-solver", "compact": true, "keys": ["REKS_FON_MICRO_NR_MAXITER", "REKS_FON_MICRO_LS_MAXITER", "REKS_FON_MICRO_CONVERGENCE", "REKS_FON_MICRO_MIN_EIGENVALUE", "REKS_FON_MICRO_BOUND_MARGIN", "REKS_FON_MICRO_BOUNDARY_SKIN"]},
+  {"id": "engines", "title": "Convergence engines", "keys": ["REKS_USE_TRAH", "REKS_GVB_DIIS", "REKS_DIIS_FORMULATION", "REKS_GVB_DIIS_START", "REKS_DIIS_CFM_ACTIVATION_GORB", "REKS_GVB_ROBUST_VERDICT", "REKS_GVB_LEVEL_SHIFT"]},
+  {"id": "level-shift", "title": "Level shift", "keys": ["LEVEL_SHIFT_ADAPT"]},
+  {"id": "diis-conditioning", "title": "GVB-DIIS conditioning chain (expert)", "compact": true, "keys": ["REKS_DIIS_COND_ANGLE_FILTER", "REKS_DIIS_COND_ANGLE_CUTOFF", "REKS_DIIS_COND_STALE_DELTA", "REKS_DIIS_COND_KAPPA_BYPASS", "REKS_DIIS_COND_SVD_RCOND", "REKS_DIIS_COND_COEFF_NORM_MAX", "REKS_DIIS_COND_TIKHONOV", "REKS_DIIS_COND_TIKHONOV_SCALE"]},
+  {"id": "diis-monitors", "title": "GVB-DIIS monitors / verdicts (expert)", "compact": true, "keys": ["REKS_DIIS_MON_VERDICT_RHO", "REKS_DIIS_MON_VERDICT_STREAK", "REKS_DIIS_MON_SUPPRESS_WINDOW", "REKS_DIIS_MON_NONMONOTONE_M", "REKS_GVB_GATE_STREAK", "REKS_DIIS_GUARD_LATCH_GRACE", "REKS_DIIS_GUARD_BAND_B", "REKS_DIIS_GUARD_LANDING_TOLERANCE", "REKS_DIIS_MON_PROGRESS_EPS", "REKS_DIIS_FON_BRANCH_CUTOFF", "REKS_DIIS_RESTART_BUDGET", "REKS_DIIS_MON_CYCLE", "REKS_DIIS_MON_CYCLE_WINDOW", "REKS_DIIS_MON_CYCLE_CAP_STREAK", "REKS_DIIS_ORB_BASE_MAP_DAMP"]},
+  {"id": "ipr", "title": "Delocalization penalty", "keys": ["REKS_DELOC_IPR_PENALTY", "REKS_DELOC_IPR_METHOD", "REKS_DELOC_IPR_GUARD_STREAK_LIMIT"]},
+  {"id": "report", "title": "Reporting", "keys": ["REKS_REPORT_LEVEL"]}
+ ]
+}
