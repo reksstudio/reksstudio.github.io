@@ -132,7 +132,7 @@
 
     <div>
 <section class="docsec" id="1-what-reks-studio-is">
-<h2 id="1-what-reks-studio-is">1. What REKS Studio Is</h2>
+<h2>1. What REKS Studio Is</h2>
 <div class="prose">
 <p><strong>REKS Studio</strong> is the code name (printed in the output banner) for a from-scratch,
 heavily engineered rewrite of the REKS (Restricted Ensemble-referenced Kohn-Sham)
@@ -226,7 +226,7 @@ the electronic wavefunction is parametrized and optimized once those are set.</p
 </div>
 </section>
 <section class="docsec" id="2-minimal-working-example">
-<h2 id="2-minimal-working-example">2. Minimal Working Example</h2>
+<h2>2. Minimal Working Example</h2>
 <div class="prose">
 <p>This is the built-in "how do I even start" example that REKS Studio itself
 prints whenever it hits a fatal input error (<code>reks_report.cc</code>,
@@ -258,7 +258,7 @@ uniform weight distribution. The only options you must always supply are
 </div>
 </section>
 <section class="docsec" id="3-anatomy-of-a-reks-studio-input">
-<h2 id="3-anatomy-of-a-reks-studio-input">3. Anatomy of a REKS Studio Input</h2>
+<h2>3. Anatomy of a REKS Studio Input</h2>
 <div class="prose">
 <p>A REKS Studio input is an ordinary Psi4 input with three parts:</p>
 <ol>
@@ -294,7 +294,7 @@ functionals like BHandHLYP, not just HF-like references.</p>
 </div>
 </section>
 <section class="docsec" id="4-the-configuration-catalog-and-naming-convention">
-<h2 id="4-the-configuration-catalog-and-naming-convention">4. The Configuration Catalog and Naming Convention</h2>
+<h2>4. The Configuration Catalog and Naming Convention</h2>
 <div class="prose">
 <p>For a chosen active space <code>(N,M)</code>, the number of physically distinct
 GVB-paired configurations grows combinatorially. Rather than enumerate them at
@@ -364,7 +364,7 @@ Studio prints the schemes available for the run's active space under
 </div>
 </section>
 <section class="docsec" id="5-selecting-configurations-sa_reks_configs-and-si_reks_configs">
-<h2 id="5-selecting-configurations-sa_reks_configs-and-si_reks_configs">5. Selecting Configurations: <code>SA_REKS_CONFIGS</code> and <code>SI_REKS_CONFIGS</code></h2>
+<h2>5. Selecting Configurations: <code>SA_REKS_CONFIGS</code> and <code>SI_REKS_CONFIGS</code></h2>
 <div class="prose">
 <h3 id="reks-the-active-space-required"><code>REKS</code> — the active space (required)</h3>
 <pre><code class="language-python">&quot;reks&quot;: [N, M]   # N = active electrons, M = active orbitals
@@ -458,7 +458,7 @@ number of physical (non-null-space) states if the overlap is rank-deficient.</p>
 </div>
 </section>
 <section class="docsec" id="6-bulk-tokens-and-pattern-syntax">
-<h2 id="6-bulk-tokens-and-pattern-syntax">6. Bulk Tokens and Pattern Syntax</h2>
+<h2>6. Bulk Tokens and Pattern Syntax</h2>
 <div class="prose">
 <p>Instead of spelling out config names one by one, any position that accepts a
 config name (in <code>SA_REKS_CONFIGS</code>, <code>SI_REKS_CONFIGS</code>, or the exclude clause
@@ -514,7 +514,7 @@ union, and <code>exclude:</code> is only meaningful there.</p>
 </div>
 </section>
 <section class="docsec" id="7-spin-manifolds-2s-and-multi-sector-runs">
-<h2 id="7-spin-manifolds-2s-and-multi-sector-runs">7. Spin Manifolds (2S) and Multi-Sector Runs</h2>
+<h2>7. Spin Manifolds (2S) and Multi-Sector Runs</h2>
 <div class="prose">
 <p>A REKS Studio run's <strong>sectors</strong> are the union of every spin manifold (2S)
 touched by any SA block or SI group — ordered internally by ascending 2S,
@@ -537,7 +537,7 @@ SCF), each with its own SI cassette — the "Pairing schemes" and "SA pool" /
 </div>
 </section>
 <section class="docsec" id="8-guesses-restarts-and-checkpointing">
-<h2 id="8-guesses-restarts-and-checkpointing">8. Guesses, Restarts, and Checkpointing</h2>
+<h2>8. Guesses, Restarts, and Checkpointing</h2>
 <div class="prose">
 <p>REKS calculations converge much faster — and much more reliably — from a
 good starting guess, so both example scripts are built entirely around a
@@ -594,7 +594,7 @@ restart from it).</p>
 </div>
 </section>
 <section class="docsec" id="9-fractional-occupation-numbers-fons">
-<h2 id="9-fractional-occupation-numbers-fons">9. Fractional Occupation Numbers (FONs)</h2>
+<h2>9. Fractional Occupation Numbers (FONs)</h2>
 <div class="prose">
 <p>Each geminal pair in a REKS configuration carries a pair of FONs <code>(n_p, n_q)</code>
 with <code>n_p + n_q = 2</code>, interpolated between the closed-shell (<code>n_p=2, n_q=0</code>)
@@ -722,7 +722,7 @@ at <code>REKS_REPORT_LEVEL &gt;= 4</code>):</p>
 </div>
 </section>
 <section class="docsec" id="10-the-scf-convergence-engines">
-<h2 id="10-the-scf-convergence-engines">10. The SCF Convergence Engines</h2>
+<h2>10. The SCF Convergence Engines</h2>
 <div class="prose">
 <p>REKS's orbital optimization is materially harder than ordinary HF/DFT: it
 must jointly optimize orbitals <em>and</em> FONs for an ensemble of configurations,
@@ -795,7 +795,7 @@ which monitor is actually firing before changing anything.</p>
 </div>
 </section>
 <section class="docsec" id="11-delocalization-ipr-penalty">
-<h2 id="11-delocalization-ipr-penalty">11. Delocalization (IPR) Penalty</h2>
+<h2>11. Delocalization (IPR) Penalty</h2>
 <div class="prose">
 <p><code>REKS_DELOC_IPR_PENALTY</code> (default <code>0.0</code>, i.e. off) adds a penalty term</p>
 <pre><code>E_pen = λ · Σᵢ Σ_A p_A(i)²
@@ -812,7 +812,7 @@ penalty for the rest of the SCF if it fires repeatedly without reducing IPR.</p>
 </div>
 </section>
 <section class="docsec" id="12-reporting-and-output-verbosity">
-<h2 id="12-reporting-and-output-verbosity">12. Reporting and Output Verbosity</h2>
+<h2>12. Reporting and Output Verbosity</h2>
 <div class="prose">
 <p><code>REKS_REPORT_LEVEL</code> (default <code>2</code>) controls everything REKS Studio prints:</p>
 <div class="reftable-wrap"><table>
@@ -851,7 +851,7 @@ reserve them for debugging a specific run.</p>
 </div>
 </section>
 <section class="docsec" id="13-worked-example-1-annotated-azln_reks44py">
-<h2 id="13-worked-example-1-annotated-azln_reks44py">13. Worked Example 1 — Annotated: <code>azln_reks44.py</code></h2>
+<h2>13. Worked Example 1 — Annotated: <code>azln_reks44.py</code></h2>
 <div class="prose">
 <pre><code class="language-python">import os, shutil, subprocess
 from pathlib import Path
@@ -913,7 +913,7 @@ just doesn't print/use those states beyond the default report.</p>
 </div>
 </section>
 <section class="docsec" id="14-worked-example-2-annotated-cu2cl6mm_reks66py">
-<h2 id="14-worked-example-2-annotated-cu2cl6mm_reks66py">14. Worked Example 2 — Annotated: <code>cu2cl6mm_reks66.py</code></h2>
+<h2>14. Worked Example 2 — Annotated: <code>cu2cl6mm_reks66.py</code></h2>
 <div class="prose">
 <pre><code class="language-python">template_options = {
     &quot;basis&quot;: &quot;def2-TZVP&quot;,
@@ -983,7 +983,7 @@ Unlike Example 1, this run explicitly declares <strong>two spin manifolds</stron
 </div>
 </section>
 <section class="docsec" id="15-reading-reks-studio-output">
-<h2 id="15-reading-reks-studio-output">15. Reading REKS Studio Output</h2>
+<h2>15. Reading REKS Studio Output</h2>
 <div class="prose">
 <p>With the default <code>REKS_REPORT_LEVEL = 2</code>, a run's <code>.out</code> file contains, in
 order:</p>
@@ -1024,7 +1024,7 @@ than 150 configs, block-tiled printouts of the SI matrices themselves
 </div>
 </section>
 <section class="docsec" id="16-troubleshooting-and-convergence-tips">
-<h2 id="16-troubleshooting-and-convergence-tips">16. Troubleshooting and Convergence Tips</h2>
+<h2>16. Troubleshooting and Convergence Tips</h2>
 <div class="prose">
 <ul>
 <li><strong>SCF converges instantly to a suspiciously wrong energy after a restart.</strong>
@@ -1062,7 +1062,7 @@ than 150 configs, block-tiled printouts of the SI matrices themselves
 </div>
 </section>
 <section class="docsec" id="17-full-option-quick-reference">
-<h2 id="17-full-option-quick-reference">17. Full Option Quick-Reference</h2>
+<h2>17. Full Option Quick-Reference</h2>
 <div class="prose">
 <p>All options below are read in <code>psi4/src/read_options.cc</code> under
 <code>SUBSECTION REKS</code>. Every array-valued option in the first table has an
@@ -1502,7 +1502,7 @@ for the canonical, always-current wording.)</em></p>
 </div>
 </section>
 <section class="docsec" id="18-references">
-<h2 id="18-references">18. References</h2>
+<h2>18. References</h2>
 <div class="prose">
 <ul>
 <li>REKS Studio banner authorship: Konstantin Komarov, Michael Filatov, Seung
