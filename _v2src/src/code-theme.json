@@ -1,0 +1,14 @@
+{
+  "name": "reks",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#10131A",
+    "editor.foreground": "#E7E6E2"
+  },
+  "tokenColors": [
+    { "scope": ["comment"], "settings": { "foreground": "#6E7686" } },
+    { "scope": ["string"], "settings": { "foreground": "#E7A98A" } },
+    { "scope": ["string.unquoted.argument"], "settings": { "foreground": "#E7E6E2" } },
+    { "scope": ["keyword.control.import", "constant.language"], "settings": { "foreground": "#7FA0DE" } }
+  ]
+}

@@ -1,0 +1,29 @@
+---
+import '../styles/fonts.css';
+import '../styles/tokens.css';
+import '../styles/base.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const speculationRules = JSON.stringify({
+  prefetch: [{ where: { href_matches: `${base}*` }, eagerness: 'moderate' }],
+});
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>{title}</title>
+<link rel="icon" href="data:,">
+<script type="speculationrules" is:inline set:html={speculationRules}></script>
+</head>
+<body>
+<slot />
+</body>
+</html>

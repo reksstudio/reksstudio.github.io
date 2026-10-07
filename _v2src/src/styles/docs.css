@@ -1,0 +1,22 @@
+/* docs-style pages: hero, two-column layout, table of contents, sections */
+header.docshero{ padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+header.docshero h1{ font-size: clamp(1.9rem, 4vw, 2.7rem); max-width: 20ch; }
+header.docshero h1 + p{ margin-top: 16px; color: var(--ink-soft); max-width: 56ch; font-size: 1.05rem; }
+
+.docs-layout{ display: grid; grid-template-columns: var(--toc-width, 200px) 1fr; gap: 56px; padding: 56px 0 96px; align-items: start; }
+@media (max-width: 860px){ .docs-layout{ grid-template-columns: 1fr; } }
+
+.toc{ position: sticky; top: 88px; display: flex; flex-direction: column; gap: 2px; }
+@media (max-width: 860px){ .toc{ position: static; flex-direction: row; flex-wrap: wrap; gap: 14px; margin-bottom: 8px; } }
+.toc a{
+  text-decoration: none; color: var(--ink-faint); font-size: 0.88rem; padding: 6px 0;
+  border-left: 2px solid transparent; padding-left: 12px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+@media (max-width: 860px){ .toc a{ border-left: none; padding-left: 0; border-bottom: 1px solid var(--line); padding-bottom: 4px; } }
+.toc a:hover{ color: var(--ink); border-color: var(--copper); }
+
+.docsec{ margin-bottom: 72px; scroll-margin-top: 88px; }
+.docsec:last-child{ margin-bottom: 0; }
+.docsec h2{ font-size: 1.5rem; margin-bottom: 18px; }
+.docsec .prose p{ max-width: 68ch; }

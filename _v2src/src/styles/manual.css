@@ -1,0 +1,40 @@
+header.docshero h1{ max-width: 30ch; }
+header.docshero .tagline{ margin-top: 16px; color: var(--ink-soft); max-width: 62ch; font-size: 1.05rem; }
+header.docshero .branch{ margin-top: 6px; color: var(--ink-faint); font-size: 0.9rem; font-family: var(--mono); }
+.banner{ margin-top: 26px; border-left: 3px solid var(--copper); background: var(--bg-raised); padding: 16px 20px; font-size: 0.92rem; color: var(--ink-soft); max-width: 62ch; line-height: 1.7; }
+
+.docs-layout{ --toc-width: 240px; }
+/* content column width independent of which sections are rendered: wide tables scroll inside .reftable-wrap */
+.docs-layout > :last-child{ min-width: 0; }
+.toc{ max-height: calc(100vh - 110px); overflow-y: auto; }
+@media (max-width: 860px){ .toc{ max-height: none; } }
+.toc a{ font-size: 0.85rem; }
+
+/* off-screen sections skip rendering; containment keeps trailing child margins inside the
+   section, so they are zeroed to keep the gap between sections at 72px */
+.docsec{ content-visibility: auto; contain-intrinsic-block-size: auto 1200px; }
+.docsec:not(:last-child) .prose > :last-child,
+.docsec:not(:last-child) .prose > :last-child > li:last-child{ margin-bottom: 0; }
+.docsec h2, .docsec h3{ scroll-margin-top: 88px; }
+.docsec h3{ font-size: 1.12rem; margin: 30px 0 12px; }
+
+.docsec .prose p{ max-width: 74ch; margin: 0 0 16px; }
+.prose ul, .prose ol{ color: var(--ink-soft); max-width: 74ch; margin: 0 0 16px; padding-left: 22px; }
+.prose li{ margin-bottom: 8px; }
+.prose strong{ color: var(--ink); }
+
+code{ font-family: var(--mono); font-size: 0.86em; background: var(--bg-raised); border: 1px solid var(--line); border-radius: 4px; padding: 0.1em 0.4em; }
+pre{ border-radius: 6px; padding: 20px 22px; margin: 0 0 20px; }
+pre code{ background: none; border: none; padding: 0; font-size: 0.85rem; line-height: 1.7; }
+
+.reftable-wrap{ overflow-x: auto; margin: 8px 0 24px; }
+table{ border-collapse: collapse; width: 100%; min-width: 480px; font-size: 0.9rem; }
+thead th{ text-align: left; font-family: var(--sans); font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--ink-faint); padding: 8px 16px 8px 0; white-space: nowrap; }
+tbody td{ vertical-align: top; padding: 10px 16px 10px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+tbody td:first-child{ font-family: var(--mono); font-size: 0.82rem; color: var(--blue); white-space: nowrap; }
+tbody tr:last-child td{ border-bottom: none; }
+@media (max-width: 860px){
+  table{ min-width: 0; }
+  tbody td:first-child{ white-space: normal; }
+  tbody td:first-child code{ white-space: nowrap; }
+}

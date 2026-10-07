@@ -1,0 +1,15 @@
+/* documentation page only: code blocks, keyword reference, notes */
+.terminal{ padding: 24px 26px; margin: 20px 0; font-size: 0.85rem; line-height: 1.7; }
+
+.kwgroup{ margin-top: 28px; }
+.kwgroup h3{ font-family: var(--sans); font-weight: 600; font-size: 0.95rem; color: var(--ink); margin-bottom: 4px; letter-spacing: 0.01em; }
+.kwgroup .kwgroup-note{ font-size: 0.88rem; color: var(--ink-faint); margin-bottom: 12px; max-width: 62ch; }
+.kwlist{ border-top: 1px solid var(--line); }
+.kwrow{ display: grid; grid-template-columns: 230px 1fr; gap: 22px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+@media (max-width: 700px){ .kwrow{ grid-template-columns: 1fr; gap: 4px; } }
+.kwrow .kwname{ font-family: var(--mono); font-size: 0.86rem; color: var(--blue); }
+.kwrow .kwalias{ display: block; font-size: 0.74rem; color: var(--ink-faint); margin-top: 4px; }
+.kwrow p{ margin: 0; color: var(--ink-soft); font-size: 0.93rem; }
+
+.note{ border-left: 3px solid var(--copper); background: var(--bg-raised); padding: 14px 18px; font-size: 0.92rem; color: var(--ink-soft); margin-top: 24px; max-width: 68ch; }
+.note strong{ color: var(--ink); }

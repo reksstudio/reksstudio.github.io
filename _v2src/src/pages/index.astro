@@ -1,0 +1,243 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import FooterLanding from '../components/FooterLanding.astro';
+import Code from '../components/Code.astro';
+import { literature } from '../data/literature';
+import { buildFromSource, landingJob } from '../data/snippets';
+import figure from '../assets/figures/BFN_energies.svg?url';
+import '../styles/landing.css';
+
+const base = import.meta.env.BASE_URL;
+const navLinks = [
+  { href: '#problem', label: 'The problem' },
+  { href: '#architecture', label: 'Architecture' },
+  { href: '#results', label: 'Results' },
+  { href: '#literature', label: 'Literature' },
+  { href: '#install', label: 'Install', class: 'hl' },
+  { href: '#cite', label: 'Cite' },
+  { href: `${base}docs/`, label: 'Docs', class: 'hl2' },
+];
+const chart = [
+  ['3', '8px', '0.80rem', '(2,2)'],
+  ['18', '10px', '0.85rem', '(4,4)'],
+  ['161', '20px', '0.95rem', '(6,6)'],
+  ['1934', '60px', '1.40rem', '(8,8)'],
+  ['29082', '170px', '2.00rem', '(10,10)'],
+];
+---
+<Base title="REKS Studio — Ensemble DFT for strongly correlated systems">
+<Nav variant="dark" logoHref="#top" links={navLinks} />
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-mark" aria-hidden="true">RS</div>
+    <div>
+      <div class="kicker">Ensemble DFT, generated not derived</div>
+      <h1 class="display">Strongly correlated chemistry, at DFT cost</h1>
+      <p class="lede">REKS Studio automatically derives and compiles the working equations of ensemble density functional theory for any active space - turning a twenty-year manual bottleneck into a binary catalogue.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#architecture">Explore the method</a>
+        <a class="btn btn-ghost" href="https://github.com/ConstLike/psi4/tree/kk/reks.studio" target="_blank" rel="noopener noreferrer">Source ↗</a>
+      </div>
+    </div>
+    <div class="hero-rings-wrap">
+      <div class="orbital-spin" style="width:100%; min-width:0;">
+        <svg class="hero-rings" width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" shape-rendering="optimizeSpeed">
+          <g stroke="var(--mint)" fill="none" stroke-width="1.4">
+            <circle cx="330" cy="260" r="90" opacity="0.5"/>
+            <circle cx="330" cy="260" r="120" opacity="0.4"/>
+            <circle cx="330" cy="260" r="150" opacity="0.3"/>
+            <circle cx="330" cy="260" r="180" opacity="0.22"/>
+            <circle cx="420" cy="340" r="90" opacity="0.4"/>
+            <circle cx="420" cy="340" r="130" opacity="0.28"/>
+            <circle cx="420" cy="340" r="170" opacity="0.18"/>
+            <circle cx="250" cy="360" r="60" opacity="0.35"/>
+            <circle cx="250" cy="360" r="100" opacity="0.22"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The bottleneck</div>
+      <h2>Two&nbsp;electrons,&nbsp;two&nbsp;orbitals&nbsp;- for twenty years</h2>
+    </div>
+    <div class="growth-row">
+      <div class="prose reveal">
+        <p>REKS and its extensions, SA-REKS and SSR, treat strong electron correlation by letting orbitals take fractional occupations across an ensemble of electronic configurations - an accurate, low-cost alternative to expensive wavefunction methods.</p>
+        <p>But every larger active space needs its own working equations, derived by hand from scratch. The number of configurations and orbital-pairing schemes grows combinatorially with active-space size, so the derivation quickly becomes unmanageable. In practice, that has confined the method to its smallest case: two electrons in two orbitals.</p>
+      </div>
+      <div class="reveal">
+        <div class="chart" aria-hidden="true">
+          {chart.map(([count, height, size, space]) => (
+            <div class="bar-col"><div class="bar-label" style={`height:${height}; font-size:${size};`}>{count}</div><div class="bar-label" style="font-size:1.00rem;">{space}</div></div>
+          ))}
+        </div>
+        <div class="chart-note">Configurations to derive by hand, schematic - not to scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Why it's fast</div>
+      <h2>One set of integrals, many electronic configurations</h2>
+    </div>
+    <div class="prose reveal">
+      <p>The expensive parts of any electronic structure calculation are the two-electron integrals and the DFT quadrature grid. A naive implementation recomputes both for every configuration in the ensemble - which is exactly what makes it unfeasible.</p>
+      <p>REKS Studio computes them once per calculation and reuses them across every microstate, assembling each configuration's Fock matrix by weighted addition rather than running an independent KS-DFT calculation for it. That reuse, not any single algorithmic trick, is what brings a fully multiconfigurational treatment down to a cost comparable to ordinary DFT.</p>
+      <p>Making that reuse work for an arbitrary active space still requires the right working equations for each case. Those are generated automatically by a symbolic-algebra engine rather than derived by hand - necessary groundwork, but the speed comes from what happens with the equations afterward.</p>
+    </div>
+    <div class="arch reveal" style="margin-top:36px;">
+      <div class="arch-node">
+        <h3>Integrals & grids</h3>
+        <p>Computed once per calculation, regardless of how many configurations the active space produces.</p>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <h3>Shared across microstates</h3>
+        <p>Every configuration in the ensemble draws on the same integrals and grid, never recomputing them.</p>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <h3>Weighted Fock assembly</h3>
+        <p>Configuration energies combine by weighted addition instead of separate SCF calculations.</p>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <h3>Ensemble energy</h3>
+        <p>Multiconfigurational accuracy at a cost that tracks ordinary Kohn–Sham DFT.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Validated at scale</div>
+      <h2>Active spaces up to ten electrons in ten orbitals</h2>
+    </div>
+    <div class="stats reveal">
+      <div>
+        <div class="stat-num">67</div>
+        <div class="stat-label">molecules from the QUEST benchmark set, checked against theoretical best estimates</div>
+      </div>
+      <div>
+        <div class="stat-num">10e,10o</div>
+        <div class="stat-label">largest active space validated — previously inaccessible to routine calculation</div>
+      </div>
+      <div>
+        <div class="stat-num">≈ KS-DFT</div>
+        <div class="stat-label">computational cost, by sharing integrals and grids across all microstates</div>
+      </div>
+    </div>
+    <div class="syslist reveal">
+      <div class="sysrow"><div class="sysname">H₂ · H₄ · H₆ · H₈</div><p>Sequential bond dissociation benchmarked directly against full configuration interaction.</p></div>
+      <div class="sysrow"><div class="sysname">C₂H₄ · N₂ · C₂H₂</div><p>Single, double, and triple bond breaking along full potential energy curves.</p></div>
+      <div class="sysrow"><div class="sysname">C₂ (carbon dimer)</div><p>Benchmarked against FCI and experimental spectroscopic constants.</p></div>
+      <div class="sysrow"><div class="sysname">Zethrene series</div><p>Open-shell diradical character tracked across increasing active-space size.</p></div>
+      <div class="sysrow"><div class="sysname">Tetra[3]trianguleno[3]rhombene</div><p>A synthesized magnetic quantum material — see below.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="case">
+  <div class="wrap">
+    <div class="case reveal">
+      <div class="kicker">Real material, real spectrum</div>
+      <h2>Reproducing the magnetic ladder of a synthesized quantum material</h2>
+      <p style="max-width:56ch; margin-top:18px;">Tetra[3]trianguleno[3]rhombene is an open-shell nanographene whose magnetic energy levels have been mapped experimentally by scanning tunneling microscopy — but only partly explained by earlier calculations. Pushing the active space from four to ten electrons resolves the same magnetic ladder seen in the experiment, something smaller active spaces couldn't capture.</p>
+      <div class="case-figure">
+        <div class="fig-card">
+          <img src={figure} width="1472" height="1435" loading="lazy" decoding="async" alt="Computed S0, T1, Q1, and H1 state energies across three active-space treatments">
+        </div>
+        <p class="fig-caption">Computed ground (S0) and low-lying triplet, quintet, and heptet (T1, Q1, H1) state energies, in eV, across three treatments of the active space — the same widening that resolves the magnetic ladder against experiment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Get started</div>
+      <h2>Build from source, then run any Psi4 input</h2>
+    </div>
+    <div class="prose reveal">
+      <p>REKS Studio is currently a development branch of Psi4, not yet a separate package or conda release. Building it follows Psi4's own build process — a working equations catalogue is generated and compiled in as part of the build, so no extra step is needed afterward.</p>
+    </div>
+    <Code code={buildFromSource} lang="bash" class="reveal" />
+    <div class="prose reveal" style="margin-top:32px;">
+      <p>Once built, REKS runs as an ordinary reference option — no separate binary or import. Below is a simplified REKS(4,4) job, adapted from a real input file.</p>
+    </div>
+    <Code code={landingJob} lang="python" class="reveal" />
+    <div class="syslist reveal" style="margin-top:36px;">
+      <div class="sysrow"><div class="sysname">reference / reks</div><p>Turns on the REKS method and sets the active space as [electrons, orbitals].</p></div>
+      <div class="sysrow"><div class="sysname">sa_reks_configs</div><p>The state-averaged ensemble: which configurations participate in orbital optimization.</p></div>
+      <div class="sysrow"><div class="sysname">si_reks_configs</div><p>The state-interaction ensemble, defined independently of the SA set, mixed afterward for the final multi-state energies.</p></div>
+      <div class="sysrow"><div class="sysname">sa_reks_extra</div><p>Extra determinants — such as a high-spin state — carrying their own weight in the SA ensemble to help SCF convergence, while staying out of the state-interaction step.</p></div>
+    </div>
+    <p style="margin-top:24px; font-size:0.92rem;"><a href={`${base}docs/`} style="color:var(--blue); text-decoration:underline;">Full keyword reference and build instructions →</a></p>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">What's next</div>
+      <h2>First in a series</h2>
+    </div>
+    <div class="roadmap reveal">
+      <div class="rmap-row current">
+        <div class="rmap-num">01</div>
+        <div><h3>Automated derivation & scalable energies — this release</h3><p>Working equations for arbitrary active spaces, compiled into a shared runtime at KS-DFT cost.</p></div>
+      </div>
+      <div class="rmap-row next">
+        <div class="rmap-num">02</div>
+        <div><h3>Analytic energy gradients — next release</h3><p>Extending the symbolic engine to derive gradients, enabling automated geometry optimization.</p></div>
+      </div>
+      <div class="rmap-row">
+        <div class="rmap-num">03</div>
+        <div><h3>Excited-state dynamics</h3><p>Simulating energy flow, bond rearrangement, and relaxation in strongly correlated excited states.</p></div>
+      </div>
+      <div class="rmap-row">
+        <div class="rmap-num">04</div>
+        <div><h3>eDFT-specific functionals</h3><p>Exchange-correlation functionals designed for dynamic correlation alone, freed from also describing strong correlation.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="literature">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Selected literature</div>
+      <h2>Key papers behind the REKS/SSR method</h2>
+    </div>
+    <div class="prose reveal">
+      <p>REKS Studio automates and scales a method built up over two decades, largely by Michael Filatov and collaborators. The papers below trace it from its restricted-ensemble formulation through the multi-pair extensions and analytic derivatives REKS Studio generalizes.</p>
+    </div>
+    <div class="pubs-list reveal">
+      {literature.map((ref) => (
+        <div class="pub-row">
+          <div class="pub-year">{ref.year}</div>
+          <div>
+            <p class="pub-cite">{ref.authors}. <em>{ref.title}</em> <span class="pub-journal">{ref.journal}</span>, {ref.locator}.</p>
+            <a class="pub-link" href={ref.href} target="_blank" rel="noopener noreferrer">{ref.linkText} ↗</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<FooterLanding />
+</Base>

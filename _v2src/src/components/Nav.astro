@@ -1,0 +1,23 @@
+---
+interface Link {
+  href: string;
+  label: string;
+  class?: string;
+}
+
+interface Props {
+  variant: 'dark' | 'light';
+  logoHref: string;
+  links: Link[];
+}
+
+const { variant, logoHref, links } = Astro.props;
+---
+<nav class={`nav-${variant}`}>
+  <div class="wrap">
+    <a class="logo" href={logoHref}>REKS<span class="dot">·</span>Studio</a>
+    <div class="navlinks">
+      {links.map((link) => <a href={link.href} class={link.class}>{link.label}</a>)}
+    </div>
+  </div>
+</nav>

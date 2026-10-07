@@ -1,0 +1,3 @@
+/* Shiki block rendered through components/Code.astro; colours come from code-theme.json */
+.terminal{ border-radius: 6px; font-family: var(--mono); }
+.terminal code{ font: inherit; }

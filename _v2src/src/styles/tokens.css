@@ -1,0 +1,19 @@
+:root{
+  --bg: #F5F5F2;
+  --bg-raised: #EFEEE9;
+  --ink: #14181F;
+  --ink-soft: #4A5160;
+  --ink-faint: #8A8F98;
+  --blue: #2A4B8D;
+  --copper: #B5502A;
+  --line: #D8D6CD;
+  --navy-900: #0A1626;
+  --navy-800: #123055;
+  --navy-700: #1D3E68;
+  --mint: #D6E6DC;
+  --copper-bright: #DE7F3D;
+  --gold: #D9B36C;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+}

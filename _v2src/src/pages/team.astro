@@ -1,0 +1,49 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import FooterBack from '../components/FooterBack.astro';
+import { team } from '../data/team';
+import '../styles/docs.css';
+import '../styles/team.css';
+
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Team — REKS Studio">
+<Nav variant="light" logoHref={base} links={[{ href: base, label: 'Overview' }]} />
+
+<header class="docshero">
+  <div class="wrap">
+    <div class="kicker">Team Members</div>
+    <h1 class="team-title">Current members of REKS&nbsp;Studio developers team</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="docs-layout">
+    <div class="wrapper">
+      {team.map((member) => (
+        <div class="media-container">
+          <Picture
+            class="media-image"
+            src={member.photo}
+            alt={member.alt}
+            width={180}
+            densities={[1, 2]}
+            formats={['avif', 'webp']}
+            fallbackFormat="jpg"
+            loading="eager"
+          />
+          <div class="media-text">
+            <h2>{member.name}</h2>
+            <p>Email:&nbsp;{member.email}</p>
+            {member.link && <a href={member.link.href} target="_blank" rel="noopener noreferrer">{member.link.label}</a>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<FooterBack href={base} label="Back to REKS Studio overview" />
+</Base>

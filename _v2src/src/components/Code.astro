@@ -1,0 +1,14 @@
+---
+import { Code as Shiki } from 'astro:components';
+import theme from '../code-theme.json';
+import '../styles/code.css';
+
+interface Props {
+  code: string;
+  lang: string;
+  class?: string;
+}
+
+const { code, lang, class: extraClass } = Astro.props;
+---
+<Shiki code={code} lang={lang} theme={theme} class={extraClass ? `terminal ${extraClass}` : 'terminal'} />

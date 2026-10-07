@@ -1,0 +1,6 @@
+.wrapper{ display: flex; flex-direction: column; gap: 10px; max-width: 800px; margin: 10px auto; }
+.media-container{ display: flex; align-items: center; gap: 20px; max-width: 800px; margin: 20px auto; }
+.media-image{ display: block; width: 180px; height: auto; border-radius: 8px; }
+.media-text{ font-family: Arial, sans-serif; line-height: 1.6; }
+.media-text h2{ max-width: 200px; margin-top: 1px; }
+header.docshero h1.team-title{ max-width: 80ch; margin-top: 18px; }
