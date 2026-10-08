@@ -2,7 +2,7 @@
 title: Diagnose
 ---
 
-## 15\. Diagnose {#diagnose}
+## 16\. Diagnose {#diagnose}
 
 Each entry names what the output prints, then what to do. A converged SCF can still show several of them.
 
@@ -32,9 +32,9 @@ The GVB-DIIS monitors (§scf-engines) catch and restart such runs. If that stays
 
 #### FON pinned at a bound, symmetry-broken charges {#diag-fon-pinned}
 
-`Post-Iterations` prints `n_a = 2.000000`, `n_b = 0.000000`, and equivalent atoms carry different charges. Example: 90° C₂H₄ from a cold SAD start; the RKS seed gives n 1/1 (§check-solution). On the cold branch (a separate BH&HLYP/6-31G run; §check-solution uses 6-31G(d)) the analytic S1 gradient agrees with a 5-point finite difference to 9·10<sup>−8</sup> E<sub>h</sub>/a<sub>0</sub>; a 2-point difference deviates by 2.3·10<sup>−2</sup> because its −h point converges to the other solution.
+`Post-Iterations` prints `n_a = 2.000000`, `n_b = 0.000000`, `gradient()` prints `[GRAD-FON] … pinned`, and equivalent atoms carry different charges. Example: 90° C₂H₄ from a cold SAD start; the RKS seed gives n 1/1 (§check-solution). On the cold branch (a separate BH&HLYP/6-31G run; §check-solution uses 6-31G(d)) the analytic S1 gradient agrees with a 5-point finite difference to 9·10<sup>−8</sup> E<sub>h</sub>/a<sub>0</sub>; a 2-point difference deviates by 2.3·10<sup>−2</sup> because its −h point converges to the other solution.
 
-Seed from an RKS run at the same geometry (§seed-orbitals) or from a neighbouring geometry (§restart) and compare the FON columns between runs; geminals entering only SI configurations can also lie at the bound (§si-fons).
+Seed from an RKS run at the same geometry (§seed-orbitals) or from a neighbouring geometry (§restart) and compare the FON columns between runs; geminals entering only SI configurations can also lie at the bound (§si-fons). Optimizations: §check-optimization.
 
 #### Active orbitals localize on one fragment {#diag-localized}
 

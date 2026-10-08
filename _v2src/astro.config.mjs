@@ -18,7 +18,7 @@ export default defineConfig({
   },
   compressHTML: true,
   markdown: {
-    shikiConfig: { theme: codeTheme, langAlias: { psithon: 'text' } },
+    shikiConfig: { theme: codeTheme, langAlias: { psithon: 'text', log: 'text' } },
     processor: satteri({
       features: { smartPunctuation: false, math: true, headingAttributes: true },
       mdastPlugins: [() => referenceMdast()],

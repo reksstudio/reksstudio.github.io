@@ -2,7 +2,7 @@
 title: Output and properties
 ---
 
-## 13\. Reading the Output {#reading-output}
+## 14\. Reading the Output {#reading-output}
 
 ### Print order {#print-order}
 
@@ -62,7 +62,7 @@ State labels such as `S1`, `T2`; `<prefix>` = `WRITER_FILE_LABEL` when set, else
 
 @@fragment summary@@
 
-## 14\. Properties {#properties}
+## 15\. Properties {#properties}
 
 Unrelaxed properties (`SI_REKS_ANALYSIS`) use the densities ρ<sup>(IJ)</sup> = ⟨I|Ê<sub>pq</sub>|J⟩ of the SSR states in the SA-REKS orbitals; relaxed properties use the relaxed density P<sup>r</sup> of the states named in `SI_REKS_PROPERTY_FOR` (§densities). ρ<sup>(IJ)</sup> is spin-summed and active (MO coefficients C<sub>a</sub>); core density D<sup>c</sup>.
 

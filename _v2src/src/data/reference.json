@@ -69,13 +69,14 @@
   "SI_REKS_ANALYSIS": {"option": true, "type": "array", "default": "all blocks except multipoles > 2", "call": "[\"all\"]", "fragments": ["state-analysis"],
    "rules": [
     "Property blocks to compute, print and store. Unset: every block except multipoles above order 2. `[]`: `TRANSITION_DIPOLE` and `NO_OCCUPATIONS`. A list: these two plus the listed names.",
-    "Names: `DIPOLE`, `QUADRUPOLE`, `MULTIPOLE(n)`, `TRANSITION_DIPOLE`, `TRANSITION_QUADRUPOLE`, `E_TDM_VEL`, `M_TDM`, `MULLIKEN_CHARGES`, `LOWDIN_CHARGES`, `TRANSITION_CHARGES`, `MAYER_INDICES`, `WIBERG_LOWDIN_INDICES`, `NO_OCCUPATIONS`, `DENSITIES`, `RADICAL`, `NTO`, `EXCITON`, `FRAGMENT_COUPLINGS`, `ALL`, case-insensitive; each property entry names its switch (§properties).",
+    "Names: `DIPOLE`, `QUADRUPOLE`, `MULTIPOLE(n)`, `TRANSITION_DIPOLE`, `TRANSITION_QUADRUPOLE`, `E_TDM_VEL`, `M_TDM`, `MULLIKEN_CHARGES`, `LOWDIN_CHARGES`, `MULLIKEN_SPINS`, `LOWDIN_SPINS`, `TRANSITION_CHARGES`, `MAYER_INDICES`, `WIBERG_LOWDIN_INDICES`, `NO_OCCUPATIONS`, `DENSITIES`, `RADICAL`, `NTO`, `EXCITON`, `FRAGMENT_COUPLINGS`, `ALL`, case-insensitive; each property entry names its switch (§properties). `MULLIKEN_SPINS`, `LOWDIN_SPINS` act on 2S > 0 cassettes (§atomic-spins).",
+    "A block another listed block needs is computed without being printed or stored: `RADICAL` needs `NO_OCCUPATIONS`, `FRAGMENT_COUPLINGS` the state and transition charges and, in a 2S > 0 cassette, the Löwdin spins.",
     "`MULTIPOLE(n)` adds `DIPOLE` and `TRANSITION_DIPOLE`, for n ≥ 2 `QUADRUPOLE` and `TRANSITION_QUADRUPOLE`, for n ≥ 3 the multipoles of order 3..n. `ALL` switches on every name except `MULTIPOLE(n)`: `[\"ALL\", \"MULTIPOLE(4)\"]` adds both.",
     "`State analysis` lists every name with a description, names not run struck through; with `SI_REKS_PROPERTY_FOR` it adds the states of each cassette that receive relaxed properties (and EKT when `REKS_EKT` is true)."
    ],
-   "brief": "State-property blocks to compute: `DIPOLE`, `QUADRUPOLE`, `MULTIPOLE(n)`, `TRANSITION_DIPOLE`, `TRANSITION_QUADRUPOLE`, `E_TDM_VEL`, `M_TDM`, `MULLIKEN_CHARGES`, `LOWDIN_CHARGES`, `TRANSITION_CHARGES`, `MAYER_INDICES`, `WIBERG_LOWDIN_INDICES`, `NO_OCCUPATIONS`, `DENSITIES`, `RADICAL`, `NTO`, `EXCITON`, `FRAGMENT_COUPLINGS`, `ALL`. Unset: all blocks except multipoles above order 2. `[]`: `TRANSITION_DIPOLE` and `NO_OCCUPATIONS` only."},
+   "brief": "State-property blocks to compute: `DIPOLE`, `QUADRUPOLE`, `MULTIPOLE(n)`, `TRANSITION_DIPOLE`, `TRANSITION_QUADRUPOLE`, `E_TDM_VEL`, `M_TDM`, `MULLIKEN_CHARGES`, `LOWDIN_CHARGES`, `MULLIKEN_SPINS`, `LOWDIN_SPINS`, `TRANSITION_CHARGES`, `MAYER_INDICES`, `WIBERG_LOWDIN_INDICES`, `NO_OCCUPATIONS`, `DENSITIES`, `RADICAL`, `NTO`, `EXCITON`, `FRAGMENT_COUPLINGS`, `ALL`. Unset: all blocks except multipoles above order 2. `[]`: `TRANSITION_DIPOLE` and `NO_OCCUPATIONS` only."},
   "SI_REKS_ANALYSIS_CHANGE_MIN": {"option": true, "type": "double", "default": "`0.1`", "tag": "default: 0.1", "call": "0.05",
-   "rules": ["Smallest state-to-state change of a charge or bond index that is printed (§atomic-charges)."],
+   "rules": ["Smallest state-to-state change of a charge, spin population or bond index that is printed (§atomic-charges, §atomic-spins)."],
    "brief": "Smallest state-to-state change of a charge or bond index that is printed."},
   "SI_REKS_OVERLAP_CUTOFF": {"option": true, "type": "double", "default": "`1e-10`", "tag": "default: 1e-10", "call": "1e-8",
    "rules": [

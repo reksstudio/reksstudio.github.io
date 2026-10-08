@@ -2,7 +2,7 @@
 title: Input
 ---
 
-## 4\. Active Space and Catalog {#catalog}
+## 5\. Active Space and Catalog {#catalog}
 
 Configurations come from binary catalogs, one per `(N,M)` and geminal-width set, in `<PSIDATADIR>/reks_catalog` (a non-empty environment variable `PSI4_REKS_CATALOG` replaces the directory). A catalog lists every spin-inequivalent configuration of every spin manifold, each with a **name** and a **type**. Installed:
 
@@ -59,7 +59,7 @@ No option selects a pairing scheme (§pairing-scheme); the configurations of the
 
 @@fragment pairing-schemes@@
 
-## 5\. Bulk Tokens and Pattern Syntax {#bulk-tokens}
+## 6\. Bulk Tokens and Pattern Syntax {#bulk-tokens}
 
 Accepted wherever a configuration name is (SA blocks, SI cassettes, `exclude:`):
 
@@ -81,7 +81,7 @@ A scheme token may union several indices: `"single-scheme-1-2-3"`, or `"single-s
 | Same configuration twice (directly or by overlapping tokens) | input error; combine overlapping selections into one multi-index token | kept once, at its first position |
 | `exclude:` | not accepted | subtracts |
 
-## 6\. SA Pool and SI Cassettes {#selecting}
+## 7\. SA Pool and SI Cassettes {#selecting}
 
 ### SA pool {#sa-pool}
 
@@ -91,7 +91,7 @@ A scheme token may union several indices: `"single-scheme-1-2-3"`, or `"single-s
 
 @@options si-cassettes@@
 
-## 7\. Spin Manifolds (2S) and Multi-Sector Runs {#spin-manifolds}
+## 8\. Spin Manifolds (2S) and Multi-Sector Runs {#spin-manifolds}
 
 All sectors of a run (§run-sector) share one SCF. Without `SA_REKS_CONFIGS` the SA ensemble is the default pool (§sa_reks_configs).
 
@@ -135,7 +135,7 @@ All sectors of a run (§run-sector) share one SCF. Without `SA_REKS_CONFIGS` the
 
 With SI states on two or more manifolds the report prints §spin-state-energetics. Per-sector arrays carry a sector prefix for s > 0 (§variable-names).
 
-## 8\. Properties, Gradients, Couplings {#response}
+## 9\. Properties, Gradients, Couplings {#response}
 
 Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `e` refers to cassette `e`; roots as in §ssr-states.
 
@@ -156,5 +156,7 @@ psi4.set_options({
 @@options state-properties@@
 
 ### Gradients and couplings {#gradients-couplings}
+
+Worked call, optimization and dynamics: §opt-dynamics.
 
 @@options response@@

@@ -18,7 +18,9 @@ A functional, a basis and an SCF type are chosen as for any Psi4 reference, and 
 | --- | --- | --- |
 | First calculation of a new molecule | RKS seed, `restart_file`, §guess_active_window (§first-calculation) | §check-solution |
 | Energies of several states | default cassette, or §si_reks_configs | §ssr-energies |
-| S1 gradient and S1/S2 coupling | `"si_reks_grad": [[1]]`, `"si_reks_nac": [[[1, 2]]]`, `psi4.gradient(...)` | §state-gradient, §nac |
+| S1 gradient and S1/S2 coupling | `"si_reks_grad": [[1]]`, `"si_reks_nac": [[[1, 2]]]`, `psi4.gradient(...)` (§one-gradient) | §state-gradient, §nac |
+| Geometry optimization of a state | `reks_dlfind.py`, §geometry-optimization | §check-optimization |
+| Surface-hopping dynamics | `reks_unixmd.py`, §surface-hopping | §check-trajectory |
 | Transition dipoles, oscillator strengths | default §si_reks_analysis | §transition-dipole |
 | Dipoles, charges, bond indices, NTOs, relaxed properties, EKT | §state-properties | §print-order |
 | Triplet states | `"si_reks_2spin": [2]` (§input-patterns) | §ssr-energies |
@@ -105,7 +107,7 @@ H₂ without `symmetry c1`:
 
 ### Worked inputs {#worked-inputs}
 
-Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded first calculations: §first-inputs.
+Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded first calculations: §first-inputs; optimization and dynamics: §dynamics-inputs.
 
 | File | Calculation | Result |
 | --- | --- | --- |

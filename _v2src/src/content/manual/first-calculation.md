@@ -18,6 +18,7 @@ Each pair of REKS(M,M) (§pairing-scheme) is a bonding orbital and its antibondi
 | --- | --- | --- |
 | C₂H₄, 90° twist | (2,2) | (π, π\*): in-phase and out-of-phase combination of the two C 2p orbitals of the twisted bond |
 | s-trans-butadiene | (4,4) | (π₁, π₄\*) & (π₂, π₃\*) |
+| all-trans-hexatriene | (6,6) | (π₁, π₆\*) & (π₂, π₅\*) & (π₃, π₄\*) |
 
 Scheme 0 (§pairing-scheme) sets the token order of a window: the bonding orbitals first, their partners in reverse order:
 
@@ -68,10 +69,15 @@ The seeds on this page use `scf_type pk`. A localized seed is replaced by an RKS
 
 Open the RKS Molden file in a viewer, name the M orbitals by character and note their 0-based columns: MO `kA` is column k − 1. Without a viewer, the population snippet above with the sum over the AO functions of one type (e.g. the p functions normal to a molecular plane for π) separates σ from π.
 
-<figure>
-<img src="../../figures/bd_rks_pi.svg" alt="s-trans-butadiene RKS orbitals 14A to 17A, contour slices above the molecular plane" loading="lazy" decoding="async" width="691" height="120">
-
-<figcaption>s-trans-butadiene, RKS BH&amp;HLYP/6-31G(d), slice 0.6 Å above the molecular plane, blue + / copper −. Left to right: 14A HOMO−1 π₁ (ε −0.3718 E<sub>h</sub>), 15A HOMO π₂ (−0.2689), 16A LUMO π₃* (0.0268), 17A LUMO+1 π₄* (0.1441). 13A HOMO−2 (−0.4075) is σ.</figcaption>
+<figure class="mo">
+<div class="g n2">
+<div class="h">(a, d)</div><div class="h">(b, c)</div>
+<div><img src="../../figures/bd_rks_17A.svg" alt="s-trans-butadiene RKS orbital 17A, pi4*" loading="lazy" decoding="async" width="173" height="119"><span><b>d</b> 17A LUMO+1 π₄* · 0.1441</span></div>
+<div><img src="../../figures/bd_rks_16A.svg" alt="s-trans-butadiene RKS orbital 16A, pi3*" loading="lazy" decoding="async" width="173" height="119"><span><b>c</b> 16A LUMO π₃* · 0.0268</span></div>
+<div><img src="../../figures/bd_rks_14A.svg" alt="s-trans-butadiene RKS orbital 14A, pi1" loading="lazy" decoding="async" width="173" height="119"><span><b>a</b> 14A HOMO−1 π₁ · −0.3718</span></div>
+<div><img src="../../figures/bd_rks_15A.svg" alt="s-trans-butadiene RKS orbital 15A, pi2" loading="lazy" decoding="async" width="173" height="119"><span><b>b</b> 15A HOMO π₂ · −0.2689</span></div>
+</div>
+<figcaption>s-trans-butadiene, RKS BH&amp;HLYP/6-31G(d), slice 0.6 Å above the molecular plane, blue + / copper −. One column per pair of scheme 0: antibonding partner above, bonding orbital below; slot, MO, character, ε / E<sub>h</sub>. 13A HOMO−2 (−0.4075) is σ.</figcaption>
 </figure>
 
 -   **Diffuse basis:** the valence antibonding orbital can lie far above LUMO; give its column as an integer token. Butadiene, aug-cc-pVDZ: LUMO is π₃*, LUMO+1 … LUMO+5 are σ, the largest π₄* component is LUMO+6 (column 21); `["HOMO-1", "HOMO", "LUMO", 21]` prints `swaps [(16, 21)]`.
@@ -120,12 +126,78 @@ E<sub>SA</sub> of different starts is not a criterion:
 
 S0 of this solution: C1 = −0.358361, C2 = −0.358355 (Mulliken), |μ| = 0.000034 e a<sub>0</sub>. Cold SAD start: C1 = −0.148908, C2 = −0.561394, |μ| = 0.263524 e a<sub>0</sub>.
 
-<figure class="pair">
-<img src="../../figures/c2h4_90_rks.svg" alt="90-degree ethylene REKS active orbitals 8A and 9A from the RKS seed" loading="lazy" decoding="async" width="346" height="139">
-<img src="../../figures/c2h4_90_sad.svg" alt="90-degree ethylene REKS active orbitals 8A and 9A from a cold SAD start" loading="lazy" decoding="async" width="346" height="139">
-
-<figcaption>90° C₂H₄, REKS(2,2) active orbitals 8A (left) and 9A (right), slice through the C–C axis and the bisector of the two CH₂ planes. Top: RKS seed, n 1.000000 / 1.000000. Bottom: cold SAD start, 8A n 0.000000, 9A n 2.000000.</figcaption>
+<figure class="mo">
+<div class="g n2">
+<div class="h">RKS seed</div><div class="h">cold SAD start</div>
+<div><img src="../../figures/c2h4_90_rks_b.svg" alt="90-degree ethylene REKS active orbital b (8A) from the RKS seed" loading="lazy" decoding="async" width="173" height="135"><span><b>b</b> 8A · n 1.000000 · −0.2023</span></div>
+<div><img src="../../figures/c2h4_90_sad_b.svg" alt="90-degree ethylene REKS active orbital b (8A) from a cold SAD start" loading="lazy" decoding="async" width="173" height="135"><span><b>b</b> 8A · n 0.000000 · −0.2260</span></div>
+<div><img src="../../figures/c2h4_90_rks_a.svg" alt="90-degree ethylene REKS active orbital a (9A) from the RKS seed" loading="lazy" decoding="async" width="173" height="135"><span><b>a</b> 9A · n 1.000000 · −0.2023</span></div>
+<div><img src="../../figures/c2h4_90_sad_a.svg" alt="90-degree ethylene REKS active orbital a (9A) from a cold SAD start" loading="lazy" decoding="async" width="173" height="135"><span><b>a</b> 9A · n 2.000000 · −0.1784</span></div>
+</div>
+<figcaption>90° C₂H₄, REKS(2,2) active pair (a, b), slice through the C–C axis and the bisector of the two CH₂ planes, blue + / copper −; slot, MO, FON, ε / E<sub>h</sub>.</figcaption>
 </figure>
+
+### Higher spin states {#first-spin}
+
+A state of spin S > 0 needs no SCF of its own: it is a root of an SI cassette on manifold 2S, built in the converged SA orbitals (§run-sector). REKS(M,M) holds the manifolds 2S = 0, 2, …, M; a configuration of 2S = 2k carries k triplet geminals, prefixes `T_`, `TT_`, `TTT_`. One full cassette per manifold:
+
+```python
+"si_reks_configs": [[["full"]], [["full"]], [["full"]], [["full"]]],
+"si_reks_2spin": [0, 2, 4, 6],
+```
+
+All-trans-hexatriene, REKS(6,6) over the π system (§choose-pairs). In the RKS seed 25A (LUMO+2, ε 0.148 E<sub>h</sub>) is σ\*, π₆\* is 26A (LUMO+3, ε 0.162 E<sub>h</sub>); the window names LUMO+3 and the report prints the swap:
+
+@@fragment first-hx-window@@
+
+With LUMO+2 in place of LUMO+3 the SCF converges as well; 25A stays σ in the solution and E<sub>SA</sub> is 17.4 mE<sub>h</sub> higher.
+
+<figure class="mo">
+<div class="g n3">
+<div class="h">(a, f)</div><div class="h">(b, e)</div><div class="h">(c, d)</div>
+<div><img src="../../figures/hx_rks_26A.svg" alt="hexatriene RKS orbital 26A, pi6*" loading="lazy" decoding="async" width="173" height="91"><span><b>f</b> 26A π₆* · 0.1620</span></div>
+<div><img src="../../figures/hx_rks_24A.svg" alt="hexatriene RKS orbital 24A, pi5*" loading="lazy" decoding="async" width="173" height="91"><span><b>e</b> 24A π₅* · 0.1041</span></div>
+<div><img src="../../figures/hx_rks_23A.svg" alt="hexatriene RKS orbital 23A, pi4*" loading="lazy" decoding="async" width="173" height="91"><span><b>d</b> 23A π₄* · 0.0013</span></div>
+<div><img src="../../figures/hx_rks_20A.svg" alt="hexatriene RKS orbital 20A, pi1" loading="lazy" decoding="async" width="173" height="91"><span><b>a</b> 20A π₁ · −0.3931</span></div>
+<div><img src="../../figures/hx_rks_21A.svg" alt="hexatriene RKS orbital 21A, pi2" loading="lazy" decoding="async" width="173" height="91"><span><b>b</b> 21A π₂ · −0.3331</span></div>
+<div><img src="../../figures/hx_rks_22A.svg" alt="hexatriene RKS orbital 22A, pi3" loading="lazy" decoding="async" width="173" height="91"><span><b>c</b> 22A π₃ · −0.2446</span></div>
+</div>
+<figcaption>All-trans-hexatriene, RKS BH&amp;HLYP/6-31G(d), slice 0.6 Å above the molecular plane, blue + / copper −. One column per pair of scheme 0: antibonding partner above, bonding orbital below; slot, MO, character, ε / E<sub>h</sub>. 25A (LUMO+2, σ*, ε 0.1482) is outside the window.</figcaption>
+</figure>
+
+SA pool: the default `[PPS1, OSS1, OSS2, OSS3]` (§sa_reks_configs). The four cassettes are diagonalized after the SCF:
+
+@@fragment first-hx-pools@@
+
+The state summary lists the printed roots of all manifolds by energy (labels: §spin-manifolds):
+
+@@fragment first-hx-summary@@
+
+| State | Main configurations | Content | ΔE / eV | QUEST TBE / eV |
+| --- | --- | --- | --- | --- |
+| T1 | `T_PPS3`, `T_PPS9`: c→d | one triplet geminal on (c,d) (§run-sector) | 2.815 | 2.73 (³B<sub>u</sub>) |
+| T2 | `T_PPS5`, `T_PPS11`: b→d | one triplet geminal on (b,d) | 4.178 | 4.36 (³A<sub>g</sub>) |
+| S1 | `OSS3`, `OSS9`: c→d | open-shell singlet on (c,d); f<sub>len</sub> 1.56 | 5.377 | 5.37 (¹B<sub>u</sub>) |
+| S2 | `DES3`: c,c→d,d | both electrons of c in d; f<sub>len</sub> 0 | 5.916 | 5.62 (¹A<sub>g</sub>, not safe) |
+| Q1 | `TT_PPS1`, `TT_PPS4`: b→e, c→d | two triplet geminals coupled to S = 2 | 8.041 | – |
+| Sp1 | `TTT_SPS_0`: a→f, b→e, c→d | the single 2S = 6 configuration, all three pairs triplet | 15.698 | – |
+
+λ and f<sub>len</sub> are printed only for the multiplicity of S0. QUEST TBE: aug-cc-pVTZ, QUESTDB Table 2 (Véril et al., 2021, §references); QUEST lists excited states only: its ¹A<sub>g</sub> is the lowest excited ¹A<sub>g</sub> (2¹A<sub>g</sub> counting S0). Irreps from the inversion parity of the REKS active orbitals: a, c a<sub>u</sub>; b, d b<sub>g</sub>; c→d B<sub>u</sub>, b→d A<sub>g</sub>, c,c→d,d A<sub>g</sub>.
+
+§spin-state-energetics compares the lowest states of adjacent manifolds:
+
+@@fragment first-hx-spin@@
+
+J is a coupling constant only for two states with the same open-shell orbitals; T1 (c,d) and Q1 (b,e)(c,d) differ.
+
+A configuration added to the SA ensemble enters the orbital optimization. `T_PPS3`, the main configuration of T1, on 2S = 2, the rest of the input unchanged:
+
+```python
+"sa_reks_configs": [["PPS1", "OSS1", "OSS2", "OSS3"], ["T_PPS3"]],
+"sa_reks_2spin": [0, 2],
+```
+
+T1 −233.154325 → −233.161981 E<sub>h</sub> (2.815 → 2.610 eV above S0), S0 −233.257757 → −233.257894 E<sub>h</sub>.
 
 ### Worked inputs {#first-inputs}
 
@@ -135,10 +207,11 @@ Each file runs in two stages: `python file.py rks`, then `python file.py reks`.
 | --- | --- | --- |
 | [`first_c2h4_90.py`](../../inputs/first_c2h4_90.py) | SI-SA-REKS(2,2), C₂H₄ 90°, BH&HLYP/6-31G(d), RKS seed, no window | E<sub>SA</sub> = −78.364394265090 E<sub>h</sub>; n 1.000000 / 1.000000 |
 | [`first_butadiene.py`](../../inputs/first_butadiene.py) | SI-SA-REKS(4,4), s-trans-butadiene, BH&HLYP/6-31G(d), RKS seed, π window | E<sub>SA</sub> = −155.670331327491 E<sub>h</sub>; n 1.999999 / 1.999138 / 0.000862 / 0.000001 |
+| [`first_hexatriene.py`](../../inputs/first_hexatriene.py) | SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool; SI on 2S = 0, 2, 4, 6 | E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257757335295, T1 −233.154325123481, Q1 −232.962265506282, Sp1 −232.680857311443 E<sub>h</sub> |
 
 ### Scans {#first-scans}
 
--   **Anchor:** converge and check one point (§check-solution); every further point reads the REKS wavefunction of the previous one (§restart). 90° C₂H₄ seeded by RKS at 60°, then 60° → 75° → 90°: n<sub>a</sub> 1.942502, 1.637928, 1.000000.
+-   **Anchor:** converge and check one point (§check-solution); every further point reads the REKS wavefunction of the previous one (§restart). 90° C₂H₄ seeded by RKS at 60°, then 60° → 75° → 90°: n<sub>a</sub> 1.942502, 1.637928, 1.000000. Optimizations and trajectories chain the points in the same way (§opt-dynamics).
 -   **Basis:** converge in the small basis, then read into the large one. `BASIS_GUESS` stops a REKS run: `BASIS_GUESS is not available with REKS. Converge REKS in the smaller basis and read its orbitals (GUESS READ / restart_file): they are projected onto the target basis pair by pair.` 90° C₂H₄, 6-31G(d) REKS file read into cc-pVTZ: `Computing basis projection from 6-31G(D) to CC-PVTZ`, n 1.000000 / 1.000000, E<sub>SA</sub> = −78.402409150180 E<sub>h</sub>.
 
 ### If the SCF does not converge {#no-convergence}

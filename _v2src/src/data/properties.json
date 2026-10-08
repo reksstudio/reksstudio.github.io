@@ -186,7 +186,8 @@
    "variables": "`SSR RADICAL INDICES K=<e>` (columns [y0, y1, N_D, N_U, N_U,nl]), `SSR UNPAIRED ATOMIC POPULATIONS K=<e>`",
    "bullets": [
     "Unpaired atomic populations are stored, not printed.",
-    "y_{0}, y_{1} equal the corresponding occupations in `Natural orbitals` (§natural-orbitals); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1."
+    "y_{0}, y_{1} equal the corresponding occupations in `Natural orbitals` (§natural-orbitals); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1.",
+    "2S > 0: the spin-unpaired electrons are counted as well, N_{D} ≥ N_{U} ≥ 2S; a LUNO opened by the spin gives y ≈ 1."
    ],
    "ref": "N_{D}: Takatsuka–Fueno–Yamaguchi; N_{U} (linear) and N_{U,nl} (nonlinear): Head-Gordon 2003 (§references)."
   },
@@ -255,6 +256,24 @@
    ]
   },
   {
+   "id": "atomic-spins", "stage": "unrelaxed",
+   "name": "Atomic spin populations of the states (2S > 0)",
+   "brief": "Mulliken and Löwdin spin populations of each state of a 2S > 0 cassette, from the spin density Q = D^{α} − D^{β} of its M_{S} = S component.",
+   "on": "`SI_REKS_ANALYSIS` `MULLIKEN_SPINS` / `LOWDIN_SPINS`", "default": "on",
+   "for": "cassettes with 2S > 0",
+   "units": "electrons",
+   "formulas": [
+    "s^{\\mathrm M}_A = \\sum_{\\mu\\in A}(\\mathbf Q\\mathbf S)_{\\mu\\mu}, \\qquad s^{\\mathrm L}_A = \\sum_{\\mu\\in A}(\\mathbf S^{1/2}\\mathbf Q\\mathbf S^{1/2})_{\\mu\\mu}, \\qquad \\mathbf Q = \\mathbf D^{\\alpha} - \\mathbf D^{\\beta}\\ \\ (M_S = S)",
+    "\\sum_A s_A = 2M_S"
+   ],
+   "fragments": ["atomic-spins"],
+   "variables": "`SSR MULLIKEN SPINS K=<e>`, `SSR LOWDIN SPINS K=<e>` (with the sector prefix, §variable-names)",
+   "bullets": [
+    "Another M_{S} component scales s_{A} by M_{S}/S.",
+    "Change tables as for the charges (§atomic-charges)."
+   ]
+  },
+  {
    "id": "transition-charges", "stage": "unrelaxed",
    "name": "Transition charges",
    "brief": "Mulliken and Löwdin atomic charges of the transition density ρ^{(IJ)} of each pair I → J: the formulas of §atomic-charges with P^{(I)} replaced by C_{a} ρ^{(IJ)} C_{a}^{T}, without Z_{A}; the charges of a pair sum to 0.",
@@ -267,14 +286,15 @@
   {
    "id": "bond-indices", "stage": "unrelaxed",
    "name": "Bond indices of the states (unrelaxed)",
-   "brief": "Mayer and Wiberg–Löwdin bond indices of each atom pair A ≠ B from the spin-summed unrelaxed state density P^{(I)} (§atomic-charges).",
+   "brief": "Mayer and Wiberg–Löwdin bond indices of each atom pair A ≠ B from the spin-summed unrelaxed state density P^{(I)} (§atomic-charges); in a 2S > 0 cassette also from the spin density Q (§atomic-spins).",
    "on": "`SI_REKS_ANALYSIS` `MAYER_INDICES` / `WIBERG_LOWDIN_INDICES`", "default": "on",
    "for": "printed rows: pairs with index ≥ 0.10 in any state; change tables as for the charges (§atomic-charges)",
    "units": "dimensionless",
-   "formulas": ["B^{\\mathrm{Mayer}}_{AB} = \\sum_{\\mu\\in A}\\sum_{\\nu\\in B}(\\mathbf P\\mathbf S)_{\\mu\\nu}(\\mathbf P\\mathbf S)_{\\nu\\mu}, \\qquad B^{\\mathrm{WL}}_{AB} = \\sum_{\\mu\\in A}\\sum_{\\nu\\in B}\\big[(\\mathbf S^{1/2}\\mathbf P\\mathbf S^{1/2})_{\\mu\\nu}\\big]^2"],
+   "formulas": ["B^{\\mathrm{Mayer}}_{AB} = \\sum_{\\mu\\in A}\\sum_{\\nu\\in B}(\\mathbf P\\mathbf S)_{\\mu\\nu}(\\mathbf P\\mathbf S)_{\\nu\\mu}, \\qquad B^{\\mathrm{WL}}_{AB} = \\sum_{\\mu\\in A}\\sum_{\\nu\\in B}\\big[(\\mathbf S^{1/2}\\mathbf P\\mathbf S^{1/2})_{\\mu\\nu}\\big]^2",
+    "2S > 0:\\ \\ B^{\\mathrm{Mayer}}_{AB} = \\sum_{\\mu\\in A}\\sum_{\\nu\\in B}\\big[(\\mathbf D\\mathbf S)_{\\mu\\nu}(\\mathbf D\\mathbf S)_{\\nu\\mu} + (\\mathbf Q\\mathbf S)_{\\mu\\nu}(\\mathbf Q\\mathbf S)_{\\nu\\mu}\\big], \\qquad \\mathbf D = \\mathbf D^{\\alpha} + \\mathbf D^{\\beta},\\ \\ \\mathbf Q = \\mathbf D^{\\alpha} - \\mathbf D^{\\beta}\\ \\ (M_S = S)"],
    "fragments": ["bond-indices"],
    "variables": "`SSR MAYER INDICES K=<e>`, `SSR WIBERG LOWDIN INDICES K=<e>` (m × natom^{2}, column A·natom + B)",
-   "bullets": ["No spin-density term: for open-shell states this is not the open-shell Mayer index."],
+   "bullets": ["2S > 0: the Wiberg–Löwdin index takes S^{1/2} X S^{1/2} in place of X S for X = D, Q (open-shell form). 2S = 0: the spin-summed density only."],
    "ref": "Mayer 1983 (§references)."
   },
   {
@@ -345,23 +365,25 @@
   },
   {
    "id": "fragment-couplings", "stage": "unrelaxed",
-   "name": "Fragment couplings (FCD, FED)",
-   "brief": "Diabatic coupling V_{F} between fragments F and G: FCD from the charge difference D = q(F) − q(G) (Löwdin and Mulliken charges), FED from the excitation difference D = x(F) − x(G) between excited states.",
+   "name": "Fragment couplings (FCD, FED, FSD)",
+   "brief": "Diabatic coupling V_{F} between fragments F and G: FCD from the charge difference D = q(F) − q(G) (Löwdin and Mulliken charges); FED from the excitation difference D = x(F) − x(G) between excited states (2S = 0); FSD from the spin difference D = s(F) − s(G) (Löwdin spin populations) between the states of a 2S > 0 cassette, in place of FED.",
    "on": "`SI_REKS_ANALYSIS` `FRAGMENT_COUPLINGS`", "default": "on",
-   "for": "a molecule of at least 2 fragments (`--` separators), no ghost fragments or atoms; FED needs at least 2 excited states; printed: pairs with |D_{I} − D_{J}| ≥ 0.1",
+   "for": "a molecule of at least 2 fragments (`--` separators), no ghost fragments or atoms; FED needs at least 2 excited states; FSD every pair of states of a 2S > 0 cassette; printed: pairs with |D_{I} − D_{J}| ≥ 0.1",
    "units": "E_{h} (stored); E_{h} and meV (printed)",
    "formulas": [
     "V_{mn} = \\frac{(E_n - E_m)\\,D_{mn}}{\\sqrt{(D_{mm} - D_{nn})^2 + 4D_{mn}^2}}",
     "\\text{FCD:}\\ D_{mn} = q^F_{mn} - q^G_{mn}, \\quad q^F_{mm} = \\sum_{A\\in F} q_A(m), \\quad q^F_{mn} = \\sum_{A\\in F} q_A(m\\to n)",
-    "\\text{FED:}\\ D_{mn} = x^F_{mn} - x^G_{mn}, \\quad x^F_{mn} = \\tfrac12\\,\\mathrm{tr}\\big[\\mathbf T_m^{\\mathsf T}(\\mathbf G^F\\mathbf T_n + \\mathbf T_n\\mathbf G^F)\\big], \\quad \\mathbf T_m = \\boldsymbol\\rho^{(0m)}, \\quad m, n \\ge 1"
+    "\\text{FED:}\\ D_{mn} = x^F_{mn} - x^G_{mn}, \\quad x^F_{mn} = \\tfrac12\\,\\mathrm{tr}\\big[\\mathbf T_m^{\\mathsf T}(\\mathbf G^F\\mathbf T_n + \\mathbf T_n\\mathbf G^F)\\big], \\quad \\mathbf T_m = \\boldsymbol\\rho^{(0m)}, \\quad m, n \\ge 1",
+    "\\text{FSD:}\\ D_{mn} = s^F_{mn} - s^G_{mn}, \\quad s^F_{mm} = \\sum_{A\\in F} s^{\\mathrm L}_A(m), \\quad s^F_{mn} = \\sum_{A\\in F} \\langle m|s^{\\mathrm L}_A|n\\rangle, \\quad m, n \\ge 0"
    ],
-   "fragments": ["fragment-couplings"],
-   "variables": "`SSR FCD LOWDIN COUPLINGS <F> <G> K=<e>`, `SSR FCD MULLIKEN COUPLINGS <F> <G> K=<e>`, `SSR FED COUPLINGS <F> <G> K=<e>`",
+   "fragments": ["fragment-couplings", "fragment-couplings-fsd"],
+   "variables": "`SSR FCD LOWDIN COUPLINGS <F> <G> K=<e>`, `SSR FCD MULLIKEN COUPLINGS <F> <G> K=<e>`, `SSR FED COUPLINGS <F> <G> K=<e>`, `SSR FSD COUPLINGS <F> <G> K=<e>` (with the sector prefix)",
    "bullets": [
     "States m < n of one cassette, fragments F < G; q_{A} are the state and transition charges (§atomic-charges, §transition-charges), G^{F} the Löwdin projector on the atoms of F. V carries the sign of D_{mn}, which follows the state phases; compare |V| with literature values. `*` marks a row where the Löwdin and Mulliken FCD values differ in sign or by more than a factor of 2.",
-    "Computes the state and transition charges without storing them when those blocks are not listed. No bare alias."
+    "Computes the state and transition charges, and in a 2S > 0 cassette the Löwdin spins, without printing or storing them when those blocks are not listed. No bare alias.",
+    "FSD: V is invariant to the scale of D, so the M_{S} of s cancels. FED is not computed in a 2S > 0 cassette."
    ],
-   "ref": "FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008 (§references)."
+   "ref": "FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008; FSD: You–Hsu 2010 (§references)."
   },
   {
    "id": "active-rdm", "stage": "unrelaxed",
@@ -372,7 +394,7 @@
    "units": "electrons",
    "printed": false,
    "formulas": ["\\rho^{(IJ)}_{pq} = \\langle I|\\hat E_{pq}|J\\rangle"],
-   "variables": "`SSR 1-RDM ACTIVE STATE=<k> K=<e>`, `SSR 1-RDM ADIABATIC K=<e>` (row I·m + J, column p·N + q), `SSR 1-RDM DIABATIC SPARSE K=<e>`",
+   "variables": "`SSR 1-RDM ACTIVE STATE=<k> K=<e>`, `SSR 1-RDM ADIABATIC K=<e>` (row I·m + J, column p·N + q), `SSR 1-RDM DIABATIC SPARSE K=<e>`; 2S > 0: `SSR SPIN 1-RDM ACTIVE STATE=<k> K=<e>`, the active spin density of the M_{S} = S component, same layout (with the sector prefix)",
    "files": "cube files via `psi4.cubeprop(wfn)` with `CUBEPROP_TASKS` `SSR_DENSITIES` (`SSR_D_<label>_cassette<e>.cube`), `SSR_DIFFERENCE_DENSITIES` (`SSR_DD_<label>-<label 0>_cassette<e>.cube`), `SSR_TRANSITION_DENSITIES` (`SSR_TD_<label I>-<label J>_cassette<e>.cube`)",
    "bullets": ["`REKS_REPORT_LEVEL` 5 dumps ρ^{(k)} and the diabatic blocks as `[DEBUG]` text."]
   },
@@ -417,7 +439,7 @@
    "files": "`<prefix>.dyson.<label>_cassette<e>.molden` (`MOLDEN_WRITE`; Ene = −IP, Occup = pole strength)",
    "bullets": [
     "W is the symmetrized energy-weighted density of the state's response, P = P^{r} in the MO basis. The problem is solved in the natural orbitals of P with occupations p_{a} above `REKS_EKT_OCC_TOL`; smaller and negative ones are dropped.",
-    "States of a 2S > 0 cassette: spin-averaged EKT (spin-summed P^{r}).",
+    "States of a 2S > 0 cassette: spin-averaged EKT (spin-summed P^{r}); strength = α/β average of the pole strengths.",
     "One table per state at `REKS_REPORT_LEVEL` 2; level 3 adds the dropped eigenvalues and the Dyson MO block.",
     "Check `sum of strengths` against half the sum of the occupations, the count of negative natural occupations of P^{r}, and the `Flag` column; strengths lie outside 0..1 by up to the lowest negative occupation."
    ],

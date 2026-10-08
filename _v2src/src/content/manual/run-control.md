@@ -2,7 +2,7 @@
 title: Run control
 ---
 
-## 9\. Guesses and Restarts {#guesses}
+## 10\. Guesses and Restarts {#guesses}
 
 Restarts use Psi4 checkpoints; `GUESS_ACTIVE_WINDOW` places the read orbitals in the active space. Seeding a first calculation: §first-calculation.
 
@@ -40,7 +40,7 @@ Linear H₄, BH&HLYP/6-31G: the restarted point 1.6 Å and a cold SAD start reac
 
 @@options guess@@
 
-## 10\. Fractional Occupation Numbers (FONs) {#fons}
+## 11\. Fractional Occupation Numbers (FONs) {#fons}
 
 Each geminal pair carries FONs with $n_p + n_q = 2$ (§geminals); the free FON $n_p$ (first orbital of the pair) lies in a box:
 
@@ -56,7 +56,7 @@ FON micro-solver traces are printed at `REKS_REPORT_LEVEL` ≥ 4.
 
 @@options fon-micro@@
 
-## 11\. SCF Convergence Engines {#scf-engines}
+## 12\. SCF Convergence Engines {#scf-engines}
 
 Three engines optimize the orbitals and FONs; most runs set at most `LEVEL_SHIFT` and `REKS_USE_TRAH`.
 
@@ -95,7 +95,7 @@ $$
 
 The two expert groups of §option-table (angle filtering, SVD conditioning, Tikhonov ridging, verdict rewind and restart monitors, cycle detection, basin guards) act automatically on ill-conditioned or non-monotone GVB-DIIS steps. `REKS_REPORT_LEVEL` 4 shows which monitor fires.
 
-## 12\. Delocalization (IPR) Penalty {#ipr}
+## 13\. Delocalization (IPR) Penalty {#ipr}
 
 A positive `REKS_DELOC_IPR_PENALTY` λ penalizes localization of the active orbitals and drives the SCF to the delocalized solution, the intended REKS solution.
 

@@ -51,8 +51,8 @@ const fieldsMd = (pairs) => pairs.filter(([, v]) => v).map(([label, v]) => `- **
 const bulletsMd = (items = []) => items.map((s) => `* ${toMd(s)}`).join('\n');
 // data TeX, emitted as display math blocks
 const formulasMd = (items = []) => items.map((s) => `$$\n${s}\n$$`).join('\n\n');
-// verbatim log text
-const fragmentMd = (id) => `\`\`\`text\n${fragment(id).text}\n\`\`\``;
+// verbatim log text: fence language "log" (pre[data-language="log"], set apart from typed input)
+const fragmentMd = (id) => `\`\`\`log\n${fragment(id).text}\n\`\`\``;
 const fragmentsMd = (ids = []) => ids.map(fragmentMd).join('\n\n');
 const blocksMd = (parts) => parts.filter(Boolean).join('\n\n');
 
