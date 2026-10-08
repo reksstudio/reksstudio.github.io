@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex"><title>First Calculation — REKS Studio Manual</title><link rel="icon" href="data:,"><script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/v2/*"},"eagerness":"moderate"}]}</script><style>@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-normal.BkXjiv1e.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-normal.BkTyJFTR.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-italic.D6kxudtG.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-italic.D-y2-rJv.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-400-normal._efipK4i.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-400-normal.C5H60-Va.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-500-normal.JMMifIXV.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-500-normal.DakdToA3.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-500-normal.6ng42L7E.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-600-normal.DzTrcv_p.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-600-normal.DOrvGEcy.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-400-normal.BmRBH3aV.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-500-normal.CAhNIIs5.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-500-normal.DSY6xOcd.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--bg:#f5f5f2;--bg-raised:#efeee9;--ink:#14181f;--ink-soft:#4a5160;--ink-faint:#8a8f98;--blue:#2a4b8d;--copper:#b5502a;--line:#d8d6cd;--navy-900:#0a1626;--navy-800:#123055;--navy-700:#1d3e68;--mint:#d6e6dc;--copper-bright:#de7f3d;--gold:#d9b36c;--serif:"Newsreader", Georgia, serif;--sans:"IBM Plex Sans", -apple-system, sans-serif;--mono:"IBM Plex Mono", "SF Mono", Consolas, monospace}*{box-sizing:border-box}html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;margin:0;font-size:17px;line-height:1.6}a{color:inherit}.wrap{max-width:1160px;margin:0 auto;padding:0 40px}@media (width<=700px){.wrap{padding:0 24px}}h1,h2,h3{font-family:var(--serif);color:var(--ink);margin:0;font-weight:600}sub,sup{line-height:0}.kicker{color:var(--copper);letter-spacing:.02em;margin-bottom:14px;font-size:.86rem;font-weight:500}.prose p{color:var(--ink-soft)}nav{z-index:50;position:sticky;top:0}nav .wrap{justify-content:space-between;align-items:center;height:64px;display:flex}.logo{font-family:var(--serif);align-items:baseline;gap:6px;text-decoration:none;display:flex}.navlinks{gap:28px;font-size:.92rem;display:flex}.navlinks a{border-bottom:1px solid #0000;padding:6px 0;text-decoration:none;transition:color .15s,border-color .15s}@media (width<=720px){.navlinks{gap:16px;font-size:.85rem}.navlinks a[href^=\#]{display:none}}nav.nav-dark{background:var(--navy-900);border-bottom:1px solid #ffffff14}.nav-dark .logo{letter-spacing:.01em;color:var(--mint);font-size:1.3rem;font-style:italic;font-weight:500}.nav-dark .logo .dot{color:var(--copper-bright)}.nav-dark .navlinks a{color:#ffffffd1}.nav-dark .navlinks a:hover{color:#fff;border-color:var(--copper-bright)}.nav-dark .navlinks a.hl{color:var(--copper-bright)}.nav-dark .navlinks a.hl2{color:var(--gold)}nav.nav-light{backdrop-filter:blur(8px);border-bottom:1px solid var(--line);background:#f5f5f2db}.nav-light .logo{font-size:1.15rem;font-weight:600}.nav-light .logo .dot{color:var(--copper)}.nav-light .navlinks a{color:var(--ink-soft)}.nav-light .navlinks a:hover{color:var(--ink);border-color:var(--copper)}footer{border-top:1px solid var(--line)}footer.foot-back{color:var(--ink-faint);padding:40px 0 56px;font-size:.85rem}.foot-back a{color:var(--ink-soft);text-decoration:none}.foot-back a:hover{color:var(--ink)}
+header.docshero{border-bottom:1px solid var(--line);padding:64px 0 40px}header.docshero h1{max-width:20ch;font-size:clamp(1.9rem,4vw,2.7rem)}header.docshero h1+p{color:var(--ink-soft);max-width:56ch;margin-top:16px;font-size:1.05rem}.docs-layout{grid-template-columns:var(--toc-width,200px) minmax(0, 1fr);align-items:start;gap:56px;padding:56px 0 96px;display:grid}@media (width<=860px){.docs-layout{grid-template-columns:minmax(0,1fr)}}.toc{position:sticky;top:88px}.toc>summary{display:none}.toc::details-content{content-visibility:visible;display:contents}.toc-list{flex-direction:column;gap:2px;display:flex}.toc a{color:var(--ink-soft);border-left:2px solid #0000;padding:6px 0 6px 12px;font-size:.88rem;text-decoration:none;transition:color .15s,border-color .15s}.toc a:hover{color:var(--ink);border-color:var(--copper)}@media (width<=860px){.toc{border:1px solid var(--line);border-radius:6px;margin-bottom:8px;padding:10px 14px;position:static}.toc>summary{cursor:pointer;color:var(--ink);font-weight:600;display:list-item}.toc::details-content{content-visibility:hidden;display:block}.toc[open]::details-content{content-visibility:visible}.toc-list{margin-top:8px}.toc a{border-left:none;padding-left:0}}.docsec{margin-bottom:72px;scroll-margin-top:88px}.docsec:last-child{margin-bottom:0}.docsec h2{margin-bottom:18px;font-size:1.5rem}.docsec .prose p{max-width:68ch}code{font-family:var(--mono);background:var(--bg-raised);-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:4px;padding:.05em .3em;font-size:.86em}pre{font:.85rem/1.5 var(--mono)}pre code{font-size:inherit;line-height:inherit;background:0 0;padding:0}
+header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft);max-width:62ch;margin-top:16px;font-size:1.05rem}header.docshero .branch{color:var(--ink-faint);font-size:.9rem;font-family:var(--mono);margin-top:6px}.banner{border-left:3px solid var(--copper);background:var(--bg-raised);color:var(--ink-soft);width:fit-content;max-width:100%;margin-top:12px;padding:8px 14px;font-size:.8rem;line-height:1.5}header.pagehead{border-bottom:1px solid var(--line);padding:40px 0 28px}header.pagehead h1{font-size:clamp(1.6rem,3.2vw,2.2rem)}header.pagehead p{color:var(--ink-soft);margin:10px 0 0}.docs-layout{--toc-width:240px}.toc{max-height:calc(100vh - 110px);overflow-y:auto}@media (width<=860px){.toc{max-height:none}}.toc a{font-size:.85rem}.toc a[aria-current]{color:var(--ink);border-color:var(--copper);font-weight:600}.toc .sub{flex-direction:column;gap:2px;margin-bottom:6px;display:flex}.toc .sub a{text-indent:-1.4em;padding-left:calc(24px + 1.4em)}.toc .sub a.h3{text-indent:0;padding-top:3px;padding-bottom:3px;font-size:.8rem}.toc .sub a.h4{text-indent:0;color:var(--ink-faint);overflow-wrap:anywhere;padding-top:1px;padding-bottom:1px;padding-left:calc(24px + 2.4em);font-size:.75rem}@media (width<=860px){.toc a[aria-current]{border-left:2px solid var(--copper);padding-left:10px}.toc .sub a{padding-left:calc(12px + 1.4em)}.toc .sub a.h4{padding-left:calc(12px + 2.4em)}}.docsec h2,.docsec h3,.docsec h4{scroll-margin-top:88px}.docsec h3{margin:30px 0 12px;font-size:1.12rem}.docsec h4{font:600 1.02rem/1.4 var(--serif);color:var(--ink);border-top:1px solid var(--line);margin:28px 0 10px;padding-top:22px}.docsec h3+h4{border-top:none;padding-top:0}h4 code:only-child{font-size:.92em;font-weight:600}.fields{max-width:74ch;color:var(--ink-soft);grid-template-columns:max-content minmax(0,1fr);gap:6px 18px;margin:0 0 20px;display:grid}.fields dt{font:600 .74rem/2.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}.fields dd{margin:0}@media (width<=700px){.fields{display:block}.fields dt{float:left;margin-right:.7em}.fields dd{margin-bottom:8px}}.docsec .prose p{max-width:74ch;margin:0 0 16px}.prose ul,.prose ol{color:var(--ink-soft);max-width:74ch;margin:0 0 16px;padding-left:22px}.prose ol{padding-left:2em}.prose li{margin-bottom:8px}.prose strong{color:var(--ink)}figure{max-width:74ch;margin:8px 0 24px}figure img{width:100%;height:auto;margin:0 0 8px;display:block}figure.scheme svg{width:100%;max-width:360px;height:auto;display:block}figure.pair img{max-width:30rem}figcaption{color:var(--ink-soft);font-size:.85rem}h2 code,h3 code,h4 code{background:0 0;padding:0;font-size:.9em}math{font-family:STIX Two Math,Cambria Math,Noto Sans Math,math}math[display=block]{text-align:center;max-width:74ch;margin:4px 0 18px;padding:2px 0;font-size:1.15em;overflow:auto hidden}.tml-right{text-align:right}.tml-left{text-align:left}.tml-jot>mtr>mtd{padding-block:.35ex}@supports (not ((-webkit-backdrop-filter:blur(1px)))) and (not ((-moz-appearance:none))){.tml-right{text-align:-webkit-right}.tml-left{text-align:-webkit-left}}pre{border-radius:6px;margin:0 0 20px;padding:20px 22px}pre[data-language=text]{font-size:.78rem}pre.astro-code{background-image:linear-gradient(270deg,#10131a 30%,#10131a00),linear-gradient(270deg,#ffffff38,#fff0);background-position:100%,100%;background-repeat:no-repeat;background-size:40px 100%,16px 100%;background-attachment:local,scroll}@media (width<=700px){pre.astro-code{border-radius:0;margin-inline:-24px;padding:14px}}.reftable-wrap{background:linear-gradient(to left, var(--bg) 30%, #f5f5f200) right / 40px 100% no-repeat local, linear-gradient(to left, #14181f1f, #14181f00) right / 12px 100% no-repeat scroll;margin:8px 0 24px;overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:480px;font-size:.9rem}thead th{text-align:left;font-family:var(--sans);color:var(--ink);border-bottom:1px solid var(--ink-faint);white-space:nowrap;padding:8px 16px 8px 0;font-weight:600}tbody td{vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-soft);padding:10px 16px 10px 0}tbody td:first-child code{color:var(--blue);white-space:nowrap;background:0 0;padding:0;font-size:.86rem}tbody tr:last-child td{border-bottom:none}@media (width<=860px){table{min-width:0}tbody td:first-child code{white-space:normal}}.pager{border-top:1px solid var(--line);grid-template-columns:1fr 1fr;gap:16px;margin-top:64px;padding-top:24px;display:grid;position:static}.pager a{font-family:var(--serif);color:var(--ink);font-size:1.05rem;text-decoration:none}.pager a[rel=next]{text-align:right;grid-column:2}.pager small{font:.8rem var(--sans);color:var(--ink-soft);display:block}@media (width<=560px){.pager{grid-template-columns:1fr}.pager a[rel=next]{grid-column:1}}.contents h3{margin:30px 0 8px;font-size:1.12rem}.contents h3 a{text-decoration:none}.contents ul{columns:2 300px;column-gap:40px;margin:0;padding:0;font-size:.9rem;list-style:none}.contents li{break-inside:avoid;padding:2px 0}.contents li.h3{padding-left:1.4em;font-size:.85rem}.contents li a{color:var(--ink-soft);text-decoration:none}.contents li a:hover{color:var(--ink)}.az-letters{flex-wrap:wrap;gap:4px 12px;font-weight:600;display:flex}.az-letters a{text-decoration:none}.az-cols{columns:3 220px;column-gap:32px;font-size:.85rem;line-height:1.35}.az h3{break-after:avoid;margin:14px 0 4px;font-size:1rem}.az h3:first-child{margin-top:0}.az ul{margin:0;padding:0;list-style:none}.az li{break-inside:avoid;text-indent:-1em;overflow-wrap:anywhere;padding:1px 0 1px 1em}.az li a{color:var(--ink-soft);text-decoration:none}.az li a:hover{color:var(--ink)}.az code{background:0 0;padding:0;font-size:.92em}.az .az-page{color:var(--ink-faint);margin-left:4px;font-size:.8em}section:has(>h2[id$=option-table]) table{table-layout:fixed}section:has(>h2[id$=option-table]) table th:first-child{width:36%}section:has(>h2[id$=option-table]) table th:nth-child(2){width:16%}section:has(>h2[id$=option-table]) table th:nth-child(3){width:26%}section:has(>h2[id$=option-table]) table th:nth-child(4){width:22%}section:has(>h2[id$=option-table]) table:has(th:nth-child(2):last-child){table-layout:auto;width:auto}@media (width<=860px){section:has(>h2[id$=option-table]) tbody td:first-child code{white-space:normal;overflow-wrap:anywhere}}
+</style></head> <body>  <nav class="nav-light"> <div class="wrap"> <a class="logo" href="/v2/">REKS<span class="dot">·</span>Studio</a> <div class="navlinks"> <a href="/v2/">Overview</a><a href="/v2/docs/">Documentation</a><a href="/v2/manual/">Manual</a> </div> </div> </nav> <header class="pagehead"> <div class="wrap"> <div class="kicker">User Manual</div> <h1>First Calculation</h1> <p>Chapter 3 of the REKS Studio user manual</p> </div> </header><div class="wrap"> <div class="docs-layout"> <details class="toc"> <summary>Contents · First Calculation (3 of 7)</summary> <nav class="toc-list"> <a href="/v2/manual/">Start</a><a href="/v2/manual/concepts/">Concepts</a> <a href="/v2/manual/first-calculation/" aria-current="page">First Calculation</a> <div class="sub"> <a class="h2" href="#3-first-calculation">3. First Calculation</a><a class="h3" href="#which-active-space">Which active space?</a><a class="h3" href="#choose-pairs">Choose the pairs</a><a class="h3" href="#seed-orbitals">Seed orbitals</a><a class="h3" href="#inspect-orbitals">Inspect the orbitals</a><a class="h3" href="#start-reks">Start REKS</a><a class="h3" href="#check-solution">Check the solution</a><a class="h3" href="#first-inputs">Worked inputs</a><a class="h3" href="#first-scans">Scans</a><a class="h3" href="#no-convergence">If the SCF does not converge</a> </div> <a href="/v2/manual/setup/">Input</a><a href="/v2/manual/run-control/">Run control</a><a href="/v2/manual/properties/">Properties</a><a href="/v2/manual/reference/">Reference</a> </nav> </details> <div> <section class="docsec"><h2 id="3-first-calculation">3. First Calculation</h2><div class="prose">
+<p>Without a seed the active slots are the MOs N<sub>core</sub>+1 … N<sub>core</sub>+M of the guess Fock matrix in energy order. A cold start of 90° C₂H₄ converges to n = 2/0, of s-trans-butadiene to a pair with a σ orbital (<a href="#check-solution">Check the solution</a>). Procedure: choose the pairs → seed → inspect → start REKS → check.</p>
+<h3 id="which-active-space">Which active space?</h3>
+<p>A rhetorical question: no rule fixes it for every molecule. REKS reduces it to whole pairs. In CASSCF the active orbitals and electrons are chosen one by one, e.g. the full π system; a REKS active space is a set of pairs, each the bonding and antibonding orbital of one bond that breaks, twists or is excited, and it grows or shrinks by one pair.</p>
+<h3 id="choose-pairs">Choose the pairs</h3>
+<p>REKS(M,M) holds <math><mrow><mi>P</mi><mo>=</mo><mi>M</mi><mi>/</mi><mn>2</mn></mrow></math> pairs; each pair is a bonding orbital and its antibonding partner (<a href="/v2/manual/concepts/#pairing-scheme">Pairing scheme</a>).</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Molecule</th>
+<th>Active space</th>
+<th>Pairs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C₂H₄, 90° twist</td>
+<td>(2,2)</td>
+<td>(π, π*): in-phase and out-of-phase combination of the two C 2p orbitals of the twisted bond</td>
+</tr>
+<tr>
+<td>s-trans-butadiene</td>
+<td>(4,4)</td>
+<td>(π₁, π₄*) &amp; (π₂, π₃*)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Scheme 0 (<a href="/v2/manual/concepts/#pairing-scheme">Pairing scheme</a>) sets the token order of a window: the bonding orbitals first, their partners in reverse order:</p>
+<math display="block"><mrow><mo fence="true" form="prefix" stretchy="false">[</mo><mspace width="0.1667em"></mspace><msub><mi>φ</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>φ</mi><mi>P</mi></msub><mo separator="true">,</mo><mtext> </mtext><msubsup><mi>φ</mi><mi>P</mi><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">∗</mo></msubsup><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msubsup><mi>φ</mi><mn>1</mn><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">∗</mo></msubsup><mspace width="0.1667em"></mspace><mo fence="true" form="postfix" stretchy="false">]</mo></mrow></math>
+<figure class="scheme">
+<svg viewBox="0 0 360 132" width="360" role="img" aria-label="REKS(4,4) of butadiene: tokens HOMO-1, HOMO, LUMO, LUMO+1 fill slots a, b, c, d; scheme 0 pairs a with d and b with c" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" text-anchor="middle">
+<g font-size="12" style="fill:var(--ink-faint)"><text x="60" y="16">a</text><text x="140" y="16">b</text><text x="220" y="16">c</text><text x="300" y="16">d</text></g>
+<g font-size="11" font-family="IBM Plex Mono, SF Mono, Consolas, monospace" style="fill:var(--ink-soft)"><text x="60" y="36">HOMO-1</text><text x="140" y="36">HOMO</text><text x="220" y="36">LUMO</text><text x="300" y="36">LUMO+1</text></g>
+<g font-size="13"><text x="60" y="58" style="fill:var(--blue)">14A π₁</text><text x="140" y="58" style="fill:var(--blue)">15A π₂</text><text x="220" y="58" style="fill:var(--copper)">16A π₃*</text><text x="300" y="58" style="fill:var(--copper)">17A π₄*</text></g>
+<g fill="none" stroke-width="1.4" style="stroke:var(--ink-soft)"><path d="M60 68 C60 128 300 128 300 68"/><path d="M140 68 C140 98 220 98 220 68"/></g>
+</svg>
+<figcaption>Butadiene REKS(4,4): token k fills slot k; scheme 0 pairs (a,d) and (b,c).</figcaption>
+</figure>
+<h3 id="seed-orbitals">Seed orbitals</h3>
+<p>A closed-shell RKS run with the functional and basis of the REKS run, <code>scf_type</code> stated, writes the seed and a Molden file:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"basis"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"6-31g(d)"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"scf_type"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"pk"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"molden_write"</span><span style="color:#E7E6E2">: </span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">})</span></span>
+<span class="line"><span style="color:#E7E6E2">e, wfn = psi4.energy(</span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, return_wfn=</span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">wfn.to_file(</span><span style="color:#E7A98A">"first_c2h4_90_rks.wfn"</span><span style="color:#E7E6E2">)          </span><span style="color:#6E7686"># first_c2h4_90_rks.wfn.npy</span></span></code></pre>
+<p>Check the seed: the frontier orbitals are spread equally over symmetry-equivalent atoms. Mulliken population of MO i on atom A, <math><mrow><msubsup><mi>q</mi><mi>A</mi><mrow class="tml-med-pad"><mo fence="true" form="prefix" stretchy="false">(</mo><mi>i</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>=</mo><msub><mo movablelimits="false">∑</mo><mrow><mi>μ</mi><mo>∈</mo><mi>A</mi></mrow></msub><msub><mi>C</mi><mrow><mi>μ</mi><mi>i</mi></mrow></msub><mspace width="0.1667em"></mspace><msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>𝐒</mi><mi>𝐂</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>μ</mi><mi>i</mi></mrow></msub></mrow></math>:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">C, S, bs = wfn.Ca().np, wfn.S().np, wfn.basisset()</span></span>
+<span class="line"><span style="color:#E7E6E2">i = wfn.nalpha() - 1                                   </span><span style="color:#6E7686"># HOMO; i + 1 is LUMO</span></span>
+<span class="line"><span style="color:#E7E6E2">q = C[:, i] * (S @ C[:, i])</span></span>
+<span class="line"><span style="color:#E7E6E2">print([q[[mu for mu in range(bs.nbf()) if bs.function_to_center(mu) == A]].sum() for A in (0, 1)])</span></span></code></pre>
+<p>90° C₂H₄, BH&amp;HLYP/6-31G(d), one geometry, HOMO population on each carbon:</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>RKS run</th>
+<th>E(RKS) / E<sub>h</sub></th>
+<th>HOMO on C1 / C2</th>
+<th>REKS(2,2) from it: n<sub>a</sub> / n<sub>b</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scf_type df</code>, SAD start</td>
+<td>−78.31818108</td>
+<td>0.859 / 0.026</td>
+<td>2.000000 / 0.000000</td>
+</tr>
+<tr>
+<td><code>scf_type df</code>, read from the <code>pk</code> solution</td>
+<td>−78.36248878</td>
+<td>0.440 / 0.440</td>
+<td>1.000000 / 1.000000</td>
+</tr>
+<tr>
+<td><code>scf_type pk</code>, SAD start</td>
+<td>−78.36248359</td>
+<td>0.440 / 0.440</td>
+<td>1.000000 / 1.000000</td>
+</tr>
+</tbody>
+</table></div>
+<p>The seeds on this page use <code>scf_type pk</code>. A localized seed is replaced by an RKS run with <code>scf_type pk</code> or by a seed from a smaller torsion, carried to the target geometry (<a href="#first-scans">Scans</a>). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n 2.000000 / 0.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).</p>
+<h3 id="inspect-orbitals">Inspect the orbitals</h3>
+<p>Open the RKS Molden file in a viewer, name the M orbitals by character and note their 0-based columns: MO <code>kA</code> is column k − 1. Without a viewer, the population snippet above with the sum over the AO functions of one type (e.g. the p functions normal to a molecular plane for π) separates σ from π.</p>
+<figure>
+<img src="../../figures/bd_rks_pi.svg" alt="s-trans-butadiene RKS orbitals 14A to 17A, contour slices above the molecular plane" loading="lazy" decoding="async" width="691" height="120">
+<figcaption>s-trans-butadiene, RKS BH&amp;HLYP/6-31G(d), slice 0.6 Å above the molecular plane, blue + / copper −. Left to right: 14A HOMO−1 π₁ (ε −0.3718 E<sub>h</sub>), 15A HOMO π₂ (−0.2689), 16A LUMO π₃* (0.0268), 17A LUMO+1 π₄* (0.1441). 13A HOMO−2 (−0.4075) is σ.</figcaption>
+</figure>
+<dl class="fields"><dt>Diffuse basis</dt><dd>the valence antibonding orbital can lie far above LUMO; give its column as an integer token. Butadiene, aug-cc-pVDZ: LUMO is π₃*, LUMO+1 … LUMO+5 are σ, the largest π₄* component is LUMO+6 (column 21); <code>["HOMO-1", "HOMO", "LUMO", 21]</code> prints <code>swaps [(16, 21)]</code>.</dd><dt>Degenerate orbitals</dt><dd>π of a linear molecule. The rotation within a degenerate RKS pair is arbitrary between runs, and the REKS result follows it. N₂ 1.60 Å, REKS(6,6), one window <code>['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO+1', 'LUMO', 'LUMO+2']</code>, three RKS seeds: π FON 1.651544, 1.703717, 1.999994.</dd></dl>
+<h3 id="start-reks">Start REKS</h3>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"basis"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"6-31g(d)"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"scf_type"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"pk"</span><span style="color:#E7E6E2">,      </span><span style="color:#6E7686"># as in the seed run</span></span>
+<span class="line"><span style="color:#E7A98A">                  "reference"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">: [4, 4],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "guess_active_window"</span><span style="color:#E7E6E2">: [</span><span style="color:#E7A98A">"HOMO-1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"HOMO"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"LUMO"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"LUMO+1"</span><span style="color:#E7E6E2">]})</span></span>
+<span class="line"><span style="color:#E7E6E2">e_sa, wfn = psi4.energy(</span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, return_wfn=</span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">, restart_file=</span><span style="color:#E7A98A">"first_butadiene_rks.wfn.npy"</span><span style="color:#E7E6E2">)</span></span></code></pre>
+<dl class="fields"><dt>Seed</dt><dd><code>restart_file</code> sets <code>GUESS READ</code> (<a href="/v2/manual/run-control/#restart">Restart mechanism</a>); an RKS source is reported as <code>SCF Guess: REKS orbitals restored from previous computation (REKS::guess override).</code></dd><dt>Slots</dt><dd>token k = 0 … M−1 fills active column N<sub>core</sub> + k; token order sets the pairs (<a href="#choose-pairs">Choose the pairs</a>). Without a window the slots are the read columns N<sub>core</sub> … N<sub>core</sub>+M−1 (C₂H₄ above: HOMO, LUMO).</dd><dt>Report</dt><dd><code>MO columns</code> lists the active columns; <code>swaps [(c, j)]</code>: MO j moved into active column c (<a href="/v2/manual/run-control/#guess_active_window"><code>GUESS_ACTIVE_WINDOW</code></a>).</dd></dl>
+<p>Butadiene with the π window:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>GUESS READ: active window ['HOMO-1', 'HOMO', 'LUMO', 'LUMO+1'] -&gt; MO columns [13, 14, 15, 16] (swaps [])</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>      Pairing scheme 0: (a,d) &amp; (b,c) = (14A,17A) &amp; (15A,16A)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      14A     -0.363513  (a)    n_a =  1.999999    m_a =  1.999999</span></span>
+<span class="line"><span>      15A     -0.263077  (b)    n_b =  1.999138    m_b =  1.998295</span></span>
+<span class="line"><span>      16A     -0.049633  (c)    n_c =  0.000862    m_c =  0.001705</span></span>
+<span class="line"><span>      17A      0.034326  (d)    n_d =  0.000001    m_d =  0.000001</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>@REKS Final Energy:  -155.67033132749052</span></span></code></pre>
+<p>The same seed with <code>HOMO-2</code> (13A, σ) in place of <code>HOMO-1</code> converges as well; 13A sits in the pair of 17A at n = 2, and E<sub>SA</sub> equals that of the cold SAD start to 2·10<sup>−11</sup> E<sub>h</sub>:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>GUESS READ: active window ['HOMO-2', 'HOMO', 'LUMO', 'LUMO+1'] -&gt; MO columns [13, 14, 15, 16] (swaps [(13, 12)])</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>      Pairing scheme 0: (a,d) &amp; (b,c) = (13A,17A) &amp; (15A,16A)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      13A     -0.416025  (a)    n_a =  2.000000    m_a =  2.000000</span></span>
+<span class="line"><span>      15A     -0.262249  (b)    n_b =  1.998861    m_b =  1.998188</span></span>
+<span class="line"><span>      16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812</span></span>
+<span class="line"><span>      17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>@REKS Final Energy:  -155.67155759813005</span></span></code></pre>
+<h3 id="check-solution">Check the solution</h3>
+<dl class="fields"><dt>Convergence</dt><dd><code>Energy and wave function converged.</code> is necessary only: every wrong solution on this page converged. Otherwise <a href="/v2/manual/run-control/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>Active set</dt><dd>every index of <code>Pairing scheme 0</code> in <code>Post-Iterations</code> (<a href="/v2/manual/properties/#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a>) belongs to the inspected set, compared as a set: setup <code>8A(a), 9A(b)</code>, pair printed <code>(9A,8A)</code>. Otherwise <a href="/v2/manual/run-control/#diag-wrong-window">SCF converges instantly to a wrong energy after a restart</a>.</dd><dt>Symmetry</dt><dd>S0 has equal charges on symmetry-equivalent atoms (<a href="/v2/manual/properties/#atomic-charges">Atomic charges of the states (unrelaxed)</a>) and a dipole allowed by the point group (<a href="/v2/manual/properties/#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a>). Otherwise <a href="/v2/manual/run-control/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>.</dd><dt>FONs</dt><dd>a pair at n ≈ 2/0 is not by itself an error: the outer π pair of butadiene has n<sub>a</sub> = 1.999999.</dd></dl>
+<p>E<sub>SA</sub> of different starts is not a criterion:</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Molecule</th>
+<th>Intended solution</th>
+<th>Other solution</th>
+<th>E<sub>SA</sub>(intended) − E<sub>SA</sub>(other)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C₂H₄, 90°</td>
+<td>RKS seed, n 1/1: −78.364394</td>
+<td>cold SAD, n 2/0: −78.353499</td>
+<td>−10.9 mE<sub>h</sub></td>
+</tr>
+<tr>
+<td>s-trans-butadiene</td>
+<td>π window: −155.670331</td>
+<td>cold SAD, 13A in the pair of 17A: −155.671558</td>
+<td>+1.2 mE<sub>h</sub></td>
+</tr>
+</tbody>
+</table></div>
+<p>90° C₂H₄ from the RKS seed:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>SCF Guess: REKS orbitals restored from previous computation (REKS::guess override).</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>Energy and wave function converged.</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>      Pairing scheme 0: (a,b) = (9A,8A)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>       9A     -0.202301  (a)    n_a =  1.000000</span></span>
+<span class="line"><span>       8A     -0.202302  (b)    n_b =  1.000000</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>@REKS Final Energy:   -78.36439426509004</span></span></code></pre>
+<p>S0 of this solution: C1 = −0.358361, C2 = −0.358355 (Mulliken), |μ| = 0.000034 e a<sub>0</sub>. Cold SAD start: C1 = −0.148908, C2 = −0.561394, |μ| = 0.263524 e a<sub>0</sub>.</p>
+<figure class="pair">
+<img src="../../figures/c2h4_90_rks.svg" alt="90-degree ethylene REKS active orbitals 8A and 9A from the RKS seed" loading="lazy" decoding="async" width="346" height="139">
+<img src="../../figures/c2h4_90_sad.svg" alt="90-degree ethylene REKS active orbitals 8A and 9A from a cold SAD start" loading="lazy" decoding="async" width="346" height="139">
+<figcaption>90° C₂H₄, REKS(2,2) active orbitals 8A (left) and 9A (right), slice through the C–C axis and the bisector of the two CH₂ planes. Top: RKS seed, n 1.000000 / 1.000000. Bottom: cold SAD start, 8A n 0.000000, 9A n 2.000000.</figcaption>
+</figure>
+<h3 id="first-inputs">Worked inputs</h3>
+<p>Each file runs in two stages: <code>python file.py rks</code>, then <code>python file.py reks</code>.</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Calculation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../inputs/first_c2h4_90.py"><code>first_c2h4_90.py</code></a></td>
+<td>SI-SA-REKS(2,2), C₂H₄ 90°, BH&amp;HLYP/6-31G(d), RKS seed, no window</td>
+<td>E<sub>SA</sub> = −78.364394265090 E<sub>h</sub>; n 1.000000 / 1.000000</td>
+</tr>
+<tr>
+<td><a href="../../inputs/first_butadiene.py"><code>first_butadiene.py</code></a></td>
+<td>SI-SA-REKS(4,4), s-trans-butadiene, BH&amp;HLYP/6-31G(d), RKS seed, π window</td>
+<td>E<sub>SA</sub> = −155.670331327491 E<sub>h</sub>; n 1.999999 / 1.999138 / 0.000862 / 0.000001</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="first-scans">Scans</h3>
+<dl class="fields"><dt>Anchor</dt><dd>converge and check one point (<a href="#check-solution">Check the solution</a>); every further point reads the REKS wavefunction of the previous one (<a href="/v2/manual/run-control/#restart">Restart mechanism</a>). 90° C₂H₄ seeded by RKS at 60°, then 60° → 75° → 90°: n<sub>a</sub> 1.942502, 1.637928, 1.000000.</dd><dt>Basis</dt><dd>converge in the small basis, then read into the large one. <code>BASIS_GUESS</code> stops a REKS run: <code>BASIS_GUESS is not available with REKS. Converge REKS in the smaller basis and read its orbitals (GUESS READ / restart_file): they are projected onto the target basis pair by pair.</code> 90° C₂H₄, 6-31G(d) REKS file read into cc-pVTZ: <code>Computing basis projection from 6-31G(D) to CC-PVTZ</code>, n 1.000000 / 1.000000, E<sub>SA</sub> = −78.402409150180 E<sub>h</sub>.</dd></dl>
+<h3 id="no-convergence">If the SCF does not converge</h3>
+<p>Inspect the window first (<a href="#inspect-orbitals">Inspect the orbitals</a>), then <a href="/v2/manual/run-control/#engines">The three engines</a>, <a href="/v2/manual/run-control/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>, <a href="/v2/manual/run-control/#diag-oscillation">SCF oscillates or cycles</a>.</p></div></section>
+   <nav class="pager" aria-label="Manual pages"> <a rel="prev" href="/v2/manual/concepts/"><small>Previous</small>Concepts</a> <a rel="next" href="/v2/manual/setup/"><small>Next</small>Input</a> </nav> </div> </div> </div> <footer class="foot-back"> <div class="wrap"> <a href="/v2/docs/">← Back to REKS Studio documentation</a> </div> </footer>  </body> </html>
