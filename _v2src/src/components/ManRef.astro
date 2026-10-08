@@ -1,0 +1,6 @@
+---
+import { sectionHref } from '../lib/manual-pages.mjs';
+
+const { n } = Astro.props;
+---
+<a class="manref" href={sectionHref(n, null, import.meta.env.BASE_URL)}>Manual §{n}</a>
