@@ -2,13 +2,13 @@
 title: Reference
 ---
 
-## 15\. Option Table
+## 16\. Option Table {#option-table}
 
 `GUESS_ACTIVE_WINDOW` is a general SCF option; the others are REKS options. Seven options have an `REKS_`\-prefixed alias (column Alias); setting both names is an error.
 
 @@option-table@@
 
-## 16\. References
+## 17\. References {#references}
 
 Method:
 
@@ -29,6 +29,7 @@ Method:
 Properties:
 
 -   Mayer bond index: Mayer, I. *Chem. Phys. Lett.* **1983**, *97*, 270. [doi:10.1016/0009-2614(83)80005-0](https://doi.org/10.1016/0009-2614(83)80005-0)
+-   Odd-electron distribution: Takatsuka, K.; Fueno, T.; Yamaguchi, K. *Theor. Chim. Acta* **1978**, *48*, 175. [doi:10.1007/BF00549017](https://doi.org/10.1007/BF00549017)
 -   Unpaired electrons: Head-Gordon, M. *Chem. Phys. Lett.* **2003**, *372*, 508. [doi:10.1016/S0009-2614(03)00422-6](https://doi.org/10.1016/S0009-2614(03)00422-6)
 -   Natural transition orbitals: Martin, R. L. *J. Chem. Phys.* **2003**, *118*, 4775. [doi:10.1063/1.1558471](https://doi.org/10.1063/1.1558471)
 -   Exciton descriptors: Plasser, F.; Wormit, M.; Dreuw, A. *J. Chem. Phys.* **2014**, *141*, 024106 [doi:10.1063/1.4885819](https://doi.org/10.1063/1.4885819); Bäppler, S. A.; Plasser, F.; Wormit, M.; Dreuw, A. *Phys. Rev. A* **2014**, *90*, 052521 [doi:10.1103/PhysRevA.90.052521](https://doi.org/10.1103/PhysRevA.90.052521).

@@ -1,6 +1,6 @@
 [
- {"id": "banner", "header": "REKS Studio", "owner": "start"},
- {"id": "setup", "header": "==> REKS Studio setup <==", "owner": "start"},
+ {"id": "banner", "header": "REKS Studio", "owner": "run-report"},
+ {"id": "setup", "header": "==> REKS Studio setup <==", "owner": "run-report"},
  {"id": "pairing-schemes", "header": "=> Pairing schemes (GVB(2,2) geminal pairs) <=", "owner": "pairing-schemes"},
  {"id": "sa-pool", "header": "=> SA pool <=", "owner": "sa_reks_configs"},
  {"id": "si-pools", "header": "=> SI pools <=", "owner": "si_reks_configs"},

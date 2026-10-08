@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import FooterBack from '../../components/FooterBack.astro';
-import { PAGES, manualIndex, pagePath } from '../../lib/manual-pages.mjs';
+import { PAGES, entryMap, manualIndex, pagePath } from '../../lib/manual-pages.mjs';
 import '../../styles/docs.css';
 import '../../styles/manual.css';
 
@@ -19,8 +19,7 @@ export function getStaticPaths() {
     const headings = mod.getHeadings().filter((h) => h.depth >= 2 && h.depth <= 4);
     const contents = headings.filter((h) => h.depth <= 3);
     const toc = headings.filter((h) => h.depth <= tocDepth);
-    if (index) toc.push({ depth: 2, slug: 'index', text: 'Index' });
-    const chapters = headings.filter((h) => h.depth === 2).map((h) => Number(h.text.match(/^(\d+)\./)[1]));
+    const chapters = [...entryMap().values()].filter((e) => e.slug === slug && e.chapter).map((e) => e.chapter);
     return { slug, title: mod.frontmatter.title, href: `${base}${pagePath(slug)}`, headings, contents, toc, index, chapters, Content: mod.Content };
   });
   return pages.map((page, index) => ({ params: { page: page.slug || undefined }, props: { pages, index } }));
@@ -46,6 +45,7 @@ const next = pages[index + 1];
 const { Content } = page;
 const base = import.meta.env.BASE_URL;
 const azIndex = page.index ? manualIndex(pages, page.slug, base) : [];
+const indexHref = `${pages.find((p) => p.index).href}#index`;
 const navLinks = [
   { href: base, label: 'Overview' },
   { href: `${base}docs/`, label: 'Documentation' },
@@ -90,6 +90,7 @@ const navLinks = [
         ) : (
           <a href={p.href}>{p.title}</a>
         ))}
+        <a href={indexHref}>Index</a>
       </nav>
     </details>
 

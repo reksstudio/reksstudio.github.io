@@ -1,17 +1,283 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex"><title>Properties — REKS Studio Manual</title><link rel="icon" href="data:,"><script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/v2/*"},"eagerness":"moderate"}]}</script><style>@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-normal.BkXjiv1e.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-normal.BkTyJFTR.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-italic.D6kxudtG.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-italic.D-y2-rJv.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-400-normal._efipK4i.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-400-normal.C5H60-Va.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-500-normal.JMMifIXV.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-500-normal.DakdToA3.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-500-normal.6ng42L7E.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-600-normal.DzTrcv_p.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-600-normal.DOrvGEcy.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-400-normal.BmRBH3aV.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-500-normal.CAhNIIs5.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-500-normal.DSY6xOcd.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--bg:#f5f5f2;--bg-raised:#efeee9;--ink:#14181f;--ink-soft:#4a5160;--ink-faint:#8a8f98;--blue:#2a4b8d;--copper:#b5502a;--line:#d8d6cd;--navy-900:#0a1626;--navy-800:#123055;--navy-700:#1d3e68;--mint:#d6e6dc;--copper-bright:#de7f3d;--gold:#d9b36c;--serif:"Newsreader", Georgia, serif;--sans:"IBM Plex Sans", -apple-system, sans-serif;--mono:"IBM Plex Mono", "SF Mono", Consolas, monospace}*{box-sizing:border-box}html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;margin:0;font-size:17px;line-height:1.6}a{color:inherit}.wrap{max-width:1160px;margin:0 auto;padding:0 40px}@media (width<=700px){.wrap{padding:0 24px}}h1,h2,h3{font-family:var(--serif);color:var(--ink);margin:0;font-weight:600}sub,sup{line-height:0}.kicker{color:var(--copper);letter-spacing:.02em;margin-bottom:14px;font-size:.86rem;font-weight:500}.prose p{color:var(--ink-soft)}nav{z-index:50;position:sticky;top:0}nav .wrap{justify-content:space-between;align-items:center;height:64px;display:flex}.logo{font-family:var(--serif);align-items:baseline;gap:6px;text-decoration:none;display:flex}.navlinks{gap:28px;font-size:.92rem;display:flex}.navlinks a{border-bottom:1px solid #0000;padding:6px 0;text-decoration:none;transition:color .15s,border-color .15s}@media (width<=720px){.navlinks{gap:16px;font-size:.85rem}.navlinks a[href^=\#]{display:none}}nav.nav-dark{background:var(--navy-900);border-bottom:1px solid #ffffff14}.nav-dark .logo{letter-spacing:.01em;color:var(--mint);font-size:1.3rem;font-style:italic;font-weight:500}.nav-dark .logo .dot{color:var(--copper-bright)}.nav-dark .navlinks a{color:#ffffffd1}.nav-dark .navlinks a:hover{color:#fff;border-color:var(--copper-bright)}.nav-dark .navlinks a.hl{color:var(--copper-bright)}.nav-dark .navlinks a.hl2{color:var(--gold)}nav.nav-light{backdrop-filter:blur(8px);border-bottom:1px solid var(--line);background:#f5f5f2db}.nav-light .logo{font-size:1.15rem;font-weight:600}.nav-light .logo .dot{color:var(--copper)}.nav-light .navlinks a{color:var(--ink-soft)}.nav-light .navlinks a:hover{color:var(--ink);border-color:var(--copper)}footer{border-top:1px solid var(--line)}footer.foot-back{color:var(--ink-faint);padding:40px 0 56px;font-size:.85rem}.foot-back a{color:var(--ink-soft);text-decoration:none}.foot-back a:hover{color:var(--ink)}
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex"><title>Output and properties — REKS Studio Manual</title><link rel="icon" href="data:,"><script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/v2/*"},"eagerness":"moderate"}]}</script><style>@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-normal.BkXjiv1e.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-normal.BkTyJFTR.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-italic.D6kxudtG.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-italic.D-y2-rJv.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-400-normal._efipK4i.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-400-normal.C5H60-Va.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-500-normal.JMMifIXV.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-500-normal.DakdToA3.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-500-normal.6ng42L7E.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-600-normal.DzTrcv_p.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-600-normal.DOrvGEcy.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-400-normal.BmRBH3aV.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-500-normal.CAhNIIs5.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-500-normal.DSY6xOcd.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--bg:#f5f5f2;--bg-raised:#efeee9;--ink:#14181f;--ink-soft:#4a5160;--ink-faint:#8a8f98;--blue:#2a4b8d;--copper:#b5502a;--line:#d8d6cd;--navy-900:#0a1626;--navy-800:#123055;--navy-700:#1d3e68;--mint:#d6e6dc;--copper-bright:#de7f3d;--gold:#d9b36c;--serif:"Newsreader", Georgia, serif;--sans:"IBM Plex Sans", -apple-system, sans-serif;--mono:"IBM Plex Mono", "SF Mono", Consolas, monospace}*{box-sizing:border-box}html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;margin:0;font-size:17px;line-height:1.6}a{color:inherit}.wrap{max-width:1160px;margin:0 auto;padding:0 40px}@media (width<=700px){.wrap{padding:0 24px}}h1,h2,h3{font-family:var(--serif);color:var(--ink);margin:0;font-weight:600}sub,sup{line-height:0}.kicker{color:var(--copper);letter-spacing:.02em;margin-bottom:14px;font-size:.86rem;font-weight:500}.prose p{color:var(--ink-soft)}nav{z-index:50;position:sticky;top:0}nav .wrap{justify-content:space-between;align-items:center;height:64px;display:flex}.logo{font-family:var(--serif);align-items:baseline;gap:6px;text-decoration:none;display:flex}.navlinks{gap:28px;font-size:.92rem;display:flex}.navlinks a{border-bottom:1px solid #0000;padding:6px 0;text-decoration:none;transition:color .15s,border-color .15s}@media (width<=720px){.navlinks{gap:16px;font-size:.85rem}.navlinks a[href^=\#]{display:none}}nav.nav-dark{background:var(--navy-900);border-bottom:1px solid #ffffff14}.nav-dark .logo{letter-spacing:.01em;color:var(--mint);font-size:1.3rem;font-style:italic;font-weight:500}.nav-dark .logo .dot{color:var(--copper-bright)}.nav-dark .navlinks a{color:#ffffffd1}.nav-dark .navlinks a:hover{color:#fff;border-color:var(--copper-bright)}.nav-dark .navlinks a.hl{color:var(--copper-bright)}.nav-dark .navlinks a.hl2{color:var(--gold)}nav.nav-light{backdrop-filter:blur(8px);border-bottom:1px solid var(--line);background:#f5f5f2db}.nav-light .logo{font-size:1.15rem;font-weight:600}.nav-light .logo .dot{color:var(--copper)}.nav-light .navlinks a{color:var(--ink-soft)}.nav-light .navlinks a:hover{color:var(--ink);border-color:var(--copper)}footer{border-top:1px solid var(--line)}footer.foot-back{color:var(--ink-faint);padding:40px 0 56px;font-size:.85rem}.foot-back a{color:var(--ink-soft);text-decoration:none}.foot-back a:hover{color:var(--ink)}
 header.docshero{border-bottom:1px solid var(--line);padding:64px 0 40px}header.docshero h1{max-width:20ch;font-size:clamp(1.9rem,4vw,2.7rem)}header.docshero h1+p{color:var(--ink-soft);max-width:56ch;margin-top:16px;font-size:1.05rem}.docs-layout{grid-template-columns:var(--toc-width,200px) minmax(0, 1fr);align-items:start;gap:56px;padding:56px 0 96px;display:grid}@media (width<=860px){.docs-layout{grid-template-columns:minmax(0,1fr)}}.toc{position:sticky;top:88px}.toc>summary{display:none}.toc::details-content{content-visibility:visible;display:contents}.toc-list{flex-direction:column;gap:2px;display:flex}.toc a{color:var(--ink-soft);border-left:2px solid #0000;padding:6px 0 6px 12px;font-size:.88rem;text-decoration:none;transition:color .15s,border-color .15s}.toc a:hover{color:var(--ink);border-color:var(--copper)}@media (width<=860px){.toc{border:1px solid var(--line);border-radius:6px;margin-bottom:8px;padding:10px 14px;position:static}.toc>summary{cursor:pointer;color:var(--ink);font-weight:600;display:list-item}.toc::details-content{content-visibility:hidden;display:block}.toc[open]::details-content{content-visibility:visible}.toc-list{margin-top:8px}.toc a{border-left:none;padding-left:0}}.docsec{margin-bottom:72px;scroll-margin-top:88px}.docsec:last-child{margin-bottom:0}.docsec h2{margin-bottom:18px;font-size:1.5rem}.docsec .prose p{max-width:68ch}code{font-family:var(--mono);background:var(--bg-raised);-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:4px;padding:.05em .3em;font-size:.86em}pre{font:.85rem/1.5 var(--mono)}pre code{font-size:inherit;line-height:inherit;background:0 0;padding:0}
-header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft);max-width:62ch;margin-top:16px;font-size:1.05rem}header.docshero .branch{color:var(--ink-faint);font-size:.9rem;font-family:var(--mono);margin-top:6px}.banner{border-left:3px solid var(--copper);background:var(--bg-raised);color:var(--ink-soft);width:fit-content;max-width:100%;margin-top:12px;padding:8px 14px;font-size:.8rem;line-height:1.5}header.pagehead{border-bottom:1px solid var(--line);padding:40px 0 28px}header.pagehead h1{font-size:clamp(1.6rem,3.2vw,2.2rem)}header.pagehead p{color:var(--ink-soft);margin:10px 0 0}.docs-layout{--toc-width:240px}.toc{max-height:calc(100vh - 110px);overflow-y:auto}@media (width<=860px){.toc{max-height:none}}.toc a{font-size:.85rem}.toc a[aria-current]{color:var(--ink);border-color:var(--copper);font-weight:600}.toc .sub{flex-direction:column;gap:2px;margin-bottom:6px;display:flex}.toc .sub a{text-indent:-1.4em;padding-left:calc(24px + 1.4em)}.toc .sub a.h3{text-indent:0;padding-top:3px;padding-bottom:3px;font-size:.8rem}.toc .sub a.h4{text-indent:0;color:var(--ink-faint);overflow-wrap:anywhere;padding-top:1px;padding-bottom:1px;padding-left:calc(24px + 2.4em);font-size:.75rem}@media (width<=860px){.toc a[aria-current]{border-left:2px solid var(--copper);padding-left:10px}.toc .sub a{padding-left:calc(12px + 1.4em)}.toc .sub a.h4{padding-left:calc(12px + 2.4em)}}.docsec h2,.docsec h3,.docsec h4{scroll-margin-top:88px}.docsec h3{margin:30px 0 12px;font-size:1.12rem}.docsec h4{font:600 1.02rem/1.4 var(--serif);color:var(--ink);border-top:1px solid var(--line);margin:28px 0 10px;padding-top:22px}.docsec h3+h4{border-top:none;padding-top:0}h4 code:only-child{font-size:.92em;font-weight:600}.fields{max-width:74ch;color:var(--ink-soft);grid-template-columns:max-content minmax(0,1fr);gap:6px 18px;margin:0 0 20px;display:grid}.fields dt{font:600 .74rem/2.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}.fields dd{margin:0}@media (width<=700px){.fields{display:block}.fields dt{float:left;margin-right:.7em}.fields dd{margin-bottom:8px}}.docsec .prose p{max-width:74ch;margin:0 0 16px}.prose ul,.prose ol{color:var(--ink-soft);max-width:74ch;margin:0 0 16px;padding-left:22px}.prose ol{padding-left:2em}.prose li{margin-bottom:8px}.prose strong{color:var(--ink)}figure{max-width:74ch;margin:8px 0 24px}figure img{width:100%;height:auto;margin:0 0 8px;display:block}figure.scheme svg{width:100%;max-width:360px;height:auto;display:block}figure.pair img{max-width:30rem}figcaption{color:var(--ink-soft);font-size:.85rem}h2 code,h3 code,h4 code{background:0 0;padding:0;font-size:.9em}math{font-family:STIX Two Math,Cambria Math,Noto Sans Math,math}math[display=block]{text-align:center;max-width:74ch;margin:4px 0 18px;padding:2px 0;font-size:1.15em;overflow:auto hidden}.tml-right{text-align:right}.tml-left{text-align:left}.tml-jot>mtr>mtd{padding-block:.35ex}@supports (not ((-webkit-backdrop-filter:blur(1px)))) and (not ((-moz-appearance:none))){.tml-right{text-align:-webkit-right}.tml-left{text-align:-webkit-left}}pre{border-radius:6px;margin:0 0 20px;padding:20px 22px}pre[data-language=text]{font-size:.78rem}pre.astro-code{background-image:linear-gradient(270deg,#10131a 30%,#10131a00),linear-gradient(270deg,#ffffff38,#fff0);background-position:100%,100%;background-repeat:no-repeat;background-size:40px 100%,16px 100%;background-attachment:local,scroll}@media (width<=700px){pre.astro-code{border-radius:0;margin-inline:-24px;padding:14px}}.reftable-wrap{background:linear-gradient(to left, var(--bg) 30%, #f5f5f200) right / 40px 100% no-repeat local, linear-gradient(to left, #14181f1f, #14181f00) right / 12px 100% no-repeat scroll;margin:8px 0 24px;overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:480px;font-size:.9rem}thead th{text-align:left;font-family:var(--sans);color:var(--ink);border-bottom:1px solid var(--ink-faint);white-space:nowrap;padding:8px 16px 8px 0;font-weight:600}tbody td{vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-soft);padding:10px 16px 10px 0}tbody td:first-child code{color:var(--blue);white-space:nowrap;background:0 0;padding:0;font-size:.86rem}tbody tr:last-child td{border-bottom:none}@media (width<=860px){table{min-width:0}tbody td:first-child code{white-space:normal}}.pager{border-top:1px solid var(--line);grid-template-columns:1fr 1fr;gap:16px;margin-top:64px;padding-top:24px;display:grid;position:static}.pager a{font-family:var(--serif);color:var(--ink);font-size:1.05rem;text-decoration:none}.pager a[rel=next]{text-align:right;grid-column:2}.pager small{font:.8rem var(--sans);color:var(--ink-soft);display:block}@media (width<=560px){.pager{grid-template-columns:1fr}.pager a[rel=next]{grid-column:1}}.contents h3{margin:30px 0 8px;font-size:1.12rem}.contents h3 a{text-decoration:none}.contents ul{columns:2 300px;column-gap:40px;margin:0;padding:0;font-size:.9rem;list-style:none}.contents li{break-inside:avoid;padding:2px 0}.contents li.h3{padding-left:1.4em;font-size:.85rem}.contents li a{color:var(--ink-soft);text-decoration:none}.contents li a:hover{color:var(--ink)}.az-letters{flex-wrap:wrap;gap:4px 12px;font-weight:600;display:flex}.az-letters a{text-decoration:none}.az-cols{columns:3 220px;column-gap:32px;font-size:.85rem;line-height:1.35}.az h3{break-after:avoid;margin:14px 0 4px;font-size:1rem}.az h3:first-child{margin-top:0}.az ul{margin:0;padding:0;list-style:none}.az li{break-inside:avoid;text-indent:-1em;overflow-wrap:anywhere;padding:1px 0 1px 1em}.az li a{color:var(--ink-soft);text-decoration:none}.az li a:hover{color:var(--ink)}.az code{background:0 0;padding:0;font-size:.92em}.az .az-page{color:var(--ink-faint);margin-left:4px;font-size:.8em}section:has(>h2[id$=option-table]) table{table-layout:fixed}section:has(>h2[id$=option-table]) table th:first-child{width:36%}section:has(>h2[id$=option-table]) table th:nth-child(2){width:16%}section:has(>h2[id$=option-table]) table th:nth-child(3){width:26%}section:has(>h2[id$=option-table]) table th:nth-child(4){width:22%}section:has(>h2[id$=option-table]) table:has(th:nth-child(2):last-child){table-layout:auto;width:auto}@media (width<=860px){section:has(>h2[id$=option-table]) tbody td:first-child code{white-space:normal;overflow-wrap:anywhere}}
-</style></head> <body>  <nav class="nav-light"> <div class="wrap"> <a class="logo" href="/v2/">REKS<span class="dot">·</span>Studio</a> <div class="navlinks"> <a href="/v2/">Overview</a><a href="/v2/docs/">Documentation</a><a href="/v2/manual/">Manual</a> </div> </div> </nav> <header class="pagehead"> <div class="wrap"> <div class="kicker">User Manual</div> <h1>Properties</h1> <p>Chapter 14 of the REKS Studio user manual</p> </div> </header><div class="wrap"> <div class="docs-layout"> <details class="toc"> <summary>Contents · Properties (6 of 7)</summary> <nav class="toc-list"> <a href="/v2/manual/">Start</a><a href="/v2/manual/concepts/">Concepts</a><a href="/v2/manual/first-calculation/">First Calculation</a><a href="/v2/manual/setup/">Input</a><a href="/v2/manual/run-control/">Run control</a> <a href="/v2/manual/properties/" aria-current="page">Properties</a> <div class="sub"> <a class="h2" href="#14-properties">14. Properties</a><a class="h3" href="#rules-for-all-entries">Rules for all entries</a><a class="h3" href="#variable-names">Variable names</a><a class="h3" href="#files">Files</a><a class="h3" href="#summary">Summary</a><a class="h3" href="#print-order">Print order</a><a class="h3" href="#scf">SCF</a><a class="h4" href="#sa-energy">SA-REKS ensemble energy and configuration energies</a><a class="h4" href="#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a><a class="h4" href="#convergence-quality">GVB-DIIS convergence quality</a><a class="h3" href="#si-states">SI states</a><a class="h4" href="#si-fons">FONs of the SI-only geminals</a><a class="h4" href="#ssr-energies">SSR state energies</a><a class="h4" href="#ssr-composition">SSR eigenvectors and Chirgwin–Coulson weights</a><a class="h4" href="#si-matrices">SI Hamiltonian and overlap</a><a class="h4" href="#si-orbitals">Orbitals of the SI step</a><a class="h3" href="#unrelaxed-state-and-transition-properties">Unrelaxed state and transition properties</a><a class="h4" href="#transition-dipole">Transition dipole moments and length-form oscillator strengths</a><a class="h4" href="#transition-velocity">Velocity-form transition moments and oscillator strengths</a><a class="h4" href="#transition-magnetic">Magnetic transition moments and rotatory strengths</a><a class="h4" href="#natural-orbitals">Natural orbitals and occupations of the active space</a><a class="h4" href="#radical-character">Radical character</a><a class="h4" href="#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a><a class="h4" href="#quadrupole">Quadrupole moments of the states (unrelaxed)</a><a class="h4" href="#transition-second-moments">Transition second moments</a><a class="h4" href="#multipoles">Cartesian multipole moments of order l ≥ 3</a><a class="h4" href="#atomic-charges">Atomic charges of the states (unrelaxed)</a><a class="h4" href="#transition-charges">Transition charges</a><a class="h4" href="#bond-indices">Bond indices of the states (unrelaxed)</a><a class="h4" href="#nto">Natural transition orbitals</a><a class="h4" href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a><a class="h4" href="#fragment-ct">Fragment charge-transfer descriptors</a><a class="h4" href="#fragment-couplings">Fragment couplings (FCD, FED)</a><a class="h4" href="#active-rdm">Active one-particle density matrices</a><a class="h3" href="#relaxed-properties-and-ekt">Relaxed properties and EKT</a><a class="h4" href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a><a class="h4" href="#relaxed-bond-indices">Bond indices of the relaxed density</a><a class="h4" href="#ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</a><a class="h4" href="#ekt-ensemble">EKT ionization energies of the SA-REKS ensemble</a><a class="h3" href="#gradients-nac-conical-intersections">Gradients, NAC, conical intersections</a><a class="h4" href="#state-gradient">Nuclear gradients of SSR states</a><a class="h4" href="#sa-gradient">Nuclear gradient of the SA-REKS ensemble</a><a class="h4" href="#nac">Nonadiabatic coupling vectors</a><a class="h4" href="#ci-topography">Conical-intersection topography</a><a class="h3" href="#spin-energetics">Spin energetics</a><a class="h4" href="#spin-state-energetics">Spin-state gaps and Heisenberg J</a> </div> <a href="/v2/manual/reference/">Reference</a> </nav> </details> <div> <section class="docsec"><h2 id="14-properties">14. Properties</h2><div class="prose">
-<p>Unrelaxed properties (<code>SI_REKS_ANALYSIS</code>) use the densities ρ<sup>(IJ)</sup> = ⟨I|Ê<sub>pq</sub>|J⟩ of the SSR states in the SA-REKS orbitals; relaxed properties use the relaxed density P<sup>r</sup> of the states named in <code>SI_REKS_PROPERTY_FOR</code> (<a href="/v2/manual/concepts/#2-concepts">§2</a>). ρ<sup>(IJ)</sup> is spin-summed and active (MO coefficients C<sub>a</sub>); core density D<sup>c</sup>.</p>
-<h3 id="rules-for-all-entries">Rules for all entries</h3>
+header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft);max-width:62ch;margin-top:16px;font-size:1.05rem}header.docshero .branch{color:var(--ink-faint);font-size:.9rem;font-family:var(--mono);margin-top:6px}.banner{border-left:3px solid var(--copper);background:var(--bg-raised);color:var(--ink-soft);width:fit-content;max-width:100%;margin-top:12px;padding:8px 14px;font-size:.8rem;line-height:1.5}header.pagehead{border-bottom:1px solid var(--line);padding:40px 0 28px}header.pagehead h1{font-size:clamp(1.6rem,3.2vw,2.2rem)}header.pagehead p{color:var(--ink-soft);margin:10px 0 0}.docs-layout{--toc-width:240px}.toc{max-height:calc(100vh - 110px);overflow-y:auto}@media (width<=860px){.toc{max-height:none}}.toc a{font-size:.85rem}.toc a[aria-current]{color:var(--ink);border-color:var(--copper);font-weight:600}.toc .sub{flex-direction:column;gap:2px;margin-bottom:6px;display:flex}.toc .sub a{text-indent:-1.4em;padding-left:calc(24px + 1.4em)}.toc .sub a.h3{text-indent:0;padding-top:3px;padding-bottom:3px;font-size:.8rem}.toc .sub a.h4{text-indent:0;color:var(--ink-faint);overflow-wrap:anywhere;padding-top:1px;padding-bottom:1px;padding-left:calc(24px + 2.4em);font-size:.75rem}@media (width<=860px){.toc a[aria-current]{border-left:2px solid var(--copper);padding-left:10px}.toc .sub a{padding-left:calc(12px + 1.4em)}.toc .sub a.h4{padding-left:calc(12px + 2.4em)}}.docsec h2,.docsec h3,.docsec h4{scroll-margin-top:88px}.docsec h3{margin:30px 0 12px;font-size:1.12rem}.docsec h4{font:600 1.02rem/1.4 var(--serif);color:var(--ink);border-top:1px solid var(--line);margin:28px 0 10px;padding-top:22px}.docsec h3+h4{border-top:none;padding-top:0}h4 code:only-child{font-size:.92em;font-weight:600}.fields{max-width:74ch;color:var(--ink-soft);grid-template-columns:max-content minmax(0,1fr);gap:6px 18px;margin:0 0 20px;display:grid}.fields dt{font:600 .74rem/2.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}.fields dd{margin:0}@media (width<=700px){.fields{display:block}.fields dt{float:left;margin-right:.7em}.fields dd{margin-bottom:8px}}.docsec .prose p{max-width:74ch;margin:0 0 16px}.prose ul,.prose ol{color:var(--ink-soft);max-width:74ch;margin:0 0 16px;padding-left:22px}.prose ol{padding-left:2em}.prose li{margin-bottom:8px}.prose strong{color:var(--ink)}figure{max-width:74ch;margin:8px 0 24px}figure img{width:100%;height:auto;margin:0 0 8px;display:block}figure.scheme svg{width:100%;max-width:360px;height:auto;display:block}figure.pair img{max-width:30rem}figcaption{color:var(--ink-soft);font-size:.85rem}h2 code,h3 code,h4 code{background:0 0;padding:0;font-size:.9em}math{font-family:STIX Two Math,Cambria Math,Noto Sans Math,math}math[display=block]{text-align:center;max-width:74ch;margin:4px 0 18px;padding:2px 0;font-size:1.15em;overflow:auto hidden}.tml-right{text-align:right}.tml-left{text-align:left}.tml-jot>mtr>mtd{padding-block:.35ex}@supports (not ((-webkit-backdrop-filter:blur(1px)))) and (not ((-moz-appearance:none))){.tml-right{text-align:-webkit-right}.tml-left{text-align:-webkit-left}}pre{border-radius:6px;margin:0 0 20px;padding:20px 22px}pre[data-language=text]{font-size:.78rem}pre.astro-code{background-image:linear-gradient(270deg,#10131a 30%,#10131a00),linear-gradient(270deg,#ffffff38,#fff0);background-position:100%,100%;background-repeat:no-repeat;background-size:40px 100%,16px 100%;background-attachment:local,scroll}@media (width<=700px){pre.astro-code{border-radius:0;margin-inline:-24px;padding:14px}}.reftable-wrap{background:linear-gradient(to left, var(--bg) 30%, #f5f5f200) right / 40px 100% no-repeat local, linear-gradient(to left, #14181f1f, #14181f00) right / 12px 100% no-repeat scroll;margin:8px 0 24px;overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:480px;font-size:.9rem}thead th{text-align:left;font-family:var(--sans);color:var(--ink);border-bottom:1px solid var(--ink-faint);white-space:nowrap;padding:8px 16px 8px 0;font-weight:600}tbody td{vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-soft);padding:10px 16px 10px 0}tbody td:first-child code{color:var(--blue);white-space:nowrap;background:0 0;padding:0;font-size:.86rem}tbody tr:last-child td{border-bottom:none}@media (width<=860px){table{min-width:0}tbody td:first-child code{white-space:normal}}#print-order+p+.reftable-wrap tbody td:first-child code{white-space:normal}.pager{border-top:1px solid var(--line);grid-template-columns:1fr 1fr;gap:16px;margin-top:64px;padding-top:24px;display:grid;position:static}.pager a{font-family:var(--serif);color:var(--ink);font-size:1.05rem;text-decoration:none}.pager a[rel=next]{text-align:right;grid-column:2}.pager small{font:.8rem var(--sans);color:var(--ink-soft);display:block}@media (width<=560px){.pager{grid-template-columns:1fr}.pager a[rel=next]{grid-column:1}}.contents h3{margin:30px 0 8px;font-size:1.12rem}.contents h3 a{text-decoration:none}.contents ul{columns:2 300px;column-gap:40px;margin:0;padding:0;font-size:.9rem;list-style:none}.contents li{break-inside:avoid;padding:2px 0}.contents li.h3{padding-left:1.4em;font-size:.85rem}.contents li a{color:var(--ink-soft);text-decoration:none}.contents li a:hover{color:var(--ink)}.az-letters{flex-wrap:wrap;gap:4px 12px;font-weight:600;display:flex}.az-letters a{text-decoration:none}.az-cols{columns:3 220px;column-gap:32px;font-size:.85rem;line-height:1.35}.az h3{break-after:avoid;margin:14px 0 4px;font-size:1rem}.az h3:first-child{margin-top:0}.az ul{margin:0;padding:0;list-style:none}.az li{break-inside:avoid;text-indent:-1em;overflow-wrap:anywhere;padding:1px 0 1px 1em}.az li a{color:var(--ink-soft);text-decoration:none}.az li a:hover{color:var(--ink)}.az code{background:0 0;padding:0;font-size:.92em}.az .az-page{color:var(--ink-faint);margin-left:4px;font-size:.8em}section:has(>h2[id$=option-table]) table{table-layout:fixed}section:has(>h2[id$=option-table]) table th:first-child{width:36%}section:has(>h2[id$=option-table]) table th:nth-child(2){width:16%}section:has(>h2[id$=option-table]) table th:nth-child(3){width:26%}section:has(>h2[id$=option-table]) table th:nth-child(4){width:22%}section:has(>h2[id$=option-table]) table:has(th:nth-child(2):last-child){table-layout:auto;width:auto}@media (width<=860px){section:has(>h2[id$=option-table]) tbody td:first-child code{white-space:normal;overflow-wrap:anywhere}}
+</style></head> <body>  <nav class="nav-light"> <div class="wrap"> <a class="logo" href="/v2/">REKS<span class="dot">·</span>Studio</a> <div class="navlinks"> <a href="/v2/">Overview</a><a href="/v2/docs/">Documentation</a><a href="/v2/manual/">Manual</a> </div> </div> </nav> <header class="pagehead"> <div class="wrap"> <div class="kicker">User Manual</div> <h1>Output and properties</h1> <p>Chapters 13–14 of the REKS Studio user manual</p> </div> </header><div class="wrap"> <div class="docs-layout"> <details class="toc"> <summary>Contents · Output and properties (6 of 8)</summary> <nav class="toc-list"> <a href="/v2/manual/">Start</a><a href="/v2/manual/concepts/">Concepts</a><a href="/v2/manual/first-calculation/">First Calculation</a><a href="/v2/manual/setup/">Input</a><a href="/v2/manual/run-control/">Run control</a> <a href="/v2/manual/properties/" aria-current="page">Output and properties</a> <div class="sub"> <a class="h2" href="#reading-output">13. Reading the Output</a><a class="h3" href="#print-order">Print order</a><a class="h3" href="#run-report">Run report</a><a class="h3" href="#report-level">Report level</a><a class="h4" href="#reks_report_level">REKS_REPORT_LEVEL</a><a class="h3" href="#variable-names">Variable names</a><a class="h3" href="#files">Files</a><a class="h2" href="#properties">14. Properties</a><a class="h3" href="#rules-for-all-entries">Rules for all entries</a><a class="h3" href="#summary">Summary</a><a class="h3" href="#scf">SCF</a><a class="h4" href="#sa-energy">SA-REKS ensemble energy and configuration energies</a><a class="h4" href="#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a><a class="h4" href="#convergence-quality">GVB-DIIS convergence quality</a><a class="h3" href="#si-states">SI states</a><a class="h4" href="#si-fons">FONs of the SI-only geminals</a><a class="h4" href="#ssr-energies">SSR state energies</a><a class="h4" href="#ssr-composition">SSR eigenvectors and Chirgwin–Coulson weights</a><a class="h4" href="#si-matrices">SI Hamiltonian and overlap</a><a class="h4" href="#si-orbitals">Orbitals of the SI step</a><a class="h3" href="#unrelaxed-state-and-transition-properties">Unrelaxed state and transition properties</a><a class="h4" href="#transition-dipole">Transition dipole moments and length-form oscillator strengths</a><a class="h4" href="#transition-velocity">Velocity-form transition moments and oscillator strengths</a><a class="h4" href="#transition-magnetic">Magnetic transition moments and rotatory strengths</a><a class="h4" href="#natural-orbitals">Natural orbitals and occupations of the active space</a><a class="h4" href="#radical-character">Radical character</a><a class="h4" href="#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a><a class="h4" href="#quadrupole">Quadrupole moments of the states (unrelaxed)</a><a class="h4" href="#transition-second-moments">Transition second moments</a><a class="h4" href="#multipoles">Cartesian multipole moments of order l ≥ 3</a><a class="h4" href="#atomic-charges">Atomic charges of the states (unrelaxed)</a><a class="h4" href="#transition-charges">Transition charges</a><a class="h4" href="#bond-indices">Bond indices of the states (unrelaxed)</a><a class="h4" href="#nto">Natural transition orbitals</a><a class="h4" href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a><a class="h4" href="#fragment-ct">Fragment charge-transfer descriptors</a><a class="h4" href="#fragment-couplings">Fragment couplings (FCD, FED)</a><a class="h4" href="#active-rdm">Active one-particle density matrices</a><a class="h3" href="#spin-energetics">Spin energetics</a><a class="h4" href="#spin-state-energetics">Spin-state gaps and Heisenberg J</a><a class="h3" href="#relaxed-properties-and-ekt">Relaxed properties and EKT</a><a class="h4" href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a><a class="h4" href="#relaxed-bond-indices">Bond indices of the relaxed density</a><a class="h4" href="#ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</a><a class="h4" href="#ekt-ensemble">EKT ionization energies of the SA-REKS ensemble</a><a class="h3" href="#gradients-nac-conical-intersections">Gradients, NAC, conical intersections</a><a class="h4" href="#state-gradient">Nuclear gradients of SSR states</a><a class="h4" href="#sa-gradient">Nuclear gradient of the SA-REKS ensemble</a><a class="h4" href="#nac">Nonadiabatic coupling vectors</a><a class="h4" href="#ci-topography">Conical-intersection topography</a> </div> <a href="/v2/manual/diagnose/">Diagnose</a><a href="/v2/manual/reference/">Reference</a> <a href="/v2/manual/reference/#index">Index</a> </nav> </details> <div> <section class="docsec"><h2 id="reading-output">13. Reading the Output</h2><div class="prose">
+<h3 id="print-order">Print order</h3>
+<p>Blocks of a <code>gradient()</code> run with every block on, at <code>REKS_REPORT_LEVEL</code> 2; an <code>energy()</code> run ends before <code>SI-SA-REKS analytic gradient: targets</code>.</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Entry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REKS Studio</code></td>
+<td><a href="#run-report">Run report</a></td>
+</tr>
+<tr>
+<td><code>==&gt; REKS Studio setup &lt;==</code></td>
+<td><a href="#run-report">Run report</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Pairing schemes (GVB(2,2) geminal pairs) &lt;=</code></td>
+<td><a href="/v2/manual/setup/#pairing-schemes">Pairing schemes</a></td>
+</tr>
+<tr>
+<td><code>=&gt; SA pool &lt;=</code></td>
+<td><a href="/v2/manual/setup/#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a></td>
+</tr>
+<tr>
+<td><code>=&gt; SI pools &lt;=</code></td>
+<td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
+</tr>
+<tr>
+<td><code>=&gt; State analysis &lt;=</code></td>
+<td><a href="/v2/manual/setup/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a></td>
+</tr>
+<tr>
+<td><code>=&gt; Gradient request &lt;=</code></td>
+<td><a href="/v2/manual/setup/#si_reks_grad"><code>SI_REKS_GRAD</code></a></td>
+</tr>
+<tr>
+<td><code>==&gt; Pre-Iterations &lt;==</code></td>
+<td><a href="/v2/manual/run-control/#restart">Restart mechanism</a></td>
+</tr>
+<tr>
+<td><code>==&gt; Iterations &lt;==</code></td>
+<td><a href="/v2/manual/run-control/#engines">The three engines</a></td>
+</tr>
+<tr>
+<td><code>==&gt; Post-Iterations &lt;==</code></td>
+<td><a href="#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Energetics &lt;=</code></td>
+<td><a href="#sa-energy">SA-REKS ensemble energy and configuration energies</a></td>
+</tr>
+<tr>
+<td><code>=&gt; SA-REKS energy decomposition &lt;=</code></td>
+<td><a href="#sa-energy">SA-REKS ensemble energy and configuration energies</a></td>
+</tr>
+<tr>
+<td><code>=== REKS IPR Penalty Final ===</code></td>
+<td><a href="/v2/manual/run-control/#reks_deloc_ipr_penalty"><code>REKS_DELOC_IPR_PENALTY</code></a></td>
+</tr>
+<tr>
+<td><code>==&gt; State interaction: setup over the union of the SI cassettes &lt;==</code></td>
+<td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
+</tr>
+<tr>
+<td><code>=&gt; FON optimization after the SCF &lt;=</code></td>
+<td><a href="#si-fons">FONs of the SI-only geminals</a></td>
+</tr>
+<tr>
+<td><code>==&gt; State interaction: cassette 0, 18SI-3SA-REKS(4,4), 2S=0 (singlet) &lt;==</code></td>
+<td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
+</tr>
+<tr>
+<td><code>=&gt; Hamiltonian, cassette 0 &lt;=</code></td>
+<td><a href="#si-matrices">SI Hamiltonian and overlap</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Adiabatic states, cassette 0 &lt;=</code></td>
+<td><a href="#ssr-energies">SSR state energies</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Transitions, cassette 0 &lt;=</code></td>
+<td><a href="#transition-dipole">Transition dipole moments and length-form oscillator strengths</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Velocity and magnetic transition moments, cassette 0 &lt;=</code></td>
+<td><a href="#transition-velocity">Velocity-form transition moments and oscillator strengths</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Natural orbitals of the active space, cassette 0 &lt;=</code></td>
+<td><a href="#natural-orbitals">Natural orbitals and occupations of the active space</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Radical character, cassette 0 &lt;=</code></td>
+<td><a href="#radical-character">Radical character</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Dipole moment (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><a href="#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Quadrupole moment (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><a href="#quadrupole">Quadrupole moments of the states (unrelaxed)</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Transition second moments, cassette 0 &lt;=</code></td>
+<td><a href="#transition-second-moments">Transition second moments</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Multipole moments of order 3 (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><a href="#multipoles">Cartesian multipole moments of order l ≥ 3</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Atomic charges (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><a href="#atomic-charges">Atomic charges of the states (unrelaxed)</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Transition charges, cassette 0 &lt;=</code></td>
+<td><a href="#transition-charges">Transition charges</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Bond indices (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><a href="#bond-indices">Bond indices of the states (unrelaxed)</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Natural transition orbitals (NTO), cassette 0 &lt;=</code></td>
+<td><a href="#nto">Natural transition orbitals</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Exciton descriptors, cassette 0 &lt;=</code></td>
+<td><a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Hole and electron populations, cassette 0 &lt;=</code></td>
+<td><a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Fragments: charge-transfer descriptors, cassette 0 &lt;=</code></td>
+<td><a href="#fragment-ct">Fragment charge-transfer descriptors</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Fragments: hole and electron populations, cassette 0 &lt;=</code></td>
+<td><a href="#fragment-ct">Fragment charge-transfer descriptors</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Fragment couplings F1 - F2, cassette 0 &lt;=</code></td>
+<td><a href="#fragment-couplings">Fragment couplings (FCD, FED)</a></td>
+</tr>
+<tr>
+<td><code>==&gt; State summary &lt;==</code></td>
+<td><a href="#ssr-energies">SSR state energies</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Alternative configuration lists &lt;=</code></td>
+<td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
+</tr>
+<tr>
+<td><code>==&gt; Spin-state energetics &lt;==</code></td>
+<td><a href="#spin-state-energetics">Spin-state gaps and Heisenberg J</a></td>
+</tr>
+<tr>
+<td><code>==&gt; Coupled-perturbed REKS (CP-REKS, Z-vector) solver &lt;==</code></td>
+<td><a href="/v2/manual/setup/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a></td>
+</tr>
+<tr>
+<td><code>==&gt; Relaxed properties, cassette 0 &lt;==</code></td>
+<td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Dipole moment (relaxed density matrix P^r), cassette 0 &lt;=</code></td>
+<td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Quadrupole moment (relaxed density matrix P^r), cassette 0 &lt;=</code></td>
+<td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Atomic charges (relaxed density matrix P^r), cassette 0 &lt;=</code></td>
+<td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
+</tr>
+<tr>
+<td><code>==&gt; Ionization energies (EKT) and Dyson orbitals, cassette 0 &lt;==</code></td>
+<td><a href="#ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</a></td>
+</tr>
+<tr>
+<td><code>==&gt; Summary of the energy phase &lt;==</code></td>
+<td><a href="#files">Files</a></td>
+</tr>
+<tr>
+<td><code>==&gt; SI-SA-REKS analytic gradient: targets &lt;==</code></td>
+<td><a href="#state-gradient">Nuclear gradients of SSR states</a></td>
+</tr>
+<tr>
+<td><code>==&gt; Gradient of S1, cassette 0 &lt;==</code></td>
+<td><a href="#state-gradient">Nuclear gradients of SSR states</a></td>
+</tr>
+<tr>
+<td><code>==&gt; NAC S1/S2, cassette 0 &lt;==</code></td>
+<td><a href="#nac">Nonadiabatic coupling vectors</a></td>
+</tr>
+<tr>
+<td><code>==&gt; Conical-intersection (CI) topography S1/S2 (cassette 0), E(S2) - E(S1) = 4.756e-03 Eh &lt;==</code></td>
+<td><a href="#ci-topography">Conical-intersection topography</a></td>
+</tr>
+<tr>
+<td><code>==&gt; Returned gradient &lt;==</code></td>
+<td><a href="#state-gradient">Nuclear gradients of SSR states</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="run-report">Run report</h3>
+<p>At the default <code>REKS_REPORT_LEVEL</code> 2 (<a href="#reks_report_level"><code>REKS_REPORT_LEVEL</code></a>) the REKS part of the output opens with the banner and the setup block:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>=========================================================================</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                               REKS Studio</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            Spin-Restricted Ensemble-referenced Kohn-Sham DFT</span></span>
+<span class="line"><span>    State-Averaged (SA-REKS) and State-Interaction (SI-SA-REKS = SSR)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>           Konstantin Komarov, Michael Filatov, Seung Kyu Min</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> Ulsan National Institute of Science and Technology (UNIST), South Korea</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>=========================================================================</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>==&gt; REKS Studio setup &lt;==</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    SA ensemble           REKS(4,4), 2S=0 (singlet)</span></span>
+<span class="line"><span>    SI cassettes          2S = 0, 2 (SI pools)</span></span>
+<span class="line"><span>    Active space          4 electrons in 4 orbitals, 6 doubly occupied core orbitals</span></span>
+<span class="line"><span>    Active MO indices     7A(a), 8A(b), 9A(c), 10A(d)</span></span>
+<span class="line"><span>    Orbital solver        GVB-DIIS (ORBITAL), level shift 0.60 Eh, adaptive (decreases as the SCF stabilizes)</span></span>
+<span class="line"><span>    FON solver            projected Newton, interpolation delta 0.40</span></span>
+<span class="line"><span>    XC evaluation         exchange {GGA_X_B88 x 0.5}, correlation {GGA_C_LYP x 1.0}, exact exchange x 0.50</span></span></code></pre>
+<p>Check the core count and <code>Active MO indices</code> (<a href="/v2/manual/first-calculation/#check-solution">Check the solution</a>). The blocks that follow: <a href="#print-order">Print order</a>. Output fragments are verbatim from runs of this build: C₂H₄ REKS(4,4), BH&amp;HLYP/6-31G(d), cassettes 2S = 0 and 2, for most blocks; linear H₄ REKS(4,4) for the narrower tables.</p>
+<h3 id="report-level">Report level</h3>
+<h4 id="reks_report_level"><code>REKS_REPORT_LEVEL</code></h4>
+<dl class="fields"><dt>Type</dt><dd>int (1–5)</dd><dt>Default</dt><dd><code>2</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"reks_report_level"</span><span style="color:#E7E6E2">: 4,</span></span></code></pre>
 <ul>
-<li>Tables are printed at <code>REKS_REPORT_LEVEL</code> ≥ 2 unless an entry states otherwise.</li>
-<li>A switch named as an <code>SI_REKS_ANALYSIS</code> block is on by default (<a href="/v2/manual/setup/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a>). "SI present" = at least one SI cassette with configurations, the default when <code>SI_REKS_CONFIGS</code> is absent; an all-empty <code>SI_REKS_CONFIGS</code> turns it off.</li>
-<li>Transition quantities are computed for pairs I &lt; J within one cassette and printed when at least 2 states are printed; per-state and pair tables are bounded by <code>SI_REKS_PRINT_STATES</code>.</li>
-<li>The per-state and per-pair <code>SSR … K=e</code> arrays exist only for the states stored by <code>SI_REKS_STORE_STATES</code>; <code>SSR ENERGIES K=e</code> holds every physical root, and the <code>SSR ROOT r … CASSETTE e</code>, <code>SSR NAC …</code>, <code>SSR CI …</code> and EKT arrays are stored whenever their block runs.</li>
-<li>The <code>=&gt;</code> sub-block headers of a cassette carry <code>, cassette e</code>; with a single SI cassette that suffix is absent. The <code>==&gt;</code> headers (<code>State interaction: cassette e</code>, <code>Relaxed properties</code>, EKT, <code>Gradient of</code>, <code>NAC</code>, CI topography) always name the cassette.</li>
-<li>The sign of a phase-odd quantity (transition dipole, velocity and magnetic moments, transition multipoles and charges, NAC vectors and their sum over atoms, g̃ and h̃ of the CI topography, FCD/FED couplings, NTO and NDO orbitals) is arbitrary between runs, also of the same input (H₄: S0→S1 <code>mu_z</code> = 2.846913 in one run, −2.846913 in another). Moduli, f, |d|, R<sub>len</sub> and R<sub>vel</sub> agree. Within one run all quantities share one phase, so their relations hold (Σ<sub>A</sub> d<sub>A</sub> = −p<sub>IJ</sub>; φ and s<sub>y</sub> of the CI topography from the same d).</li>
+<li>Selects which REKS blocks appear: the numbers of the run are printed at level 2; levels 3–5 add counters, solver traces and intermediate matrices.</li>
 </ul>
+<p>Blocks added at each level; each level prints everything of the levels below. Output lines: one <code>gradient()</code> run of H₄ REKS(4,4) with two cassettes, NAC, relaxed properties, EKT and Molden files.</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Adds</th>
+<th>Lines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>Pre-Iterations</code> with the <code>REKS orbitals</code> line; <code>Iterations</code> and the convergence line; <code>Post-Iterations</code> (grid electrons, final energy); <code>Energetics</code>; <code>Summary</code> / <code>Summary of the energy phase</code> (<code>MOLDEN_WRITE</code>); <code>Returned gradient</code> with Psi4's <code>-Total Gradient</code></td>
+<td>670</td>
+</tr>
+<tr>
+<td>2 (default)</td>
+<td>Banner; <code>REKS Studio setup</code> with <code>Pairing schemes</code>, <code>SA pool</code>, <code>SI pools</code>, <code>State analysis</code>, <code>Gradient request</code>; orbital energies with the FONs in <code>Post-Iterations</code>; <code>SA-REKS energy decomposition</code>; <code>REKS IPR Penalty Final</code>; SI setup, <code>FON optimization after the SCF</code>, per cassette <code>Hamiltonian</code>, <code>Adiabatic states</code> and the property blocks; <code>State summary</code>; <code>Spin-state energetics</code>; CP-REKS solver (Psi4 <code>PRINT</code> ≥ 1); <code>Relaxed properties</code>; EKT; gradient targets, <code>Gradient of …</code>, <code>NAC …</code>, CI topography</td>
+<td>2072</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>XC evaluation … per string … per key</code> in the setup; Hamiltonian counters (<code>coupled</code>/<code>zero</code>, <code>Terms</code>, <code>Reuse</code>, overlap terms) and the <code>Off-diagonal channel</code> table; EKT <code>dropped eigenvalues</code> and the Dyson MO matrix; <code>[REKS-GRAD]</code> <code>C_eff</code> per microstate and Psi4 per-channel gradient terms; <code>==&gt; References &lt;==</code></td>
+<td>2475</td>
+</tr>
+<tr>
+<td>4–5</td>
+<td>4: <code>REKS Memory Footprint</code>, <code>Run diagnostics</code>, per-iteration solver traces (<code>[GVB-FON]</code>, <code>[ORB-DIIS]</code>, <code>[TRAH]</code>, <code>[LEVEL_SHIFT]</code>, …), <code>CP-REKS Z-Vector Profile</code>; per cassette <code>Microstate energies (sorted by energy)</code>, <code>Fractional Occupation Numbers (active orbitals)</code>, <code>Lagrangian eps_pq and ERI (pq|st)</code>, <code>Pre-diagonalization SI Hamiltonian</code> and <code>SI Overlap S</code> in blocks of 18 columns. 5: per SCF iteration the active orbitals, Fock asymmetry, orbital update, coupling Fock matrix, SA energy, weighting factors C<sub>L</sub> and the microstate energies</td>
+<td>3997; 8138</td>
+</tr>
+</tbody>
+</table></div>
+<p>From level 3 the configuration-axis arrays <code>SSR COEFFICIENTS K=e</code>, <code>SSR HAMILTONIAN K=e</code>, <code>SSR OVERLAP SPARSE K=e</code> and <code>SSR 1-RDM DIABATIC SPARSE K=e</code> are stored; level 4 prints the Hamiltonian and overlap. Levels 4–5 grow with the active space and the cassette dimension.</p>
 <h3 id="variable-names">Variable names</h3>
 <p>All variables are set on the wavefunction and copied to the global (core) variables at the end of <code>energy()</code> and <code>gradient()</code>.</p>
 <div class="reftable-wrap"><table>
@@ -90,6 +356,17 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>        test_reks44_all.reks44.dyson.S2_cassette0.molden</span></span>
 <span class="line"><span>      Natural orbitals, NTO, NDO of the SI states: not written; require SI_REKS_STORE_STATES &gt; 0</span></span>
 <span class="line"><span>      and SI_REKS_ANALYSIS NO_OCCUPATIONS / NTO / EXCITON</span></span></code></pre>
+</div></section><section class="docsec"><h2 id="properties">14. Properties</h2><div class="prose">
+<p>Unrelaxed properties (<code>SI_REKS_ANALYSIS</code>) use the densities ρ<sup>(IJ)</sup> = ⟨I|Ê<sub>pq</sub>|J⟩ of the SSR states in the SA-REKS orbitals; relaxed properties use the relaxed density P<sup>r</sup> of the states named in <code>SI_REKS_PROPERTY_FOR</code> (<a href="/v2/manual/concepts/#densities">Unrelaxed and relaxed densities</a>). ρ<sup>(IJ)</sup> is spin-summed and active (MO coefficients C<sub>a</sub>); core density D<sup>c</sup>.</p>
+<h3 id="rules-for-all-entries">Rules for all entries</h3>
+<ul>
+<li>Tables are printed at <code>REKS_REPORT_LEVEL</code> ≥ 2 unless an entry states otherwise.</li>
+<li>A switch named as an <code>SI_REKS_ANALYSIS</code> block is on by default (<a href="/v2/manual/setup/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a>). "SI present" = at least one SI cassette with configurations, the default when <code>SI_REKS_CONFIGS</code> is absent; an all-empty <code>SI_REKS_CONFIGS</code> turns it off.</li>
+<li>Transition quantities are computed for pairs I &lt; J within one cassette and printed when at least 2 states are printed; per-state and pair tables are bounded by <code>SI_REKS_PRINT_STATES</code>.</li>
+<li>The per-state and per-pair <code>SSR … K=e</code> arrays exist only for the states stored by <code>SI_REKS_STORE_STATES</code>; <code>SSR ENERGIES K=e</code> holds every physical root, and the <code>SSR ROOT r … CASSETTE e</code>, <code>SSR NAC …</code>, <code>SSR CI …</code> and EKT arrays are stored whenever their block runs.</li>
+<li>The <code>=&gt;</code> sub-block headers of a cassette carry <code>, cassette e</code>; with a single SI cassette that suffix is absent. The <code>==&gt;</code> headers (<code>State interaction: cassette e</code>, <code>Relaxed properties</code>, EKT, <code>Gradient of</code>, <code>NAC</code>, CI topography) always name the cassette.</li>
+<li>The sign of a phase-odd quantity (transition dipole, velocity and magnetic moments, transition multipoles and charges, NAC vectors and their sum over atoms, g̃ and h̃ of the CI topography, FCD/FED couplings, NTO and NDO orbitals) is arbitrary between runs, also of the same input (H₄: S0→S1 <code>mu_z</code> = 2.846913 in one run, −2.846913 in another). Moduli, f, |d|, R<sub>len</sub> and R<sub>vel</sub> agree. Within one run all quantities share one phase, so their relations hold (Σ<sub>A</sub> d<sub>A</sub> = −p<sub>IJ</sub>; φ and s<sub>y</sub> of the CI topography from the same d).</li>
+</ul>
 <h3 id="summary">Summary</h3>
 <div class="reftable-wrap"><table>
 <thead>
@@ -307,218 +584,6 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </tr>
 </tbody>
 </table></div>
-<h3 id="print-order">Print order</h3>
-<p>Blocks of a <code>gradient()</code> run with every block on, at <code>REKS_REPORT_LEVEL</code> 2; an <code>energy()</code> run stops after <code>Summary</code>.</p>
-<div class="reftable-wrap"><table>
-<thead>
-<tr>
-<th>Block</th>
-<th>Entry</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>REKS Studio</code></td>
-<td><a href="/v2/manual/#start">Run report</a></td>
-</tr>
-<tr>
-<td><code>==&gt; REKS Studio setup &lt;==</code></td>
-<td><a href="/v2/manual/#start">Run report</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Pairing schemes (GVB(2,2) geminal pairs) &lt;=</code></td>
-<td><a href="/v2/manual/setup/#pairing-schemes">Pairing schemes</a></td>
-</tr>
-<tr>
-<td><code>=&gt; SA pool &lt;=</code></td>
-<td><a href="/v2/manual/setup/#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a></td>
-</tr>
-<tr>
-<td><code>=&gt; SI pools &lt;=</code></td>
-<td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
-</tr>
-<tr>
-<td><code>=&gt; State analysis &lt;=</code></td>
-<td><a href="/v2/manual/setup/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a></td>
-</tr>
-<tr>
-<td><code>=&gt; Gradient request &lt;=</code></td>
-<td><a href="/v2/manual/setup/#si_reks_grad"><code>SI_REKS_GRAD</code></a></td>
-</tr>
-<tr>
-<td><code>==&gt; Pre-Iterations &lt;==</code></td>
-<td><a href="/v2/manual/run-control/#restart">Restart mechanism</a></td>
-</tr>
-<tr>
-<td><code>==&gt; Iterations &lt;==</code></td>
-<td><a href="/v2/manual/run-control/#engines">The three engines</a></td>
-</tr>
-<tr>
-<td><code>==&gt; Post-Iterations &lt;==</code></td>
-<td><a href="#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Energetics &lt;=</code></td>
-<td><a href="#sa-energy">SA-REKS ensemble energy and configuration energies</a></td>
-</tr>
-<tr>
-<td><code>=&gt; SA-REKS energy decomposition &lt;=</code></td>
-<td><a href="#sa-energy">SA-REKS ensemble energy and configuration energies</a></td>
-</tr>
-<tr>
-<td><code>=== REKS IPR Penalty Final ===</code></td>
-<td><a href="/v2/manual/run-control/#reks_deloc_ipr_penalty"><code>REKS_DELOC_IPR_PENALTY</code></a></td>
-</tr>
-<tr>
-<td><code>==&gt; State interaction: setup over the union of the SI cassettes &lt;==</code></td>
-<td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
-</tr>
-<tr>
-<td><code>=&gt; FON optimization after the SCF &lt;=</code></td>
-<td><a href="#si-fons">FONs of the SI-only geminals</a></td>
-</tr>
-<tr>
-<td><code>==&gt; State interaction: cassette 0, 18SI-3SA-REKS(4,4), 2S=0 (singlet) &lt;==</code></td>
-<td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
-</tr>
-<tr>
-<td><code>=&gt; Hamiltonian, cassette 0 &lt;=</code></td>
-<td><a href="#si-matrices">SI Hamiltonian and overlap</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Adiabatic states, cassette 0 &lt;=</code></td>
-<td><a href="#ssr-energies">SSR state energies</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Transitions, cassette 0 &lt;=</code></td>
-<td><a href="#transition-dipole">Transition dipole moments and length-form oscillator strengths</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Velocity and magnetic transition moments, cassette 0 &lt;=</code></td>
-<td><a href="#transition-velocity">Velocity-form transition moments and oscillator strengths</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Natural orbitals of the active space, cassette 0 &lt;=</code></td>
-<td><a href="#natural-orbitals">Natural orbitals and occupations of the active space</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Radical character, cassette 0 &lt;=</code></td>
-<td><a href="#radical-character">Radical character</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Dipole moment (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
-<td><a href="#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Quadrupole moment (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
-<td><a href="#quadrupole">Quadrupole moments of the states (unrelaxed)</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Transition second moments, cassette 0 &lt;=</code></td>
-<td><a href="#transition-second-moments">Transition second moments</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Multipole moments of order 3 (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
-<td><a href="#multipoles">Cartesian multipole moments of order l ≥ 3</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Atomic charges (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
-<td><a href="#atomic-charges">Atomic charges of the states (unrelaxed)</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Transition charges, cassette 0 &lt;=</code></td>
-<td><a href="#transition-charges">Transition charges</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Bond indices (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
-<td><a href="#bond-indices">Bond indices of the states (unrelaxed)</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Natural transition orbitals (NTO), cassette 0 &lt;=</code></td>
-<td><a href="#nto">Natural transition orbitals</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Exciton descriptors, cassette 0 &lt;=</code></td>
-<td><a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Hole and electron populations, cassette 0 &lt;=</code></td>
-<td><a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Fragments: charge-transfer descriptors, cassette 0 &lt;=</code></td>
-<td><a href="#fragment-ct">Fragment charge-transfer descriptors</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Fragments: hole and electron populations, cassette 0 &lt;=</code></td>
-<td><a href="#fragment-ct">Fragment charge-transfer descriptors</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Fragment couplings F1 - F2, cassette 0 &lt;=</code></td>
-<td><a href="#fragment-couplings">Fragment couplings (FCD, FED)</a></td>
-</tr>
-<tr>
-<td><code>==&gt; State summary &lt;==</code></td>
-<td><a href="#ssr-energies">SSR state energies</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Alternative configuration lists &lt;=</code></td>
-<td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
-</tr>
-<tr>
-<td><code>==&gt; Spin-state energetics &lt;==</code></td>
-<td><a href="#spin-state-energetics">Spin-state gaps and Heisenberg J</a></td>
-</tr>
-<tr>
-<td><code>==&gt; Coupled-perturbed REKS (CP-REKS, Z-vector) solver &lt;==</code></td>
-<td><a href="/v2/manual/setup/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a></td>
-</tr>
-<tr>
-<td><code>==&gt; Relaxed properties, cassette 0 &lt;==</code></td>
-<td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Dipole moment (relaxed density matrix P^r), cassette 0 &lt;=</code></td>
-<td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Quadrupole moment (relaxed density matrix P^r), cassette 0 &lt;=</code></td>
-<td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Atomic charges (relaxed density matrix P^r), cassette 0 &lt;=</code></td>
-<td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
-</tr>
-<tr>
-<td><code>==&gt; Ionization energies (EKT) and Dyson orbitals, cassette 0 &lt;==</code></td>
-<td><a href="#ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</a></td>
-</tr>
-<tr>
-<td><code>==&gt; Summary of the energy phase &lt;==</code></td>
-<td><a href="#files">Files</a></td>
-</tr>
-<tr>
-<td><code>==&gt; SI-SA-REKS analytic gradient: targets &lt;==</code></td>
-<td><a href="#state-gradient">Nuclear gradients of SSR states</a></td>
-</tr>
-<tr>
-<td><code>==&gt; Gradient of S1, cassette 0 &lt;==</code></td>
-<td><a href="#state-gradient">Nuclear gradients of SSR states</a></td>
-</tr>
-<tr>
-<td><code>==&gt; NAC S1/S2, cassette 0 &lt;==</code></td>
-<td><a href="#nac">Nonadiabatic coupling vectors</a></td>
-</tr>
-<tr>
-<td><code>==&gt; Conical-intersection (CI) topography S1/S2 (cassette 0), E(S2) - E(S1) = 4.756e-03 Eh &lt;==</code></td>
-<td><a href="#ci-topography">Conical-intersection topography</a></td>
-</tr>
-<tr>
-<td><code>==&gt; Returned gradient &lt;==</code></td>
-<td><a href="#state-gradient">Nuclear gradients of SSR states</a></td>
-</tr>
-</tbody>
-</table></div>
 <h3 id="scf">SCF</h3>
 <h4 id="sa-energy">SA-REKS ensemble energy and configuration energies</h4>
 <p>Weighted sum of the energies E<sub>X</sub> of the SA-pool configurations, with the weights w<sub>X</sub> of <code>SA_REKS_WEIGHTS</code>.</p>
@@ -549,7 +614,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>With <code>REKS_DELOC_IPR_PENALTY</code> &gt; 0 both blocks add a penalty row, and <code>Total energy</code> = <code>E[SA-REKS]</code> + <code>IPR penalty energy</code> (<a href="/v2/manual/run-control/#reks_deloc_ipr_penalty"><code>REKS_DELOC_IPR_PENALTY</code></a>).</li>
 </ul>
 <h4 id="sa-fons">Fractional occupation numbers of the SA-REKS ensemble</h4>
-<p>FONs n<sub>p</sub>, n<sub>q</sub> (n<sub>p</sub> + n<sub>q</sub> = 2) of the active orbitals of each geminal (p,q), one set per FON generation (<a href="/v2/manual/setup/#4-configuration-catalog">§4</a>).</p>
+<p>FONs of the active orbitals of each geminal, summing to 2 per geminal (n<sub>p</sub> + n<sub>q</sub> = 2 for a two-orbital geminal (p,q)), one set per FON generation, pairing scheme and run sector (<a href="/v2/manual/concepts/#fon-generation">FON set and generation</a>).</p>
 <dl class="fields"><dt>On</dt><dd>every REKS run</dd><dt>For</dt><dd>every generation with at least one active geminal in the SA ensemble</dd><dt>Units</dt><dd>electrons</dd></dl>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>==&gt; Post-Iterations &lt;==</span></span>
 <span class="line"><span>[...]</span></span>
@@ -566,7 +631,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>Stored</dt><dd><code>REKS FON</code>, <code>REKS &lt;L&gt;_FON</code> (L = M, U, V, W, X, Y, Z), <code>REKS FON META</code>, <code>REKS &lt;L&gt;_FON META</code>; <code>REKS N ACTIVE ELECTRONS</code>, <code>REKS N ACTIVE ORBITALS</code>, <code>REKS G</code>, <code>REKS N SECTORS</code></dd><dt>Files</dt><dd><code>&lt;prefix&gt;.molden</code> (<code>MOLDEN_WRITE</code>): <code>Occup</code> of the active MOs = FONs of set n, not natural occupations</dd></dl>
 <ul>
 <li>FON arrays: (u − 1) × n<sub>g</sub>, u = widest geminal width, n<sub>g</sub> = geminals of the generation; row r = free FON n<sub>r</sub>, the last FON is 2 − Σ; unused cells −1. META arrays: (1 + u) × n<sub>g</sub>, pairing scheme (row 0) and MO indices (rows 1..).</li>
-<li>Check: the MOs of <code>Pairing scheme 0</code> equal <code>Active MO indices</code> of the setup (<a href="/v2/manual/run-control/#diag-wrong-window">SCF converges instantly to a wrong energy after a restart</a>); <code>2.000000</code>/<code>0.000000</code> lie at the bound (<a href="/v2/manual/run-control/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>).</li>
+<li>Check: the active set (<a href="/v2/manual/first-calculation/#check-solution">Check the solution</a>); <code>2.000000</code>/<code>0.000000</code> lie at the bound (<a href="/v2/manual/diagnose/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>).</li>
 </ul>
 <h4 id="convergence-quality">GVB-DIIS convergence quality</h4>
 <p>Diagnostics of the finished GVB-DIIS run: final orbital-gradient norms, landings, verdict trips, highest fallback rung (0 ARMED, 1 RETAIN, 2 FALLBACK), basin fires, and GRAZING = 1 when the final iterate landed within a decade of a convergence gate (CLEAN otherwise).</p>
@@ -587,7 +652,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </ul>
 <h3 id="si-states">SI states</h3>
 <h4 id="si-fons">FONs of the SI-only geminals</h4>
-<p>FONs of geminals that enter only SI configurations, optimized after the SCF at fixed SA-REKS orbitals (<a href="/v2/manual/concepts/#2-concepts">§2</a>).</p>
+<p>FONs of geminals that enter only SI configurations, optimized after the SCF at fixed SA-REKS orbitals (<a href="/v2/manual/concepts/#si-only-fons">SI-only FONs</a>).</p>
 <dl class="fields"><dt>On</dt><dd>SI present</dd><dt>For</dt><dd>SI configurations with geminals absent from the SA ensemble</dd><dt>Units</dt><dd>electrons</dd></dl>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>=&gt; FON optimization after the SCF &lt;=</span></span>
 <span class="line"><span></span></span>
@@ -615,7 +680,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>Read the <code>Residual</code> column. Geminals without <code>*</code> printed as <code>2.000000/0.000000</code> lie at the bound, as scheme 1 <code>(a,c)</code> above; compare the same columns between runs.</li>
 </ul>
 <h4 id="ssr-energies">SSR state energies</h4>
-<p>Eigenvalues of the SI eigenproblem of each cassette after removal of the overlap null modes (<a href="/v2/manual/concepts/#2-concepts">§2</a>); states ordered by energy, root index 0-based.</p>
+<p>Eigenvalues of the SI eigenproblem of each cassette after removal of the overlap null modes (<a href="/v2/manual/concepts/#si-hamiltonian">SI Hamiltonian and overlap</a>); states ordered by energy, root index 0-based.</p>
 <dl class="fields"><dt>On</dt><dd>SI present</dd><dt>For</dt><dd>every physical root of every SI cassette with at least one configuration, independent of <code>SI_REKS_STORE_STATES</code> and <code>SI_REKS_PRINT_STATES</code></dd><dt>Units</dt><dd>E<sub>h</sub> (stored); E<sub>h</sub> and eV relative to the lowest state of the first typed SI cassette, S0 when that cassette is a singlet (printed)</dd></dl>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>=&gt; Adiabatic states, cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
@@ -653,10 +718,10 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>The four bookkeeping scalars never take the sector prefix.</li>
 <li><code>Adiabatic states</code> lists <code>SI_REKS_PRINT_STATES</code> rows; in later cassettes a <code>ref</code> row repeats S0 of cassette 0.</li>
 <li><code>State summary</code>, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.</li>
-<li>Check E(S0) against <code>@REKS Final Energy</code> (<code>E[SA-REKS]</code>) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.04–0.48 E<sub>h</sub> below E<sub>SA</sub>; S0 = −1.0·10<sup>7</sup> E<sub>h</sub> at E<sub>SA</sub> = −1.27 E<sub>h</sub> marks ghost states (<a href="/v2/manual/run-control/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a>).</li>
+<li>Check E(S0) against <code>@REKS Final Energy</code> (<code>E[SA-REKS]</code>) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.04–0.48 E<sub>h</sub> below E<sub>SA</sub>; S0 = −1.0·10<sup>7</sup> E<sub>h</sub> at E<sub>SA</sub> = −1.27 E<sub>h</sub> marks ghost roots (<a href="/v2/manual/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a>).</li>
 </ul>
 <h4 id="ssr-composition">SSR eigenvectors and Chirgwin–Coulson weights</h4>
-<p>Eigenvector c of each state over the configurations of its cassette, and the Chirgwin–Coulson weights ω<sub>j</sub> (<a href="/v2/manual/concepts/#2-concepts">§2</a>), printed in <code>Adiabatic states</code> (<a href="#ssr-energies">SSR state energies</a>).</p>
+<p>Eigenvector c of each state over the configurations of its cassette, and the Chirgwin–Coulson weights ω<sub>j</sub> (<a href="/v2/manual/concepts/#cc-weights">Chirgwin–Coulson weights</a>), printed in <code>Adiabatic states</code> (<a href="#ssr-energies">SSR state energies</a>).</p>
 <ul>
 <li>
 <p><strong>On:</strong> SI present</p>
@@ -690,7 +755,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>Stored</dt><dd><code>SSR HAMILTONIAN K=&lt;e&gt;</code>, <code>SSR OVERLAP SPARSE K=&lt;e&gt;</code> (rows [i n<sub>cfg</sub> + j, S<sub>ij</sub>]), stored at <code>REKS_REPORT_LEVEL</code> ≥ 3</dd></dl>
 <ul>
 <li>Matrices printed only at <code>REKS_REPORT_LEVEL</code> ≥ 4. No bare (cassette 0) alias.</li>
-<li><code>Independent states</code> = <code>Configurations</code> − overlap null modes − ghost states. A <code>Regularization</code> line appears when null modes are removed, a <code>Ghost states</code> line when roots more than 100 E<sub>h</sub> above the lowest are removed (<a href="/v2/manual/run-control/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a>).</li>
+<li><code>Independent states</code> = <code>Configurations</code> − overlap null modes − ghost roots. A <code>Regularization</code> line appears when null modes are removed, a <code>Ghost states</code> line when ghost roots (<a href="/v2/manual/concepts/#ssr-states">Adiabatic (SSR) states</a>) are removed.</li>
 <li>Two configurations with |S̃<sub>ij</sub>| close to 1 are nearly the same function; their coupling then follows from the overlap, and V<sub>ij</sub> vanishes for two identical functions.</li>
 <li>The <code>Consistency</code> line (second fragment, H<sub>4</sub> REKS(4,4)) gives the largest |V<sub>ij</sub>| in mE<sub>h</sub> over the pairs with |S̃<sub>ij</sub>| &gt; 0.99 (a fixed bound, not an option) and the pair where it occurs; without such a pair the line is absent. The code sets no bound on |V<sub>ij</sub>|.</li>
 </ul>
@@ -798,7 +863,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>Unpaired atomic populations are stored, not printed.</li>
 <li>y<sub>0</sub>, y<sub>1</sub> equal the corresponding occupations in <code>Natural orbitals</code> (<a href="#natural-orbitals">Natural orbitals and occupations of the active space</a>); they are not Yamaguchi's spin-projected index. <code>-</code> is printed when the active space has no LUNO or LUNO+1.</li>
 </ul>
-<dl class="fields"><dt>Ref</dt><dd>N<sub>D</sub>: Takatsuka–Fueno–Yamaguchi; N<sub>U</sub> (linear) and N<sub>U,nl</sub> (nonlinear): Head-Gordon 2003 (<a href="/v2/manual/reference/#16-references">§16</a>).</dd></dl>
+<dl class="fields"><dt>Ref</dt><dd>N<sub>D</sub>: Takatsuka–Fueno–Yamaguchi; N<sub>U</sub> (linear) and N<sub>U,nl</sub> (nonlinear): Head-Gordon 2003 (<a href="/v2/manual/reference/#references">§17</a>).</dd></dl>
 <h4 id="permanent-dipole">Permanent and difference dipole moments (unrelaxed)</h4>
 <p>Dipole moment of each state from the unrelaxed state density, origin 0, and the difference dipole relative to S0.</p>
 <dl class="fields"><dt>On</dt><dd><code>SI_REKS_ANALYSIS</code> <code>DIPOLE</code> (or <code>MULTIPOLE(n)</code>) (default: on)</dd><dt>For</dt><dd>difference dipoles: two or more states</dd><dt>Units</dt><dd>e a<sub>0</sub> (stored); e a<sub>0</sub> and D (printed)</dd></dl>
@@ -917,7 +982,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <ul>
 <li>No spin-density term: for open-shell states this is not the open-shell Mayer index.</li>
 </ul>
-<dl class="fields"><dt>Ref</dt><dd>Mayer 1983 (<a href="/v2/manual/reference/#16-references">§16</a>).</dd></dl>
+<dl class="fields"><dt>Ref</dt><dd>Mayer 1983 (<a href="/v2/manual/reference/#references">§17</a>).</dd></dl>
 <h4 id="nto">Natural transition orbitals</h4>
 <p>Hole/particle orbital pairs of the transition density T<sub>pq</sub> with weights w<sub>k</sub>, the participation ratio PR, and the magnitude Ω of the transition density.</p>
 <dl class="fields"><dt>On</dt><dd><code>SI_REKS_ANALYSIS</code> <code>NTO</code> (default: on)</dd><dt>For</dt><dd>pairs I &lt; J</dd><dt>Units</dt><dd>dimensionless (weights); AO coefficients (orbitals)</dd></dl>
@@ -943,7 +1008,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>Holes: columns of U, particles: columns of V (active MOs; AO form C<sub>a</sub>U, C<sub>a</sub>V). T is spin-summed, so a pure singlet single excitation has Ω = 1. The first three weights are printed; weights and PR print <code>-</code> when Ω &lt; 0.05.</li>
 <li>The bare alias of <code>SSR NTO HOLES</code>/<code>PARTICLES</code> exists only for pairs 0 → J of cassette 0; <code>SSR NTO WEIGHTS</code> has the full bare alias.</li>
 </ul>
-<dl class="fields"><dt>Ref</dt><dd>Martin 2003 (<a href="/v2/manual/reference/#16-references">§16</a>).</dd></dl>
+<dl class="fields"><dt>Ref</dt><dd>Martin 2003 (<a href="/v2/manual/reference/#references">§17</a>).</dd></dl>
 <h4 id="exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</h4>
 <p>Descriptors of the transition density (d<sub>h→e</sub>, σ<sub>h</sub>, σ<sub>e</sub>, d<sub>exc</sub>, R<sub>eh</sub>, p<sub>prom</sub>), Löwdin hole and electron populations per atom, and the eigenpairs of the difference density ρ<sup>(JJ)</sup> − ρ<sup>(II)</sup>.</p>
 <dl class="fields"><dt>On</dt><dd><code>SI_REKS_ANALYSIS</code> <code>EXCITON</code> (default: on)</dd><dt>For</dt><dd>pairs I &lt; J</dd><dt>Units</dt><dd>distances a<sub>0</sub>; R<sub>eh</sub> dimensionless; populations and p<sub>prom</sub> electrons</dd></dl>
@@ -987,7 +1052,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>x<sub>a</sub>, r and r<sup>2</sup> are the AO dipole and second-moment integrals in the active MO basis; Ω<sub>AB</sub> is the Löwdin form, not the Mulliken-type Ω of Plasser–Lischka. h<sub>A</sub>, e<sub>B</sub> are not normalized; each sums to Ω. NDOs are C<sub>a</sub> v<sub>k</sub>.</li>
 <li><code>SSR CT OMEGA ATOMS</code>, the hole/particle populations and <code>SSR NDO AO</code> have no bare (cassette 0) alias.</li>
 </ul>
-<dl class="fields"><dt>Ref</dt><dd>Plasser–Wormit–Dreuw 2014; Bäppler et al. 2014 (<a href="/v2/manual/reference/#16-references">§16</a>).</dd></dl>
+<dl class="fields"><dt>Ref</dt><dd>Plasser–Wormit–Dreuw 2014; Bäppler et al. 2014 (<a href="/v2/manual/reference/#references">§17</a>).</dd></dl>
 <h4 id="fragment-ct">Fragment charge-transfer descriptors</h4>
 <p>Charge moved between fragments, TheoDORE CT number (h/e split), participation ratios PR<sub>i</sub>, PR<sub>f</sub>, PR<sub>F</sub>, DEL, localization POS, and Löwdin hole and electron populations per fragment.</p>
 <dl class="fields"><dt>On</dt><dd><code>SI_REKS_ANALYSIS</code> <code>EXCITON</code> (default: on)</dd><dt>For</dt><dd>a molecule of at least 2 fragments (<code>--</code> separators), no ghost fragments or atoms; pairs I &lt; J</dd><dt>Units</dt><dd>q<sub>moved</sub>, ΔN<sub>F</sub> in e; other columns dimensionless</dd></dl>
@@ -1026,7 +1091,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>Ω<sub>FG</sub> sums the atom-pair Ω<sub>AB</sub> of <a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a> over the fragments; F in POS is 1-based; N<sup>L</sup><sub>F</sub> is the Löwdin active population of fragment F. Printed headers: <code>h/e split</code> for CT, <code>PR_F</code> for PR. CT to POS print <code>-</code> when Ω &lt; 0.05; q<sub>moved</sub> is always printed.</li>
 <li>The fragment line (<code>F1 = atoms 1-3, F2 = atoms 4-6</code>) shows the partition used.</li>
 </ul>
-<dl class="fields"><dt>Ref</dt><dd>Plasser–Lischka 2012; Plasser 2020 (TheoDORE) (<a href="/v2/manual/reference/#16-references">§16</a>).</dd></dl>
+<dl class="fields"><dt>Ref</dt><dd>Plasser–Lischka 2012; Plasser 2020 (TheoDORE) (<a href="/v2/manual/reference/#references">§17</a>).</dd></dl>
 <h4 id="fragment-couplings">Fragment couplings (FCD, FED)</h4>
 <p>Diabatic coupling V<sub>F</sub> between fragments F and G: FCD from the charge difference D = q(F) − q(G) (Löwdin and Mulliken charges), FED from the excitation difference D = x(F) − x(G) between excited states.</p>
 <dl class="fields"><dt>On</dt><dd><code>SI_REKS_ANALYSIS</code> <code>FRAGMENT_COUPLINGS</code> (default: on)</dd><dt>For</dt><dd>a molecule of at least 2 fragments (<code>--</code> separators), no ghost fragments or atoms; FED needs at least 2 excited states; printed: pairs with |D<sub>I</sub> − D<sub>J</sub>| ≥ 0.1</dd><dt>Units</dt><dd>E<sub>h</sub> (stored); E<sub>h</sub> and meV (printed)</dd></dl>
@@ -1059,7 +1124,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>States m &lt; n of one cassette, fragments F &lt; G; q<sub>A</sub> are the state and transition charges (<a href="#atomic-charges">Atomic charges of the states (unrelaxed)</a>, <a href="#transition-charges">Transition charges</a>), G<sup>F</sup> the Löwdin projector on the atoms of F. V carries the sign of D<sub>mn</sub>, which follows the state phases; compare |V| with literature values. <code>*</code> marks a row where the Löwdin and Mulliken FCD values differ in sign or by more than a factor of 2.</li>
 <li>Computes the state and transition charges without storing them when those blocks are not listed. No bare alias.</li>
 </ul>
-<dl class="fields"><dt>Ref</dt><dd>FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008 (<a href="/v2/manual/reference/#16-references">§16</a>).</dd></dl>
+<dl class="fields"><dt>Ref</dt><dd>FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008 (<a href="/v2/manual/reference/#references">§17</a>).</dd></dl>
 <h4 id="active-rdm">Active one-particle density matrices</h4>
 <p>Active 1-RDMs of the adiabatic states (bra I) and diabatic 1-RDMs over the configurations.</p>
 <dl class="fields"><dt>On</dt><dd><code>SI_REKS_ANALYSIS</code> <code>DENSITIES</code>; diabatic: <code>REKS_REPORT_LEVEL</code> ≥ 3 (default: on)</dd><dt>For</dt><dd><code>SSR 1-RDM ACTIVE STATE=&lt;k&gt;</code>: k below the number of stored states</dd><dt>Units</dt><dd>electrons</dd><dt>Printed</dt><dd>no</dd></dl>
@@ -1068,9 +1133,27 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <ul>
 <li><code>REKS_REPORT_LEVEL</code> 5 dumps ρ<sup>(k)</sup> and the diabatic blocks as <code>[DEBUG]</code> text.</li>
 </ul>
+<h3 id="spin-energetics">Spin energetics</h3>
+<h4 id="spin-state-energetics">Spin-state gaps and Heisenberg J</h4>
+<p>Lowest state of each multiplicity over all cassettes, the gap between manifolds whose 2S differ by 2, the coupling J and the SI lowering of each state.</p>
+<dl class="fields"><dt>On</dt><dd>SI cassettes on at least 2 spin manifolds</dd><dt>For</dt><dd>manifolds with a physical root (a manifold declared by an empty block has none); J and its variables: manifolds whose 2S differ by 2</dd><dt>Units</dt><dd>E<sub>h</sub> (stored J); printed E<sub>h</sub>, eV and cm<sup>-1</sup></dd></dl>
+<math display="block"><mrow><mpadded lspace="0"><mi>Gap</mi></mpadded><mo>=</mo><mi>E</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mtext>high spin</mtext><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>−</mo><mi>E</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mtext>low spin</mtext><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><mi>J</mi><mo>=</mo><mo form="prefix" stretchy="false">−</mo><mfrac><mpadded lspace="0"><mi>Gap</mi></mpadded><mrow><mn>2</mn><msub><mi>S</mi><mpadded lspace="0"><mi>high</mi></mpadded></msub></mrow></mfrac><mspace width="1em"></mspace><mtext>for</mtext><mspace width="1em"></mspace><mover><mi>H</mi><mo stretchy="false" class="chr-sml wbk-sml-acc" style="math-depth:0;">ˆ</mo></mover><mo>=</mo><mo form="prefix" stretchy="false">−</mo><mn>2</mn><mi>J</mi><mspace width="0.1667em"></mspace><msub><mover><mi>𝐒</mi><mo stretchy="false" class="wbk-acc" style="math-depth:0;">ˆ</mo></mover><mi>A</mi></msub><mo>⋅</mo><msub><mover><mi>𝐒</mi><mo stretchy="false" class="wbk-acc" style="math-depth:0;">ˆ</mo></mover><mi>B</mi></msub></mrow></math>
+<math display="block"><mrow><mpadded lspace="0"><mi>Lowering</mi></mpadded><mo>=</mo><munder><mi>min</mi><mi>i</mi></munder><mo>⁡</mo><mspace width="0.1667em"></mspace><msub><mi>H</mi><mrow><mi>i</mi><mi>i</mi></mrow></msub><mo>−</mo><mi>E</mi></mrow></math>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>==&gt; Spin-state energetics &lt;==</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Spins  Low-spin state   High-spin state    E(low spin) [Eh]   E(high spin) [Eh]    Gap [eV]        J [Eh]   J [cm^-1]  Lowering(lo) [eV]  Lowering(hi) [eV]</span></span>
+<span class="line"><span>    -----------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>    S/T    S0 (cassette 0)  T1 (cassette 1)    -78.300687507270    -78.279831032158       0.568     -0.010428    -2288.73              0.412              0.106</span></span>
+<span class="line"><span>    -----------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>    Spins = the two spin multiplicities compared (S/T = singlet/triplet). Low-/high-spin state = lowest state of each multiplicity over all cassettes.</span></span></code></pre>
+<dl class="fields"><dt>Stored</dt><dd><code>REKS HEISENBERG J</code>, <code>REKS HEISENBERG J SPINS</code> (rows [2S_lo, 2S_hi])</dd></dl>
+<ul>
+<li>With three or more manifolds the block prints the ratio J(T/Q)/J(S/T); ratio 1 = one J for all spin pairs (Landé interval rule).</li>
+<li>J is a spin-coupling constant only if the two states have the same open-shell orbitals and similar SI lowering (<code>Lowering(lo)</code>, <code>Lowering(hi)</code>).</li>
+</ul>
 <h3 id="relaxed-properties-and-ekt">Relaxed properties and EKT</h3>
 <h4 id="relaxed-properties">Relaxed dipole, quadrupole and atomic charges</h4>
-<p>Dipole, quadrupole (full Cartesian tensor and traceless part) and Mulliken and Löwdin charges of the relaxed density P<sup>r</sup> of the CP-REKS (Z-vector) response of a state (<a href="/v2/manual/concepts/#2-concepts">§2</a>).</p>
+<p>Dipole, quadrupole (full Cartesian tensor and traceless part) and Mulliken and Löwdin charges of the relaxed density P<sup>r</sup> of the CP-REKS (Z-vector) response of a state (<a href="/v2/manual/concepts/#densities">Unrelaxed and relaxed densities</a>).</p>
 <dl class="fields"><dt>On</dt><dd><code>SI_REKS_PROPERTY_FOR</code> lists the state (default: off)</dd><dt>For</dt><dd><code>energy()</code> and <code>gradient()</code>; one CP-REKS solve shared with the gradient and NAC targets</dd><dt>Units</dt><dd>e a<sub>0</sub> (dipole; printed also D); e a<sub>0</sub><sup>2</sup> (quadrupole); e (charges)</dd></dl>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>==&gt; Relaxed properties, cassette 0 &lt;==</span></span>
 <span class="line"><span></span></span>
@@ -1108,7 +1191,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>Stored</dt><dd><code>SSR ROOT &lt;r&gt; RELAXED DIPOLE CASSETTE &lt;e&gt;</code>, <code>SSR ROOT &lt;r&gt; RELAXED QUADRUPOLES CASSETTE &lt;e&gt;</code>, <code>SSR ROOT &lt;r&gt; RELAXED MULLIKEN CHARGES CASSETTE &lt;e&gt;</code>, <code>SSR ROOT &lt;r&gt; RELAXED LOWDIN CHARGES CASSETTE &lt;e&gt;</code>, <code>SSR ROOT &lt;r&gt; RELAXED DENSITY CASSETTE &lt;e&gt;</code> (AO); <code>CURRENT DIPOLE</code> = relaxed dipole of the followed root when it is listed, otherwise unset</dd><dt>Files</dt><dd>cube <code>CUBEPROP_TASKS</code> <code>SSR_DENSITIES</code>: <code>SSR_D_&lt;label&gt;_relaxed_cassette&lt;e&gt;.cube</code></dd></dl>
 <ul>
 <li>The charges of each state sum to the molecular charge.</li>
-<li>P<sup>r</sup> is not N-representable; the EKT block prints the count of its negative natural occupations (<a href="#ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</a>).</li>
+<li>The EKT block prints the count of the negative natural occupations of P<sup>r</sup> (<a href="/v2/manual/concepts/#densities">Unrelaxed and relaxed densities</a>, <a href="#ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</a>).</li>
 </ul>
 <h4 id="relaxed-bond-indices">Bond indices of the relaxed density</h4>
 <p>Mayer and Wiberg–Löwdin indices of P<sup>r</sup>.</p>
@@ -1125,9 +1208,6 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>
 <p><strong>Stored:</strong> <code>SSR ROOT &lt;r&gt; RELAXED MAYER INDICES CASSETTE &lt;e&gt;</code>, <code>SSR ROOT &lt;r&gt; RELAXED WIBERG LOWDIN INDICES CASSETTE &lt;e&gt;</code> (natom × natom)</p>
 </li>
-</ul>
-<ul>
-<li>Not printed because P<sup>r</sup> is not the density of a wavefunction.</li>
 </ul>
 <h4 id="ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</h4>
 <p>Extended Koopmans' theorem on the relaxed energy-weighted density W and the relaxed density P<sup>r</sup> of a state: IP, ε, pole strength per spin orbital, Dyson orbitals; ref = lowest state of the first typed SI cassette (S0 for a singlet cassette).</p>
@@ -1268,7 +1348,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>Stored</dt><dd><code>SSR NAC &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>, <code>SSR NAC MODEL &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>, <code>SSR NAC RESIDUAL &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>; the root gradients <code>SSR ROOT &lt;I&gt; GRADIENT CASSETTE &lt;e&gt;</code>, <code>SSR ROOT &lt;J&gt; GRADIENT CASSETTE &lt;e&gt;</code></dd></dl>
 <ul>
 <li>The sum rule is checked against −p from the velocity moments only when <code>SI_REKS_ANALYSIS</code> computes them (<code>E_TDM_VEL</code> or <code>M_TDM</code>); the line ends with <code>consistent</code> when the deviation is ≤ 10<sup>-6</sup>, otherwise it reads <code>deviation …</code> without <code>consistent</code>. Without the moments the legend prints <code>-p_12 requires SI_REKS_ANALYSIS E_TDM_VEL</code>.</li>
-<li>The header prints the gap of the pair (<a href="/v2/manual/run-control/#diag-quasi-degenerate">Quasi-degenerate roots</a>).</li>
+<li>The header prints the gap of the pair (<a href="/v2/manual/diagnose/#diag-quasi-degenerate">Quasi-degenerate roots</a>).</li>
 </ul>
 <h4 id="ci-topography">Conical-intersection topography</h4>
 <p>Topography of the intersection of the pair A, B (lower, upper root) from the pair gradients G and the NAC: g̃, h̃ rotated by φ to mutual orthogonality, tilt s along them, pitch δ<sub>gh</sub>, asymmetry Δ<sub>gh</sub>, relative tilt σ, tilt heading θ<sub>s</sub>, P (below 1 peaked, above 1 sloped), B (below 1 bifurcating, above 1 single path).</p>
@@ -1297,23 +1377,5 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <ul>
 <li>A is the lower root; d<sub>AB</sub> is the full NAC (model + residual). The branch of φ gives |g̃| ≥ |h̃|, so Δ<sub>gh</sub> ∈ [0, 1] and θ<sub>s</sub> ∈ [0, π/2]. P is infinite when |h̃| vanishes, B when Δ<sub>gh</sub> vanishes.</li>
 </ul>
-<dl class="fields"><dt>Ref</dt><dd>Fdez. Galván et al. 2016 and 2022 (<a href="/v2/manual/reference/#16-references">§16</a>).</dd></dl>
-<h3 id="spin-energetics">Spin energetics</h3>
-<h4 id="spin-state-energetics">Spin-state gaps and Heisenberg J</h4>
-<p>Lowest state of each multiplicity over all cassettes, the gap between manifolds whose 2S differ by 2, the coupling J and the SI lowering of each state.</p>
-<dl class="fields"><dt>On</dt><dd>SI cassettes on at least 2 spin manifolds</dd><dt>For</dt><dd>manifolds with a physical root (a manifold declared by an empty block has none); J and its variables: manifolds whose 2S differ by 2</dd><dt>Units</dt><dd>E<sub>h</sub> (stored J); printed E<sub>h</sub>, eV and cm<sup>-1</sup></dd></dl>
-<math display="block"><mrow><mpadded lspace="0"><mi>Gap</mi></mpadded><mo>=</mo><mi>E</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mtext>high spin</mtext><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>−</mo><mi>E</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mtext>low spin</mtext><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><mi>J</mi><mo>=</mo><mo form="prefix" stretchy="false">−</mo><mfrac><mpadded lspace="0"><mi>Gap</mi></mpadded><mrow><mn>2</mn><msub><mi>S</mi><mpadded lspace="0"><mi>high</mi></mpadded></msub></mrow></mfrac><mspace width="1em"></mspace><mtext>for</mtext><mspace width="1em"></mspace><mover><mi>H</mi><mo stretchy="false" class="chr-sml wbk-sml-acc" style="math-depth:0;">ˆ</mo></mover><mo>=</mo><mo form="prefix" stretchy="false">−</mo><mn>2</mn><mi>J</mi><mspace width="0.1667em"></mspace><msub><mover><mi>𝐒</mi><mo stretchy="false" class="wbk-acc" style="math-depth:0;">ˆ</mo></mover><mi>A</mi></msub><mo>⋅</mo><msub><mover><mi>𝐒</mi><mo stretchy="false" class="wbk-acc" style="math-depth:0;">ˆ</mo></mover><mi>B</mi></msub></mrow></math>
-<math display="block"><mrow><mpadded lspace="0"><mi>Lowering</mi></mpadded><mo>=</mo><munder><mi>min</mi><mi>i</mi></munder><mo>⁡</mo><mspace width="0.1667em"></mspace><msub><mi>H</mi><mrow><mi>i</mi><mi>i</mi></mrow></msub><mo>−</mo><mi>E</mi></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>==&gt; Spin-state energetics &lt;==</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    Spins  Low-spin state   High-spin state    E(low spin) [Eh]   E(high spin) [Eh]    Gap [eV]        J [Eh]   J [cm^-1]  Lowering(lo) [eV]  Lowering(hi) [eV]</span></span>
-<span class="line"><span>    -----------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>    S/T    S0 (cassette 0)  T1 (cassette 1)    -78.300687507270    -78.279831032158       0.568     -0.010428    -2288.73              0.412              0.106</span></span>
-<span class="line"><span>    -----------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>    Spins = the two spin multiplicities compared (S/T = singlet/triplet). Low-/high-spin state = lowest state of each multiplicity over all cassettes.</span></span></code></pre>
-<dl class="fields"><dt>Stored</dt><dd><code>REKS HEISENBERG J</code>, <code>REKS HEISENBERG J SPINS</code> (rows [2S_lo, 2S_hi])</dd></dl>
-<ul>
-<li>With three or more manifolds the block prints the ratio J(T/Q)/J(S/T); ratio 1 = one J for all spin pairs (Landé interval rule).</li>
-<li>J is a spin-coupling constant only if the two states have the same open-shell orbitals and similar SI lowering (<code>Lowering(lo)</code>, <code>Lowering(hi)</code>).</li>
-</ul></div></section>
-   <nav class="pager" aria-label="Manual pages"> <a rel="prev" href="/v2/manual/run-control/"><small>Previous</small>Run control</a> <a rel="next" href="/v2/manual/reference/"><small>Next</small>Reference</a> </nav> </div> </div> </div> <footer class="foot-back"> <div class="wrap"> <a href="/v2/docs/">← Back to REKS Studio documentation</a> </div> </footer>  </body> </html>
+<dl class="fields"><dt>Ref</dt><dd>Fdez. Galván et al. 2016 and 2022 (<a href="/v2/manual/reference/#references">§17</a>).</dd></dl></div></section>
+   <nav class="pager" aria-label="Manual pages"> <a rel="prev" href="/v2/manual/run-control/"><small>Previous</small>Run control</a> <a rel="next" href="/v2/manual/diagnose/"><small>Next</small>Diagnose</a> </nav> </div> </div> </div> <footer class="foot-back"> <div class="wrap"> <a href="/v2/docs/">← Back to REKS Studio documentation</a> </div> </footer>  </body> </html>

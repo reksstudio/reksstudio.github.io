@@ -1,9 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
-import GithubSlugger from 'github-slugger';
 import { properties } from '../data/properties.json' with { type: 'json' };
 import blocks from '../data/blocks.json' with { type: 'json' };
-import { headingId } from './manual-hast.mjs';
 import { fragmentIds, markerContent, optionAlias, optionGroups, optionId, optionKeys, parseMarker } from './reference.mjs';
 
 // Manual pages in reading order: src/content/manual/<file>.md -> <base>manual/<slug>/ ('' = <base>manual/).
@@ -16,6 +14,7 @@ export const PAGES = [
   { slug: 'setup', file: 'setup', tocDepth: 4 },
   { slug: 'run-control', file: 'run-control', tocDepth: 4 },
   { slug: 'properties', file: 'properties', tocDepth: 4 },
+  { slug: 'diagnose', file: 'diagnose', tocDepth: 4 },
   { slug: 'reference', file: 'reference', index: true },
 ];
 
@@ -27,8 +26,10 @@ const anchorHref = (slug, id, fromSlug, base) => (slug === fromSlug ? `#${id}` :
 // relative to the Astro project root (the working directory of astro build/dev); import.meta.url is not usable
 // here because pages bundle this module into .astro/.prerender/
 const DIR = new URL('src/content/manual/', pathToFileURL(`${process.cwd()}/`));
-const CHAPTER = /^## (\d+)\\\. (.+)$/gm;
-const EXPLICIT = /^#{2,4} (.+?) \{#([^}\s]+)\}$/gm;
+// any h2; a well-formed chapter h2 "## N\. title {#id}" (N captured); any h2-h4 with an explicit "{#id}"
+const H2 = /^## .*$/gm;
+const CHAPTER = /^## (\d+)\\\. .+ \{#[^}\s]+\}$/;
+const EXPLICIT = /^(#{2,4}) (.+?) \{#([^}\s]+)\}$/gm;
 const MARKER_LINE = /^@@.*$/gm;
 
 const sources = new Map();
@@ -39,29 +40,6 @@ const source = (file) => {
 
 // heading markdown -> heading text: backslash escapes and code-span backticks removed
 const headingText = (md) => md.replace(/\\(.)/g, '$1').replaceAll('`', '');
-
-let chapters;
-
-// chapter number -> { slug, id }: "## N\. title" lines of every page file, ids by a fresh slugger per file
-export function chapterMap() {
-  if (chapters) return chapters;
-  chapters = new Map();
-  for (const { slug, file } of PAGES) {
-    const slugger = new GithubSlugger();
-    for (const [, num, title] of source(file).matchAll(CHAPTER)) {
-      if (chapters.has(num)) throw new Error(`manual: chapter ${num} appears twice`);
-      chapters.set(num, { slug, id: headingId(`${num}. ${headingText(title)}`, slugger) });
-    }
-  }
-  return chapters;
-}
-
-// "§N" target: "#id" on the page fromSlug, "<base>manual/<slug>/#id" from anywhere else
-export function sectionHref(num, fromSlug, base) {
-  const chapter = chapterMap().get(String(num));
-  if (!chapter) throw new Error(`manual: no chapter §${num}`);
-  return anchorHref(chapter.slug, chapter.id, fromSlug, base);
-}
 
 const count = (list) => list.reduce((m, x) => m.set(x, (m.get(x) ?? 0) + 1), new Map());
 
@@ -96,21 +74,32 @@ function checkCoverage(map, markers, printed, owners) {
 
 let entries;
 
-// entry id -> { slug, title, code }: the entries the markers of every page render and the explicit "{#id}"
-// headings; an id seen twice throws; the coverage check runs on the same scan
+// entry id -> { slug, title, code, chapter }: the entries rendered by the markers of every page plus the explicit
+// "{#id}" headings; chapter = N for the h2 "## N\. title {#id}", else undefined.
+// Throws on a repeated id, on an h2 that is not "## N\. title {#id}" with N = 1, 2, ... in PAGES order,
+// and on a failed checkCoverage.
 export function entryMap() {
   if (entries) return entries;
   const map = new Map();
   const owners = new Map();
   const markers = [];
   const printed = new Set();
-  const add = (id, slug, title, code) => {
+  const add = (id, slug, title, code, chapter) => {
     if (map.has(id)) throw new Error(`manual: entry id "${id}" appears twice`);
-    map.set(id, { slug, title, code });
+    map.set(id, { slug, title, code, chapter });
   };
+  let chapter = 0;
   for (const { slug, file } of PAGES) {
     const md = source(file);
-    for (const [, title, id] of md.matchAll(EXPLICIT)) add(id, slug, headingText(title), false);
+    for (const [line] of md.matchAll(H2)) {
+      chapter += 1;
+      if (Number(line.match(CHAPTER)?.[1]) !== chapter) {
+        throw new Error(`manual: ${file}.md: "${line}" is not "## ${chapter}\\. <title> {#id}"`);
+      }
+    }
+    for (const [, level, title, id] of md.matchAll(EXPLICIT)) {
+      add(id, slug, headingText(title), false, level === '##' ? Number(title.match(/^\d+/)[0]) : undefined);
+    }
     for (const [line] of md.matchAll(MARKER_LINE)) {
       const marker = parseMarker(line.trim());
       const content = markerContent(marker);

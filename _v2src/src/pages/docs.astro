@@ -8,23 +8,14 @@ import { buildFromSource, docsJob, docsRestart } from '../data/snippets';
 import '../styles/docs.css';
 import '../styles/docs-page.css';
 import { kwRows } from '../lib/reference.mjs';
-import { entryHref, sectionHref } from '../lib/manual-pages.mjs';
+import { entryHref, entryMap } from '../lib/manual-pages.mjs';
 
 const base = import.meta.env.BASE_URL;
-const manual = (num) => sectionHref(num, null, base);
 const entry = (id) => entryHref(id, null, base);
-const diagnose = [
-  ['diag-wrong-window', 'Instant convergence to a wrong energy after a restart'],
-  ['diag-maxiter', 'SCF hits maxiter or continues unconverged'],
-  ['diag-oscillation', 'SCF oscillates or cycles'],
-  ['diag-fon-inverted', 'The FONs of a geminal invert (n_p < n_q)'],
-  ['diag-fon-pinned', 'A FON pinned at a bound, symmetry-broken charges'],
-  ['diag-localized', 'Active orbitals localize on one fragment'],
-  ['diag-unknown-token', 'Unknown configuration name or type'],
-  ['diag-catalog', 'An (N, M) that fails to load'],
-  ['diag-ghost-states', 'Ghost states and a collapsed SI spectrum'],
-  ['diag-quasi-degenerate', 'Quasi-degenerate roots'],
-];
+// Diagnose entries of the manual, labelled by their manual headings
+const diagnose = ['diag-wrong-window', 'diag-maxiter', 'diag-oscillation', 'diag-fon-inverted', 'diag-fon-pinned',
+  'diag-localized', 'diag-unknown-token', 'diag-catalog', 'diag-ghost-states', 'diag-quasi-degenerate']
+  .map((id) => [id, entryMap().get(id).title]);
 const navLinks = [
   { href: base, label: 'Overview' },
   { href: '#install', label: 'Install' },
@@ -79,7 +70,7 @@ const toc = [
       </section>
 
       <section id="running" class="docsec">
-        <h2>Running a job <ManRef n={1} /></h2>
+        <h2>Running a job <ManRef id="overview" /></h2>
         <div class="prose">
           <p>Once built, REKS runs as an ordinary Psi4 reference — no separate binary or import. Set <code>reference</code> to <code>reks</code>, give the active space as <code>[N, M]</code>, and call <code>psi4.energy()</code> as usual.</p>
         </div>
@@ -93,13 +84,13 @@ const toc = [
         </div>
 
         <div id="active-space" class="kwgroup">
-          <h3>Reference & active space <ManRef n={5} /></h3>
+          <h3>Reference & active space <ManRef id="active-space" /></h3>
           <div class="kwlist" set:html={kwRows(['reference', 'REKS', 'REKS_GEMINAL_WIDTHS'])} />
           <div class="note"><strong>Note.</strong> Each active space is a pre-generated catalogue: <code>(2,2)</code>, <code>(4,4)</code>, <code>(6,6)</code>, and with <code>reks_geminal_widths</code> <code>(2,3)[3]</code>, <code>(2,4)[4]</code>, <code>(4,5)[2,3]</code>, <code>(4,6)[3,3]</code>. Any other <code>(N, M)</code> fails at load time.</div>
         </div>
 
         <div id="naming" class="kwgroup">
-          <h3>Configuration names & bulk tokens <ManRef n={4} /></h3>
+          <h3>Configuration names & bulk tokens <ManRef id="catalog" /></h3>
           <div class="kwgroup-note">Every configuration in the catalogue has a name of the form <code>&lt;TYPE&gt;&lt;index&gt;</code>, e.g. <code>PPS1</code>, <code>OSS2</code>, <code>T_PPS3</code>; a member of a spin-polarized set is named <code>&lt;TYPE&gt;_&lt;k&gt;</code>, e.g. <code>DOSS_SPS_0</code>. You rarely need the full list — an unknown name in a config keyword makes REKS Studio print every valid name and type of the manifold the block is bound to — but the type prefixes are worth knowing:</div>
           <div class="kwlist" set:html={kwRows(['pps', 'oss-doss-toss', 'des-ddes-tdes', 't-tt-ttt-prefix', 'sps-tag'])} />
           <div class="kwgroup-note" style="margin-top:22px;">Anywhere a config name is expected — in <code>sa_reks_configs</code> or <code>si_reks_configs</code> — these bulk tokens also work, so you rarely have to spell out individual names:</div>
@@ -108,31 +99,31 @@ const toc = [
         </div>
 
         <div id="sa" class="kwgroup">
-          <h3>State-averaged (SA) ensemble <ManRef n={5} /></h3>
+          <h3>State-averaged (SA) ensemble <ManRef id="sa-pool" /></h3>
           <div class="kwgroup-note">The configurations whose orbitals are jointly optimized in the SCF step.</div>
           <div class="kwlist" set:html={kwRows(['SA_REKS_CONFIGS', 'SA_REKS_2SPIN', 'SA_REKS_WEIGHTS', 'SA_REKS_EXTRA'])} />
         </div>
 
         <div id="si" class="kwgroup">
-          <h3>State-interaction (SI) ensemble <ManRef n={5} /></h3>
+          <h3>State-interaction (SI) ensemble <ManRef id="si-cassettes" /></h3>
           <div class="kwgroup-note">Defined independently of the SA pool — mixed afterward to produce the final multi-state energies.</div>
           <div class="kwlist" set:html={kwRows(['SI_REKS_CONFIGS', 'SI_REKS_2SPIN', 'SI_REKS_PRINT_STATES', 'SI_REKS_STORE_STATES', 'SI_REKS_ANALYSIS', 'SI_REKS_ANALYSIS_CHANGE_MIN', 'SI_REKS_OVERLAP_CUTOFF'])} />
         </div>
 
         <div id="spin" class="kwgroup">
-          <h3>Spin manifolds (2S &gt; 0) <ManRef n={7} /></h3>
+          <h3>Spin manifolds (2S &gt; 0) <ManRef id="spin-manifolds" /></h3>
           <div class="kwgroup-note">Every configuration is the total M<sub>S</sub> = 0 component of its manifold, so one set of orbitals serves every manifold. A run's sectors are the union of the 2S values declared by SA blocks and SI groups.</div>
           <div class="kwlist" set:html={kwRows(['high-spin-only', 'several-manifolds', 'state-labels', 'output'])} />
         </div>
 
         <div id="response" class="kwgroup">
-          <h3>Gradients, couplings & relaxed properties <ManRef n={5} /></h3>
+          <h3>Gradients, couplings & relaxed properties <ManRef id="response" /></h3>
           <div class="kwgroup-note">Analytic SI-state gradients and nonadiabatic couplings via the coupled-perturbed REKS (CP-REKS) response. List-of-lists options mirror <code>si_reks_configs</code>: inner list <code>e</code> refers to cassette <code>e</code>.</div>
           <div class="kwlist" set:html={kwRows(['SI_REKS_GRAD', 'SI_REKS_NAC', 'SI_REKS_PROPERTY_FOR', 'REKS_EKT', 'REKS_CPREKS_CONV', 'REKS_GRAD_DEGEN_TOL', 'REKS_CI_TOPOGRAPHY_GAP'])} />
         </div>
 
         <div id="restart" class="kwgroup">
-          <h3>Guesses & restarts <ManRef n={8} /></h3>
+          <h3>Guesses & restarts <ManRef id="guesses" /></h3>
           <div class="kwgroup-note">REKS jobs converge far more reliably from a previous wavefunction than from a cold guess, so most production runs are chained restarts. Restarting uses ordinary Psi4 machinery; the keyword below selects which read orbitals form the active space.</div>
           <Code code={docsRestart} lang="python" />
           <div class="kwlist" set:html={kwRows(['GUESS_ACTIVE_WINDOW'])} />
@@ -140,32 +131,32 @@ const toc = [
         </div>
 
         <div id="fon" class="kwgroup">
-          <h3>Fractional occupation numbers (FONs) <ManRef n={9} /></h3>
+          <h3>Fractional occupation numbers (FONs) <ManRef id="fons" /></h3>
           <div class="kwgroup-note">Each geminal pair carries FONs <code>(n_p, n_q)</code> with <code>n_p + n_q = 2</code>, optimized every SCF iteration with <code>n_p</code> in <code>[floor, 2 − margin]</code>.</div>
           <div class="kwlist" set:html={kwRows(['REKS_FON_INTERP_DELTA', 'REKS_N_FON'])} />
         </div>
 
         <div id="deloc" class="kwgroup">
-          <h3>Delocalization penalty <ManRef n={11} /></h3>
+          <h3>Delocalization penalty <ManRef id="ipr" /></h3>
           <div class="kwgroup-note">An optional energy term <code>E_pen = λ Σ<sub>i</sub> Σ<sub>A</sub> p<sub>A</sub>(i)²</code> added to the SA energy, with <code>p<sub>A</sub>(i)</code> the population of active MO <code>i</code> on atom <code>A</code>. A positive λ penalizes localization and drives the SCF to the delocalized solution, the intended REKS solution: <code>Σ p²</code> decreases (H<sub>4</sub>, REKS(4,4): 1.1128 at λ = 0, 1.0669 at λ = 0.05).</div>
           <div class="kwlist" set:html={kwRows(['REKS_DELOC_IPR_PENALTY', 'REKS_DELOC_IPR_METHOD'])} />
         </div>
 
         <div id="solver" class="kwgroup">
-          <h3>Solver & convergence <ManRef n={10} /></h3>
+          <h3>Solver & convergence <ManRef id="scf-engines" /></h3>
           <div class="kwgroup-note">Three cooperating engines drive REKS's orbital/FON optimization — a plain level-shifted burn-in, an optional trust-region warmup, and the GVB-DIIS accelerator that normally finishes the job. Defaults work well for most systems; most users only ever touch <code>level_shift</code>.</div>
           <div class="kwlist" set:html={kwRows(['REKS_USE_TRAH', 'REKS_GVB_DIIS', 'REKS_DIIS_FORMULATION', 'REKS_GVB_DIIS_START', 'LEVEL_SHIFT_ADAPT'])} />
-          <div class="note"><strong>Note.</strong> 23 further <code>reks_diis_*</code> / <code>reks_gvb_*</code> options (angle filter, SVD conditioning, rewind and restart monitors) are expert settings; see the <a href={manual(15)}>manual</a>. <code>reks_report_level 4</code> shows which monitor fires.</div>
+          <div class="note"><strong>Note.</strong> 23 further <code>reks_diis_*</code> / <code>reks_gvb_*</code> options (angle filter, SVD conditioning, rewind and restart monitors) are expert settings; see the <a href={entry('option-table')}>manual</a>. <code>reks_report_level 4</code> shows which monitor fires.</div>
         </div>
 
         <div id="reporting" class="kwgroup">
-          <h3>Reporting <ManRef n={12} /></h3>
+          <h3>Reporting <ManRef id="report-level" /></h3>
           <div class="kwlist" set:html={kwRows(['REKS_REPORT_LEVEL'])} />
         </div>
       </section>
 
       <section id="troubleshooting" class="docsec">
-        <h2>Troubleshooting <ManRef n={13} /></h2>
+        <h2>Troubleshooting <ManRef id="diagnose" /></h2>
         <div class="prose">
           <p>Each symptom links to its entry in the manual: what the output prints, then what to do.</p>
           <ul>{diagnose.map(([id, label]) => <li><a href={entry(id)}>{label}</a></li>)}</ul>

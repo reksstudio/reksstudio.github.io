@@ -2,7 +2,7 @@ import { basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import GithubSlugger from 'github-slugger';
 import { tex } from './inline.mjs';
-import { PAGES, chapterMap, entryHref, entryMap, sectionHref } from './manual-pages.mjs';
+import { PAGES, entryHref, entryMap } from './manual-pages.mjs';
 
 function element(tagName, className, children) {
   return { type: 'element', tagName, properties: { className: [className] }, children };
@@ -40,8 +40,7 @@ function fieldList(node) {
   return pairs.length ? element('dl', 'fields', pairs) : node;
 }
 
-// text "§N" -> a[href=sectionHref(N)] > "§N"; text "§<id>" -> a[href=entryHref(id)] > entry title (in code for an
-// option); inside a/code/pre/headings left as text; an unknown chapter or id throws
+// text "§<id>" -> link(id, match); skipped inside a/code/pre/h1-h4
 function linkSectionRefs(node, link) {
   if (node.type === 'text') {
     const out = [];
@@ -62,11 +61,11 @@ function linkSectionRefs(node, link) {
 
 // Satteri hast plugin for one manual page (ctx.fileURL = src/content/manual/<file>.md, listed in PAGES):
 //   h2/h3/h4 id            =  explicit "{#id}" kept and registered in the slugger first; otherwise
-//                             github-slugger slug with runs of "-" collapsed to one; a duplicate id throws;
-//                             an h2 "N. ..." must carry the id chapterMap() gives chapter N on this page
+//                             github-slugger slug with runs of "-" collapsed to one; a duplicate id throws
 //   $tex$, $$tex$$         ->  MathML from tex() (inline code.math-inline; display pre > code.math-display)
 //   ul of "**Label:** x"   ->  dl.fields > [dt Label, dd x]
-//   "§N", "§<id>" in text  ->  link to chapter N or entry id, same page "#id" or "<base>manual/<slug>/#id"
+//   "§<id>" in text        ->  a[href=entryHref(id)] > "§N" if the entry is chapter N, else its title
+//                             (in code for an option); numeric "§N" and an unknown id throw
 //   root > [h2, ...content]  ->  root > section.docsec > [h2, div.prose > content]
 //   table                  ->  div.reftable-wrap > table
 export default function manualHast(ctx, base) {
@@ -75,20 +74,18 @@ export default function manualHast(ctx, base) {
   if (!page) throw new Error(`manual-hast: ${file}.md is not in the manual page list (manual-pages.mjs)`);
   const link = (target, text) => {
     const a = (href, children) => ({ type: 'element', tagName: 'a', properties: { href }, children });
-    if (/^\d+$/.test(target)) {
-      if (!chapterMap().has(target)) throw new Error(`manual-hast: ${file}.md: unresolved "${text}"`);
-      return a(sectionHref(target, page.slug, base), [{ type: 'text', value: text }]);
-    }
+    if (/^\d+$/.test(target)) throw new Error(`manual-hast: ${file}.md: "${text}": use §<id> of the chapter`);
     const e = entryMap().get(target);
     if (!e) throw new Error(`manual-hast: ${file}.md: unresolved "${text}"`);
+    const href = entryHref(target, page.slug, base);
+    if (e.chapter) return a(href, [{ type: 'text', value: `§${e.chapter}` }]);
     const title = { type: 'text', value: e.title };
-    return a(entryHref(target, page.slug, base), [e.code ? { type: 'element', tagName: 'code', properties: {}, children: [title] } : title]);
+    return a(href, [e.code ? { type: 'element', tagName: 'code', properties: {}, children: [title] } : title]);
   };
   return {
     name: 'manual-hast',
     before(root, visit) {
       const slugger = new GithubSlugger();
-      const chapters = chapterMap();
       const isHeading = (node) => node.type === 'element' && HEADINGS.has(node.tagName);
       const explicit = new Set();
       for (const node of root.children.filter(isHeading)) {
@@ -108,11 +105,6 @@ export default function manualHast(ctx, base) {
         const entry = explicit.has(id) && entryMap().get(id);
         if (entry && entry.title !== text) {
           throw new Error(`manual-hast: ${file}.md: heading "#${id}" reads "${text}", its "§${id}" link text is "${entry.title}"`);
-        }
-        const num = node.tagName === 'h2' && text.match(/^(\d+)\./)?.[1];
-        const chapter = num && chapters.get(num);
-        if (num && (chapter?.slug !== page.slug || chapter.id !== id)) {
-          throw new Error(`manual-hast: ${file}.md: h2 "${text}" -> #${id}, chapter map has ${JSON.stringify(chapter)}`);
         }
         return { ...node, properties: { ...node.properties, id } };
       });

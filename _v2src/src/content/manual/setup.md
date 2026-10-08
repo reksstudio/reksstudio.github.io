@@ -2,7 +2,7 @@
 title: Input
 ---
 
-## 4\. Configuration Catalog
+## 4\. Active Space and Catalog {#catalog}
 
 Configurations come from binary catalogs, one per `(N,M)` and geminal-width set, in `<PSIDATADIR>/reks_catalog` (a non-empty environment variable `PSI4_REKS_CATALOG` replaces the directory). A catalog lists every spin-inequivalent configuration of every spin manifold, each with a **name** and a **type**. Installed:
 
@@ -18,6 +18,10 @@ Configurations come from binary catalogs, one per `(N,M)` and geminal-width set,
 
 Any other `(N,M)`, or `(4,5)`/`(4,6)` without `REKS_GEMINAL_WIDTHS`, stops the run at catalog load (§diag-catalog).
 
+### Active space {#active-space}
+
+@@options active-space@@
+
 @@options catalog@@
 
 ### Naming convention
@@ -27,55 +31,35 @@ Every configuration has a name of the form `<TYPE><index>`, e.g. `PPS1`, `OSS2`,
 | Prefix family | Meaning |
 | --- | --- |
 | `PPS` | The **perfectly-paired singlet**: every geminal Φ<sub>0</sub>. Every `(N,M)` catalog has at least one `PPS` configuration. |
-| `OSS`, `DOSS`, `TOSS` | 1, 2, 3 open-shell-singlet (Φ<sub>1</sub>) geminals. Installed: `OSS` in every catalog, `DOSS` in `(6,6)`, `TOSS` only as `TOSS_SPS` in `(6,6)`. |
+| `OSS`, `DOSS`, `TOSS` | 1, 2, 3 open-shell-singlet (Φ<sub>1</sub>) geminals. Installed: `OSS` in every catalog, `DOSS` in `(6,6)`, as `DOSS_SPS` in `(4,4)` and `(4,5)`, `TOSS` only as `TOSS_SPS` in `(6,6)`. |
 | `DES`, `DDES`, `TDES` | 1, 2, 3 doubly-excited (Φ<sub>2</sub>) geminals. `TDES` exists in `(6,6)` only. |
 | Compound types (`OSS_DES`, `DOSS_DES`, `OSS_DDES`) | Both kinds of geminals in one configuration. |
-| `k` leading `T` (`T_PPS3`, `TT_SPS_0`, `TTT_SPS_0`) | k triplet-coupled geminals; manifold 2S = 2k (coupling: §2). In `(2,2)` the single 2S = 2 configuration is named `T1`. |
+| A first word of k letters `T` (`T_PPS3`, `TT_SPS_0`, `TTT_SPS_0`) | k triplet-coupled geminals (a `T` glued to `OSS` or `DES`, as in `TOSS`, is the multiplier 3); manifold 2S = 2k (coupling: §run-sector). In `(2,2)` the single 2S = 2 configuration is named `T1`. |
 | `SPS` (as in `DOSS_SPS_0`) | A **spin-polarized** configuration; member `k` of the set is orthogonalized to members 0 … k − 1. |
 | Lettered types (`OSSa`, `DESb`, `Ta`, `DESa_OSSb`, `TaTb_SPS`) | Generalized-geminal catalogs (`REKS_GEMINAL_WIDTHS`). |
 
-Bulk tokens (§6) select configurations without listing names; an unknown token lists every valid type and name of the block's manifold (§diag-unknown-token).
+Bulk tokens (§bulk-tokens) select configurations without listing names; an unknown token lists every valid type and name of the block's manifold (§diag-unknown-token).
 
-### FON sets
+### FON sets {#fon-sets}
 
-The FON set of a configuration (column `FON set` of the SI pool tables) follows its generation, the number of open pairs (§2).
+The FON set of a configuration (column `FON set` of the SI pool tables) follows its generation, the number of open pairs (§fon-generation). Option: the lower bound of the free FON of that generation (§reks_l_fon).
 
-| Set | Generation (open pairs) | Configuration types |
-| --- | --- | --- |
-| `n` | 0 | `PPS`, `DES`, `DDES`, `TDES` |
-| `m` | 1 | `OSS`, `OSS_DES`, `OSS_DDES` |
-| `u` | 2 | `DOSS`, `DOSS_DES` |
-| `v`, `w`, `x`, `y`, `z` | 3–7 | — |
+| Set | Generation (open pairs) | Configuration types | Option |
+| --- | --- | --- | --- |
+| `n` | 0 | `PPS`, `DES`, `DDES`, `TDES` | `REKS_N_FON` |
+| `m` | 1 | `OSS`, `OSS_DES`, `OSS_DDES`; `T_PPS`, `T_DES`, `T_DDES` | `REKS_M_FON` |
+| `u` | 2 | `DOSS`, `DOSS_DES`; `T_OSS`, `T_OSS_DES`, `TT_PPS`, `TT_DES` | `REKS_U_FON` |
+| `v`, `w`, `x`, `y`, `z` | 3–7 | — | `REKS_V_FON`, `REKS_W_FON`, `REKS_X_FON`, `REKS_Y_FON`, `REKS_Z_FON` |
 
-The label is the set letter, the pairing-scheme digit (`n0`, `n1`), and `tK` for run sector K > 0 (`m0t1`), sector 0 being the lowest 2S of the run. Spin-polarized configurations, whose pairs are all open, have no FON and show `-`.
+The label is the set letter, the pairing-scheme digit (`n0`, `n1`), and `tK` for run sector K > 0 (`m0t1`, §run-sector); `FON optimization after the SCF` prints the scheme in its own column (`n`, `mt1`). Spin-polarized configurations, whose pairs are all open, have no FON and show `-`.
 
 ### Pairing schemes {#pairing-schemes}
 
-A scheme (numbered from 0) is one pairing of the `M` active orbitals into geminals (§2). No option selects it; the configurations of the SA pool do (`single-scheme:N`, `mixed-scheme:N`, §6). The setup report prints the schemes:
+No option selects a pairing scheme (§pairing-scheme); the configurations of the SA pool do (`single-scheme:N`, `mixed-scheme:N`, §bulk-tokens). The setup report prints the schemes:
 
 @@fragment pairing-schemes@@
 
-## 5\. Selecting Configurations
-
-### Active space
-
-@@options active-space@@
-
-### SA pool
-
-@@options sa-pool@@
-
-### SI cassettes
-
-@@options si-cassettes@@
-
-### Gradients, couplings, relaxed properties
-
-Computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `e` refers to cassette `e`; roots are 0-based and sorted by energy.
-
-@@options response@@
-
-## 6\. Bulk Tokens and Pattern Syntax
+## 5\. Bulk Tokens and Pattern Syntax {#bulk-tokens}
 
 Accepted wherever a configuration name is (SA blocks, SI cassettes, `exclude:`):
 
@@ -84,7 +68,7 @@ Accepted wherever a configuration name is (SA blocks, SI cassettes, `exclude:`):
 | `"full"` | The entire configuration block of that manifold. |
 | A configuration **type** name, e.g. `"PPS"`, `"OSS"`, `"DOSS"` | Every configuration of that type in the manifold, lettered types (`OSSa`, `Ta`) included. |
 | `"single-scheme:N"` (PSithon: `"single-scheme-N"` or `"single-scheme_N"`) | Every configuration of pairing scheme `N` (0 if `:N` is omitted), plus the spin-polarized base configurations, which all schemes share. |
-| `"mixed-scheme:N"` | The SSR state set on scheme `N`: that scheme's single-excitation configurations (at most one Φ<sub>1</sub> or Φ<sub>2</sub> geminal) *plus every open-shell-singlet configuration of the manifold* plus the spin-polarized base configurations. For `REKS(4,4)`, `mixed-scheme:0` = `PPS1, OSS1, OSS2, OSS3, OSS4, DES1, DES2, DOSS_SPS_0, DOSS_SPS_1`. |
+| `"mixed-scheme:N"` | The SSR state set on scheme `N`: that scheme's configurations with at most one excited geminal (Φ<sub>1</sub> or Φ<sub>2</sub>) *plus every open-shell-singlet configuration of the manifold* plus the spin-polarized base configurations. For `REKS(4,4)`, `mixed-scheme:0` = `PPS1, OSS1, OSS2, OSS3, OSS4, DES1, DES2, DOSS_SPS_0, DOSS_SPS_1`. |
 | `"sps"` | The spin-polarized base configurations. |
 | A pattern with `*` or `?` | Every configuration name it glob-matches. |
 | `"exclude:X"` (also `exclude-X` / `exclude_X`) | **SI cassettes only.** Removes what `X` (any form above) selects from the cassette, wherever it stands in the list, e.g. `["full", "exclude:sps"]` = the whole manifold minus the spin-polarized base. |
@@ -97,9 +81,19 @@ A scheme token may union several indices: `"single-scheme-1-2-3"`, or `"single-s
 | Same configuration twice (directly or by overlapping tokens) | input error; combine overlapping selections into one multi-index token | kept once, at its first position |
 | `exclude:` | not accepted | subtracts |
 
-## 7\. Spin Manifolds (2S) and Multi-Sector Runs
+## 6\. SA Pool and SI Cassettes {#selecting}
 
-The sectors of a run are the spin manifolds (2S) used by any SA block or SI group, in ascending 2S. All sectors share one SCF. Without `SA_REKS_CONFIGS` the SA ensemble is the default 2S = 0 pool.
+### SA pool {#sa-pool}
+
+@@options sa-pool@@
+
+### SI cassettes {#si-cassettes}
+
+@@options si-cassettes@@
+
+## 7\. Spin Manifolds (2S) and Multi-Sector Runs {#spin-manifolds}
+
+All sectors of a run (§run-sector) share one SCF. Without `SA_REKS_CONFIGS` the SA ensemble is the default pool (§sa_reks_configs).
 
 | Mode | When | Block or group i | Empty block `[]` |
 | --- | --- | --- | --- |
@@ -114,7 +108,7 @@ The sectors of a run are the spin manifolds (2S) used by any SA block or SI grou
 # triplet states: SA = default 2S=0 pool, SI cassette on 2S=2
 "reks": [4, 4],
 "si_reks_2spin": [2],
-"sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],          # all-alpha determinant in SA (§sa_reks_extra)
+"sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],          # all-alpha determinant in SA
 
 # singlet + triplet, joint SA, one SI cassette per manifold
 "reks": [4, 4],
@@ -139,4 +133,28 @@ The sectors of a run are the spin manifolds (2S) used by any SA block or SI grou
 
 ### Output
 
-With SI states on two or more manifolds the report prints §spin-state-energetics. Per-sector arrays carry a sector prefix for s > 0 (§14).
+With SI states on two or more manifolds the report prints §spin-state-energetics. Per-sector arrays carry a sector prefix for s > 0 (§variable-names).
+
+## 8\. Properties, Gradients, Couplings {#response}
+
+Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `e` refers to cassette `e`; roots as in §ssr-states.
+
+### State properties {#state-properties}
+
+`SI_REKS_ANALYSIS` selects the property blocks of the SSR states (unrelaxed densities), `SI_REKS_PROPERTY_FOR` the states that also get relaxed properties, `REKS_EKT` ionization energies of those states. `State analysis` in the setup block lists every block; struck-through names are not computed.
+
+```python
+psi4.set_options({
+    # + TRANSITION_DIPOLE, NO_OCCUPATIONS (always on)
+    "si_reks_analysis": ["DIPOLE", "RADICAL", "NTO", "MULTIPOLE(3)"],
+    # relaxed properties and EKT of S0, S1 of cassette 0
+    "si_reks_property_for": [["S0..1"], []],
+    "reks_ekt": True,
+})
+```
+
+@@options state-properties@@
+
+### Gradients and couplings {#gradients-couplings}
+
+@@options response@@

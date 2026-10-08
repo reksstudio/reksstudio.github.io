@@ -2,9 +2,9 @@
 title: First Calculation
 ---
 
-## 3\. First Calculation
+## 3\. First Calculation {#first-calculation}
 
-Without a seed the active slots are the MOs N<sub>core</sub>+1 … N<sub>core</sub>+M of the guess Fock matrix in energy order. A cold start of 90° C₂H₄ converges to n = 2/0, of s-trans-butadiene to a pair with a σ orbital (§check-solution). Procedure: choose the pairs → seed → inspect → start REKS → check.
+Without a seed the active slots are the MOs (N<sub>core</sub>+1)A … (N<sub>core</sub>+M)A (1-based labels) of the guess Fock matrix in energy order. A cold start of 90° C₂H₄ converges to n = 2/0, of s-trans-butadiene to a pair with a σ orbital (§check-solution). Procedure: choose the pairs → seed → inspect → start REKS → check.
 
 ### Which active space? {#which-active-space}
 
@@ -12,7 +12,7 @@ A rhetorical question: no rule fixes it for every molecule. REKS reduces it to w
 
 ### Choose the pairs {#choose-pairs}
 
-REKS(M,M) holds $P = M/2$ pairs; each pair is a bonding orbital and its antibonding partner (§pairing-scheme).
+Each pair of REKS(M,M) (§pairing-scheme) is a bonding orbital and its antibonding partner.
 
 | Molecule | Active space | Pairs |
 | --- | --- | --- |
@@ -86,8 +86,10 @@ psi4.set_options({"basis": "6-31g(d)", "scf_type": "pk",      # as in the seed r
 e_sa, wfn = psi4.energy("bhhlyp", return_wfn=True, restart_file="first_butadiene_rks.wfn.npy")
 ```
 
+The seed run above, for butadiene, writes `first_butadiene_rks.wfn` (§first-inputs).
+
 -   **Seed:** `restart_file` sets `GUESS READ` (§restart); an RKS source is reported as `SCF Guess: REKS orbitals restored from previous computation (REKS::guess override).`
--   **Slots:** token k = 0 … M−1 fills active column N<sub>core</sub> + k; token order sets the pairs (§choose-pairs). Without a window the slots are the read columns N<sub>core</sub> … N<sub>core</sub>+M−1 (C₂H₄ above: HOMO, LUMO).
+-   **Slots:** token k = 0 … M−1 fills active column N<sub>core</sub> + k (0-based columns, §inspect-orbitals); token order sets the pairs (§choose-pairs). Without a window the slots are the read columns N<sub>core</sub> … N<sub>core</sub>+M−1 (C₂H₄ above: HOMO, LUMO).
 -   **Report:** `MO columns` lists the active columns; `swaps [(c, j)]`: MO j moved into active column c (§guess_active_window).
 
 Butadiene with the π window:
@@ -101,7 +103,7 @@ The same seed with `HOMO-2` (13A, σ) in place of `HOMO-1` converges as well; 13
 ### Check the solution {#check-solution}
 
 -   **Convergence:** `Energy and wave function converged.` is necessary only: every wrong solution on this page converged. Otherwise §diag-maxiter.
--   **Active set:** every index of `Pairing scheme 0` in `Post-Iterations` (§sa-fons) belongs to the inspected set, compared as a set: setup `8A(a), 9A(b)`, pair printed `(9A,8A)`. Otherwise §diag-wrong-window.
+-   **Active set:** every index of `Pairing scheme 0` in `Post-Iterations` (§sa-fons) belongs to the inspected set, compared as a set: setup `8A(a), 9A(b)`, pair printed `(9A,8A)` (generation-0 swap, §fons). Otherwise §diag-wrong-window.
 -   **Symmetry:** S0 has equal charges on symmetry-equivalent atoms (§atomic-charges) and a dipole allowed by the point group (§permanent-dipole). Otherwise §diag-fon-pinned.
 -   **FONs:** a pair at n ≈ 2/0 is not by itself an error: the outer π pair of butadiene has n<sub>a</sub> = 1.999999.
 

@@ -18,7 +18,7 @@
   {
    "id": "sa-fons", "stage": "scf",
    "name": "Fractional occupation numbers of the SA-REKS ensemble",
-   "brief": "FONs n_{p}, n_{q} (n_{p} + n_{q} = 2) of the active orbitals of each geminal (p,q), one set per FON generation (§4).",
+   "brief": "FONs of the active orbitals of each geminal, summing to 2 per geminal (n_{p} + n_{q} = 2 for a two-orbital geminal (p,q)), one set per FON generation, pairing scheme and run sector (§fon-generation).",
    "on": "every REKS run",
    "for": "every generation with at least one active geminal in the SA ensemble",
    "units": "electrons",
@@ -27,7 +27,7 @@
    "files": "`<prefix>.molden` (`MOLDEN_WRITE`): `Occup` of the active MOs = FONs of set n, not natural occupations",
    "bullets": [
     "FON arrays: (u − 1) × n_{g}, u = widest geminal width, n_{g} = geminals of the generation; row r = free FON n_{r}, the last FON is 2 − Σ; unused cells −1. META arrays: (1 + u) × n_{g}, pairing scheme (row 0) and MO indices (rows 1..).",
-    "Check: the MOs of `Pairing scheme 0` equal `Active MO indices` of the setup (§diag-wrong-window); `2.000000`/`0.000000` lie at the bound (§diag-fon-pinned)."
+    "Check: the active set (§check-solution); `2.000000`/`0.000000` lie at the bound (§diag-fon-pinned)."
    ]
   },
   {
@@ -45,7 +45,7 @@
   {
    "id": "si-fons", "stage": "si",
    "name": "FONs of the SI-only geminals",
-   "brief": "FONs of geminals that enter only SI configurations, optimized after the SCF at fixed SA-REKS orbitals (§2).",
+   "brief": "FONs of geminals that enter only SI configurations, optimized after the SCF at fixed SA-REKS orbitals (§si-only-fons).",
    "on": "SI present",
    "for": "SI configurations with geminals absent from the SA ensemble",
    "units": "electrons",
@@ -59,7 +59,7 @@
   {
    "id": "ssr-energies", "stage": "si",
    "name": "SSR state energies",
-   "brief": "Eigenvalues of the SI eigenproblem of each cassette after removal of the overlap null modes (§2); states ordered by energy, root index 0-based.",
+   "brief": "Eigenvalues of the SI eigenproblem of each cassette after removal of the overlap null modes (§si-hamiltonian); states ordered by energy, root index 0-based.",
    "on": "SI present",
    "for": "every physical root of every SI cassette with at least one configuration, independent of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`",
    "units": "E_{h} (stored); E_{h} and eV relative to the lowest state of the first typed SI cassette, S0 when that cassette is a singlet (printed)",
@@ -69,13 +69,13 @@
     "The four bookkeeping scalars never take the sector prefix.",
     "`Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats S0 of cassette 0.",
     "`State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.",
-    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.04–0.48 E_{h} below E_{SA}; S0 = −1.0·10^{7} E_{h} at E_{SA} = −1.27 E_{h} marks ghost states (§diag-ghost-states)."
+    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.04–0.48 E_{h} below E_{SA}; S0 = −1.0·10^{7} E_{h} at E_{SA} = −1.27 E_{h} marks ghost roots (§diag-ghost-states)."
    ]
   },
   {
    "id": "ssr-composition", "stage": "si",
    "name": "SSR eigenvectors and Chirgwin–Coulson weights",
-   "brief": "Eigenvector c of each state over the configurations of its cassette, and the Chirgwin–Coulson weights ω_{j} (§2), printed in `Adiabatic states` (§ssr-energies).",
+   "brief": "Eigenvector c of each state over the configurations of its cassette, and the Chirgwin–Coulson weights ω_{j} (§cc-weights), printed in `Adiabatic states` (§ssr-energies).",
    "on": "SI present",
    "units": "dimensionless (coefficients); % (printed weights)",
    "variables": "`SSR COEFFICIENTS K=<e>` (`REKS_REPORT_LEVEL` ≥ 3)",
@@ -95,7 +95,7 @@
    "variables": "`SSR HAMILTONIAN K=<e>`, `SSR OVERLAP SPARSE K=<e>` (rows [i n_{cfg} + j, S_{ij}]), stored at `REKS_REPORT_LEVEL` ≥ 3",
    "bullets": [
     "Matrices printed only at `REKS_REPORT_LEVEL` ≥ 4. No bare (cassette 0) alias.",
-    "`Independent states` = `Configurations` − overlap null modes − ghost states. A `Regularization` line appears when null modes are removed, a `Ghost states` line when roots more than 100 E_{h} above the lowest are removed (§diag-ghost-states).",
+    "`Independent states` = `Configurations` − overlap null modes − ghost roots. A `Regularization` line appears when null modes are removed, a `Ghost states` line when ghost roots (§ssr-states) are removed.",
     "Two configurations with |S̃_{ij}| close to 1 are nearly the same function; their coupling then follows from the overlap, and V_{ij} vanishes for two identical functions.",
     "The `Consistency` line (second fragment, H_{4} REKS(4,4)) gives the largest |V_{ij}| in mE_{h} over the pairs with |S̃_{ij}| > 0.99 (a fixed bound, not an option) and the pair where it occurs; without such a pair the line is absent. The code sets no bound on |V_{ij}|."
    ]
@@ -188,7 +188,7 @@
     "Unpaired atomic populations are stored, not printed.",
     "y_{0}, y_{1} equal the corresponding occupations in `Natural orbitals` (§natural-orbitals); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1."
    ],
-   "ref": "N_{D}: Takatsuka–Fueno–Yamaguchi; N_{U} (linear) and N_{U,nl} (nonlinear): Head-Gordon 2003 (§16)."
+   "ref": "N_{D}: Takatsuka–Fueno–Yamaguchi; N_{U} (linear) and N_{U,nl} (nonlinear): Head-Gordon 2003 (§references)."
   },
   {
    "id": "permanent-dipole", "stage": "unrelaxed",
@@ -275,7 +275,7 @@
    "fragments": ["bond-indices"],
    "variables": "`SSR MAYER INDICES K=<e>`, `SSR WIBERG LOWDIN INDICES K=<e>` (m × natom^{2}, column A·natom + B)",
    "bullets": ["No spin-density term: for open-shell states this is not the open-shell Mayer index."],
-   "ref": "Mayer 1983 (§16)."
+   "ref": "Mayer 1983 (§references)."
   },
   {
    "id": "nto", "stage": "unrelaxed",
@@ -295,7 +295,7 @@
     "Holes: columns of U, particles: columns of V (active MOs; AO form C_{a}U, C_{a}V). T is spin-summed, so a pure singlet single excitation has Ω = 1. The first three weights are printed; weights and PR print `-` when Ω < 0.05.",
     "The bare alias of `SSR NTO HOLES`/`PARTICLES` exists only for pairs 0 → J of cassette 0; `SSR NTO WEIGHTS` has the full bare alias."
    ],
-   "ref": "Martin 2003 (§16)."
+   "ref": "Martin 2003 (§references)."
   },
   {
    "id": "exciton", "stage": "unrelaxed",
@@ -319,7 +319,7 @@
     "x_{a}, r and r^{2} are the AO dipole and second-moment integrals in the active MO basis; Ω_{AB} is the Löwdin form, not the Mulliken-type Ω of Plasser–Lischka. h_{A}, e_{B} are not normalized; each sums to Ω. NDOs are C_{a} v_{k}.",
     "`SSR CT OMEGA ATOMS`, the hole/particle populations and `SSR NDO AO` have no bare (cassette 0) alias."
    ],
-   "ref": "Plasser–Wormit–Dreuw 2014; Bäppler et al. 2014 (§16)."
+   "ref": "Plasser–Wormit–Dreuw 2014; Bäppler et al. 2014 (§references)."
   },
   {
    "id": "fragment-ct", "stage": "unrelaxed",
@@ -341,7 +341,7 @@
     "Ω_{FG} sums the atom-pair Ω_{AB} of §exciton over the fragments; F in POS is 1-based; N^{L}_{F} is the Löwdin active population of fragment F. Printed headers: `h/e split` for CT, `PR_F` for PR. CT to POS print `-` when Ω < 0.05; q_{moved} is always printed.",
     "The fragment line (`F1 = atoms 1-3, F2 = atoms 4-6`) shows the partition used."
    ],
-   "ref": "Plasser–Lischka 2012; Plasser 2020 (TheoDORE) (§16)."
+   "ref": "Plasser–Lischka 2012; Plasser 2020 (TheoDORE) (§references)."
   },
   {
    "id": "fragment-couplings", "stage": "unrelaxed",
@@ -361,7 +361,7 @@
     "States m < n of one cassette, fragments F < G; q_{A} are the state and transition charges (§atomic-charges, §transition-charges), G^{F} the Löwdin projector on the atoms of F. V carries the sign of D_{mn}, which follows the state phases; compare |V| with literature values. `*` marks a row where the Löwdin and Mulliken FCD values differ in sign or by more than a factor of 2.",
     "Computes the state and transition charges without storing them when those blocks are not listed. No bare alias."
    ],
-   "ref": "FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008 (§16)."
+   "ref": "FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008 (§references)."
   },
   {
    "id": "active-rdm", "stage": "unrelaxed",
@@ -379,7 +379,7 @@
   {
    "id": "relaxed-properties", "stage": "relaxed",
    "name": "Relaxed dipole, quadrupole and atomic charges",
-   "brief": "Dipole, quadrupole (full Cartesian tensor and traceless part) and Mulliken and Löwdin charges of the relaxed density P^{r} of the CP-REKS (Z-vector) response of a state (§2).",
+   "brief": "Dipole, quadrupole (full Cartesian tensor and traceless part) and Mulliken and Löwdin charges of the relaxed density P^{r} of the CP-REKS (Z-vector) response of a state (§densities).",
    "on": "`SI_REKS_PROPERTY_FOR` lists the state", "default": "off",
    "for": "`energy()` and `gradient()`; one CP-REKS solve shared with the gradient and NAC targets",
    "units": "e a_{0} (dipole; printed also D); e a_{0}^{2} (quadrupole); e (charges)",
@@ -388,7 +388,7 @@
    "files": "cube `CUBEPROP_TASKS` `SSR_DENSITIES`: `SSR_D_<label>_relaxed_cassette<e>.cube`",
    "bullets": [
     "The charges of each state sum to the molecular charge.",
-    "P^{r} is not N-representable; the EKT block prints the count of its negative natural occupations (§ekt-states)."
+    "The EKT block prints the count of the negative natural occupations of P^{r} (§densities, §ekt-states)."
    ]
   },
   {
@@ -398,8 +398,7 @@
    "on": "`SI_REKS_PROPERTY_FOR` lists the state", "default": "off",
    "units": "dimensionless",
    "printed": false,
-   "variables": "`SSR ROOT <r> RELAXED MAYER INDICES CASSETTE <e>`, `SSR ROOT <r> RELAXED WIBERG LOWDIN INDICES CASSETTE <e>` (natom × natom)",
-   "bullets": ["Not printed because P^{r} is not the density of a wavefunction."]
+   "variables": "`SSR ROOT <r> RELAXED MAYER INDICES CASSETTE <e>`, `SSR ROOT <r> RELAXED WIBERG LOWDIN INDICES CASSETTE <e>` (natom × natom)"
   },
   {
    "id": "ekt-states", "stage": "relaxed",
@@ -503,7 +502,7 @@
    "bullets": ["A is the lower root; d_{AB} is the full NAC (model + residual). The branch of φ gives |g̃| ≥ |h̃|, so Δ_{gh} ∈ [0, 1] and θ_{s} ∈ [0, π/2]. P is infinite when |h̃| vanishes, B when Δ_{gh} vanishes."],
    "fragments": ["ci-topography", "ci-not-printed"],
    "variables": "`SSR CI TOPOGRAPHY <I> <J> CASSETTE <e>` (1 × 12: |g̃|, |h̃|, φ, s_{x}, s_{y}, δ_{gh}, Δ_{gh}, σ, θ_{s}, P, B, E_{B} − E_{A}), `SSR CI G <I> <J> CASSETTE <e>`, `SSR CI H <I> <J> CASSETTE <e>`",
-   "ref": "Fdez. Galván et al. 2016 and 2022 (§16)."
+   "ref": "Fdez. Galván et al. 2016 and 2022 (§references)."
   },
   {
    "id": "spin-state-energetics", "stage": "spin",

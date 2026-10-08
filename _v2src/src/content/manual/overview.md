@@ -2,7 +2,7 @@
 title: Start
 ---
 
-## 1\. Start
+## 1\. Start {#overview}
 
 REKS Studio is the REKS solver of this Psi4 branch, selected with `reference reks`. It gives:
 
@@ -10,11 +10,39 @@ REKS Studio is the REKS solver of this Psi4 branch, selected with `reference rek
 -   **SA-REKS**: an ensemble of such configurations averaged with fixed weights; its energy is what the SCF optimizes.
 -   **SI-SA-REKS** (SSR): a post-SCF eigenproblem in a basis of catalog configurations (a cassette, chosen independently of the SA ensemble) that gives adiabatic state energies, densities and transition properties, gradients and couplings, from one SCF.
 
-A functional, a basis and an SCF type are chosen as for any Psi4 reference, and `psi4.energy("<functional>")` is called as usual, e.g. `psi4.energy("bhhlyp")`; the functional builds the Kohn–Sham matrices of every configuration. `psi4.energy("scf")` runs REKS with Hartree–Fock exchange and no functional; its setup block then has no `XC evaluation` line.
+A functional, a basis and an SCF type are chosen as for any Psi4 reference, and `psi4.energy("<functional>")` is called as usual, e.g. `psi4.energy("bhhlyp")`; the functional builds the Kohn–Sham matrices of every microstate (§microstate). `psi4.energy("scf")` runs REKS with Hartree–Fock exchange and no functional; its setup block then has no `XC evaluation` line.
+
+### Tasks
+
+| Task | Input | Output |
+| --- | --- | --- |
+| First calculation of a new molecule | RKS seed, `restart_file`, §guess_active_window (§first-calculation) | §check-solution |
+| Energies of several states | default cassette, or §si_reks_configs | §ssr-energies |
+| S1 gradient and S1/S2 coupling | `"si_reks_grad": [[1]]`, `"si_reks_nac": [[[1, 2]]]`, `psi4.gradient(...)` | §state-gradient, §nac |
+| Transition dipoles, oscillator strengths | default §si_reks_analysis | §transition-dipole |
+| Dipoles, charges, bond indices, NTOs, relaxed properties, EKT | §state-properties | §print-order |
+| Triplet states | `"si_reks_2spin": [2]` (§input-patterns) | §ssr-energies |
+| Singlet–triplet gaps | §si_reks_2spin with two manifolds | §spin-state-energetics |
+| Scan with restarts | §restart, §guess_active_window | §first-scans |
+| Look up an option | §option-table, [Index](reference/#index) | — |
+| Identify a printed block | — | §print-order |
+| A problem in the output | — | §diagnose |
 
 ### Minimal input {#minimal-input}
 
-SI-SA-REKS(4,4) with an explicit SA pool, weights and two SI cassettes:
+```psithon
+set {
+    reference  reks
+    reks       [ 2, 2 ]
+}
+energy('bhhlyp')
+```
+
+Only `reference reks` and `reks [N, M]` are required. Absent `sa_reks_configs`: the catalog's default SA pool (§sa_reks_configs). Absent `sa_reks_weights`: uniform weights. Absent `si_reks_configs`: one cassette spanning the full configuration block of the run's lowest manifold (§si_reks_configs). For `reks [2, 2]` the defaults are SA = PPS1, OSS1 (weights 0.5) and the cassette PPS1, OSS1, DES1, printed as `3SI-2SA-REKS(2,2)`. A new molecule starts from seeded and checked active orbitals (§first-calculation).
+
+### Explicit SA pool and SI cassettes {#explicit-input}
+
+SI-SA-REKS(4,4) with an explicit SA pool, weights and two SI cassettes; `PPS2` and `OSS3` belong to pairing scheme 1 (`SI pools` prints the definition of every name, §pairing-scheme):
 
 ```python
 psi4.set_options({
@@ -40,13 +68,11 @@ set {
 energy('scf')
 ```
 
-Only `reference reks` and `reks [N, M]` are required. Absent `sa_reks_configs`: the catalog's default SA pool (§sa_reks_configs). Absent `sa_reks_weights`: uniform weights. Absent `si_reks_configs`: one cassette spanning the full configuration block of the run's lowest manifold (§si_reks_configs). For `reks [2, 2]` the defaults are SA = PPS1, OSS1 (weights 0.5) and the cassette PPS1, OSS1, DES1, printed as `3SI-2SA-REKS(2,2)`. A new molecule starts from seeded and checked active orbitals (§3).
-
-For H₄ (sto-3g) the first cassette prints:
+For linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`) the first cassette prints:
 
 @@fragment start-adiabatic@@
 
-`energy()` returns `CURRENT ENERGY`; which energy that is: §si_reks_grad. Energies in the output and their variables:
+Without `si_reks_grad` and `si_reks_nac`, as in both inputs above, `energy()` returns E<sub>SA</sub> (`CURRENT ENERGY` = `SCF TOTAL ENERGY`), not an SSR state energy: −1.643432513968 E<sub>h</sub> for this H₄ run, against S0 = −2.122159772781 E<sub>h</sub>. With a followed state: §si_reks_grad. Energies in the output and their variables:
 
 | Quantity | Printed in | Variable |
 | --- | --- | --- |
@@ -70,36 +96,14 @@ e_sa = psi4.variable("SCF TOTAL ENERGY")
 | Molecule symmetry | C1; any other point group is an input error (below). |
 | Molecule multiplicity | The canonical value (§reks). |
 | `DIIS`, `SOSCF` | Switched off by REKS. |
-| `LEVEL_SHIFT`, `LEVEL_SHIFT_CUTOFF` | Unset: REKS defaults (§10). |
+| `LEVEL_SHIFT`, `LEVEL_SHIFT_CUTOFF` | Unset: REKS defaults (§level-shift). |
 | `PCM`, `DDX`, `PE`, `MOM_START`, `FRAC_START` | Rejected with an input error. |
 
 H₂ without `symmetry c1`:
 
 @@fragment err-c1@@
 
-### Run report {#start}
-
-At the default `REKS_REPORT_LEVEL` 2 (§reks_report_level) the REKS part of the output opens with the banner and the setup block:
-
-@@fragment banner@@
-
-@@fragment setup@@
-
-Check the core count and `Active MO indices`; after a restart the same MOs are active in `Post-Iterations` (§sa-fons, §check-solution). The blocks that follow: §print-order. Output fragments are verbatim from runs of this build: C₂H₄ REKS(4,4), BH&HLYP/6-31G(d), cassettes 2S = 0 and 2, for most blocks; linear H₄ REKS(4,4) for the narrower tables.
-
-### Tasks
-
-| Task | Input | Output |
-| --- | --- | --- |
-| First calculation of a new molecule | RKS seed, `restart_file`, §guess_active_window (§3) | §check-solution |
-| Energies of several states | default cassette, or §si_reks_configs | §ssr-energies |
-| S1 gradient and S1/S2 coupling | `"si_reks_grad": [[1]]`, `"si_reks_nac": [[[1, 2]]]`, `psi4.gradient(...)` | §state-gradient, §nac |
-| Transition dipoles, oscillator strengths | default §si_reks_analysis | §transition-dipole |
-| Triplet states | `"si_reks_2spin": [2]` (§input-patterns) | §ssr-energies |
-| Singlet–triplet gaps | §si_reks_2spin with two manifolds | §spin-state-energetics |
-| Scan with restarts | §restart, §guess_active_window | §diag-wrong-window |
-
-### Worked inputs
+### Worked inputs {#worked-inputs}
 
 Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded first calculations: §first-inputs.
 

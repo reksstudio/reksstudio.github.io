@@ -94,6 +94,8 @@ tbody tr:last-child td{ border-bottom: none; }
   table{ min-width: 0; }
   tbody td:first-child code{ white-space: normal; }
 }
+/* print order: block headers wrap at spaces, so the Entry column fits the text width */
+#print-order + p + .reftable-wrap tbody td:first-child code{ white-space: normal; }
 
 /* pager: previous / next page, stacked on phones */
 .pager{ position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); }
