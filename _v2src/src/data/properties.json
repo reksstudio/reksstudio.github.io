@@ -18,7 +18,7 @@
   {
    "id": "sa-fons", "stage": "scf",
    "name": "Fractional occupation numbers of the SA-REKS ensemble",
-   "brief": "FONs n_{p}, n_{q} (n_{p} + n_{q} = 2) of the active orbitals of each geminal (p,q), one set per FON generation (§3).",
+   "brief": "FONs n_{p}, n_{q} (n_{p} + n_{q} = 2) of the active orbitals of each geminal (p,q), one set per FON generation (§4).",
    "on": "every REKS run",
    "for": "every generation with at least one active geminal in the SA ensemble",
    "units": "electrons",
@@ -69,7 +69,7 @@
     "The four bookkeeping scalars never take the sector prefix.",
     "`Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats S0 of cassette 0.",
     "`State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.",
-    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots."
+    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.04–0.48 E_{h} below E_{SA}; S0 = −1.0·10^{7} E_{h} at E_{SA} = −1.27 E_{h} marks ghost states (§diag-ghost-states)."
    ]
   },
   {
@@ -90,14 +90,14 @@
    "brief": "Hamiltonian H and overlap S of the cassette over its configurations, before diagonalization; the printed block gives dimensions, the number of overlapping pairs and the rank after Löwdin regularization.",
    "on": "SI present",
    "units": "E_{h} (H); dimensionless (S)",
-   "formulas": ["V_{ij} = H_{ij} - S_{ij}\\,\\frac{H_{ii} + H_{jj}}{2}"],
+   "formulas": ["V_{ij} = \\tilde H_{ij} - \\tilde S_{ij}\\,\\frac{\\tilde H_{ii} + \\tilde H_{jj}}{2}, \\qquad \\tilde S_{ij} = \\frac{S_{ij}}{\\sqrt{S_{ii} S_{jj}}}, \\quad \\tilde H_{ij} = \\frac{H_{ij}}{\\sqrt{S_{ii} S_{jj}}}"],
    "fragments": ["hamiltonian", "consistency"],
    "variables": "`SSR HAMILTONIAN K=<e>`, `SSR OVERLAP SPARSE K=<e>` (rows [i n_{cfg} + j, S_{ij}]), stored at `REKS_REPORT_LEVEL` ≥ 3",
    "bullets": [
     "Matrices printed only at `REKS_REPORT_LEVEL` ≥ 4. No bare (cassette 0) alias.",
     "`Independent states` = `Configurations` − overlap null modes − ghost states. A `Regularization` line appears when null modes are removed, a `Ghost states` line when roots more than 100 E_{h} above the lowest are removed (§diag-ghost-states).",
-    "Two configurations with |S_{ij}| close to 1 are nearly the same function; their coupling should then follow from the overlap, H_{ij} ≈ S_{ij} (H_{ii} + H_{jj})/2, and V_{ij} vanishes for two identical functions.",
-    "The `Consistency` line (second fragment, H_{4} REKS(4,4)) gives the largest |V_{ij}| in mE_{h} over the pairs with |S_{ij}| > 0.99 (a fixed bound, not an option) and the pair where it occurs; without such a pair the line is absent."
+    "Two configurations with |S̃_{ij}| close to 1 are nearly the same function; their coupling then follows from the overlap, and V_{ij} vanishes for two identical functions.",
+    "The `Consistency` line (second fragment, H_{4} REKS(4,4)) gives the largest |V_{ij}| in mE_{h} over the pairs with |S̃_{ij}| > 0.99 (a fixed bound, not an option) and the pair where it occurs; without such a pair the line is absent. The code sets no bound on |V_{ij}|."
    ]
   },
   {
@@ -151,10 +151,10 @@
    "on": "`SI_REKS_ANALYSIS` `M_TDM`", "default": "on",
    "for": "pairs I < J; `M_TDM` also computes the transition dipoles",
    "units": "a.u.",
-   "formulas": ["\\mathbf m_{IJ} = -\\tfrac12\\,\\langle I|\\mathbf r\\times\\nabla|J\\rangle, \\qquad R_{\\mathrm{len}} = \\boldsymbol\\mu_{IJ}\\cdot\\mathbf m_{IJ}, \\qquad R_{\\mathrm{vel}} = -\\frac{\\mathbf p_{IJ}\\cdot\\mathbf m_{IJ}}{\\Delta E}"],
+   "formulas": ["\\boldsymbol\\mu_{IJ} = -\\langle I|\\mathbf r|J\\rangle, \\qquad \\mathbf p_{IJ} = \\langle I|\\nabla|J\\rangle, \\qquad \\mathbf m_{IJ} = -\\tfrac12\\,\\langle I|\\mathbf r\\times\\nabla|J\\rangle, \\qquad R_{\\mathrm{len}} = \\boldsymbol\\mu_{IJ}\\cdot\\mathbf m_{IJ}, \\qquad R_{\\mathrm{vel}} = -\\frac{\\mathbf p_{IJ}\\cdot\\mathbf m_{IJ}}{\\Delta E}"],
    "variables": "`SSR MAGNETIC TRANSITION DIPOLES K=<e>`, `SSR ROTATORY STRENGTHS K=<e>` (columns [R_{len}, R_{vel}])",
    "bullets": [
-    "m is real: the factor i of the magnetic-moment operator is dropped, as in Psi4 TDSCF; the sign convention of R follows Psi4.",
+    "μ includes the electron charge −1; m is real (the factor i of the operator is dropped).",
     "R_{len} is stored, not printed; the table prints R_{vel}."
    ]
   },
@@ -188,7 +188,7 @@
     "Unpaired atomic populations are stored, not printed.",
     "y_{0}, y_{1} equal the corresponding occupations in `Natural orbitals` (§natural-orbitals); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1."
    ],
-   "ref": "N_{D}: Takatsuka–Fueno–Yamaguchi; N_{U} (linear) and N_{U,nl} (nonlinear): Head-Gordon 2003 (§15)."
+   "ref": "N_{D}: Takatsuka–Fueno–Yamaguchi; N_{U} (linear) and N_{U,nl} (nonlinear): Head-Gordon 2003 (§16)."
   },
   {
    "id": "permanent-dipole", "stage": "unrelaxed",
@@ -275,7 +275,7 @@
    "fragments": ["bond-indices"],
    "variables": "`SSR MAYER INDICES K=<e>`, `SSR WIBERG LOWDIN INDICES K=<e>` (m × natom^{2}, column A·natom + B)",
    "bullets": ["No spin-density term: for open-shell states this is not the open-shell Mayer index."],
-   "ref": "Mayer 1983 (§15)."
+   "ref": "Mayer 1983 (§16)."
   },
   {
    "id": "nto", "stage": "unrelaxed",
@@ -295,7 +295,7 @@
     "Holes: columns of U, particles: columns of V (active MOs; AO form C_{a}U, C_{a}V). T is spin-summed, so a pure singlet single excitation has Ω = 1. The first three weights are printed; weights and PR print `-` when Ω < 0.05.",
     "The bare alias of `SSR NTO HOLES`/`PARTICLES` exists only for pairs 0 → J of cassette 0; `SSR NTO WEIGHTS` has the full bare alias."
    ],
-   "ref": "Martin 2003 (§15)."
+   "ref": "Martin 2003 (§16)."
   },
   {
    "id": "exciton", "stage": "unrelaxed",
@@ -319,7 +319,7 @@
     "x_{a}, r and r^{2} are the AO dipole and second-moment integrals in the active MO basis; Ω_{AB} is the Löwdin form, not the Mulliken-type Ω of Plasser–Lischka. h_{A}, e_{B} are not normalized; each sums to Ω. NDOs are C_{a} v_{k}.",
     "`SSR CT OMEGA ATOMS`, the hole/particle populations and `SSR NDO AO` have no bare (cassette 0) alias."
    ],
-   "ref": "Plasser–Wormit–Dreuw 2014; Bäppler et al. 2014 (§15)."
+   "ref": "Plasser–Wormit–Dreuw 2014; Bäppler et al. 2014 (§16)."
   },
   {
    "id": "fragment-ct", "stage": "unrelaxed",
@@ -341,7 +341,7 @@
     "Ω_{FG} sums the atom-pair Ω_{AB} of §exciton over the fragments; F in POS is 1-based; N^{L}_{F} is the Löwdin active population of fragment F. Printed headers: `h/e split` for CT, `PR_F` for PR. CT to POS print `-` when Ω < 0.05; q_{moved} is always printed.",
     "The fragment line (`F1 = atoms 1-3, F2 = atoms 4-6`) shows the partition used."
    ],
-   "ref": "Plasser–Lischka 2012; Plasser 2020 (TheoDORE) (§15)."
+   "ref": "Plasser–Lischka 2012; Plasser 2020 (TheoDORE) (§16)."
   },
   {
    "id": "fragment-couplings", "stage": "unrelaxed",
@@ -361,7 +361,7 @@
     "States m < n of one cassette, fragments F < G; q_{A} are the state and transition charges (§atomic-charges, §transition-charges), G^{F} the Löwdin projector on the atoms of F. V carries the sign of D_{mn}, which follows the state phases; compare |V| with literature values. `*` marks a row where the Löwdin and Mulliken FCD values differ in sign or by more than a factor of 2.",
     "Computes the state and transition charges without storing them when those blocks are not listed. No bare alias."
    ],
-   "ref": "FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008 (§15)."
+   "ref": "FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008 (§16)."
   },
   {
    "id": "active-rdm", "stage": "unrelaxed",
@@ -418,6 +418,7 @@
    "files": "`<prefix>.dyson.<label>_cassette<e>.molden` (`MOLDEN_WRITE`; Ene = −IP, Occup = pole strength)",
    "bullets": [
     "W is the symmetrized energy-weighted density of the state's response, P = P^{r} in the MO basis. The problem is solved in the natural orbitals of P with occupations p_{a} above `REKS_EKT_OCC_TOL`; smaller and negative ones are dropped.",
+    "States of a 2S > 0 cassette: spin-averaged EKT (spin-summed P^{r}).",
     "One table per state at `REKS_REPORT_LEVEL` 2; level 3 adds the dropped eigenvalues and the Dyson MO block.",
     "Check `sum of strengths` against half the sum of the occupations, the count of negative natural occupations of P^{r}, and the `Flag` column; strengths lie outside 0..1 by up to the lowest negative occupation."
    ],
@@ -502,7 +503,7 @@
    "bullets": ["A is the lower root; d_{AB} is the full NAC (model + residual). The branch of φ gives |g̃| ≥ |h̃|, so Δ_{gh} ∈ [0, 1] and θ_{s} ∈ [0, π/2]. P is infinite when |h̃| vanishes, B when Δ_{gh} vanishes."],
    "fragments": ["ci-topography", "ci-not-printed"],
    "variables": "`SSR CI TOPOGRAPHY <I> <J> CASSETTE <e>` (1 × 12: |g̃|, |h̃|, φ, s_{x}, s_{y}, δ_{gh}, Δ_{gh}, σ, θ_{s}, P, B, E_{B} − E_{A}), `SSR CI G <I> <J> CASSETTE <e>`, `SSR CI H <I> <J> CASSETTE <e>`",
-   "ref": "Fdez. Galván et al. 2016 and 2022 (§15)."
+   "ref": "Fdez. Galván et al. 2016 and 2022 (§16)."
   },
   {
    "id": "spin-state-energetics", "stage": "spin",

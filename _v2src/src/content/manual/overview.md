@@ -14,7 +14,7 @@ A functional, a basis and an SCF type are chosen as for any Psi4 reference, and 
 
 ### Minimal input {#minimal-input}
 
-REKS Studio prints this example with a fatal input error:
+SI-SA-REKS(4,4) with an explicit SA pool, weights and two SI cassettes:
 
 ```python
 psi4.set_options({
@@ -40,7 +40,7 @@ set {
 energy('scf')
 ```
 
-Only `reference reks` and `reks [N, M]` are required. Absent `sa_reks_configs`: the catalog's default SA pool (§sa_reks_configs). Absent `sa_reks_weights`: uniform weights. Absent `si_reks_configs`: one cassette spanning the full configuration block of the run's lowest manifold (§si_reks_configs).
+Only `reference reks` and `reks [N, M]` are required. Absent `sa_reks_configs`: the catalog's default SA pool (§sa_reks_configs). Absent `sa_reks_weights`: uniform weights. Absent `si_reks_configs`: one cassette spanning the full configuration block of the run's lowest manifold (§si_reks_configs). For `reks [2, 2]` the defaults are SA = PPS1, OSS1 (weights 0.5) and the cassette PPS1, OSS1, DES1, printed as `3SI-2SA-REKS(2,2)`. A new molecule starts from seeded and checked active orbitals (§3).
 
 For H₄ (sto-3g) the first cassette prints:
 
@@ -70,7 +70,7 @@ e_sa = psi4.variable("SCF TOTAL ENERGY")
 | Molecule symmetry | C1; any other point group is an input error (below). |
 | Molecule multiplicity | The canonical value (§reks). |
 | `DIIS`, `SOSCF` | Switched off by REKS. |
-| `LEVEL_SHIFT`, `LEVEL_SHIFT_CUTOFF` | Unset: REKS defaults (§9). |
+| `LEVEL_SHIFT`, `LEVEL_SHIFT_CUTOFF` | Unset: REKS defaults (§10). |
 | `PCM`, `DDX`, `PE`, `MOM_START`, `FRAC_START` | Rejected with an input error. |
 
 H₂ without `symmetry c1`:
@@ -85,22 +85,23 @@ At the default `REKS_REPORT_LEVEL` 2 (§reks_report_level) the REKS part of the 
 
 @@fragment setup@@
 
-Check the core count and `Active MO indices`; after a restart the same MOs are active in `Post-Iterations` (§sa-fons). The blocks that follow: §print-order. Output fragments are verbatim from runs of this build: C₂H₄ REKS(4,4), BH&HLYP/6-31G(d), cassettes 2S = 0 and 2, for most blocks; linear H₄ REKS(4,4) for the narrower tables.
+Check the core count and `Active MO indices`; after a restart the same MOs are active in `Post-Iterations` (§sa-fons, §check-solution). The blocks that follow: §print-order. Output fragments are verbatim from runs of this build: C₂H₄ REKS(4,4), BH&HLYP/6-31G(d), cassettes 2S = 0 and 2, for most blocks; linear H₄ REKS(4,4) for the narrower tables.
 
 ### Tasks
 
 | Task | Input | Output |
 | --- | --- | --- |
+| First calculation of a new molecule | RKS seed, `restart_file`, §guess_active_window (§3) | §check-solution |
 | Energies of several states | default cassette, or §si_reks_configs | §ssr-energies |
 | S1 gradient and S1/S2 coupling | `"si_reks_grad": [[1]]`, `"si_reks_nac": [[[1, 2]]]`, `psi4.gradient(...)` | §state-gradient, §nac |
 | Transition dipoles, oscillator strengths | default §si_reks_analysis | §transition-dipole |
-| Triplet states | `"sa_reks_extra"` all-α, `"si_reks_2spin": [2]` (§input-patterns) | §ssr-energies |
+| Triplet states | `"si_reks_2spin": [2]` (§input-patterns) | §ssr-energies |
 | Singlet–triplet gaps | §si_reks_2spin with two manifolds | §spin-state-energetics |
 | Scan with restarts | §restart, §guess_active_window | §diag-wrong-window |
 
 ### Worked inputs
 
-Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`.
+Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded first calculations: §first-inputs.
 
 | File | Calculation | Result |
 | --- | --- | --- |

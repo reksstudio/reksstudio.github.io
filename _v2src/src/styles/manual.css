@@ -44,6 +44,13 @@ h4 code:only-child{ font-size: 0.92em; font-weight: 600; }
 .prose li{ margin-bottom: 8px; }
 .prose strong{ color: var(--ink); }
 
+/* figures: images fill the text column; scheme SVGs are capped at 360px, pair images at 30rem */
+figure{ margin: 8px 0 24px; max-width: 74ch; }
+figure img{ display: block; width: 100%; height: auto; margin: 0 0 8px; }
+figure.scheme svg{ display: block; width: 100%; height: auto; max-width: 360px; }
+figure.pair img{ max-width: 30rem; }
+figcaption{ font-size: 0.85rem; color: var(--ink-soft); }
+
 h2 code, h3 code, h4 code{ background: none; padding: 0; font-size: 0.9em; }
 
 /* MathML (temml): system math fonts; display math centred, scrolls when wider than the column */

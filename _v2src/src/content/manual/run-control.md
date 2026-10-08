@@ -2,9 +2,9 @@
 title: Run control
 ---
 
-## 7\. Guesses and Restarts
+## 8\. Guesses and Restarts
 
-Restarts use Psi4 checkpoints; `GUESS_ACTIVE_WINDOW` places the read orbitals in the active space.
+Restarts use Psi4 checkpoints; `GUESS_ACTIVE_WINDOW` places the read orbitals in the active space. Seeding a first calculation: §3.
 
 ### Restart mechanism {#restart}
 
@@ -15,7 +15,7 @@ wfn.to_file("name.wfn")                                                         
 
 -   `restart_file` names a serialized `Wavefunction` (`.wfn.npy`). For a `.npy` file the driver sets `GUESS READ` and prints `Found user provided orbital data. Setting orbital guess to READ`. `psi4.core.Wavefunction.from_file(...)` only loads the file into a Python object; the SCF guess does not use it.
 -   `"df_scf_guess"` acts only with `scf_type DIRECT`, where it runs a density-fitted SCF before the exact-integral SCF.
--   Restart points: the previous geometry of a scan, a lower-level pre-optimization, or a run that hit `maxiter` (§diag-maxiter).
+-   Restart points: the previous geometry of a scan, a lower-level pre-optimization, a run that hit `maxiter` (§diag-maxiter), or an RKS run at the same geometry (§seed-orbitals).
 
 A scan restarts each point from the previous one; `psi4.core.clean()` removes the scratch files of the finished point:
 
@@ -40,7 +40,7 @@ Linear H₄, BH&HLYP/6-31G: the restarted point 1.6 Å and a cold SAD start reac
 
 @@options guess@@
 
-## 8\. Fractional Occupation Numbers (FONs)
+## 9\. Fractional Occupation Numbers (FONs)
 
 Each geminal pair carries FONs with $n_p + n_q = 2$; the free FON $n_p$ (first orbital of the pair) lies in a box (§2):
 
@@ -48,7 +48,7 @@ $$
 n_p \in [\,\ell,\; 2 - m\,], \qquad \ell = \begin{cases} \texttt{REKS\_<L>\_FON} & \text{if} \ge 0 \\ m & \text{otherwise} \end{cases}, \qquad m = \texttt{REKS\_FON\_MICRO\_BOUND\_MARGIN}.
 $$
 
-A generation-0 FON of a two-orbital pair that crosses 1 swaps the two orbitals, so the printed generation-0 FONs have $n_p \ge n_q$; FONs of higher generations can have $n_p < n_q$. FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set (§3); each generation has its own lower-bound option, default `-1.0` (off):
+A generation-0 FON of a two-orbital pair that crosses 1 swaps the two orbitals, so the printed generation-0 FONs have $n_p \ge n_q$; FONs of higher generations can have $n_p < n_q$. FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set (§4); each generation has its own lower-bound option, default `-1.0` (off):
 
 | Generation (set) | 0 (`n`) | 1 (`m`) | 2 (`u`) | 3 (`v`) | 4 (`w`) | 5 (`x`) | 6 (`y`) | 7 (`z`) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -60,7 +60,7 @@ FON micro-solver traces are printed at `REKS_REPORT_LEVEL` ≥ 4.
 
 @@options fon-micro@@
 
-## 9\. SCF Convergence Engines
+## 10\. SCF Convergence Engines
 
 Three engines optimize the orbitals and FONs; most runs set at most `LEVEL_SHIFT` and `REKS_USE_TRAH`.
 
@@ -79,7 +79,7 @@ $$
 \mathrm{RMS} = \begin{cases} \lVert \mathbf g_{\mathrm{orb}} \rVert_F / n & \text{GVB-DIIS}\\ \max\!\big(\sqrt{\lVert \mathbf g_{\mathrm{orb}} \rVert^2 + \lVert \mathbf g_{\mathrm{FON}} \rVert^2},\ \lVert \mathbf V - \mathbf 1 \rVert_F\big) / n & \text{TRAH}\\ \mathrm{rms}(\mathbf{FDS} - \mathbf{SDF}) & \text{otherwise} \end{cases}
 $$
 
-with $\mathbf g_{\mathrm{orb}}$, $\mathbf g_{\mathrm{FON}}$ the orbital and FON gradients and $\mathbf V$ the rotation that canonicalizes the current orbitals within their roles. A converged SCF ends with the line below (otherwise §diag-maxiter):
+with $\mathbf g_{\mathrm{orb}}$, $\mathbf g_{\mathrm{FON}}$ the orbital and FON gradients and $\mathbf V$ the rotation that canonicalizes the current orbitals within their roles. GVB-DIIS converges when $|\Delta E| <$ `E_CONVERGENCE` and RMS $<$ `D_CONVERGENCE` hold in `REKS_GVB_GATE_STREAK` (default 2) consecutive iterations; the sign of $\Delta E$ is not tested, so the last iterations may rise within these bounds. A converged SCF ends with the line below (otherwise §diag-maxiter):
 
 @@fragment iterations@@
 
@@ -97,13 +97,13 @@ $$
 
 ### Expert stabilizers
 
-The two expert groups of §14 (angle filtering, SVD conditioning, Tikhonov ridging, verdict rewind and restart monitors, cycle detection, basin guards) act automatically on ill-conditioned or non-monotone GVB-DIIS steps. `REKS_REPORT_LEVEL` 4 shows which monitor fires.
+The two expert groups of §15 (angle filtering, SVD conditioning, Tikhonov ridging, verdict rewind and restart monitors, cycle detection, basin guards) act automatically on ill-conditioned or non-monotone GVB-DIIS steps. `REKS_REPORT_LEVEL` 4 shows which monitor fires.
 
-## 10\. Delocalization (IPR) Penalty
+## 11\. Delocalization (IPR) Penalty
 
 @@options ipr@@
 
-## 11\. Report Level
+## 12\. Report Level
 
 @@options report@@
 
@@ -118,7 +118,7 @@ Blocks added at each level; each level prints everything of the levels below. Ou
 
 From level 3 the configuration-axis arrays `SSR COEFFICIENTS K=e`, `SSR HAMILTONIAN K=e`, `SSR OVERLAP SPARSE K=e` and `SSR 1-RDM DIABATIC SPARSE K=e` are stored; level 4 prints the Hamiltonian and overlap. Levels 4–5 grow with the active space and the cassette dimension.
 
-## 12\. Diagnose
+## 13\. Diagnose
 
 Each entry names what the output prints, then what to do. A converged SCF can still show several of them.
 
@@ -128,7 +128,7 @@ The active-window orbitals of the loaded `.wfn.npy` landed in the wrong columns.
 
 @@fragment window-swap@@
 
-Compare the `Pairing scheme` line of `Post-Iterations` with `Active MO indices`, and the final energy with that of the run that wrote the orbitals. Inspect the Molden file, then fix the window with §guess_active_window.
+Compare the `Pairing scheme` line of `Post-Iterations` with `Active MO indices`, also after a cold start (s-trans-butadiene REKS(4,4), cold SAD: setup 14A–17A, pairs `(13A,17A) & (15A,16A)`); for a REKS source, compare the final energy with that of the run that wrote the orbitals. Inspect the Molden file, then fix the window with §guess_active_window.
 
 #### SCF hits `MAXITER` or continues unconverged {#diag-maxiter}
 
@@ -136,21 +136,21 @@ With `FAIL_ON_MAXITER` false the trace ends as below (H₄, `maxiter` 2); SI, pr
 
 @@fragment maxiter@@
 
-Save it with `wfn.to_file(...)` and restart from it rather than starting over (§restart). Raise `MAXITER`, or raise `REKS_REPORT_LEVEL` to 4 to see which GVB-DIIS monitor (verdict rewind, cycle detection, basin guard) fires repeatedly (§9).
+Save it with `wfn.to_file(...)` and restart from it rather than starting over (§restart). Raise `MAXITER`, or raise `REKS_REPORT_LEVEL` to 4 to see which GVB-DIIS monitor (verdict rewind, cycle detection, basin guard) fires repeatedly (§10).
 
 #### SCF oscillates or cycles {#diag-oscillation}
 
-The GVB-DIIS monitors (§9) catch and restart such runs. If that stays unproductive, use the §reks_use_trah warm-up, or switch §reks_diis_formulation between `"ORBITAL"` and `"CFM"`.
+The GVB-DIIS monitors (§10) catch and restart such runs. If that stays unproductive, use the §reks_use_trah warm-up, or switch §reks_diis_formulation between `"ORBITAL"` and `"CFM"`.
 
 #### FONs of a geminal invert {#diag-fon-inverted}
 
-`Post-Iterations` prints n<sub>p</sub> < n<sub>q</sub> for a geminal of generation ≥ 1 (generation-0 pairs are swapped, §8). A floor of `1.0` on its generation (§reks_l_fon; e.g. `reks_m_fon: 1.0` for generation `m`) excludes n<sub>p</sub> < n<sub>q</sub> without fixing the FON to a single value. The floor does not keep n<sub>p</sub> away from the closed-shell limit 2.
+`Post-Iterations` prints n<sub>p</sub> < n<sub>q</sub> for a geminal of generation ≥ 1 (generation-0 pairs are swapped, §9). A floor of `1.0` on its generation (§reks_l_fon; e.g. `reks_m_fon: 1.0` for generation `m`) excludes n<sub>p</sub> < n<sub>q</sub> without fixing the FON to a single value. The floor does not keep n<sub>p</sub> away from the closed-shell limit 2.
 
 #### FON pinned at a bound, symmetry-broken charges {#diag-fon-pinned}
 
-`Post-Iterations` prints `n_a = 2.000000`, `n_b = 0.000000`, and equivalent atoms carry different charges. Observed: twisted ethylene (90°), SSR(2,2), cold SAD start; seeded from 60° and 75°, the same geometry converges to `n_a = 1.000000` with C1 = C2 = −0.334991 (S0). On the cold branch the analytic S1 gradient agrees with a 5-point finite difference to 9·10<sup>−8</sup> E<sub>h</sub>/a<sub>0</sub>; a 2-point difference deviates by 2.3·10<sup>−2</sup> because its −h point converges to the other solution.
+`Post-Iterations` prints `n_a = 2.000000`, `n_b = 0.000000`, and equivalent atoms carry different charges. Observed: twisted ethylene (90°), SSR(2,2), BH&HLYP/6-31G, cold SAD start; seeded from 60° and 75°, the same geometry converges to `n_a = 1.000000` with C1 = C2 = −0.334991 (S0). On the cold branch the analytic S1 gradient agrees with a 5-point finite difference to 9·10<sup>−8</sup> E<sub>h</sub>/a<sub>0</sub>; a 2-point difference deviates by 2.3·10<sup>−2</sup> because its −h point converges to the other solution.
 
-Seed from a neighbouring geometry (§restart) and compare the FON columns between runs; geminals entering only SI configurations can also lie at the bound (§si-fons).
+Seed from an RKS run at the same geometry (§seed-orbitals) or from a neighbouring geometry (§restart) and compare the FON columns between runs; geminals entering only SI configurations can also lie at the bound (§si-fons).
 
 #### Active orbitals localize on one fragment {#diag-localized}
 
@@ -158,13 +158,13 @@ The active orbitals localize instead of forming the delocalized solution, the in
 
 #### Unknown configuration name or type {#diag-unknown-token}
 
-The error lists every valid type and name of the manifold the block is bound to, here `REKS(4,4)`, 2S = 0; it is generated from the same catalog (§3):
+The error lists every valid type and name of the manifold the block is bound to, here `REKS(4,4)`, 2S = 0; it is generated from the same catalog (§4):
 
 @@fragment err-token@@
 
 #### Active space fails to load {#diag-catalog}
 
-No catalog file exists for that active space; the error lists the installed ones (§3):
+No catalog file exists for that active space; the error lists the installed ones (§4):
 
 @@fragment err-catalog@@
 

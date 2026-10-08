@@ -56,7 +56,7 @@ $$
 \mathrm{TT\_SPS\_0} = \tfrac{1}{\sqrt6}\,\Phi_{\mathrm{T-}}\Phi_{\mathrm{T+}} + \sqrt{\tfrac23}\,\Phi_{\mathrm{T0}}\Phi_{\mathrm{T0}} + \tfrac{1}{\sqrt6}\,\Phi_{\mathrm{T+}}\Phi_{\mathrm{T-}}.
 $$
 
-### Pairing scheme
+### Pairing scheme {#pairing-scheme}
 
 A pairing scheme partitions the `M` active orbitals into $P$ pairs, each joining one orbital of the lower half with one of the upper half:
 
@@ -64,7 +64,13 @@ $$
 P = M/2.
 $$
 
-REKS(M,M) with two-orbital geminals has $P!$ schemes, numbered from 0: one for (2,2), two for (4,4), six for (6,6) (§3).
+Scheme 0 pairs the active slots (active columns, from 0, labelled a, b, …) from the outside in: (2,2) (a,b); (4,4) (a,d) & (b,c); (6,6) (a,f) & (b,e) & (c,d):
+
+$$
+(k,\; M-1-k), \qquad k = 0, \dots, P-1.
+$$
+
+REKS(M,M) with two-orbital geminals has $P!$ schemes, numbered from 0: one for (2,2), two for (4,4), six for (6,6) (§4).
 
 ### Configuration and its energy
 
@@ -74,7 +80,7 @@ $$
 \Psi = \hat{A}\big[(\mathrm{core})\,\Phi_{t_1}(p_1, q_1)\cdots\Phi_{t_P}(p_P, q_P)\big].
 $$
 
-One scheme carries $3^P$ singlet configurations, named by type (§3). Its energy is a weighted sum of microstate energies, the coefficients being functions of the FONs (Filatov, Martínez, Kim, Phys. Chem. Chem. Phys. 2016, 18, 21040):
+One scheme carries $3^P$ singlet configurations, named by type (§4). Its energy is a weighted sum of microstate energies, the coefficients being functions of the FONs (Filatov, Martínez, Kim, Phys. Chem. Chem. Phys. 2016, 18, 21040):
 
 $$
 E^X = \sum_L C_L^X(\{n\})\,E_L, \qquad \sum_L C_L^X = 1.
@@ -109,11 +115,11 @@ $$
 \mathbf H = \begin{pmatrix} E_{\mathrm{PPS}} & (\sqrt{n_a}-\sqrt{n_b})\,\varepsilon_{ab} & 0\\ (\sqrt{n_a}-\sqrt{n_b})\,\varepsilon_{ab} & E_{\mathrm{OSS}} & (\sqrt{n_a}+\sqrt{n_b})\,\varepsilon_{ab}\\ 0 & (\sqrt{n_a}+\sqrt{n_b})\,\varepsilon_{ab} & E_{\mathrm{DES}} \end{pmatrix}.
 $$
 
-Towards the closed-shell limit ($n_a \to 2$) the factor $f$ suppresses the $\Delta$ term, which avoids counting correlation twice, by the formalism and by the functional. At $n_a = n_b = 1$ it equals 1 (Moreira et al., J. Chem. Theory Comput. 2007, 3, 764). $\delta$ is `REKS_FON_INTERP_DELTA` (default 0.4, §8).
+Towards the closed-shell limit ($n_a \to 2$) the factor $f$ suppresses the $\Delta$ term, which avoids counting correlation twice, by the formalism and by the functional. At $n_a = n_b = 1$ it equals 1 (Moreira et al., J. Chem. Theory Comput. 2007, 3, 764). $\delta$ is `REKS_FON_INTERP_DELTA` (default 0.4, §9).
 
 ### FON set and generation
 
-The generation of a configuration is its number of open pairs: $\Phi_1$, and $\Phi_{\mathrm{T0}}$ in a sector of positive $2S$. A FON set holds the FONs of one generation, pairing scheme and run sector; all configurations of that set use the same FONs. $\Phi_0$ and $\Phi_2$ of one pair use the same FONs; $\Phi_1$ and $\Phi_{\mathrm{T0}}$ use none. FON-set labels: §3.
+The generation of a configuration is its number of open pairs: $\Phi_1$, and $\Phi_{\mathrm{T0}}$ in a sector of positive $2S$. A FON set holds the FONs of one generation, pairing scheme and run sector; all configurations of that set use the same FONs. $\Phi_0$ and $\Phi_2$ of one pair use the same FONs; $\Phi_1$ and $\Phi_{\mathrm{T0}}$ use none. FON-set labels: §4.
 
 ### Spin-polarized configurations
 
@@ -131,11 +137,11 @@ $$
 0 \le w_X \le 1, \qquad \sum_X w_X = 1.
 $$
 
-The default weights are equal (§4). $E_{\mathrm{SA}}$ is a weighted average of configuration energies, not the energy of a state; the variational principle bounds $E_{\mathrm{SA}}$, not an individual $E^X$. Raw determinants enter the ensemble through §sa_reks_extra.
+The default weights are equal (§5). $E_{\mathrm{SA}}$ is a weighted average of configuration energies, not the energy of a state; the variational principle bounds $E_{\mathrm{SA}}$, not an individual $E^X$. Raw determinants enter the ensemble through §sa_reks_extra.
 
 ### Spin manifold and run sector
 
-A manifold is one total spin $2S$ of the catalog. The sectors of a run are the manifolds addressed by any SA block or SI group, in ascending $2S$, sector 0 being the lowest. Every configuration is built in its component of zero $M_S$, so all sectors share one determinant space and one set of orbitals, and the molecule multiplicity stays canonical (1 for even `N`) (§4, §6). Determinants of other $M_S$ enter the SA ensemble only through §sa_reks_extra.
+A manifold is one total spin $2S$ of the catalog. The sectors of a run are the manifolds addressed by any SA block or SI group, in ascending $2S$, sector 0 being the lowest. Every configuration is built in its component of zero $M_S$, so all sectors share one determinant space and one set of orbitals, and the molecule multiplicity stays canonical (1 for even `N`) (§5, §7). Determinants of other $M_S$ enter the SA ensemble only through §sa_reks_extra.
 
 ### Orbitals, orbital energies, SCF convergence
 
@@ -145,7 +151,7 @@ $$
 f_q \hat{F}_q \varphi_q = \sum_p \varphi_p \varepsilon_{pq}, \qquad f_q = n_q/2.
 $$
 
-At convergence the Lagrangian $\varepsilon_{pq}$ is symmetric (generalized Brillouin condition) but not diagonal, so the orbitals are not canonical. The printed orbital energies are the diagonal of the SA-REKS coupling Fock matrix in the MO basis and carry no Koopmans meaning; ionization energies come from EKT (§13). The SCF is converged when $E_{\mathrm{SA}}$ is stationary and the orbital gradient vanishes (generalized Brillouin condition, §9).
+At convergence the Lagrangian $\varepsilon_{pq}$ is symmetric (generalized Brillouin condition) but not diagonal, so the orbitals are not canonical. The printed orbital energies are the diagonal of the SA-REKS coupling Fock matrix in the MO basis and carry no Koopmans meaning; ionization energies come from EKT (§14). The SCF is converged when $E_{\mathrm{SA}}$ is stationary and the orbital gradient vanishes (generalized Brillouin condition, §10).
 
 ### SI cassette
 
@@ -175,7 +181,7 @@ $$
 s \le c\, s_{\max}
 $$
 
-($s_{\max}$ the largest eigenvalue of $\mathbf{S}$, $c$ = `SI_REKS_OVERLAP_CUTOFF`) are null modes, removed before diagonalization; the rank of $\mathbf{S}$ depends on the FONs. In full singlet cassettes the 18 configurations of REKS(4,4) span 16 dimensions and the 161 of REKS(6,6) span 115 (§4).
+($s_{\max}$ the largest eigenvalue of $\mathbf{S}$, $c$ = `SI_REKS_OVERLAP_CUTOFF`) are null modes, removed before diagonalization; the rank of $\mathbf{S}$ depends on the FONs. In full singlet cassettes the 18 configurations of REKS(4,4) span 16 dimensions and the 161 of REKS(6,6) span 115 (§5).
 
 ### Coupling damping below 100 % exact exchange
 
@@ -195,7 +201,7 @@ $$
 \mathbf{H}\mathbf{c}_k = E_k\,\mathbf{S}\mathbf{c}_k.
 $$
 
-Roots are 0-based and sorted by energy; they are labeled `S0`, `S1`, … for $2S$ zero and `T1`, `Q1`, … (counted from 1) for positive $2S$ (§6). Physical roots exclude the overlap null modes and ghost roots more than 100 $E_{\mathrm{h}}$ above the lowest root; `SSR ENERGIES K=e` holds every physical root of cassette e (§4).
+Roots are 0-based and sorted by energy; they are labeled `S0`, `S1`, … for $2S$ zero and `T1`, `Q1`, … (counted from 1) for positive $2S$ (§7). Physical roots exclude the overlap null modes and ghost roots more than 100 $E_{\mathrm{h}}$ above the lowest root; `SSR ENERGIES K=e` holds every physical root of cassette e (§5).
 
 ### Chirgwin–Coulson weights
 
@@ -215,10 +221,10 @@ $$
 \langle I|\hat{E}_{pq}|J\rangle.
 $$
 
-Every `SI_REKS_ANALYSIS` property uses it (§13). The relaxed density $P^{\mathrm{r}}$ of a state adds the orbital- and FON-response terms of the coupled-perturbed REKS (CP-REKS, Z-vector) solve (Filatov, Liu, Martínez, J. Chem. Phys. 2017, 147, 034113), so that its dipole is the energy derivative
+Every `SI_REKS_ANALYSIS` property uses it (§14). The relaxed density $P^{\mathrm{r}}$ of a state adds the orbital- and FON-response terms of the coupled-perturbed REKS (CP-REKS, Z-vector) solve (Filatov, Liu, Martínez, J. Chem. Phys. 2017, 147, 034113), so that its dipole is the energy derivative
 
 $$
 \mu = -\frac{\mathrm{d}E_I}{\mathrm{d}F}.
 $$
 
-It is formed for the `SI_REKS_PROPERTY_FOR` states. $P^{\mathrm{r}}$ is not N-representable: it can have negative natural occupations, and bond indices from it are stored but not printed (§13).
+It is formed for the `SI_REKS_PROPERTY_FOR` states. $P^{\mathrm{r}}$ is not N-representable: it can have negative natural occupations, and bond indices from it are stored but not printed (§14).

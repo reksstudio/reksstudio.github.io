@@ -2,13 +2,13 @@
 title: Reference
 ---
 
-## 14\. Option Table
+## 15\. Option Table
 
 `GUESS_ACTIVE_WINDOW` is a general SCF option; the others are REKS options. Seven options have an `REKS_`\-prefixed alias (column Alias); setting both names is an error.
 
 @@option-table@@
 
-## 15\. References
+## 16\. References
 
 Method:
 

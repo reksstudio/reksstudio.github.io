@@ -12,6 +12,7 @@ import { fragmentIds, markerContent, optionAlias, optionGroups, optionId, option
 export const PAGES = [
   { slug: '', file: 'overview' },
   { slug: 'concepts', file: 'concepts' },
+  { slug: 'first-calculation', file: 'first-calculation' },
   { slug: 'setup', file: 'setup', tocDepth: 4 },
   { slug: 'run-control', file: 'run-control', tocDepth: 4 },
   { slug: 'properties', file: 'properties', tocDepth: 4 },

@@ -2,7 +2,7 @@
 title: Input
 ---
 
-## 3\. Configuration Catalog
+## 4\. Configuration Catalog
 
 Configurations come from binary catalogs, one per `(N,M)` and geminal-width set, in `<PSIDATADIR>/reks_catalog` (a non-empty environment variable `PSI4_REKS_CATALOG` replaces the directory). A catalog lists every spin-inequivalent configuration of every spin manifold, each with a **name** and a **type**. Installed:
 
@@ -34,7 +34,7 @@ Every configuration has a name of the form `<TYPE><index>`, e.g. `PPS1`, `OSS2`,
 | `SPS` (as in `DOSS_SPS_0`) | A **spin-polarized** configuration; member `k` of the set is orthogonalized to members 0 … k − 1. |
 | Lettered types (`OSSa`, `DESb`, `Ta`, `DESa_OSSb`, `TaTb_SPS`) | Generalized-geminal catalogs (`REKS_GEMINAL_WIDTHS`). |
 
-Bulk tokens (§5) select configurations without listing names; an unknown token lists every valid type and name of the block's manifold (§diag-unknown-token).
+Bulk tokens (§6) select configurations without listing names; an unknown token lists every valid type and name of the block's manifold (§diag-unknown-token).
 
 ### FON sets
 
@@ -51,11 +51,11 @@ The label is the set letter, the pairing-scheme digit (`n0`, `n1`), and `tK` for
 
 ### Pairing schemes {#pairing-schemes}
 
-A scheme (numbered from 0) is one pairing of the `M` active orbitals into geminals (§2). No option selects it; the configurations of the SA pool do (`single-scheme:N`, `mixed-scheme:N`, §5). The setup report prints the schemes:
+A scheme (numbered from 0) is one pairing of the `M` active orbitals into geminals (§2). No option selects it; the configurations of the SA pool do (`single-scheme:N`, `mixed-scheme:N`, §6). The setup report prints the schemes:
 
 @@fragment pairing-schemes@@
 
-## 4\. Selecting Configurations
+## 5\. Selecting Configurations
 
 ### Active space
 
@@ -75,7 +75,7 @@ Computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-list
 
 @@options response@@
 
-## 5\. Bulk Tokens and Pattern Syntax
+## 6\. Bulk Tokens and Pattern Syntax
 
 Accepted wherever a configuration name is (SA blocks, SI cassettes, `exclude:`):
 
@@ -97,9 +97,9 @@ A scheme token may union several indices: `"single-scheme-1-2-3"`, or `"single-s
 | Same configuration twice (directly or by overlapping tokens) | input error; combine overlapping selections into one multi-index token | kept once, at its first position |
 | `exclude:` | not accepted | subtracts |
 
-## 6\. Spin Manifolds (2S) and Multi-Sector Runs
+## 7\. Spin Manifolds (2S) and Multi-Sector Runs
 
-The sectors of a run are the spin manifolds (2S) used by any SA block or SI group, in ascending 2S. All sectors share one SCF. Without `SA_REKS_CONFIGS` the SA ensemble is the default 2S = 0 pool, which has no high-spin configuration; patterns below add the all-α determinant with `SA_REKS_EXTRA`.
+The sectors of a run are the spin manifolds (2S) used by any SA block or SI group, in ascending 2S. All sectors share one SCF. Without `SA_REKS_CONFIGS` the SA ensemble is the default 2S = 0 pool.
 
 | Mode | When | Block or group i | Empty block `[]` |
 | --- | --- | --- | --- |
@@ -111,10 +111,10 @@ The sectors of a run are the spin manifolds (2S) used by any SA block or SI grou
 ### Input patterns {#input-patterns}
 
 ```python
-# triplet states on the default 2S=0 SA ensemble plus the all-alpha determinant, SI cassette on 2S=2
+# triplet states: SA = default 2S=0 pool, SI cassette on 2S=2
 "reks": [4, 4],
-"sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],
 "si_reks_2spin": [2],
+"sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],          # all-alpha determinant in SA (§sa_reks_extra)
 
 # singlet + triplet, joint SA, one SI cassette per manifold
 "reks": [4, 4],
@@ -139,4 +139,4 @@ The sectors of a run are the spin manifolds (2S) used by any SA block or SI grou
 
 ### Output
 
-With SI states on two or more manifolds the report prints §spin-state-energetics. Per-sector arrays carry a sector prefix for s > 0 (§13).
+With SI states on two or more manifolds the report prints §spin-state-energetics. Per-sector arrays carry a sector prefix for s > 0 (§14).
