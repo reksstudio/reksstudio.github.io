@@ -1,0 +1,446 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex"><title>Optimization and Dynamics — REKS Studio Manual</title><link rel="icon" href="data:,"><script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/v2/*"},"eagerness":"moderate"}]}</script><style>@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-normal.BkXjiv1e.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-normal.BkTyJFTR.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-italic.D6kxudtG.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-italic.D-y2-rJv.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-400-normal._efipK4i.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-400-normal.C5H60-Va.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-500-normal.JMMifIXV.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-500-normal.DakdToA3.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-500-normal.6ng42L7E.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-600-normal.DzTrcv_p.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-600-normal.DOrvGEcy.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-400-normal.BmRBH3aV.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-500-normal.CAhNIIs5.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-500-normal.DSY6xOcd.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--bg:#f5f5f2;--bg-raised:#efeee9;--ink:#14181f;--ink-soft:#4a5160;--ink-faint:#8a8f98;--blue:#2a4b8d;--copper:#b5502a;--line:#d8d6cd;--navy-900:#0a1626;--navy-800:#123055;--navy-700:#1d3e68;--mint:#d6e6dc;--copper-bright:#de7f3d;--gold:#d9b36c;--serif:"Newsreader", Georgia, serif;--sans:"IBM Plex Sans", -apple-system, sans-serif;--mono:"IBM Plex Mono", "SF Mono", Consolas, monospace}*{box-sizing:border-box}html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;margin:0;font-size:17px;line-height:1.6}a{color:inherit}.wrap{max-width:1160px;margin:0 auto;padding:0 40px}@media (width<=700px){.wrap{padding:0 24px}}h1,h2,h3{font-family:var(--serif);color:var(--ink);margin:0;font-weight:600}sub,sup{line-height:0}.kicker{color:var(--copper);letter-spacing:.02em;margin-bottom:14px;font-size:.86rem;font-weight:500}.prose p{color:var(--ink-soft)}nav{z-index:50;position:sticky;top:0}nav .wrap{justify-content:space-between;align-items:center;height:64px;display:flex}.logo{font-family:var(--serif);align-items:baseline;gap:6px;text-decoration:none;display:flex}.navlinks{gap:28px;font-size:.92rem;display:flex}.navlinks a{border-bottom:1px solid #0000;padding:6px 0;text-decoration:none;transition:color .15s,border-color .15s}@media (width<=720px){.navlinks{gap:16px;font-size:.85rem}.navlinks a[href^=\#]{display:none}}nav.nav-dark{background:var(--navy-900);border-bottom:1px solid #ffffff14}.nav-dark .logo{letter-spacing:.01em;color:var(--mint);font-size:1.3rem;font-style:italic;font-weight:500}.nav-dark .logo .dot{color:var(--copper-bright)}.nav-dark .navlinks a{color:#ffffffd1}.nav-dark .navlinks a:hover{color:#fff;border-color:var(--copper-bright)}.nav-dark .navlinks a.hl{color:var(--copper-bright)}.nav-dark .navlinks a.hl2{color:var(--gold)}nav.nav-light{backdrop-filter:blur(8px);border-bottom:1px solid var(--line);background:#f5f5f2db}.nav-light .logo{font-size:1.15rem;font-weight:600}.nav-light .logo .dot{color:var(--copper)}.nav-light .navlinks a{color:var(--ink-soft)}.nav-light .navlinks a:hover{color:var(--ink);border-color:var(--copper)}footer{border-top:1px solid var(--line)}footer.foot-back{color:var(--ink-faint);padding:40px 0 56px;font-size:.85rem}.foot-back a{color:var(--ink-soft);text-decoration:none}.foot-back a:hover{color:var(--ink)}
+header.docshero{border-bottom:1px solid var(--line);padding:64px 0 40px}header.docshero h1{max-width:20ch;font-size:clamp(1.9rem,4vw,2.7rem)}header.docshero h1+p{color:var(--ink-soft);max-width:56ch;margin-top:16px;font-size:1.05rem}.docs-layout{grid-template-columns:var(--toc-width,200px) minmax(0, 1fr);align-items:start;gap:56px;padding:56px 0 96px;display:grid}@media (width<=860px){.docs-layout{grid-template-columns:minmax(0,1fr)}}.toc{position:sticky;top:88px}.toc>summary{display:none}.toc::details-content{content-visibility:visible;display:contents}.toc-list{flex-direction:column;gap:2px;display:flex}.toc a{color:var(--ink-soft);border-left:2px solid #0000;padding:6px 0 6px 12px;font-size:.88rem;text-decoration:none;transition:color .15s,border-color .15s}.toc a:hover{color:var(--ink);border-color:var(--copper)}@media (width<=860px){.toc{border:1px solid var(--line);border-radius:6px;margin-bottom:8px;padding:10px 14px;position:static}.toc>summary{cursor:pointer;color:var(--ink);font-weight:600;display:list-item}.toc::details-content{content-visibility:hidden;display:block}.toc[open]::details-content{content-visibility:visible}.toc-list{margin-top:8px}.toc a{border-left:none;padding-left:0}}.docsec{margin-bottom:72px;scroll-margin-top:88px}.docsec:last-child{margin-bottom:0}.docsec h2{margin-bottom:18px;font-size:1.5rem}.docsec .prose p{max-width:68ch}code{font-family:var(--mono);background:var(--bg-raised);-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:4px;padding:.05em .3em;font-size:.86em}pre{font:.85rem/1.5 var(--mono)}pre code{font-size:inherit;line-height:inherit;background:0 0;padding:0}
+header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft);max-width:62ch;margin-top:16px;font-size:1.05rem}header.docshero .branch{color:var(--ink-faint);font-size:.9rem;font-family:var(--mono);margin-top:6px}.banner{border-left:3px solid var(--copper);background:var(--bg-raised);color:var(--ink-soft);width:fit-content;max-width:100%;margin-top:12px;padding:8px 14px;font-size:.8rem;line-height:1.5}header.pagehead{border-bottom:1px solid var(--line);padding:40px 0 28px}header.pagehead h1{font-size:clamp(1.6rem,3.2vw,2.2rem)}header.pagehead p{color:var(--ink-soft);margin:10px 0 0}.docs-layout{--toc-width:240px}.toc{max-height:calc(100vh - 110px);overflow-y:auto}@media (width<=860px){.toc{max-height:none}}.toc a{font-size:.85rem}.toc a[aria-current]{color:var(--ink);border-color:var(--copper);font-weight:600}.toc .sub{flex-direction:column;gap:2px;margin-bottom:6px;display:flex}.toc .sub a{text-indent:-1.4em;padding-left:calc(24px + 1.4em)}.toc .sub a.h3{text-indent:0;padding-top:3px;padding-bottom:3px;font-size:.8rem}.toc .sub a.h4{text-indent:0;color:var(--ink-faint);overflow-wrap:anywhere;padding-top:1px;padding-bottom:1px;padding-left:calc(24px + 2.4em);font-size:.75rem}@media (width<=860px){.toc a[aria-current]{border-left:2px solid var(--copper);padding-left:10px}.toc .sub a{padding-left:calc(12px + 1.4em)}.toc .sub a.h4{padding-left:calc(12px + 2.4em)}}.docsec h2,.docsec h3,.docsec h4{scroll-margin-top:88px}.docsec h3{margin:30px 0 12px;font-size:1.12rem}.docsec h4{font:600 1.02rem/1.4 var(--serif);color:var(--ink);border-top:1px solid var(--line);margin:28px 0 10px;padding-top:22px}.docsec h3+h4{border-top:none;padding-top:0}h4 code:only-child{font-size:.92em;font-weight:600}.fields{max-width:74ch;color:var(--ink-soft);grid-template-columns:max-content minmax(0,1fr);gap:6px 18px;margin:0 0 20px;display:grid}.fields dt{font:600 .74rem/2.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}.fields dd{margin:0}@media (width<=700px){.fields{display:block}.fields dt{float:left;margin-right:.7em}.fields dd{margin-bottom:8px}}.docsec .prose p{max-width:74ch;margin:0 0 16px}.prose ul,.prose ol{color:var(--ink-soft);max-width:74ch;margin:0 0 16px;padding-left:22px}.prose ol{padding-left:2em}.prose li{margin-bottom:8px}.prose strong{color:var(--ink)}figure{max-width:74ch;margin:8px 0 24px}figure img{width:100%;height:auto;margin:0 0 8px;display:block}figure.scheme svg{width:100%;max-width:360px;height:auto;display:block}figure.pair img{max-width:30rem}figcaption{color:var(--ink-soft);font-size:.85rem}figure.mo .g{gap:4px 16px;margin:0 0 8px;display:grid}figure.mo .n2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:30rem}figure.mo .n3{grid-template-columns:repeat(3,minmax(0,1fr))}figure.mo .h{color:var(--ink);text-align:center;border-bottom:1px solid var(--line);padding-bottom:2px;font-size:.85rem;font-weight:600}figure.mo .g img{margin:0 0 2px}figure.mo .g span{text-align:center;color:var(--ink-soft);font-variant-numeric:tabular-nums;font-size:.8rem;line-height:1.3;display:block}figure.mo .g span b{color:var(--ink);font-weight:600}h2 code,h3 code,h4 code{background:0 0;padding:0;font-size:.9em}math{font-family:STIX Two Math,Cambria Math,Noto Sans Math,math}math[display=block]{text-align:center;max-width:74ch;margin:4px 0 18px;padding:2px 0;font-size:1.15em;overflow:auto hidden}.tml-right{text-align:right}.tml-left{text-align:left}.tml-jot>mtr>mtd{padding-block:.35ex}@supports (not ((-webkit-backdrop-filter:blur(1px)))) and (not ((-moz-appearance:none))){.tml-right{text-align:-webkit-right}.tml-left{text-align:-webkit-left}}pre{border-radius:6px;margin:0 0 20px;padding:20px 22px}pre[data-language=log]{font-size:.78rem}pre.astro-code{background-image:linear-gradient(270deg,#10131a 30%,#10131a00),linear-gradient(270deg,#ffffff38,#fff0);background-position:100%,100%;background-repeat:no-repeat;background-size:40px 100%,16px 100%;background-attachment:local,scroll}@media (width<=700px){pre.astro-code{border-radius:0;margin-inline:-24px;padding:14px}}pre.astro-code[data-language=log]{border:1px solid var(--line);border-left:3px solid var(--copper);background-image:linear-gradient(to left, var(--bg-raised) 30%, #efeee900), linear-gradient(to left, #14181f1f, #14181f00);border-radius:0 6px 6px 0;background-color:var(--bg-raised)!important;color:var(--ink)!important}.reftable-wrap{background:linear-gradient(to left, var(--bg) 30%, #f5f5f200) right / 40px 100% no-repeat local, linear-gradient(to left, #14181f1f, #14181f00) right / 12px 100% no-repeat scroll;margin:8px 0 24px;overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:480px;font-size:.9rem}thead th{text-align:left;font-family:var(--sans);color:var(--ink);border-bottom:1px solid var(--ink-faint);white-space:nowrap;padding:8px 16px 8px 0;font-weight:600}tbody td{vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-soft);padding:10px 16px 10px 0}tbody td:first-child code{color:var(--blue);white-space:nowrap;background:0 0;padding:0;font-size:.86rem}tbody tr:last-child td{border-bottom:none}@media (width<=860px){table{min-width:0}tbody td:first-child code{white-space:normal}}#print-order+p+.reftable-wrap tbody td:first-child code{white-space:normal}.pager{border-top:1px solid var(--line);grid-template-columns:1fr 1fr;gap:16px;margin-top:64px;padding-top:24px;display:grid;position:static}.pager a{font-family:var(--serif);color:var(--ink);font-size:1.05rem;text-decoration:none}.pager a[rel=next]{text-align:right;grid-column:2}.pager small{font:.8rem var(--sans);color:var(--ink-soft);display:block}@media (width<=560px){.pager{grid-template-columns:1fr}.pager a[rel=next]{grid-column:1}}.contents h3{margin:30px 0 8px;font-size:1.12rem}.contents h3 a{text-decoration:none}.contents ul{columns:2 300px;column-gap:40px;margin:0;padding:0;font-size:.9rem;list-style:none}.contents li{break-inside:avoid;padding:2px 0}.contents li.h3{padding-left:1.4em;font-size:.85rem}.contents li a{color:var(--ink-soft);text-decoration:none}.contents li a:hover{color:var(--ink)}.az-letters{flex-wrap:wrap;gap:4px 12px;font-weight:600;display:flex}.az-letters a{text-decoration:none}.az-cols{columns:3 220px;column-gap:32px;font-size:.85rem;line-height:1.35}.az h3{break-after:avoid;margin:14px 0 4px;font-size:1rem}.az h3:first-child{margin-top:0}.az ul{margin:0;padding:0;list-style:none}.az li{break-inside:avoid;text-indent:-1em;overflow-wrap:anywhere;padding:1px 0 1px 1em}.az li a{color:var(--ink-soft);text-decoration:none}.az li a:hover{color:var(--ink)}.az code{background:0 0;padding:0;font-size:.92em}.az .az-page{color:var(--ink-faint);margin-left:4px;font-size:.8em}section:has(>h2[id$=option-table]) table{table-layout:fixed}section:has(>h2[id$=option-table]) table th:first-child{width:36%}section:has(>h2[id$=option-table]) table th:nth-child(2){width:16%}section:has(>h2[id$=option-table]) table th:nth-child(3){width:26%}section:has(>h2[id$=option-table]) table th:nth-child(4){width:22%}section:has(>h2[id$=option-table]) table:has(th:nth-child(2):last-child){table-layout:auto;width:auto}@media (width<=860px){section:has(>h2[id$=option-table]) tbody td:first-child code{white-space:normal;overflow-wrap:anywhere}}
+</style></head> <body>  <nav class="nav-light"> <div class="wrap"> <a class="logo" href="/v2/">REKS<span class="dot">·</span>Studio</a> <div class="navlinks"> <a href="/v2/">Overview</a><a href="/v2/docs/">Documentation</a><a href="/v2/manual/">Manual</a> </div> </div> </nav> <header class="pagehead"> <div class="wrap"> <div class="kicker">User Manual</div> <h1>Optimization and Dynamics</h1> <p>Chapter 4 of the REKS Studio user manual</p> </div> </header><div class="wrap"> <div class="docs-layout"> <details class="toc"> <summary>Contents · Optimization and Dynamics (4 of 9)</summary> <nav class="toc-list"> <a href="/v2/manual/">Start</a><a href="/v2/manual/concepts/">Concepts</a><a href="/v2/manual/first-calculation/">First Calculation</a> <a href="/v2/manual/dynamics/" aria-current="page">Optimization and Dynamics</a> <div class="sub"> <a class="h2" href="#opt-dynamics">4. Optimization and Dynamics</a><a class="h3" href="#dyn-requirements">Requirements</a><a class="h3" href="#one-gradient">One gradient() call</a><a class="h3" href="#grad-fd">Gradients and couplings against finite differences</a><a class="h3" href="#geometry-optimization">Geometry optimization</a><a class="h3" href="#check-optimization">Check the optimization</a><a class="h3" href="#surface-hopping">Surface hopping</a><a class="h3" href="#check-trajectory">Check the trajectory</a><a class="h3" href="#dynamics-inputs">Worked inputs</a> </div> <a href="/v2/manual/setup/">Input</a><a href="/v2/manual/run-control/">Run control</a><a href="/v2/manual/properties/">Output and properties</a><a href="/v2/manual/diagnose/">Diagnose</a><a href="/v2/manual/reference/">Reference</a> <a href="/v2/manual/reference/#index">Index</a> </nav> </details> <div> <section class="docsec"><h2 id="opt-dynamics">4. Optimization and Dynamics</h2><div class="prose">
+<p>After the solution check (<a href="/v2/manual/first-calculation/#check-solution">Check the solution</a>) the nuclear gradients of the SSR states and their nonadiabatic coupling vectors (NAC, <math><mrow><msub><mi>𝐝</mi><mrow><mi>I</mi><mi>J</mi></mrow></msub><mo>=</mo><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>I</mi><mi>|</mi><mi>∂</mi><mi>J</mi><mi>/</mi><mi>∂</mi><mi>𝐑</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow></mrow></math>, <a href="/v2/manual/properties/#nac">Nonadiabatic coupling vectors</a>) drive a geometry optimization with DL-FIND or a trajectory with PyUNIxMD; every point is one <code>psi4.gradient()</code> call. Procedure: one <code>gradient()</code> → optimization → check → dynamics → check.</p>
+<dl class="fields"><dt>Start</dt><dd>every run on this page starts from orbitals checked as in <a href="/v2/manual/first-calculation/#check-solution">Check the solution</a>; each further point reads the REKS orbitals of the previous one (<a href="/v2/manual/first-calculation/#first-scans">Scans</a>).</dd><dt>Integrals</dt><dd><code>scf_type df</code> for optimizations and trajectories (all runs on this page); <code>pk</code> (exact integrals) for an estimate of the DF error at single points.</dd></dl>
+<h3 id="dyn-requirements">Requirements</h3>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Install</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DL-FIND (<code>libdlfind</code> 0.0.3)</td>
+<td><code>pip install libdlfind</code> (builds with gfortran)</td>
+<td><a href="../../inputs/reks_dlfind.py"><code>reks_dlfind.py</code></a></td>
+</tr>
+<tr>
+<td>PyUNIxMD (commit 47cd61a)</td>
+<td><code>git clone https://github.com/skmin-lab/unixmd</code>, Cython libraries built as in its README; <code>export PYTHONPATH=&lt;unixmd&gt;/src:&lt;unixmd&gt;:$PYTHONPATH</code></td>
+<td><a href="../../inputs/reks_unixmd.py"><code>reks_unixmd.py</code></a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="one-gradient">One gradient() call</h3>
+<p>90° C₂H₄ from the RKS orbitals of <code>first_c2h4_90.py</code> (chapter 3, <a href="/v2/manual/first-calculation/#first-inputs">Worked inputs</a>), S1 as the followed root and the NAC of all pairs of S0, S1, S2:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"scf_type"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"df"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reference"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">: [2, 2],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "si_reks_grad"</span><span style="color:#E7E6E2">: [[1]],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "si_reks_nac"</span><span style="color:#E7E6E2">: [[[0, 1], [0, 2], [1, 2]]]})</span></span>
+<span class="line"><span style="color:#E7E6E2">g, wfn = psi4.gradient(</span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, return_wfn=</span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">, restart_file=</span><span style="color:#E7A98A">"first_c2h4_90_rks.wfn.npy"</span><span style="color:#E7E6E2">)</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Gradient request &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   Cassette  States  NAC pairs</span></span>
+<span class="line"><span>   -------------------------------------</span></span>
+<span class="line"><span>          0  S1 *    S0/S1, S0/S2, S1/S2</span></span>
+<span class="line"><span>   -------------------------------------</span></span>
+<span class="line"><span>   States = SI states whose nuclear gradient is computed. * = followed state, returned by gradient().</span></span>
+<span class="line"><span>   S0 (cassette 0) added to the gradient targets (NAC partner).</span></span>
+<span class="line"><span>   S2 (cassette 0) added to the gradient targets (NAC partner).</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>   Returned gradient of S1 (cassette 0).</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; Coupled-perturbed REKS (CP-REKS, Z-vector) solver &lt;==</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    For                   gradients of S1 (cassette 0);</span></span>
+<span class="line"><span>                          NAC S0/S1, S0/S2, S1/S2 (cassette 0)</span></span>
+<span class="line"><span>    States                S0, S1, S2 (cassette 0)</span></span>
+<span class="line"><span>    Equations             9: 3 states + 6 for NAC S0/S1 (cassette 0), S0/S2 (cassette 0), S1/S2 (cassette 0)</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>    Z-vectors converged in 9 iterations.</span></span></code></pre>
+<p>One CP-REKS solve covers every target (<a href="/v2/manual/setup/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a>). Wall time of the whole call (SCF included, 4 threads; two runs agree to 0.02 s):</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th><code>si_reks_grad</code></th>
+<th><code>si_reks_nac</code></th>
+<th>Equations</th>
+<th>Wall / s</th>
+<th>Returned</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[[1]]</code></td>
+<td>—</td>
+<td>1</td>
+<td>1.5</td>
+<td>S1</td>
+</tr>
+<tr>
+<td><code>[[1, 0]]</code></td>
+<td>—</td>
+<td>2</td>
+<td>1.6</td>
+<td>S1</td>
+</tr>
+<tr>
+<td><code>[[1, 0, 2]]</code></td>
+<td>—</td>
+<td>3</td>
+<td>1.6</td>
+<td>S1</td>
+</tr>
+<tr>
+<td><code>[[1]]</code></td>
+<td>three pairs</td>
+<td>9</td>
+<td>2.0</td>
+<td>S1</td>
+</tr>
+</tbody>
+</table></div>
+<dl class="fields"><dt>Followed root</dt><dd>the first entry of <code>si_reks_grad</code>, marked <code>*</code> in the output (<a href="/v2/manual/setup/#si_reks_grad"><code>SI_REKS_GRAD</code></a>); <code>[[1, 0]]</code> prints <code>S1 *, S0</code>.</dd><dt>Arrays</dt><dd>the wavefunction holds <code>SSR ROOT r GRADIENT CASSETTE 0</code> for every target (<a href="/v2/manual/properties/#state-gradient">Nuclear gradients of SSR states</a>) and <code>SSR NAC I J CASSETTE 0</code> for every pair (<a href="/v2/manual/properties/#nac">Nonadiabatic coupling vectors</a>).</dd></dl>
+<h3 id="grad-fd">Gradients and couplings against finite differences</h3>
+<p>One <code>gradient()</code> with <code>si_reks_grad</code> listing every state and <code>si_reks_nac</code> listing every pair gives all analytic gradients and NAC vectors; one loop of energies at displaced geometries gives the finite-difference (FD) gradients of all states from the same <code>SSR ENERGIES K=0</code> arrays and, from the same points, the FD couplings</p>
+<math display="block"><mrow><msub><mi>d</mi><mrow><mi>I</mi><mi>J</mi></mrow></msub><mo>≈</mo><mfrac><mrow><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><msub><mrow><mi mathvariant="normal">Ψ</mi><mspace></mspace></mrow><mi>I</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>𝐑</mi><mo>−</mo><mi>h</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>|</mi><msub><mrow><mi mathvariant="normal">Ψ</mi><mspace></mspace></mrow><mi>J</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>𝐑</mi><mo>+</mo><mi>h</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mo>−</mo><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><msub><mrow><mi mathvariant="normal">Ψ</mi><mspace></mspace></mrow><mi>J</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>𝐑</mi><mo>−</mo><mi>h</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>|</mi><msub><mrow><mi mathvariant="normal">Ψ</mi><mspace></mspace></mrow><mi>I</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>𝐑</mi><mo>+</mo><mi>h</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow></mrow><mrow><mn>4</mn><mi>h</mi></mrow></mfrac><mo separator="true">,</mo></mrow></math>
+<p>with the SSR states written in their PPS, OSS and DES determinants (SSR(2,2)). For SI-SA-REKS(4,4) the FD covers the part of the coupling from the mixing of the configurations in the SI states,</p>
+<math display="block"><mrow><msubsup><mi>d</mi><mrow><mi>I</mi><mi>J</mi></mrow><mtext class="tml-lrg-pad">model</mtext></msubsup><mo>=</mo><mfrac><mrow><msubsup><mi>𝐚</mi><mi>I</mi><mi>𝖳</mi></msubsup><mspace width="0.1667em"></mspace><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>∂</mi><mi>𝐇</mi><mo>−</mo><msub><mi>E</mi><mi>J</mi></msub><mspace width="0.1667em"></mspace><mi>∂</mi><mi>𝐒</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mspace width="0.1667em"></mspace><msub><mi>𝐚</mi><mi>J</mi></msub></mrow><mrow><msub><mi>E</mi><mi>J</mi></msub><mo>−</mo><msub><mi>E</mi><mi>I</mi></msub></mrow></mfrac><mo separator="true">,</mo></mrow></math>
+<p>from the FD of <code>SSR HAMILTONIAN K=0</code> and <code>SSR OVERLAP SPARSE K=0</code>, against <code>SSR NAC MODEL I J</code>. Gradients and model part: five-point central differences; NAC of C₂H₄: the central formula above; h = 0.005 a₀; every displaced point reads the same REKS file; state phases of the <code>gradient()</code> run are aligned with the FD centre. BH&amp;HLYP/6-31G(d), DF:</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Molecule</th>
+<th>n<sub>min</sub></th>
+<th>Quantity</th>
+<th>Components</th>
+<th>max |analytic − FD|</th>
+<th>Calls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C₂H₄, 60° twist, C1; SSR(2,2)</td>
+<td>1.93</td>
+<td>gradients S0–S2</td>
+<td>54</td>
+<td>5.6 · 10⁻⁷ E<sub>h</sub> a₀⁻¹</td>
+<td>1 <code>gradient()</code>, 72 energies</td>
+</tr>
+<tr>
+<td>s-trans-butadiene, distorted in plane; SI-SA-REKS(4,4), full 2S = 0 cassette</td>
+<td>2.00</td>
+<td>gradients S0–S9</td>
+<td>200</td>
+<td>7.7 · 10⁻⁶ E<sub>h</sub> a₀⁻¹</td>
+<td>1 <code>gradient()</code>, 80 energies</td>
+</tr>
+<tr>
+<td>butadiene, both CH₂ twisted 75°, C1; as above</td>
+<td>1.48</td>
+<td>gradients S0–S9</td>
+<td>300</td>
+<td>2.2 · 10⁻⁶ E<sub>h</sub> a₀⁻¹</td>
+<td>1 <code>gradient()</code>, 120 energies</td>
+</tr>
+<tr>
+<td>butadiene, both CH₂ twisted 80°, C1; as above</td>
+<td>1.37</td>
+<td>gradients S0–S9</td>
+<td>300</td>
+<td>9.7 · 10⁻⁶ E<sub>h</sub> a₀⁻¹</td>
+<td>1 <code>gradient()</code>, 120 energies</td>
+</tr>
+<tr>
+<td>C₂H₄, as above</td>
+<td>1.93</td>
+<td>NAC S0/S1, S0/S2, S1/S2</td>
+<td>18 each</td>
+<td>4.3 · 10⁻², 2.4 · 10⁻³, 2.9 · 10⁻² a₀⁻¹</td>
+<td>same run as the gradients</td>
+</tr>
+<tr>
+<td>butadiene, 75°</td>
+<td>1.48</td>
+<td>model part, 45 pairs of S0–S9</td>
+<td>1350</td>
+<td>1.3 · 10⁻⁴ a₀⁻¹ (median 9.8 · 10⁻⁷)</td>
+<td>same run as the gradients</td>
+</tr>
+<tr>
+<td>butadiene, 80°</td>
+<td>1.37</td>
+<td>model part, 45 pairs of S0–S9</td>
+<td>1350</td>
+<td>5.0 · 10⁻⁴ a₀⁻¹ (median 1.5 · 10⁻⁶)</td>
+<td>same run as the gradients</td>
+</tr>
+</tbody>
+</table></div>
+<p>n<sub>min</sub>: smallest n<sub>a</sub> (FON of the occupied member) over the SA pairs at the FD centre.</p>
+<figure>
+<img src="../../figures/grad_fd.svg" alt="Analytic against finite-difference gradient components of C2H4 and of planar and twisted butadiene, NAC components of C2H4 and model-part couplings of twisted butadiene; absolute difference against the size of the component" loading="lazy" decoding="async" width="710" height="710">
+<figcaption>(a) Analytic against FD gradient components: C₂H₄ 60° (S0–S2), butadiene planar, 75°, 80° (S0–S9). (b) |analytic − FD| against |FD| for the same. (c), (d) The same for the NAC vectors of C₂H₄ (3 pairs) and the model part of butadiene 75° and 80° (45 pairs each).</figcaption>
+</figure>
+<dl class="fields"><dt>Grid</dt><dd>the gradient difference falls with the DFT grid. Planar butadiene, C1 x, all ten states: 7.5 · 10⁻⁶ on the default grid, 3.7 · 10⁻⁷ with <code>dft_radial_points 99</code>, <code>dft_spherical_points 590</code>.</dd><dt>Planar molecule</dt><dd>the out-of-plane components of planar butadiene vanish by symmetry (analytic ≤ 1.5 · 10⁻¹³) and are not displaced.</dd><dt>NAC of C₂H₄</dt><dd>the difference sits in the residual part. C1 z: <code>SSR NAC MODEL I J</code> agrees with the model formula above (S = I) from the FD of <code>SSR HAMILTONIAN K=0</code> to 7 · 10⁻⁵; <code>SSR NAC RESIDUAL I J</code> / residual from the FD = 0.862 (S0/S1), 1.001 (S0/S2), 0.867 (S1/S2). Largest NAC component: 0.26 (S0/S1), 1.22 (S0/S2), 0.09 a₀⁻¹ (S1/S2).</dd><dt>Twisted butadiene</dt><dd>both CH₂ twisted by 85° (n<sub>min</sub> 1.28) or more: the FD is not an estimate of the derivative (85°: |FD5 − FD3| up to 1.5 · 10⁻² E<sub>h</sub> a₀⁻¹; 87°, C2 x: second difference of E(S0) 0.16 mE<sub>h</sub> around −h, 1.29 mE<sub>h</sub> around +h; n<sub>min</sub> 1.2563 at the centre, 1.2626 at +2h).</dd></dl>
+<h3 id="geometry-optimization">Geometry optimization</h3>
+<p>S0 of C₂H₄ from a 30° twist; <code>optimize()</code> searches a minimum of the energy of the followed root and stops at a stationary point:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"""S0 of C2H4, SSR(2,2) BH&amp;HLYP/6-31G(d), DF, optimized with DL-FIND.</span></span>
+<span class="line"><span style="color:#E7A98A">python opt_c2h4.py  -&gt;  opt_c2h4.xyz, opt_c2h4_reks.wfn.npy, opt_c2h4.out"""</span></span>
+<span class="line"><span style="color:#7FA0DE">import</span><span style="color:#E7E6E2"> psi4</span></span>
+<span class="line"><span style="color:#7FA0DE">from</span><span style="color:#E7E6E2"> reks_dlfind </span><span style="color:#7FA0DE">import</span><span style="color:#E7E6E2"> optimize</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_output_file(</span><span style="color:#E7A98A">"opt_c2h4.out"</span><span style="color:#E7E6E2">, </span><span style="color:#7FA0DE">False</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_memory(</span><span style="color:#E7A98A">"2 GB"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_num_threads(4)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E7E6E2">mol = psi4.geometry(</span><span style="color:#E7A98A">"""</span></span>
+<span class="line"><span style="color:#E7A98A">0 1</span></span>
+<span class="line"><span style="color:#E7A98A">C    0.310000    0.170000    0.895000</span></span>
+<span class="line"><span style="color:#E7A98A">C    0.310000    0.170000   -0.435000</span></span>
+<span class="line"><span style="color:#E7A98A">H    0.310000    1.090840    1.461300</span></span>
+<span class="line"><span style="color:#E7A98A">H    0.310000   -0.750840    1.461300</span></span>
+<span class="line"><span style="color:#E7A98A">H   -0.150420    0.967471   -1.001300</span></span>
+<span class="line"><span style="color:#E7A98A">H    0.770420   -0.627471   -1.001300</span></span>
+<span class="line"><span style="color:#E7A98A">symmetry c1</span></span>
+<span class="line"><span style="color:#E7A98A">no_com</span></span>
+<span class="line"><span style="color:#E7A98A">no_reorient</span></span>
+<span class="line"><span style="color:#E7A98A">"""</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6E7686"># seed orbitals: RKS with the same functional and basis</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"basis"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"6-31g(d)"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"scf_type"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"df"</span><span style="color:#E7E6E2">})</span></span>
+<span class="line"><span style="color:#E7E6E2">e, wfn = psi4.energy(</span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, return_wfn=</span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">wfn.to_file(</span><span style="color:#E7A98A">"opt_c2h4_rks.wfn"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6E7686"># optimize S0: the first entry of si_reks_grad is the followed root</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"reference"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">: [2, 2], </span><span style="color:#E7A98A">"si_reks_grad"</span><span style="color:#E7E6E2">: [[0]]})</span></span>
+<span class="line"><span style="color:#E7E6E2">e, wfn = optimize(</span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, mol, restart_file=</span><span style="color:#E7A98A">"opt_c2h4_rks.wfn.npy"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E7E6E2">print(</span><span style="color:#E7A98A">f"E(S0) = </span><span style="color:#E7E6E2">{e:.10f}</span><span style="color:#E7A98A">"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">mol.save_xyz_file(</span><span style="color:#E7A98A">"opt_c2h4.xyz"</span><span style="color:#E7E6E2">, </span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">wfn.to_file(</span><span style="color:#E7A98A">"opt_c2h4_reks.wfn"</span><span style="color:#E7E6E2">)</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E7E6E2">python </span><span style="color:#E7E6E2">opt_c2h4.py</span></span></code></pre>
+<p>DL-FIND prints its cycles to the terminal; the last one:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>Testing convergence  in cycle    8</span></span>
+<span class="line"><span>    Energy  2.6943E-07 Target: 1.0000E-06 converged?  yes</span></span>
+<span class="line"><span>  Max step  1.2440E-03 Target: 1.8000E-03 converged?  yes component     7</span></span>
+<span class="line"><span>  RMS step  4.8905E-04 Target: 1.2000E-03 converged?  yes</span></span>
+<span class="line"><span>  Max grad  9.0958E-06 Target: 4.5000E-04 converged?  yes component    12</span></span>
+<span class="line"><span>  RMS grad  3.4729E-06 Target: 3.0000E-04 converged?  yes</span></span>
+<span class="line"><span>Convergence reached</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> Optimisation converged</span></span>
+<span class="line"><span> ----------------------</span></span>
+<span class="line"><span> Final converged energy:     -78.528630422662</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>E(S0) = -78.5286304227</span></span></code></pre>
+<p><code>opt_c2h4.out</code>, last point:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>gradient: seeding orbital guess from dlfind_orbitals.wfn.npy (GUESS set to READ).</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span> =&gt; Gradient request &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Cassette  States</span></span>
+<span class="line"><span>    ----------------</span></span>
+<span class="line"><span>           0  S0 *</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>       8A     -0.299767  (a)    n_a =  1.997742</span></span>
+<span class="line"><span>       9A     -0.018589  (b)    n_b =  0.002258</span></span></code></pre>
+<dl class="fields"><dt>Start point</dt><dd><code>restart_file</code> seeds the first point; each later point reads the orbitals of the previous one.</dd><dt>Frame</dt><dd><code>no_com</code>, <code>no_reorient</code>: DL-FIND and PyUNIxMD move the atoms in the input frame. Keep every atom off the Cartesian axes (two coordinates near zero), as the shifted inputs here do: an atom within ~10⁻⁸ a₀ of an axis makes Psi4 fail while building the basis set (<code>Unrecognized point group bits</code>).</dd></dl>
+<p>T1 of all-trans-hexatriene, SI-SA-REKS(6,6) with the π window of <a href="/v2/manual/first-calculation/#first-spin">Higher spin states</a> and the SI cassette on 2S = 2 (root 0 = T1). The window places the RKS orbitals at the first REKS point and is then switched off, since it moves the columns of any read guess (<a href="/v2/manual/run-control/#guess_active_window"><code>GUESS_ACTIVE_WINDOW</code></a>). From <a href="../../inputs/opt_hexatriene.py"><code>opt_hexatriene.py</code></a>:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#6E7686"># REKS(6,6) at the start geometry: pi window from the RKS orbitals (LUMO+2 is sigma*), triplet SI cassette</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"reference"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">: [6, 6],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "guess_active_window"</span><span style="color:#E7E6E2">: [</span><span style="color:#E7A98A">"HOMO-2"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"HOMO-1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"HOMO"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"LUMO"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"LUMO+1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"LUMO+3"</span><span style="color:#E7E6E2">],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "sa_reks_extra"</span><span style="color:#E7E6E2">: [[1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "si_reks_2spin"</span><span style="color:#E7E6E2">: [2]})</span></span>
+<span class="line"><span style="color:#E7E6E2">e, wfn = psi4.energy(</span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, return_wfn=</span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">, restart_file=</span><span style="color:#E7A98A">"opt_hexatriene_rks.wfn.npy"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">wfn.to_file(</span><span style="color:#E7A98A">"opt_hexatriene_start.wfn"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6E7686"># optimize T1: later points read the REKS orbitals of the previous point, the window is off</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"guess_active_window"</span><span style="color:#E7E6E2">: [], </span><span style="color:#E7A98A">"si_reks_grad"</span><span style="color:#E7E6E2">: [[0]]})</span></span>
+<span class="line"><span style="color:#E7E6E2">e, wfn = optimize(</span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, mol, restart_file=</span><span style="color:#E7A98A">"opt_hexatriene_start.wfn.npy"</span><span style="color:#E7E6E2">)</span></span></code></pre>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Geometry</th>
+<th>C3–C4 / Å</th>
+<th>C1–C3, C2–C4 / Å</th>
+<th>C3–C5, C4–C6 / Å</th>
+<th>E(T1) / E<sub>h</sub></th>
+<th>T2 − T1, T3 − T1 / eV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start (<code>first_hexatriene.py</code>)</td>
+<td>1.347</td>
+<td>1.447</td>
+<td>1.342</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>T1 minimum, 11 gradients, 5.5 min on 8 threads</td>
+<td>1.481</td>
+<td>1.365</td>
+<td>1.411</td>
+<td>−233.1785176650</td>
+<td>2.489, 3.977</td>
+</tr>
+</tbody>
+</table></div>
+<p>The minimum is planar (|z| ≤ 6 · 10⁻⁸ Å).</p>
+<h3 id="check-optimization">Check the optimization</h3>
+<dl class="fields"><dt>Converged</dt><dd>all five criteria <code>yes</code> in the last cycle and <code>Optimisation converged</code>. Necessary, not sufficient: the end point is a stationary point, and the gradient criteria cannot tell a minimum from a saddle point.</dd><dt>Solution</dt><dd>n<sub>a</sub> of the active pair at every point, <code>grep "n_a =" opt_c2h4.out</code>: here 1.999484 → 1.997742, and no <code>[GRAD-FON] … pinned</code> line (<a href="/v2/manual/diagnose/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>).</dd><dt>Followed root</dt><dd><code>S0 *</code> (<code>T1 *</code> for hexatriene) in every <code>Gradient request</code>.</dd><dt>Errors</dt><dd>an SCF that fails prints <code>reks_dlfind: SCFConvergenceError; stopping DL-FIND</code>; DL-FIND then ends with <code>Optimisation converged</code>, which does not count, and the script stops with Psi4's error.</dd></dl>
+<h3 id="surface-hopping">Surface hopping</h3>
+<p>C₂H₄ on S1 from the S0 geometry of <code>opt_c2h4.py</code>, three SSR states, 200 steps of 0.5 fs:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"""Surface hopping of C2H4 on S1 from opt_c2h4.py, SSR(2,2) BH&amp;HLYP/6-31G(d), DF, PyUNIxMD.</span></span>
+<span class="line"><span style="color:#E7A98A">export PYTHONPATH=/path/to/unixmd/src:/path/to/unixmd:$PYTHONPATH</span></span>
+<span class="line"><span style="color:#E7A98A">python md_c2h4.py  -&gt;  md/MDENERGY, md/SHSTATE, md/MOVIE.xyz, md_c2h4.out"""</span></span>
+<span class="line"><span style="color:#7FA0DE">import</span><span style="color:#E7E6E2"> psi4</span></span>
+<span class="line"><span style="color:#7FA0DE">import</span><span style="color:#E7E6E2"> mqc</span></span>
+<span class="line"><span style="color:#7FA0DE">from</span><span style="color:#E7E6E2"> reks_unixmd </span><span style="color:#7FA0DE">import</span><span style="color:#E7E6E2"> REKS, molecule</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_output_file(</span><span style="color:#E7A98A">"md_c2h4.out"</span><span style="color:#E7E6E2">, </span><span style="color:#7FA0DE">False</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_memory(</span><span style="color:#E7A98A">"2 GB"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_num_threads(4)</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"basis"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"6-31g(d)"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"scf_type"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"df"</span><span style="color:#E7E6E2">,</span></span>
+<span class="line"><span style="color:#E7A98A">                  "reference"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">: [2, 2], </span><span style="color:#E7A98A">"fail_on_maxiter"</span><span style="color:#E7E6E2">: </span><span style="color:#7FA0DE">False</span><span style="color:#E7E6E2">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E7E6E2">mol = molecule(</span><span style="color:#E7A98A">"opt_c2h4.xyz"</span><span style="color:#E7E6E2">, nstates=3, temperature=300)</span></span>
+<span class="line"><span style="color:#E7E6E2">qm = REKS(mol, </span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, restart_file=</span><span style="color:#E7A98A">"opt_c2h4_reks.wfn.npy"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E7E6E2">md = mqc.SH(molecule=mol, istate=1, dt=0.5, nsteps=200, unit_dt=</span><span style="color:#E7A98A">"fs"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">md.run(qm=qm)</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E7E6E2">python </span><span style="color:#E7E6E2">md_c2h4.py</span></span></code></pre>
+<dl class="fields"><dt>States</dt><dd><code>nstates</code> lowest roots of cassette 0 (<a href="/v2/manual/concepts/#ssr-states">Adiabatic (SSR) states</a>); the default SSR(2,2) cassette (PPS, OSS, DES) has three singlet roots, S0, S1, S2.</dd><dt>One call per step</dt><dd><code>REKS</code> sets <code>si_reks_grad</code> to the running state of PyUNIxMD alone (the followed root) and <code>si_reks_nac</code> to all state pairs; the pairs make every state a CP-REKS target (<a href="#one-gradient">One gradient() call</a>), so one <code>gradient()</code> returns the energies and gradients of all states and the NAC vectors of all pairs. Step 0 in <code>md_c2h4.out</code>:</dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>gradient: seeding orbital guess from .../opt_c2h4_reks.wfn.npy (GUESS set to READ).</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>    Cassette  States  NAC pairs</span></span>
+<span class="line"><span>    -------------------------------------</span></span>
+<span class="line"><span>           0  S1 *    S0/S1, S0/S2, S1/S2</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>    Equations             9: 3 states + 6 for NAC S0/S1 (cassette 0), S0/S2 (cassette 0), S1/S2 (cassette 0)</span></span></code></pre>
+<dl class="fields"><dt>Start</dt><dd><code>molecule()</code> reads the geometry and draws one set of velocities from the Maxwell–Boltzmann distribution at 300 K (<code>seed=1</code>); the instantaneous temperature of this draw, printed at step 0, is 93.6 K. PyUNIxMD counts 3N − 6 = 12 degrees of freedom; over many draws the printed value has mean ≈ 370 K and standard deviation ≈ 140 K. Another <code>seed</code> gives another draw. One demonstration trajectory: a study samples initial conditions (e.g. Wigner) and runs an ensemble.</dd><dt>Hopping</dt><dd>fewest-switches surface hopping without decoherence correction (<code>mqc.SH</code> default; option <code>dec_correction</code>); NAC phases are aligned between steps (<code>l_adj_nac</code>, default on).</dd><dt>Terminal</dt><dd>one line per step:</dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>#INFO    STEP  State    Kinetic(H)   Potential(H)     Total(H)   Temperature(K)   Norm.</span></span>
+<span class="line"><span>INFO        0    1      0.00177932   -78.22228694   -78.22050762    93.643953    1.00000</span></span>
+<span class="line"><span>INFO        1    1      0.00224421   -78.22275032   -78.22050611   118.110614    1.00000</span></span>
+<span class="line"><span>INFO        2    1      0.00389882   -78.22441616   -78.22051734   205.191560    1.00000</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>INFO      199    1      0.05085347   -78.27052303   -78.21966957  2676.372582    1.00000</span></span>
+<span class="line"><span>INFO      200    1      0.04679572   -78.26639469   -78.21959897  2462.816786    1.00000</span></span></code></pre>
+<dl class="fields"><dt>Files</dt><dd><code>md/MDENERGY</code> energies per step, <code>md/SHSTATE</code> running state, <code>md/SHPROB</code> hopping probabilities, <code>md/MOVIE.xyz</code> geometries and velocities.</dd></dl>
+<p>Hexatriene on T1 from the minimum of <code>opt_hexatriene.py</code>, the three lowest triplet roots: with <code>si_reks_2spin [2]</code> cassette 0 is the triplet cassette, and <code>REKS</code> reads the roots of cassette 0 whatever its 2S. From <a href="../../inputs/md_hexatriene.py"><code>md_hexatriene.py</code></a>:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"basis"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"6-31g(d)"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"scf_type"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"df"</span><span style="color:#E7E6E2">,</span></span>
+<span class="line"><span style="color:#E7A98A">                  "reference"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">: [6, 6],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "sa_reks_extra"</span><span style="color:#E7E6E2">: [[1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "si_reks_2spin"</span><span style="color:#E7E6E2">: [2],</span></span>
+<span class="line"><span style="color:#E7A98A">                  "d_convergence"</span><span style="color:#E7E6E2">: 1e-6, </span><span style="color:#E7A98A">"reks_cpreks_conv"</span><span style="color:#E7E6E2">: 1e-8,</span></span>
+<span class="line"><span style="color:#E7A98A">                  "fail_on_maxiter"</span><span style="color:#E7E6E2">: </span><span style="color:#7FA0DE">False</span><span style="color:#E7E6E2">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E7E6E2">mol = molecule(</span><span style="color:#E7A98A">"opt_hexatriene.xyz"</span><span style="color:#E7E6E2">, nstates=3, temperature=300)</span></span>
+<span class="line"><span style="color:#E7E6E2">qm = REKS(mol, </span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, restart_file=</span><span style="color:#E7A98A">"opt_hexatriene_reks.wfn.npy"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E7E6E2">md = mqc.SH(molecule=mol, istate=0, dt=0.5, nsteps=50, unit_dt=</span><span style="color:#E7A98A">"fs"</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">md.run(qm=qm)</span></span></code></pre>
+<p>One step (T1, T2, T3 gradients and three NAC vectors) takes 39 s on 8 threads (31–52 s over 50 steps).</p>
+<dl class="fields"><dt>Convergence</dt><dd><code>fail_on_maxiter False</code>: an SCF that reaches <code>maxiter</code> prints <code>Energy and/or wave function did not converge, but proceeding anyway.</code> and the step continues; <code>grep -c "did not converge" md_*.out</code> counts such steps.</dd><dt>Hexatriene thresholds</dt><dd><code>d_convergence 1e-6</code>, <code>reks_cpreks_conv 1e-8</code>. With the defaults (1e-8, 1e-9) the SCF density change stays at 2–3 · 10⁻⁷ from iteration ~30 and the CP-REKS residual at 1.8 · 10⁻⁹; n<sub>a</sub> of pair (a, f) stays 2.000000 along the run.</dd><dt>Past 25 fs</dt><dd>the same runs continued to 50 fs reach SCFs that do not converge at 26.5 fs (n<sub>c</sub> 1.86 → 1.95, all three pairs near 2; the energy oscillates by 3 · 10⁻⁵ E<sub>h</sub> over 100 iterations); from there E<sub>tot</sub> jumps by 0.7–2.1 kcal mol⁻¹ (dt 0.5 fs) and by up to 142 kcal mol⁻¹ (dt 0.25 fs) per step.</dd></dl>
+<h3 id="check-trajectory">Check the trajectory</h3>
+<p>Total energy (column Total of <code>md/MDENERGY</code>), for the runs above and for reruns from the same start with <code>dt=0.25</code> (C₂H₄ <code>nsteps=400</code>, hexatriene <code>nsteps=100</code>):</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>Molecule</th>
+<th>dt / fs</th>
+<th>Steps</th>
+<th>Drift / kcal mol⁻¹</th>
+<th>Range / kcal mol⁻¹</th>
+<th>Largest step / kcal mol⁻¹</th>
+<th>Span of E<sub>pot</sub> / kcal mol⁻¹</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C₂H₄</td>
+<td>0.5</td>
+<td>200</td>
+<td>+0.57</td>
+<td>0.82</td>
+<td>0.43</td>
+<td>58.7</td>
+</tr>
+<tr>
+<td>C₂H₄</td>
+<td>0.25</td>
+<td>400</td>
+<td>−0.015</td>
+<td>0.17</td>
+<td>0.033</td>
+<td>58.6</td>
+</tr>
+<tr>
+<td>hexatriene</td>
+<td>0.5</td>
+<td>50</td>
+<td>+0.022</td>
+<td>0.072</td>
+<td>0.028</td>
+<td>7.2</td>
+</tr>
+<tr>
+<td>hexatriene</td>
+<td>0.25</td>
+<td>100</td>
+<td>−0.015</td>
+<td>0.039</td>
+<td>0.031</td>
+<td>7.1</td>
+</tr>
+</tbody>
+</table></div>
+<figure>
+<img src="../../figures/md_energy.svg" alt="Kinetic, potential and total energy along the C2H4 and hexatriene trajectories; total energy for time steps 0.5 and 0.25 fs" loading="lazy" decoding="async" width="710" height="602">
+<figcaption>Left: C₂H₄ on S1; right: hexatriene on T1. Top: E<sub>kin</sub>, E<sub>pot</sub> − E<sub>pot</sub>(0), E<sub>tot</sub> − E<sub>tot</sub>(0), dt 0.5 fs. Bottom: E<sub>tot</sub> − E<sub>tot</sub>(0) for dt 0.5 and 0.25 fs.</figcaption>
+</figure>
+<dl class="fields"><dt>Energy</dt><dd>C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. The C₂H₄ dt 0.5 fs drift comes from the last steps: E<sub>tot</sub> − E<sub>tot</sub>(0) is +0.006 at step 196 and +0.570 kcal mol⁻¹ at step 200 (largest step, 0.43, between steps 198 and 199). Halving <code>dt</code> shrinks the range of E<sub>tot</sub> 4.8-fold for C₂H₄ over 100 fs (4.1-fold over the first 50 fs; dt² error of velocity Verlet: 4-fold) and 1.9-fold for hexatriene over 25 fs.</dd><dt>Solution</dt><dd>n<sub>a</sub> of the active pair per step, <code>grep "n_a =" md_c2h4.out</code>, continuous. When n<sub>a</sub> crosses 1 (90° twist of C₂H₄; seven times in the dt 0.5 fs run, first at steps 40–41 and 78–79) the label (a) switches between orbitals 8A and 9A. If n<sub>a</sub> and the Total column jump together between two steps, the solution has changed. Steps with an unconverged SCF: <a href="/v2/manual/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>State</dt><dd><code>md/SHSTATE</code>. C₂H₄, dt 0.5 fs: on S1 to 56.0 fs, on S2 to 92.5 fs, then on S1. C₂H₄, dt 0.25 fs: S1 → S2 at 37.5, 59.25 and 69.5 fs, back at 39.5 and 67.5 fs; at 37.5, 59.25 and 69.5 fs the velocities are rescaled uniformly (<code>no solution to find rescale factor, but velocity is simply rescaled</code>). Hexatriene: T1 throughout. The followed root is an energy index, not a state character (<a href="/v2/manual/diagnose/#diag-quasi-degenerate">Quasi-degenerate roots</a>).</dd></dl>
+<h3 id="dynamics-inputs">Worked inputs</h3>
+<p>Scripts in run order, in one directory with <code>reks_dlfind.py</code> and <code>reks_unixmd.py</code> (imported, not run).</p>
+<div class="reftable-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Calculation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../inputs/reks_dlfind.py"><code>reks_dlfind.py</code></a></td>
+<td><code>optimize(method, molecule, restart_file, tolerance=4.5e-4, maxcycle=100)</code>: DL-FIND L-BFGS in delocalized internal coordinates on the followed root; <code>tolerance</code>: largest gradient component in those coordinates, atomic units</td>
+<td>—</td>
+</tr>
+<tr>
+<td><a href="../../inputs/reks_unixmd.py"><code>reks_unixmd.py</code></a></td>
+<td><code>molecule(xyz_file, nstates, temperature, charge=0, seed=1)</code>, <code>REKS(molecule, method, restart_file)</code>: PyUNIxMD QM interface, roots of cassette 0</td>
+<td>—</td>
+</tr>
+<tr>
+<td><a href="../../inputs/first_c2h4_90.py"><code>first_c2h4_90.py</code></a></td>
+<td><a href="/v2/manual/first-calculation/#first-inputs">Worked inputs</a>; <code>python first_c2h4_90.py rks</code> writes <code>first_c2h4_90_rks.wfn.npy</code>, read by <a href="#one-gradient">One gradient() call</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td><a href="../../inputs/opt_c2h4.py"><code>opt_c2h4.py</code></a></td>
+<td>S0 of C₂H₄, SSR(2,2) BH&amp;HLYP/6-31G(d), DF, RKS seed, DL-FIND</td>
+<td>E(S0) = −78.5286304227 E<sub>h</sub>, 8 gradients</td>
+</tr>
+<tr>
+<td><a href="../../inputs/md_c2h4.py"><code>md_c2h4.py</code></a></td>
+<td>surface hopping on S1 from the <code>opt_c2h4.py</code> geometry, 3 states, 200 × 0.5 fs</td>
+<td>hops S1 → S2 at 56.0 fs, back at 92.5 fs; E<sub>tot</sub> drift +0.57 kcal mol⁻¹, range 0.82 kcal mol⁻¹</td>
+</tr>
+<tr>
+<td><a href="../../inputs/opt_hexatriene.py"><code>opt_hexatriene.py</code></a></td>
+<td>T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH&amp;HLYP/6-31G(d), DF, π window, DL-FIND</td>
+<td>E(T1) = −233.1785176650 E<sub>h</sub>, 11 gradients, 5.5 min on 8 threads</td>
+</tr>
+<tr>
+<td><a href="../../inputs/md_hexatriene.py"><code>md_hexatriene.py</code></a></td>
+<td>surface hopping on T1 from the <code>opt_hexatriene.py</code> geometry, 3 triplet states, 50 × 0.5 fs</td>
+<td>T1 throughout; E<sub>tot</sub> drift +0.022 kcal mol⁻¹, range 0.072 kcal mol⁻¹; 39 s per step on 8 threads</td>
+</tr>
+</tbody>
+</table></div></div></section>
+   <nav class="pager" aria-label="Manual pages"> <a rel="prev" href="/v2/manual/first-calculation/"><small>Previous</small>First Calculation</a> <a rel="next" href="/v2/manual/setup/"><small>Next</small>Input</a> </nav> </div> </div> </div> <footer class="foot-back"> <div class="wrap"> <a href="/v2/docs/">← Back to REKS Studio documentation</a> </div> </footer>  </body> </html>
