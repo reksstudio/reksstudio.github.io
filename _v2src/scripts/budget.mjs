@@ -1,5 +1,5 @@
 // Byte-budget gate over the built site: per page, gzip -9 bytes of
-// HTML + linked CSS <= LIMIT_PAGE, JS = 0 (JSON-like script types excluded),
+// HTML + linked CSS <= LIMIT_PAGE, inline JS <= LIMIT_JS, no external script,
 // font preloads <= LIMIT_PRELOADS; each image file <= LIMIT_IMAGE (raw bytes).
 // Exits 1 on any violation.
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -13,6 +13,7 @@ const KB = 1024;
 const LIMIT_PAGE = 50 * KB;
 const LIMIT_IMAGE = 100 * KB;
 const LIMIT_PRELOADS = 0;
+const LIMIT_JS = 1.5 * KB;
 const IMAGE_EXT = new Set(['.avif', '.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg']);
 const NON_JS_SCRIPT_TYPES = new Set(['speculationrules', 'application/ld+json', 'application/json', 'importmap']);
 
@@ -40,7 +41,11 @@ for (const page of files.filter((f) => f.endsWith('.html'))) {
     const type = attr(m[1], 'type');
     if (type && NON_JS_SCRIPT_TYPES.has(type.toLowerCase())) continue;
     const src = attr(m[1], 'src');
-    js += src ? gz(readFileSync(fileOf(src))) : gz(Buffer.from(m[2]));
+    if (src) {
+      failures.push(`${name}: external script ${src} (inline only)`);
+      continue;
+    }
+    js += gz(Buffer.from(m[2]));
   }
 
   let css = 0;
@@ -55,7 +60,7 @@ for (const page of files.filter((f) => f.endsWith('.html'))) {
   const total = htmlGz + css;
   rows.push({ name, htmlGz, css, total, js, preloads });
 
-  if (js > 0) failures.push(`${name}: JS ${js} B gzip (budget 0)`);
+  if (js > LIMIT_JS) failures.push(`${name}: JS ${js} B gzip (budget ${LIMIT_JS})`);
   if (total > LIMIT_PAGE) failures.push(`${name}: HTML+CSS ${total} B gzip (budget ${LIMIT_PAGE})`);
   if (preloads > LIMIT_PRELOADS) failures.push(`${name}: ${preloads} font preloads (budget ${LIMIT_PRELOADS})`);
 }

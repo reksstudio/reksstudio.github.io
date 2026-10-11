@@ -8,7 +8,7 @@ header.docshero h1 + p{ margin-top: 16px; color: var(--ink-soft); max-width: 56c
 @media (max-width: 860px){ .docs-layout{ grid-template-columns: minmax(0, 1fr); } }
 
 /* table of contents: <details> always open and sticky on desktop, collapsed under "Contents" on narrow screens */
-.toc{ position: sticky; top: 88px; }
+.toc{ position: sticky; top: var(--nav-offset); }
 .toc > summary{ display: none; }
 .toc::details-content{ content-visibility: visible; display: contents; }
 .toc-list{ display: flex; flex-direction: column; gap: 2px; }
@@ -27,7 +27,7 @@ header.docshero h1 + p{ margin-top: 16px; color: var(--ink-soft); max-width: 56c
   .toc a{ border-left: none; padding-left: 0; }
 }
 
-.docsec{ margin-bottom: 72px; scroll-margin-top: 88px; }
+.docsec{ margin-bottom: 72px; }
 .docsec:last-child{ margin-bottom: 0; }
 .docsec h2{ font-size: 1.5rem; margin-bottom: 18px; }
 .docsec .prose p{ max-width: 68ch; }

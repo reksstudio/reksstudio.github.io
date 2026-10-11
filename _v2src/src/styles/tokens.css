@@ -16,4 +16,5 @@
   --serif: 'Newsreader', Georgia, serif;
   --sans: 'IBM Plex Sans', -apple-system, sans-serif;
   --mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+  --nav-offset: 88px; /* nav 64 px + 24 px */
 }

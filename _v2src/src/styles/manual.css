@@ -8,7 +8,7 @@ header.pagehead h1{ font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
 header.pagehead p{ margin: 10px 0 0; color: var(--ink-soft); }
 
 .docs-layout{ --toc-width: 240px; }
-.toc{ max-height: calc(100vh - 110px); overflow-y: auto; }
+.toc{ max-height: calc(100vh - var(--nav-offset) - 22px); overflow-y: auto; }
 @media (max-width: 860px){ .toc{ max-height: none; } }
 /* sidebar: page list; the current page is marked and lists its chapters (hanging numbers) and sections */
 .toc a{ font-size: 0.85rem; }
@@ -23,7 +23,6 @@ header.pagehead p{ margin: 10px 0 0; color: var(--ink-soft); }
   .toc .sub a.h4{ padding-left: calc(12px + 2.4em); }
 }
 
-.docsec h2, .docsec h3, .docsec h4{ scroll-margin-top: 88px; }
 .docsec h3{ font-size: 1.12rem; margin: 30px 0 12px; }
 /* entries (options, properties, diagnose): h4 + dl.fields, code, lists, separated by a rule */
 .docsec h4{ font: 600 1.02rem/1.4 var(--serif); color: var(--ink); margin: 28px 0 10px; padding-top: 22px; border-top: 1px solid var(--line); }
