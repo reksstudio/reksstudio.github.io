@@ -103,7 +103,6 @@ section{ padding: 88px 0; border-top: 1px solid var(--line); }
 @media (max-width: 700px){ .stats{ grid-template-columns: 1fr; gap: 28px; } }
 .stat-num{ font-family: var(--serif); font-size: 2.6rem; color: var(--ink); line-height: 1; }
 .stat-label{ margin-top: 10px; color: var(--ink-soft); font-size: 0.95rem; max-width: 26ch; }
-
 /* system / keyword list */
 .syslist{ margin-top: 8px; border-top: 1px solid var(--line); }
 .sysrow{ display: grid; grid-template-columns: 240px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
@@ -125,16 +124,6 @@ section{ padding: 88px 0; border-top: 1px solid var(--line); }
 /* install */
 .terminal{ padding: 26px 28px; margin: 8px 0 0; font-size: 0.88rem; line-height: 1.6; }
 
-/* roadmap */
-.roadmap{ margin-top: 8px; }
-.rmap-row{ display: grid; grid-template-columns: 90px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
-.rmap-row:first-child{ border-top: 1px solid var(--line); }
-.rmap-num{ font-family: var(--serif); font-size: 1.3rem; color: var(--ink-faint); }
-.rmap-row.current .rmap-num{ color: var(--copper); }
-.rmap-row.next .rmap-num{ color: var(--copper-bright); }
-.rmap-row h3{ font-family: var(--sans); font-weight: 600; margin: 0 0 6px; font-size: 1rem; }
-.rmap-row p{ margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
-
 /* literature */
 .pubs-list{ margin-top: 8px; border-top: 1px solid var(--line); }
 .pub-row{ display: grid; grid-template-columns: 64px 1fr; gap: 22px; padding: 18px 0; border-bottom: 1px solid var(--line); }
@@ -145,17 +134,3 @@ section{ padding: 88px 0; border-top: 1px solid var(--line); }
 .pub-journal{ color: var(--ink-faint); }
 .pub-link{ display: inline-block; margin-top: 4px; font-size: 0.82rem; color: var(--copper); text-decoration: none; }
 .pub-link:hover{ text-decoration: underline; }
-
-/* footer */
-footer.foot-landing{ padding: 64px 0 40px; }
-.foot-cols{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
-@media (max-width: 780px){ .foot-cols{ grid-template-columns: 1fr; gap: 32px; } }
-.foot-label{ font-size: 0.78rem; color: var(--copper); font-weight: 600; letter-spacing: 0.06em; margin-bottom: 10px; }
-.foot-cols a{ display: block; text-decoration: none; color: var(--ink-soft); font-size: 0.92rem; margin-top: 4px; }
-.foot-cols a:hover{ color: var(--ink); }
-.cite-block{ font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); line-height: 1.7; text-align: center; }
-.foot-bottom{
-  margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);
-  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  font-size: 0.82rem; color: var(--ink-faint);
-}

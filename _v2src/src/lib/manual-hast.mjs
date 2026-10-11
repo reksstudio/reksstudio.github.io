@@ -2,7 +2,7 @@ import { basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import GithubSlugger from 'github-slugger';
 import { tex } from './inline.mjs';
-import { PAGES, entryHref, entryMap } from './manual-pages.mjs';
+import { PAGES, entryLink, entryMap } from './manual-pages.mjs';
 
 function element(tagName, className, children) {
   return { type: 'element', tagName, properties: { className: [className] }, children };
@@ -64,7 +64,7 @@ function linkSectionRefs(node, link) {
 //                             github-slugger slug with runs of "-" collapsed to one; a duplicate id throws
 //   $tex$, $$tex$$         ->  MathML from tex() (inline code.math-inline; display pre > code.math-display)
 //   ul of "**Label:** x"   ->  dl.fields > [dt Label, dd x]
-//   "§<id>" in text        ->  a[href=entryHref(id)] > "§N" if the entry is chapter N, else its title
+//   "§<id>" in text        ->  entryLink(id): a[href] > "§N" if the entry is chapter N, else its title
 //                             (in code for an option); numeric "§N" and an unknown id throw
 //   root > [h2, ...content]  ->  root > section.docsec > [h2, div.prose > content]
 //   table                  ->  div.reftable-wrap > table
@@ -75,12 +75,10 @@ export default function manualHast(ctx, base) {
   const link = (target, text) => {
     const a = (href, children) => ({ type: 'element', tagName: 'a', properties: { href }, children });
     if (/^\d+$/.test(target)) throw new Error(`manual-hast: ${file}.md: "${text}": use §<id> of the chapter`);
-    const e = entryMap().get(target);
-    if (!e) throw new Error(`manual-hast: ${file}.md: unresolved "${text}"`);
-    const href = entryHref(target, page.slug, base);
-    if (e.chapter) return a(href, [{ type: 'text', value: `§${e.chapter}` }]);
-    const title = { type: 'text', value: e.title };
-    return a(href, [e.code ? { type: 'element', tagName: 'code', properties: {}, children: [title] } : title]);
+    if (!entryMap().has(target)) throw new Error(`manual-hast: ${file}.md: unresolved "${text}"`);
+    const l = entryLink(target, page.slug, base);
+    const label = { type: 'text', value: l.text };
+    return a(l.href, [l.code ? { type: 'element', tagName: 'code', properties: {}, children: [label] } : label]);
   };
   return {
     name: 'manual-hast',

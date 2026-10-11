@@ -27,7 +27,7 @@ const SPAN = /`([^`]+)`|\*\*(.+?)\*\*|\*(.+?)\*|([_^])\{([^}]+)\}/g;
 const SCRIPT = /([_^])\{([^}]+)\}/g;
 const TAG = { _: 'sub', '^': 'sup' };
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '{': '&#123;', '}': '&#125;' };
-const escape = (s) => s.replace(/[&<>{}]/g, (c) => ESC[c]);
+export const escape = (s) => s.replace(/[&<>{}]/g, (c) => ESC[c]);
 
 function codeHtml(s) {
   let out = '';

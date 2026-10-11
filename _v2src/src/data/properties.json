@@ -188,7 +188,7 @@
     "y_{0}, y_{1} equal the corresponding occupations in `Natural orbitals` (§natural-orbitals); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1.",
     "2S > 0: the spin-unpaired electrons are counted as well, N_{D} ≥ N_{U} ≥ 2S; a LUNO opened by the spin gives y ≈ 1."
    ],
-   "ref": "N_{D}: Takatsuka–Fueno–Yamaguchi; N_{U} (linear) and N_{U,nl} (nonlinear): Head-Gordon 2003 (§references)."
+   "ref": "N_{D}: §takatsuka1978-odd-electrons; N_{U} (linear) and N_{U,nl} (nonlinear): §head-gordon2003-unpaired."
   },
   {
    "id": "permanent-dipole", "stage": "unrelaxed",
@@ -294,7 +294,7 @@
    "fragments": ["bond-indices"],
    "variables": "`SSR MAYER INDICES K=<e>`, `SSR WIBERG LOWDIN INDICES K=<e>` (m × natom^{2}, column A·natom + B)",
    "bullets": ["2S > 0: the Wiberg–Löwdin index takes S^{1/2} X S^{1/2} in place of X S for X = D, Q (open-shell form). 2S = 0: the spin-summed density only."],
-   "ref": "Mayer 1983 (§references)."
+   "ref": "§mayer1983-bond-order."
   },
   {
    "id": "nto", "stage": "unrelaxed",
@@ -314,7 +314,7 @@
     "Holes: columns of U, particles: columns of V (active MOs; AO form C_{a}U, C_{a}V). T is spin-summed, so a pure singlet single excitation has Ω = 1. The first three weights are printed; weights and PR print `-` when Ω < 0.05.",
     "The bare alias of `SSR NTO HOLES`/`PARTICLES` exists only for pairs 0 → J of cassette 0; `SSR NTO WEIGHTS` has the full bare alias."
    ],
-   "ref": "Martin 2003 (§references)."
+   "ref": "§martin2003-nto."
   },
   {
    "id": "exciton", "stage": "unrelaxed",
@@ -335,10 +335,10 @@
    "files": "`<prefix>.ndo.<label I>-<label J>_cassette<e>.molden` (`MOLDEN_WRITE`, stored states above 0); cube `CUBEPROP_TASKS` `SSR_NDOS` (|λ| ≥ 0.1), `SSR_ATTACHMENT_DETACHMENT`",
    "bullets": [
     "`-` in the d_{h→e} … R_{eh} columns = Ω below 0.05 (or a zero transition density); p_{prom} is printed for every pair.",
-    "x_{a}, r and r^{2} are the AO dipole and second-moment integrals in the active MO basis; Ω_{AB} is the Löwdin form, not the Mulliken-type Ω of Plasser–Lischka. h_{A}, e_{B} are not normalized; each sums to Ω. NDOs are C_{a} v_{k}.",
+    "x_{a}, r and r^{2} are the AO dipole and second-moment integrals in the active MO basis; Ω_{AB} is the Löwdin form, not the Mulliken-type Ω of §plasser2012-charge-transfer. h_{A}, e_{B} are not normalized; each sums to Ω. NDOs are C_{a} v_{k}.",
     "`SSR CT OMEGA ATOMS`, the hole/particle populations and `SSR NDO AO` have no bare (cassette 0) alias."
    ],
-   "ref": "Plasser–Wormit–Dreuw 2014; Bäppler et al. 2014 (§references)."
+   "ref": "§plasser2014-exciton-formalism; §bappler2014-exciton."
   },
   {
    "id": "fragment-ct", "stage": "unrelaxed",
@@ -360,7 +360,7 @@
     "Ω_{FG} sums the atom-pair Ω_{AB} of §exciton over the fragments; F in POS is 1-based; N^{L}_{F} is the Löwdin active population of fragment F. Printed headers: `h/e split` for CT, `PR_F` for PR. CT to POS print `-` when Ω < 0.05; q_{moved} is always printed.",
     "The fragment line (`F1 = atoms 1-3, F2 = atoms 4-6`) shows the partition used."
    ],
-   "ref": "Plasser–Lischka 2012; Plasser 2020 (TheoDORE) (§references)."
+   "ref": "§plasser2012-charge-transfer; §plasser2020-theodore (TheoDORE)."
   },
   {
    "id": "fragment-couplings", "stage": "unrelaxed",
@@ -382,7 +382,7 @@
     "Computes the state and transition charges, and in a 2S > 0 cassette the Löwdin spins, without printing or storing them when those blocks are not listed. No bare alias.",
     "FSD: V is invariant to the scale of D, so the M_{S} of s cancels. FED is not computed in a 2S > 0 cassette."
    ],
-   "ref": "FCD: Voityuk–Rösch 2002; FED: Hsu–You–Chen 2008; FSD: You–Hsu 2010 (§references)."
+   "ref": "FCD: §voityuk2002-fcd; FED: §hsu2008-fed; FSD: §you2010-fsd."
   },
   {
    "id": "active-rdm", "stage": "unrelaxed",
@@ -442,7 +442,7 @@
     "One table per state at `REKS_REPORT_LEVEL` 2; level 3 adds the dropped eigenvalues and the Dyson MO block.",
     "Check `sum of strengths` against half the sum of the occupations, the count of negative natural occupations of P^{r}, and the `Flag` column; strengths lie outside 0..1 by up to the lowest negative occupation."
    ],
-   "ref": "Filatov et al., J. Chem. Theory Comput. 2020, 16, 4489."
+   "ref": "§filatov2020-ekt."
   },
   {
    "id": "ekt-ensemble", "stage": "relaxed",
@@ -523,7 +523,7 @@
    "bullets": ["A is the lower root; d_{AB} is the full NAC (model + residual). The branch of φ gives |g̃| ≥ |h̃|, so Δ_{gh} ∈ [0, 1] and θ_{s} ∈ [0, π/2]. P is infinite when |h̃| vanishes, B when Δ_{gh} vanishes."],
    "fragments": ["ci-topography", "ci-not-printed"],
    "variables": "`SSR CI TOPOGRAPHY <I> <J> CASSETTE <e>` (1 × 12: |g̃|, |h̃|, φ, s_{x}, s_{y}, δ_{gh}, Δ_{gh}, σ, θ_{s}, P, B, E_{B} − E_{A}), `SSR CI G <I> <J> CASSETTE <e>`, `SSR CI H <I> <J> CASSETTE <e>`",
-   "ref": "Fdez. Galván et al. 2016 and 2022 (§references)."
+   "ref": "§galvan2016-sa-casscf-nac and §galvan2022-ci-topography."
   },
   {
    "id": "spin-state-energetics", "stage": "spin",

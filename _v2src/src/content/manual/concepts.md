@@ -20,7 +20,7 @@ $$
 0 \le n_q \le 2, \qquad \sum_q n_q = N.
 $$
 
-The energy functional follows from integration over the electron–electron coupling strength $\lambda$ from 0 to 1 at $\lambda$-independent FONs. The orbitals and the FONs are optimized variationally (Filatov, WIREs Comput. Mol. Sci. 2015, 5, 146).
+The energy functional follows from integration over the electron–electron coupling strength $\lambda$ from 0 to 1 at $\lambda$-independent FONs. The orbitals and the FONs are optimized variationally (§filatov2015-wires).
 
 ### Microstate {#microstate}
 
@@ -76,7 +76,7 @@ $$
 \Psi = \hat{A}\big[(\mathrm{core})\,\Phi_{t_1}(p_1, q_1)\cdots\Phi_{t_P}(p_P, q_P)\big].
 $$
 
-One scheme carries $3^P$ singlet configurations, named by type (§catalog). Its energy is a weighted sum of microstate energies, the coefficients being functions of the FONs (Filatov, Martínez, Kim, Phys. Chem. Chem. Phys. 2016, 18, 21040):
+One scheme carries $3^P$ singlet configurations, named by type (§catalog). Its energy is a weighted sum of microstate energies, the coefficients being functions of the FONs (§filatov2016-gvb-ansatz):
 
 $$
 E^X = \sum_L C_L^X(\{n\})\,E_L, \qquad \sum_L C_L^X = 1.
@@ -107,7 +107,7 @@ $$
 
 $E_{\mathrm{OSS}}$ and $E_{\mathrm{T}}$ carry no FON.
 
-Towards the closed-shell limit ($n_a \to 2$) the factor $f$ suppresses the $\Delta$ term, which avoids counting correlation twice, by the formalism and by the functional. At $n_a = n_b = 1$ it equals 1 (Moreira et al., J. Chem. Theory Comput. 2007, 3, 764). $\delta$ is `REKS_FON_INTERP_DELTA` (default 0.4, §fons).
+Towards the closed-shell limit ($n_a \to 2$) the factor $f$ suppresses the $\Delta$ term, which avoids counting correlation twice, by the formalism and by the functional. At $n_a = n_b = 1$ it equals 1 (§moreira2007-interpolation). $\delta$ is `REKS_FON_INTERP_DELTA` (default 0.4, §fons).
 
 ### FON set and generation {#fon-generation}
 
@@ -115,7 +115,7 @@ The generation of a configuration is its number of open pairs: $\Phi_1$, and a t
 
 ### SA-REKS ensemble and weights {#sa-ensemble}
 
-The SCF minimizes the ensemble energy over the orbitals and the FONs read by the SA configurations, at fixed weights $w_X$ (ensemble variational principle: Gross, Oliveira, Kohn, Phys. Rev. A 1988, 37, 2805; SA-REKS: Filatov, Top. Curr. Chem. 2016, 368, 97):
+The SCF minimizes the ensemble energy over the orbitals and the FONs read by the SA configurations, at fixed weights $w_X$ (ensemble variational principle: §gross1988-variational; SA-REKS: §filatov2016-sa-reks):
 
 $$
 E_{\mathrm{SA}} = \sum_X w_X E^X = \sum_L C_L E_L, \qquad C_L = \sum_X w_X C_L^X,
@@ -139,7 +139,7 @@ At convergence the Lagrangian $\varepsilon_{pq}$ is symmetric (generalized Brill
 
 ### Spin-polarized configurations {#sps-configurations}
 
-In REKS(4,4) the double open-shell singlet (DOSS) and the doubly spin-polarized state (DSPS) both arise from two simultaneous OSS-type one-electron transitions between the active orbitals: DOSS couples two open-shell singlet pairs to an overall singlet, DSPS can be viewed as two triplet excitations coupled to an overall singlet, and the two are orthogonalized (Filatov, Martínez, Kim, J. Chem. Phys. 2017, 147, 064104). Fully open configurations of different schemes overlap (overlap −½ for the two DOSS configurations of REKS(4,4)); the catalog replaces them by a set orthogonalized by sequential Gram–Schmidt across schemes, the spin-polarized configurations (`SPS`) `DOSS_SPS_k`, `T_OSS_SPS_k`, …, in which each member $k$ after the first is orthogonal to the preceding members (Filatov et al., J. Chem. Phys. 2016, 145, 244104). They carry no FON.
+In REKS(4,4) the double open-shell singlet (DOSS) and the doubly spin-polarized state (DSPS) both arise from two simultaneous OSS-type one-electron transitions between the active orbitals: DOSS couples two open-shell singlet pairs to an overall singlet, DSPS can be viewed as two triplet excitations coupled to an overall singlet, and the two are orthogonalized (§filatov2017-extended-space). Fully open configurations of different schemes overlap (overlap −½ for the two DOSS configurations of REKS(4,4)); the catalog replaces them by a set orthogonalized by sequential Gram–Schmidt across schemes, the spin-polarized configurations (`SPS`) `DOSS_SPS_k`, `T_OSS_SPS_k`, …, in which each member $k$ after the first is orthogonal to the preceding members (§komarov2026-reks-studio). They carry no FON.
 
 ### Spin manifold and run sector {#run-sector}
 
@@ -167,7 +167,7 @@ for a two-orbital geminal; in a geminal of width $w$ each free FON is $\ge 10^{-
 
 ### SI Hamiltonian and overlap {#si-hamiltonian}
 
-The diagonal elements of $\mathbf{H}$ are the configuration energies $E^X$. The off-diagonal elements are sums over microstate energies $E_L$, spin-Fock differences $(F^{\alpha} - F^{\beta})_{pq}$, Lagrangian elements $\varepsilon_{pq}$ and active two-electron integrals $(pq|rs)$ (table `Off-diagonal channel`, `REKS_REPORT_LEVEL` ≥ 3). They follow from the Slater–Condon rules at small $\lambda$ and integration over $\lambda$ (Filatov, Martínez, Kim, J. Chem. Phys. 2017, 147, 064104). $\mathbf{S}$ is diagonal within one scheme and non-diagonal across schemes, so each cassette solves
+The diagonal elements of $\mathbf{H}$ are the configuration energies $E^X$. The off-diagonal elements are sums over microstate energies $E_L$, spin-Fock differences $(F^{\alpha} - F^{\beta})_{pq}$, Lagrangian elements $\varepsilon_{pq}$ and active two-electron integrals $(pq|rs)$ (table `Off-diagonal channel`, `REKS_REPORT_LEVEL` ≥ 3). They follow from the Slater–Condon rules at small $\lambda$ and integration over $\lambda$ (§filatov2017-extended-space). $\mathbf{S}$ is diagonal within one scheme and non-diagonal across schemes, so each cassette solves
 
 $$
 \mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}.
@@ -189,7 +189,7 @@ $$
 
 ### Coupling damping below 100 % exact exchange {#coupling-damping}
 
-With a functional whose global (short-range) exact-exchange fraction is below 100 %, range-separated functionals included, the off-diagonal elements $H_{ij}$ that the catalog marks as carried only by four-orbital active integrals $(pq|rs)$ are scaled, energies in $E_{\mathrm{h}}$ (Filatov, Martínez, Kim, J. Chem. Phys. 2017, 147, 064104, Eq. B50; parameters from Grimme, Waletzke, J. Chem. Phys. 1999, 111, 5645):
+With a functional whose global (short-range) exact-exchange fraction is below 100 %, range-separated functionals included, the off-diagonal elements $H_{ij}$ that the catalog marks as carried only by four-orbital active integrals $(pq|rs)$ are scaled, energies in $E_{\mathrm{h}}$ (§filatov2017-extended-space, Eq. B50; parameters from §grimme1999-dft-mrci):
 
 $$
 H_{ij} \to 0.619\,\exp\!\big[{-3.27}\,(H_{ii}-H_{jj})^4\big]\,H_{ij}.
@@ -225,7 +225,7 @@ $$
 \langle I|\hat{E}_{pq}|J\rangle.
 $$
 
-Every `SI_REKS_ANALYSIS` property uses it (§properties). The relaxed density $P^{\mathrm{r}}$ of a state adds the orbital- and FON-response terms of the coupled-perturbed REKS (CP-REKS, Z-vector) solve (Filatov, Liu, Martínez, J. Chem. Phys. 2017, 147, 034113), so that its dipole is the energy derivative
+Every `SI_REKS_ANALYSIS` property uses it (§properties). The relaxed density $P^{\mathrm{r}}$ of a state adds the orbital- and FON-response terms of the coupled-perturbed REKS (CP-REKS, Z-vector) solve (§filatov2017-gradients), so that its dipole is the energy derivative
 
 $$
 \mu = -\frac{\mathrm{d}E_I}{\mathrm{d}F}.

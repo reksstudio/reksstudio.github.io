@@ -45,7 +45,7 @@ const headingText = (md) => md.replace(/\\(.)/g, '$1').replaceAll('`', '');
 const count = (list) => list.reduce((m, x) => m.set(x, (m.get(x) ?? 0) + 1), new Map());
 
 // Throws unless: every option key sits in one group; every non-compact group and every property stage is rendered
-// once, a compact group at most once; print-order, option-table and property-table are rendered once; every
+// once, a compact group at most once; print-order, option-table, property-table and literature are rendered once; every
 // fragment is printed; every block owner is a known id; every option or property owning a block prints a fragment.
 function checkCoverage(map, markers, printed, owners) {
   const fail = (msg) => {
@@ -62,7 +62,7 @@ function checkCoverage(map, markers, printed, owners) {
   for (const stage of new Set(properties.map((p) => p.stage))) {
     if (used.get(`properties ${stage}`) !== 1) fail(`property stage ${stage} rendered ${used.get(`properties ${stage}`) ?? 0} times`);
   }
-  for (const name of ['print-order', 'option-table', 'property-table']) {
+  for (const name of ['print-order', 'option-table', 'property-table', 'literature']) {
     if (used.get(name) !== 1) fail(`@@${name}@@ rendered ${used.get(name) ?? 0} times`);
   }
   for (const id of fragmentIds()) if (!printed.has(id)) fail(`fragment ${id} is printed nowhere`);
@@ -122,6 +122,14 @@ export function entryHref(id, fromSlug, base) {
   const e = entryMap().get(id);
   if (!e) throw new Error(`manual: no entry §${id}`);
   return anchorHref(e.slug, id, fromSlug, base);
+}
+
+// "§<id>" link: href, text "§N" for chapter N, else the entry title; code = an option (title set in code)
+export function entryLink(id, fromSlug, base) {
+  const e = entryMap().get(id);
+  if (!e) throw new Error(`manual: no entry §${id}`);
+  const href = anchorHref(e.slug, id, fromSlug, base);
+  return e.chapter ? { href, text: `§${e.chapter}`, code: false } : { href, text: e.title, code: e.code };
 }
 
 // printed block header -> index term: "=> X, cassette 0 <=" -> "X"; a cassette clause and everything after it dropped

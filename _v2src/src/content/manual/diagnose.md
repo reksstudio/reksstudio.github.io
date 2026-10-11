@@ -4,7 +4,7 @@ title: Diagnose
 
 ## 16\. Diagnose {#diagnose}
 
-Each entry names what the output prints, then what to do. A converged SCF can still show several of them.
+Each entry names what the output prints, then what to do. A converged SCF can still show several of them. A problem not in this list: [Documentation, Contact](../../docs/#contact).
 
 #### SCF converges instantly to a wrong energy after a restart {#diag-wrong-window}
 
@@ -54,7 +54,7 @@ No catalog file exists for that active space; the error lists the installed ones
 
 #### Ghost states and a collapsed SI spectrum {#diag-ghost-states}
 
-Observed (REKS(4,6)[3,3], H₄): `Ghost states` reports 159 removed roots, `Independent states` is 1, and S0 = −10358357.624062862247 E<sub>h</sub> against `E[SA-REKS]` = −1.266834523295 E<sub>h</sub>. Compare `Independent states` with `Configurations` and the null modes, and E(S0) with `@REKS Final Energy` (§si-matrices).
+Compare `Independent states` with `Configurations` and the null modes, and E(S0) with `@REKS Final Energy` (§si-matrices).
 
 #### Quasi-degenerate roots {#diag-quasi-degenerate}
 

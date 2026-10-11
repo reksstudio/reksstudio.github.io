@@ -1,23 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import FooterLanding from '../components/FooterLanding.astro';
+import Footer from '../components/Footer.astro';
 import Code from '../components/Code.astro';
-import { literature } from '../data/literature';
-import { buildFromSource, landingJob } from '../data/snippets';
+import { acs, doiUrl, references } from '../lib/literature.mjs';
+import { toHtml } from '../lib/inline.mjs';
+import { readFileSync } from 'node:fs';
+import { entryLink } from '../lib/manual-pages.mjs';
+import { SOURCE_URL } from '../lib/site.mjs';
 import figure from '../assets/figures/BFN_energies.svg?url';
 import '../styles/landing.css';
 
 const base = import.meta.env.BASE_URL;
-const navLinks = [
-  { href: '#problem', label: 'The problem' },
-  { href: '#architecture', label: 'Architecture' },
-  { href: '#results', label: 'Results' },
-  { href: '#literature', label: 'Literature' },
-  { href: '#install', label: 'Install', class: 'hl' },
-  { href: '#cite', label: 'Cite' },
-  { href: `${base}docs/`, label: 'Docs', class: 'hl2' },
-];
+const landingRefs = references().filter((e) => e.landing).sort((a, b) => a.year - b.year);
+// worked input of the manual (Start #worked-inputs), read from the published download at build time
+const workedInput = readFileSync(`${process.cwd()}/public/inputs/reks22_h2.dat`, 'utf8').trimEnd();
 const chart = [
   ['3', '8px', '0.80rem', '(2,2)'],
   ['18', '10px', '0.85rem', '(4,4)'],
@@ -27,7 +24,7 @@ const chart = [
 ];
 ---
 <Base title="REKS Studio — Ensemble DFT for strongly correlated systems">
-<Nav variant="dark" logoHref="#top" links={navLinks} />
+<Nav variant="dark" logoHref="#top" />
 
 <header class="hero" id="top">
   <div class="wrap">
@@ -38,7 +35,7 @@ const chart = [
       <p class="lede">REKS Studio automatically derives and compiles the working equations of ensemble density functional theory for any active space - turning a twenty-year manual bottleneck into a binary catalogue.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#architecture">Explore the method</a>
-        <a class="btn btn-ghost" href="https://github.com/ConstLike/psi4/tree/kk/reks.studio" target="_blank" rel="noopener noreferrer">Source ↗</a>
+        <a class="btn btn-ghost" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">Source ↗</a>
       </div>
     </div>
     <div class="hero-rings-wrap">
@@ -132,7 +129,7 @@ const chart = [
       </div>
       <div>
         <div class="stat-num">10e,10o</div>
-        <div class="stat-label">largest active space validated — previously inaccessible to routine calculation</div>
+        <div class="stat-label">largest active space computed — previously inaccessible to routine calculation</div>
       </div>
       <div>
         <div class="stat-num">≈ KS-DFT</div>
@@ -142,7 +139,7 @@ const chart = [
     <div class="syslist reveal">
       <div class="sysrow"><div class="sysname">H₂ · H₄ · H₆ · H₈</div><p>Sequential bond dissociation benchmarked directly against full configuration interaction.</p></div>
       <div class="sysrow"><div class="sysname">C₂H₄ · N₂ · C₂H₂</div><p>Single, double, and triple bond breaking along full potential energy curves.</p></div>
-      <div class="sysrow"><div class="sysname">C₂ (carbon dimer)</div><p>Benchmarked against FCI and experimental spectroscopic constants.</p></div>
+      <div class="sysrow"><div class="sysname">C₂ (carbon dimer)</div><p>Benchmarked against near-exact (SHCI) energies and experimental spectroscopic constants.</p></div>
       <div class="sysrow"><div class="sysname">Zethrene series</div><p>Open-shell diradical character tracked across increasing active-space size.</p></div>
       <div class="sysrow"><div class="sysname">Tetra[3]trianguleno[3]rhombene</div><p>A synthesized magnetic quantum material — see below.</p></div>
     </div>
@@ -157,9 +154,9 @@ const chart = [
       <p style="max-width:56ch; margin-top:18px;">Tetra[3]trianguleno[3]rhombene is an open-shell nanographene whose magnetic energy levels have been mapped experimentally by scanning tunneling microscopy — but only partly explained by earlier calculations. Pushing the active space from four to ten electrons resolves the same magnetic ladder seen in the experiment, something smaller active spaces couldn't capture.</p>
       <div class="case-figure">
         <div class="fig-card">
-          <img src={figure} width="1472" height="1435" loading="lazy" decoding="async" alt="Computed S0, T1, Q1, and H1 state energies across three active-space treatments">
+          <img src={figure} width="1472" height="1435" loading="lazy" decoding="async" alt="Computed S0, T1, Q1, and H1 state energies for active spaces (4,4) to (10,10)">
         </div>
-        <p class="fig-caption">Computed ground (S0) and low-lying triplet, quintet, and heptet (T1, Q1, H1) state energies, in eV, across three treatments of the active space — the same widening that resolves the magnetic ladder against experiment.</p>
+        <p class="fig-caption">Computed ground (S0) and low-lying triplet, quintet, and heptet (T1, Q1, H1) state energies, in kcal/mol, for the active spaces (4,4), (6,6), (8,8) and (10,10) — the same widening that resolves the magnetic ladder against experiment.</p>
       </div>
     </div>
   </div>
@@ -172,47 +169,10 @@ const chart = [
       <h2>Build from source, then run any Psi4 input</h2>
     </div>
     <div class="prose reveal">
-      <p>REKS Studio is currently a development branch of Psi4, not yet a separate package or conda release. Building it follows Psi4's own build process — a working equations catalogue is generated and compiled in as part of the build, so no extra step is needed afterward.</p>
+      <p>REKS Studio is a development branch of Psi4, built from source: <a href={`${base}docs/#install`}>build instructions</a>. A complete input:</p>
     </div>
-    <Code code={buildFromSource} lang="bash" class="reveal" />
-    <div class="prose reveal" style="margin-top:32px;">
-      <p>Once built, REKS runs as an ordinary reference option — no separate binary or import. Below is a simplified REKS(4,4) job, adapted from a real input file.</p>
-    </div>
-    <Code code={landingJob} lang="python" class="reveal" />
-    <div class="syslist reveal" style="margin-top:36px;">
-      <div class="sysrow"><div class="sysname">reference / reks</div><p>Turns on the REKS method and sets the active space as [electrons, orbitals].</p></div>
-      <div class="sysrow"><div class="sysname">sa_reks_configs</div><p>The state-averaged ensemble: which configurations participate in orbital optimization.</p></div>
-      <div class="sysrow"><div class="sysname">si_reks_configs</div><p>The state-interaction ensemble, defined independently of the SA set, mixed afterward for the final multi-state energies.</p></div>
-      <div class="sysrow"><div class="sysname">sa_reks_extra</div><p>Extra determinants — such as a high-spin state — carrying their own weight in the SA ensemble to help SCF convergence, while staying out of the state-interaction step.</p></div>
-    </div>
-    <p style="margin-top:24px; font-size:0.92rem;"><a href={`${base}docs/`} style="color:var(--blue); text-decoration:underline;">Full keyword reference and build instructions →</a></p>
-  </div>
-</section>
-
-<section id="roadmap">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="kicker">What's next</div>
-      <h2>First in a series</h2>
-    </div>
-    <div class="roadmap reveal">
-      <div class="rmap-row current">
-        <div class="rmap-num">01</div>
-        <div><h3>Automated derivation & scalable energies — this release</h3><p>Working equations for arbitrary active spaces, compiled into a shared runtime at KS-DFT cost.</p></div>
-      </div>
-      <div class="rmap-row next">
-        <div class="rmap-num">02</div>
-        <div><h3>Analytic energy gradients — next release</h3><p>Extending the symbolic engine to derive gradients, enabling automated geometry optimization.</p></div>
-      </div>
-      <div class="rmap-row">
-        <div class="rmap-num">03</div>
-        <div><h3>Excited-state dynamics</h3><p>Simulating energy flow, bond rearrangement, and relaxation in strongly correlated excited states.</p></div>
-      </div>
-      <div class="rmap-row">
-        <div class="rmap-num">04</div>
-        <div><h3>eDFT-specific functionals</h3><p>Exchange-correlation functionals designed for dynamic correlation alone, freed from also describing strong correlation.</p></div>
-      </div>
-    </div>
+    <Code code={workedInput} lang="text" class="reveal" />
+    <p class="reveal" style="margin-top:12px; font-size:0.92rem;"><a href={entryLink('worked-inputs', null, base).href}>reks22_h2.dat and its result</a></p>
   </div>
 </section>
 
@@ -226,12 +186,12 @@ const chart = [
       <p>REKS Studio automates and scales a method built up over two decades, largely by Michael Filatov and collaborators. The papers below trace it from its restricted-ensemble formulation through the multi-pair extensions and analytic derivatives REKS Studio generalizes.</p>
     </div>
     <div class="pubs-list reveal">
-      {literature.map((ref) => (
+      {landingRefs.map((e) => (
         <div class="pub-row">
-          <div class="pub-year">{ref.year}</div>
+          <div class="pub-year">{e.year}</div>
           <div>
-            <p class="pub-cite">{ref.authors}. <em>{ref.title}</em> <span class="pub-journal">{ref.journal}</span>, {ref.locator}.</p>
-            <a class="pub-link" href={ref.href} target="_blank" rel="noopener noreferrer">{ref.linkText} ↗</a>
+            <p class="pub-cite" set:html={toHtml(acs(e))} />
+            <a class="pub-link" href={doiUrl(e)} target="_blank" rel="noopener noreferrer">doi.org/{e.doi} ↗</a>
           </div>
         </div>
       ))}
@@ -239,5 +199,5 @@ const chart = [
   </div>
 </section>
 
-<FooterLanding />
+<Footer />
 </Base>

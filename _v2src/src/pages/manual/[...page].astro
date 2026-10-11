@@ -1,8 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
-import FooterBack from '../../components/FooterBack.astro';
+import Footer from '../../components/Footer.astro';
 import { PAGES, entryMap, manualIndex, pagePath } from '../../lib/manual-pages.mjs';
+import { fragmentText } from '../../lib/reference.mjs';
+import { siteRev } from '../../lib/site.mjs';
 import '../../styles/docs.css';
 import '../../styles/manual.css';
 
@@ -46,14 +48,12 @@ const { Content } = page;
 const base = import.meta.env.BASE_URL;
 const azIndex = page.index ? manualIndex(pages, page.slug, base) : [];
 const indexHref = `${pages.find((p) => p.index).href}#index`;
-const navLinks = [
-  { href: base, label: 'Overview' },
-  { href: `${base}docs/`, label: 'Documentation' },
-  { href: `${base}manual/`, label: 'Manual' },
-];
+const rev = siteRev();
+// program banner printed by psi4 (fragment "banner"): its text lines without the rules and the program name (= h1)
+const banner = fragmentText('banner').split('\n').map((s) => s.trim()).filter((s) => s && !/^=+$/.test(s)).slice(1);
 ---
 <Base title={`${page.title} — REKS Studio Manual`}>
-<Nav variant="light" logoHref={base} links={navLinks} />
+<Nav variant="light" />
 
 {index === 0 ? (
   <header class="docshero">
@@ -61,14 +61,14 @@ const navLinks = [
       <div class="kicker">User Manual</div>
       <h1>REKS Studio — User Manual</h1>
       <p class="tagline">A guide to the REKS(N,M) / SA-REKS / SI-REKS implementation in Psi4</p>
-      <p class="branch">(branch <code>kk/reks.studio</code>, repository <code>ConstLike/psi4</code>)</p>
-      <div class="banner">Spin-Restricted Ensemble-referenced Kohn-Sham DFT — State-Averaged (SA) and State-Interaction (SI)<br>Konstantin Komarov, Michael Filatov, Seung Kyu Min<br>Ulsan National Institute of Science and Technology (UNIST), South Korea</div>
+      <p class="branch"><a href={`${base}docs/#version`}>Psi4 revision <code>{rev.short}</code>, {rev.date}</a></p>
+      <div class="banner">{banner.map((line, i) => <>{i > 0 && <br />}{line}</>)}</div>
     </div>
   </header>
 ) : (
   <header class="pagehead">
     <div class="wrap">
-      <div class="kicker">User Manual</div>
+      <div class="kicker crumbs"><a href={pages[0].href}>Manual</a> › {page.title}</div>
       <h1>{page.title}</h1>
       <p>{chapterSpan(page.chapters)} of the REKS Studio user manual</p>
     </div>
@@ -140,5 +140,5 @@ const navLinks = [
   </div>
 </div>
 
-<FooterBack href={`${base}docs/`} label="Back to REKS Studio documentation" />
+<Footer />
 </Base>

@@ -165,7 +165,7 @@ With LUMO+2 in place of LUMO+3 the SCF converges as well; 25A stays σ in the so
 <figcaption>All-trans-hexatriene, RKS BH&amp;HLYP/6-31G(d), slice 0.6 Å above the molecular plane, blue + / copper −. One column per pair of scheme 0: antibonding partner above, bonding orbital below; slot, MO, character, ε / E<sub>h</sub>. 25A (LUMO+2, σ*, ε 0.1482) is outside the window.</figcaption>
 </figure>
 
-SA pool: the default `[PPS1, OSS1, OSS2, OSS3]` (§sa_reks_configs). The four cassettes are diagonalized after the SCF:
+SA pool: the default `[PPS1, OSS1, OSS2, OSS3]` (§sa_reks_configs). The input adds the all-α determinant to the SA ensemble for SCF stability (§sa_reks_extra). The four cassettes are diagonalized after the SCF:
 
 @@fragment first-hx-pools@@
 
@@ -182,7 +182,7 @@ The state summary lists the printed roots of all manifolds by energy (labels: §
 | Q1 | `TT_PPS1`, `TT_PPS4`: b→e, c→d | two triplet geminals coupled to S = 2 | 8.041 | – |
 | Sp1 | `TTT_SPS_0`: a→f, b→e, c→d | the single 2S = 6 configuration, all three pairs triplet | 15.698 | – |
 
-λ and f<sub>len</sub> are printed only for the multiplicity of S0. QUEST TBE: aug-cc-pVTZ, QUESTDB Table 2 (Véril et al., 2021, §references); QUEST lists excited states only: its ¹A<sub>g</sub> is the lowest excited ¹A<sub>g</sub> (2¹A<sub>g</sub> counting S0). Irreps from the inversion parity of the REKS active orbitals: a, c a<sub>u</sub>; b, d b<sub>g</sub>; c→d B<sub>u</sub>, b→d A<sub>g</sub>, c,c→d,d A<sub>g</sub>.
+λ and f<sub>len</sub> are printed only for the multiplicity of S0. QUEST TBE: aug-cc-pVTZ, QUESTDB Table 2 (§veril2021-questdb); QUEST lists excited states only: its ¹A<sub>g</sub> is the lowest excited ¹A<sub>g</sub> (2¹A<sub>g</sub> counting S0). Irreps from the inversion parity of the REKS active orbitals: a, c a<sub>u</sub>; b, d b<sub>g</sub>; c→d B<sub>u</sub>, b→d A<sub>g</sub>, c,c→d,d A<sub>g</sub>.
 
 §spin-state-energetics compares the lowest states of adjacent manifolds:
 
@@ -207,7 +207,7 @@ Each file runs in two stages: `python file.py rks`, then `python file.py reks`.
 | --- | --- | --- |
 | [`first_c2h4_90.py`](../../inputs/first_c2h4_90.py) | SI-SA-REKS(2,2), C₂H₄ 90°, BH&HLYP/6-31G(d), RKS seed, no window | E<sub>SA</sub> = −78.364394265263 E<sub>h</sub>; n 1.000000 / 1.000000 |
 | [`first_butadiene.py`](../../inputs/first_butadiene.py) | SI-SA-REKS(4,4), s-trans-butadiene, BH&HLYP/6-31G(d), RKS seed, π window | E<sub>SA</sub> = −155.670331327491 E<sub>h</sub>; n 1.999999 / 1.999138 / 0.000862 / 0.000001 |
-| [`first_hexatriene.py`](../../inputs/first_hexatriene.py) | SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool; SI on 2S = 0, 2, 4, 6 | E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257757335295, T1 −233.154325123481, Q1 −232.962265506282, Sp1 −232.680857311443 E<sub>h</sub> |
+| [`first_hexatriene.py`](../../inputs/first_hexatriene.py) | SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool, all-α determinant in SA; SI on 2S = 0, 2, 4, 6 | E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257757335295, T1 −233.154325123481, Q1 −232.962265506282, Sp1 −232.680857311443 E<sub>h</sub> |
 
 ### Scans {#first-scans}
 

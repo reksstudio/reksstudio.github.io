@@ -1,54 +1,55 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import FooterBack from '../components/FooterBack.astro';
+import Footer from '../components/Footer.astro';
 import Code from '../components/Code.astro';
-import ManRef from '../components/ManRef.astro';
-import { buildFromSource, docsJob, docsRestart } from '../data/snippets';
+import { buildFromSource, buildJobsMac } from '../data/snippets';
+import changes from '../data/changes.json' with { type: 'json' };
+import checklist from '../data/docs-checklist.json' with { type: 'json' };
+import { escape, toHtml } from '../lib/inline.mjs';
+import { entryLink, entryMap } from '../lib/manual-pages.mjs';
+import { fragmentText, optionId } from '../lib/reference.mjs';
+import { citeRows } from '../lib/literature.mjs';
+import { BRANCH, EMAIL, PSI4_MANUAL, REPO_URL, shortRev, siteRev } from '../lib/site.mjs';
 import '../styles/docs.css';
 import '../styles/docs-page.css';
-import { kwRows } from '../lib/reference.mjs';
-import { entryHref, entryMap } from '../lib/manual-pages.mjs';
 
 const base = import.meta.env.BASE_URL;
-const entry = (id) => entryHref(id, null, base);
-// Diagnose entries of the manual, labelled by their manual headings
-const diagnose = ['diag-wrong-window', 'diag-maxiter', 'diag-oscillation', 'diag-fon-inverted', 'diag-fon-pinned',
-  'diag-localized', 'diag-unknown-token', 'diag-catalog', 'diag-ghost-states', 'diag-quasi-degenerate']
-  .map((id) => [id, entryMap().get(id).title]);
-const navLinks = [
-  { href: base, label: 'Overview' },
-  { href: '#install', label: 'Install' },
-  { href: '#running', label: 'Running a job' },
-  { href: '#keywords', label: 'Keyword reference' },
-  { href: `${base}manual/`, label: 'User manual' },
-];
+const rev = siteRev();
+const last = changes.at(-1);
+const build = last.build;
+const records = [...changes].reverse();
+
+// "§<id>" -> manual link (entryLink); a numeric "§N" or an unknown id throws
+const link = (id) => {
+  if (/^\d+$/.test(id) || !entryMap().has(id)) throw new Error(`docs: unresolved "§${id}"`);
+  const l = entryLink(id, null, base);
+  const label = l.code ? '<code>' + escape(l.text) + '</code>' : escape(l.text);
+  return `<a href="${l.href}">${label}</a>`;
+};
+// inline markup -> HTML with every "§<id>" linked
+const refs = (text) => toHtml(text).replace(/§(\d+|[a-z][a-z0-9_-]*[a-z0-9])/g, (m, id) => link(id));
+// headers of the checklist blocks as printed: first line of each fragment, each once
+const blockHeaders = [...new Set(checklist.fragments.map((id) => fragmentText(id).split('\n')[0].trim()))];
+const option = (key) => link(optionId(key));
 const toc = [
-  ['install', 'Installation'],
-  ['running', 'Running a job'],
-  ['keywords', 'Keyword reference'],
-  ['active-space', 'Active space'],
-  ['naming', 'Config names & tokens'],
-  ['sa', 'SA ensemble'],
-  ['si', 'SI ensemble'],
-  ['spin', 'Spin manifolds (2S > 0)'],
-  ['response', 'Gradients & couplings'],
-  ['restart', 'Guesses & restarts'],
-  ['fon', 'Fractional occupations'],
-  ['geminal-deloc', 'Geminal delocalization'],
-  ['solver', 'Solver & convergence'],
-  ['reporting', 'Reporting'],
-  ['troubleshooting', 'Troubleshooting'],
+  ['install', 'Install'],
+  ['check', 'Check the build'],
+  ['version', 'Version'],
+  ['changes', 'Changes'],
+  ['cite', 'Cite'],
+  ['licence', 'Licence'],
+  ['contact', 'Contact'],
+  ['manual', 'Manual'],
 ];
 ---
 <Base title="Documentation — REKS Studio">
-<Nav variant="light" logoHref={base} links={navLinks} />
+<Nav variant="light" />
 
 <header class="docshero">
   <div class="wrap">
     <div class="kicker">Documentation</div>
-    <h1>Installing REKS Studio and configuring an ensemble</h1>
-    <p>A working reference for building the package and controlling the state-averaged and state-interaction ensembles it runs. For the method itself — why REKS Studio exists and how it stays fast — see the <a href={base} style="text-decoration:underline;">overview page</a>.</p>
+    <h1>The code: build, version, citation</h1>
   </div>
 </header>
 
@@ -61,110 +62,106 @@ const toc = [
 
     <div>
       <section id="install" class="docsec">
-        <h2>Installation</h2>
+        <h2>Install</h2>
         <div class="prose">
-          <p>REKS Studio is currently a development branch of Psi4, not yet a standalone package or conda release. Building it follows Psi4's own CMake-based build process. The configuration catalogues are shipped as binary files in <code>psi4/share/psi4/reks_catalog/</code> and installed with Psi4 — nothing extra to run afterward.</p>
+          <p>REKS Studio is a branch of Psi4 and builds with the Psi4 CMake build; the configuration catalogs are installed with it (<Fragment set:html={refs('§catalog')} />).</p>
         </div>
         <Code code={buildFromSource} lang="bash" />
-        <div class="note"><strong>Note.</strong> This branch is research software under active development. Interfaces and keyword names may change before it's merged upstream.</div>
-      </section>
-
-      <section id="running" class="docsec">
-        <h2>Running a job <ManRef id="overview" /></h2>
         <div class="prose">
-          <p>Once built, REKS runs as an ordinary Psi4 reference — no separate binary or import. Set <code>reference</code> to <code>reks</code>, give the active space as <code>[N, M]</code>, and call <code>psi4.energy()</code> as usual.</p>
-        </div>
-        <Code code={docsJob} lang="python" />
-      </section>
-
-      <section id="keywords" class="docsec">
-        <h2>Keyword reference</h2>
-        <div class="prose">
-          <p>Keywords marked with an alias have a <code>REKS_*</code>-prefixed second name (e.g. <code>sa_reks_configs</code> / <code>reks_sa_configs</code>) — set one or the other, never both. Defaults are noted where a keyword can be left out entirely.</p>
-        </div>
-
-        <div id="active-space" class="kwgroup">
-          <h3>Reference & active space <ManRef id="active-space" /></h3>
-          <div class="kwlist" set:html={kwRows(['reference', 'REKS', 'REKS_GEMINAL_WIDTHS'])} />
-          <div class="note"><strong>Note.</strong> Each active space is a pre-generated catalogue: <code>(2,2)</code>, <code>(4,4)</code>, <code>(6,6)</code>, and with <code>reks_geminal_widths</code> <code>(2,3)[3]</code>, <code>(2,4)[4]</code>, <code>(4,5)[2,3]</code>, <code>(4,6)[3,3]</code>. Any other <code>(N, M)</code> fails at load time.</div>
-        </div>
-
-        <div id="naming" class="kwgroup">
-          <h3>Configuration names & bulk tokens <ManRef id="catalog" /></h3>
-          <div class="kwgroup-note">Every configuration in the catalogue has a name of the form <code>&lt;TYPE&gt;&lt;index&gt;</code>, e.g. <code>PPS1</code>, <code>OSS2</code>, <code>T_PPS3</code>; a member of a spin-polarized set is named <code>&lt;TYPE&gt;_&lt;k&gt;</code>, e.g. <code>DOSS_SPS_0</code>. You rarely need the full list — an unknown name in a config keyword makes REKS Studio print every valid name and type of the manifold the block is bound to — but the type prefixes are worth knowing:</div>
-          <div class="kwlist" set:html={kwRows(['pps', 'oss-doss-toss', 'des-ddes-tdes', 't-tt-ttt-prefix', 'sps-tag'])} />
-          <div class="kwgroup-note" style="margin-top:22px;">Anywhere a config name is expected — in <code>sa_reks_configs</code> or <code>si_reks_configs</code> — these bulk tokens also work, so you rarely have to spell out individual names:</div>
-          <div class="kwlist" set:html={kwRows(['full', 'a-type-name', 'single-scheme-n', 'mixed-scheme-n', 'sps', 'a-pattern', 'exclude-x'])} />
-          <div class="note"><strong>Note.</strong> A PSithon (<code>.dat</code>) input can't use a literal <code>:</code> inside an array element — write scheme indices with <code>-</code> or <code>_</code> instead, e.g. <code>single-scheme-1-2</code>.</div>
-        </div>
-
-        <div id="sa" class="kwgroup">
-          <h3>State-averaged (SA) ensemble <ManRef id="sa-pool" /></h3>
-          <div class="kwgroup-note">The configurations whose orbitals are jointly optimized in the SCF step.</div>
-          <div class="kwlist" set:html={kwRows(['SA_REKS_CONFIGS', 'SA_REKS_2SPIN', 'SA_REKS_WEIGHTS', 'SA_REKS_EXTRA'])} />
-        </div>
-
-        <div id="si" class="kwgroup">
-          <h3>State-interaction (SI) ensemble <ManRef id="si-cassettes" /></h3>
-          <div class="kwgroup-note">Defined independently of the SA pool — mixed afterward to produce the final multi-state energies.</div>
-          <div class="kwlist" set:html={kwRows(['SI_REKS_CONFIGS', 'SI_REKS_2SPIN', 'SI_REKS_PRINT_STATES', 'SI_REKS_STORE_STATES', 'SI_REKS_ANALYSIS', 'SI_REKS_ANALYSIS_CHANGE_MIN', 'SI_REKS_OVERLAP_CUTOFF'])} />
-        </div>
-
-        <div id="spin" class="kwgroup">
-          <h3>Spin manifolds (2S &gt; 0) <ManRef id="spin-manifolds" /></h3>
-          <div class="kwgroup-note">Every configuration is the total M<sub>S</sub> = 0 component of its manifold, so one set of orbitals serves every manifold. A run's sectors are the union of the 2S values declared by SA blocks and SI groups.</div>
-          <div class="kwlist" set:html={kwRows(['high-spin-only', 'several-manifolds', 'state-labels', 'output'])} />
-        </div>
-
-        <div id="response" class="kwgroup">
-          <h3>Gradients, couplings & relaxed properties <ManRef id="response" /></h3>
-          <div class="kwgroup-note">Analytic SI-state gradients and nonadiabatic couplings via the coupled-perturbed REKS (CP-REKS) response. List-of-lists options mirror <code>si_reks_configs</code>: inner list <code>e</code> refers to cassette <code>e</code>.</div>
-          <div class="kwlist" set:html={kwRows(['SI_REKS_GRAD', 'SI_REKS_NAC', 'SI_REKS_PROPERTY_FOR', 'REKS_EKT', 'REKS_CPREKS_CONV', 'REKS_GRAD_DEGEN_TOL', 'REKS_CI_TOPOGRAPHY_GAP'])} />
-        </div>
-
-        <div id="restart" class="kwgroup">
-          <h3>Guesses & restarts <ManRef id="guesses" /></h3>
-          <div class="kwgroup-note">REKS jobs converge far more reliably from a previous wavefunction than from a cold guess, so most production runs are chained restarts. Restarting uses ordinary Psi4 machinery; the keyword below selects which read orbitals form the active space.</div>
-          <Code code={docsRestart} lang="python" />
-          <div class="kwlist" set:html={kwRows(['GUESS_ACTIVE_WINDOW'])} />
-          <div class="note"><strong>Tip.</strong> If SCF converges instantly to a suspiciously wrong energy right after a restart, this is almost always the symptom — check the Molden output, then fix the active window rather than the whole guess.</div>
-        </div>
-
-        <div id="fon" class="kwgroup">
-          <h3>Fractional occupation numbers (FONs) <ManRef id="fons" /></h3>
-          <div class="kwgroup-note">Each geminal pair carries FONs <code>(n_p, n_q)</code> with <code>n_p + n_q = 2</code>, optimized every SCF iteration with <code>n_p</code> in <code>[floor, 2 − margin]</code>.</div>
-          <div class="kwlist" set:html={kwRows(['REKS_FON_INTERP_DELTA', 'REKS_N_FON'])} />
-        </div>
-
-        <div id="geminal-deloc" class="kwgroup">
-          <h3>Geminal delocalization <ManRef id="geminal-deloc" /></h3>
-          <div class="kwgroup-note">After the SCF converges, each orbital pair of a generation-0 geminal whose Löwdin IPR <code>Σ<sub>A</sub> [p<sub>A</sub>(a)² + p<sub>A</sub>(b)²]</code> lies in the upper half of its range under rotations of the pair is rotated to the IPR minimum; the SCF converges again, and the rotated solution is kept only if its E<sub>SA</sub> is lower. 90° C<sub>2</sub>H<sub>4</sub>, BH&amp;HLYP/6-31G, from a localized seed: −78.351266 → −78.362112 E<sub>h</sub>.</div>
-          <div class="kwlist" set:html={kwRows(['REKS_GEMINAL_DELOC'])} />
-        </div>
-
-        <div id="solver" class="kwgroup">
-          <h3>Solver & convergence <ManRef id="scf-engines" /></h3>
-          <div class="kwgroup-note">Three cooperating engines drive REKS's orbital/FON optimization — a plain level-shifted burn-in, an optional trust-region warmup, and the GVB-DIIS accelerator that normally finishes the job. Defaults work well for most systems; most users only ever touch <code>level_shift</code>.</div>
-          <div class="kwlist" set:html={kwRows(['REKS_USE_TRAH', 'REKS_GVB_DIIS', 'REKS_DIIS_FORMULATION', 'REKS_GVB_DIIS_START', 'LEVEL_SHIFT_ADAPT'])} />
-          <div class="note"><strong>Note.</strong> 22 further <code>reks_diis_*</code> / <code>reks_gvb_*</code> options (angle filter, SVD conditioning, rewind and restart monitors) are expert settings; see the <a href={entry('option-table')}>manual</a>. <code>reks_report_level 4</code> shows which monitor fires.</div>
-        </div>
-
-        <div id="reporting" class="kwgroup">
-          <h3>Reporting <ManRef id="report-level" /></h3>
-          <div class="kwlist" set:html={kwRows(['REKS_REPORT_LEVEL'])} />
+          <p>macOS, last line: <code>{buildJobsMac}</code></p>
+          {build && <p>Measured from scratch on {build.machine}, Psi4 <code>{shortRev(build.rev)}</code>: conda environment {build.time.env} min, {build.disk.env} GB; configure and build {build.time.build} min, {build.disk.build} GB (source, build directory and installation).</p>}
+          {last.reachable && <p>Update an existing build: <code>git pull</code> in the clone, then the last line again.</p>}
         </div>
       </section>
 
-      <section id="troubleshooting" class="docsec">
-        <h2>Troubleshooting <ManRef id="diagnose" /></h2>
+      <section id="check" class="docsec">
+        <h2>Check the build</h2>
         <div class="prose">
-          <p>Each symptom links to its entry in the manual: what the output prints, then what to do.</p>
-          <ul>{diagnose.map(([id, label]) => <li><a href={entry(id)}>{label}</a></li>)}</ul>
+          <p>In <code>objdir</code>: <code>ctest -L reks</code>; every test passes within its own tolerances.</p>
+          <p>Then run <code>psi4 reks22_h2.dat</code> (download from <Fragment set:html={refs('§worked-inputs')} />) and compare S0 with the table there: they agree within the energy convergence threshold of the run, 10<sup>−6</sup> E<sub>h</sub> (Psi4 default; the input sets none); the last printed digits depend on the BLAS library and the number of threads.</p>
+        </div>
+      </section>
+
+      <section id="version" class="docsec">
+        <h2>Version</h2>
+        <div class="prose">
+          <p>Psi4 <code>{rev.short}</code>, {rev.date}: the commit of every output in the manual. Option names and defaults may change on this branch.</p>
+        </div>
+      </section>
+
+      <section id="changes" class="docsec">
+        <h2>Changes</h2>
+        <div class="prose">
+          {records.map((r) => (
+            <div class="change">
+              <h3>Psi4 <code>{shortRev(r.rev)}</code>, {r.date}</h3>
+              {(r.notes.length + r.added.length + r.removed.length + r.defaults.length > 0) && (
+                <ul>
+                  {r.notes.map((n) => <li set:html={refs(n)} />)}
+                  {r.added.map((n) => <li>Added: <Fragment set:html={option(n)} /></li>)}
+                  {r.removed.map((n) => <li>Removed: <code>{n}</code></li>)}
+                  {r.defaults.map((d) => <li>Default of <Fragment set:html={option(d.name)} />: <code>{d.old}</code> → <code>{d.new}</code></li>)}
+                </ul>
+              )}
+            </div>
+          ))}
+          {last.reachable && <p>Between two revisions: <code>git log &lt;your Git: Rev&gt;..{rev.short}</code> in the clone.</p>}
+        </div>
+      </section>
+
+      <section id="cite" class="docsec">
+        <h2>Cite</h2>
+        <div class="prose">
+          <p>Cite the papers of each feature used. All entries: <a href={`${base}reks-studio.bib`} download>reks-studio.bib</a>; full references: <Fragment set:html={refs('§references')} />.</p>
+          <div class="reftable-wrap">
+            <table>
+              <thead><tr><th>Feature</th><th>When</th><th>Cite</th></tr></thead>
+              <tbody>
+                {citeRows().map(({ fn, refs: list }) => (
+                  <tr>
+                    <td>{fn.label}</td>
+                    <td set:html={fn.when ? refs(fn.when) : ''} />
+                    <td set:html={list.map(({ e, note }) => `${link(e.key)}${note ? ` (${toHtml(note)})` : ''}`).join('; ')} />
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <h3>Method name and computational details</h3>
+          <p>Name the method SSR (SI-SA-REKS, <Fragment set:html={refs('§overview')} />); in a paper give the printed label <code>kSI-lSA-REKS(N,M)</code> (<Fragment set:html={refs('§si-cassette')} />), the functional as printed in the <code>XC evaluation</code> line, and the basis. The label carries only counts: name the SA-pool configurations with their weights and the cassette configurations as printed; defaults may change between revisions (<a href="#changes">Changes</a>).</p>
+          <p>Report:</p>
+          <ul>
+            <li>the printed blocks <Fragment set:html={blockHeaders.map((h) => `<code>${escape(h)}</code>`).join(', ')} />, which hold these names and weights;</li>
+            <li>every REKS option set to a value other than its default (column Default of <Fragment set:html={refs('§option-table')} />), and always <Fragment set:html={checklist.options.map(option).join(', ')} />;</li>
+            <li>the Psi4 options <Fragment set:html={checklist.psi4.map((p) => `<a href="${PSI4_MANUAL}autodir_options_c/${p.page}.html"><code>${p.name}</code></a>`).join(', ')} />;</li>
+            {checklist.other.map((item) => <li set:html={refs(item)} />)}
+          </ul>
+        </div>
+      </section>
+
+      <section id="licence" class="docsec">
+        <h2>Licence</h2>
+        <div class="prose">
+          <p>LGPL-3.0, as Psi4: <a href={`${REPO_URL}/blob/${BRANCH}/COPYING.LESSER`}>COPYING.LESSER</a>.</p>
+        </div>
+      </section>
+
+      <section id="contact" class="docsec">
+        <h2>Contact</h2>
+        <div class="prose">
+          <p><a href={`mailto:${EMAIL}`}>{EMAIL}</a>. Attach the input, the output at <Fragment set:html={refs('§reks_report_level')} /> <code>3</code>, and the <code>Git: Rev</code> line of the output header.</p>
+        </div>
+      </section>
+
+      <section id="manual" class="docsec">
+        <h2>Manual</h2>
+        <div class="prose">
+          <p><a href={`${base}manual/#tasks`}>Tasks</a>: which input and which output for a task. <Fragment set:html={refs('§option-table')} />: every option.</p>
         </div>
       </section>
     </div>
   </div>
 </div>
 
-<FooterBack href={base} label="Back to REKS Studio overview" />
+<Footer />
 </Base>

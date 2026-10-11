@@ -6,6 +6,8 @@ header.docshero .branch{ margin-top: 6px; color: var(--ink-faint); font-size: 0.
 header.pagehead{ padding: 40px 0 28px; border-bottom: 1px solid var(--line); }
 header.pagehead h1{ font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
 header.pagehead p{ margin: 10px 0 0; color: var(--ink-soft); }
+.crumbs a{ color: inherit; text-decoration: none; }
+.crumbs a:hover{ text-decoration: underline; }
 
 .docs-layout{ --toc-width: 240px; }
 .toc{ max-height: calc(100vh - var(--nav-offset) - 22px); overflow-y: auto; }

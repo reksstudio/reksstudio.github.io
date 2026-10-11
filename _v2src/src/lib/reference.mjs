@@ -2,8 +2,9 @@ import ref from '../data/reference.json' with { type: 'json' };
 import { properties } from '../data/properties.json' with { type: 'json' };
 import blocks from '../data/blocks.json' with { type: 'json' };
 import fragmentList from '../data/fragments.json' with { type: 'json' };
-import { toHtml, toMd } from './inline.mjs';
+import { toMd } from './inline.mjs';
 import { entryMap } from './manual-pages.mjs';
+import { literatureHtml, references, shortRef } from './literature.mjs';
 
 function entry(key) {
   const e = ref.entries[key];
@@ -31,17 +32,6 @@ export const optionId = (key) => entry(key).id ?? key.toLowerCase();
 export const optionAlias = (key) => entry(key).alias;
 const optionTitle = (key) => entry(key).title ?? key;
 
-// docs: div.kwrow > [div.kwname > [label, span.kwalias?], p > brief]
-function kwRow(key) {
-  const e = entry(key);
-  const label = e.label ?? key.toLowerCase();
-  const tag = e.tag ?? (e.alias && `alias: ${e.alias.toLowerCase()}`);
-  const alias = tag ? `<span class="kwalias">${toHtml(tag)}</span>` : '';
-  return `<div class="kwrow"><div class="kwname">${toHtml(label)}${alias}</div><p>${toHtml(e.brief)}</p></div>`;
-}
-
-export const kwRows = (keys) => ` ${keys.map(kwRow).join(' ')} `;
-
 const mdRow = (cells) => `| ${cells.map((c) => toMd(c).replaceAll('|', '\\|')).join(' | ')} |`;
 const mdTable = (head, rows) => [mdRow(head), mdRow(head.map(() => '---')), ...rows.map(mdRow)].join('\n');
 
@@ -62,11 +52,12 @@ function callMd(key, e) {
   return call && `\`\`\`python\n${call}\n\`\`\``;
 }
 
-// option entry: h4 {#id}, Type/Default/Alias/Allowed, call, fragments, rules, formulas, See
+// option entry: h4 {#id}, brief, Type/Default/Alias/Allowed, call, fragments, rules, formulas, See
 function optionEntryMd(key) {
   const e = entry(key);
   return blocksMd([
     `#### \`${optionTitle(key)}\` {#${optionId(key)}}`,
+    toMd(e.brief),
     fieldsMd([['Type', e.type], ['Default', e.default], ['Alias', e.alias && `\`${e.alias}\``], ['Allowed', e.allowed]]),
     callMd(key, e),
     fragmentsMd(e.fragments),
@@ -118,16 +109,16 @@ const propertyTableMd = () =>
 // print order of the report blocks: Block | Entry, one row per header, linked to the entry or section that explains it
 const printOrderMd = () => mdTable(['Block', 'Entry'], blocks.map((b) => [`\`${b.header}\``, `§${b.owner}`]));
 
-// Option table chapter: per group "### title" + Option | Type | Default | Alias (compact: Option | Default)
+// Option table chapter: per group "### title" + Option | Type | Default | Alias | Meaning (compact: Option | Default | Meaning)
 function optionTableMd() {
   return ref.groups
     .map((g) => {
       const described = g.compact && entryMap().has(g.id) ? `§${g.id}` : '';
       const table = g.compact
-        ? mdTable(['Option', 'Default'], g.keys.map((key) => [`\`${key}\``, entry(key).default]))
+        ? mdTable(['Option', 'Default', 'Meaning'], g.keys.map((key) => [`\`${key}\``, entry(key).default, entry(key).brief]))
         : mdTable(
-            ['Option', 'Type', 'Default', 'Alias'],
-            g.keys.map((key) => [`§${optionId(key)}`, entry(key).type ?? '', entry(key).default, entry(key).alias ? `\`${entry(key).alias}\`` : '']),
+            ['Option', 'Type', 'Default', 'Alias', 'Meaning'],
+            g.keys.map((key) => [`§${optionId(key)}`, entry(key).type ?? '', entry(key).default, entry(key).alias ? `\`${entry(key).alias}\`` : '', entry(key).brief]),
           );
       return blocksMd([`### ${g.title}`, described, table]);
     })
@@ -142,6 +133,7 @@ const MARKERS = {
   'print-order': [false, printOrderMd],
   'option-table': [false, optionTableMd],
   'property-table': [false, propertyTableMd],
+  literature: [false, literatureHtml],
 };
 
 // paragraph text -> { name, arg } for "@@name@@" / "@@name arg@@"; null when the text does not start with "@@";
@@ -172,10 +164,12 @@ export function markerContent({ name, arg }) {
     };
   }
   if (name === 'fragment') return { entries: [], fragments: [fragment(arg).id] };
+  if (name === 'literature') return { entries: references().map((e) => ({ id: e.key, title: shortRef(e), code: false })), fragments: [] };
   return { entries: [], fragments: [] };
 }
 
 export const fragmentIds = () => [...FRAGMENTS.keys()];
+export const fragmentText = (id) => fragment(id).text;
 
 // Satteri mdast plugin: marker paragraph -> generated markdown
 export function referenceMdast() {

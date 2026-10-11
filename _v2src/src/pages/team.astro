@@ -2,15 +2,13 @@
 import { Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import FooterBack from '../components/FooterBack.astro';
+import Footer from '../components/Footer.astro';
 import { team } from '../data/team';
 import '../styles/docs.css';
 import '../styles/team.css';
-
-const base = import.meta.env.BASE_URL;
 ---
 <Base title="Team — REKS Studio">
-<Nav variant="light" logoHref={base} links={[{ href: base, label: 'Overview' }]} />
+<Nav variant="light" />
 
 <header class="docshero">
   <div class="wrap">
@@ -45,5 +43,5 @@ const base = import.meta.env.BASE_URL;
   </div>
 </div>
 
-<FooterBack href={base} label="Back to REKS Studio overview" />
+<Footer />
 </Base>

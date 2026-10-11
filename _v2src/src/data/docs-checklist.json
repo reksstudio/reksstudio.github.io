@@ -1,0 +1,22 @@
+{
+ "fragments": ["setup", "sa-pool", "sa-pool-extra", "pairing-schemes", "si-pools", "si-setup"],
+ "options": ["SA_REKS_WEIGHTS", "SI_REKS_OVERLAP_CUTOFF", "REKS_CPREKS_CONV", "GUESS_ACTIVE_WINDOW", "REKS_N_FON", "REKS_GEMINAL_WIDTHS"],
+ "psi4": [
+  {"name": "basis", "page": "scf__basis"},
+  {"name": "puream", "page": "globals__puream"},
+  {"name": "dft_spherical_points", "page": "scf__dft_spherical_points"},
+  {"name": "dft_radial_points", "page": "scf__dft_radial_points"},
+  {"name": "scf_type", "page": "globals__scf_type"},
+  {"name": "df_basis_scf", "page": "scf__df_basis_scf"},
+  {"name": "e_convergence", "page": "scf__e_convergence"},
+  {"name": "d_convergence", "page": "scf__d_convergence"}
+ ],
+ "other": [
+  "the full input file (the whole options block and the geometry) in the SI; it also covers Psi4 options outside the list above",
+  "the functional name with its dispersion suffix, e.g. `bhhlyp-d3bj`",
+  "whether coupling damping was applied (§coupling-damping)",
+  "the seed orbitals (§seed-orbitals) and the C1 point group",
+  "optimization and dynamics: every argument of the driver call, defaults included; simplest is the whole driver script in the SI (§geometry-optimization, §surface-hopping)",
+  "PyUNIxMD and libdlfind versions (§dyn-requirements)"
+ ]
+}

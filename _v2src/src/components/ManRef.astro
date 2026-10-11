@@ -1,9 +1,0 @@
----
-import { entryHref, entryMap } from '../lib/manual-pages.mjs';
-
-// manual entry id -> "Manual §N" for chapter N, else "Manual: <entry title>"
-const { id } = Astro.props;
-const href = entryHref(id, null, import.meta.env.BASE_URL);
-const e = entryMap().get(id);
----
-<a class="manref" href={href}>{e.chapter ? `Manual §${e.chapter}` : `Manual: ${e.title}`}</a>
