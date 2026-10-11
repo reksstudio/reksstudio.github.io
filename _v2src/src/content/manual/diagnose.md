@@ -16,7 +16,7 @@ Check the active set (§check-solution), also after a cold start (s-trans-butadi
 
 #### SCF hits `MAXITER` or continues unconverged {#diag-maxiter}
 
-With the default `FAIL_ON_MAXITER` true the run stops with `Failed to converge.` and an `SCFConvergenceError`. With `FAIL_ON_MAXITER` false the trace ends as below (H₄, `maxiter` 2); SI, properties and files follow on the unconverged orbitals, and the wavefunction is returned.
+`MAXITER` defaults to 100 SCF iterations. With the default `FAIL_ON_MAXITER` true the run stops with `Failed to converge.` and an `SCFConvergenceError`. With `FAIL_ON_MAXITER` false the trace ends as below (H₄, `maxiter` 2); SI, properties and files follow on the unconverged orbitals, and the wavefunction is returned.
 
 @@fragment maxiter@@
 
@@ -28,7 +28,7 @@ The GVB-DIIS monitors (§scf-engines) catch and restart such runs. If that stays
 
 #### FONs of a geminal invert {#diag-fon-inverted}
 
-`Post-Iterations` prints n<sub>p</sub> < n<sub>q</sub> for a geminal of generation ≥ 1 (generation-0 pairs are swapped, §fons). Set a floor of `1.0` on its generation (§reks_l_fon).
+`Post-Iterations` prints n<sub>p</sub> < n<sub>q</sub> for a geminal of generation ≥ 1 (generation 0, also under TRAH: §fons). Set a floor of `1.0` on its generation (§reks_l_fon).
 
 #### FON pinned at a bound, symmetry-broken charges {#diag-fon-pinned}
 
@@ -38,7 +38,7 @@ Seed from an RKS run at the same geometry (§seed-orbitals) or from a neighbouri
 
 #### Active orbitals localize on one fragment {#diag-localized}
 
-Set a positive §reks_deloc_ipr_penalty; the report then ends with `=== REKS IPR Penalty Final ===` and the basin verdict.
+Each orbital of a geminal pair sits on one centre, as from the localized seed of 90° C₂H₄ (n<sub>a</sub> = 2, E<sub>SA</sub> 10.8 mE<sub>h</sub> above the delocalized solution). Set §reks_geminal_deloc: `REKS Geminal Delocalization` lists the pairs rotated to their IPR minimum and whether the SCF from them is kept (lower E<sub>SA</sub>).
 
 #### Unknown configuration name or type {#diag-unknown-token}
 

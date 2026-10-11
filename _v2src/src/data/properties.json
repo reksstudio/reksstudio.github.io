@@ -11,8 +11,7 @@
    "variables": "`SCF TOTAL ENERGY`, `CURRENT REFERENCE ENERGY`, `CURRENT ENERGY` (§si_reks_grad), `REKS SA_WEIGHTS`, `REKS W_PPS`, `NUCLEAR REPULSION ENERGY`, `ONE-ELECTRON ENERGY`, `TWO-ELECTRON ENERGY`, `DFT XC ENERGY`",
    "bullets": [
     "The configuration energies E_{X} are printed, not stored.",
-    "`Total Energy` of `Energetics` equals `@REKS Final Energy` and the `Total energy` row of the decomposition; without an IPR penalty it equals `E[SA-REKS]`.",
-    "With `REKS_DELOC_IPR_PENALTY` > 0 both blocks add a penalty row, and `Total energy` = `E[SA-REKS]` + `IPR penalty energy` (§reks_deloc_ipr_penalty)."
+    "`Total Energy` of `Energetics` equals `@REKS Final Energy` and the `E[SA-REKS]` row of the decomposition."
    ]
   },
   {

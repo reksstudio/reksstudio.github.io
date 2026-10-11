@@ -55,13 +55,13 @@ q = C[:, i] * (S @ C[:, i])
 print([q[[mu for mu in range(bs.nbf()) if bs.function_to_center(mu) == A]].sum() for A in (0, 1)])
 ```
 
-90° C₂H₄, BH&HLYP/6-31G(d), one geometry, HOMO population on each carbon:
+90° C₂H₄, BH&HLYP/6-31G(d), the geometry of `first_c2h4_90.py` (§first-inputs), HOMO population on each carbon:
 
 | RKS run | E(RKS) / E<sub>h</sub> | HOMO on C1 / C2 | REKS(2,2) from it: n<sub>a</sub> / n<sub>b</sub> |
 | --- | --- | --- | --- |
-| `scf_type df`, SAD start | −78.31818108 | 0.859 / 0.026 | 2.000000 / 0.000000 |
-| `scf_type df`, read from the `pk` solution | −78.36248878 | 0.440 / 0.440 | 1.000000 / 1.000000 |
-| `scf_type pk`, SAD start | −78.36248359 | 0.440 / 0.440 | 1.000000 / 1.000000 |
+| `scf_type df`, SAD start | −78.31842739 | 0.026 / 0.858 | 2.000000 / 0.000000 |
+| `scf_type df`, read from the `pk` solution | −78.36265006 | 0.440 / 0.440 | 1.000000 / 1.000000 |
+| `scf_type pk`, SAD start | −78.36264503 | 0.440 / 0.440 | 1.000000 / 1.000000 |
 
 The seeds on this page use `scf_type pk`. A localized seed is replaced by an RKS run with `scf_type pk` or by a seed from a smaller torsion, carried to the target geometry (§first-scans). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n 2.000000 / 0.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).
 
@@ -109,7 +109,7 @@ The same seed with `HOMO-2` (13A, σ) in place of `HOMO-1` converges as well; 13
 ### Check the solution {#check-solution}
 
 -   **Convergence:** `Energy and wave function converged.` is necessary only: every wrong solution on this page converged. Otherwise §diag-maxiter.
--   **Active set:** every index of `Pairing scheme 0` in `Post-Iterations` (§sa-fons) belongs to the inspected set, compared as a set: setup `8A(a), 9A(b)`, pair printed `(9A,8A)` (generation-0 swap, §fons). Otherwise §diag-wrong-window.
+-   **Active set:** every index of `Pairing scheme 0` in `Post-Iterations` (§sa-fons) belongs to the inspected set, compared as a set: setup `8A(a), 9A(b)`, pair printed `(9A,8A)` (generation-0 reordering, §fons). Otherwise §diag-wrong-window.
 -   **Symmetry:** S0 has equal charges on symmetry-equivalent atoms (§atomic-charges) and a dipole allowed by the point group (§permanent-dipole). Otherwise §diag-fon-pinned.
 -   **FONs:** a pair at n ≈ 2/0 is not by itself an error: the outer π pair of butadiene has n<sub>a</sub> = 1.999999.
 
@@ -205,7 +205,7 @@ Each file runs in two stages: `python file.py rks`, then `python file.py reks`.
 
 | File | Calculation | Result |
 | --- | --- | --- |
-| [`first_c2h4_90.py`](../../inputs/first_c2h4_90.py) | SI-SA-REKS(2,2), C₂H₄ 90°, BH&HLYP/6-31G(d), RKS seed, no window | E<sub>SA</sub> = −78.364394265090 E<sub>h</sub>; n 1.000000 / 1.000000 |
+| [`first_c2h4_90.py`](../../inputs/first_c2h4_90.py) | SI-SA-REKS(2,2), C₂H₄ 90°, BH&HLYP/6-31G(d), RKS seed, no window | E<sub>SA</sub> = −78.364394265263 E<sub>h</sub>; n 1.000000 / 1.000000 |
 | [`first_butadiene.py`](../../inputs/first_butadiene.py) | SI-SA-REKS(4,4), s-trans-butadiene, BH&HLYP/6-31G(d), RKS seed, π window | E<sub>SA</sub> = −155.670331327491 E<sub>h</sub>; n 1.999999 / 1.999138 / 0.000862 / 0.000001 |
 | [`first_hexatriene.py`](../../inputs/first_hexatriene.py) | SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool; SI on 2S = 0, 2, 4, 6 | E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257757335295, T1 −233.154325123481, Q1 −232.962265506282, Sp1 −232.680857311443 E<sub>h</sub> |
 

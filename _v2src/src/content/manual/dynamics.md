@@ -31,14 +31,14 @@ g, wfn = psi4.gradient("bhhlyp", return_wfn=True, restart_file="first_c2h4_90_rk
 
 @@fragment dyn-cpreks@@
 
-One CP-REKS solve covers every target (§reks_cpreks_conv). Wall time of the whole call (SCF included, 4 threads; two runs agree to 0.02 s):
+One CP-REKS solve covers every target (§reks_cpreks_conv). Wall time of the whole call (SCF included, 4 threads, Apple M1 Pro; two runs agree to 0.07 s):
 
 | `si_reks_grad` | `si_reks_nac` | Equations | Wall / s | Returned |
 | --- | --- | --- | --- | --- |
-| `[[1]]` | — | 1 | 1.5 | S1 |
-| `[[1, 0]]` | — | 2 | 1.6 | S1 |
-| `[[1, 0, 2]]` | — | 3 | 1.6 | S1 |
-| `[[1]]` | three pairs | 9 | 2.0 | S1 |
+| `[[1]]` | — | 1 | 1.2 | S1 |
+| `[[1, 0]]` | — | 2 | 1.2 | S1 |
+| `[[1, 0, 2]]` | — | 3 | 1.3 | S1 |
+| `[[1]]` | three pairs | 9 | 1.7 | S1 |
 
 -   **Followed root:** the first entry of `si_reks_grad`, marked `*` in the output (§si_reks_grad); `[[1, 0]]` prints `S1 *, S0`.
 -   **Arrays:** the wavefunction holds `SSR ROOT r GRADIENT CASSETTE 0` for every target (§state-gradient) and `SSR NAC I J CASSETTE 0` for every pair (§nac).
@@ -136,7 +136,7 @@ DL-FIND prints its cycles to the terminal; the last one:
 @@fragment dyn-opt-point@@
 
 -   **Start point:** `restart_file` seeds the first point; each later point reads the orbitals of the previous one.
--   **Frame:** `no_com`, `no_reorient`: DL-FIND and PyUNIxMD move the atoms in the input frame. Keep every atom off the Cartesian axes (two coordinates near zero), as the shifted inputs here do: an atom within ~10⁻⁸ a₀ of an axis makes Psi4 fail while building the basis set (`Unrecognized point group bits`).
+-   **Frame:** `no_com`, `no_reorient`: DL-FIND and PyUNIxMD move the atoms in the input frame.
 
 T1 of all-trans-hexatriene, SI-SA-REKS(6,6) with the π window of §first-spin and the SI cassette on 2S = 2 (root 0 = T1). The window places the RKS orbitals at the first REKS point and is then switched off, since it moves the columns of any read guess (§guess_active_window). From [`opt_hexatriene.py`](../../inputs/opt_hexatriene.py):
 
@@ -157,9 +157,9 @@ e, wfn = optimize("bhhlyp", mol, restart_file="opt_hexatriene_start.wfn.npy")
 | Geometry | C3–C4 / Å | C1–C3, C2–C4 / Å | C3–C5, C4–C6 / Å | E(T1) / E<sub>h</sub> | T2 − T1, T3 − T1 / eV |
 | --- | --- | --- | --- | --- | --- |
 | start (`first_hexatriene.py`) | 1.347 | 1.447 | 1.342 | — | — |
-| T1 minimum, 11 gradients, 5.5 min on 8 threads | 1.481 | 1.365 | 1.411 | −233.1785176650 | 2.489, 3.977 |
+| T1 minimum, 11 gradients, 5.5 min on 8 threads | 1.481 | 1.365 | 1.411 | −233.17851767 | 2.489, 3.977 |
 
-The minimum is planar (|z| ≤ 6 · 10⁻⁸ Å).
+The minimum is planar (|z| < 10⁻⁷ Å).
 
 ### Check the optimization {#check-optimization}
 
@@ -241,8 +241,8 @@ Total energy (column Total of `md/MDENERGY`), for the runs above and for reruns 
 | --- | --- | --- | --- | --- | --- | --- |
 | C₂H₄ | 0.5 | 200 | +0.57 | 0.82 | 0.43 | 58.7 |
 | C₂H₄ | 0.25 | 400 | −0.015 | 0.17 | 0.033 | 58.6 |
-| hexatriene | 0.5 | 50 | +0.022 | 0.072 | 0.028 | 7.2 |
-| hexatriene | 0.25 | 100 | −0.015 | 0.039 | 0.031 | 7.1 |
+| hexatriene | 0.5 | 50 | +0.065 | 0.082 | 0.035 | 7.1 |
+| hexatriene | 0.25 | 100 | −0.072 | 0.19 | 0.19 | 7.0 |
 
 <figure>
 <img src="../../figures/md_energy.svg" alt="Kinetic, potential and total energy along the C2H4 and hexatriene trajectories; total energy for time steps 0.5 and 0.25 fs" loading="lazy" decoding="async" width="710" height="602">
@@ -250,8 +250,8 @@ Total energy (column Total of `md/MDENERGY`), for the runs above and for reruns 
 <figcaption>Left: C₂H₄ on S1; right: hexatriene on T1. Top: E<sub>kin</sub>, E<sub>pot</sub> − E<sub>pot</sub>(0), E<sub>tot</sub> − E<sub>tot</sub>(0), dt 0.5 fs. Bottom: E<sub>tot</sub> − E<sub>tot</sub>(0) for dt 0.5 and 0.25 fs.</figcaption>
 </figure>
 
--   **Energy:** C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. The C₂H₄ dt 0.5 fs drift comes from the last steps: E<sub>tot</sub> − E<sub>tot</sub>(0) is +0.006 at step 196 and +0.570 kcal mol⁻¹ at step 200 (largest step, 0.43, between steps 198 and 199). Halving `dt` shrinks the range of E<sub>tot</sub> 4.8-fold for C₂H₄ over 100 fs (4.1-fold over the first 50 fs; dt² error of velocity Verlet: 4-fold) and 1.9-fold for hexatriene over 25 fs.
--   **Solution:** n<sub>a</sub> of the active pair per step, `grep "n_a =" md_c2h4.out`, continuous. When n<sub>a</sub> crosses 1 (90° twist of C₂H₄; seven times in the dt 0.5 fs run, first at steps 40–41 and 78–79) the label (a) switches between orbitals 8A and 9A. If n<sub>a</sub> and the Total column jump together between two steps, the solution has changed. Steps with an unconverged SCF: §diag-maxiter.
+-   **Energy:** C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. The C₂H₄ dt 0.5 fs drift comes from the last steps: E<sub>tot</sub> − E<sub>tot</sub>(0) is +0.006 at step 196 and +0.570 kcal mol⁻¹ at step 200 (largest step, 0.43, between steps 198 and 199). Halving `dt` shrinks the range of E<sub>tot</sub> 4.8-fold for C₂H₄ over 100 fs (4.1-fold over the first 50 fs; dt² error of velocity Verlet: 4-fold). In the hexatriene dt 0.25 fs run E<sub>tot</sub> alternates from step to step after 17.5 fs (step 70), with the largest step growing from 0.017 kcal mol⁻¹ (steps 0–60) to 0.040, 0.077 and 0.19 kcal mol⁻¹ (steps 70–80, 80–90, 90–100), while the FONs stay continuous; its range, 0.19 kcal mol⁻¹, exceeds that of dt 0.5 fs, 0.082 kcal mol⁻¹ (0.027 against 0.075 over the first 12.5 fs).
+-   **Solution:** n<sub>a</sub> of the active pair per step, `grep "n_a =" md_c2h4.out`, continuous. The orbital labelled (a) carries n<sub>a</sub> ≥ 1 at every step (generation-0 ordering, §fons): in the dt 0.5 fs run (a) is 8A at all 201 steps, n<sub>a</sub> ≥ 1.017216. If n<sub>a</sub> and the Total column jump together between two steps, the solution has changed. Steps with an unconverged SCF: §diag-maxiter.
 -   **State:** `md/SHSTATE`. C₂H₄, dt 0.5 fs: on S1 to 56.0 fs, on S2 to 92.5 fs, then on S1. C₂H₄, dt 0.25 fs: S1 → S2 at 37.5, 59.25 and 69.5 fs, back at 39.5 and 67.5 fs; at 37.5, 59.25 and 69.5 fs the velocities are rescaled uniformly (`no solution to find rescale factor, but velocity is simply rescaled`). Hexatriene: T1 throughout. The followed root is an energy index, not a state character (§diag-quasi-degenerate).
 
 ### Worked inputs {#dynamics-inputs}
@@ -263,7 +263,7 @@ Scripts in run order, in one directory with `reks_dlfind.py` and `reks_unixmd.py
 | [`reks_dlfind.py`](../../inputs/reks_dlfind.py) | `optimize(method, molecule, restart_file, tolerance=4.5e-4, maxcycle=100)`: DL-FIND L-BFGS in delocalized internal coordinates on the followed root; `tolerance`: largest gradient component in those coordinates, atomic units | — |
 | [`reks_unixmd.py`](../../inputs/reks_unixmd.py) | `molecule(xyz_file, nstates, temperature, charge=0, seed=1)`, `REKS(molecule, method, restart_file)`: PyUNIxMD QM interface, roots of cassette 0 | — |
 | [`first_c2h4_90.py`](../../inputs/first_c2h4_90.py) | §first-inputs; `python first_c2h4_90.py rks` writes `first_c2h4_90_rks.wfn.npy`, read by §one-gradient | — |
-| [`opt_c2h4.py`](../../inputs/opt_c2h4.py) | S0 of C₂H₄, SSR(2,2) BH&HLYP/6-31G(d), DF, RKS seed, DL-FIND | E(S0) = −78.5286304227 E<sub>h</sub>, 8 gradients |
+| [`opt_c2h4.py`](../../inputs/opt_c2h4.py) | S0 of C₂H₄, SSR(2,2) BH&HLYP/6-31G(d), DF, RKS seed, DL-FIND | E(S0) = −78.52863042 E<sub>h</sub>, 8 gradients |
 | [`md_c2h4.py`](../../inputs/md_c2h4.py) | surface hopping on S1 from the `opt_c2h4.py` geometry, 3 states, 200 × 0.5 fs | hops S1 → S2 at 56.0 fs, back at 92.5 fs; E<sub>tot</sub> drift +0.57 kcal mol⁻¹, range 0.82 kcal mol⁻¹ |
-| [`opt_hexatriene.py`](../../inputs/opt_hexatriene.py) | T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH&HLYP/6-31G(d), DF, π window, DL-FIND | E(T1) = −233.1785176650 E<sub>h</sub>, 11 gradients, 5.5 min on 8 threads |
-| [`md_hexatriene.py`](../../inputs/md_hexatriene.py) | surface hopping on T1 from the `opt_hexatriene.py` geometry, 3 triplet states, 50 × 0.5 fs | T1 throughout; E<sub>tot</sub> drift +0.022 kcal mol⁻¹, range 0.072 kcal mol⁻¹; 39 s per step on 8 threads |
+| [`opt_hexatriene.py`](../../inputs/opt_hexatriene.py) | T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH&HLYP/6-31G(d), DF, π window, DL-FIND | E(T1) = −233.17851767 E<sub>h</sub>, 11 gradients, 5.5 min on 8 threads |
+| [`md_hexatriene.py`](../../inputs/md_hexatriene.py) | surface hopping on T1 from the `opt_hexatriene.py` geometry, 3 triplet states, 50 × 0.5 fs | T1 throughout; E<sub>tot</sub> drift +0.065 kcal mol⁻¹, range 0.082 kcal mol⁻¹; 39 s per step on 8 threads |

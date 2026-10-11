@@ -14,6 +14,7 @@ wfn.to_file("name.wfn")                                                         
 ```
 
 -   `restart_file` names a serialized `Wavefunction` (`.wfn.npy`). For a `.npy` file the driver sets `GUESS READ` and prints `Found user provided orbital data. Setting orbital guess to READ`. `psi4.core.Wavefunction.from_file(...)` only loads the file into a Python object; the SCF guess does not use it.
+-   A `restart_file` that names no file stops the run before the SCF with `FileNotFoundError`: `energy()` with Psi4's `No such file or directory`, `gradient()`, `optimize()` and `hessian()` with the path looked for and the current directory. These three read only `.npy` files; an existing file of another type, or an item that is not a path, is a `ValidationError`. A relative path is taken from the current directory at the moment of the call (an absolute path for drivers that change directory, §dynamics-inputs).
 -   `"df_scf_guess"` acts only with `scf_type DIRECT`, where it runs a density-fitted SCF before the exact-integral SCF.
 -   Restart points: the previous geometry of a scan, a lower-level pre-optimization, a run that hit `maxiter` (§diag-maxiter), or an RKS run at the same geometry (§seed-orbitals).
 
@@ -42,13 +43,13 @@ Linear H₄, BH&HLYP/6-31G: the restarted point 1.6 Å and a cold SAD start reac
 
 ## 11\. Fractional Occupation Numbers (FONs) {#fons}
 
-Each geminal pair carries FONs with $n_p + n_q = 2$ (§geminals); the free FON $n_p$ (first orbital of the pair) lies in a box:
+Each geminal pair carries FONs with $n_p + n_q = 2$ (§geminals); the free FON $n_p$ (first orbital of the pair) lies in a box, kept by the FON micro-solver and the TRAH step (FONs restored from a REKS restart file are clamped to $[m, 2 - m]$):
 
 $$
 n_p \in [\,\ell,\; 2 - m\,], \qquad \ell = \begin{cases} \texttt{REKS\_<L>\_FON} & \text{if} \ge 0 \\ m & \text{otherwise} \end{cases}, \qquad m = \texttt{REKS\_FON\_MICRO\_BOUND\_MARGIN}.
 $$
 
-A generation-0 FON of a two-orbital pair that crosses 1 swaps the two orbitals, so the printed generation-0 FONs have $n_p \ge n_q$; FONs of higher generations can have $n_p < n_q$. FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set; each generation has its own lower-bound option (§reks_l_fon).
+A FON pushed past an end of the box stops on it, and the SCF counts it converged there. Generation-0 geminals are kept in descending occupation by reordering their orbitals, columns and FONs of every set together (the energy is unchanged): the first FON step orders each geminal, later a two-orbital pair whose FON crosses 1 swaps its orbitals and a wider geminal is reordered when its order changes. Without `REKS_USE_TRAH` the printed generation-0 FONs therefore have $n_p \ge n_q$, with one exception: in an SA ensemble over several spin sectors a pair swaps when its FON crosses 1 in any sector, which can leave the printed FON below 1. TRAH steps move the FONs without reordering. FONs of higher generations are never reordered and can have $n_p < n_q$. Outside TRAH steps FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set; each generation has its own lower-bound option (§reks_l_fon).
 
 @@options fons@@
 
@@ -65,7 +66,7 @@ Three engines optimize the orbitals and FONs; most runs set at most `LEVEL_SHIFT
 | `REKS_USE_TRAH` | `REKS_GVB_DIIS` | Iterations (trace tag) |
 | --- | --- | --- |
 | false (default) | true (default) | the first `REKS_GVB_DIIS_START` − 1 iterations are level-shifted Fock steps without an accelerator (`SHIFT`), then GVB-DIIS |
-| true | true | TRAH warm-up (`TRAH/SHIFT`); GVB-DIIS once `REKS_GVB_DIIS_START` is reached and the active formulation's activation gate is satisfied |
+| true | true | TRAH warm-up (`TRAH/SHIFT`); GVB-DIIS from iteration `REKS_GVB_DIIS_START`, with `CFM`, and with `ORBITAL` under `REKS_DIIS_ACTIVATION` `GRADIENT`, once ‖**g**<sub>orb</sub>‖<sub>F</sub> < `REKS_DIIS_CFM_ACTIVATION_GORB` |
 | true | false | TRAH for the entire SCF |
 | false | false | level-shifted Fock steps (`PLAIN/SHIFT`) |
 
@@ -95,8 +96,16 @@ $$
 
 The two expert groups of §option-table (angle filtering, SVD conditioning, Tikhonov ridging, verdict rewind and restart monitors, cycle detection, basin guards) act automatically on ill-conditioned or non-monotone GVB-DIIS steps. `REKS_REPORT_LEVEL` 4 shows which monitor fires.
 
-## 13\. Delocalization (IPR) Penalty {#ipr}
+GVB-DIIS keeps the last `DIIS_MAX_VECS` (default 10) error vectors; a new vector replaces the oldest. The angle filter (`REKS_DIIS_COND_ANGLE_FILTER`) keeps the newest vector $\mathbf e_0$ and tests the others from newer to older on their differences $\mathbf d_i = \mathbf e_i - \mathbf e_0$; vector $i$ is dropped when
 
-A positive `REKS_DELOC_IPR_PENALTY` λ penalizes localization of the active orbitals and drives the SCF to the delocalized solution, the intended REKS solution.
+$$
+\delta\,\lVert \mathbf e_i \rVert^2 \ge \lVert \mathbf e_0 \rVert^2, \qquad c_{\max} \lVert \mathbf d_i \rVert^2 \le \lVert \mathbf e_0 \rVert^2, \qquad \text{or} \qquad \sin\varphi_i = \frac{\lVert (\mathbf 1 - \mathbf P)\,\mathbf d_i \rVert}{\lVert \mathbf d_i \rVert} < c_s,
+$$
 
-@@options ipr@@
+with $\mathbf P$ the projector on the differences kept so far, $\delta$ = `REKS_DIIS_COND_STALE_DELTA`, $c_{\max}$ = `REKS_DIIS_COND_COEFF_NORM_MAX`, $c_s$ = `REKS_DIIS_COND_ANGLE_CUTOFF`.
+
+## 13\. Geminal Delocalization {#geminal-deloc}
+
+`REKS_GEMINAL_DELOC` rotates each orbital pair of a generation-0 geminal whose Löwdin IPR lies in the upper half of its range under rotations of the pair to the IPR minimum (the most delocalized frame of the pair), converges the SCF again from the rotated orbitals, and keeps the rotated solution only if its E<sub>SA</sub> is lower.
+
+@@options geminal-deloc@@

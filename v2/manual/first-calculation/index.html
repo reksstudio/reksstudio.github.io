@@ -54,7 +54,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span style="color:#E7E6E2">i = wfn.nalpha() - 1                                   </span><span style="color:#6E7686"># HOMO; i + 1 is LUMO</span></span>
 <span class="line"><span style="color:#E7E6E2">q = C[:, i] * (S @ C[:, i])</span></span>
 <span class="line"><span style="color:#E7E6E2">print([q[[mu for mu in range(bs.nbf()) if bs.function_to_center(mu) == A]].sum() for A in (0, 1)])</span></span></code></pre>
-<p>90° C₂H₄, BH&amp;HLYP/6-31G(d), one geometry, HOMO population on each carbon:</p>
+<p>90° C₂H₄, BH&amp;HLYP/6-31G(d), the geometry of <code>first_c2h4_90.py</code> (<a href="#first-inputs">Worked inputs</a>), HOMO population on each carbon:</p>
 <div class="reftable-wrap"><table>
 <thead>
 <tr>
@@ -67,19 +67,19 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <tbody>
 <tr>
 <td><code>scf_type df</code>, SAD start</td>
-<td>−78.31818108</td>
-<td>0.859 / 0.026</td>
+<td>−78.31842739</td>
+<td>0.026 / 0.858</td>
 <td>2.000000 / 0.000000</td>
 </tr>
 <tr>
 <td><code>scf_type df</code>, read from the <code>pk</code> solution</td>
-<td>−78.36248878</td>
+<td>−78.36265006</td>
 <td>0.440 / 0.440</td>
 <td>1.000000 / 1.000000</td>
 </tr>
 <tr>
 <td><code>scf_type pk</code>, SAD start</td>
-<td>−78.36248359</td>
+<td>−78.36264503</td>
 <td>0.440 / 0.440</td>
 <td>1.000000 / 1.000000</td>
 </tr>
@@ -127,9 +127,9 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>      16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812</span></span>
 <span class="line"><span>      17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>@REKS Final Energy:  -155.67155759813005</span></span></code></pre>
+<span class="line"><span>@REKS Final Energy:  -155.67155759813051</span></span></code></pre>
 <h3 id="check-solution">Check the solution</h3>
-<dl class="fields"><dt>Convergence</dt><dd><code>Energy and wave function converged.</code> is necessary only: every wrong solution on this page converged. Otherwise <a href="/v2/manual/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>Active set</dt><dd>every index of <code>Pairing scheme 0</code> in <code>Post-Iterations</code> (<a href="/v2/manual/properties/#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a>) belongs to the inspected set, compared as a set: setup <code>8A(a), 9A(b)</code>, pair printed <code>(9A,8A)</code> (generation-0 swap, <a href="/v2/manual/run-control/#fons">§11</a>). Otherwise <a href="/v2/manual/diagnose/#diag-wrong-window">SCF converges instantly to a wrong energy after a restart</a>.</dd><dt>Symmetry</dt><dd>S0 has equal charges on symmetry-equivalent atoms (<a href="/v2/manual/properties/#atomic-charges">Atomic charges of the states (unrelaxed)</a>) and a dipole allowed by the point group (<a href="/v2/manual/properties/#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a>). Otherwise <a href="/v2/manual/diagnose/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>.</dd><dt>FONs</dt><dd>a pair at n ≈ 2/0 is not by itself an error: the outer π pair of butadiene has n<sub>a</sub> = 1.999999.</dd></dl>
+<dl class="fields"><dt>Convergence</dt><dd><code>Energy and wave function converged.</code> is necessary only: every wrong solution on this page converged. Otherwise <a href="/v2/manual/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>Active set</dt><dd>every index of <code>Pairing scheme 0</code> in <code>Post-Iterations</code> (<a href="/v2/manual/properties/#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a>) belongs to the inspected set, compared as a set: setup <code>8A(a), 9A(b)</code>, pair printed <code>(9A,8A)</code> (generation-0 reordering, <a href="/v2/manual/run-control/#fons">§11</a>). Otherwise <a href="/v2/manual/diagnose/#diag-wrong-window">SCF converges instantly to a wrong energy after a restart</a>.</dd><dt>Symmetry</dt><dd>S0 has equal charges on symmetry-equivalent atoms (<a href="/v2/manual/properties/#atomic-charges">Atomic charges of the states (unrelaxed)</a>) and a dipole allowed by the point group (<a href="/v2/manual/properties/#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a>). Otherwise <a href="/v2/manual/diagnose/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>.</dd><dt>FONs</dt><dd>a pair at n ≈ 2/0 is not by itself an error: the outer π pair of butadiene has n<sub>a</sub> = 1.999999.</dd></dl>
 <p>E<sub>SA</sub> of different starts is not a criterion:</p>
 <div class="reftable-wrap"><table>
 <thead>
@@ -162,10 +162,10 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>      Pairing scheme 0: (a,b) = (9A,8A)</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>       9A     -0.202301  (a)    n_a =  1.000000</span></span>
+<span class="line"><span>       9A     -0.202302  (a)    n_a =  1.000000</span></span>
 <span class="line"><span>       8A     -0.202302  (b)    n_b =  1.000000</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>@REKS Final Energy:   -78.36439426509004</span></span></code></pre>
+<span class="line"><span>@REKS Final Energy:   -78.36439426526262</span></span></code></pre>
 <p>S0 of this solution: C1 = −0.358361, C2 = −0.358355 (Mulliken), |μ| = 0.000034 e a<sub>0</sub>. Cold SAD start: C1 = −0.148908, C2 = −0.561394, |μ| = 0.263524 e a<sub>0</sub>.</p>
 <figure class="mo">
 <div class="g n2">
@@ -328,7 +328,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <tr>
 <td><a href="../../inputs/first_c2h4_90.py"><code>first_c2h4_90.py</code></a></td>
 <td>SI-SA-REKS(2,2), C₂H₄ 90°, BH&amp;HLYP/6-31G(d), RKS seed, no window</td>
-<td>E<sub>SA</sub> = −78.364394265090 E<sub>h</sub>; n 1.000000 / 1.000000</td>
+<td>E<sub>SA</sub> = −78.364394265263 E<sub>h</sub>; n 1.000000 / 1.000000</td>
 </tr>
 <tr>
 <td><a href="../../inputs/first_butadiene.py"><code>first_butadiene.py</code></a></td>

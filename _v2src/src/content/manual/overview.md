@@ -44,7 +44,7 @@ Only `reference reks` and `reks [N, M]` are required. Absent `sa_reks_configs`: 
 
 ### Explicit SA pool and SI cassettes {#explicit-input}
 
-SI-SA-REKS(4,4) with an explicit SA pool, weights and two SI cassettes; `PPS2` and `OSS3` belong to pairing scheme 1 (`SI pools` prints the definition of every name, §pairing-scheme):
+SI-SA-REKS(4,4) with an explicit SA pool, weights and two SI cassettes, written as one group (one spin manifold) of two cassettes `[[[…], […]]]` (§si_reks_configs); `PPS2` and `OSS3` belong to pairing scheme 1 (`SI pools` prints the definition of every name, §pairing-scheme):
 
 ```python
 psi4.set_options({
@@ -52,7 +52,7 @@ psi4.set_options({
     'reks':            [4, 4],
     'sa_reks_configs': ['PPS1', 'OSS1', 'OSS2'],
     'sa_reks_weights': [0.5, 0.25, 0.25],
-    'si_reks_configs': [['PPS1', 'OSS1'], ['PPS2', 'OSS3']],
+    'si_reks_configs': [[['PPS1', 'OSS1'], ['PPS2', 'OSS3']]],
 })
 psi4.energy('scf')
 ```
@@ -65,7 +65,7 @@ set {
     reks             [ 4, 4 ]
     sa_reks_configs  [ PPS1, OSS1, OSS2 ]
     sa_reks_weights  [ 0.5, 0.25, 0.25 ]
-    si_reks_configs  [ [PPS1, OSS1], [PPS2, OSS3] ]
+    si_reks_configs  [ [ [PPS1, OSS1], [PPS2, OSS3] ] ]
 }
 energy('scf')
 ```
@@ -78,7 +78,7 @@ Without `si_reks_grad` and `si_reks_nac`, as in both inputs above, `energy()` re
 
 | Quantity | Printed in | Variable |
 | --- | --- | --- |
-| SA-REKS ensemble energy E<sub>SA</sub>, plus E<sub>pen</sub> with §reks_deloc_ipr_penalty | `@REKS Final Energy` (`@DF-REKS` with density fitting), `Energetics` | `SCF TOTAL ENERGY` |
+| SA-REKS ensemble energy E<sub>SA</sub> | `@REKS Final Energy` (`@DF-REKS` with density fitting), `Energetics` | `SCF TOTAL ENERGY` |
 | SA configuration energies (PPS, OSS, …), not states | `SA-REKS energy decomposition` | — |
 | SSR states S0, S1, … of cassette e | `Adiabatic states` | `SSR ENERGIES K=e` |
 | Followed state, gradient | `Gradient request` (`*`), `Returned gradient` | `CURRENT ENERGY`, `CURRENT GRADIENT` |
@@ -112,6 +112,6 @@ Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat
 | File | Calculation | Result |
 | --- | --- | --- |
 | [`reks22_h2.dat`](../inputs/reks22_h2.dat) | SI-SA-REKS(2,2), H₂ (0.74 Å), BH&HLYP/cc-pVDZ, default pools | S0 = −1.159238310496 Eh |
-| [`reks44_h4_singlet_triplet.py`](../inputs/reks44_h4_singlet_triplet.py) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; SA `[PPS1, OSS1]` + `[T_PPS1]`, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.101236072673, T1 = −2.049371220444 Eh |
-| [`reks44_h4_heisenberg.dat`](../inputs/reks44_h4_heisenberg.dat) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; sectors 2S = 0, 2, 4; §spin-state-energetics | S0 = −2.072348700793, T1 = −2.045831290236, Q1 = −1.888567571356 Eh |
+| [`reks44_h4_singlet_triplet.py`](../inputs/reks44_h4_singlet_triplet.py) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; SA `[PPS1, OSS1]` + `[T_PPS1]`, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.101236378438, T1 = −2.049371603420 Eh |
+| [`reks44_h4_heisenberg.dat`](../inputs/reks44_h4_heisenberg.dat) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; sectors 2S = 0, 2, 4; §spin-state-energetics | S0 = −2.072348701131, T1 = −2.045831290718, Q1 = −1.888567570704 Eh |
 | [`reks22_h2_triplet_gradient.dat`](../inputs/reks22_h2_triplet_gradient.dat) | SI-SA-REKS(2,2), H₂ (1.6 Å), BH&HLYP/6-31G(d); analytic gradient and relaxed properties of T1 (§si_reks_grad) | T1 = −0.959546621300 Eh; dE/dz(H1) = 0.041765470832 Eh/bohr |

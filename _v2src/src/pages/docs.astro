@@ -35,7 +35,7 @@ const toc = [
   ['response', 'Gradients & couplings'],
   ['restart', 'Guesses & restarts'],
   ['fon', 'Fractional occupations'],
-  ['deloc', 'Delocalization penalty'],
+  ['geminal-deloc', 'Geminal delocalization'],
   ['solver', 'Solver & convergence'],
   ['reporting', 'Reporting'],
   ['troubleshooting', 'Troubleshooting'],
@@ -136,17 +136,17 @@ const toc = [
           <div class="kwlist" set:html={kwRows(['REKS_FON_INTERP_DELTA', 'REKS_N_FON'])} />
         </div>
 
-        <div id="deloc" class="kwgroup">
-          <h3>Delocalization penalty <ManRef id="ipr" /></h3>
-          <div class="kwgroup-note">An optional energy term <code>E_pen = λ Σ<sub>i</sub> Σ<sub>A</sub> p<sub>A</sub>(i)²</code> added to the SA energy, with <code>p<sub>A</sub>(i)</code> the population of active MO <code>i</code> on atom <code>A</code>. A positive λ penalizes localization and drives the SCF to the delocalized solution, the intended REKS solution: <code>Σ p²</code> decreases (H<sub>4</sub>, REKS(4,4): 1.1128 at λ = 0, 1.0669 at λ = 0.05).</div>
-          <div class="kwlist" set:html={kwRows(['REKS_DELOC_IPR_PENALTY', 'REKS_DELOC_IPR_METHOD'])} />
+        <div id="geminal-deloc" class="kwgroup">
+          <h3>Geminal delocalization <ManRef id="geminal-deloc" /></h3>
+          <div class="kwgroup-note">After the SCF converges, each orbital pair of a generation-0 geminal whose Löwdin IPR <code>Σ<sub>A</sub> [p<sub>A</sub>(a)² + p<sub>A</sub>(b)²]</code> lies in the upper half of its range under rotations of the pair is rotated to the IPR minimum; the SCF converges again, and the rotated solution is kept only if its E<sub>SA</sub> is lower. 90° C<sub>2</sub>H<sub>4</sub>, BH&amp;HLYP/6-31G, from a localized seed: −78.351266 → −78.362112 E<sub>h</sub>.</div>
+          <div class="kwlist" set:html={kwRows(['REKS_GEMINAL_DELOC'])} />
         </div>
 
         <div id="solver" class="kwgroup">
           <h3>Solver & convergence <ManRef id="scf-engines" /></h3>
           <div class="kwgroup-note">Three cooperating engines drive REKS's orbital/FON optimization — a plain level-shifted burn-in, an optional trust-region warmup, and the GVB-DIIS accelerator that normally finishes the job. Defaults work well for most systems; most users only ever touch <code>level_shift</code>.</div>
           <div class="kwlist" set:html={kwRows(['REKS_USE_TRAH', 'REKS_GVB_DIIS', 'REKS_DIIS_FORMULATION', 'REKS_GVB_DIIS_START', 'LEVEL_SHIFT_ADAPT'])} />
-          <div class="note"><strong>Note.</strong> 23 further <code>reks_diis_*</code> / <code>reks_gvb_*</code> options (angle filter, SVD conditioning, rewind and restart monitors) are expert settings; see the <a href={entry('option-table')}>manual</a>. <code>reks_report_level 4</code> shows which monitor fires.</div>
+          <div class="note"><strong>Note.</strong> 22 further <code>reks_diis_*</code> / <code>reks_gvb_*</code> options (angle filter, SVD conditioning, rewind and restart monitors) are expert settings; see the <a href={entry('option-table')}>manual</a>. <code>reks_report_level 4</code> shows which monitor fires.</div>
         </div>
 
         <div id="reporting" class="kwgroup">
