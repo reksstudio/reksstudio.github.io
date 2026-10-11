@@ -18,7 +18,7 @@ After the solution check (§check-solution) the nuclear gradients of the SSR sta
 
 ### One gradient() call {#one-gradient}
 
-90° C₂H₄ from the RKS orbitals of `first_c2h4_90.py` (chapter 3, §first-inputs), S1 as the followed root and the NAC of all pairs of S0, S1, S2:
+90° C₂H₄ from the RKS orbitals of `first_c2h4_90.py` (§first-inputs), S1 as the followed root and the NAC of all pairs of S0, S1, S2:
 
 ```python
 psi4.set_options({"scf_type": "df", "reference": "reks", "reks": [2, 2],
