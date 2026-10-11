@@ -49,6 +49,10 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><a href="/v2/manual/run-control/#engines">The three engines</a></td>
 </tr>
 <tr>
+<td><code>==&gt; REKS Geminal Delocalization &lt;==</code></td>
+<td><a href="/v2/manual/run-control/#reks_geminal_deloc"><code>REKS_GEMINAL_DELOC</code></a></td>
+</tr>
+<tr>
 <td><code>==&gt; Post-Iterations &lt;==</code></td>
 <td><a href="#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a></td>
 </tr>
@@ -59,10 +63,6 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <tr>
 <td><code>=&gt; SA-REKS energy decomposition &lt;=</code></td>
 <td><a href="#sa-energy">SA-REKS ensemble energy and configuration energies</a></td>
-</tr>
-<tr>
-<td><code>=== REKS IPR Penalty Final ===</code></td>
-<td><a href="/v2/manual/run-control/#reks_deloc_ipr_penalty"><code>REKS_DELOC_IPR_PENALTY</code></a></td>
 </tr>
 <tr>
 <td><code>==&gt; State interaction: setup over the union of the SI cassettes &lt;==</code></td>
@@ -262,18 +262,18 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </tr>
 <tr>
 <td>2 (default)</td>
-<td>Banner; <code>REKS Studio setup</code> with <code>Pairing schemes</code>, <code>SA pool</code>, <code>SI pools</code>, <code>State analysis</code>, <code>Gradient request</code>; orbital energies with the FONs in <code>Post-Iterations</code>; <code>SA-REKS energy decomposition</code>; <code>REKS IPR Penalty Final</code>; SI setup, <code>FON optimization after the SCF</code>, per cassette <code>Hamiltonian</code>, <code>Adiabatic states</code> and the property blocks; <code>State summary</code>; <code>Spin-state energetics</code>; CP-REKS solver (Psi4 <code>PRINT</code> ≥ 1); <code>Relaxed properties</code>; EKT; gradient targets, <code>Gradient of …</code>, <code>NAC …</code>, CI topography</td>
-<td>2072</td>
+<td>Banner; <code>REKS Studio setup</code> with <code>Pairing schemes</code>, <code>SA pool</code>, <code>SI pools</code>, <code>State analysis</code>, <code>Gradient request</code>; <code>REKS Geminal Delocalization</code> (<a href="/v2/manual/run-control/#reks_geminal_deloc"><code>REKS_GEMINAL_DELOC</code></a>); orbital energies with the FONs in <code>Post-Iterations</code>; <code>SA-REKS energy decomposition</code>; SI setup, <code>FON optimization after the SCF</code>, per cassette <code>Hamiltonian</code>, <code>Adiabatic states</code> and the property blocks; <code>State summary</code>; <code>Spin-state energetics</code>; CP-REKS solver (Psi4 <code>PRINT</code> ≥ 1); <code>Relaxed properties</code>; EKT; gradient targets, <code>Gradient of …</code>, <code>NAC …</code>, CI topography</td>
+<td>2178</td>
 </tr>
 <tr>
 <td>3</td>
 <td><code>XC evaluation … per string … per key</code> in the setup; Hamiltonian counters (<code>coupled</code>/<code>zero</code>, <code>Terms</code>, <code>Reuse</code>, overlap terms) and the <code>Off-diagonal channel</code> table; EKT <code>dropped eigenvalues</code> and the Dyson MO matrix; <code>[REKS-GRAD]</code> <code>C_eff</code> per microstate and Psi4 per-channel gradient terms; <code>==&gt; References &lt;==</code></td>
-<td>2475</td>
+<td>2581</td>
 </tr>
 <tr>
 <td>4–5</td>
 <td>4: <code>REKS Memory Footprint</code>, <code>Run diagnostics</code>, per-iteration solver traces (<code>[GVB-FON]</code>, <code>[ORB-DIIS]</code>, <code>[TRAH]</code>, <code>[LEVEL_SHIFT]</code>, …), <code>CP-REKS Z-Vector Profile</code>; per cassette <code>Microstate energies (sorted by energy)</code>, <code>Fractional Occupation Numbers (active orbitals)</code>, <code>Lagrangian eps_pq and ERI (pq|st)</code>, <code>Pre-diagonalization SI Hamiltonian</code> and <code>SI Overlap S</code> in blocks of 18 columns. 5: per SCF iteration the active orbitals, Fock asymmetry, orbital update, coupling Fock matrix, SA energy, weighting factors C<sub>L</sub> and the microstate energies</td>
-<td>3997; 8138</td>
+<td>4105; 8224</td>
 </tr>
 </tbody>
 </table></div>
@@ -598,12 +598,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Energetics &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span> Nuclear Repulsion Energy =             25.1844817236300855</span></span>
-<span class="line"><span> One-Electron Energy =                -153.5867652831177281</span></span>
+<span class="line"><span> One-Electron Energy =                -153.5867652831176997</span></span>
 <span class="line"><span> Two-Electron Energy =                  56.4995948627347033</span></span>
-<span class="line"><span> DFT Exchange-Correlation Energy =      -6.2238541886040739</span></span>
+<span class="line"><span> DFT Exchange-Correlation Energy =      -6.2238541886040730</span></span>
 <span class="line"><span> Empirical Dispersion Energy =           0.0000000000000000</span></span>
 <span class="line"><span> VV10 Nonlocal Energy =                  0.0000000000000000</span></span>
-<span class="line"><span> Total Energy =                        -78.1265428853570114</span></span></code></pre>
+<span class="line"><span> Total Energy =                        -78.1265428853569830</span></span></code></pre>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; SA-REKS energy decomposition &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Config       SA weight       E(config) [Eh]  w_SA * E(config) [Eh]</span></span>
@@ -616,8 +616,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>Stored</dt><dd><code>SCF TOTAL ENERGY</code>, <code>CURRENT REFERENCE ENERGY</code>, <code>CURRENT ENERGY</code> (<a href="/v2/manual/setup/#si_reks_grad"><code>SI_REKS_GRAD</code></a>), <code>REKS SA_WEIGHTS</code>, <code>REKS W_PPS</code>, <code>NUCLEAR REPULSION ENERGY</code>, <code>ONE-ELECTRON ENERGY</code>, <code>TWO-ELECTRON ENERGY</code>, <code>DFT XC ENERGY</code></dd></dl>
 <ul>
 <li>The configuration energies E<sub>X</sub> are printed, not stored.</li>
-<li><code>Total Energy</code> of <code>Energetics</code> equals <code>@REKS Final Energy</code> and the <code>Total energy</code> row of the decomposition; without an IPR penalty it equals <code>E[SA-REKS]</code>.</li>
-<li>With <code>REKS_DELOC_IPR_PENALTY</code> &gt; 0 both blocks add a penalty row, and <code>Total energy</code> = <code>E[SA-REKS]</code> + <code>IPR penalty energy</code> (<a href="/v2/manual/run-control/#reks_deloc_ipr_penalty"><code>REKS_DELOC_IPR_PENALTY</code></a>).</li>
+<li><code>Total Energy</code> of <code>Energetics</code> equals <code>@REKS Final Energy</code> and the <code>E[SA-REKS]</code> row of the decomposition.</li>
 </ul>
 <h4 id="sa-fons">Fractional occupation numbers of the SA-REKS ensemble</h4>
 <p>FONs of the active orbitals of each geminal, summing to 2 per geminal (n<sub>p</sub> + n<sub>q</sub> = 2 for a two-orbital geminal (p,q)), one set per FON generation, pairing scheme and run sector (<a href="/v2/manual/concepts/#fon-generation">FON set and generation</a>).</p>
@@ -666,7 +665,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   --------------------------------------------------------</span></span>
 <span class="line"><span>   n              2           2       0.0e+00       1.1e-10</span></span>
 <span class="line"><span>   m              2           2       0.0e+00       0.0e+00</span></span>
-<span class="line"><span>   mt1            4           2       0.0e+00       1.4e-14</span></span>
+<span class="line"><span>   mt1            4           2       0.0e+00       2.1e-14</span></span>
 <span class="line"><span>   --------------------------------------------------------</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Scheme  Geminal     n                   m                   mt1</span></span>
@@ -700,7 +699,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;</span></span>
 <span class="line"><span>   listed: the three largest |w_j| &gt;= 0.1 %, then every further |w_j| &gt; 5 %.</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>   Overlap S_ij of configuration pairs listed in the same row with |S_ij| &gt; 0.5:</span></span>
+<span class="line"><span>   Overlap S_ij / sqrt(S_ii S_jj) of configuration pairs listed in the same row above 0.5 in magnitude:</span></span>
 <span class="line"><span>   PPS1  / PPS2    0.83    PPS2  / DES2    0.55    DES1  / DDES2  -0.55    DDES1 / DDES2   0.83</span></span></code></pre>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; State summary &lt;==</span></span>
 <span class="line"><span></span></span>
@@ -796,8 +795,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   Transition   dE [eV]  lambda [nm]  mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]   |mu| [D]      f_len</span></span>
 <span class="line"><span>   -------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>   S0-&gt;S1         3.246        382.0     0.000000    -0.000512     0.000000     0.000512   0.001301    0.00000</span></span>
-<span class="line"><span>   S0-&gt;S2         3.375        367.4     0.000000     0.000000     0.016269     0.016269   0.041351    0.00002</span></span>
-<span class="line"><span>   S0-&gt;S3         3.540        350.3     0.000000     0.000000     0.361851     0.361851   0.919734    0.01136 *</span></span>
+<span class="line"><span>   S0-&gt;S2         3.375        367.4     0.000000     0.000000    -0.016269     0.016269   0.041351    0.00002</span></span>
+<span class="line"><span>   S0-&gt;S3         3.540        350.3     0.000000     0.000000    -0.361851     0.361851   0.919734    0.01136 *</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>   * = length and velocity forms differ by more than a factor of 3 (tested when f_len or f_vel &gt; 1e-3):</span></span>
 <span class="line"><span>   the hypervirial relation |p| = dE |mu| does not hold for these approximate states; f is qualitative only.</span></span></code></pre>
@@ -815,8 +814,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   Transition         p_x         p_y         p_z         m_x         m_y         m_z       f_vel         R_vel</span></span>
 <span class="line"><span>   ------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>   S0-&gt;S1        0.000000   -0.000161    0.000000   -0.372053    0.000000    0.000000    0.000000      0.000000</span></span>
-<span class="line"><span>   S0-&gt;S2        0.000000    0.000000   -0.000635    0.000000    0.000000    0.000000    0.000002      0.000000</span></span>
-<span class="line"><span>   S0-&gt;S3        0.000000    0.000000   -0.013689    0.000000    0.000000    0.000000    0.000960 *    0.000000</span></span></code></pre>
+<span class="line"><span>   S0-&gt;S2        0.000000    0.000000    0.000635    0.000000    0.000000    0.000000    0.000002      0.000000</span></span>
+<span class="line"><span>   S0-&gt;S3        0.000000    0.000000    0.013689    0.000000    0.000000    0.000000    0.000960 *    0.000000</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR VELOCITY TRANSITION DIPOLES K=&lt;e&gt;</code>, <code>SSR OSCILLATOR STRENGTHS VELOCITY K=&lt;e&gt;</code></dd></dl>
 <ul>
 <li><code>*</code> after f<sub>vel</sub>: same test as after f<sub>len</sub> (<a href="#transition-dipole">Transition dipole moments and length-form oscillator strengths</a>).</li>
@@ -906,7 +905,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   Transition          xx          xy          xz          yy          yz          zz</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------------------</span></span>
 <span class="line"><span>   S0-&gt;S1        0.000000    0.000000    0.000000    0.000000    0.390067    0.000000</span></span>
-<span class="line"><span>   S0-&gt;S2        0.054364    0.000000    0.000000    0.144255    0.000000   -0.475730</span></span>
+<span class="line"><span>   S0-&gt;S2       -0.054364    0.000000    0.000000   -0.144255    0.000000    0.475730</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>   Its traceless part governs electric-quadrupole transitions, not contained in f_len.</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR TRANSITION QUADRUPOLES K=&lt;e&gt;</code></dd></dl>
@@ -983,10 +982,10 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   Mulliken</span></span>
 <span class="line"><span>   Atom            S0-&gt;S1      S0-&gt;S2      S0-&gt;S3      S0-&gt;S4      S1-&gt;S2      S1-&gt;S3      S1-&gt;S4      S2-&gt;S3      S2-&gt;S4      S3-&gt;S4</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>   H1            0.518340    0.048321   -0.451513    0.441579   -0.161921   -0.361484   -0.547847    0.092855   -0.105954   -0.067768</span></span>
-<span class="line"><span>   H2           -0.266469   -0.048321    0.451513   -0.441579    0.317585    0.023930    0.002624   -0.092855    0.105954    0.067768</span></span>
-<span class="line"><span>   H3            0.266469   -0.048321    0.451513   -0.441579   -0.317585   -0.023930   -0.002624   -0.092855    0.105954    0.067768</span></span>
-<span class="line"><span>   H4           -0.518340    0.048321   -0.451513    0.441579    0.161921    0.361484    0.547847    0.092855   -0.105954   -0.067768</span></span>
+<span class="line"><span>   H1           -0.518340    0.048321   -0.451513    0.441579    0.161921    0.361484    0.547847    0.092855   -0.105954   -0.067768</span></span>
+<span class="line"><span>   H2            0.266469   -0.048321    0.451513   -0.441579   -0.317585   -0.023930   -0.002624   -0.092855    0.105954    0.067768</span></span>
+<span class="line"><span>   H3           -0.266469   -0.048321    0.451513   -0.441579    0.317585    0.023930    0.002624   -0.092855    0.105954    0.067768</span></span>
+<span class="line"><span>   H4            0.518340    0.048321   -0.451513    0.441579   -0.161921   -0.361484   -0.547847    0.092855   -0.105954   -0.067768</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>   Transition charge of each atom for I -&gt; J (e); measures the localization of the transition density.</span></span></code></pre>
@@ -1156,19 +1155,19 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>FSD (fragment spin difference), all pairs of states</span></span>
 <span class="line"><span>Coupling     V_F Lowdin [Eh]    V_F Lowdin [meV]</span></span>
 <span class="line"><span>------------------------------------------------</span></span>
-<span class="line"><span>T1/T2               0.035311             960.855</span></span>
-<span class="line"><span>T1/T3               0.098790            2688.201</span></span>
-<span class="line"><span>T1/T4               0.045066            1226.307</span></span>
-<span class="line"><span>T1/T5               0.028131             765.471</span></span>
+<span class="line"><span>T1/T2               0.035361             962.219</span></span>
+<span class="line"><span>T1/T3              -0.098132           -2670.302</span></span>
+<span class="line"><span>T1/T4               0.045961            1250.653</span></span>
+<span class="line"><span>T1/T5              -0.027480            -747.756</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>T2/T3              -0.021307            -579.805</span></span>
-<span class="line"><span>T2/T4              -0.121461           -3305.123</span></span>
-<span class="line"><span>T2/T5               0.019259             524.066</span></span>
+<span class="line"><span>T2/T3               0.020817             566.460</span></span>
+<span class="line"><span>T2/T4              -0.121179           -3297.443</span></span>
+<span class="line"><span>T2/T5              -0.018786            -511.184</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>T3/T4              -0.013363            -363.618</span></span>
-<span class="line"><span>T3/T5              -0.044593           -1213.442</span></span>
+<span class="line"><span>T3/T4               0.014038             381.993</span></span>
+<span class="line"><span>T3/T5              -0.041908           -1140.371</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>T4/T5              -0.045095           -1227.100</span></span>
+<span class="line"><span>T4/T5               0.045427            1236.121</span></span>
 <span class="line"><span>------------------------------------------------</span></span>
 <span class="line"><span>Diabatic coupling V_F between F1 and F2: FCD = charge-transfer coupling, D = q(F1) - q(F2);</span></span>
 <span class="line"><span>FSD = spin energy-transfer coupling, D = s(F1) - s(F2), s = Lowdin spin population.</span></span>
@@ -1350,7 +1349,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    H5       0.013913877423     0.000000000000    -0.002030257854</span></span>
 <span class="line"><span>    H6      -0.013913877423     0.000000000000    -0.002030257853</span></span>
 <span class="line"><span>    -------------------------------------------------------------</span></span>
-<span class="line"><span>    max |g| = 5.061e-02 Eh/a0   rms |g| = 1.669e-02 Eh/a0   |sum over atoms| = 7.1e-15 Eh/a0</span></span></code></pre>
+<span class="line"><span>    max |g| = 5.061e-02 Eh/a0   rms |g| = 1.669e-02 Eh/a0   |sum over atoms| = 1.1e-14 Eh/a0</span></span></code></pre>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; Returned gradient &lt;==</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>-Total Gradient:</span></span>
@@ -1389,17 +1388,17 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    Nonadiabatic coupling d_12 = &lt;S1|d/dR S2&gt; [1/a0]</span></span>
 <span class="line"><span>    Atom                  X                  Y                  Z</span></span>
 <span class="line"><span>    -------------------------------------------------------------</span></span>
-<span class="line"><span>    C1       0.000000000000   -15.149724827394    -0.000000000012</span></span>
-<span class="line"><span>    H2      -0.000000000001     5.247132242552     0.000000000007</span></span>
-<span class="line"><span>    H3       0.000000000002     5.247132242564     0.000000000007</span></span>
-<span class="line"><span>    C4       0.000000000000    14.301163401751    -0.000000000015</span></span>
-<span class="line"><span>    H5       0.000000000001    -4.823770374506     0.000000000006</span></span>
-<span class="line"><span>    H6      -0.000000000001    -4.823770374510     0.000000000006</span></span>
+<span class="line"><span>    C1       0.000000000000    15.149724827734     0.000000000018</span></span>
+<span class="line"><span>    H2       0.000000000002    -5.247132242667    -0.000000000009</span></span>
+<span class="line"><span>    H3      -0.000000000002    -5.247132242680    -0.000000000009</span></span>
+<span class="line"><span>    C4       0.000000000000   -14.301163402068     0.000000000017</span></span>
+<span class="line"><span>    H5      -0.000000000002     4.823770374611    -0.000000000009</span></span>
+<span class="line"><span>    H6       0.000000000002     4.823770374615    -0.000000000009</span></span>
 <span class="line"><span>    -------------------------------------------------------------</span></span>
 <span class="line"><span>    |d_12| = 2.314e+01 1/a0   |E(S2) - E(S1)| |d_12| = 1.101e-01 Eh/a0</span></span>
 <span class="line"><span>    |d_model| = 2.631e+01, |d_residual| = 3.172e+00 (1/a0)</span></span>
-<span class="line"><span>    sum over atoms of d_12       = (-8.144e-15, -1.838e-03,  3.100e-13) 1/a0</span></span>
-<span class="line"><span>    -p from the velocity moments = (-2.781e-15, -1.838e-03,  3.096e-13) 1/a0   consistent (deviation 2.8e-13)</span></span></code></pre>
+<span class="line"><span>    sum over atoms of d_12       = ( 2.369e-15,  1.838e-03, -2.627e-13) 1/a0</span></span>
+<span class="line"><span>    -p from the velocity moments = ( 2.781e-15,  1.838e-03, -2.528e-13) 1/a0   consistent (deviation 2.1e-14)</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR NAC &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>, <code>SSR NAC MODEL &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>, <code>SSR NAC RESIDUAL &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>; the root gradients <code>SSR ROOT &lt;I&gt; GRADIENT CASSETTE &lt;e&gt;</code>, <code>SSR ROOT &lt;J&gt; GRADIENT CASSETTE &lt;e&gt;</code></dd></dl>
 <ul>
 <li>The sum rule is checked against −p from the velocity moments only when <code>SI_REKS_ANALYSIS</code> computes them (<code>E_TDM_VEL</code> or <code>M_TDM</code>); the line ends with <code>consistent</code> when the deviation is ≤ 10<sup>-6</sup>, otherwise it reads <code>deviation …</code> without <code>consistent</code>. Without the moments the legend prints <code>-p_12 requires SI_REKS_ANALYSIS E_TDM_VEL</code>.</li>

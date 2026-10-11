@@ -50,8 +50,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    States                S0, S1, S2 (cassette 0)</span></span>
 <span class="line"><span>    Equations             9: 3 states + 6 for NAC S0/S1 (cassette 0), S0/S2 (cassette 0), S1/S2 (cassette 0)</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>    Z-vectors converged in 9 iterations.</span></span></code></pre>
-<p>One CP-REKS solve covers every target (<a href="/v2/manual/setup/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a>). Wall time of the whole call (SCF included, 4 threads; two runs agree to 0.02 s):</p>
+<span class="line"><span>    Z-vectors converged in 10 iterations.</span></span></code></pre>
+<p>One CP-REKS solve covers every target (<a href="/v2/manual/setup/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a>). Wall time of the whole call (SCF included, 4 threads, Apple M1 Pro; two runs agree to 0.07 s):</p>
 <div class="reftable-wrap"><table>
 <thead>
 <tr>
@@ -67,28 +67,28 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><code>[[1]]</code></td>
 <td>—</td>
 <td>1</td>
-<td>1.5</td>
+<td>1.2</td>
 <td>S1</td>
 </tr>
 <tr>
 <td><code>[[1, 0]]</code></td>
 <td>—</td>
 <td>2</td>
-<td>1.6</td>
+<td>1.2</td>
 <td>S1</td>
 </tr>
 <tr>
 <td><code>[[1, 0, 2]]</code></td>
 <td>—</td>
 <td>3</td>
-<td>1.6</td>
+<td>1.3</td>
 <td>S1</td>
 </tr>
 <tr>
 <td><code>[[1]]</code></td>
 <td>three pairs</td>
 <td>9</td>
-<td>2.0</td>
+<td>1.7</td>
 <td>S1</td>
 </tr>
 </tbody>
@@ -215,8 +215,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E7E6E2">python </span><span style="color:#E7E6E2">opt_c2h4.py</span></span></code></pre>
 <p>DL-FIND prints its cycles to the terminal; the last one:</p>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>Testing convergence  in cycle    8</span></span>
-<span class="line"><span>    Energy  2.6943E-07 Target: 1.0000E-06 converged?  yes</span></span>
-<span class="line"><span>  Max step  1.2440E-03 Target: 1.8000E-03 converged?  yes component     7</span></span>
+<span class="line"><span>    Energy  2.6936E-07 Target: 1.0000E-06 converged?  yes</span></span>
+<span class="line"><span>  Max step  1.2441E-03 Target: 1.8000E-03 converged?  yes component     7</span></span>
 <span class="line"><span>  RMS step  4.8905E-04 Target: 1.2000E-03 converged?  yes</span></span>
 <span class="line"><span>  Max grad  9.0958E-06 Target: 4.5000E-04 converged?  yes component    12</span></span>
 <span class="line"><span>  RMS grad  3.4729E-06 Target: 3.0000E-04 converged?  yes</span></span>
@@ -224,9 +224,9 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span></span></span>
 <span class="line"><span> Optimisation converged</span></span>
 <span class="line"><span> ----------------------</span></span>
-<span class="line"><span> Final converged energy:     -78.528630422662</span></span>
+<span class="line"><span> Final converged energy:     -78.528630422598</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>E(S0) = -78.5286304227</span></span></code></pre>
+<span class="line"><span>E(S0) = -78.5286304226</span></span></code></pre>
 <p><code>opt_c2h4.out</code>, last point:</p>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>gradient: seeding orbital guess from dlfind_orbitals.wfn.npy (GUESS set to READ).</span></span>
 <span class="line"><span>[...]</span></span>
@@ -238,7 +238,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>       8A     -0.299767  (a)    n_a =  1.997742</span></span>
 <span class="line"><span>       9A     -0.018589  (b)    n_b =  0.002258</span></span></code></pre>
-<dl class="fields"><dt>Start point</dt><dd><code>restart_file</code> seeds the first point; each later point reads the orbitals of the previous one.</dd><dt>Frame</dt><dd><code>no_com</code>, <code>no_reorient</code>: DL-FIND and PyUNIxMD move the atoms in the input frame. Keep every atom off the Cartesian axes (two coordinates near zero), as the shifted inputs here do: an atom within ~10⁻⁸ a₀ of an axis makes Psi4 fail while building the basis set (<code>Unrecognized point group bits</code>).</dd></dl>
+<dl class="fields"><dt>Start point</dt><dd><code>restart_file</code> seeds the first point; each later point reads the orbitals of the previous one.</dd><dt>Frame</dt><dd><code>no_com</code>, <code>no_reorient</code>: DL-FIND and PyUNIxMD move the atoms in the input frame.</dd></dl>
 <p>T1 of all-trans-hexatriene, SI-SA-REKS(6,6) with the π window of <a href="/v2/manual/first-calculation/#first-spin">Higher spin states</a> and the SI cassette on 2S = 2 (root 0 = T1). The window places the RKS orbitals at the first REKS point and is then switched off, since it moves the columns of any read guess (<a href="/v2/manual/run-control/#guess_active_window"><code>GUESS_ACTIVE_WINDOW</code></a>). From <a href="../../inputs/opt_hexatriene.py"><code>opt_hexatriene.py</code></a>:</p>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#6E7686"># REKS(6,6) at the start geometry: pi window from the RKS orbitals (LUMO+2 is sigma*), triplet SI cassette</span></span>
 <span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"reference"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">: [6, 6],</span></span>
@@ -276,12 +276,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td>1.481</td>
 <td>1.365</td>
 <td>1.411</td>
-<td>−233.1785176650</td>
+<td>−233.17851767</td>
 <td>2.489, 3.977</td>
 </tr>
 </tbody>
 </table></div>
-<p>The minimum is planar (|z| ≤ 6 · 10⁻⁸ Å).</p>
+<p>The minimum is planar (|z| &lt; 10⁻⁷ Å).</p>
 <h3 id="check-optimization">Check the optimization</h3>
 <dl class="fields"><dt>Converged</dt><dd>all five criteria <code>yes</code> in the last cycle and <code>Optimisation converged</code>. Necessary, not sufficient: the end point is a stationary point, and the gradient criteria cannot tell a minimum from a saddle point.</dd><dt>Solution</dt><dd>n<sub>a</sub> of the active pair at every point, <code>grep "n_a =" opt_c2h4.out</code>: here 1.999484 → 1.997742, and no <code>[GRAD-FON] … pinned</code> line (<a href="/v2/manual/diagnose/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>).</dd><dt>Followed root</dt><dd><code>S0 *</code> (<code>T1 *</code> for hexatriene) in every <code>Gradient request</code>.</dd><dt>Errors</dt><dd>an SCF that fails prints <code>reks_dlfind: SCFConvergenceError; stopping DL-FIND</code>; DL-FIND then ends with <code>Optimisation converged</code>, which does not count, and the script stops with Psi4's error.</dd></dl>
 <h3 id="surface-hopping">Surface hopping</h3>
@@ -316,11 +316,11 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>Start</dt><dd><code>molecule()</code> reads the geometry and draws one set of velocities from the Maxwell–Boltzmann distribution at 300 K (<code>seed=1</code>); the instantaneous temperature of this draw, printed at step 0, is 93.6 K. PyUNIxMD counts 3N − 6 = 12 degrees of freedom; over many draws the printed value has mean ≈ 370 K and standard deviation ≈ 140 K. Another <code>seed</code> gives another draw. One demonstration trajectory: a study samples initial conditions (e.g. Wigner) and runs an ensemble.</dd><dt>Hopping</dt><dd>fewest-switches surface hopping without decoherence correction (<code>mqc.SH</code> default; option <code>dec_correction</code>); NAC phases are aligned between steps (<code>l_adj_nac</code>, default on).</dd><dt>Terminal</dt><dd>one line per step:</dd></dl>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>#INFO    STEP  State    Kinetic(H)   Potential(H)     Total(H)   Temperature(K)   Norm.</span></span>
 <span class="line"><span>INFO        0    1      0.00177932   -78.22228694   -78.22050762    93.643953    1.00000</span></span>
-<span class="line"><span>INFO        1    1      0.00224421   -78.22275032   -78.22050611   118.110614    1.00000</span></span>
-<span class="line"><span>INFO        2    1      0.00389882   -78.22441616   -78.22051734   205.191560    1.00000</span></span>
+<span class="line"><span>INFO        1    1      0.00224421   -78.22275032   -78.22050612   118.110612    1.00000</span></span>
+<span class="line"><span>INFO        2    1      0.00389882   -78.22441616   -78.22051734   205.191557    1.00000</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>INFO      199    1      0.05085347   -78.27052303   -78.21966957  2676.372582    1.00000</span></span>
-<span class="line"><span>INFO      200    1      0.04679572   -78.26639469   -78.21959897  2462.816786    1.00000</span></span></code></pre>
+<span class="line"><span>INFO      199    1      0.05085342   -78.27052294   -78.21966952  2676.370086    1.00000</span></span>
+<span class="line"><span>INFO      200    1      0.04679566   -78.26639459   -78.21959893  2462.813947    1.00000</span></span></code></pre>
 <dl class="fields"><dt>Files</dt><dd><code>md/MDENERGY</code> energies per step, <code>md/SHSTATE</code> running state, <code>md/SHPROB</code> hopping probabilities, <code>md/MOVIE.xyz</code> geometries and velocities.</dd></dl>
 <p>Hexatriene on T1 from the minimum of <code>opt_hexatriene.py</code>, the three lowest triplet roots: with <code>si_reks_2spin [2]</code> cassette 0 is the triplet cassette, and <code>REKS</code> reads the roots of cassette 0 whatever its 2S. From <a href="../../inputs/md_hexatriene.py"><code>md_hexatriene.py</code></a>:</p>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"basis"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"6-31g(d)"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"scf_type"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"df"</span><span style="color:#E7E6E2">,</span></span>
@@ -374,19 +374,19 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td>hexatriene</td>
 <td>0.5</td>
 <td>50</td>
-<td>+0.022</td>
-<td>0.072</td>
-<td>0.028</td>
-<td>7.2</td>
+<td>+0.065</td>
+<td>0.082</td>
+<td>0.035</td>
+<td>7.1</td>
 </tr>
 <tr>
 <td>hexatriene</td>
 <td>0.25</td>
 <td>100</td>
-<td>−0.015</td>
-<td>0.039</td>
-<td>0.031</td>
-<td>7.1</td>
+<td>−0.072</td>
+<td>0.19</td>
+<td>0.19</td>
+<td>7.0</td>
 </tr>
 </tbody>
 </table></div>
@@ -394,7 +394,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <img src="../../figures/md_energy.svg" alt="Kinetic, potential and total energy along the C2H4 and hexatriene trajectories; total energy for time steps 0.5 and 0.25 fs" loading="lazy" decoding="async" width="710" height="602">
 <figcaption>Left: C₂H₄ on S1; right: hexatriene on T1. Top: E<sub>kin</sub>, E<sub>pot</sub> − E<sub>pot</sub>(0), E<sub>tot</sub> − E<sub>tot</sub>(0), dt 0.5 fs. Bottom: E<sub>tot</sub> − E<sub>tot</sub>(0) for dt 0.5 and 0.25 fs.</figcaption>
 </figure>
-<dl class="fields"><dt>Energy</dt><dd>C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. The C₂H₄ dt 0.5 fs drift comes from the last steps: E<sub>tot</sub> − E<sub>tot</sub>(0) is +0.006 at step 196 and +0.570 kcal mol⁻¹ at step 200 (largest step, 0.43, between steps 198 and 199). Halving <code>dt</code> shrinks the range of E<sub>tot</sub> 4.8-fold for C₂H₄ over 100 fs (4.1-fold over the first 50 fs; dt² error of velocity Verlet: 4-fold) and 1.9-fold for hexatriene over 25 fs.</dd><dt>Solution</dt><dd>n<sub>a</sub> of the active pair per step, <code>grep "n_a =" md_c2h4.out</code>, continuous. When n<sub>a</sub> crosses 1 (90° twist of C₂H₄; seven times in the dt 0.5 fs run, first at steps 40–41 and 78–79) the label (a) switches between orbitals 8A and 9A. If n<sub>a</sub> and the Total column jump together between two steps, the solution has changed. Steps with an unconverged SCF: <a href="/v2/manual/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>State</dt><dd><code>md/SHSTATE</code>. C₂H₄, dt 0.5 fs: on S1 to 56.0 fs, on S2 to 92.5 fs, then on S1. C₂H₄, dt 0.25 fs: S1 → S2 at 37.5, 59.25 and 69.5 fs, back at 39.5 and 67.5 fs; at 37.5, 59.25 and 69.5 fs the velocities are rescaled uniformly (<code>no solution to find rescale factor, but velocity is simply rescaled</code>). Hexatriene: T1 throughout. The followed root is an energy index, not a state character (<a href="/v2/manual/diagnose/#diag-quasi-degenerate">Quasi-degenerate roots</a>).</dd></dl>
+<dl class="fields"><dt>Energy</dt><dd>C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. The C₂H₄ dt 0.5 fs drift comes from the last steps: E<sub>tot</sub> − E<sub>tot</sub>(0) is +0.006 at step 196 and +0.570 kcal mol⁻¹ at step 200 (largest step, 0.43, between steps 198 and 199). Halving <code>dt</code> shrinks the range of E<sub>tot</sub> 4.8-fold for C₂H₄ over 100 fs (4.1-fold over the first 50 fs; dt² error of velocity Verlet: 4-fold). In the hexatriene dt 0.25 fs run E<sub>tot</sub> alternates from step to step after 17.5 fs (step 70), with the largest step growing from 0.017 kcal mol⁻¹ (steps 0–60) to 0.040, 0.077 and 0.19 kcal mol⁻¹ (steps 70–80, 80–90, 90–100), while the FONs stay continuous; its range, 0.19 kcal mol⁻¹, exceeds that of dt 0.5 fs, 0.082 kcal mol⁻¹ (0.027 against 0.075 over the first 12.5 fs).</dd><dt>Solution</dt><dd>n<sub>a</sub> of the active pair per step, <code>grep "n_a =" md_c2h4.out</code>, continuous. The orbital labelled (a) carries n<sub>a</sub> ≥ 1 at every step (generation-0 ordering, <a href="/v2/manual/run-control/#fons">§11</a>): in the dt 0.5 fs run (a) is 8A at all 201 steps, n<sub>a</sub> ≥ 1.017216. If n<sub>a</sub> and the Total column jump together between two steps, the solution has changed. Steps with an unconverged SCF: <a href="/v2/manual/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>State</dt><dd><code>md/SHSTATE</code>. C₂H₄, dt 0.5 fs: on S1 to 56.0 fs, on S2 to 92.5 fs, then on S1. C₂H₄, dt 0.25 fs: S1 → S2 at 37.5, 59.25 and 69.5 fs, back at 39.5 and 67.5 fs; at 37.5, 59.25 and 69.5 fs the velocities are rescaled uniformly (<code>no solution to find rescale factor, but velocity is simply rescaled</code>). Hexatriene: T1 throughout. The followed root is an energy index, not a state character (<a href="/v2/manual/diagnose/#diag-quasi-degenerate">Quasi-degenerate roots</a>).</dd></dl>
 <h3 id="dynamics-inputs">Worked inputs</h3>
 <p>Scripts in run order, in one directory with <code>reks_dlfind.py</code> and <code>reks_unixmd.py</code> (imported, not run).</p>
 <div class="reftable-wrap"><table>
@@ -424,7 +424,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <tr>
 <td><a href="../../inputs/opt_c2h4.py"><code>opt_c2h4.py</code></a></td>
 <td>S0 of C₂H₄, SSR(2,2) BH&amp;HLYP/6-31G(d), DF, RKS seed, DL-FIND</td>
-<td>E(S0) = −78.5286304227 E<sub>h</sub>, 8 gradients</td>
+<td>E(S0) = −78.52863042 E<sub>h</sub>, 8 gradients</td>
 </tr>
 <tr>
 <td><a href="../../inputs/md_c2h4.py"><code>md_c2h4.py</code></a></td>
@@ -434,12 +434,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <tr>
 <td><a href="../../inputs/opt_hexatriene.py"><code>opt_hexatriene.py</code></a></td>
 <td>T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH&amp;HLYP/6-31G(d), DF, π window, DL-FIND</td>
-<td>E(T1) = −233.1785176650 E<sub>h</sub>, 11 gradients, 5.5 min on 8 threads</td>
+<td>E(T1) = −233.17851767 E<sub>h</sub>, 11 gradients, 5.5 min on 8 threads</td>
 </tr>
 <tr>
 <td><a href="../../inputs/md_hexatriene.py"><code>md_hexatriene.py</code></a></td>
 <td>surface hopping on T1 from the <code>opt_hexatriene.py</code> geometry, 3 triplet states, 50 × 0.5 fs</td>
-<td>T1 throughout; E<sub>tot</sub> drift +0.022 kcal mol⁻¹, range 0.072 kcal mol⁻¹; 39 s per step on 8 threads</td>
+<td>T1 throughout; E<sub>tot</sub> drift +0.065 kcal mol⁻¹, range 0.082 kcal mol⁻¹; 39 s per step on 8 threads</td>
 </tr>
 </tbody>
 </table></div></div></section>

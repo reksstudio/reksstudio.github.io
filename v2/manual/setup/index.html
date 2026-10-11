@@ -290,7 +290,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <h3 id="si-cassettes">SI cassettes</h3>
 <h4 id="si_reks_configs"><code>SI_REKS_CONFIGS</code></h4>
 <dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd>one full-block cassette, lowest manifold</dd><dt>Alias</dt><dd><code>REKS_SI_CONFIGS</code></dd></dl>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"si_reks_configs"</span><span style="color:#E7E6E2">: [[</span><span style="color:#E7A98A">"PPS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS1"</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">"PPS2"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS3"</span><span style="color:#E7E6E2">]],</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"si_reks_configs"</span><span style="color:#E7E6E2">: [[[</span><span style="color:#E7A98A">"PPS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS1"</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">"PPS2"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS3"</span><span style="color:#E7E6E2">]]],</span></span></code></pre>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; SI pools &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Cassette  Spin          Configs  Method              Wfn storage</span></span>
@@ -327,8 +327,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   Closest = state of the first list of largest weight overlap sum_j min(w_j(A), w_j(B)) &gt;= 50 %</span></span>
 <span class="line"><span>   (configurations of |S| &gt;= 0.95 merged); dE_exc = E-E(own lowest).</span></span></code></pre>
 <ul>
-<li>2-level <code>[[...], [...], ...]</code>: the cassettes of one group (one spin manifold); the call above makes two cassettes, each with its own states (third fragment). A cassette is a set of names, indices or bulk tokens (<a href="#bulk-tokens">§6</a>); a repeated selection is kept at its first position.</li>
-<li>3-level <code>[[[...]], [[...]], ...]</code>: one group of cassettes per outer entry, each group mapped to a spin manifold like the SA blocks (ladder position or <code>SI_REKS_2SPIN</code>). The 2-level form is legal only when <code>SI_REKS_2SPIN</code> is absent or has length 1. First two fragments: <code>[[["full"]], [["full"]]]</code> with <code>SI_REKS_2SPIN</code> <code>[0, 2]</code>.</li>
+<li>3-level <code>[[[...], ...], [[...], ...], ...]</code>: one group of cassettes per outer entry, each group mapped to a spin manifold like the SA blocks (ladder position or <code>SI_REKS_2SPIN</code>). The call above is one group of two cassettes, each with its own states (third fragment). A cassette is a set of names, indices or bulk tokens (<a href="#bulk-tokens">§6</a>); a repeated selection is kept at its first position. First two fragments: <code>[[["full"]], [["full"]]]</code> with <code>SI_REKS_2SPIN</code> <code>[0, 2]</code>.</li>
+<li>2-level <code>[[...], [...], ...]</code>: the cassettes of a single group on the run's lowest manifold (or the one <code>SI_REKS_2SPIN</code> names); legal only when <code>SI_REKS_2SPIN</code> is absent or has length 1. The 3-level form without <code>SI_REKS_2SPIN</code> maps group 0 to ladder position 0, the catalog's first spin sector; the two forms coincide when that is the run's lowest manifold, as in the call above.</li>
 <li>Absent: one cassette spanning the whole configuration block of the run's lowest (or <code>SI_REKS_2SPIN</code>-chosen) manifold. <code>[[]]</code> runs no SI step and sets no <code>SSR</code> arrays.</li>
 <li>A flat list of names (<code>["PPS1", "OSS1"]</code>) is an input error: <code>SI_REKS_CONFIGS: scalar elements are not a cassette form; use a list of cassettes [[...], ...] (2-level) or cassette groups [[[...]], ...] (3-level).</code></li>
 <li><code>Wfn storage</code> <code>none</code> in <code>SI pools</code> means no per-state <code>SSR … K=e</code> analysis arrays and no natural-orbital, NTO or NDO Molden files for that cassette (<a href="#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a>).</li>
@@ -520,7 +520,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   -----------------------------</span></span>
 <span class="line"><span>   States = SI states whose nuclear gradient is computed. * = followed state, returned by gradient().</span></span></code></pre>
 <ul>
-<li>Roots whose gradients are computed, one inner list per cassette (inner list e = cassette e); roots as in <a href="/v2/manual/concepts/#ssr-states">Adiabatic (SSR) states</a>. Inner list <code>[-1]</code> = all roots of that cassette (<code>[[-1]]</code>); a flat <code>[-1]</code> is an input error.</li>
+<li>Roots whose gradients are computed, one inner list per cassette (inner list e = cassette e); roots as in <a href="/v2/manual/concepts/#ssr-states">Adiabatic (SSR) states</a>. Inner list <code>[-1]</code> = all roots of that cassette (<code>[[-1]]</code>); a flat <code>[-1]</code> is an input error. More inner lists than SI cassettes stop the run before the SCF: <code>REKS input error: SI_REKS_GRAD: 2 order list(s) for 1 SI cassette(s).</code></li>
 <li>The followed root, marked <code>*</code> in <code>Gradient request</code>, is the first entry of the first non-empty inner list (<code>-1</code> → root 0). Without <code>SI_REKS_GRAD</code> it is the lowest root index in the pairs of the first non-empty <code>SI_REKS_NAC</code> list.</li>
 <li>With a followed root, <code>CURRENT ENERGY</code> is its energy, also stored as <code>REKS TARGET STATE ENERGY</code>, in <code>energy()</code> and <code>gradient()</code>; <code>gradient()</code> returns its gradient (<a href="/v2/manual/properties/#state-gradient">Nuclear gradients of SSR states</a>). Without a followed root: <a href="/v2/manual/#explicit-input">Explicit SA pool and SI cassettes</a>.</li>
 <li><code>CURRENT DIPOLE</code> is the relaxed dipole of the followed root when <code>SI_REKS_PROPERTY_FOR</code> lists that root, and is unset otherwise.</li>
@@ -549,17 +549,18 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span></span></span>
 <span class="line"><span>    Iter      Mean |R|       Max |R|   Remain   Time [s]</span></span>
 <span class="line"><span>    ----------------------------------------------------</span></span>
-<span class="line"><span>       1     2.990e-01     9.607e-01        4       0.01</span></span>
-<span class="line"><span>       2     1.585e-01     5.441e-01        4       0.02</span></span>
+<span class="line"><span>       1     2.990e-01     9.607e-01        4       0.03</span></span>
+<span class="line"><span>       2     1.585e-01     5.441e-01        4       0.08</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>      12     1.614e-09     1.614e-09        1       0.10</span></span>
-<span class="line"><span>      13     1.363e-10     1.363e-10        0       0.11</span></span>
+<span class="line"><span>      12     1.614e-09     1.614e-09        1       0.35</span></span>
+<span class="line"><span>      13     1.363e-10     1.363e-10        0       0.38</span></span>
 <span class="line"><span>    ----------------------------------------------------</span></span>
 <span class="line"><span>    Z-vectors converged in 13 iterations.</span></span></code></pre>
 <ul>
 <li>CP-REKS (Z-vector) residual threshold, relative to max(1, ‖b‖). One solve serves the relaxed properties, gradients and NACs of the run.</li>
 <li>The solver block is printed when <code>SI_REKS_PROPERTY_FOR</code> names states, or in <code>gradient()</code> with <code>SI_REKS_GRAD</code> or <code>SI_REKS_NAC</code>, at <code>REKS_REPORT_LEVEL</code> ≥ 2 and Psi4 <code>PRINT</code> ≥ 1 (defaults).</li>
 <li>Converged: <code>Remain</code> reaches 0 and the block ends with <code>Z-vectors converged in N iterations.</code>. Non-convergence ends the run with <code>no convergence in N rounds</code>.</li>
+<li>A target t closes at max(threshold, 10 ε ‖A‖ ‖Z<sub>t</sub>‖), ε the machine epsilon, ‖A‖ = max(max<sub>i</sub> |A<sub>ii</sub>|, max ‖A d‖ over the unit search directions d): below that the residual is roundoff of the operator. Targets closed at this floor are counted after the converged line (<code>N target(s) closed at the roundoff floor 10 eps |A| |Z|</code>). When the explicit residual of a target exceeds this bound, every open target continues from its explicit residual in a new search space.</li>
 </ul>
 <h4 id="reks_cpreks_maxiter"><code>REKS_CPREKS_MAXITER</code></h4>
 <dl class="fields"><dt>Type</dt><dd>int</dd><dt>Default</dt><dd><code>200</code></dd></dl>
