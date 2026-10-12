@@ -12,5 +12,15 @@
     "astro": "7.3.6",
     "github-slugger": "2.0.0",
     "temml": "0.13.5"
+  },
+  "devDependencies": {
+    "hast-util-to-mdast": "10.1.2",
+    "hast-util-to-text": "4.0.2",
+    "mdast-util-gfm-table": "2.0.0",
+    "mdast-util-math": "3.0.0",
+    "mdast-util-mdx-jsx": "3.2.0",
+    "mdast-util-to-markdown": "2.2.0",
+    "mdast-util-to-string": "4.0.0",
+    "satteri": "0.10.5"
   }
 }

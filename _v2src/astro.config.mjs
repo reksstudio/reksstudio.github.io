@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import codeTheme from './src/code-theme.json' with { type: 'json' };
+import aiLayer from './src/lib/ai-layer.mjs';
 import manualHast from './src/lib/manual-hast.mjs';
 import { referenceMdast } from './src/lib/reference.mjs';
 
@@ -17,6 +18,7 @@ export default defineConfig({
     inlineStylesheets: 'always',
   },
   compressHTML: true,
+  integrations: [aiLayer()],
   markdown: {
     shikiConfig: { theme: codeTheme, langAlias: { psithon: 'text', log: 'text' } },
     processor: satteri({

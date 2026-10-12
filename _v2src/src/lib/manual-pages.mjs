@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { properties } from '../data/properties.json' with { type: 'json' };
 import blocks from '../data/blocks.json' with { type: 'json' };
-import { fragmentIds, markerContent, optionAlias, optionGroups, optionId, optionKeys, parseMarker } from './reference.mjs';
+import { fragmentIds, markerContent, optionAlias, optionGroup, optionGroups, optionId, optionKeys, parseMarker } from './reference.mjs';
 
 // Manual pages in reading order: src/content/manual/<file>.md -> <base>manual/<slug>/ ('' = <base>manual/).
 // Page titles live in the frontmatter of each file. tocDepth = deepest heading level in the page TOC (default 3);
@@ -55,7 +55,8 @@ function checkCoverage(map, markers, printed, owners) {
   const used = count(markers.map(({ name, arg }) => (arg ? `${name} ${arg}` : name)));
   const grouped = count(optionGroups().flatMap((g) => g.keys));
   for (const key of optionKeys()) if (grouped.get(key) !== 1) fail(`option ${key} is in ${grouped.get(key) ?? 0} groups`);
-  for (const key of grouped.keys()) if (!optionKeys().includes(key)) fail(`group key ${key} is not an option`);
+  const keys = new Set(optionKeys());
+  for (const key of grouped.keys()) if (!keys.has(key)) fail(`group key ${key} is not an option`);
   for (const g of optionGroups()) {
     const n = used.get(`options ${g.id}`) ?? 0;
     if (g.compact ? n > 1 : n !== 1) fail(`option group ${g.id} rendered ${n} times`);
@@ -141,6 +142,27 @@ const blockTerm = (header) =>
 const variableNames = (text = '') =>
   [...text.matchAll(/`([^`]+)`/g)].map((m) => m[1]).filter((s) => /^[A-Z]/.test(s) && !/[a-z]/.test(s.replace(/<[^>]*>/g, '')));
 
+const stripNum = (text) => text.replace(/^\d+\.\s+/, '');
+
+// option key -> { slug, id, title } of its manual target: its entry, else the entry of its compact group, else its
+// group heading (level 3, unique title) among pages [{ slug, headings }]
+function optionTarget(key, pages) {
+  const g = optionGroup(key);
+  const id = [optionId(key), g.id].find((x) => entryMap().has(x));
+  if (id) return { slug: entryMap().get(id).slug, id, title: entryMap().get(id).title };
+  const found = pages.flatMap((p) =>
+    p.headings.filter((h) => h.depth === 3 && h.text === g.title).map((h) => ({ slug: p.slug, id: h.slug, title: stripNum(h.text) })),
+  );
+  if (found.length !== 1) throw new Error(`manual index: option group "${g.title}" has ${found.length} headings`);
+  return found[0];
+}
+
+// option key -> href of its manual target (optionTarget), relative to the page fromSlug (null: from anywhere)
+export function optionHref(key, pages, fromSlug, base) {
+  const t = optionTarget(key, pages);
+  return anchorHref(t.slug, t.id, fromSlug, base);
+}
+
 // A-Z index: option keys and aliases, property names, printed block headers, stored variable names and the
 // headings of pages [{ slug, title, headings }] -> [{ letter, terms: [{ text, code, targets: [{ href, label }] }] }];
 // terms merge case-insensitively and keep each distinct target once; a target is labelled by its page title, or by
@@ -155,7 +177,6 @@ export function manualIndex(pages, fromSlug, base) {
     term.code ||= code;
     if (!term.targets.some((t) => t.href === href)) term.targets.push({ href, page: titles.get(slug), title });
   };
-  const stripNum = (text) => text.replace(/^\d+\.\s+/, '');
   const addHeading = (text, code, slug, h) => add(text, code, slug, anchorHref(slug, h.slug, fromSlug, base), stripNum(h.text));
   const addEntry = (text, code, id) => {
     const href = entryHref(id, fromSlug, base);
@@ -163,14 +184,9 @@ export function manualIndex(pages, fromSlug, base) {
     add(text, code, e.slug, href, e.title);
   };
 
-  // option key -> its entry, else the entry of its compact group, else its group heading (level 3, unique title)
   const addOption = (text, key) => {
-    if (entryMap().has(optionId(key))) return addEntry(text, true, optionId(key));
-    const g = optionGroups().find((x) => x.keys.includes(key));
-    if (entryMap().has(g.id)) return addEntry(text, true, g.id);
-    const found = pages.flatMap((p) => p.headings.filter((h) => h.depth === 3 && h.text === g.title).map((h) => [p.slug, h]));
-    if (found.length !== 1) throw new Error(`manual index: option group "${g.title}" has ${found.length} headings`);
-    addHeading(text, true, ...found[0]);
+    const t = optionTarget(key, pages);
+    add(text, true, t.slug, anchorHref(t.slug, t.id, fromSlug, base), t.title);
   };
 
   const keys = optionKeys();

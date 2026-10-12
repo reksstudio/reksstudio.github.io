@@ -27,10 +27,17 @@ export function group(id) {
 }
 
 export const optionGroups = () => ref.groups;
+const GROUP_OF = new Map(ref.groups.flatMap((g) => g.keys.map((key) => [key, g])));
+export function optionGroup(key) {
+  const g = GROUP_OF.get(key);
+  if (!g) throw new Error(`reference.json: option ${key} is in no group`);
+  return g;
+}
 export const optionKeys = () => Object.keys(ref.entries).filter((key) => ref.entries[key].option);
 export const optionId = (key) => entry(key).id ?? key.toLowerCase();
 export const optionAlias = (key) => entry(key).alias;
-const optionTitle = (key) => entry(key).title ?? key;
+export const optionType = (key) => entry(key).type;
+export const optionTitle = (key) => entry(key).title ?? key;
 
 const mdRow = (cells) => `| ${cells.map((c) => toMd(c).replaceAll('|', '\\|')).join(' | ')} |`;
 const mdTable = (head, rows) => [mdRow(head), mdRow(head.map(() => '---')), ...rows.map(mdRow)].join('\n');

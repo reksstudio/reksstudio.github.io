@@ -54,6 +54,7 @@ const banner = fragmentText('banner').split('\n').map((s) => s.trim()).filter((s
 ---
 <Base title={`${page.title} — REKS Studio Manual`}>
 <Nav variant="light" />
+<main>
 
 {index === 0 ? (
   <header class="docshero">
@@ -73,9 +74,7 @@ const banner = fragmentText('banner').split('\n').map((s) => s.trim()).filter((s
       <p>{chapterSpan(page.chapters)} of the REKS Studio user manual</p>
     </div>
   </header>
-)}
-
-<div class="wrap">
+)}<div class="wrap">
   <div class="docs-layout">
     <details class="toc">
       <summary>Contents · {page.title} ({index + 1} of {pages.length})</summary>
@@ -139,6 +138,7 @@ const banner = fragmentText('banner').split('\n').map((s) => s.trim()).filter((s
     </div>
   </div>
 </div>
+</main>
 
 <Footer />
 </Base>

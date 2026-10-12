@@ -1,0 +1,30 @@
+#! SI-SA-REKS(4,4) of linear H4 (R = 1.6 A), BH&HLYP/6-31G: singlet, triplet and quintet
+#! sectors, SA weights 1/6. Prints the Spin-state energetics table (J for H = -2J S_A.S_B).
+
+molecule h4 {
+0 1
+H 0.0 0.0 0.0
+H 0.0 0.0 1.6
+H 0.0 0.0 3.2
+H 0.0 0.0 4.8
+symmetry c1
+}
+
+set {
+  basis            6-31g
+  scf_type         pk
+  reference        reks
+  reks             [4, 4]
+  reks_use_trah    true
+  guess            sad
+  maxiter          150
+  e_convergence    1e-10
+  d_convergence    1e-8
+  sa_reks_2spin    [0, 2, 4]
+  sa_reks_configs  [[0, 1, 2], [0, 1], [0]]
+  sa_reks_weights  [0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.1666666666666665]
+  si_reks_configs  [[[0, 1, 2]], [[0, 1]], [[0]]]
+  si_reks_2spin    [0, 2, 4]
+}
+
+energy('bhhlyp')

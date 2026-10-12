@@ -10,7 +10,7 @@ function element(tagName, className, children) {
 
 export const headingId = (text, slugger) => slugger.slug(text).replace(/-+/g, '-');
 
-function textOf(node) {
+export function textOf(node) {
   if (node.type === 'text') return node.value;
   return (node.children || []).map(textOf).join('');
 }
