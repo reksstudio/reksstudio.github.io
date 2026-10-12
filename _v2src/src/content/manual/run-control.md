@@ -2,7 +2,7 @@
 title: Run control
 ---
 
-## 10\. Guesses and Restarts {#guesses}
+## 11\. Guesses and Restarts {#guesses}
 
 Restarts use Psi4 checkpoints; `GUESS_ACTIVE_WINDOW` places the read orbitals in the active space. Seeding a first calculation: §first-calculation.
 
@@ -41,7 +41,7 @@ Linear H₄, BH&HLYP/6-31G: the restarted point 1.6 Å and a cold SAD start reac
 
 @@options guess@@
 
-## 11\. Fractional Occupation Numbers (FONs) {#fons}
+## 12\. Fractional Occupation Numbers (FONs) {#fons}
 
 Each geminal pair carries FONs with $n_p + n_q = 2$ (§geminals); the free FON $n_p$ (first orbital of the pair) lies in a box, kept by the FON micro-solver and the TRAH step (FONs restored from a REKS restart file are clamped to $[m, 2 - m]$):
 
@@ -57,7 +57,7 @@ FON micro-solver traces are printed at `REKS_REPORT_LEVEL` ≥ 4.
 
 @@options fon-micro@@
 
-## 12\. SCF Convergence Engines {#scf-engines}
+## 13\. SCF Convergence Engines {#scf-engines}
 
 Three engines optimize the orbitals and FONs; most runs set at most `LEVEL_SHIFT` and `REKS_USE_TRAH`.
 
@@ -104,7 +104,7 @@ $$
 
 with $\mathbf P$ the projector on the differences kept so far, $\delta$ = `REKS_DIIS_COND_STALE_DELTA`, $c_{\max}$ = `REKS_DIIS_COND_COEFF_NORM_MAX`, $c_s$ = `REKS_DIIS_COND_ANGLE_CUTOFF`.
 
-## 13\. Geminal Delocalization {#geminal-deloc}
+## 14\. Geminal Delocalization {#geminal-deloc}
 
 `REKS_GEMINAL_DELOC` rotates each orbital pair of a generation-0 geminal whose Löwdin IPR lies in the upper half of its range under rotations of the pair to the IPR minimum (the most delocalized frame of the pair), converges the SCF again from the rotated orbitals, and keeps the rotated solution only if its E<sub>SA</sub> is lower.
 

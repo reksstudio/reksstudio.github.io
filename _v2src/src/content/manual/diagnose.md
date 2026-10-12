@@ -2,7 +2,7 @@
 title: Diagnose
 ---
 
-## 16\. Diagnose {#diagnose}
+## 17\. Diagnose {#diagnose}
 
 Each entry names what the output prints, then what to do. A converged SCF can still show several of them. A problem not in this list: [Documentation, Contact](../../docs/#contact).
 

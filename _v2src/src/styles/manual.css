@@ -145,13 +145,22 @@ tbody tr:last-child td{ border-bottom: none; }
 .az code{ font-size: 0.92em; background: none; padding: 0; }
 .az .az-page{ font-size: 0.8em; color: var(--ink-faint); margin-left: 4px; }
 
-/* option table: one column grid for all tables; two-column tables fit their content */
-section:has(> h2[id$="option-table"]) table{ table-layout: fixed; }
-section:has(> h2[id$="option-table"]) table th:nth-child(1){ width: 36%; }
-section:has(> h2[id$="option-table"]) table th:nth-child(2){ width: 16%; }
-section:has(> h2[id$="option-table"]) table th:nth-child(3){ width: 26%; }
-section:has(> h2[id$="option-table"]) table th:nth-child(4){ width: 22%; }
-section:has(> h2[id$="option-table"]) table:has(th:nth-child(2):last-child){ width: auto; table-layout: auto; }
-@media (max-width: 860px){
-  section:has(> h2[id$="option-table"]) tbody td:first-child code{ white-space: normal; overflow-wrap: anywhere; }
+/* references: doi links break inside on narrow screens */
+.refs a{ overflow-wrap: anywhere; }
+
+/* option table: Option | Default | Meaning on one grid for all groups; type and alias in small under the name;
+   phones: one block per option, Default labelled */
+section:has(> h2[id$="option-table"]) table{ table-layout: fixed; min-width: 0; }
+section:has(> h2[id$="option-table"]) th:nth-child(1){ width: 36%; }
+section:has(> h2[id$="option-table"]) th:nth-child(2){ width: 20%; }
+section:has(> h2[id$="option-table"]) td{ overflow-wrap: break-word; }
+section:has(> h2[id$="option-table"]) td:first-child code{ white-space: normal; overflow-wrap: anywhere; }
+section:has(> h2[id$="option-table"]) td small{ display: inline-block; margin-top: 3px; font: 0.76rem/1.35 var(--sans); color: var(--ink-faint); }
+section:has(> h2[id$="option-table"]) td small code{ color: inherit; font-size: 0.72rem; }
+@media (max-width: 560px){
+  section:has(> h2[id$="option-table"]) :is(table, tbody, tr, td){ display: block; width: auto; }
+  section:has(> h2[id$="option-table"]) thead{ display: none; }
+  section:has(> h2[id$="option-table"]) tr{ padding: 10px 0; border-bottom: 1px solid var(--line); }
+  section:has(> h2[id$="option-table"]) tbody td{ padding: 2px 0; border: none; }
+  section:has(> h2[id$="option-table"]) td:nth-child(2)::before{ content: "Default: "; color: var(--ink-faint); font-family: var(--sans); }
 }

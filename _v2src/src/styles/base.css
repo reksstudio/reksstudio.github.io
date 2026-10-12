@@ -46,9 +46,13 @@ nav .wrap{ display: flex; align-items: center; justify-content: space-between; h
   .navlinks{ gap: 16px; font-size: 0.85rem; }
 }
 @media (max-width: 480px){
-  nav .wrap{ gap: 12px; }
+  nav .wrap{ gap: 12px; padding: 0 16px; }
   .navlinks{ gap: 10px; font-size: 0.78rem; }
-  nav .logo{ font-size: 1rem; }
+  nav .wrap .logo{ font-size: 1rem; }
+}
+/* narrowest phones: the logo is the link to Overview */
+@media (max-width: 380px){
+  .navlinks a:first-child{ display: none; }
 }
 
 /* nav: dark */

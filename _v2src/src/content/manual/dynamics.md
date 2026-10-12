@@ -2,7 +2,7 @@
 title: Optimization and Dynamics
 ---
 
-## 4\. Optimization and Dynamics {#opt-dynamics}
+## 5\. Optimization and Dynamics {#opt-dynamics}
 
 After the solution check (§check-solution) the nuclear gradients of the SSR states and their nonadiabatic coupling vectors (NAC, $\mathbf d_{IJ} = \langle I|\partial J/\partial\mathbf R\rangle$, §nac) drive a geometry optimization with DL-FIND or a trajectory with PyUNIxMD; every point is one `psi4.gradient()` call. Procedure: one `gradient()` → optimization → check → dynamics → check.
 

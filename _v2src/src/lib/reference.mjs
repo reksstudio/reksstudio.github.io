@@ -109,18 +109,20 @@ const propertyTableMd = () =>
 // print order of the report blocks: Block | Entry, one row per header, linked to the entry or section that explains it
 const printOrderMd = () => mdTable(['Block', 'Entry'], blocks.map((b) => [`\`${b.header}\``, `§${b.owner}`]));
 
-// Option table chapter: per group "### title" + Option | Type | Default | Alias | Meaning (compact: Option | Default | Meaning)
+// option cell: name (linked unless compact) + <small> "type · alias" line when either is set
+function optionCellMd(key, linked) {
+  const e = entry(key);
+  const meta = [e.type, e.alias && `alias \`${e.alias}\``].filter(Boolean).join(' · ');
+  return (linked ? `§${optionId(key)}` : `\`${key}\``) + (meta ? `<br><small>${meta}</small>` : '');
+}
+
+// Option table chapter: per group "### title" + Option | Default | Meaning
 function optionTableMd() {
   return ref.groups
     .map((g) => {
       const described = g.compact && entryMap().has(g.id) ? `§${g.id}` : '';
-      const table = g.compact
-        ? mdTable(['Option', 'Default', 'Meaning'], g.keys.map((key) => [`\`${key}\``, entry(key).default, entry(key).brief]))
-        : mdTable(
-            ['Option', 'Type', 'Default', 'Alias', 'Meaning'],
-            g.keys.map((key) => [`§${optionId(key)}`, entry(key).type ?? '', entry(key).default, entry(key).alias ? `\`${entry(key).alias}\`` : '', entry(key).brief]),
-          );
-      return blocksMd([`### ${g.title}`, described, table]);
+      const rows = g.keys.map((key) => [optionCellMd(key, !g.compact), entry(key).default, entry(key).brief]);
+      return blocksMd([`### ${g.title}`, described, mdTable(['Option', 'Default', 'Meaning'], rows)]);
     })
     .join('\n\n');
 }

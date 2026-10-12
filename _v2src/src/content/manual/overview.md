@@ -17,6 +17,7 @@ A functional, a basis and an SCF type are chosen as for any Psi4 reference, and 
 | Task | Input | Output |
 | --- | --- | --- |
 | First calculation of a new molecule | RKS seed, `restart_file`, §guess_active_window (§first-calculation) | §check-solution |
+| Geminal over 3 or more orbitals: REKS(2,3), (4,5), (4,6) | §reks_geminal_widths, seed chain (§wide-two-pairs) | §wide-check |
 | Energies of several states | default cassette, or §si_reks_configs | §ssr-energies |
 | S1 gradient and S1/S2 coupling | `"si_reks_grad": [[1]]`, `"si_reks_nac": [[[1, 2]]]`, `psi4.gradient(...)` (§one-gradient) | §state-gradient, §nac |
 | Geometry optimization of a state | `reks_dlfind.py`, §geometry-optimization | §check-optimization |
@@ -107,7 +108,7 @@ H₂ without `symmetry c1`:
 
 ### Worked inputs {#worked-inputs}
 
-Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded first calculations: §first-inputs; optimization and dynamics: §dynamics-inputs.
+Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded first calculations: §first-inputs; wide geminals: §wide-inputs; optimization and dynamics: §dynamics-inputs.
 
 | File | Calculation | Result |
 | --- | --- | --- |
