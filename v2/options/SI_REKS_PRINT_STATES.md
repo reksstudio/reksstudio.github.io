@@ -1,0 +1,20 @@
+# `SI_REKS_PRINT_STATES`
+
+HTML: <https://reksstudio.github.io/v2/manual/setup/#si_reks_print_states>
+
+Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+
+States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all.
+
+Type: int
+
+Default: `5`
+
+```python
+"si_reks_print_states": -1,
+```
+
+* States per cassette listed in the per-state and pair tables; `0` = none, `-1` = all. The SI eigenproblem is always solved in full.
+* Properties are computed for max(print, store) states ([`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md)). Counts are clamped to the number of physical states.
