@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/reference/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 [Manual](https://reksstudio.github.io/v2/manual/index.md) › Reference
 
@@ -405,7 +405,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 
 * [Pairing scheme](https://reksstudio.github.io/v2/manual/concepts/index.md#pairing-scheme)
 * [Pairing schemes](https://reksstudio.github.io/v2/manual/setup/index.md#pairing-schemes)
-* [`Pairing schemes (GVB(2,2) geminal pairs)`](https://reksstudio.github.io/v2/manual/setup/index.md#pairing-schemes)
+* [`Pairing schemes (geminal orbitals)`](https://reksstudio.github.io/v2/manual/setup/index.md#pairing-schemes)
 * [Permanent and difference dipole moments (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#permanent-dipole)
 * [`Post-Iterations`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons)
 * [`Pre-Iterations`](https://reksstudio.github.io/v2/manual/run-control/index.md#restart)

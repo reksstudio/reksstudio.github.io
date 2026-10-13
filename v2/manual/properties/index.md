@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/properties/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 [Manual](https://reksstudio.github.io/v2/manual/index.md) › Output and properties
 
@@ -22,7 +22,7 @@ Blocks of a `gradient()` run with every block on, at `REKS_REPORT_LEVEL` 2; an `
 | - | - |
 | `REKS Studio` | [Run report](https://reksstudio.github.io/v2/manual/properties/index.md#run-report) |
 | `==> REKS Studio setup <==` | [Run report](https://reksstudio.github.io/v2/manual/properties/index.md#run-report) |
-| `=> Pairing schemes (GVB(2,2) geminal pairs) <=` | [Pairing schemes](https://reksstudio.github.io/v2/manual/setup/index.md#pairing-schemes) |
+| `=> Pairing schemes (geminal orbitals) <=` | [Pairing schemes](https://reksstudio.github.io/v2/manual/setup/index.md#pairing-schemes) |
 | `=> SA pool <=` | [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md) |
 | `=> SI pools <=` | [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) |
 | `=> State analysis <=` | [`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md) |
@@ -125,9 +125,9 @@ Blocks added at each level; each level prints everything of the levels below. Ou
 | Level | Adds | Lines |
 | - | - | - |
 | 1 | `Pre-Iterations` with the `REKS orbitals` line; `Iterations` and the convergence line; `Post-Iterations` (grid electrons, final energy); `Energetics`; `Summary` / `Summary of the energy phase` (`MOLDEN_WRITE`); `Returned gradient` with Psi4's `-Total Gradient` | 670 |
-| 2 (default) | Banner; `REKS Studio setup` with `Pairing schemes`, `SA pool`, `SI pools`, `State analysis`, `Gradient request`; `REKS Geminal Delocalization` ([`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md)); orbital energies with the FONs in `Post-Iterations`; `SA-REKS energy decomposition`; SI setup, `FON optimization after the SCF`, per cassette `Hamiltonian`, `Adiabatic states` and the property blocks; `State summary`; `Spin-state energetics`; CP-REKS solver (Psi4 `PRINT` ≥ 1); `Relaxed properties`; EKT; gradient targets, `Gradient of …`, `NAC …`, CI topography | 2178 |
-| 3 | `XC evaluation … per string … per key` in the setup; Hamiltonian counters (`coupled`/`zero`, `Terms`, `Reuse`, overlap terms) and the `Off-diagonal channel` table; EKT `dropped eigenvalues` and the Dyson MO matrix; `[REKS-GRAD]` `C_eff` per microstate and Psi4 per-channel gradient terms; `==> References <==` | 2581 |
-| 4–5 | 4: `REKS Memory Footprint`, `Run diagnostics`, per-iteration solver traces (`[GVB-FON]`, `[ORB-DIIS]`, `[TRAH]`, `[LEVEL_SHIFT]`, …), `CP-REKS Z-Vector Profile`; per cassette `Microstate energies (sorted by energy)`, `Fractional Occupation Numbers (active orbitals)`, `Lagrangian eps_pq and ERI (pq\|st)`, `Pre-diagonalization SI Hamiltonian` and `SI Overlap S` in blocks of 18 columns. 5: per SCF iteration the active orbitals, Fock asymmetry, orbital update, coupling Fock matrix, SA energy, weighting factors C<sub>L</sub> and the microstate energies | 4105; 8224 |
+| 2 (default) | Banner; `REKS Studio setup` with `Pairing schemes`, `SA pool`, `SI pools`, `State analysis`, `Gradient request`; `REKS Geminal Delocalization` ([`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md)); orbital energies with the FONs in `Post-Iterations`; `SA-REKS energy decomposition`; SI setup, `FON optimization after the SCF`, per cassette `Hamiltonian`, `Adiabatic states` and the property blocks; `State summary`; `Spin-state energetics`; CP-REKS solver (Psi4 `PRINT` ≥ 1); `Relaxed properties`; EKT; gradient targets, `Gradient of …`, `NAC …`, CI topography | 2148 |
+| 3 | `XC evaluation … per string … per key` in the setup; Hamiltonian counters (`coupled`/`zero`, `Terms`, `Reuse`, overlap terms) and the `Off-diagonal channel` table; EKT `dropped eigenvalues` and the Dyson MO matrix; `[REKS-GRAD]` `C_eff` per microstate and Psi4 per-channel gradient terms; `==> References <==` | 2549 |
+| 4–5 | 4: `REKS Memory Footprint`, `Run diagnostics`, per-iteration solver traces (`[GVB-FON]`, `[ORB-DIIS]`, `[TRAH]`, `[LEVEL_SHIFT]`, …), `CP-REKS Z-Vector Profile`; per cassette `Microstate energies (sorted by energy)`, `Fractional Occupation Numbers (active orbitals)`, `Lagrangian eps_pq and ERI (pq\|st)`, `Pre-diagonalization SI Hamiltonian` and `SI Overlap S` in blocks of 18 columns. 5: per SCF iteration the active orbitals, Fock asymmetry, orbital update, coupling Fock matrix, SA energy, weighting factors C<sub>L</sub> and the microstate energies | 4079; 8137 |
 
 From level 3 the configuration-axis arrays `SSR COEFFICIENTS K=e`, `SSR HAMILTONIAN K=e`, `SSR OVERLAP SPARSE K=e` and `SSR 1-RDM DIABATIC SPARSE K=e` are stored; level 4 prints the Hamiltonian and overlap. Levels 4–5 grow with the active space and the cassette dimension.
 
@@ -180,7 +180,7 @@ Unrelaxed properties (`SI_REKS_ANALYSIS`) use the densities ρ<sup>(IJ)</sup> = 
 * Transition quantities are computed for pairs I \< J within one cassette and printed when at least 2 states are printed; per-state and pair tables are bounded by `SI_REKS_PRINT_STATES`.
 * The per-state and per-pair `SSR … K=e` arrays exist only for the states stored by `SI_REKS_STORE_STATES`; `SSR ENERGIES K=e` holds every physical root, and the `SSR ROOT r … CASSETTE e`, `SSR NAC …`, `SSR CI …` and EKT arrays are stored whenever their block runs.
 * The `=>` sub-block headers of a cassette carry `, cassette e`; with a single SI cassette that suffix is absent. The `==>` headers (`State interaction: cassette e`, `Relaxed properties`, EKT, `Gradient of`, `NAC`, CI topography) always name the cassette.
-* The sign of a phase-odd quantity (transition dipole, velocity and magnetic moments, transition multipoles and charges, NAC vectors and their sum over atoms, g̃ and h̃ of the CI topography, FCD/FED couplings, NTO and NDO orbitals) is arbitrary between runs, also of the same input (H₄: S0→S1 `mu_z` = 2.846913 in one run, −2.846913 in another). Moduli, f, |d|, R<sub>len</sub> and R<sub>vel</sub> agree. Within one run all quantities share one phase, so their relations hold (Σ<sub>A</sub> d<sub>A</sub> = −p<sub>IJ</sub>; φ and s<sub>y</sub> of the CI topography from the same d).
+* The sign of a phase-odd quantity (transition dipole, velocity and magnetic moments, transition multipoles and charges, NAC vectors and their sum over atoms, g̃ and h̃ of the CI topography, FCD/FED couplings, NTO particles) is arbitrary between runs, also of the same input (H₄: S0→S1 `mu_z` = −2.943014 in one run, 2.943014 in another). Moduli, f, |d|, R<sub>len</sub> and R<sub>vel</sub> agree. Within one run all quantities share one phase, so their relations hold (Σ<sub>A</sub> d<sub>A</sub> = −p<sub>IJ</sub>; φ and s<sub>y</sub> of the CI topography from the same d).
 
 ### Summary {#summary}
 
@@ -240,12 +240,12 @@ $$
 => Energetics <=
 
  Nuclear Repulsion Energy =             25.1844817236300855
- One-Electron Energy =                -153.5867652831177850
- Two-Electron Energy =                  56.4995948627347033
+ One-Electron Energy =                -153.5867652831177281
+ Two-Electron Energy =                  56.4995948627346962
  DFT Exchange-Correlation Energy =      -6.2238541886040730
  Empirical Dispersion Energy =           0.0000000000000000
  VV10 Nonlocal Energy =                  0.0000000000000000
- Total Energy =                        -78.1265428853570683
+ Total Energy =                        -78.1265428853570256
 ```
 
 ```log
@@ -328,8 +328,8 @@ Units: electrons
    Set     Geminals  Iterations   Last change      Residual
    --------------------------------------------------------
    n              2           2       0.0e+00       1.1e-10
-   m              2           2       0.0e+00       1.4e-14
-   mt1            4           2       0.0e+00       3.6e-14
+   m              2           2       0.0e+00       1.1e-14
+   mt1            4           2       0.0e+00       2.6e-12
    --------------------------------------------------------
 
    Scheme  Geminal     n                   m                   mt1
@@ -365,9 +365,9 @@ Units: E<sub>h</sub> (stored); E<sub>h</sub> and eV relative to the lowest state
 
    State            E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)
    ----------------------------------------------------------------------------------------------------
-   S0     -78.300687507270         0.000   PPS1(61.6) PPS2(36.5) DOSS_SPS_1(1.8)
-   S1     -78.181411797824         3.246   OSS4(92.2) OSS_DES4(5.1) OSS3(2.5)
-   S2     -78.176656077663         3.375   DES2(51.4) DOSS_SPS_0(21.7) DES4(10.5) PPS2(7.5)
+   S0     -78.300443969671         0.000   PPS1(61.3) PPS2(36.8) DOSS_SPS_1(1.8)
+   S1     -78.181411797824         3.239   OSS4(92.2) OSS_DES4(5.1) OSS3(2.5)
+   S2     -78.172150374308         3.491   DES2(50.6) DOSS_SPS_0(21.0) DES4(11.3) PPS2(7.0)
 [...]
    ----------------------------------------------------------------------------------------------------
    w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;
@@ -382,12 +382,12 @@ Units: E<sub>h</sub> (stored); E<sub>h</sub> and eV relative to the lowest state
 
     State            E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)
     ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    S0     -78.300687507270         0.000                0.00            -        -     PPS1(61.6); PPS2(36.5)
-    T1     -78.279831032158         0.568               13.09            -        -     T_PPS2(97.4) 8A(b)->9A(c)
-    T2     -78.224960817446         2.061               47.52            -        -     T_PPS4(88.1) 8A(b)->10A(d)
-    S1     -78.181411797824         3.246               74.85        382.0  0.00000     OSS4(92.2) 8A(b)->10A(d)
-    S2     -78.176656077663         3.375               77.83        367.4  0.00002     DES2(51.4) 8A(b),8A(b)->9A(c),9A(c)
-    S3     -78.170600623799         3.540               81.63        350.3  0.01136 *   OSS2(69.7) 8A(b)->9A(c)
+    S0     -78.300443969671         0.000                0.00            -        -     PPS1(61.3); PPS2(36.8)
+    T1     -78.279831019196         0.561               12.93            -        -     T_PPS2(97.4) 8A(b)->9A(c)
+    T2     -78.224960817446         2.054               47.37            -        -     T_PPS4(88.1) 8A(b)->10A(d)
+    S1     -78.181411797824         3.239               74.69        382.8  0.00000     OSS4(92.2) 8A(b)->10A(d)
+    S2     -78.172150374308         3.491               80.51        355.1  0.00021     DES2(50.6) 8A(b),8A(b)->9A(c),9A(c)
+    S3     -78.170584976114         3.534               81.49        350.9  0.01195 *   OSS2(68.7) 8A(b)->9A(c)
 [...]
     ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     Printed states of the first cassette of each spin multiplicity, ordered by energy.
@@ -402,7 +402,7 @@ Stored: `SSR ENERGIES K=<e>`; bookkeeping `SSR SI LIST`, `SSR CASSETTE 2S K=<e>`
 * The four bookkeeping scalars never take the sector prefix.
 * `Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats S0 of cassette 0.
 * `State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.
-* Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.04–0.48 E<sub>h</sub> below E<sub>SA</sub>; S0 = −1.0·10<sup>7</sup> E<sub>h</sub> at E<sub>SA</sub> = −1.27 E<sub>h</sub> marks ghost roots ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)).
+* Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.03–0.51 E<sub>h</sub> below E<sub>SA</sub>; an E(S0) far below this range marks ghost roots ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)).
 
 #### SSR eigenvectors and Chirgwin–Coulson weights {#ssr-composition}
 
@@ -496,9 +496,9 @@ $$
 
    Transition   dE [eV]  lambda [nm]  mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]   |mu| [D]      f_len
    -------------------------------------------------------------------------------------------------------------
-   S0->S1         3.246        382.0     0.000000    -0.000512     0.000000     0.000512   0.001301    0.00000
-   S0->S2         3.375        367.4     0.000000     0.000000     0.016269     0.016269   0.041351    0.00002
-   S0->S3         3.540        350.3     0.000000     0.000000    -0.361851     0.361851   0.919734    0.01136 *
+   S0->S1         3.239        382.8     0.000000     0.000656     0.000000     0.000656   0.001667    0.00000
+   S0->S2         3.491        355.1     0.000000     0.000000    -0.048983     0.048983   0.124503    0.00021
+   S0->S3         3.534        350.9     0.000000     0.000000    -0.371471     0.371471   0.944186    0.01195 *
 [...]
    * = length and velocity forms differ by more than a factor of 3 (tested when f_len or f_vel > 1e-3):
    the hypervirial relation |p| = dE |mu| does not hold for these approximate states; f is qualitative only.
@@ -528,9 +528,9 @@ $$
 
    Transition         p_x         p_y         p_z         m_x         m_y         m_z       f_vel         R_vel
    ------------------------------------------------------------------------------------------------------------
-   S0->S1        0.000000   -0.000161    0.000000   -0.372053    0.000000    0.000000    0.000000      0.000000
-   S0->S2        0.000000    0.000000   -0.000635    0.000000    0.000000    0.000000    0.000002      0.000000
-   S0->S3        0.000000    0.000000    0.013689    0.000000    0.000000    0.000000    0.000960 *    0.000000
+   S0->S1        0.000000    0.000175    0.000000    0.378467    0.000000    0.000000    0.000000      0.000000
+   S0->S2        0.000000    0.000000    0.002048    0.000000    0.000000    0.000000    0.000022      0.000000
+   S0->S3        0.000000    0.000000    0.014465    0.000000    0.000000    0.000000    0.001074 *    0.000000
 ```
 
 Stored: `SSR VELOCITY TRANSITION DIPOLES K=<e>`, `SSR OSCILLATOR STRENGTHS VELOCITY K=<e>`
@@ -569,12 +569,12 @@ Units: electrons (occupations)
 => Natural orbitals of the active space, cassette 0 <=
 
    S0
-     occ         1.933380    1.510942    0.488886    0.066792
+     occ         1.933337    1.521446    0.478239    0.066978
      --------------------------------------------------------
-     NO 1       -1.0000 a    0.0000 b    0.0000 c    0.0003 d
-     NO 2        0.0000 a   -1.0000 b   -0.0003 c    0.0000 d
-     NO 3        0.0000 a   -0.0003 b    1.0000 c    0.0000 d
-     NO 4        0.0003 a    0.0000 b    0.0000 c    1.0000 d
+     NO 1        1.0000 a    0.0000 b    0.0000 c   -0.0001 d
+     NO 2        0.0000 a    1.0000 b    0.0002 c    0.0000 d
+     NO 3        0.0000 a   -0.0002 b    1.0000 c    0.0000 d
+     NO 4        0.0001 a    0.0000 b    0.0000 c    1.0000 d
 [...]
    occ = natural occupation; NO k = natural orbital k, expansion coefficients over the active MOs.
 ```
@@ -607,7 +607,7 @@ $$
 
    State             y0          y1         N_D         N_U      N_U,nl
    --------------------------------------------------------------------
-   S0          0.488886    0.066792    1.735625    1.111356    1.125063
+   S0          0.478239    0.066978    1.714212    1.090434    1.093137
    S1          0.971846    0.080285    2.306662    2.104262    2.044339
 [...]
    Radical character of each state. y0, y1 = diradical/tetraradical indices
@@ -645,7 +645,7 @@ $$
 
    State       mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]     |mu| [D]
    ---------------------------------------------------------------------------
-   S0             0.000000     0.000000     0.002014     0.002014     0.005118
+   S0             0.000000     0.000000     0.001366     0.001366     0.003472
    S1             0.000000     0.000000     0.014160     0.014160     0.035990
 ```
 
@@ -668,8 +668,8 @@ $$
 
    State                         xx          xy          xz          yy          yz          zz
    --------------------------------------------------------------------------------------------
-   S0        Q_ij         -9.218073    0.000000    0.000000  -12.215663    0.000000   -6.885707
-             Q_tl_ij       0.221741    0.000000    0.000000   -2.775849    0.000000    2.554107
+   S0        Q_ij         -9.219040    0.000000    0.000000  -12.218037    0.000000   -6.877916
+             Q_tl_ij       0.219291    0.000000    0.000000   -2.779706    0.000000    2.560415
 ```
 
 Stored: `SSR QUADRUPOLES K=<e>`, `SSR TRACELESS QUADRUPOLES K=<e>`
@@ -695,8 +695,8 @@ $$
 
    Transition          xx          xy          xz          yy          yz          zz
    ----------------------------------------------------------------------------------
-   S0->S1        0.000000    0.000000    0.000000    0.000000    0.390067    0.000000
-   S0->S2        0.054364    0.000000    0.000000    0.144255    0.000000   -0.475730
+   S0->S1        0.000000    0.000000    0.000000    0.000000   -0.389350    0.000000
+   S0->S2       -0.056698    0.000000    0.000000   -0.138333    0.000000    0.457178
 [...]
    Its traceless part governs electric-quadrupole transitions, not contained in f_len.
 ```
@@ -726,7 +726,7 @@ $$
 
    State              xxx         xxy         xxz         xyy         xyz         xzz         yyy         yyz         yzz         zzz
    ----------------------------------------------------------------------------------------------------------------------------------
-   S0            0.000000    0.000000   -0.011289    0.000000    0.000000    0.000000    0.000000    0.066278    0.000000    0.149616
+   S0            0.000000    0.000000   -0.012912    0.000000    0.000000    0.000000    0.000000    0.066619    0.000000    0.140171
    S1            0.000000    0.000000    0.110874    0.000000    0.000000    0.000000    0.000000    0.088748    0.000000    0.413698
 ```
 
@@ -750,19 +750,19 @@ $$
    Mulliken
    Atom                S0          S1          S2          S3          S4
    ----------------------------------------------------------------------
-   H1            0.139211    0.039518   -0.021310    0.018011    0.123394
-   H2           -0.139211   -0.039518    0.021310   -0.018011   -0.123394
-   H3           -0.139211   -0.039518    0.021310   -0.018011   -0.123394
-   H4            0.139211    0.039518   -0.021310    0.018011    0.123394
+   H1            0.027357    0.039518    0.006461    0.141519   -0.037032
+   H2           -0.027357   -0.039518   -0.006461   -0.141519    0.037032
+   H3           -0.027357   -0.039518   -0.006461   -0.141519    0.037032
+   H4            0.027357    0.039518    0.006461    0.141519   -0.037032
    ----------------------------------------------------------------------
 
    Mulliken, change X(Sj) - X(Si); - = |change| < 0.1; unchanged rows and tables omitted
    Atom            S0->S1      S0->S2      S0->S3      S0->S4
    ----------------------------------------------------------
-   H1                   -   -0.160521   -0.121200           -
-   H2                   -    0.160521    0.121200           -
-   H3                   -    0.160521    0.121200           -
-   H4                   -   -0.160521   -0.121200           -
+   H1                   -           -    0.114162           -
+   H2                   -           -   -0.114162           -
+   H3                   -           -   -0.114162           -
+   H4                   -           -    0.114162           -
    ----------------------------------------------------------
 ```
 
@@ -795,12 +795,12 @@ $$
    Mulliken
    Atom                T1          T2          T3          T4          T5
    ----------------------------------------------------------------------
-   C1            0.291930    0.090878    0.515228    0.252168    0.507605
-   C2            0.291930    0.090878    0.515228    0.252168    0.507605
-   C3            0.227326    0.418081    0.216368    0.248321    0.238601
-   C4            0.227326    0.418081    0.216368    0.248321    0.238601
-   C5            0.480743    0.491040    0.268405    0.499511    0.253794
-   C6            0.480743    0.491040    0.268405    0.499511    0.253794
+   C1            0.316638    0.079442    0.612525    0.197348    0.264300
+   C2            0.316638    0.079442    0.612525    0.197348    0.264300
+   C3            0.208248    0.424755    0.185136    0.266848    0.396167
+   C4            0.208248    0.424755    0.185136    0.266848    0.396167
+   C5            0.475113    0.495803    0.202339    0.535804    0.339533
+   C6            0.475113    0.495803    0.202339    0.535804    0.339533
 [...]
    Spin population of each atom: s_A = sum_{mu in A} (Q S)_mumu (Mulliken),
    (S^1/2 Q S^1/2)_mumu (Lowdin); Q = D^alpha - D^beta of the M_S = S component,
@@ -828,10 +828,10 @@ Units: e
    Mulliken
    Atom            S0->S1      S0->S2      S0->S3      S0->S4      S1->S2      S1->S3      S1->S4      S2->S3      S2->S4      S3->S4
    ----------------------------------------------------------------------------------------------------------------------------------
-   H1           -0.518340    0.048321   -0.451513    0.441579    0.161921    0.361484    0.547847    0.092855   -0.105954   -0.067768
-   H2            0.266469   -0.048321    0.451513   -0.441579   -0.317585   -0.023930   -0.002624   -0.092855    0.105954    0.067768
-   H3           -0.266469   -0.048321    0.451513   -0.441579    0.317585    0.023930    0.002624   -0.092855    0.105954    0.067768
-   H4            0.518340    0.048321   -0.451513    0.441579   -0.161921   -0.361484   -0.547847    0.092855   -0.105954   -0.067768
+   H1            0.530557   -0.105539    0.426363   -0.451059    0.070580    0.453847    0.520155   -0.000677   -0.069094   -0.039562
+   H2           -0.260284    0.105539   -0.426363    0.451059   -0.247025   -0.161391   -0.067391    0.000677    0.069094    0.039562
+   H3            0.260284    0.105539   -0.426363    0.451059    0.247025    0.161391    0.067391    0.000677    0.069094    0.039562
+   H4           -0.530557   -0.105539    0.426363   -0.451059   -0.070580   -0.453847   -0.520155   -0.000677   -0.069094   -0.039562
    ----------------------------------------------------------------------------------------------------------------------------------
 [...]
    Transition charge of each atom for I -> J (e); measures the localization of the transition density.
@@ -863,12 +863,12 @@ $$
    Mayer
    Bond                S0          S1          S2          S3          S4
    ----------------------------------------------------------------------
-   H1-H2         0.826494    0.194189   -0.021751    0.092368    0.022388
-   H1-H3        -0.015179   -0.037356   -0.001690    0.045579    0.181498
-   H1-H4         0.130165    0.126219    0.078371    0.066822   -0.007359
-   H2-H3         0.125078    0.441091    0.418345    0.045832   -0.112002
-   H2-H4        -0.015179   -0.037356   -0.001690    0.045579    0.181498
-   H3-H4         0.826494    0.194189   -0.021751    0.092368    0.022388
+   H1-H2         0.797047    0.194189   -0.013618   -0.012307   -0.049874
+   H1-H3        -0.011575   -0.037356    0.050642    0.030344    0.217056
+   H1-H4         0.168589    0.126219    0.005759    0.079224   -0.009701
+   H2-H3         0.182871    0.441091    0.295511    0.234255   -0.025628
+   H2-H4        -0.011575   -0.037356    0.050642    0.030344    0.217056
+   H3-H4         0.797047    0.194189   -0.013618   -0.012307   -0.049874
    ----------------------------------------------------------------------
 [...]
    Bond order of each atom pair in each state: Mayer and Wiberg-Lowdin indices; pairs with index >= 0.10 in any state.
@@ -904,11 +904,11 @@ $$
 
    Transition        w_1        w_2        w_3         PR      Omega
    -----------------------------------------------------------------
-   S0->S1       0.971010   0.025578   0.003404   1.059854   0.666569
-   S0->S2       0.548469   0.451196   0.000328   1.982569   0.398602
-   S0->S3       0.731721   0.166222   0.098744   1.745789   0.752936
-   S0->S4       0.962008   0.033444   0.004224   1.079220   0.689251
-   S0->S5              -          -          -          -   0.026841
+   S0->S1       0.971162   0.025870   0.002914   1.059509   0.672885
+   S0->S2       0.652366   0.344339   0.003167   1.837693   0.394267
+   S0->S3       0.744800   0.151000   0.100101   1.701939   0.750873
+   S0->S4       0.962585   0.033196   0.003824   1.077951   0.695276
+   S0->S5              -          -          -          -   0.028502
 [...]
    NTO decomposition of each transition into hole -> electron orbital pairs.
    w_1..w_3 = weights of the leading NTO pairs; PR = participation ratio;
@@ -961,11 +961,11 @@ $$
 
    Transition    d_h->e   sigma_h   sigma_e     d_exc      R_eh    p_prom
    ----------------------------------------------------------------------
-   S0->S1        0.0136    2.9285    3.0405    4.3381   -0.0560    0.9614
-   S0->S2        0.4275    2.9629    2.9633    5.2357   -0.5507    1.1739
-   S0->S3        0.2237    2.9227    2.9951    4.9209   -0.3800    0.5982
-   S0->S4        0.0076    2.7138    3.0074    4.1761   -0.0632    0.9364
-   S0->S5             -         -         -         -         -    1.4134
+   S0->S1        0.0136    2.9284    3.0406    4.3287   -0.0515    0.9612
+   S0->S2        1.3593    2.8900    2.8938    5.2269   -0.5230    1.2420
+   S0->S3        0.7082    2.9026    2.9764    4.9056   -0.3634    0.7083
+   S0->S4        0.0077    2.7136    3.0074    4.1706   -0.0604    0.9365
+   S0->S5             -         -         -         -         -    1.4233
 [...]
    ----------------------------------------------------------------------
    Exciton descriptors (a0): d_h->e = hole-electron centroid distance
@@ -981,10 +981,10 @@ $$
    Hole h_A
    Atom            S0->S1      S0->S2      S0->S3      S0->S4      S1->S2      S1->S3      S1->S4      S2->S3      S2->S4      S3->S4
    ----------------------------------------------------------------------------------------------------------------------------------
-   H1            0.335317    0.066128    0.134620    0.263500    0.201833    0.135100    0.232446    0.172293    0.080799    0.063976
-   H2            0.162318    0.180778    0.216050    0.126727    0.147487    0.171082    0.063268    0.077069    0.071555    0.021491
-   H3            0.162318    0.180778    0.216050    0.126727    0.147487    0.171082    0.063268    0.077069    0.071555    0.021491
-   H4            0.335317    0.066128    0.134620    0.263500    0.201833    0.135100    0.232446    0.172293    0.080799    0.063976
+   H1            0.360761    0.079580    0.136098    0.259104    0.162537    0.186595    0.239279    0.204190    0.055933    0.090280
+   H2            0.136494    0.203682    0.140611    0.103833    0.142799    0.154355    0.053909    0.066921    0.064255    0.037291
+   H3            0.136494    0.203682    0.140611    0.103833    0.142799    0.154355    0.053909    0.066921    0.064255    0.037291
+   H4            0.360761    0.079580    0.136098    0.259104    0.162537    0.186595    0.239279    0.204190    0.055933    0.090280
    ----------------------------------------------------------------------------------------------------------------------------------
 [...]
    Hole (h_A) and electron (e_A) populations of the transition per atom (Lowdin):
@@ -1032,11 +1032,11 @@ $$
 
    Transition   q_moved [e]       h/e split      PR_i      PR_f      PR_F       DEL       POS
    ------------------------------------------------------------------------------------------
-   S0->S1          0.001075        0.551060  1.999998  1.999993  1.999996  2.000000  1.500217
-   S0->S2          0.026441        0.995306  1.981510  1.981746  1.981628  2.000000  1.500156
-   S0->S3          0.026786        0.832052  1.994956  1.994939  1.994947  2.000000  1.500021
-   S0->S4          0.001054        0.560031  1.999988  1.999998  1.999993  1.999994  1.500890
-   S0->S5          0.000625               -         -         -         -         -         -
+   S0->S1          0.001242        0.546581  1.999999  1.999991  1.999995  1.999999  1.500369
+   S0->S2          0.086897        0.990373  1.827131  1.829917  1.828524  1.999996  1.500680
+   S0->S3          0.086659        0.824321  1.950084  1.950696  1.950390  1.999999  1.499748
+   S0->S4          0.000887        0.557573  1.999991  1.999999  1.999995  1.999996  1.500740
+   S0->S5          0.000645               -         -         -         -         -         -
 [...]
    dN_F = Lowdin population of F in (J - I). h/e split = TheoDORE CT number: fraction of
    the excitation with hole and electron on different fragments (both directions summed).
@@ -1051,8 +1051,8 @@ $$
    Hole h_F
    Fragment        S0->S1      S0->S2      S0->S3      S0->S4      S1->S2      S1->S3      S1->S4      S2->S3      S2->S4      S3->S4
    ----------------------------------------------------------------------------------------------------------------------------------
-   F1            0.497636    0.246906    0.350670    0.390227    0.349320    0.306181    0.295715    0.249362    0.152354    0.085467
-   F2            0.497636    0.246906    0.350670    0.390227    0.349320    0.306181    0.295715    0.249362    0.152354    0.085467
+   F1            0.497255    0.283262    0.276710    0.362937    0.305337    0.340950    0.293188    0.271111    0.120188    0.127571
+   F2            0.497255    0.283262    0.276710    0.362937    0.305337    0.340950    0.293188    0.271111    0.120188    0.127571
    ----------------------------------------------------------------------------------------------------------------------------------
 [...]
    h_F, e_F = hole and electron populations of the transition density (Lowdin).
@@ -1097,14 +1097,12 @@ $$
 
    FCD (fragment charge difference), all pairs of states
    Coupling     V_F Lowdin [Eh]    V_F Lowdin [meV]   V_F Mulliken [Eh]  V_F Mulliken [meV]
-   -------------------------------------------------------------------------------------------
-   S0/S10              0.011252             306.175            0.010470             284.900
-   S0/S11             -0.162660           -4426.195           -0.158592           -4315.500
-   S0/S14             -0.199057           -5416.626           -0.199331           -5424.086
-   S0/S15             -0.006648            -180.911           -0.006714            -182.706
+   ----------------------------------------------------------------------------------------
+   S0/S2              -0.013292            -361.700           -0.010127            -275.583
+   S0/S3              -0.055030           -1497.452           -0.049473           -1346.228
 [...]
-   -------------------------------------------------------------------------------------------
-   68 of 120 pairs not printed (|D_I - D_J| < 0.1)
+   ----------------------------------------------------------------------------------------
+   91 of 120 pairs not printed (|D_I - D_J| < 0.1)
 
    FED (fragment excitation difference): no pair of excited states with |D_I - D_J| >= 0.1,
    D = x(F1) - x(F2) (none printed)
@@ -1112,27 +1110,25 @@ $$
    Diabatic coupling V_F between F1 and F2: FCD = charge-transfer coupling, D = q(F1) - q(F2);
    FED = excitation-transfer coupling, D = x(F1) - x(F2). Larger |V_F| = stronger
    inter-fragment coupling. Printed: pairs with |D_I - D_J| >= 0.1.
-   * = Lowdin and Mulliken V_F differ in sign or by more than a factor 2:
-   the pair is ill-conditioned, V_F not usable.
 ```
 
 ```log
 FSD (fragment spin difference), all pairs of states
 Coupling     V_F Lowdin [Eh]    V_F Lowdin [meV]
 ------------------------------------------------
-T1/T2               0.035361             962.219
-T1/T3              -0.098132           -2670.302
-T1/T4               0.045961            1250.653
-T1/T5              -0.027480            -747.756
+T1/T2              -0.034032            -926.062
+T1/T3               0.041666            1133.783
+T1/T4               0.087446            2379.528
+T1/T5               0.005415             147.343
 
-T2/T3               0.020817             566.460
-T2/T4              -0.121179           -3297.443
-T2/T5              -0.018786            -511.184
+T2/T3              -0.093548           -2545.569
+T2/T4               0.119788            3259.591
+T2/T5              -0.001567             -42.650
 
-T3/T4               0.014038             381.993
-T3/T5              -0.041908           -1140.371
+T3/T4              -0.038379           -1044.358
+T3/T5               0.005782             157.331
 
-T4/T5               0.045427            1236.121
+T4/T5              -0.011392            -309.979
 ------------------------------------------------
 Diabatic coupling V_F between F1 and F2: FCD = charge-transfer coupling, D = q(F1) - q(F2);
 FSD = spin energy-transfer coupling, D = s(F1) - s(F2), s = Lowdin spin population.
@@ -1194,7 +1190,7 @@ $$
 
     Spins  Low-spin state   High-spin state    E(low spin) [Eh]   E(high spin) [Eh]    Gap [eV]        J [Eh]   J [cm^-1]  Lowering(lo) [eV]  Lowering(hi) [eV]
     -----------------------------------------------------------------------------------------------------------------------------------------------------------
-    S/T    S0 (cassette 0)  T1 (cassette 1)    -78.300687507270    -78.279831032158       0.568     -0.010428    -2288.73              0.412              0.106
+    S/T    S0 (cassette 0)  T1 (cassette 1)    -78.300443969671    -78.279831019196       0.561     -0.010306    -2262.01              0.406              0.106
     -----------------------------------------------------------------------------------------------------------------------------------------------------------
     Spins = the two spin multiplicities compared (S/T = singlet/triplet). Low-/high-spin state = lowest state of each multiplicity over all cassettes.
 ```
@@ -1224,7 +1220,7 @@ Units: e a<sub>0</sub> (dipole; printed also D); e a<sub>0</sub><sup>2</sup> (qu
     State     mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]     |mu| [D]
     -------------------------------------------------------------------------
     S1           0.000000     0.000000    -0.009032     0.009032     0.022956
-    S2           0.000000     0.000000    -0.131130     0.131130     0.333300
+    S2           0.000000     0.000000    -0.370331     0.370331     0.941288
     -------------------------------------------------------------------------
     Dipole moment of each state with orbital relaxation, mu = -dE/d(field).
 ```
@@ -1236,8 +1232,8 @@ Units: e a<sub>0</sub> (dipole; printed also D); e a<sub>0</sub><sup>2</sup> (qu
    ----------------------------------------------------------------------------------------
    S1    Q_ij         -9.043299    0.000000    0.000000  -10.695051    0.000000   -7.602565
          Q_tl_ij       0.070340    0.000000    0.000000   -1.581413    0.000000    1.511073
-   S2    Q_ij         -8.978423    0.000000    0.000000  -11.703153    0.000000   -7.578590
-         Q_tl_ij       0.441632    0.000000    0.000000   -2.283097    0.000000    1.841465
+   S2    Q_ij         -8.797708    0.000000    0.000000  -11.655691    0.000000   -7.612198
+         Q_tl_ij       0.557491    0.000000    0.000000   -2.300492    0.000000    1.743001
    ----------------------------------------------------------------------------------------
    Quadrupole moment of each state with orbital relaxation (e a0^2). Q_ij = full Cartesian
    tensor (nuclei + electrons); Q_tl = traceless part, Q_tl_ij = Q_ij - tr(Q)/3 delta_ij.
@@ -1249,12 +1245,12 @@ Units: e a<sub>0</sub> (dipole; printed also D); e a<sub>0</sub><sup>2</sup> (qu
    Mulliken
    Atom                S1          S2
    ----------------------------------
-   C1           -0.362198   -0.396517
-   H2            0.180277    0.189349
-   H3            0.180277    0.189349
-   C4           -0.360926   -0.372669
-   H5            0.181285    0.195245
-   H6            0.181285    0.195245
+   C1           -0.362198   -0.421300
+   H2            0.180277    0.190662
+   H3            0.180277    0.190662
+   C4           -0.360926   -0.365201
+   H5            0.181285    0.202589
+   H6            0.181285    0.202589
    ----------------------------------
 ```
 
@@ -1305,13 +1301,13 @@ $$
     S1
     Peak    IP [eV]  E(cation)-E(S0) [eV]     eps [Eh]  Strength  occ(MO)   Dyson orbital (MO share [%])   Flag
     ------------------------------------------------------------------------------------------------------------------------------
-       1      4.800                 8.046    -0.176391   0.67274  1.02815   10A(d)  94.1, 12A 5.4          active + off occ/2
-       2      5.415                 8.660    -0.198985   0.48915  0.97185   8A(b)   99.8                   active
-       3      9.552                12.798    -0.351039   0.84157  1.91972   7A(a)   99.3                   active + off occ/2
+       1      4.800                 8.039    -0.176391   0.67274  1.02815   10A(d)  94.1, 12A 5.4          active + off occ/2
+       2      5.415                 8.654    -0.198985   0.48915  0.97185   8A(b)   99.8                   active
+       3      9.552                12.791    -0.351039   0.84157  1.91972   7A(a)   99.3                   active + off occ/2
 [...]
     ------------------------------------------------------------------------------------------------------------------------------
-    10 rows = one per natural orbital of P^r with occupation > 1e-06; sum of strengths = 8.04658 (sum rule: half the sum of these occupations).
-    P^r: 9 negative natural occupations, lowest -8.360e-02; strengths may leave 0..1 by as much.
+    10 rows = one per natural orbital of P^r with occupation > 1e-06; sum of strengths = 8.05132 (sum rule: half the sum of these occupations).
+    P^r: 8 negative natural occupations, lowest -9.367e-02; strengths may leave 0..1 by as much.
 [...]
     Strength = pole strength per spin orbital (0..1), ~ occ(MO)/2 for a Dyson orbital dominated by one MO;
     occ(MO) = unrelaxed occupation of the leading MO; Dyson orbital = MO shares d_p^2/Strength in %.
@@ -1380,21 +1376,21 @@ $$
 ```
 
 ```log
-==> Gradient of S1, cassette 0 <==
+==> Gradient of S2, cassette 0 <==
 
-    E = -78.181411797824 Eh
+    E = -78.172150374308 Eh
 
-    Gradient dE/dR of S1 (cassette 0) [Eh/a0]
+    Gradient dE/dR of S2 (cassette 0) [Eh/a0]
     Atom                  X                  Y                  Z
     -------------------------------------------------------------
-    C1       0.000000000000     0.000000000000    -0.044084341931
-    H2       0.007401694811     0.000000000000    -0.001232538604
-    H3      -0.007401694811     0.000000000000    -0.001232538604
-    C4      -0.000000000001    -0.000000000001     0.050609934847
-    H5       0.013913877423     0.000000000000    -0.002030257854
-    H6      -0.013913877423     0.000000000000    -0.002030257853
+    C1       0.000000000000     0.000000000000    -0.075254969375
+    H2       0.004012538035     0.000000000000     0.019099258469
+    H3      -0.004012538035     0.000000000000     0.019099258469
+    C4      -0.000000000001     0.000000000000     0.057911423691
+    H5       0.015107910717     0.000000000000    -0.010427485628
+    H6      -0.015107910717     0.000000000000    -0.010427485627
     -------------------------------------------------------------
-    max |g| = 5.061e-02 Eh/a0   rms |g| = 1.669e-02 Eh/a0   |sum over atoms| = 1.4e-14 Eh/a0
+    max |g| = 7.525e-02 Eh/a0   rms |g| = 2.410e-02 Eh/a0   |sum over atoms| = 2.5e-14 Eh/a0
 ```
 
 ```log
@@ -1403,9 +1399,9 @@ $$
 -Total Gradient:
    Atom            X                  Y                   Z
   ------   -----------------  -----------------  -----------------
-     1       -0.000000000000     0.000000000000    -0.044084341931
-     2        0.007401694811    -0.000000000000    -0.001232538604
-     3       -0.007401694811    -0.000000000000    -0.001232538604
+     1       -0.000000000000     0.000000000000    -0.044084341933
+     2        0.007401694804    -0.000000000000    -0.001232538601
+     3       -0.007401694804    -0.000000000000    -0.001232538601
 [...]
     Returned gradient of S1 (cassette 0).
 ```
@@ -1413,7 +1409,7 @@ $$
 Stored: `SSR ROOT <r> GRADIENT CASSETTE <e>`; `CURRENT ENERGY` and `REKS TARGET STATE ENERGY` (followed root, set in `energy()` too); `CURRENT GRADIENT`, `SCF TOTAL GRADIENT` (followed root)
 
 * The followed state (`*`) and `CURRENT ENERGY`: [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md).
-* A root within `REKS_GRAD_DEGEN_TOL` (10<sup>-6</sup> E<sub>h</sub>) of another physical root of its cassette is computed with a warning. A meta-GGA functional raises an error: no analytic SI gradient.
+* A root within `REKS_GRAD_DEGEN_TOL` (10<sup>-6</sup> E<sub>h</sub>) of another physical root of its cassette is computed with a warning.
 * `E` of a `Gradient of` block equals the state's energy in `Adiabatic states`; `Returned gradient` names the `*` state and repeats its table.
 * Converged response: `Remain` reaches 0 in the CP-REKS solver block ([`REKS_CPREKS_CONV`](https://reksstudio.github.io/v2/options/REKS_CPREKS_CONV.md)); each gradient prints `|sum over atoms|` near zero.
 
@@ -1458,22 +1454,22 @@ $$
 ```log
 ==> NAC S1/S2, cassette 0 <==
 
-    E(S2) - E(S1) = 0.004755720161 Eh = 0.129 eV
+    E(S2) - E(S1) = 0.009261423516 Eh = 0.252 eV
 
     Nonadiabatic coupling d_12 = <S1|d/dR S2> [1/a0]
     Atom                  X                  Y                  Z
     -------------------------------------------------------------
-    C1       0.000000000000   -15.149724827099    -0.000000000034
-    H2       0.000000000001     5.247132242451     0.000000000000
-    H3      -0.000000000001     5.247132242464     0.000000000000
-    C4       0.000000000000    14.301163401467     0.000000000007
-    H5       0.000000000004    -4.823770374412     0.000000000014
-    H6      -0.000000000004    -4.823770374416     0.000000000014
+    C1       0.000000000000     5.207065892962     0.000000000000
+    H2       0.000000000000    -1.584259370894    -0.000000000001
+    H3       0.000000000000    -1.584259370895    -0.000000000001
+    C4       0.000000000000    -6.162643638639     0.000000000006
+    H5       0.000000000000     2.059102095027    -0.000000000002
+    H6       0.000000000000     2.059102095027    -0.000000000002
     -------------------------------------------------------------
-    |d_12| = 2.314e+01 1/a0   |E(S2) - E(S1)| |d_12| = 1.101e-01 Eh/a0
-    |d_model| = 2.631e+01, |d_residual| = 3.172e+00 (1/a0)
-    sum over atoms of d_12       = (-2.403e-15, -1.838e-03,  2.789e-13) 1/a0
-    -p from the velocity moments = (-2.781e-15, -1.838e-03,  2.834e-13) 1/a0   consistent (deviation 1.4e-13)
+    |d_12| = 8.865e+00 1/a0   |E(S2) - E(S1)| |d_12| = 8.210e-02 Eh/a0
+    |d_model| = 5.711e+00, |d_residual| = 3.169e+00 (1/a0)
+    sum over atoms of d_12       = (-3.851e-15, -5.892e-03,  2.086e-13) 1/a0
+    -p from the velocity moments = (-2.675e-15, -5.892e-03,  2.115e-13) 1/a0   consistent (deviation 2.9e-14)
 ```
 
 Stored: `SSR NAC <I> <J> CASSETTE <e>`, `SSR NAC MODEL <I> <J> CASSETTE <e>`, `SSR NAC RESIDUAL <I> <J> CASSETTE <e>`; the root gradients `SSR ROOT <I> GRADIENT CASSETTE <e>`, `SSR ROOT <J> GRADIENT CASSETTE <e>`
@@ -1520,15 +1516,15 @@ B =\Big(\frac{\sigma}{2\Delta_{gh}}\Big)^{2/3}\Big[\big((1+\Delta_{gh})\cos^2\th
 $$
 
 ```log
-==> Conical-intersection (CI) topography S1/S2 (cassette 0), E(S2) - E(S1) = 4.756e-03 Eh <==
+==> Conical-intersection (CI) topography S1/S2 (cassette 0), E(S2) - E(S1) = 4.092e-03 Eh <==
 
     Quantity                 Unit             Value
     ----------------------------------------------------------------------
-    |g~|                     Eh/a0     1.100659e-01
-    |h~|                     Eh/a0     2.322846e-02
+    |g~|                     Eh/a0     4.493416e-02
+    |h~|                     Eh/a0     2.373678e-03
 [...]
-    P                                  1.926520e+00    sloped (P > 1)
-    B                                  1.611657e-01    bifurcating (B < 1)
+    P                                  9.808603e+01    sloped (P > 1)
+    B                                  9.158142e-02    bifurcating (B < 1)
     ----------------------------------------------------------------------
 [...]
     P < 1 peaked, > 1 sloped;  B < 1 bifurcating, > 1 single path.

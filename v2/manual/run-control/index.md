@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/run-control/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 [Manual](https://reksstudio.github.io/v2/manual/index.md) › Run control
 
@@ -168,7 +168,7 @@ with $\mathbf g_{\mathrm{orb}}$, $\mathbf g_{\mathrm{FON}}$ the orbital and FON 
  @DF-REKS iter   2:    -1.85615375141313   -1.84239e-01   6.35543e-03 SHIFT
  @DF-REKS iter   3:    -1.85801940076408   -1.86565e-03   6.51017e-03 ORB-GVB-DIIS
 [...]
- @DF-REKS iter  11:    -1.85941446727766   -8.88178e-16   8.69030e-11 ORB-GVB-DIIS
+ @DF-REKS iter  11:    -1.85941446727766    2.22045e-16   8.68918e-11 ORB-GVB-DIIS
 
 Energy and wave function converged.
 ```
