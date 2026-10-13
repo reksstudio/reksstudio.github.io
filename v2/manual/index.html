@@ -5,10 +5,10 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <p>REKS Studio is the REKS solver of this Psi4 branch, selected with <code>reference reks</code>. It gives:</p>
 <ul>
 <li><strong>REKS(N,M)</strong>: ensemble DFT with <code>N</code> active electrons in <code>M</code> active orbitals, distributed over GVB-like geminal (paired-orbital) configurations whose fractional occupation numbers (FONs) are optimized self-consistently together with the orbitals.</li>
-<li><strong>SA-REKS</strong>: an ensemble of such configurations averaged with fixed weights; its energy is what the SCF optimizes.</li>
+<li><strong>SA-REKS</strong>: an ensemble of such configurations averaged with fixed weights; its energy is optimized during SCF.</li>
 <li><strong>SI-SA-REKS</strong> (SSR): a post-SCF eigenproblem in a basis of catalog configurations (a cassette, chosen independently of the SA ensemble) that gives adiabatic state energies, densities and transition properties, gradients and couplings, from one SCF.</li>
 </ul>
-<p>A functional, a basis and an SCF type are chosen as for any Psi4 reference, and <code>psi4.energy("&lt;functional&gt;")</code> is called as usual, e.g. <code>psi4.energy("bhhlyp")</code>; the functional builds the Kohn–Sham matrices of every microstate (<a href="/v2/manual/concepts/#microstate">Microstate</a>). <code>psi4.energy("scf")</code> runs REKS with Hartree–Fock exchange and no functional; its setup block then has no <code>XC evaluation</code> line.</p>
+<p>A functional, a basis, and an SCF type are chosen as for any Psi4 reference, and <code>psi4.energy("&lt;functional&gt;")</code> is called as usual, e.g. <code>psi4.energy("bhhlyp")</code>; the functional builds the Kohn–Sham matrices of every microstate (<a href="/v2/manual/concepts/#microstate">Microstate</a>). <code>psi4.energy("scf")</code> runs REKS with Hartree–Fock exchange and no functional; its setup block then has no <code>XC evaluation</code> line.</p>
 <h3 id="tasks">Tasks</h3>
 <div class="reftable-wrap"><table>
 <thead>
@@ -97,7 +97,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    reks       [ 2, 2 ]</span></span>
 <span class="line"><span>}</span></span>
 <span class="line"><span>energy('bhhlyp')</span></span></code></pre>
-<p>Only <code>reference reks</code> and <code>reks [N, M]</code> are required. Absent <code>sa_reks_configs</code>: the catalog's default SA pool (<a href="/v2/manual/setup/#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a>). Absent <code>sa_reks_weights</code>: uniform weights. Absent <code>si_reks_configs</code>: one cassette spanning the full configuration block of the run's lowest manifold (<a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a>). For <code>reks [2, 2]</code> the defaults are SA = PPS1, OSS1 (weights 0.5) and the cassette PPS1, OSS1, DES1, printed as <code>3SI-2SA-REKS(2,2)</code>. A new molecule starts from seeded and checked active orbitals (<a href="/v2/manual/first-calculation/#first-calculation">§3</a>).</p>
+<p>Only <code>reference reks</code> and <code>reks [N, M]</code> are required. Absent <code>sa_reks_configs</code>: the catalog's default SA pool (<a href="/v2/manual/setup/#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a>). Absent <code>sa_reks_weights</code>: uniform weights. Absent <code>si_reks_configs</code>: one cassette spanning the full configuration block of the run's lowest manifold (<a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a>). For <code>reks [2, 2]</code>, the defaults are SA = PPS1, OSS1 (weights 0.5) and the cassette PPS1, OSS1, DES1, printed as <code>3SI-2SA-REKS(2,2)</code>. A new molecule starts from seeded and checked active orbitals (<a href="/v2/manual/first-calculation/#first-calculation">§3</a>).</p>
 <h3 id="explicit-input">Explicit SA pool and SI cassettes</h3>
 <p>SI-SA-REKS(4,4) with an explicit SA pool, weights and two SI cassettes, written as one group (one spin manifold) of two cassettes <code>[[[…], […]]]</code> (<a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a>); <code>PPS2</code> and <code>OSS3</code> belong to pairing scheme 1 (<code>SI pools</code> prints the definition of every name, <a href="/v2/manual/concepts/#pairing-scheme">Pairing scheme</a>):</p>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span></span>
@@ -203,7 +203,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>REKS requires C1 symmetry, but the molecule has 8 irreps. Add 'symmetry c1' to the molecule.</span></span>
 <span class="line"><span>====================================================================</span></span></code></pre>
 <h3 id="worked-inputs">Worked inputs</h3>
-<p>Complete inputs, each run with this build. Run a <code>.dat</code> file with <code>psi4 file.dat</code>, a <code>.py</code> file with <code>python file.py</code>. Seeded first calculations: <a href="/v2/manual/first-calculation/#first-inputs">Worked inputs</a>; wide geminals: <a href="/v2/manual/wide-geminals/#wide-inputs">Worked inputs</a>; optimization and dynamics: <a href="/v2/manual/dynamics/#dynamics-inputs">Worked inputs</a>.</p>
+<p>Complete inputs, each running with this build. Run a <code>.dat</code> file with <code>psi4 file.dat</code>, a <code>.py</code> file with <code>python file.py</code>. Seeded initial calculations: <a href="/v2/manual/first-calculation/#first-inputs">Worked inputs</a>; wide geminals: <a href="/v2/manual/wide-geminals/#wide-inputs">Worked inputs</a>; optimization and dynamics: <a href="/v2/manual/dynamics/#dynamics-inputs">Worked inputs</a>.</p>
 <div class="reftable-wrap"><table>
 <thead>
 <tr>

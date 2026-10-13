@@ -24,10 +24,10 @@ Ulsan National Institute of Science and Technology (UNIST), South Korea
 REKS Studio is the REKS solver of this Psi4 branch, selected with `reference reks`. It gives:
 
 * **REKS(N,M)**: ensemble DFT with `N` active electrons in `M` active orbitals, distributed over GVB-like geminal (paired-orbital) configurations whose fractional occupation numbers (FONs) are optimized self-consistently together with the orbitals.
-* **SA-REKS**: an ensemble of such configurations averaged with fixed weights; its energy is what the SCF optimizes.
+* **SA-REKS**: an ensemble of such configurations averaged with fixed weights; its energy is optimized during SCF.
 * **SI-SA-REKS** (SSR): a post-SCF eigenproblem in a basis of catalog configurations (a cassette, chosen independently of the SA ensemble) that gives adiabatic state energies, densities and transition properties, gradients and couplings, from one SCF.
 
-A functional, a basis and an SCF type are chosen as for any Psi4 reference, and `psi4.energy("<functional>")` is called as usual, e.g. `psi4.energy("bhhlyp")`; the functional builds the Kohn–Sham matrices of every microstate ([Microstate](https://reksstudio.github.io/v2/manual/concepts/index.md#microstate)). `psi4.energy("scf")` runs REKS with Hartree–Fock exchange and no functional; its setup block then has no `XC evaluation` line.
+A functional, a basis, and an SCF type are chosen as for any Psi4 reference, and `psi4.energy("<functional>")` is called as usual, e.g. `psi4.energy("bhhlyp")`; the functional builds the Kohn–Sham matrices of every microstate ([Microstate](https://reksstudio.github.io/v2/manual/concepts/index.md#microstate)). `psi4.energy("scf")` runs REKS with Hartree–Fock exchange and no functional; its setup block then has no `XC evaluation` line.
 
 ### Tasks {#tasks}
 
@@ -58,7 +58,7 @@ set {
 energy('bhhlyp')
 ```
 
-Only `reference reks` and `reks [N, M]` are required. Absent `sa_reks_configs`: the catalog's default SA pool ([`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md)). Absent `sa_reks_weights`: uniform weights. Absent `si_reks_configs`: one cassette spanning the full configuration block of the run's lowest manifold ([`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)). For `reks [2, 2]` the defaults are SA = PPS1, OSS1 (weights 0.5) and the cassette PPS1, OSS1, DES1, printed as `3SI-2SA-REKS(2,2)`. A new molecule starts from seeded and checked active orbitals ([§3](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-calculation)).
+Only `reference reks` and `reks [N, M]` are required. Absent `sa_reks_configs`: the catalog's default SA pool ([`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md)). Absent `sa_reks_weights`: uniform weights. Absent `si_reks_configs`: one cassette spanning the full configuration block of the run's lowest manifold ([`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)). For `reks [2, 2]`, the defaults are SA = PPS1, OSS1 (weights 0.5) and the cassette PPS1, OSS1, DES1, printed as `3SI-2SA-REKS(2,2)`. A new molecule starts from seeded and checked active orbitals ([§3](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-calculation)).
 
 ### Explicit SA pool and SI cassettes {#explicit-input}
 
@@ -140,7 +140,7 @@ REKS requires C1 symmetry, but the molecule has 8 irreps. Add 'symmetry c1' to t
 
 ### Worked inputs {#worked-inputs}
 
-Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded first calculations: [Worked inputs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-inputs); wide geminals: [Worked inputs](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-inputs); optimization and dynamics: [Worked inputs](https://reksstudio.github.io/v2/manual/dynamics/index.md#dynamics-inputs).
+Complete inputs, each running with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded initial calculations: [Worked inputs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-inputs); wide geminals: [Worked inputs](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-inputs); optimization and dynamics: [Worked inputs](https://reksstudio.github.io/v2/manual/dynamics/index.md#dynamics-inputs).
 
 | File | Calculation | Result |
 | - | - | - |

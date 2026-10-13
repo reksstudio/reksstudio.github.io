@@ -3,106 +3,105 @@
 > REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.
 
 Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
-Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 ## Manual
-- [Start](https://reksstudio.github.io/v2/manual/index.md): Start; Tasks; Minimal input; Explicit SA pool and SI cassettes; Required and rejected settings; Worked inputs; Contents
-- [Concepts](https://reksstudio.github.io/v2/manual/concepts/index.md): Concepts; Active space, core, virtual; Ensemble Kohn–Sham reference and FONs; Microstate; Geminals; Pairing scheme; Configuration and its energy; Coupling Δ and factor f; FON set and generation; SA-REKS ensemble and weights; Orbitals, orbital energies, SCF convergence; Spin-polarized configurations; Spin manifold and run sector; SI cassette; SI-only FONs; SI Hamiltonian and overlap; Coupling damping below 100 % exact exchange; Adiabatic (SSR) states; Chirgwin–Coulson weights; Unrelaxed and relaxed densities
-- [First Calculation](https://reksstudio.github.io/v2/manual/first-calculation/index.md): First Calculation; Which active space?; Choose the pairs; Seed orbitals; Inspect the orbitals; Start REKS; Check the solution; Higher spin states; Worked inputs; Scans; If the SCF does not converge
-- [Wide Geminals](https://reksstudio.github.io/v2/manual/wide-geminals/index.md): Wide Geminals; Geminal of width w; Lone pair: REKS(2,3); Bond and lone pair: REKS(4,5), REKS(4,6); Check the solution; Gradients; States: SI-SA-REKS(2,3); Worked inputs
-- [Optimization and Dynamics](https://reksstudio.github.io/v2/manual/dynamics/index.md): Optimization and Dynamics; Requirements; One gradient() call; Gradients and couplings against finite differences; Geometry optimization; Check the optimization; Surface hopping; Check the trajectory; Worked inputs
-- [Input](https://reksstudio.github.io/v2/manual/setup/index.md): Active Space and Catalog; Active space; Naming convention; FON sets; Pairing schemes; Bulk Tokens and Pattern Syntax; SA Pool and SI Cassettes; SA pool; SI cassettes; Spin Manifolds (2S) and Multi-Sector Runs; Input patterns; State labels; Output; Properties, Gradients, Couplings; State properties; Gradients and couplings
-- [Run control](https://reksstudio.github.io/v2/manual/run-control/index.md): Guesses and Restarts; Restart mechanism; Fractional Occupation Numbers (FONs); SCF Convergence Engines; The three engines; Level shift; Expert stabilizers; Geminal Delocalization
-- [Output and properties](https://reksstudio.github.io/v2/manual/properties/index.md): Reading the Output; Print order; Run report; Report level; Variable names; Files; Properties; Rules for all entries; Summary; SCF; SI states; Unrelaxed state and transition properties; Spin energetics; Relaxed properties and EKT; Gradients, NAC, conical intersections
-- [Diagnose](https://reksstudio.github.io/v2/manual/diagnose/index.md): Diagnose
-- [Reference](https://reksstudio.github.io/v2/manual/reference/index.md): Option Table; Active space; Catalog; SA pool; SI cassettes; Spin manifolds; State properties; Gradients and couplings; Guess; FONs; FON micro-solver; Convergence engines; Level shift; GVB-DIIS conditioning chain (expert); GVB-DIIS monitors / verdicts (expert); Geminal delocalization; Reporting; References; Index
+- [Start](/v2/manual/index.md): Tasks; Minimal input; Explicit SA pool and SI cassettes; Required and rejected settings; Worked inputs; Contents
+- [Concepts](/v2/manual/concepts/index.md): Active space, core, virtual; Ensemble Kohn–Sham reference and FONs; Microstate; Geminals; Pairing scheme; Configuration and its energy; Coupling Δ and factor f; FON set and generation; SA-REKS ensemble and weights; Orbitals, orbital energies, SCF convergence; Spin-polarized configurations; Spin manifold and run sector; SI cassette; SI-only FONs; SI Hamiltonian and overlap; Coupling damping below 100 % exact exchange; Adiabatic (SSR) states; Chirgwin–Coulson weights; Unrelaxed and relaxed densities
+- [First Calculation](/v2/manual/first-calculation/index.md): Which active space?; Choose the pairs; Seed orbitals; Inspect the orbitals; Start REKS; Check the solution; Higher spin states; Worked inputs; Scans; If the SCF does not converge
+- [Wide Geminals](/v2/manual/wide-geminals/index.md): Geminal of width w; Lone pair: REKS(2,3); Bond and lone pair: REKS(4,5), REKS(4,6); Check the solution; Gradients; States: SI-SA-REKS(2,3); Worked inputs
+- [Optimization and Dynamics](/v2/manual/dynamics/index.md): Requirements; One gradient() call; Gradients and couplings against finite differences; Geometry optimization; Check the optimization; Surface hopping; Check the trajectory; Worked inputs
+- [Input](/v2/manual/setup/index.md): Active Space and Catalog; Active space; Naming convention; FON sets; Pairing schemes; Bulk Tokens and Pattern Syntax; SA Pool and SI Cassettes; SA pool; SI cassettes; Spin Manifolds (2S) and Multi-Sector Runs; Input patterns; State labels; Output; Properties, Gradients, Couplings; State properties; Gradients and couplings
+- [Run control](/v2/manual/run-control/index.md): Guesses and Restarts; Restart mechanism; Fractional Occupation Numbers (FONs); SCF Convergence Engines; The three engines; Level shift; Expert stabilizers; Geminal Delocalization
+- [Output and properties](/v2/manual/properties/index.md): Reading the Output; Print order; Run report; Report level; Variable names; Files; Properties; Rules for all entries; Summary; SCF; SI states; Unrelaxed state and transition properties; Spin energetics; Relaxed properties and EKT; Gradients, NAC, conical intersections
+- [Diagnose](/v2/manual/diagnose/index.md): 
+- [Reference](/v2/manual/reference/index.md): Option Table; Active space; Catalog; SA pool; SI cassettes; Spin manifolds; State properties; Gradients and couplings; Guess; FONs; FON micro-solver; Convergence engines; Level shift; GVB-DIIS conditioning chain (expert); GVB-DIIS monitors / verdicts (expert); Geminal delocalization; Reporting; References; Index
 
 ## Options
-- [`REKS`](https://reksstudio.github.io/v2/options/REKS.md): Active space `[N, M]`: N active electrons in M active orbitals; selects the catalog.
-- [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md): SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens.
-- [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md): Spin manifold 2S of each SA block, one integer per block.
-- [`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md): Weights of the SA pool entries, configurations first, then the `sa_reks_extra` determinants; non-negative, summing to 1.
-- [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md): Extra Slater determinants of the SA ensemble, as occupation vectors; each has its own weight, carries no FON and enters no SI cassette.
-- [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md): SI-SA-REKS cassettes: the configuration sets whose secular equations give the states, in groups per spin manifold.
-- [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md): 2S of each SI group; more than one entry requires the 3-level `si_reks_configs` form.
-- [`SI_REKS_PRINT_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_PRINT_STATES.md): States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all.
-- [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md): States per cassette whose properties are stored on the wavefunction (arrays, Molden and cube files); 0 = none, -1 = all.
-- [`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md): State-property blocks of the SI states to compute, print and store (moments, charges, bond indices, NTO, exciton, …).
-- [`SI_REKS_ANALYSIS_CHANGE_MIN`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS_CHANGE_MIN.md): Smallest state-to-state change of a charge or bond index that is printed.
-- [`SI_REKS_OVERLAP_CUTOFF`](https://reksstudio.github.io/v2/options/SI_REKS_OVERLAP_CUTOFF.md): Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped.
-- [`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md): Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`.
-- [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md): Roots whose analytic gradients are computed, per cassette; the first listed root is followed (`CURRENT ENERGY`, returned gradient).
-- [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md): Root pairs `[I, J]` per cassette whose nonadiabatic couplings and conical-intersection topography are computed.
-- [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md): States, per cassette, whose dipole, quadrupole, charges and bond indices are evaluated with the relaxed (CP-REKS) density.
-- [`REKS_EKT`](https://reksstudio.github.io/v2/options/REKS_EKT.md): Enables EKT: ionization energies, pole strengths and Dyson orbitals of the `si_reks_property_for` states or of the SA ensemble.
-- [`REKS_EKT_OCC_TOL`](https://reksstudio.github.io/v2/options/REKS_EKT_OCC_TOL.md): Cutoff on the density eigenvalues: those at or below it are dropped from the EKT metric.
-- [`REKS_CPREKS_CONV`](https://reksstudio.github.io/v2/options/REKS_CPREKS_CONV.md): Residual threshold of the CP-REKS (Z-vector) solver. `reks_cpreks_maxiter` (200) bounds its rounds.
-- [`REKS_CPREKS_MAXITER`](https://reksstudio.github.io/v2/options/REKS_CPREKS_MAXITER.md): Maximum number of rounds of the CP-REKS (Z-vector) solver; exceeding it stops the run with the residual reached.
-- [`REKS_GRAD_DEGEN_TOL`](https://reksstudio.github.io/v2/options/REKS_GRAD_DEGEN_TOL.md): Gap below which a requested root is flagged as quasi-degenerate.
-- [`REKS_CI_TOPOGRAPHY_GAP`](https://reksstudio.github.io/v2/options/REKS_CI_TOPOGRAPHY_GAP.md): Largest gap at which the topography table of a NAC pair is printed.
-- [`GUESS_ACTIVE_WINDOW`](https://reksstudio.github.io/v2/options/GUESS_ACTIVE_WINDOW.md): MOs of the read guess placed in the active columns, one token per active orbital: 0-based index, `HOMO-k` or `LUMO+k`.
-- [`REKS_FON_INTERP_DELTA`](https://reksstudio.github.io/v2/options/REKS_FON_INTERP_DELTA.md): Parameter δ of the factor f(n_p n_q) that multiplies the coupling term of each geminal in the REKS energy.
-- [`REKS_<L>_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md): Lower bound on the free FON n_p of every geminal of one FON generation (`reks_n_fon`, `reks_m_fon`, …); negative disables it.
-- [`REKS_FON_MICRO_NR_MAXITER`](https://reksstudio.github.io/v2/options/REKS_FON_MICRO_NR_MAXITER.md): Newton iteration cap per geminal block per SCF iteration.
-- [`REKS_FON_MICRO_LS_MAXITER`](https://reksstudio.github.io/v2/options/REKS_FON_MICRO_LS_MAXITER.md): Armijo backtracking (step halving) cap inside one Newton step.
-- [`REKS_FON_MICRO_CONVERGENCE`](https://reksstudio.github.io/v2/options/REKS_FON_MICRO_CONVERGENCE.md): Step-norm convergence threshold.
-- [`REKS_FON_MICRO_MIN_EIGENVALUE`](https://reksstudio.github.io/v2/options/REKS_FON_MICRO_MIN_EIGENVALUE.md): Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped.
-- [`REKS_FON_MICRO_BOUND_MARGIN`](https://reksstudio.github.io/v2/options/REKS_FON_MICRO_BOUND_MARGIN.md): Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step; must lie in (0, 1).
-- [`REKS_FON_MICRO_BOUNDARY_SKIN`](https://reksstudio.github.io/v2/options/REKS_FON_MICRO_BOUNDARY_SKIN.md): A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum.
-- [`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md): After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA.
-- [`REKS_REPORT_LEVEL`](https://reksstudio.github.io/v2/options/REKS_REPORT_LEVEL.md): Verbosity of the REKS output, 1–5: from the SCF trace and energetics up to per-iteration solver traces and intermediate matrices.
-- [`REKS_USE_TRAH`](https://reksstudio.github.io/v2/options/REKS_USE_TRAH.md): Trust-region Newton (TRAH) step on the active–active rotations and FONs: warm-up before GVB-DIIS, or the whole SCF without it.
-- [`REKS_GVB_DIIS`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS.md): GVB-DIIS accelerator of the orbital optimization, in the formulation set by `reks_diis_formulation`.
-- [`REKS_DIIS_FORMULATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_FORMULATION.md): GVB-DIIS formulation: extrapolation of the orbital-rotation generators κ, or of the composite multishell Fock matrix (`CFM`).
-- [`REKS_GVB_DIIS_START`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS_START.md): First SCF iteration of GVB-DIIS; earlier iterations run the level-shifted burn-in or TRAH.
-- [`REKS_GVB_LEVEL_SHIFT`](https://reksstudio.github.io/v2/options/REKS_GVB_LEVEL_SHIFT.md): Shell gap of the multishell Fock matrix in the `CFM` formulation of GVB-DIIS.
-- [`LEVEL_SHIFT_ADAPT`](https://reksstudio.github.io/v2/options/LEVEL_SHIFT_ADAPT.md): Adaptive base of the staircase level shift: decays while the orbitals are stable, grows back up to `level_shift` on swaps or strong mixing.
-- [`REKS_DIIS_ACTIVATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_ACTIVATION.md): Criterion for `ORBITAL` GVB-DIIS to take over from the TRAH warm-up: the iteration count alone, or also the orbital gradient.
-- [`REKS_DIIS_CFM_ACTIVATION_GORB`](https://reksstudio.github.io/v2/options/REKS_DIIS_CFM_ACTIVATION_GORB.md): Orbital-gradient norm ‖g_orb‖\_F below which GVB-DIIS takes over from the TRAH warm-up.
-- [`REKS_GVB_ROBUST_VERDICT`](https://reksstudio.github.io/v2/options/REKS_GVB_ROBUST_VERDICT.md): Enables the post-hoc verdict that rewinds extrapolated GVB-DIIS steps whose orbital gradient grows.
-- [`REKS_DIIS_COND_ANGLE_FILTER`](https://reksstudio.github.io/v2/options/REKS_DIIS_COND_ANGLE_FILTER.md): Enables the angle filter with stale-drop that prunes near-dependent and stale GVB-DIIS error vectors.
-- [`REKS_DIIS_COND_ANGLE_CUTOFF`](https://reksstudio.github.io/v2/options/REKS_DIIS_COND_ANGLE_CUTOFF.md): Angle-filter cutoff c_s: smallest sine of the angle to the kept differences for a GVB-DIIS error vector to stay.
-- [`REKS_DIIS_COND_STALE_DELTA`](https://reksstudio.github.io/v2/options/REKS_DIIS_COND_STALE_DELTA.md): Stale-drop threshold δ: GVB-DIIS error vectors with norm above the newest norm / √δ are dropped; 0 switches it off.
-- [`REKS_DIIS_COND_KAPPA_BYPASS`](https://reksstudio.github.io/v2/options/REKS_DIIS_COND_KAPPA_BYPASS.md): Condition number of the GVB-DIIS error matrix above which the SVD-conditioned solve replaces the plain bordered solve.
-- [`REKS_DIIS_COND_SVD_RCOND`](https://reksstudio.github.io/v2/options/REKS_DIIS_COND_SVD_RCOND.md): Relative singular-value cutoff of the SVD-conditioned GVB-DIIS solve.
-- [`REKS_DIIS_COND_COEFF_NORM_MAX`](https://reksstudio.github.io/v2/options/REKS_DIIS_COND_COEFF_NORM_MAX.md): Bound c_max on the GVB-DIIS coefficient norm |c|², also used by the angle filter to drop near-duplicate error vectors.
-- [`REKS_DIIS_COND_TIKHONOV`](https://reksstudio.github.io/v2/options/REKS_DIIS_COND_TIKHONOV.md): Enables the Tikhonov ridge on the SVD-conditioned GVB-DIIS solve.
-- [`REKS_DIIS_COND_TIKHONOV_SCALE`](https://reksstudio.github.io/v2/options/REKS_DIIS_COND_TIKHONOV_SCALE.md): Ridge magnitude of the Tikhonov-regularized GVB-DIIS SVD solve; 0 applies no ridge.
-- [`REKS_DIIS_MON_VERDICT_RHO`](https://reksstudio.github.io/v2/options/REKS_DIIS_MON_VERDICT_RHO.md): Verdict trip ratio: a GVB-DIIS step is rewound when ‖g_orb‖ exceeds this multiple of its maximum over the recent iterates.
-- [`REKS_DIIS_MON_VERDICT_STREAK`](https://reksstudio.github.io/v2/options/REKS_DIIS_MON_VERDICT_STREAK.md): Consecutive verdict rewinds without a new best iterate before GVB-DIIS restarts from the best iterate.
-- [`REKS_DIIS_MON_SUPPRESS_WINDOW`](https://reksstudio.github.io/v2/options/REKS_DIIS_MON_SUPPRESS_WINDOW.md): Iterations after a GVB-DIIS rewind, restart or switch during which the verdict is suspended.
-- [`REKS_DIIS_MON_NONMONOTONE_M`](https://reksstudio.github.io/v2/options/REKS_DIIS_MON_NONMONOTONE_M.md): Depth M of the nonmonotone references of the GVB-DIIS monitors: max ‖g_orb‖ and min E_SA over the last M iterates.
-- [`REKS_GVB_GATE_STREAK`](https://reksstudio.github.io/v2/options/REKS_GVB_GATE_STREAK.md): Consecutive iterations meeting the energy and gradient thresholds before GVB-DIIS reports convergence.
-- [`REKS_DIIS_GUARD_LATCH_GRACE`](https://reksstudio.github.io/v2/options/REKS_DIIS_GUARD_LATCH_GRACE.md): Consecutive iterations without the basin signal after which the GVB-DIIS outcome guard clears its basin latch.
-- [`REKS_DIIS_GUARD_LANDING_TOLERANCE`](https://reksstudio.github.io/v2/options/REKS_DIIS_GUARD_LANDING_TOLERANCE.md): Relative tolerance at which a GVB-DIIS rewind landing counts as a repeat (best E_SA and best ‖g_orb‖ reproduced).
-- [`REKS_DIIS_MON_PROGRESS_EPS`](https://reksstudio.github.io/v2/options/REKS_DIIS_MON_PROGRESS_EPS.md): Sufficient-decrease fraction ε: a GVB-DIIS iterate counts as progress only if ‖g_orb‖ ≤ (1 − ε) × best ‖g_orb‖.
-- [`REKS_DIIS_FON_BRANCH_CUTOFF`](https://reksstudio.github.io/v2/options/REKS_DIIS_FON_BRANCH_CUTOFF.md): FON displacement from the best iterate at or above which the GVB-DIIS guard reads an energy drop as a basin transition.
-- [`REKS_DIIS_RESTART_BUDGET`](https://reksstudio.github.io/v2/options/REKS_DIIS_RESTART_BUDGET.md): GVB-DIIS monitor restarts without sufficient improvement allowed before the monitors stop and rewind once to the best iterate.
-- [`REKS_DIIS_MON_CYCLE`](https://reksstudio.github.io/v2/options/REKS_DIIS_MON_CYCLE.md): Enables the GVB-DIIS no-progress / step-cap monitor, which restarts from the best iterate.
-- [`REKS_DIIS_MON_CYCLE_WINDOW`](https://reksstudio.github.io/v2/options/REKS_DIIS_MON_CYCLE_WINDOW.md): Iterations without a new best ‖g_orb‖ before the GVB-DIIS cycle monitor restarts from the best iterate.
-- [`REKS_DIIS_MON_CYCLE_CAP_STREAK`](https://reksstudio.github.io/v2/options/REKS_DIIS_MON_CYCLE_CAP_STREAK.md): Consecutive `ORBITAL` step-cap hits before the GVB-DIIS cycle monitor restarts.
-- [`REKS_DIIS_ORB_BASE_MAP_DAMP`](https://reksstudio.github.io/v2/options/REKS_DIIS_ORB_BASE_MAP_DAMP.md): Damping α of the `ORBITAL` GVB-DIIS Newton step from the re-anchored frame after a restart.
+- [`REKS`](/v2/options/REKS.md): Active space `[N, M]`: N active electrons in M active orbitals; selects the catalog.
+- [`SA_REKS_CONFIGS`](/v2/options/SA_REKS_CONFIGS.md): SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens.
+- [`SA_REKS_2SPIN`](/v2/options/SA_REKS_2SPIN.md): Spin manifold 2S of each SA block, one integer per block.
+- [`SA_REKS_WEIGHTS`](/v2/options/SA_REKS_WEIGHTS.md): Weights of the SA pool entries, configurations first, then the `sa_reks_extra` determinants; non-negative, summing to 1.
+- [`SA_REKS_EXTRA`](/v2/options/SA_REKS_EXTRA.md): Extra Slater determinants of the SA ensemble, as occupation vectors; each has its own weight, carries no FON and enters no SI cassette.
+- [`SI_REKS_CONFIGS`](/v2/options/SI_REKS_CONFIGS.md): SI-SA-REKS cassettes: the configuration sets whose secular equations give the states, in groups per spin manifold.
+- [`SI_REKS_2SPIN`](/v2/options/SI_REKS_2SPIN.md): 2S of each SI group; more than one entry requires the 3-level `si_reks_configs` form.
+- [`SI_REKS_PRINT_STATES`](/v2/options/SI_REKS_PRINT_STATES.md): States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all.
+- [`SI_REKS_STORE_STATES`](/v2/options/SI_REKS_STORE_STATES.md): States per cassette whose properties are stored on the wavefunction (arrays, Molden and cube files); 0 = none, -1 = all.
+- [`SI_REKS_ANALYSIS`](/v2/options/SI_REKS_ANALYSIS.md): State-property blocks of the SI states to compute, print and store (moments, charges, bond indices, NTO, exciton, …).
+- [`SI_REKS_ANALYSIS_CHANGE_MIN`](/v2/options/SI_REKS_ANALYSIS_CHANGE_MIN.md): Smallest state-to-state change of a charge or bond index that is printed.
+- [`SI_REKS_OVERLAP_CUTOFF`](/v2/options/SI_REKS_OVERLAP_CUTOFF.md): Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped.
+- [`REKS_GEMINAL_WIDTHS`](/v2/options/REKS_GEMINAL_WIDTHS.md): Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`.
+- [`SI_REKS_GRAD`](/v2/options/SI_REKS_GRAD.md): Roots whose analytic gradients are computed, per cassette; the first listed root is followed (`CURRENT ENERGY`, returned gradient).
+- [`SI_REKS_NAC`](/v2/options/SI_REKS_NAC.md): Root pairs `[I, J]` per cassette whose nonadiabatic couplings and conical-intersection topography are computed.
+- [`SI_REKS_PROPERTY_FOR`](/v2/options/SI_REKS_PROPERTY_FOR.md): States, per cassette, whose dipole, quadrupole, charges and bond indices are evaluated with the relaxed (CP-REKS) density.
+- [`REKS_EKT`](/v2/options/REKS_EKT.md): Enables EKT: ionization energies, pole strengths and Dyson orbitals of the `si_reks_property_for` states or of the SA ensemble.
+- [`REKS_EKT_OCC_TOL`](/v2/options/REKS_EKT_OCC_TOL.md): Cutoff on the density eigenvalues: those at or below it are dropped from the EKT metric.
+- [`REKS_CPREKS_CONV`](/v2/options/REKS_CPREKS_CONV.md): Residual threshold of the CP-REKS (Z-vector) solver. `reks_cpreks_maxiter` (200) bounds its rounds.
+- [`REKS_CPREKS_MAXITER`](/v2/options/REKS_CPREKS_MAXITER.md): Maximum number of rounds of the CP-REKS (Z-vector) solver; exceeding it stops the run with the residual reached.
+- [`REKS_GRAD_DEGEN_TOL`](/v2/options/REKS_GRAD_DEGEN_TOL.md): Gap below which a requested root is flagged as quasi-degenerate.
+- [`REKS_CI_TOPOGRAPHY_GAP`](/v2/options/REKS_CI_TOPOGRAPHY_GAP.md): Largest gap at which the topography table of a NAC pair is printed.
+- [`GUESS_ACTIVE_WINDOW`](/v2/options/GUESS_ACTIVE_WINDOW.md): MOs of the read guess placed in the active columns, one token per active orbital: 0-based index, `HOMO-k` or `LUMO+k`.
+- [`REKS_FON_INTERP_DELTA`](/v2/options/REKS_FON_INTERP_DELTA.md): Parameter δ of the factor f(n_p n_q) that multiplies the coupling term of each geminal in the REKS energy.
+- [`REKS_<L>_FON`](/v2/options/REKS_N_FON.md): Lower bound on the free FON n_p of every geminal of one FON generation (`reks_n_fon`, `reks_m_fon`, …); negative disables it.
+- [`REKS_FON_MICRO_NR_MAXITER`](/v2/options/REKS_FON_MICRO_NR_MAXITER.md): Newton iteration cap per geminal block per SCF iteration.
+- [`REKS_FON_MICRO_LS_MAXITER`](/v2/options/REKS_FON_MICRO_LS_MAXITER.md): Armijo backtracking (step halving) cap inside one Newton step.
+- [`REKS_FON_MICRO_CONVERGENCE`](/v2/options/REKS_FON_MICRO_CONVERGENCE.md): Step-norm convergence threshold.
+- [`REKS_FON_MICRO_MIN_EIGENVALUE`](/v2/options/REKS_FON_MICRO_MIN_EIGENVALUE.md): Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped.
+- [`REKS_FON_MICRO_BOUND_MARGIN`](/v2/options/REKS_FON_MICRO_BOUND_MARGIN.md): Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step; must lie in (0, 1).
+- [`REKS_FON_MICRO_BOUNDARY_SKIN`](/v2/options/REKS_FON_MICRO_BOUNDARY_SKIN.md): A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum.
+- [`REKS_GEMINAL_DELOC`](/v2/options/REKS_GEMINAL_DELOC.md): After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA.
+- [`REKS_REPORT_LEVEL`](/v2/options/REKS_REPORT_LEVEL.md): Verbosity of the REKS output, 1–5: from the SCF trace and energetics up to per-iteration solver traces and intermediate matrices.
+- [`REKS_USE_TRAH`](/v2/options/REKS_USE_TRAH.md): Trust-region Newton (TRAH) step on the active–active rotations and FONs: warm-up before GVB-DIIS, or the whole SCF without it.
+- [`REKS_GVB_DIIS`](/v2/options/REKS_GVB_DIIS.md): GVB-DIIS accelerator of the orbital optimization, in the formulation set by `reks_diis_formulation`.
+- [`REKS_DIIS_FORMULATION`](/v2/options/REKS_DIIS_FORMULATION.md): GVB-DIIS formulation: extrapolation of the orbital-rotation generators κ, or of the composite multishell Fock matrix (`CFM`).
+- [`REKS_GVB_DIIS_START`](/v2/options/REKS_GVB_DIIS_START.md): First SCF iteration of GVB-DIIS; earlier iterations run the level-shifted burn-in or TRAH.
+- [`REKS_GVB_LEVEL_SHIFT`](/v2/options/REKS_GVB_LEVEL_SHIFT.md): Shell gap of the multishell Fock matrix in the `CFM` formulation of GVB-DIIS.
+- [`LEVEL_SHIFT_ADAPT`](/v2/options/LEVEL_SHIFT_ADAPT.md): Adaptive base of the staircase level shift: decays while the orbitals are stable, grows back up to `level_shift` on swaps or strong mixing.
+- [`REKS_DIIS_ACTIVATION`](/v2/options/REKS_DIIS_ACTIVATION.md): Criterion for `ORBITAL` GVB-DIIS to take over from the TRAH warm-up: the iteration count alone, or also the orbital gradient.
+- [`REKS_DIIS_CFM_ACTIVATION_GORB`](/v2/options/REKS_DIIS_CFM_ACTIVATION_GORB.md): Orbital-gradient norm ‖g_orb‖\_F below which GVB-DIIS takes over from the TRAH warm-up.
+- [`REKS_GVB_ROBUST_VERDICT`](/v2/options/REKS_GVB_ROBUST_VERDICT.md): Enables the post-hoc verdict that rewinds extrapolated GVB-DIIS steps whose orbital gradient grows.
+- [`REKS_DIIS_COND_ANGLE_FILTER`](/v2/options/REKS_DIIS_COND_ANGLE_FILTER.md): Enables the angle filter with stale-drop that prunes near-dependent and stale GVB-DIIS error vectors.
+- [`REKS_DIIS_COND_ANGLE_CUTOFF`](/v2/options/REKS_DIIS_COND_ANGLE_CUTOFF.md): Angle-filter cutoff c_s: smallest sine of the angle to the kept differences for a GVB-DIIS error vector to stay.
+- [`REKS_DIIS_COND_STALE_DELTA`](/v2/options/REKS_DIIS_COND_STALE_DELTA.md): Stale-drop threshold δ: GVB-DIIS error vectors with norm above the newest norm / √δ are dropped; 0 switches it off.
+- [`REKS_DIIS_COND_KAPPA_BYPASS`](/v2/options/REKS_DIIS_COND_KAPPA_BYPASS.md): Condition number of the GVB-DIIS error matrix above which the SVD-conditioned solve replaces the plain bordered solve.
+- [`REKS_DIIS_COND_SVD_RCOND`](/v2/options/REKS_DIIS_COND_SVD_RCOND.md): Relative singular-value cutoff of the SVD-conditioned GVB-DIIS solve.
+- [`REKS_DIIS_COND_COEFF_NORM_MAX`](/v2/options/REKS_DIIS_COND_COEFF_NORM_MAX.md): Bound c_max on the GVB-DIIS coefficient norm |c|², also used by the angle filter to drop near-duplicate error vectors.
+- [`REKS_DIIS_COND_TIKHONOV`](/v2/options/REKS_DIIS_COND_TIKHONOV.md): Enables the Tikhonov ridge on the SVD-conditioned GVB-DIIS solve.
+- [`REKS_DIIS_COND_TIKHONOV_SCALE`](/v2/options/REKS_DIIS_COND_TIKHONOV_SCALE.md): Ridge magnitude of the Tikhonov-regularized GVB-DIIS SVD solve; 0 applies no ridge.
+- [`REKS_DIIS_MON_VERDICT_RHO`](/v2/options/REKS_DIIS_MON_VERDICT_RHO.md): Verdict trip ratio: a GVB-DIIS step is rewound when ‖g_orb‖ exceeds this multiple of its maximum over the recent iterates.
+- [`REKS_DIIS_MON_VERDICT_STREAK`](/v2/options/REKS_DIIS_MON_VERDICT_STREAK.md): Consecutive verdict rewinds without a new best iterate before GVB-DIIS restarts from the best iterate.
+- [`REKS_DIIS_MON_SUPPRESS_WINDOW`](/v2/options/REKS_DIIS_MON_SUPPRESS_WINDOW.md): Iterations after a GVB-DIIS rewind, restart or switch during which the verdict is suspended.
+- [`REKS_DIIS_MON_NONMONOTONE_M`](/v2/options/REKS_DIIS_MON_NONMONOTONE_M.md): Depth M of the nonmonotone references of the GVB-DIIS monitors: max ‖g_orb‖ and min E_SA over the last M iterates.
+- [`REKS_GVB_GATE_STREAK`](/v2/options/REKS_GVB_GATE_STREAK.md): Consecutive iterations meeting the energy and gradient thresholds before GVB-DIIS reports convergence.
+- [`REKS_DIIS_GUARD_LATCH_GRACE`](/v2/options/REKS_DIIS_GUARD_LATCH_GRACE.md): Consecutive iterations without the basin signal after which the GVB-DIIS outcome guard clears its basin latch.
+- [`REKS_DIIS_GUARD_LANDING_TOLERANCE`](/v2/options/REKS_DIIS_GUARD_LANDING_TOLERANCE.md): Relative tolerance at which a GVB-DIIS rewind landing counts as a repeat (best E_SA and best ‖g_orb‖ reproduced).
+- [`REKS_DIIS_MON_PROGRESS_EPS`](/v2/options/REKS_DIIS_MON_PROGRESS_EPS.md): Sufficient-decrease fraction ε: a GVB-DIIS iterate counts as progress only if ‖g_orb‖ ≤ (1 − ε) × best ‖g_orb‖.
+- [`REKS_DIIS_FON_BRANCH_CUTOFF`](/v2/options/REKS_DIIS_FON_BRANCH_CUTOFF.md): FON displacement from the best iterate at or above which the GVB-DIIS guard reads an energy drop as a basin transition.
+- [`REKS_DIIS_RESTART_BUDGET`](/v2/options/REKS_DIIS_RESTART_BUDGET.md): GVB-DIIS monitor restarts without sufficient improvement allowed before the monitors stop and rewind once to the best iterate.
+- [`REKS_DIIS_MON_CYCLE`](/v2/options/REKS_DIIS_MON_CYCLE.md): Enables the GVB-DIIS no-progress / step-cap monitor, which restarts from the best iterate.
+- [`REKS_DIIS_MON_CYCLE_WINDOW`](/v2/options/REKS_DIIS_MON_CYCLE_WINDOW.md): Iterations without a new best ‖g_orb‖ before the GVB-DIIS cycle monitor restarts from the best iterate.
+- [`REKS_DIIS_MON_CYCLE_CAP_STREAK`](/v2/options/REKS_DIIS_MON_CYCLE_CAP_STREAK.md): Consecutive `ORBITAL` step-cap hits before the GVB-DIIS cycle monitor restarts.
+- [`REKS_DIIS_ORB_BASE_MAP_DAMP`](/v2/options/REKS_DIIS_ORB_BASE_MAP_DAMP.md): Damping α of the `ORBITAL` GVB-DIIS Newton step from the re-anchored frame after a restart.
 
 ## Files
-- [inputs/first_butadiene.py](https://reksstudio.github.io/v2/inputs/first_butadiene.py.txt): SI-SA-REKS(4,4), s-trans-butadiene, BH\&HLYP/6-31G(d), RKS seed, π window; E<sub>SA</sub> = −155.670331327491 E<sub>h</sub>; n 1.999999 / 1.999138 / 0.000862 / 0.000001
-- [inputs/first_c2h4_90.py](https://reksstudio.github.io/v2/inputs/first_c2h4_90.py.txt): SI-SA-REKS(2,2), C₂H₄ 90°, BH\&HLYP/6-31G(d), RKS seed, no window; E<sub>SA</sub> = −78.364394265263 E<sub>h</sub>; n 1.000000 / 1.000000
-- [inputs/first_hexatriene.py](https://reksstudio.github.io/v2/inputs/first_hexatriene.py.txt): SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH\&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool, all-α determinant in SA; SI on 2S = 0, 2, 4, 6; E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257191838391, T1 −233.156651584658, Q1 −232.966755681972, Sp1 −232.680857311443 E<sub>h</sub>
-- [inputs/md_c2h4.py](https://reksstudio.github.io/v2/inputs/md_c2h4.py.txt): surface hopping on S1 from the `opt_c2h4.py` geometry, 3 states, 400 × 0.25 fs; hops S1 → S2 at 37.75 and 80.25 fs, back at 39.25 and 87.25 fs; E<sub>tot</sub> drift −0.13 kcal mol⁻¹, range 0.18 kcal mol⁻¹
-- [inputs/md_hexatriene.py](https://reksstudio.github.io/v2/inputs/md_hexatriene.py.txt): surface hopping on T1 from the `opt_hexatriene.py` geometry, 3 triplet states, 50 × 0.5 fs; T1 throughout; E<sub>tot</sub> drift +0.13 kcal mol⁻¹, range 0.18 kcal mol⁻¹; 39 s per step on 8 threads
-- [inputs/opt_c2h4.py](https://reksstudio.github.io/v2/inputs/opt_c2h4.py.txt): S0 of C₂H₄, SSR(2,2) BH\&HLYP/6-31G(d), DF, RKS seed, DL-FIND; E(S0) = −78.52863042 E<sub>h</sub>, 8 gradients
-- [inputs/opt_hexatriene.py](https://reksstudio.github.io/v2/inputs/opt_hexatriene.py.txt): T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH\&HLYP/6-31G(d), DF, π window, DL-FIND; E(T1) = −233.17880483 E<sub>h</sub>, 10 gradients, 5.5 min on 8 threads
-- [inputs/reks22_h2.dat](https://reksstudio.github.io/v2/inputs/reks22_h2.dat.txt): SI-SA-REKS(2,2), H₂ (0.74 Å), BH\&HLYP/cc-pVDZ, default pools; S0 = −1.159238310496 Eh
-- [inputs/reks22_h2_triplet_gradient.dat](https://reksstudio.github.io/v2/inputs/reks22_h2_triplet_gradient.dat.txt): SI-SA-REKS(2,2), H₂ (1.6 Å), BH\&HLYP/6-31G(d); analytic gradient and relaxed properties of T1 ([`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md)); T1 = −0.959546621300 Eh; dE/dz(H1) = 0.041765470832 Eh/bohr
-- [inputs/reks44_h4_heisenberg.dat](https://reksstudio.github.io/v2/inputs/reks44_h4_heisenberg.dat.txt): SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; sectors 2S = 0, 2, 4; [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics); S0 = −2.072348701131, T1 = −2.045831290718, Q1 = −1.888567570704 Eh
-- [inputs/reks44_h4_singlet_triplet.py](https://reksstudio.github.io/v2/inputs/reks44_h4_singlet_triplet.py.txt): SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA `[PPS1, OSS1]` + `[T_PPS1]`, full SI cassette on 2S = 0 and 2S = 2; S0 = −2.101144140471, T1 = −2.049371603420 Eh
-- [inputs/reks_dlfind.py](https://reksstudio.github.io/v2/inputs/reks_dlfind.py.txt): `optimize(method, molecule, restart_file, tolerance=4.5e-4, maxcycle=100)`: DL-FIND L-BFGS in delocalized internal coordinates on the followed root; `tolerance`: largest gradient component in those coordinates, atomic units; —
-- [inputs/reks_unixmd.py](https://reksstudio.github.io/v2/inputs/reks_unixmd.py.txt): `molecule(xyz_file, nstates, temperature, charge=0, seed=1)`, `REKS(molecule, method, restart_file)`: PyUNIxMD QM interface, roots of cassette 0; —
-- [inputs/wide_bh_23.py](https://reksstudio.github.io/v2/inputs/wide_bh_23.py.txt): BH lone pair, HF/cc-pVDZ, δ = 10<sup>10</sup>: RHF seed; REKS(2,2); REKS(2,3); REKS(2,3) with σ\* in the window; CASSCF(2,3); E(PPS1) = −25.1640880605 E<sub>h</sub>; CASSCF −25.1640880604 E<sub>h</sub>
-- [inputs/wide_bh_45.py](https://reksstudio.github.io/v2/inputs/wide_bh_45.py.txt): BH bond + lone pair, HF/cc-pVDZ, δ = 10<sup>10</sup>: REKS(4,4); REKS(4,5) from RHF; seed chain REKS(2,3) → REKS(4,5) → REKS(4,6); E(PPS1) = −25.1775062082 (4,5), −25.1828261871 (4,6) E<sub>h</sub>
-- [inputs/wide_bh_states.py](https://reksstudio.github.io/v2/inputs/wide_bh_states.py.txt): SI-SA-REKS(2,3), BH\&HLYP/cc-pVDZ, RKS seed; SA default pool + all-α |ab|, |ac|, |bc|; SI on 2S = 0, 2; TRAH; E<sub>SA</sub> = −25.184519244590 E<sub>h</sub>; S0 −25.273256917916, T1 −25.232772136476, S1 −25.185054403019 E<sub>h</sub>
-- [reks-studio.bib](https://reksstudio.github.io/v2/reks-studio.bib.txt): Documentation
+- [inputs/first_butadiene.py](/v2/inputs/first_butadiene.py.txt): SI-SA-REKS(4,4), s-trans-butadiene, BH\&HLYP/6-31G(d), RKS seed, π window
+- [inputs/first_c2h4_90.py](/v2/inputs/first_c2h4_90.py.txt): SI-SA-REKS(2,2), C₂H₄ 90°, BH\&HLYP/6-31G(d), RKS seed, no window
+- [inputs/first_hexatriene.py](/v2/inputs/first_hexatriene.py.txt): SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH\&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool, all-α determinant in SA; SI on 2S = 0, 2, 4, 6
+- [inputs/md_c2h4.py](/v2/inputs/md_c2h4.py.txt): surface hopping on S1 from the `opt_c2h4.py` geometry, 3 states, 400 × 0.25 fs
+- [inputs/md_hexatriene.py](/v2/inputs/md_hexatriene.py.txt): surface hopping on T1 from the `opt_hexatriene.py` geometry, 3 triplet states, 50 × 0.5 fs
+- [inputs/opt_c2h4.py](/v2/inputs/opt_c2h4.py.txt): S0 of C₂H₄, SSR(2,2) BH\&HLYP/6-31G(d), DF, RKS seed, DL-FIND
+- [inputs/opt_hexatriene.py](/v2/inputs/opt_hexatriene.py.txt): T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH\&HLYP/6-31G(d), DF, π window, DL-FIND
+- [inputs/reks22_h2.dat](/v2/inputs/reks22_h2.dat.txt): SI-SA-REKS(2,2), H₂ (0.74 Å), BH\&HLYP/cc-pVDZ, default pools
+- [inputs/reks22_h2_triplet_gradient.dat](/v2/inputs/reks22_h2_triplet_gradient.dat.txt): SI-SA-REKS(2,2), H₂ (1.6 Å), BH\&HLYP/6-31G(d); analytic gradient and relaxed properties of T1 ([`SI_REKS_GRAD`](/v2/options/SI_REKS_GRAD.md))
+- [inputs/reks44_h4_heisenberg.dat](/v2/inputs/reks44_h4_heisenberg.dat.txt): SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; sectors 2S = 0, 2, 4; [Spin-state gaps and Heisenberg J](/v2/manual/properties/index.md#spin-state-energetics)
+- [inputs/reks44_h4_singlet_triplet.py](/v2/inputs/reks44_h4_singlet_triplet.py.txt): SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA `[PPS1, OSS1]` + `[T_PPS1]`, full SI cassette on 2S = 0 and 2S = 2
+- [inputs/reks_dlfind.py](/v2/inputs/reks_dlfind.py.txt): `optimize(method, molecule, restart_file, tolerance=4.5e-4, maxcycle=100)`: DL-FIND L-BFGS in delocalized internal coordinates on the target root; `tolerance`: largest gradient component in those coordinates, atomic units
+- [inputs/reks_unixmd.py](/v2/inputs/reks_unixmd.py.txt): `molecule(xyz_file, nstates, temperature, charge=0, seed=1)`, `REKS(molecule, method, restart_file)`: PyUNIxMD QM interface, roots of cassette 0
+- [inputs/wide_bh_23.py](/v2/inputs/wide_bh_23.py.txt): BH lone pair, HF/cc-pVDZ, δ = 10<sup>10</sup>: RHF seed; REKS(2,2); REKS(2,3); REKS(2,3) with σ\* in the window; CASSCF(2,3)
+- [inputs/wide_bh_45.py](/v2/inputs/wide_bh_45.py.txt): BH bond + lone pair, HF/cc-pVDZ, δ = 10<sup>10</sup>: REKS(4,4); REKS(4,5) from RHF; seed chain REKS(2,3) → REKS(4,5) → REKS(4,6)
+- [inputs/wide_bh_states.py](/v2/inputs/wide_bh_states.py.txt): SI-SA-REKS(2,3), BH\&HLYP/cc-pVDZ, RKS seed; SA default pool + all-α |ab|, |ac|, |bc|; SI on 2S = 0, 2; TRAH
+- [reks-studio.bib](/v2/reks-studio.bib.txt): Documentation
 
 ## Optional
-- [REKS Studio](https://reksstudio.github.io/v2/index.md)
-- [Documentation](https://reksstudio.github.io/v2/docs/index.md)
-- [Team](https://reksstudio.github.io/v2/team/index.md)
+- [REKS Studio](/v2/index.md)
+- [Documentation](/v2/docs/index.md)
+- [Team](/v2/team/index.md)

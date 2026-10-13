@@ -14,11 +14,11 @@ Chapter 3 of the REKS Studio user manual
 
 ## 3. First Calculation {#first-calculation}
 
-Without a seed the active slots are the MOs (N<sub>core</sub>+1)A … (N<sub>core</sub>+M)A (1-based labels) of the guess Fock matrix in energy order. A cold start of 90° C₂H₄ converges to n = 2/0, of s-trans-butadiene to a pair with a σ orbital ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)). Procedure: choose the pairs → seed → inspect → start REKS → check.
+Without a seed, the active slots are the MOs (N<sub>core</sub>+1)A … (N<sub>core</sub>+M)A (1-based labels) of the guess Fock matrix in energy order. A cold start of 90° C₂H₄ converges to n = 2/0, of s-trans-butadiene to a pair with a σ orbital ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)). Procedure: choose the pairs → seed → inspect → start REKS → check.
 
 ### Which active space? {#which-active-space}
 
-A rhetorical question: no rule fixes it for every molecule. REKS reduces it to whole pairs. In CASSCF the active orbitals and electrons are chosen one by one, e.g. the full π system; a REKS active space is a set of pairs, each the bonding and antibonding orbital of one bond that breaks, twists or is excited, and it grows or shrinks by one pair.
+A rhetorical question: no rule fixes it for every molecule. REKS reduces it to whole pairs. In CASSCF, the active orbitals and electrons are chosen one by one, e.g., the full π system; a REKS active space is a set of pairs, each the bonding and antibonding orbital of one bond that breaks, twists or is excited, and it grows or shrinks by one pair.
 
 ### Choose the pairs {#choose-pairs}
 
@@ -33,7 +33,7 @@ Each pair of REKS(M,M) ([Pairing scheme](https://reksstudio.github.io/v2/manual/
 Scheme 0 ([Pairing scheme](https://reksstudio.github.io/v2/manual/concepts/index.md#pairing-scheme)) sets the token order of a window: the bonding orbitals first, their partners in reverse order:
 
 $$
-[\,\varphi_1, \dots, \varphi_P,\ \varphi_P^{*}, \dots, \varphi_1^{*}\,]
+\left[\, \varphi_1, \dots, \varphi_P, \varphi_P^{*}, \dots, \varphi_1^{*} \,\right]
 $$
 
 REKS(4,4) of butadiene: tokens HOMO-1, HOMO, LUMO, LUMO+1 fill slots a, b, c, d; scheme 0 pairs a with d and b with c
@@ -87,7 +87,7 @@ Open the RKS Molden file in a viewer, name the M orbitals by character and note 
 
 s-trans-butadiene, RKS BH\&HLYP/6-31G(d), slice 0.6 Å above the molecular plane, blue + / copper −. One column per pair of scheme 0: antibonding partner above, bonding orbital below; slot, MO, character, ε / E<sub>h</sub>. 13A HOMO−2 (−0.4075) is σ.
 
-Diffuse basis: the valence antibonding orbital can lie far above LUMO; give its column as an integer token. Butadiene, aug-cc-pVDZ: LUMO is π₃\*, LUMO+1 … LUMO+5 are σ, the largest π₄\* component is LUMO+6 (column 21); `["HOMO-1", "HOMO", "LUMO", 21]` prints `swaps [(16, 21)]`.
+Diffuse basis: the valence antibonding orbital can lie far above the LUMO; give its column as an integer token. Butadiene, aug-cc-pVDZ: LUMO is π₃\*; LUMO+1 … LUMO+5 are σ, the largest π₄\* component is LUMO+6 (column 21); `["HOMO-1", "HOMO", "LUMO", 21]` prints `swaps [(16, 21)]`.
 
 Degenerate orbitals: π of a linear molecule. The rotation within a degenerate RKS pair is arbitrary between runs, and the REKS result follows it. N₂ 1.60 Å, REKS(6,6), one window `['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO+1', 'LUMO', 'LUMO+2']`, RKS seeds on 3, 1 and 4 threads: π FON 1.651544, 1.703717, 1.999994.
 
@@ -104,7 +104,7 @@ The seed run above, for butadiene, writes `first_butadiene_rks.wfn` ([Worked inp
 
 Seed: `restart_file` sets `GUESS READ` ([Restart mechanism](https://reksstudio.github.io/v2/manual/run-control/index.md#restart)); an RKS source is reported as `SCF Guess: REKS orbitals restored from previous computation (REKS::guess override).`
 
-Slots: token k = 0 … M−1 fills active column N<sub>core</sub> + k (0-based columns, [Inspect the orbitals](https://reksstudio.github.io/v2/manual/first-calculation/index.md#inspect-orbitals)); token order sets the pairs ([Choose the pairs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#choose-pairs)). Without a window the slots are the read columns N<sub>core</sub> … N<sub>core</sub>+M−1 (C₂H₄ above: HOMO, LUMO).
+Slots: token k = 0 … M−1 fills active column N<sub>core</sub> + k (0-based columns, [Inspect the orbitals](https://reksstudio.github.io/v2/manual/first-calculation/index.md#inspect-orbitals)); token order sets the pairs ([Choose the pairs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#choose-pairs)). Without a window, the slots are the read columns N<sub>core</sub> … N<sub>core</sub>+M−1 (C₂H₄ above: HOMO, LUMO).
 
 Report: `MO columns` lists the active columns; `swaps [(c, j)]`: MO j moved into active column c ([`GUESS_ACTIVE_WINDOW`](https://reksstudio.github.io/v2/options/GUESS_ACTIVE_WINDOW.md)).
 
@@ -210,7 +210,7 @@ GUESS READ: active window ['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO', 'LUMO+1', 'LUMO+3
       25A     -0.009474  (f)    n_f =  0.000001    m_f =  0.000001
 ```
 
-With LUMO+2 in place of LUMO+3 the SCF converges as well; 25A stays σ in the solution and E<sub>SA</sub> is 17.4 mE<sub>h</sub> higher.
+With LUMO+2 in place of LUMO+3, the SCF converges as well; 25A stays σ in the solution and E<sub>SA</sub> is 17.4 mE<sub>h</sub> higher.
 
 (a, f)
 

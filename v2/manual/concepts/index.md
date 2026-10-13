@@ -48,11 +48,13 @@ $$
 n_p + n_q = 2.
 $$
 
-The pair is in one of four geminals, the triplet with its three components $m = 0, \pm 1$:
+There are six simplest geminals, three singlets and three triplets with $m = 0, \pm 1$:
 
 $$
-\begin{aligned} \Phi_0 &= \tfrac{1}{\sqrt2}\big(\sqrt{n_p}\,|p\bar p| - \sqrt{n_q}\,|q\bar q|\big) && \text{perfectly paired}\\ \Phi_2 &= \tfrac{1}{\sqrt2}\big(\sqrt{n_q}\,|p\bar p| + \sqrt{n_p}\,|q\bar q|\big) && \text{doubly excited}\\ \Phi_1 &= \tfrac{1}{\sqrt2}\big(|p\bar q| + |q\bar p|\big) && \text{open-shell singlet}\\ \Phi_{\mathrm{T0}} &= \tfrac{1}{\sqrt2}\big(|p\bar q| - |q\bar p|\big) && \text{triplet, } m = 0\\ \Phi_{\mathrm{T+}} &= |pq|, \quad \Phi_{\mathrm{T-}} = |\bar p\bar q| && \text{triplet, } m = \pm 1 \end{aligned}
+\begin{aligned} \Phi_0 &= \tfrac{1}{\sqrt2}\big(\sqrt{n_p}\,|p\bar p| - \sqrt{n_q}\,|q\bar q|\big) && \text{perfectly paired}\\ \Phi_2 &= \tfrac{1}{\sqrt2}\big(\sqrt{n_q}\,|p\bar p| + \sqrt{n_p}\,|q\bar q|\big) && \text{doubly excited}\\ \Phi_1 &= \tfrac{1}{\sqrt2}\big(|p\bar q| + |q\bar p|\big) && \text{open-shell singlet}\\ \Phi_{\mathrm{T0}} &= \tfrac{1}{\sqrt2}\big(|p\bar q| - |q\bar p|\big) && \text{triplet, } m = 0\\ \Phi_{\mathrm{T+}} &= |pq|, \quad \Phi_{\mathrm{T-}} = |\bar p\bar q| && \text{triplet, } m = \pm 1 \>. \end{aligned}
 $$
+
+Only four geminals with $m = 0$ are included in REKS(M,M).
 
 ### Pairing scheme {#pairing-scheme}
 
@@ -74,7 +76,7 @@ REKS(M,M) with two-orbital geminals has $P!$ schemes, numbered from 0: one for (
 
 ### Configuration and its energy {#configuration-energy}
 
-A configuration (geminal product state) is the antisymmetrized product of the core and one geminal per pair of one scheme:
+A configuration (geminal product state) is the antisymmetrized product of the core and one geminal per electron pair within a given scheme:
 
 $$
 \Psi = \hat{A}\big[(\mathrm{core})\,\Phi_{t_1}(p_1, q_1)\cdots\Phi_{t_P}(p_P, q_P)\big].
@@ -86,7 +88,7 @@ $$
 E^X = \sum_L C_L^X(\{n\})\,E_L, \qquad \sum_L C_L^X = S_{XX},
 $$
 
-the FON norm of the configuration: 1 with two-orbital geminals, possibly below 1 for a configuration of a wider geminal ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)).
+the FON normalizes the configuration to 1 for two-orbital geminals, and possibly below 1 for a configuration with wider geminals ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)).
 
 ### Coupling Δ and factor f {#coupling}
 
@@ -108,11 +110,11 @@ $$
 
 $E_{\mathrm{OSS}}$ and $E_{\mathrm{T}}$ carry no FON.
 
-Towards the closed-shell limit ($n_a \to 2$) the factor $f$ suppresses the $\Delta$ term, which avoids counting correlation twice, by the formalism and by the functional. At $n_a = n_b = 1$ it equals 1 ([Moreira et al., J. Chem. Theory Comput. 2007, 3, 764](https://reksstudio.github.io/v2/manual/reference/index.md#moreira2007-interpolation)). $\delta$ is `REKS_FON_INTERP_DELTA` (default 0.4, [§12](https://reksstudio.github.io/v2/manual/run-control/index.md#fons)).
+As the closed-shell limit ($n_a \to 2$) is approached, the factor $f$ suppresses the $\Delta$ term, thereby avoiding the double-counting of correlation by both the formalism and the functional. At $n_a = n_b = 1$ it equals 1 ([Moreira et al., J. Chem. Theory Comput. 2007, 3, 764](https://reksstudio.github.io/v2/manual/reference/index.md#moreira2007-interpolation)). $\delta$ is `REKS_FON_INTERP_DELTA` (default 0.4, [§12](https://reksstudio.github.io/v2/manual/run-control/index.md#fons)).
 
 ### FON set and generation {#fon-generation}
 
-The generation of a configuration is its number of open pairs: $\Phi_1$, and a triplet geminal ($\Phi_{\mathrm{T+}}$, $\Phi_{\mathrm{T0}}$, $\Phi_{\mathrm{T-}}$) in a sector of positive $2S$. A FON set holds the FONs of one generation, pairing scheme and run sector; all configurations of that set use the same FONs. $\Phi_0$ and $\Phi_2$ of one pair use the same FONs; $\Phi_1$ and $\Phi_{\mathrm{T0}}$ use none. FON-set labels: [FON sets](https://reksstudio.github.io/v2/manual/setup/index.md#fon-sets).
+The \emph{generation} of a configuration is its number of open pairs: $\Phi_1$, and a triplet of geminals ($\Phi_{\mathrm{T+}}$, $\Phi_{\mathrm{T0}}$, $\Phi_{\mathrm{T-}}$) in a sector of positive $2S$. A FON set keeps the FONs of one generation, pairing scheme, and run sector; all configurations of that set use the same FONs. $\Phi_0$ and $\Phi_2$ of one pair use the same FONs; $\Phi_1$ and $\Phi_{\mathrm{T0}}$ use none. FON-set labels: [FON sets](https://reksstudio.github.io/v2/manual/setup/index.md#fon-sets).
 
 ### SA-REKS ensemble and weights {#sa-ensemble}
 
@@ -126,7 +128,7 @@ $$
 0 \le w_X \le 1, \qquad \sum_X w_X = 1.
 $$
 
-The default weights are equal ([`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md)). $E_{\mathrm{SA}}$ is a weighted average of configuration energies, not the energy of a state; the variational principle bounds $E_{\mathrm{SA}}$, not an individual $E^X$. Raw determinants enter the ensemble through [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md).
+The default weights are equal ([`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md)). $E_{\mathrm{SA}}$ is a weighted average of configuration energies, not the energy of a state; the variational principle bounds $E_{\mathrm{SA}}$, not an individual $E^X$. Extra determinants can be added to the ensemble using [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md).
 
 ### Orbitals, orbital energies, SCF convergence {#orbitals-scf}
 
@@ -136,15 +138,15 @@ $$
 f_q \hat{F}_q \varphi_q = \sum_p \varphi_p \varepsilon_{pq}, \qquad f_q = n_q/2.
 $$
 
-At convergence the Lagrangian $\varepsilon_{pq}$ is symmetric (generalized Brillouin condition) but not diagonal, so the orbitals are not canonical. The printed orbital energies are the diagonal of the SA-REKS coupling Fock matrix in the MO basis and carry no Koopmans meaning; ionization energies come from EKT ([`REKS_EKT`](https://reksstudio.github.io/v2/options/REKS_EKT.md)). The SCF is converged when $E_{\mathrm{SA}}$ is stationary and the orbital gradient vanishes (generalized Brillouin condition, [§13](https://reksstudio.github.io/v2/manual/run-control/index.md#scf-engines)).
+At convergence, the Lagrangian $\varepsilon_{pq}$ is symmetric (generalized Brillouin condition) but not diagonal, so the orbitals are not canonical. The printed orbital energies are the diagonal of the SA-REKS coupling Fock matrix in the MO basis and carry no Koopmans meaning; ionization energies come from EKT ([`REKS_EKT`](https://reksstudio.github.io/v2/options/REKS_EKT.md)). The SCF is converged when $E_{\mathrm{SA}}$ is stationary, and the orbital gradient vanishes (generalized Brillouin condition, [§13](https://reksstudio.github.io/v2/manual/run-control/index.md#scf-engines)).
 
 ### Spin-polarized configurations {#sps-configurations}
 
-In REKS(4,4) the double open-shell singlet (DOSS) and the doubly spin-polarized state (DSPS) both arise from two simultaneous OSS-type one-electron transitions between the active orbitals: DOSS couples two open-shell singlet pairs to an overall singlet, DSPS can be viewed as two triplet excitations coupled to an overall singlet, and the two are orthogonalized ([Filatov et al., J. Chem. Phys. 2017, 147, 064104](https://reksstudio.github.io/v2/manual/reference/index.md#filatov2017-extended-space)). Fully open configurations of different schemes overlap (overlap −½ for the two DOSS configurations of REKS(4,4)); the catalog replaces them by a set orthogonalized by sequential Gram–Schmidt across schemes, the spin-polarized configurations (`SPS`) `DOSS_SPS_k`, `T_OSS_SPS_k`, …, in which each member $k$ after the first is orthogonal to the preceding members ([Komarov et al., ChemRxiv 2026](https://reksstudio.github.io/v2/manual/reference/index.md#komarov2026-reks-studio)). They carry no FON.
+In REKS(4,4) the double open-shell singlet (DOSS) and the doubly spin-polarized state (DSPS) both arise from two simultaneous OSS-type one-electron transitions between the active orbitals: DOSS couples two open-shell singlet pairs to an overall singlet, DSPS can be viewed as two triplet excitations coupled to an overall singlet, and the two are orthogonalized ([Filatov et al., J. Chem. Phys. 2017, 147, 064104](https://reksstudio.github.io/v2/manual/reference/index.md#filatov2017-extended-space)). Fully open configurations of different schemes overlap (overlap −½ for the two DOSS configurations of REKS(4,4)); the catalog replaces them by a set orthogonalized by sequential Gram–Schmidt procedure across schemes, the spin-polarized configurations (`SPS`) `DOSS_SPS_k`, `T_OSS_SPS_k`, …, in which each member $k$ after the first is orthogonal to the preceding members ([Komarov et al., ChemRxiv 2026](https://reksstudio.github.io/v2/manual/reference/index.md#komarov2026-reks-studio)). They carry no FON.
 
 ### Spin manifold and run sector {#run-sector}
 
-A manifold is one total spin $2S$ of the catalog. The sectors of a run are the manifolds addressed by any SA block or SI group, in ascending $2S$, sector 0 being the lowest. Every configuration is built in its component of zero $M_S$, so all sectors share one determinant space and one set of orbitals, and the molecule multiplicity stays canonical (1 for even `N`) ([Active space](https://reksstudio.github.io/v2/manual/setup/index.md#active-space), [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Determinants of other $M_S$ enter the SA ensemble only through [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md).
+A manifold is one total spin $2S$ of the catalog. The sectors of a run are the manifolds addressed by any SA block or SI group, in ascending $2S$, sector 0 being the lowest. Every configuration is built from components of zero $M_S$, so all sectors share one determinant space and one set of orbitals, and the molecular multiplicity remains canonical (1 for even `N`) ([Active space](https://reksstudio.github.io/v2/manual/setup/index.md#active-space), [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Determinants with non-zero $M_S$ enter the SA ensemble only through [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md).
 
 A 2S = 2 configuration holds one $\Phi_{\mathrm{T0}}$. In 2S ≥ 4 (`TT_SPS_0`, `TTT_SPS_0`) the $n_T$ triplet geminals couple to $S = n_T$ through $\Phi_{\mathrm{T+}}$, $\Phi_{\mathrm{T0}}$, $\Phi_{\mathrm{T-}}$ with Clebsch–Gordan coefficients, e.g.
 
@@ -168,7 +170,7 @@ for a two-orbital geminal; in a geminal of width $w$ each free FON is $\ge 10^{-
 
 ### SI Hamiltonian and overlap {#si-hamiltonian}
 
-The diagonal elements of $\mathbf{H}$ are the configuration energies $E^X$. An off-diagonal element is the sum of the Slater–Condon elements between the microstates of the two configurations, times the FON factors of their geminals; its terms carry microstate energies $E_L$, active Fock elements of the microstates and active two-electron integrals $(pq|rs)$, the latter unscaled with any functional (table `Off-diagonal channel`, `REKS_REPORT_LEVEL` ≥ 3). A one-electron excitation $p \to q$ in spin $\sigma$ from microstate $L$ to $L'$ takes the bra/ket mean of the two microstate Fock matrices, with the sign of the excitation:
+The diagonal elements of $\mathbf{H}$ are the configuration energies $E^X$. An off-diagonal element is the sum of the Slater–Condon elements between the microstates of the two configurations, times the FON factors of their geminals; its terms carry microstate energies $E_L$, active Fock elements of the microstates, and active two-electron integrals $(pq|rs)$, the latter unscaled with any functional (table `Off-diagonal channel`, `REKS_REPORT_LEVEL` ≥ 3). A one-electron excitation $p \to q$ in spin $\sigma$ from microstate $L$ to $L'$ takes the bra/ket mean of the two microstate Fock matrices, with the sign of the excitation:
 
 $$
 \langle L|\hat H|L'\rangle = \pm\tfrac12\big[F^{\sigma}_L + F^{\sigma}_{L'}\big]_{pq},
@@ -178,7 +180,7 @@ $$
 F^{\sigma}_L(pq) = h_{pq} + \sum_{c\,\in\,\text{core}}\big[2(pq|cc) - (pc|cq)\big] + \sum_{r\,\in\,L}\big[(pq|rr) - \delta_{\sigma_r\sigma}\,(pr|rq)\big],
 $$
 
-shown for HF; with a functional the exchange terms carry the exact-exchange fraction (the long-range fraction for the long-range part of a range-separated functional), and the spin-polarized XC potential of the microstate density (core included) is added. A spin-difference term takes the same mean of $\pm(F^{\alpha} - F^{\beta})$ over two microstates. $\mathbf{S}$ depends on the FONs only. Between configurations of two-orbital geminals it is diagonal within one scheme and non-diagonal across schemes; configurations of a wider geminal overlap within their scheme and can have $S_{XX} \ne 1$. Each cassette solves
+shown for HF; using a DFT functional, the exchange terms carry the exact-exchange fraction (the long-range fraction for the long-range part of a range-separated functional), and the spin-polarized XC potential of the microstate density (core included) is added. A spin-difference term takes the same mean of $\pm(F^{\alpha} - F^{\beta})$ over two microstates. $\mathbf{S}$ depends on the FONs only. Between configurations of two-orbital geminals, it is diagonal within one scheme and non-diagonal across schemes; configurations of a wider geminal overlap within their scheme and can have $S_{XX} \ne 1$. Each cassette solves
 
 $$
 \mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}.
@@ -212,7 +214,7 @@ $$
 H_{ij} \to 0.619\,\exp\!\big[{-3.27}\,(H_{ii}-H_{jj})^4\big]\,H_{ij}.
 $$
 
-At 100 % exact exchange no element is scaled. When an element was scaled, the `References` block (`REKS_REPORT_LEVEL` ≥ 3) lists `Coupling damping (DFT)`. The exact-exchange fraction is in the `XC evaluation` line of the setup block ([Run report](https://reksstudio.github.io/v2/manual/properties/index.md#run-report)).
+At 100 % exact exchange, no element is scaled. When an element is scaled, the `References` block (`REKS_REPORT_LEVEL` ≥ 3) lists `Coupling damping (DFT)`. The exact-exchange fraction is in the `XC evaluation` line of the setup block ([Run report](https://reksstudio.github.io/v2/manual/properties/index.md#run-report)).
 
 ### Adiabatic (SSR) states {#ssr-states}
 
@@ -232,7 +234,7 @@ $$
 \omega_j = c_j\,(\mathbf{S}\mathbf{c})_j, \qquad \sum_j \omega_j = 1.
 $$
 
-In the non-orthogonal configuration set an individual $\omega_j$ can be negative. `Adiabatic states` prints them in % (column `w_j`).
+In the non-orthogonal configuration set, an individual $\omega_j$ can be negative. `Adiabatic states` prints them in % (column `w_j`).
 
 ### Unrelaxed and relaxed densities {#densities}
 
