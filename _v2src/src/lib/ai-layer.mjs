@@ -286,30 +286,35 @@ export default function aiLayer() {
 
         const name = (p) => p.title.split(' — ')[0];
         const twin = (p) => `- [${name(p)}](${twinOf(p.url)})`;
-        // h2 and h3 titles without chapter numbers; one-letter headings (A-Z index) left out
+        // h2 and h3 titles without chapter numbers, the page name and one-letter headings (A-Z index) left out
         const sections = (p) =>
-          p.headings.filter((h) => h.depth <= 3 && h.text.length > 1).map((h) => stripNum(h.text)).join('; ');
-        // linked file -> the other cells of the first table row, in manual reading order, that links it
+          p.headings
+            .filter((h) => h.depth <= 3 && h.text.length > 1)
+            .map((h) => stripNum(h.text))
+            .filter((t) => t !== name(p))
+            .join('; ');
+        // linked file -> the second cell of the first table row, in manual reading order, that links it
         const rowOf = new Map();
         const ordered = [...manual, ...pages.filter((p) => !manual.includes(p))];
         for (const row of ordered.flatMap((p) => all(p.mdast, (n) => n.type === 'tableRow'))) {
-          const [first, ...cells] = row.children;
+          const [first, second] = row.children;
           const url = all(first, (n) => n.type === 'link')[0]?.url;
-          if (url && !rowOf.has(url)) rowOf.set(url, cells.map((c) => inline(c.children)).join('; '));
+          if (url && second && !rowOf.has(url)) rowOf.set(url, inline(second.children));
         }
         const fileItem = (path) =>
           `- [${path}](${rawUrl(path)}): ${rowOf.get(rawUrl(path)) ?? pages.filter((p) => p.links.includes(path)).map(name).join('; ')}`;
         // other pages: the landing (shortest path) first
         const other = pages.filter((p) => !manual.includes(p)).sort((a, b) => a.name.length - b.name.length);
+        // site links root-relative: llms.txt is read from its own URL
         const llms = [
           '# REKS Studio',
           `> ${SUMMARY}`,
-          `${revLine}\n${convention}`,
+          revLine,
           `## Manual\n${manual.map((p) => `${twin(p)}: ${sections(p)}`).join('\n')}`,
           `## Options\n${cards.map(({ key, brief }) => `- [\`${optionTitle(key)}\`](${cardUrl(key)}): ${brief}`).join('\n')}`,
           `## Files\n${[...linked].sort().map(fileItem).join('\n')}`,
           `## Optional\n${other.map(twin).join('\n')}`,
-        ].join('\n\n') + '\n';
+        ].join('\n\n').replaceAll(`](${root.origin}/`, '](/') + '\n';
         checkLlms(llms);
         generated.set('llms.txt', llms);
 
