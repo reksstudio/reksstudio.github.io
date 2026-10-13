@@ -109,7 +109,7 @@ H₂ without `symmetry c1`:
 
 ### Worked inputs {#worked-inputs}
 
-Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded first calculations: §first-inputs; wide geminals: §wide-inputs; optimization and dynamics: §dynamics-inputs.
+Complete inputs, each running with this build. Run a `.dat` file with `psi4 file.dat`, a `.py` file with `python file.py`. Seeded initial calculations: §first-inputs; wide geminals: §wide-inputs; optimization and dynamics: §dynamics-inputs.
 
 | File | Calculation | Result |
 | --- | --- | --- |
