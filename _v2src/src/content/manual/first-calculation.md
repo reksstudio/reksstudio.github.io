@@ -23,7 +23,7 @@ Each pair of REKS(M,M) (§pairing-scheme) is a bonding orbital and its antibondi
 Scheme 0 (§pairing-scheme) sets the token order of a window: the bonding orbitals first, their partners in reverse order:
 
 $$
-\left[ \, \varphi_1, \dots, \varphi_P,\ \varphi_P^{*}, \dots, \varphi_1^{*}\, \right]
+\left[\, \varphi_1, \dots, \varphi_P,\ \varphi_P^{*}, \dots, \varphi_1^{*}\, \right]
 $$
 
 <figure class="scheme">
