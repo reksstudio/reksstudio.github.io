@@ -50,7 +50,7 @@ $$
 \end{aligned}
 $$
 
-Only four geminals with $m = 0$ are included in `REKS [N, M]`.
+Only four geminals with $m = 0$ are included in REKS(M,M).
 
 ### Pairing scheme {#pairing-scheme}
 
