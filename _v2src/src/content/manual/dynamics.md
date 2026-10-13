@@ -62,12 +62,12 @@ from the FD of `SSR HAMILTONIAN K=0` and `SSR OVERLAP SPARSE K=0`, against `SSR 
 | Molecule | n<sub>min</sub> | Quantity | Components | max \|analytic − FD\| | Calls |
 | --- | --- | --- | --- | --- | --- |
 | C₂H₄, 60° twist, C1; SSR(2,2) | 1.93 | gradients S0–S2 | 54 | 5.6 · 10⁻⁷ E<sub>h</sub> a₀⁻¹ | 1 `gradient()`, 72 energies |
-| s-trans-butadiene, distorted in plane; SI-SA-REKS(4,4), full 2S = 0 cassette | 2.00 | gradients S0–S9 | 200 | 7.7 · 10⁻⁶ E<sub>h</sub> a₀⁻¹ | 1 `gradient()`, 80 energies |
-| butadiene, both CH₂ twisted 75°, C1; as above | 1.48 | gradients S0–S9 | 300 | 2.2 · 10⁻⁶ E<sub>h</sub> a₀⁻¹ | 1 `gradient()`, 120 energies |
-| butadiene, both CH₂ twisted 80°, C1; as above | 1.37 | gradients S0–S9 | 300 | 9.7 · 10⁻⁶ E<sub>h</sub> a₀⁻¹ | 1 `gradient()`, 120 energies |
-| C₂H₄, as above | 1.93 | NAC S0/S1, S0/S2, S1/S2 | 18 each | 4.3 · 10⁻², 2.4 · 10⁻³, 2.9 · 10⁻² a₀⁻¹ | same run as the gradients |
-| butadiene, 75° | 1.48 | model part, 45 pairs of S0–S9 | 1350 | 1.3 · 10⁻⁴ a₀⁻¹ (median 9.8 · 10⁻⁷) | same run as the gradients |
-| butadiene, 80° | 1.37 | model part, 45 pairs of S0–S9 | 1350 | 5.0 · 10⁻⁴ a₀⁻¹ (median 1.5 · 10⁻⁶) | same run as the gradients |
+| s-trans-butadiene, distorted in plane; SI-SA-REKS(4,4), full 2S = 0 cassette | 2.00 | gradients S0–S9 | 200 | 8.0 · 10⁻⁶ E<sub>h</sub> a₀⁻¹ | 1 `gradient()`, 80 energies |
+| butadiene, both CH₂ twisted 75°, C1; as above | 1.48 | gradients S0–S9 | 300 | 3.2 · 10⁻⁶ E<sub>h</sub> a₀⁻¹ | 1 `gradient()`, 120 energies |
+| butadiene, both CH₂ twisted 80°, C1; as above | 1.37 | gradients S0–S9 | 300 | 7.1 · 10⁻⁵ E<sub>h</sub> a₀⁻¹ (S8, S9: 2.0 mE<sub>h</sub> apart, \|FD5 − FD3\| 6–7 · 10⁻⁴) | 1 `gradient()`, 120 energies |
+| C₂H₄, as above | 1.93 | NAC S0/S1, S0/S2, S1/S2 | 18 each | 4.3 · 10⁻², 2.9 · 10⁻³, 2.9 · 10⁻² a₀⁻¹ | same run as the gradients |
+| butadiene, 75° | 1.48 | model part, 45 pairs of S0–S9 | 1350 | 4.5 · 10⁻⁴ a₀⁻¹ (median 1.3 · 10⁻⁶) | same run as the gradients |
+| butadiene, 80° | 1.37 | model part, 45 pairs of S0–S9 | 1350 | 9.7 · 10⁻⁴ a₀⁻¹ (median 2.3 · 10⁻⁶) | same run as the gradients |
 
 n<sub>min</sub>: smallest n<sub>a</sub> (FON of the occupied member) over the SA pairs at the FD centre.
 
@@ -77,10 +77,10 @@ n<sub>min</sub>: smallest n<sub>a</sub> (FON of the occupied member) over the SA
 <figcaption>(a) Analytic against FD gradient components: C₂H₄ 60° (S0–S2), butadiene planar, 75°, 80° (S0–S9). (b) |analytic − FD| against |FD| for the same. (c), (d) The same for the NAC vectors of C₂H₄ (3 pairs) and the model part of butadiene 75° and 80° (45 pairs each).</figcaption>
 </figure>
 
--   **Grid:** the gradient difference falls with the DFT grid. Planar butadiene, C1 x, all ten states: 7.5 · 10⁻⁶ on the default grid, 3.7 · 10⁻⁷ with `dft_radial_points 99`, `dft_spherical_points 590`.
--   **Planar molecule:** the out-of-plane components of planar butadiene vanish by symmetry (analytic ≤ 1.5 · 10⁻¹³) and are not displaced.
--   **NAC of C₂H₄:** the difference sits in the residual part. C1 z: `SSR NAC MODEL I J` agrees with the model formula above (S = I) from the FD of `SSR HAMILTONIAN K=0` to 7 · 10⁻⁵; `SSR NAC RESIDUAL I J` / residual from the FD = 0.862 (S0/S1), 1.001 (S0/S2), 0.867 (S1/S2). Largest NAC component: 0.26 (S0/S1), 1.22 (S0/S2), 0.09 a₀⁻¹ (S1/S2).
--   **Twisted butadiene:** both CH₂ twisted by 85° (n<sub>min</sub> 1.28) or more: the FD is not an estimate of the derivative (85°: |FD5 − FD3| up to 1.5 · 10⁻² E<sub>h</sub> a₀⁻¹; 87°, C2 x: second difference of E(S0) 0.16 mE<sub>h</sub> around −h, 1.29 mE<sub>h</sub> around +h; n<sub>min</sub> 1.2563 at the centre, 1.2626 at +2h).
+-   **Grid:** the gradient difference falls with the DFT grid. Planar butadiene, C1 x, all ten states: 7.8 · 10⁻⁶ on the default grid, 6.5 · 10⁻⁷ with `dft_radial_points 99`, `dft_spherical_points 590`.
+-   **Planar molecule:** the out-of-plane components of planar butadiene vanish by symmetry (analytic ≤ 2.8 · 10⁻¹³) and are not displaced.
+-   **NAC of C₂H₄:** the difference sits in the residual part. C1 z: `SSR NAC MODEL I J` agrees with the model formula above (S = I) from the FD of `SSR HAMILTONIAN K=0` to 4 · 10⁻⁵; `SSR NAC RESIDUAL I J` / residual from the FD = 0.870 (S0/S1), 1.001 (S0/S2), 0.870 (S1/S2). Largest NAC component: 0.12 (S0/S1), 1.22 (S0/S2), 0.52 a₀⁻¹ (S1/S2).
+-   **Twisted butadiene:** both CH₂ twisted by 85° (n<sub>min</sub> 1.28) or more: the FD is not an estimate of the derivative (85°: |FD5 − FD3| up to 1.6 · 10⁻² E<sub>h</sub> a₀⁻¹; 87°, C2 x: second difference of E(S0) 0.17 mE<sub>h</sub> around −h, 1.37 mE<sub>h</sub> around +h; n<sub>min</sub> 1.2563 at the centre, 1.2626 at +2h).
 
 ### Geometry optimization {#geometry-optimization}
 
@@ -157,7 +157,7 @@ e, wfn = optimize("bhhlyp", mol, restart_file="opt_hexatriene_start.wfn.npy")
 | Geometry | C3–C4 / Å | C1–C3, C2–C4 / Å | C3–C5, C4–C6 / Å | E(T1) / E<sub>h</sub> | T2 − T1, T3 − T1 / eV |
 | --- | --- | --- | --- | --- | --- |
 | start (`first_hexatriene.py`) | 1.347 | 1.447 | 1.342 | — | — |
-| T1 minimum, 11 gradients, 5.5 min on 8 threads | 1.481 | 1.365 | 1.411 | −233.17851767 | 2.489, 3.977 |
+| T1 minimum, 10 gradients, 5.5 min on 8 threads | 1.480 | 1.366 | 1.409 | −233.17880483 | 2.282, 3.424 |
 
 The minimum is planar (|z| < 10⁻⁷ Å).
 
@@ -170,7 +170,7 @@ The minimum is planar (|z| < 10⁻⁷ Å).
 
 ### Surface hopping {#surface-hopping}
 
-C₂H₄ on S1 from the S0 geometry of `opt_c2h4.py`, three SSR states, 200 steps of 0.5 fs:
+C₂H₄ on S1 from the S0 geometry of `opt_c2h4.py`, three SSR states, 400 steps of 0.25 fs:
 
 ```python
 """Surface hopping of C2H4 on S1 from opt_c2h4.py, SSR(2,2) BH&HLYP/6-31G(d), DF, PyUNIxMD.
@@ -189,7 +189,7 @@ psi4.set_options({"basis": "6-31g(d)", "scf_type": "df",
 mol = molecule("opt_c2h4.xyz", nstates=3, temperature=300)
 qm = REKS(mol, "bhhlyp", restart_file="opt_c2h4_reks.wfn.npy")
 
-md = mqc.SH(molecule=mol, istate=1, dt=0.5, nsteps=200, unit_dt="fs")
+md = mqc.SH(molecule=mol, istate=1, dt=0.25, nsteps=400, unit_dt="fs")
 md.run(qm=qm)
 ```
 
@@ -202,7 +202,7 @@ python md_c2h4.py
 
 @@fragment dyn-md-step@@
 
--   **Start:** `molecule()` reads the geometry and draws one set of velocities from the Maxwell–Boltzmann distribution at 300 K (`seed=1`); the instantaneous temperature of this draw, printed at step 0, is 93.6 K. PyUNIxMD counts 3N − 6 = 12 degrees of freedom; over many draws the printed value has mean ≈ 370 K and standard deviation ≈ 140 K. Another `seed` gives another draw. One demonstration trajectory: a study samples initial conditions (e.g. Wigner) and runs an ensemble.
+-   **Start:** `molecule()` reads the geometry and draws one set of velocities from the Maxwell–Boltzmann distribution at 300 K (`seed=1`); the instantaneous temperature of this draw, printed at step 0, is 93.6 K. PyUNIxMD counts 3N − 6 = 12 degrees of freedom; over 10 000 draws (`seed` 1–10 000) the printed value has mean 376 K and standard deviation 136 K. Another `seed` gives another draw. One demonstration trajectory: a study samples initial conditions (e.g. Wigner) and runs an ensemble.
 -   **Hopping:** fewest-switches surface hopping without decoherence correction (`mqc.SH` default; option `dec_correction`); NAC phases are aligned between steps (`l_adj_nac`, default on).
 -   **Terminal:** one line per step:
 
@@ -230,29 +230,29 @@ md.run(qm=qm)
 One step (T1, T2, T3 gradients and three NAC vectors) takes 39 s on 8 threads (31–52 s over 50 steps).
 
 -   **Convergence:** `fail_on_maxiter False`: an SCF that reaches `maxiter` prints `Energy and/or wave function did not converge, but proceeding anyway.` and the step continues; `grep -c "did not converge" md_*.out` counts such steps.
--   **Hexatriene thresholds:** `d_convergence 1e-6`, `reks_cpreks_conv 1e-8`. With the defaults (1e-8, 1e-9) the SCF density change stays at 2–3 · 10⁻⁷ from iteration ~30 and the CP-REKS residual at 1.8 · 10⁻⁹; n<sub>a</sub> of pair (a, f) stays 2.000000 along the run.
--   **Past 25 fs:** the same runs continued to 50 fs reach SCFs that do not converge at 26.5 fs (n<sub>c</sub> 1.86 → 1.95, all three pairs near 2; the energy oscillates by 3 · 10⁻⁵ E<sub>h</sub> over 100 iterations); from there E<sub>tot</sub> jumps by 0.7–2.1 kcal mol⁻¹ (dt 0.5 fs) and by up to 142 kcal mol⁻¹ (dt 0.25 fs) per step.
+-   **Hexatriene thresholds:** `d_convergence 1e-6`, `reks_cpreks_conv 1e-8`. With the defaults (1e-8, 1e-9) the same 50 steps also converge at every step, CP-REKS in 12–15 iterations; E<sub>tot</sub> drift +0.026, range 0.071 kcal mol⁻¹. n<sub>a</sub> of pair (a, f) stays 2.000000 along the run.
+-   **To 50 fs:** the same runs continued to 50 fs (dt 0.5 fs, 100 steps; dt 0.25 fs, 200 steps) converge at every step and stay on T1; E<sub>tot</sub> drift +0.23 and +0.37, range 0.31 and 0.40, largest step 0.11 kcal mol⁻¹ in both.
 
 ### Check the trajectory {#check-trajectory}
 
-Total energy (column Total of `md/MDENERGY`), for the runs above and for reruns from the same start with `dt=0.25` (C₂H₄ `nsteps=400`, hexatriene `nsteps=100`):
+Total energy (column Total of `md/MDENERGY`), for the runs above and for reruns from the same start with the other time step (C₂H₄ `dt=0.5`, `nsteps=200`; hexatriene `dt=0.25`, `nsteps=100`):
 
 | Molecule | dt / fs | Steps | Drift / kcal mol⁻¹ | Range / kcal mol⁻¹ | Largest step / kcal mol⁻¹ | Span of E<sub>pot</sub> / kcal mol⁻¹ |
 | --- | --- | --- | --- | --- | --- | --- |
-| C₂H₄ | 0.5 | 200 | +0.57 | 0.82 | 0.43 | 58.7 |
-| C₂H₄ | 0.25 | 400 | −0.015 | 0.17 | 0.033 | 58.6 |
-| hexatriene | 0.5 | 50 | +0.065 | 0.082 | 0.035 | 7.1 |
-| hexatriene | 0.25 | 100 | −0.072 | 0.19 | 0.19 | 7.0 |
+| C₂H₄ | 0.25 | 400 | −0.13 | 0.18 | 0.032 | 58.8 |
+| C₂H₄ | 0.5 | 200 | −10.4 | 10.6 | 4.97 | 111.1 |
+| hexatriene | 0.5 | 50 | +0.13 | 0.18 | 0.049 | 7.2 |
+| hexatriene | 0.25 | 100 | +0.11 | 0.16 | 0.051 | 7.2 |
 
 <figure>
 <img src="../../figures/md_energy.svg" alt="Kinetic, potential and total energy along the C2H4 and hexatriene trajectories; total energy for time steps 0.5 and 0.25 fs" loading="lazy" decoding="async" width="710" height="602">
 
-<figcaption>Left: C₂H₄ on S1; right: hexatriene on T1. Top: E<sub>kin</sub>, E<sub>pot</sub> − E<sub>pot</sub>(0), E<sub>tot</sub> − E<sub>tot</sub>(0), dt 0.5 fs. Bottom: E<sub>tot</sub> − E<sub>tot</sub>(0) for dt 0.5 and 0.25 fs.</figcaption>
+<figcaption>Left: C₂H₄ on S1; right: hexatriene on T1. Top: E<sub>kin</sub>, E<sub>pot</sub> − E<sub>pot</sub>(0), E<sub>tot</sub> − E<sub>tot</sub>(0), dt 0.25 fs (C₂H₄) and 0.5 fs (hexatriene). Bottom: E<sub>tot</sub> − E<sub>tot</sub>(0) for dt 0.5 and 0.25 fs.</figcaption>
 </figure>
 
--   **Energy:** C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. The C₂H₄ dt 0.5 fs drift comes from the last steps: E<sub>tot</sub> − E<sub>tot</sub>(0) is +0.006 at step 196 and +0.570 kcal mol⁻¹ at step 200 (largest step, 0.43, between steps 198 and 199). Halving `dt` shrinks the range of E<sub>tot</sub> 4.8-fold for C₂H₄ over 100 fs (4.1-fold over the first 50 fs; dt² error of velocity Verlet: 4-fold). In the hexatriene dt 0.25 fs run E<sub>tot</sub> alternates from step to step after 17.5 fs (step 70), with the largest step growing from 0.017 kcal mol⁻¹ (steps 0–60) to 0.040, 0.077 and 0.19 kcal mol⁻¹ (steps 70–80, 80–90, 90–100), while the FONs stay continuous; its range, 0.19 kcal mol⁻¹, exceeds that of dt 0.5 fs, 0.082 kcal mol⁻¹ (0.027 against 0.075 over the first 12.5 fs).
--   **Solution:** n<sub>a</sub> of the active pair per step, `grep "n_a =" md_c2h4.out`, continuous. The orbital labelled (a) carries n<sub>a</sub> ≥ 1 at every step (generation-0 ordering, §fons): in the dt 0.5 fs run (a) is 8A at all 201 steps, n<sub>a</sub> ≥ 1.017216. If n<sub>a</sub> and the Total column jump together between two steps, the solution has changed. Steps with an unconverged SCF: §diag-maxiter.
--   **State:** `md/SHSTATE`. C₂H₄, dt 0.5 fs: on S1 to 56.0 fs, on S2 to 92.5 fs, then on S1. C₂H₄, dt 0.25 fs: S1 → S2 at 37.5, 59.25 and 69.5 fs, back at 39.5 and 67.5 fs; at 37.5, 59.25 and 69.5 fs the velocities are rescaled uniformly (`no solution to find rescale factor, but velocity is simply rescaled`). Hexatriene: T1 throughout. The followed root is an energy index, not a state character (§diag-quasi-degenerate).
+-   **Energy:** C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. At dt 0.5 fs the C₂H₄ E<sub>tot</sub> drops by 2.95 kcal mol⁻¹ at 62.0 fs, 1.96 at 84.0 fs and 4.97 at 94.5 fs: at 62.0 and 94.5 fs the SCF solution changes (Solution), at 84.0 fs a hop rescales the velocities uniformly (State). For hexatriene the range of E<sub>tot</sub> is 0.18 kcal mol⁻¹ at dt 0.5 fs and 0.16 at 0.25 fs.
+-   **Solution:** n<sub>a</sub> of the active pair per step, `grep "n_a =" md_c2h4.out`. The orbital labelled (a) carries n<sub>a</sub> ≥ 1 at every step (generation-0 ordering, §fons). dt 0.25 fs: (a) is 8A at all 401 steps, n<sub>a</sub> ≥ 1.010412, continuous. dt 0.5 fs: n<sub>a</sub> jumps from 1.760221 to 1.998407 between steps 123 and 124, and from 1.999810 to 1.368579 between steps 188 and 189, after (a) is 9A at steps 185–188; E<sub>tot</sub> drops at the same steps. If n<sub>a</sub> and the Total column jump together between two steps, the solution has changed. Steps with an unconverged SCF: §diag-maxiter.
+-   **State:** `md/SHSTATE`. C₂H₄, dt 0.25 fs: S1 → S2 at 37.75 and 80.25 fs, back at 39.25 and 87.25 fs; at 37.75 and 80.25 fs the velocities are rescaled uniformly (`no solution to find rescale factor, but velocity is simply rescaled`). C₂H₄, dt 0.5 fs: S1 → S0 at 83.5 and 90.5 fs, S0 → S1 at 84.0 fs (rescaled uniformly). Hexatriene: T1 throughout. The followed root is an energy index, not a state character (§diag-quasi-degenerate).
 
 ### Worked inputs {#dynamics-inputs}
 
@@ -264,6 +264,6 @@ Scripts in run order, in one directory with `reks_dlfind.py` and `reks_unixmd.py
 | [`reks_unixmd.py`](../../inputs/reks_unixmd.py) | `molecule(xyz_file, nstates, temperature, charge=0, seed=1)`, `REKS(molecule, method, restart_file)`: PyUNIxMD QM interface, roots of cassette 0 | — |
 | [`first_c2h4_90.py`](../../inputs/first_c2h4_90.py) | §first-inputs; `python first_c2h4_90.py rks` writes `first_c2h4_90_rks.wfn.npy`, read by §one-gradient | — |
 | [`opt_c2h4.py`](../../inputs/opt_c2h4.py) | S0 of C₂H₄, SSR(2,2) BH&HLYP/6-31G(d), DF, RKS seed, DL-FIND | E(S0) = −78.52863042 E<sub>h</sub>, 8 gradients |
-| [`md_c2h4.py`](../../inputs/md_c2h4.py) | surface hopping on S1 from the `opt_c2h4.py` geometry, 3 states, 200 × 0.5 fs | hops S1 → S2 at 56.0 fs, back at 92.5 fs; E<sub>tot</sub> drift +0.57 kcal mol⁻¹, range 0.82 kcal mol⁻¹ |
-| [`opt_hexatriene.py`](../../inputs/opt_hexatriene.py) | T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH&HLYP/6-31G(d), DF, π window, DL-FIND | E(T1) = −233.17851767 E<sub>h</sub>, 11 gradients, 5.5 min on 8 threads |
-| [`md_hexatriene.py`](../../inputs/md_hexatriene.py) | surface hopping on T1 from the `opt_hexatriene.py` geometry, 3 triplet states, 50 × 0.5 fs | T1 throughout; E<sub>tot</sub> drift +0.065 kcal mol⁻¹, range 0.082 kcal mol⁻¹; 39 s per step on 8 threads |
+| [`md_c2h4.py`](../../inputs/md_c2h4.py) | surface hopping on S1 from the `opt_c2h4.py` geometry, 3 states, 400 × 0.25 fs | hops S1 → S2 at 37.75 and 80.25 fs, back at 39.25 and 87.25 fs; E<sub>tot</sub> drift −0.13 kcal mol⁻¹, range 0.18 kcal mol⁻¹ |
+| [`opt_hexatriene.py`](../../inputs/opt_hexatriene.py) | T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH&HLYP/6-31G(d), DF, π window, DL-FIND | E(T1) = −233.17880483 E<sub>h</sub>, 10 gradients, 5.5 min on 8 threads |
+| [`md_hexatriene.py`](../../inputs/md_hexatriene.py) | surface hopping on T1 from the `opt_hexatriene.py` geometry, 3 triplet states, 50 × 0.5 fs | T1 throughout; E<sub>tot</sub> drift +0.13 kcal mol⁻¹, range 0.18 kcal mol⁻¹; 39 s per step on 8 threads |

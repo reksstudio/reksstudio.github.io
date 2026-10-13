@@ -58,7 +58,7 @@ $$
 P = M/2.
 $$
 
-With §reks_geminal_widths geminal $i$ spans $w_i$ orbitals, $\sum_i w_i = M$; `Pairing schemes` prints its first two orbitals.
+With §reks_geminal_widths geminal $i$ spans $w_i$ orbitals, $\sum_i w_i = M$; `Pairing schemes` prints all its orbitals.
 
 Scheme 0 pairs the active slots (active columns, from 0, labelled a, b, …) from the outside in: (2,2) (a,b); (4,4) (a,d) & (b,c); (6,6) (a,f) & (b,e) & (c,d):
 
@@ -79,8 +79,10 @@ $$
 One scheme carries $3^P$ singlet configurations, named by type (§catalog). Its energy is a weighted sum of microstate energies, the coefficients being functions of the FONs (§filatov2016-gvb-ansatz):
 
 $$
-E^X = \sum_L C_L^X(\{n\})\,E_L, \qquad \sum_L C_L^X = 1.
+E^X = \sum_L C_L^X(\{n\})\,E_L, \qquad \sum_L C_L^X = S_{XX},
 $$
+
+the FON norm of the configuration: 1 with two-orbital geminals, possibly below 1 for a configuration of a wider geminal (§si-hamiltonian).
 
 ### Coupling Δ and factor f {#coupling}
 
@@ -167,17 +169,33 @@ for a two-orbital geminal; in a geminal of width $w$ each free FON is $\ge 10^{-
 
 ### SI Hamiltonian and overlap {#si-hamiltonian}
 
-The diagonal elements of $\mathbf{H}$ are the configuration energies $E^X$. The off-diagonal elements are sums over microstate energies $E_L$, spin-Fock differences $(F^{\alpha} - F^{\beta})_{pq}$, Lagrangian elements $\varepsilon_{pq}$ and active two-electron integrals $(pq|rs)$ (table `Off-diagonal channel`, `REKS_REPORT_LEVEL` ≥ 3). They follow from the Slater–Condon rules at small $\lambda$ and integration over $\lambda$ (§filatov2017-extended-space). $\mathbf{S}$ is diagonal within one scheme and non-diagonal across schemes, so each cassette solves
+The diagonal elements of $\mathbf{H}$ are the configuration energies $E^X$. An off-diagonal element is the sum of the Slater–Condon elements between the microstates of the two configurations, times the FON factors of their geminals; its terms carry microstate energies $E_L$, active Fock elements of the microstates and active two-electron integrals $(pq|rs)$, the latter unscaled with any functional (table `Off-diagonal channel`, `REKS_REPORT_LEVEL` ≥ 3). A one-electron excitation $p \to q$ in spin $\sigma$ from microstate $L$ to $L'$ takes the bra/ket mean of the two microstate Fock matrices, with the sign of the excitation:
+
+$$
+\langle L|\hat H|L'\rangle = \pm\tfrac12\big[F^{\sigma}_L + F^{\sigma}_{L'}\big]_{pq},
+$$
+
+$$
+F^{\sigma}_L(pq) = h_{pq} + \sum_{c\,\in\,\text{core}}\big[2(pq|cc) - (pc|cq)\big] + \sum_{r\,\in\,L}\big[(pq|rr) - \delta_{\sigma_r\sigma}\,(pr|rq)\big],
+$$
+
+shown for HF; with a functional the exchange terms carry the exact-exchange fraction (the long-range fraction for the long-range part of a range-separated functional), and the spin-polarized XC potential of the microstate density (core included) is added. A spin-difference term takes the same mean of $\pm(F^{\alpha} - F^{\beta})$ over two microstates. $\mathbf{S}$ depends on the FONs only. Between configurations of two-orbital geminals it is diagonal within one scheme and non-diagonal across schemes; configurations of a wider geminal overlap within their scheme and can have $S_{XX} \ne 1$. Each cassette solves
 
 $$
 \mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}.
 $$
 
-Over (PPS, OSS, DES) the SSR(2,2) Hamiltonian, with the Lagrangian element $\varepsilon_{ab}$ and $\mathbf S = \mathbf 1$, is
+Over (PPS, OSS, DES) the SSR(2,2) Hamiltonian, with $\mathbf S = \mathbf 1$, is
 
 $$
-\mathbf H = \begin{pmatrix} E_{\mathrm{PPS}} & (\sqrt{n_a}-\sqrt{n_b})\,\varepsilon_{ab} & 0\\ (\sqrt{n_a}-\sqrt{n_b})\,\varepsilon_{ab} & E_{\mathrm{OSS}} & (\sqrt{n_a}+\sqrt{n_b})\,\varepsilon_{ab}\\ 0 & (\sqrt{n_a}+\sqrt{n_b})\,\varepsilon_{ab} & E_{\mathrm{DES}} \end{pmatrix}.
+\mathbf H = \begin{pmatrix} E_{\mathrm{PPS}} & \sqrt{n_a}\,X_a-\sqrt{n_b}\,X_b & 0\\ \sqrt{n_a}\,X_a-\sqrt{n_b}\,X_b & E_{\mathrm{OSS}} & \sqrt{n_b}\,X_a+\sqrt{n_a}\,X_b\\ 0 & \sqrt{n_b}\,X_a+\sqrt{n_a}\,X_b & E_{\mathrm{DES}} \end{pmatrix},
 $$
+
+$$
+X_a = \tfrac12\big[F_{a\bar a} + F^{\beta}_{a\bar b}\big]_{ab}, \qquad X_b = \tfrac12\big[F_{b\bar b} + F^{\alpha}_{a\bar b}\big]_{ab}.
+$$
+
+The catalog holds no PPS–DES coupling; that element is zero. With HF, $X_a = F_{a\bar a}(ab)$ and $X_b = F_{b\bar b}(ab)$. The sign of the OSS row and column follows the orbital phases; $E$ and the states do not depend on it.
 
 Eigenvectors of $\mathbf{S}$ whose eigenvalue $s$ satisfies
 

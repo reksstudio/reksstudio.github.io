@@ -81,7 +81,7 @@ Open the RKS Molden file in a viewer, name the M orbitals by character and note 
 </figure>
 
 -   **Diffuse basis:** the valence antibonding orbital can lie far above LUMO; give its column as an integer token. Butadiene, aug-cc-pVDZ: LUMO is π₃*, LUMO+1 … LUMO+5 are σ, the largest π₄* component is LUMO+6 (column 21); `["HOMO-1", "HOMO", "LUMO", 21]` prints `swaps [(16, 21)]`.
--   **Degenerate orbitals:** π of a linear molecule. The rotation within a degenerate RKS pair is arbitrary between runs, and the REKS result follows it. N₂ 1.60 Å, REKS(6,6), one window `['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO+1', 'LUMO', 'LUMO+2']`, three RKS seeds: π FON 1.651544, 1.703717, 1.999994.
+-   **Degenerate orbitals:** π of a linear molecule. The rotation within a degenerate RKS pair is arbitrary between runs, and the REKS result follows it. N₂ 1.60 Å, REKS(6,6), one window `['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO+1', 'LUMO', 'LUMO+2']`, RKS seeds on 3, 1 and 4 threads: π FON 1.651544, 1.703717, 1.999994.
 
 ### Start REKS {#start-reks}
 
@@ -124,7 +124,7 @@ E<sub>SA</sub> of different starts is not a criterion:
 
 @@fragment first-c2h4-seeded@@
 
-S0 of this solution: C1 = −0.358361, C2 = −0.358355 (Mulliken), |μ| = 0.000034 e a<sub>0</sub>. Cold SAD start: C1 = −0.148908, C2 = −0.561394, |μ| = 0.263524 e a<sub>0</sub>.
+S0 of this solution: C1 = C2 = −0.358359 (Mulliken), |μ| = 0.000000 e a<sub>0</sub>. Cold SAD start: C1 = −0.148907, C2 = −0.561394, |μ| = 0.263525 e a<sub>0</sub>.
 
 <figure class="mo">
 <div class="g n2">
@@ -175,12 +175,12 @@ The state summary lists the printed roots of all manifolds by energy (labels: §
 
 | State | Main configurations | Content | ΔE / eV | QUEST TBE / eV |
 | --- | --- | --- | --- | --- |
-| T1 | `T_PPS3`, `T_PPS9`: c→d | one triplet geminal on (c,d) (§run-sector) | 2.815 | 2.73 (³B<sub>u</sub>) |
-| T2 | `T_PPS5`, `T_PPS11`: b→d | one triplet geminal on (b,d) | 4.178 | 4.36 (³A<sub>g</sub>) |
-| S1 | `OSS3`, `OSS9`: c→d | open-shell singlet on (c,d); f<sub>len</sub> 1.56 | 5.377 | 5.37 (¹B<sub>u</sub>) |
-| S2 | `DES3`: c,c→d,d | both electrons of c in d; f<sub>len</sub> 0 | 5.916 | 5.62 (¹A<sub>g</sub>, not safe) |
-| Q1 | `TT_PPS1`, `TT_PPS4`: b→e, c→d | two triplet geminals coupled to S = 2 | 8.041 | – |
-| Sp1 | `TTT_SPS_0`: a→f, b→e, c→d | the single 2S = 6 configuration, all three pairs triplet | 15.698 | – |
+| T1 | `T_PPS3`, `T_PPS9`: c→d | one triplet geminal on (c,d) (§run-sector) | 2.736 | 2.73 (³B<sub>u</sub>) |
+| T2 | `T_PPS5`, `T_PPS11`: b→d | one triplet geminal on (b,d) | 4.048 | 4.36 (³A<sub>g</sub>) |
+| S1 | `OSS3`, `OSS9`: c→d | open-shell singlet on (c,d); f<sub>len</sub> 1.54 | 5.354 | 5.37 (¹B<sub>u</sub>) |
+| S2 | `DES3`: c,c→d,d | both electrons of c in d; f<sub>len</sub> 0 | 5.593 | 5.62 (¹A<sub>g</sub>, not safe) |
+| Q1 | `TT_PPS1`, `TT_PPS4`: b→e, c→d | two triplet geminals coupled to S = 2 | 7.903 | – |
+| Sp1 | `TTT_SPS_0`: a→f, b→e, c→d | the single 2S = 6 configuration, all three pairs triplet | 15.683 | – |
 
 λ and f<sub>len</sub> are printed only for the multiplicity of S0. QUEST TBE: aug-cc-pVTZ, QUESTDB Table 2 (§veril2021-questdb); QUEST lists excited states only: its ¹A<sub>g</sub> is the lowest excited ¹A<sub>g</sub> (2¹A<sub>g</sub> counting S0). Irreps from the inversion parity of the REKS active orbitals: a, c a<sub>u</sub>; b, d b<sub>g</sub>; c→d B<sub>u</sub>, b→d A<sub>g</sub>, c,c→d,d A<sub>g</sub>.
 
@@ -197,7 +197,7 @@ A configuration added to the SA ensemble enters the orbital optimization. `T_PPS
 "sa_reks_2spin": [0, 2],
 ```
 
-T1 −233.154325 → −233.161981 E<sub>h</sub> (2.815 → 2.610 eV above S0), S0 −233.257757 → −233.257894 E<sub>h</sub>.
+T1 −233.156652 → −233.160794 E<sub>h</sub> (2.736 → 2.614 eV above S0), S0 −233.257192 → −233.256867 E<sub>h</sub>.
 
 ### Worked inputs {#first-inputs}
 
@@ -207,7 +207,7 @@ Each file runs in two stages: `python file.py rks`, then `python file.py reks`.
 | --- | --- | --- |
 | [`first_c2h4_90.py`](../../inputs/first_c2h4_90.py) | SI-SA-REKS(2,2), C₂H₄ 90°, BH&HLYP/6-31G(d), RKS seed, no window | E<sub>SA</sub> = −78.364394265263 E<sub>h</sub>; n 1.000000 / 1.000000 |
 | [`first_butadiene.py`](../../inputs/first_butadiene.py) | SI-SA-REKS(4,4), s-trans-butadiene, BH&HLYP/6-31G(d), RKS seed, π window | E<sub>SA</sub> = −155.670331327491 E<sub>h</sub>; n 1.999999 / 1.999138 / 0.000862 / 0.000001 |
-| [`first_hexatriene.py`](../../inputs/first_hexatriene.py) | SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool, all-α determinant in SA; SI on 2S = 0, 2, 4, 6 | E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257757335295, T1 −233.154325123481, Q1 −232.962265506282, Sp1 −232.680857311443 E<sub>h</sub> |
+| [`first_hexatriene.py`](../../inputs/first_hexatriene.py) | SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool, all-α determinant in SA; SI on 2S = 0, 2, 4, 6 | E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257191838391, T1 −233.156651584658, Q1 −232.966755681972, Sp1 −232.680857311443 E<sub>h</sub> |
 
 ### Scans {#first-scans}
 

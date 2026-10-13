@@ -2,9 +2,11 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/setup/#reks_cpreks_conv>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Chapter: [10. Properties, Gradients, Couplings](https://reksstudio.github.io/v2/manual/setup/index.md#response)
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 Residual threshold of the CP-REKS (Z-vector) solver. `reks_cpreks_maxiter` (200) bounds its rounds.
 
@@ -29,11 +31,11 @@ Default: `1e-9`
 
     Iter      Mean |R|       Max |R|   Remain   Time [s]
     ----------------------------------------------------
-       1     2.990e-01     9.607e-01        4       0.01
-       2     1.585e-01     5.441e-01        4       0.02
+       1     2.988e-01     9.691e-01        4       0.01
+       2     1.648e-01     5.702e-01        4       0.02
 [...]
-      12     1.614e-09     1.614e-09        1       0.14
-      13     1.363e-10     1.363e-10        0       0.14
+      12     1.091e-08     1.091e-08        1       0.12
+      13     5.914e-10     5.914e-10        0       0.13
     ----------------------------------------------------
     Z-vectors converged in 13 iterations.
 ```

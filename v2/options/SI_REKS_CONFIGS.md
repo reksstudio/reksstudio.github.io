@@ -2,9 +2,11 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/setup/#si_reks_configs>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Chapter: [8. SA Pool and SI Cassettes](https://reksstudio.github.io/v2/manual/setup/index.md#selecting)
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 SI-SA-REKS cassettes: the configuration sets whose secular equations give the states, in groups per spin manifold.
 
@@ -55,8 +57,8 @@ Alias: `REKS_SI_CONFIGS`
 
    State           E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  E-E(own lowest) [eV]  Closest in cassette 0  dE_exc - closest [eV]   Main configurations (w_j in %)
    -------------------------------------------------------------------------------------------------------------------------------------------------------------
-   S0[1]  -2.128686999214        -0.178               -4.10                 0.000  -                                          -   PPS2(99.1)
-   S1[1]  -1.329219012360        21.577              497.58                21.755  -                                          -   OSS3(99.1) 1A(a)->3A(c)
+   S0[1]  -2.123574938693        -0.039               -0.89                 0.000  -                                          -   PPS2(99.8)
+   S1[1]  -1.334331072881        21.438              494.37                21.476  -                                          -   OSS3(99.8) 1A(a)->3A(c)
    -------------------------------------------------------------------------------------------------------------------------------------------------------------
    Closest = state of the first list of largest weight overlap sum_j min(w_j(A), w_j(B)) >= 50 %
    (configurations of |S| >= 0.95 merged); dE_exc = E-E(own lowest).

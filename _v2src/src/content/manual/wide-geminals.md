@@ -155,7 +155,7 @@ BH&HLYP/cc-pVDZ, RKS seed, the lone-pair geminal of §wide-lone-pair, default `r
 
 @@fragment wide-states@@
 
-S1/S2 (¹Π) and T1/T2 (³Π) are degenerate pairs, split by 4·10<sup>−7</sup> and 7·10<sup>−8</sup> E<sub>h</sub>. With `|ab|` alone the SA ensemble favours one π: S1/S2 2.360 / 2.391 eV, T1/T2 1.131 / 1.151 eV.
+S1/S2 (¹Π) and T1/T2 (³Π) are degenerate pairs, each split by 1.6·10<sup>−7</sup> E<sub>h</sub>. With `|ab|` alone the SA ensemble favours one π: S1/S2 2.360 / 2.391 eV, T1/T2 1.131 / 1.151 eV.
 
 ### Worked inputs {#wide-inputs}
 

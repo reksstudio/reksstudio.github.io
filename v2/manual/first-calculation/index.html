@@ -98,7 +98,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </div>
 <figcaption>s-trans-butadiene, RKS BH&amp;HLYP/6-31G(d), slice 0.6 Å above the molecular plane, blue + / copper −. One column per pair of scheme 0: antibonding partner above, bonding orbital below; slot, MO, character, ε / E<sub>h</sub>. 13A HOMO−2 (−0.4075) is σ.</figcaption>
 </figure>
-<dl class="fields"><dt>Diffuse basis</dt><dd>the valence antibonding orbital can lie far above LUMO; give its column as an integer token. Butadiene, aug-cc-pVDZ: LUMO is π₃*, LUMO+1 … LUMO+5 are σ, the largest π₄* component is LUMO+6 (column 21); <code>["HOMO-1", "HOMO", "LUMO", 21]</code> prints <code>swaps [(16, 21)]</code>.</dd><dt>Degenerate orbitals</dt><dd>π of a linear molecule. The rotation within a degenerate RKS pair is arbitrary between runs, and the REKS result follows it. N₂ 1.60 Å, REKS(6,6), one window <code>['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO+1', 'LUMO', 'LUMO+2']</code>, three RKS seeds: π FON 1.651544, 1.703717, 1.999994.</dd></dl>
+<dl class="fields"><dt>Diffuse basis</dt><dd>the valence antibonding orbital can lie far above LUMO; give its column as an integer token. Butadiene, aug-cc-pVDZ: LUMO is π₃*, LUMO+1 … LUMO+5 are σ, the largest π₄* component is LUMO+6 (column 21); <code>["HOMO-1", "HOMO", "LUMO", 21]</code> prints <code>swaps [(16, 21)]</code>.</dd><dt>Degenerate orbitals</dt><dd>π of a linear molecule. The rotation within a degenerate RKS pair is arbitrary between runs, and the REKS result follows it. N₂ 1.60 Å, REKS(6,6), one window <code>['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO+1', 'LUMO', 'LUMO+2']</code>, RKS seeds on 3, 1 and 4 threads: π FON 1.651544, 1.703717, 1.999994.</dd></dl>
 <h3 id="start-reks">Start REKS</h3>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span><span style="color:#E7A98A">"basis"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"6-31g(d)"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"scf_type"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"pk"</span><span style="color:#E7E6E2">,      </span><span style="color:#6E7686"># as in the seed run</span></span>
 <span class="line"><span style="color:#E7A98A">                  "reference"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"reks"</span><span style="color:#E7E6E2">: [4, 4],</span></span>
@@ -127,7 +127,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>      16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812</span></span>
 <span class="line"><span>      17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>@REKS Final Energy:  -155.67155759812988</span></span></code></pre>
+<span class="line"><span>@REKS Final Energy:  -155.67155759813016</span></span></code></pre>
 <h3 id="check-solution">Check the solution</h3>
 <dl class="fields"><dt>Convergence</dt><dd><code>Energy and wave function converged.</code> is necessary only: every wrong solution on this page converged. Otherwise <a href="/v2/manual/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>Active set</dt><dd>every index of <code>Pairing scheme 0</code> in <code>Post-Iterations</code> (<a href="/v2/manual/properties/#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a>) belongs to the inspected set, compared as a set: setup <code>8A(a), 9A(b)</code>, pair printed <code>(9A,8A)</code> (generation-0 reordering, <a href="/v2/manual/run-control/#fons">§12</a>). Otherwise <a href="/v2/manual/diagnose/#diag-wrong-window">SCF converges instantly to a wrong energy after a restart</a>.</dd><dt>Symmetry</dt><dd>S0 has equal charges on symmetry-equivalent atoms (<a href="/v2/manual/properties/#atomic-charges">Atomic charges of the states (unrelaxed)</a>) and a dipole allowed by the point group (<a href="/v2/manual/properties/#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a>). Otherwise <a href="/v2/manual/diagnose/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>.</dd><dt>FONs</dt><dd>a pair at n ≈ 2/0 is not by itself an error: the outer π pair of butadiene has n<sub>a</sub> = 1.999999.</dd></dl>
 <p>E<sub>SA</sub> of different starts is not a criterion:</p>
@@ -166,7 +166,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>       8A     -0.202302  (b)    n_b =  1.000000</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>@REKS Final Energy:   -78.36439426526262</span></span></code></pre>
-<p>S0 of this solution: C1 = −0.358361, C2 = −0.358355 (Mulliken), |μ| = 0.000034 e a<sub>0</sub>. Cold SAD start: C1 = −0.148908, C2 = −0.561394, |μ| = 0.263524 e a<sub>0</sub>.</p>
+<p>S0 of this solution: C1 = C2 = −0.358359 (Mulliken), |μ| = 0.000000 e a<sub>0</sub>. Cold SAD start: C1 = −0.148907, C2 = −0.561394, |μ| = 0.263525 e a<sub>0</sub>.</p>
 <figure class="mo">
 <div class="g n2">
 <div class="h">RKS seed</div><div class="h">cold SAD start</div>
@@ -222,17 +222,17 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span></span></span>
 <span class="line"><span>    State             E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)</span></span>
 <span class="line"><span>    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>    S0     -233.257757335295         0.000                0.00            -        -     PPS1(16.0)</span></span>
-<span class="line"><span>    T1     -233.154325123481         2.815               64.90            -        -     T_PPS3(42.5) 22A(c)-&gt;23A(d); T_PPS9(42.4) 22A(c)-&gt;23A(d)</span></span>
-<span class="line"><span>    T2     -233.104231805371         4.178               96.34            -        -     T_PPS5(26.9) 21A(b)-&gt;23A(d); T_PPS11(26.9) 21A(b)-&gt;23A(d)</span></span>
-<span class="line"><span>    S1     -233.060146022573         5.377              124.00        230.6  1.55964     OSS3(47.8) 22A(c)-&gt;23A(d); OSS9(47.7) 22A(c)-&gt;23A(d)</span></span>
-<span class="line"><span>    S2     -233.040353757450         5.916              136.42        209.6  0.00000     DES3(19.2) 22A(c),22A(c)-&gt;23A(d),23A(d)</span></span>
-<span class="line"><span>    T3     -233.036515420162         6.020              138.83            -        -     T_PPS16(18.4) 20A(a)-&gt;23A(d)</span></span>
-<span class="line"><span>    T4     -232.986163052695         7.390              170.43            -        -     T_PPS6(25.9) 22A(c)-&gt;24A(e); T_PPS15(25.9) 22A(c)-&gt;24A(e)</span></span>
-<span class="line"><span>    S3     -232.973234729812         7.742              178.54        160.1  0.00000     OSS5(26.1) 21A(b)-&gt;23A(d); OSS11(26.1) 21A(b)-&gt;23A(d)</span></span>
-<span class="line"><span>    Q1     -232.962265506282         8.041              185.42            -        -     TT_PPS1(43.7) 21A(b)-&gt;24A(e), 22A(c)-&gt;23A(d); TT_PPS4(43.7) 21A(b)-&gt;23A(d), 22A(c)-&gt;24A(e)</span></span>
+<span class="line"><span>    S0     -233.257191838391         0.000                0.00            -        -     PPS1(16.0)</span></span>
+<span class="line"><span>    T1     -233.156651584658         2.736               63.09            -        -     T_PPS3(42.0) 22A(c)-&gt;23A(d); T_PPS9(41.9) 22A(c)-&gt;23A(d)</span></span>
+<span class="line"><span>    T2     -233.108425331554         4.048               93.35            -        -     T_PPS5(26.2) 21A(b)-&gt;23A(d); T_PPS11(26.2) 21A(b)-&gt;23A(d)</span></span>
+<span class="line"><span>    T3     -233.064202576971         5.252              121.10            -        -     T_PPS16(18.9) 20A(a)-&gt;23A(d)</span></span>
+<span class="line"><span>    S1     -233.060446497939         5.354              123.46        231.6  1.54293     OSS3(47.8) 22A(c)-&gt;23A(d); OSS9(47.8) 22A(c)-&gt;23A(d)</span></span>
+<span class="line"><span>    S2     -233.051642956940         5.593              128.98        221.7  0.00000     DES3(17.5) 22A(c),22A(c)-&gt;23A(d),23A(d)</span></span>
+<span class="line"><span>    T4     -232.986261652404         7.372              170.01            -        -     T_PPS6(24.8) 22A(c)-&gt;24A(e)</span></span>
+<span class="line"><span>    S3     -232.972245916928         7.754              178.81        159.9  0.00000     OSS6(24.6) 22A(c)-&gt;24A(e)</span></span>
+<span class="line"><span>    Q1     -232.966755681972         7.903              182.25            -        -     TT_PPS1(43.6) 21A(b)-&gt;24A(e), 22A(c)-&gt;23A(d); TT_PPS4(43.6) 21A(b)-&gt;23A(d), 22A(c)-&gt;24A(e)</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>    Sp1    -232.680857311443        15.698              362.01            -        -     TTT_SPS_0(100.0) 20A(a)-&gt;25A(f), 21A(b)-&gt;24A(e), 22A(c)-&gt;23A(d)</span></span>
+<span class="line"><span>    Sp1    -232.680857311443        15.683              361.66            -        -     TTT_SPS_0(100.0) 20A(a)-&gt;25A(f), 21A(b)-&gt;24A(e), 22A(c)-&gt;23A(d)</span></span>
 <span class="line"><span>    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>    Printed states of the first cassette of each spin multiplicity, ordered by energy.</span></span>
 <span class="line"><span>    lambda, f_len: - for a spin multiplicity other than S0's (no spin-orbit coupling).</span></span>
@@ -252,42 +252,42 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td>T1</td>
 <td><code>T_PPS3</code>, <code>T_PPS9</code>: c→d</td>
 <td>one triplet geminal on (c,d) (<a href="/v2/manual/concepts/#run-sector">Spin manifold and run sector</a>)</td>
-<td>2.815</td>
+<td>2.736</td>
 <td>2.73 (³B<sub>u</sub>)</td>
 </tr>
 <tr>
 <td>T2</td>
 <td><code>T_PPS5</code>, <code>T_PPS11</code>: b→d</td>
 <td>one triplet geminal on (b,d)</td>
-<td>4.178</td>
+<td>4.048</td>
 <td>4.36 (³A<sub>g</sub>)</td>
 </tr>
 <tr>
 <td>S1</td>
 <td><code>OSS3</code>, <code>OSS9</code>: c→d</td>
-<td>open-shell singlet on (c,d); f<sub>len</sub> 1.56</td>
-<td>5.377</td>
+<td>open-shell singlet on (c,d); f<sub>len</sub> 1.54</td>
+<td>5.354</td>
 <td>5.37 (¹B<sub>u</sub>)</td>
 </tr>
 <tr>
 <td>S2</td>
 <td><code>DES3</code>: c,c→d,d</td>
 <td>both electrons of c in d; f<sub>len</sub> 0</td>
-<td>5.916</td>
+<td>5.593</td>
 <td>5.62 (¹A<sub>g</sub>, not safe)</td>
 </tr>
 <tr>
 <td>Q1</td>
 <td><code>TT_PPS1</code>, <code>TT_PPS4</code>: b→e, c→d</td>
 <td>two triplet geminals coupled to S = 2</td>
-<td>8.041</td>
+<td>7.903</td>
 <td>–</td>
 </tr>
 <tr>
 <td>Sp1</td>
 <td><code>TTT_SPS_0</code>: a→f, b→e, c→d</td>
 <td>the single 2S = 6 configuration, all three pairs triplet</td>
-<td>15.698</td>
+<td>15.683</td>
 <td>–</td>
 </tr>
 </tbody>
@@ -298,11 +298,11 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span></span></span>
 <span class="line"><span>    Spins  Low-spin state    High-spin state     E(low spin) [Eh]   E(high spin) [Eh]    Gap [eV]        J [Eh]   J [cm^-1]  Lowering(lo) [eV]  Lowering(hi) [eV]</span></span>
 <span class="line"><span>    -------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>    S/T    S0 (cassette 0)   T1 (cassette 1)    -233.257757335295   -233.154325123481       2.815     -0.051716   -11350.37              0.537              1.052</span></span>
-<span class="line"><span>    T/Q    T1 (cassette 1)   Q1 (cassette 2)    -233.154325123481   -232.962265506282       5.226     -0.048015   -10538.05              1.052              0.817</span></span>
-<span class="line"><span>    Q/Sp   Q1 (cassette 2)   Sp1 (cassette 3)   -232.962265506282   -232.680857311443       7.658     -0.046901   -10293.66              0.817              0.000</span></span>
+<span class="line"><span>    S/T    S0 (cassette 0)   T1 (cassette 1)    -233.257191838391   -233.156651584658       2.736     -0.050270   -11033.02              0.522              1.115</span></span>
+<span class="line"><span>    T/Q    T1 (cassette 1)   Q1 (cassette 2)    -233.156651584658   -232.966755681972       5.167     -0.047474   -10419.33              1.115              0.939</span></span>
+<span class="line"><span>    Q/Sp   Q1 (cassette 2)   Sp1 (cassette 3)   -232.966755681972   -232.680857311443       7.780     -0.047650   -10457.91              0.939              0.000</span></span>
 <span class="line"><span>    -------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>    J(T/Q) / J(S/T) = 0.93, J(Q/Sp) / J(S/T) = 0.91: ratio 1 = one J for all spin pairs (Lande interval rule).</span></span>
+<span class="line"><span>    J(T/Q) / J(S/T) = 0.94, J(Q/Sp) / J(S/T) = 0.95: ratio 1 = one J for all spin pairs (Lande interval rule).</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>    Spins = the two spin multiplicities compared (S/T = singlet/triplet). Low-/high-spin state = lowest state of each multiplicity over all cassettes.</span></span>
 <span class="line"><span>    Gap = E(high spin) - E(low spin). Lowering(lo/hi) = SI lowering of that state, min_i H_ii - E.</span></span>
@@ -313,7 +313,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <p>A configuration added to the SA ensemble enters the orbital optimization. <code>T_PPS3</code>, the main configuration of T1, on 2S = 2, the rest of the input unchanged:</p>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"sa_reks_configs"</span><span style="color:#E7E6E2">: [[</span><span style="color:#E7A98A">"PPS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS2"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS3"</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">"T_PPS3"</span><span style="color:#E7E6E2">]],</span></span>
 <span class="line"><span style="color:#E7A98A">"sa_reks_2spin"</span><span style="color:#E7E6E2">: [0, 2],</span></span></code></pre>
-<p>T1 −233.154325 → −233.161981 E<sub>h</sub> (2.815 → 2.610 eV above S0), S0 −233.257757 → −233.257894 E<sub>h</sub>.</p>
+<p>T1 −233.156652 → −233.160794 E<sub>h</sub> (2.736 → 2.614 eV above S0), S0 −233.257192 → −233.256867 E<sub>h</sub>.</p>
 <h3 id="first-inputs">Worked inputs</h3>
 <p>Each file runs in two stages: <code>python file.py rks</code>, then <code>python file.py reks</code>.</p>
 <div class="reftable-wrap"><table>
@@ -338,7 +338,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <tr>
 <td><a href="../../inputs/first_hexatriene.py"><code>first_hexatriene.py</code></a></td>
 <td>SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH&amp;HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool, all-α determinant in SA; SI on 2S = 0, 2, 4, 6</td>
-<td>E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257757335295, T1 −233.154325123481, Q1 −232.962265506282, Sp1 −232.680857311443 E<sub>h</sub></td>
+<td>E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257191838391, T1 −233.156651584658, Q1 −232.966755681972, Sp1 −232.680857311443 E<sub>h</sub></td>
 </tr>
 </tbody>
 </table></div>

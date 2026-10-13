@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/first-calculation/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 [Manual](https://reksstudio.github.io/v2/manual/index.md) › First Calculation
 
@@ -89,7 +89,7 @@ s-trans-butadiene, RKS BH\&HLYP/6-31G(d), slice 0.6 Å above the molecular plane
 
 Diffuse basis: the valence antibonding orbital can lie far above LUMO; give its column as an integer token. Butadiene, aug-cc-pVDZ: LUMO is π₃\*, LUMO+1 … LUMO+5 are σ, the largest π₄\* component is LUMO+6 (column 21); `["HOMO-1", "HOMO", "LUMO", 21]` prints `swaps [(16, 21)]`.
 
-Degenerate orbitals: π of a linear molecule. The rotation within a degenerate RKS pair is arbitrary between runs, and the REKS result follows it. N₂ 1.60 Å, REKS(6,6), one window `['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO+1', 'LUMO', 'LUMO+2']`, three RKS seeds: π FON 1.651544, 1.703717, 1.999994.
+Degenerate orbitals: π of a linear molecule. The rotation within a degenerate RKS pair is arbitrary between runs, and the REKS result follows it. N₂ 1.60 Å, REKS(6,6), one window `['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO+1', 'LUMO', 'LUMO+2']`, RKS seeds on 3, 1 and 4 threads: π FON 1.651544, 1.703717, 1.999994.
 
 ### Start REKS {#start-reks}
 
@@ -135,7 +135,7 @@ GUESS READ: active window ['HOMO-2', 'HOMO', 'LUMO', 'LUMO+1'] -> MO columns [13
       16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812
       17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000
 [...]
-@REKS Final Energy:  -155.67155759812988
+@REKS Final Energy:  -155.67155759813016
 ```
 
 ### Check the solution {#check-solution}
@@ -170,7 +170,7 @@ Energy and wave function converged.
 @REKS Final Energy:   -78.36439426526262
 ```
 
-S0 of this solution: C1 = −0.358361, C2 = −0.358355 (Mulliken), |μ| = 0.000034 e a<sub>0</sub>. Cold SAD start: C1 = −0.148908, C2 = −0.561394, |μ| = 0.263524 e a<sub>0</sub>.
+S0 of this solution: C1 = C2 = −0.358359 (Mulliken), |μ| = 0.000000 e a<sub>0</sub>. Cold SAD start: C1 = −0.148907, C2 = −0.561394, |μ| = 0.263525 e a<sub>0</sub>.
 
 RKS seed
 
@@ -255,17 +255,17 @@ The state summary lists the printed roots of all manifolds by energy (labels: [�
 
     State             E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    S0     -233.257757335295         0.000                0.00            -        -     PPS1(16.0)
-    T1     -233.154325123481         2.815               64.90            -        -     T_PPS3(42.5) 22A(c)->23A(d); T_PPS9(42.4) 22A(c)->23A(d)
-    T2     -233.104231805371         4.178               96.34            -        -     T_PPS5(26.9) 21A(b)->23A(d); T_PPS11(26.9) 21A(b)->23A(d)
-    S1     -233.060146022573         5.377              124.00        230.6  1.55964     OSS3(47.8) 22A(c)->23A(d); OSS9(47.7) 22A(c)->23A(d)
-    S2     -233.040353757450         5.916              136.42        209.6  0.00000     DES3(19.2) 22A(c),22A(c)->23A(d),23A(d)
-    T3     -233.036515420162         6.020              138.83            -        -     T_PPS16(18.4) 20A(a)->23A(d)
-    T4     -232.986163052695         7.390              170.43            -        -     T_PPS6(25.9) 22A(c)->24A(e); T_PPS15(25.9) 22A(c)->24A(e)
-    S3     -232.973234729812         7.742              178.54        160.1  0.00000     OSS5(26.1) 21A(b)->23A(d); OSS11(26.1) 21A(b)->23A(d)
-    Q1     -232.962265506282         8.041              185.42            -        -     TT_PPS1(43.7) 21A(b)->24A(e), 22A(c)->23A(d); TT_PPS4(43.7) 21A(b)->23A(d), 22A(c)->24A(e)
+    S0     -233.257191838391         0.000                0.00            -        -     PPS1(16.0)
+    T1     -233.156651584658         2.736               63.09            -        -     T_PPS3(42.0) 22A(c)->23A(d); T_PPS9(41.9) 22A(c)->23A(d)
+    T2     -233.108425331554         4.048               93.35            -        -     T_PPS5(26.2) 21A(b)->23A(d); T_PPS11(26.2) 21A(b)->23A(d)
+    T3     -233.064202576971         5.252              121.10            -        -     T_PPS16(18.9) 20A(a)->23A(d)
+    S1     -233.060446497939         5.354              123.46        231.6  1.54293     OSS3(47.8) 22A(c)->23A(d); OSS9(47.8) 22A(c)->23A(d)
+    S2     -233.051642956940         5.593              128.98        221.7  0.00000     DES3(17.5) 22A(c),22A(c)->23A(d),23A(d)
+    T4     -232.986261652404         7.372              170.01            -        -     T_PPS6(24.8) 22A(c)->24A(e)
+    S3     -232.972245916928         7.754              178.81        159.9  0.00000     OSS6(24.6) 22A(c)->24A(e)
+    Q1     -232.966755681972         7.903              182.25            -        -     TT_PPS1(43.6) 21A(b)->24A(e), 22A(c)->23A(d); TT_PPS4(43.6) 21A(b)->23A(d), 22A(c)->24A(e)
 [...]
-    Sp1    -232.680857311443        15.698              362.01            -        -     TTT_SPS_0(100.0) 20A(a)->25A(f), 21A(b)->24A(e), 22A(c)->23A(d)
+    Sp1    -232.680857311443        15.683              361.66            -        -     TTT_SPS_0(100.0) 20A(a)->25A(f), 21A(b)->24A(e), 22A(c)->23A(d)
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     Printed states of the first cassette of each spin multiplicity, ordered by energy.
     lambda, f_len: - for a spin multiplicity other than S0's (no spin-orbit coupling).
@@ -274,12 +274,12 @@ The state summary lists the printed roots of all manifolds by energy (labels: [�
 
 | State | Main configurations | Content | ΔE / eV | QUEST TBE / eV |
 | - | - | - | - | - |
-| T1 | `T_PPS3`, `T_PPS9`: c→d | one triplet geminal on (c,d) ([Spin manifold and run sector](https://reksstudio.github.io/v2/manual/concepts/index.md#run-sector)) | 2.815 | 2.73 (³B<sub>u</sub>) |
-| T2 | `T_PPS5`, `T_PPS11`: b→d | one triplet geminal on (b,d) | 4.178 | 4.36 (³A<sub>g</sub>) |
-| S1 | `OSS3`, `OSS9`: c→d | open-shell singlet on (c,d); f<sub>len</sub> 1.56 | 5.377 | 5.37 (¹B<sub>u</sub>) |
-| S2 | `DES3`: c,c→d,d | both electrons of c in d; f<sub>len</sub> 0 | 5.916 | 5.62 (¹A<sub>g</sub>, not safe) |
-| Q1 | `TT_PPS1`, `TT_PPS4`: b→e, c→d | two triplet geminals coupled to S = 2 | 8.041 | – |
-| Sp1 | `TTT_SPS_0`: a→f, b→e, c→d | the single 2S = 6 configuration, all three pairs triplet | 15.698 | – |
+| T1 | `T_PPS3`, `T_PPS9`: c→d | one triplet geminal on (c,d) ([Spin manifold and run sector](https://reksstudio.github.io/v2/manual/concepts/index.md#run-sector)) | 2.736 | 2.73 (³B<sub>u</sub>) |
+| T2 | `T_PPS5`, `T_PPS11`: b→d | one triplet geminal on (b,d) | 4.048 | 4.36 (³A<sub>g</sub>) |
+| S1 | `OSS3`, `OSS9`: c→d | open-shell singlet on (c,d); f<sub>len</sub> 1.54 | 5.354 | 5.37 (¹B<sub>u</sub>) |
+| S2 | `DES3`: c,c→d,d | both electrons of c in d; f<sub>len</sub> 0 | 5.593 | 5.62 (¹A<sub>g</sub>, not safe) |
+| Q1 | `TT_PPS1`, `TT_PPS4`: b→e, c→d | two triplet geminals coupled to S = 2 | 7.903 | – |
+| Sp1 | `TTT_SPS_0`: a→f, b→e, c→d | the single 2S = 6 configuration, all three pairs triplet | 15.683 | – |
 
 λ and f<sub>len</sub> are printed only for the multiplicity of S0. QUEST TBE: aug-cc-pVTZ, QUESTDB Table 2 ([Véril et al., WIREs Comput. Mol. Sci. 2021, 11, e1517](https://reksstudio.github.io/v2/manual/reference/index.md#veril2021-questdb)); QUEST lists excited states only: its ¹A<sub>g</sub> is the lowest excited ¹A<sub>g</sub> (2¹A<sub>g</sub> counting S0). Irreps from the inversion parity of the REKS active orbitals: a, c a<sub>u</sub>; b, d b<sub>g</sub>; c→d B<sub>u</sub>, b→d A<sub>g</sub>, c,c→d,d A<sub>g</sub>.
 
@@ -290,11 +290,11 @@ The state summary lists the printed roots of all manifolds by energy (labels: [�
 
     Spins  Low-spin state    High-spin state     E(low spin) [Eh]   E(high spin) [Eh]    Gap [eV]        J [Eh]   J [cm^-1]  Lowering(lo) [eV]  Lowering(hi) [eV]
     -------------------------------------------------------------------------------------------------------------------------------------------------------------
-    S/T    S0 (cassette 0)   T1 (cassette 1)    -233.257757335295   -233.154325123481       2.815     -0.051716   -11350.37              0.537              1.052
-    T/Q    T1 (cassette 1)   Q1 (cassette 2)    -233.154325123481   -232.962265506282       5.226     -0.048015   -10538.05              1.052              0.817
-    Q/Sp   Q1 (cassette 2)   Sp1 (cassette 3)   -232.962265506282   -232.680857311443       7.658     -0.046901   -10293.66              0.817              0.000
+    S/T    S0 (cassette 0)   T1 (cassette 1)    -233.257191838391   -233.156651584658       2.736     -0.050270   -11033.02              0.522              1.115
+    T/Q    T1 (cassette 1)   Q1 (cassette 2)    -233.156651584658   -232.966755681972       5.167     -0.047474   -10419.33              1.115              0.939
+    Q/Sp   Q1 (cassette 2)   Sp1 (cassette 3)   -232.966755681972   -232.680857311443       7.780     -0.047650   -10457.91              0.939              0.000
     -------------------------------------------------------------------------------------------------------------------------------------------------------------
-    J(T/Q) / J(S/T) = 0.93, J(Q/Sp) / J(S/T) = 0.91: ratio 1 = one J for all spin pairs (Lande interval rule).
+    J(T/Q) / J(S/T) = 0.94, J(Q/Sp) / J(S/T) = 0.95: ratio 1 = one J for all spin pairs (Lande interval rule).
 
     Spins = the two spin multiplicities compared (S/T = singlet/triplet). Low-/high-spin state = lowest state of each multiplicity over all cassettes.
     Gap = E(high spin) - E(low spin). Lowering(lo/hi) = SI lowering of that state, min_i H_ii - E.
@@ -312,7 +312,7 @@ A configuration added to the SA ensemble enters the orbital optimization. `T_PPS
 "sa_reks_2spin": [0, 2],
 ```
 
-T1 −233.154325 → −233.161981 E<sub>h</sub> (2.815 → 2.610 eV above S0), S0 −233.257757 → −233.257894 E<sub>h</sub>.
+T1 −233.156652 → −233.160794 E<sub>h</sub> (2.736 → 2.614 eV above S0), S0 −233.257192 → −233.256867 E<sub>h</sub>.
 
 ### Worked inputs {#first-inputs}
 
@@ -322,7 +322,7 @@ Each file runs in two stages: `python file.py rks`, then `python file.py reks`.
 | - | - | - |
 | [`first_c2h4_90.py`](https://reksstudio.github.io/v2/inputs/first_c2h4_90.py.txt) | SI-SA-REKS(2,2), C₂H₄ 90°, BH\&HLYP/6-31G(d), RKS seed, no window | E<sub>SA</sub> = −78.364394265263 E<sub>h</sub>; n 1.000000 / 1.000000 |
 | [`first_butadiene.py`](https://reksstudio.github.io/v2/inputs/first_butadiene.py.txt) | SI-SA-REKS(4,4), s-trans-butadiene, BH\&HLYP/6-31G(d), RKS seed, π window | E<sub>SA</sub> = −155.670331327491 E<sub>h</sub>; n 1.999999 / 1.999138 / 0.000862 / 0.000001 |
-| [`first_hexatriene.py`](https://reksstudio.github.io/v2/inputs/first_hexatriene.py.txt) | SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH\&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool, all-α determinant in SA; SI on 2S = 0, 2, 4, 6 | E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257757335295, T1 −233.154325123481, Q1 −232.962265506282, Sp1 −232.680857311443 E<sub>h</sub> |
+| [`first_hexatriene.py`](https://reksstudio.github.io/v2/inputs/first_hexatriene.py.txt) | SI-SA-REKS(6,6), all-trans-hexatriene (QUEST geometry), BH\&HLYP/6-31G(d), RKS seed, π window with LUMO+3; default SA pool, all-α determinant in SA; SI on 2S = 0, 2, 4, 6 | E<sub>SA</sub> = −232.925571833108 E<sub>h</sub>; S0 −233.257191838391, T1 −233.156651584658, Q1 −232.966755681972, Sp1 −232.680857311443 E<sub>h</sub> |
 
 ### Scans {#first-scans}
 

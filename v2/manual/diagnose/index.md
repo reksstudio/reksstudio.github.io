@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/diagnose/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 [Manual](https://reksstudio.github.io/v2/manual/index.md) › Diagnose
 
@@ -61,7 +61,7 @@ The GVB-DIIS monitors ([§13](https://reksstudio.github.io/v2/manual/run-control
 
 #### FON pinned at a bound, symmetry-broken charges {#diag-fon-pinned}
 
-`Post-Iterations` prints `n_a = 2.000000`, `n_b = 0.000000`, `gradient()` prints `[GRAD-FON] … pinned`, and equivalent atoms carry different charges. Example: 90° C₂H₄ from a cold SAD start; the RKS seed gives n 1/1 ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)). On the cold branch (a separate BH\&HLYP/6-31G run; [Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution) uses 6-31G(d)) the analytic S1 gradient agrees with a 5-point finite difference to 9·10<sup>−8</sup> E<sub>h</sub>/a<sub>0</sub>; a 2-point difference deviates by 2.3·10<sup>−2</sup> because its −h point converges to the other solution.
+`Post-Iterations` prints `n_a = 2.000000`, `n_b = 0.000000`, `gradient()` prints `[GRAD-FON] … pinned`, and equivalent atoms carry different charges. Example: 90° C₂H₄ from a cold SAD start; the RKS seed gives n 1/1 ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)). On the cold branch (a separate BH\&HLYP/6-31G run; [Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution) uses 6-31G(d)) the analytic S1 gradient agrees with a 5-point finite difference to 1·10<sup>−10</sup> E<sub>h</sub>/a<sub>0</sub>; a 2-point difference deviates by 2.3·10<sup>−2</sup> because its −h point converges to the other solution.
 
 Seed from an RKS run at the same geometry ([Seed orbitals](https://reksstudio.github.io/v2/manual/first-calculation/index.md#seed-orbitals)) or from a neighbouring geometry ([Restart mechanism](https://reksstudio.github.io/v2/manual/run-control/index.md#restart)) and compare the FON columns between runs; geminals entering only SI configurations can also lie at the bound ([FONs of the SI-only geminals](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)). Optimizations: [Check the optimization](https://reksstudio.github.io/v2/manual/dynamics/index.md#check-optimization).
 

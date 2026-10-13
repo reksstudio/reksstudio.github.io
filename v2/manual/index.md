@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 User Manual
 
@@ -12,7 +12,7 @@ User Manual
 
 A guide to the REKS(N,M) / SA-REKS / SI-REKS implementation in Psi4
 
-[Psi4 revision `b275f4294`, 2026-10-11](https://reksstudio.github.io/v2/docs/index.md#version)
+[Psi4 revision `d40267fc2`, 2026-10-13](https://reksstudio.github.io/v2/docs/index.md#version)
 
 Spin-Restricted Ensemble-referenced Kohn-Sham DFT\
 State-Averaged (SA-REKS) and State-Interaction (SI-SA-REKS = SSR)\
@@ -128,6 +128,7 @@ e_sa = psi4.variable("SCF TOTAL ENERGY")
 | `DIIS`, `SOSCF` | Switched off by REKS. |
 | `LEVEL_SHIFT`, `LEVEL_SHIFT_CUTOFF` | Unset: REKS defaults ([Level shift](https://reksstudio.github.io/v2/manual/run-control/index.md#level-shift)). |
 | `PCM`, `DDX`, `PE`, `MOM_START`, `FRAC_START` | Rejected with an input error. |
+| VV10 functionals (`-V`, `-NL`), Laplacian-dependent meta-GGAs (e.g. `zlp`), `DFT_GRAC_SHIFT` ≠ 0 | Rejected with an input error. |
 
 H₂ without `symmetry c1`:
 
@@ -144,7 +145,7 @@ Complete inputs, each run with this build. Run a `.dat` file with `psi4 file.dat
 | File | Calculation | Result |
 | - | - | - |
 | [`reks22_h2.dat`](https://reksstudio.github.io/v2/inputs/reks22_h2.dat.txt) | SI-SA-REKS(2,2), H₂ (0.74 Å), BH\&HLYP/cc-pVDZ, default pools | S0 = −1.159238310496 Eh |
-| [`reks44_h4_singlet_triplet.py`](https://reksstudio.github.io/v2/inputs/reks44_h4_singlet_triplet.py.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA `[PPS1, OSS1]` + `[T_PPS1]`, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.101236378438, T1 = −2.049371603420 Eh |
+| [`reks44_h4_singlet_triplet.py`](https://reksstudio.github.io/v2/inputs/reks44_h4_singlet_triplet.py.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA `[PPS1, OSS1]` + `[T_PPS1]`, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.101144140471, T1 = −2.049371603420 Eh |
 | [`reks44_h4_heisenberg.dat`](https://reksstudio.github.io/v2/inputs/reks44_h4_heisenberg.dat.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; sectors 2S = 0, 2, 4; [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics) | S0 = −2.072348701131, T1 = −2.045831290718, Q1 = −1.888567570704 Eh |
 | [`reks22_h2_triplet_gradient.dat`](https://reksstudio.github.io/v2/inputs/reks22_h2_triplet_gradient.dat.txt) | SI-SA-REKS(2,2), H₂ (1.6 Å), BH\&HLYP/6-31G(d); analytic gradient and relaxed properties of T1 ([`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md)) | T1 = −0.959546621300 Eh; dE/dz(H1) = 0.041765470832 Eh/bohr |
 

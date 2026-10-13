@@ -2,7 +2,7 @@
  "entries": {
   "REKS": {"option": true, "type": "`[N, M]`", "default": "— (required)", "call": "[4, 4]", "fragments": ["err-multiplicity"],
    "rules": [
-    "N active electrons in M active orbitals, exactly two integers; a third element (the former spin element) is an input error. Only installed catalogs run (§catalog).",
+    "N active electrons in M active orbitals, exactly two integers; a third element is an input error. Only installed catalogs run (§catalog).",
     "Molecule multiplicity: 1 for even N, 2 for odd N (no installed catalog has odd N); any other value is the error above. The spin manifolds are chosen by §sa_reks_2spin / §si_reks_2spin or the ladder (§spin-manifolds)."
    ],
    "brief": "Active space `[N, M]`: N active electrons in M active orbitals; selects the catalog."},

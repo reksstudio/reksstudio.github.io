@@ -68,7 +68,7 @@
     "The four bookkeeping scalars never take the sector prefix.",
     "`Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats S0 of cassette 0.",
     "`State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.",
-    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.04–0.48 E_{h} below E_{SA}; S0 = −1.0·10^{7} E_{h} at E_{SA} = −1.27 E_{h} marks ghost roots (§diag-ghost-states)."
+    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.03–0.51 E_{h} below E_{SA}; an E(S0) far below this range marks ghost roots (§diag-ghost-states)."
    ]
   },
   {
@@ -470,7 +470,7 @@
    "variables": "`SSR ROOT <r> GRADIENT CASSETTE <e>`; `CURRENT ENERGY` and `REKS TARGET STATE ENERGY` (followed root, set in `energy()` too); `CURRENT GRADIENT`, `SCF TOTAL GRADIENT` (followed root)",
    "bullets": [
     "The followed state (`*`) and `CURRENT ENERGY`: §si_reks_grad.",
-    "A root within `REKS_GRAD_DEGEN_TOL` (10^{-6} E_{h}) of another physical root of its cassette is computed with a warning. A meta-GGA functional raises an error: no analytic SI gradient.",
+    "A root within `REKS_GRAD_DEGEN_TOL` (10^{-6} E_{h}) of another physical root of its cassette is computed with a warning.",
     "`E` of a `Gradient of` block equals the state's energy in `Adiabatic states`; `Returned gradient` names the `*` state and repeats its table.",
     "Converged response: `Remain` reaches 0 in the CP-REKS solver block (§reks_cpreks_conv); each gradient prints `|sum over atoms|` near zero."
    ]

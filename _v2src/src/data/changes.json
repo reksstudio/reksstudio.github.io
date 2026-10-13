@@ -7,5 +7,18 @@
   "removed": [],
   "defaults": [],
   "notes": []
+ },
+ {
+  "rev": "d40267fc2dcb3d3bc530e1dc239e9a7b8b7fc124",
+  "date": "2026-10-13",
+  "reachable": false,
+  "added": [],
+  "removed": [],
+  "defaults": [],
+  "notes": [
+   "One-electron SI couplings are Slater–Condon elements over the Fock matrices of the microstates, the bra/ket mean for an excitation (§si-hamiltonian); SSR energies and state properties follow from them.",
+   "SI gradients and NAC are analytic with meta-GGA functionals (§state-gradient, §nac); Laplacian-dependent meta-GGAs are rejected with an input error.",
+   "NTO holes, NDOs, state natural orbitals and EKT eigenvectors are in a canonical basis of each degenerate span (§nto, §natural-orbitals)."
+  ]
  }
 ]

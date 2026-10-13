@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/wide-geminals/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 [Manual](https://reksstudio.github.io/v2/manual/index.md) › Wide Geminals
 
@@ -266,16 +266,16 @@ BH\&HLYP/cc-pVDZ, RKS seed, the lone-pair geminal of [Lone pair: REKS(2,3)](http
     State            E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)
     ------------------------------------------------------------------------------------------------------------------
     S0     -25.273256917916         0.000                0.00            -        -     PPS1(100.0)
-    T1     -25.232772136476         1.102               25.40            -        -     Ta1(50.0); Tb1(50.0)
-    T2     -25.232772063628         1.102               25.40            -        -     Tb1(50.0); Ta1(50.0)
-    S1     -25.185054403019         2.400               55.35        516.6  0.05168     OSSb1(50.0); OSSa1(50.0)
-    S2     -25.185054001481         2.400               55.35        516.6  0.05168     OSSa1(50.0); OSSb1(50.0)
+    T1     -25.232772182224         1.102               25.40            -        -     Ta1(50.0); Tb1(50.0)
+    T2     -25.232772017879         1.102               25.40            -        -     Tb1(50.0); Ta1(50.0)
+    S1     -25.185054284422         2.400               55.35        516.6  0.05168     OSSb1(50.0); OSSa1(50.0)
+    S2     -25.185054120077         2.400               55.35        516.6  0.05168     OSSa1(50.0); OSSb1(50.0)
     T3     -25.102149516894         4.656              107.37            -        -     Tc1(100.0)
-    S3     -25.080575672888         5.243              120.91        236.5  0.00000     OSSc1(100.0)
-    S4     -25.066507826312         5.626              129.74        220.4  0.00000     DESb1(50.0); DESa1(50.0)
+    S3     -25.080575672772         5.243              120.91        236.5  0.00000     OSSc1(100.0)
+    S4     -25.066507826428         5.626              129.74        220.4  0.00000     DESb1(50.0); DESa1(50.0)
 ```
 
-S1/S2 (¹Π) and T1/T2 (³Π) are degenerate pairs, split by 4·10<sup>−7</sup> and 7·10<sup>−8</sup> E<sub>h</sub>. With `|ab|` alone the SA ensemble favours one π: S1/S2 2.360 / 2.391 eV, T1/T2 1.131 / 1.151 eV.
+S1/S2 (¹Π) and T1/T2 (³Π) are degenerate pairs, each split by 1.6·10<sup>−7</sup> E<sub>h</sub>. With `|ab|` alone the SA ensemble favours one π: S1/S2 2.360 / 2.391 eV, T1/T2 1.131 / 1.151 eV.
 
 ### Worked inputs {#wide-inputs}
 

@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/setup/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 [Manual](https://reksstudio.github.io/v2/manual/index.md) › Input
 
@@ -46,7 +46,7 @@ Default: — (required)
 REKS requires the canonical symmetric-Ms reference: N=2 implies molecule multiplicity 1 (even N -> 1, odd N -> 2), but the molecule multiplicity is 3. Do not set the multiplicity to 2S+1; keep the canonical value and pick spin manifolds via SA_REKS_2SPIN / SI_REKS_2SPIN.
 ```
 
-* N active electrons in M active orbitals, exactly two integers; a third element (the former spin element) is an input error. Only installed catalogs run ([§6](https://reksstudio.github.io/v2/manual/setup/index.md#catalog)).
+* N active electrons in M active orbitals, exactly two integers; a third element is an input error. Only installed catalogs run ([§6](https://reksstudio.github.io/v2/manual/setup/index.md#catalog)).
 * Molecule multiplicity: 1 for even N, 2 for odd N (no installed catalog has odd N); any other value is the error above. The spin manifolds are chosen by [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) / [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) or the ladder ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)).
 
 #### `REKS_GEMINAL_WIDTHS` {#reks_geminal_widths}
@@ -100,13 +100,13 @@ The label is the set letter, the pairing-scheme digit (`n0`, `n1`), and `tK` for
 No option selects a pairing scheme ([Pairing scheme](https://reksstudio.github.io/v2/manual/concepts/index.md#pairing-scheme)); the configurations of the SA pool do (`single-scheme:N`, `mixed-scheme:N`, [§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)). The setup report prints the schemes:
 
 ```log
-=> Pairing schemes (GVB(2,2) geminal pairs) <=
+=> Pairing schemes (geminal orbitals) <=
 
    Scheme 0: (a,d) & (b,c)
    Scheme 1: (a,c) & (b,d)
 
 [...]
-   FON = fractional occupation number n_p of an active orbital (0..2, n_p + n_q = 2 in a pair).
+   FON = fractional occupation number n_p of an active orbital (0..2); the FONs of a geminal sum to 2.
 ```
 
 ## 7. Bulk Tokens and Pattern Syntax {#bulk-tokens}
@@ -278,8 +278,8 @@ Alias: `REKS_SI_CONFIGS`
 
    State           E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  E-E(own lowest) [eV]  Closest in cassette 0  dE_exc - closest [eV]   Main configurations (w_j in %)
    -------------------------------------------------------------------------------------------------------------------------------------------------------------
-   S0[1]  -2.128686999214        -0.178               -4.10                 0.000  -                                          -   PPS2(99.1)
-   S1[1]  -1.329219012360        21.577              497.58                21.755  -                                          -   OSS3(99.1) 1A(a)->3A(c)
+   S0[1]  -2.123574938693        -0.039               -0.89                 0.000  -                                          -   PPS2(99.8)
+   S1[1]  -1.334331072881        21.438              494.37                21.476  -                                          -   OSS3(99.8) 1A(a)->3A(c)
    -------------------------------------------------------------------------------------------------------------------------------------------------------------
    Closest = state of the first list of largest weight overlap sum_j min(w_j(A), w_j(B)) >= 50 %
    (configurations of |S| >= 0.95 merged); dE_exc = E-E(own lowest).
@@ -604,11 +604,11 @@ Default: `1e-9`
 
     Iter      Mean |R|       Max |R|   Remain   Time [s]
     ----------------------------------------------------
-       1     2.990e-01     9.607e-01        4       0.01
-       2     1.585e-01     5.441e-01        4       0.02
+       1     2.988e-01     9.691e-01        4       0.01
+       2     1.648e-01     5.702e-01        4       0.02
 [...]
-      12     1.614e-09     1.614e-09        1       0.14
-      13     1.363e-10     1.363e-10        0       0.14
+      12     1.091e-08     1.091e-08        1       0.12
+      13     5.914e-10     5.914e-10        0       0.13
     ----------------------------------------------------
     Z-vectors converged in 13 iterations.
 ```

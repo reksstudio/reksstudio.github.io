@@ -14,5 +14,5 @@ psi4.set_options({"basis": "6-31g(d)", "scf_type": "df",
 mol = molecule("opt_c2h4.xyz", nstates=3, temperature=300)
 qm = REKS(mol, "bhhlyp", restart_file="opt_c2h4_reks.wfn.npy")
 
-md = mqc.SH(molecule=mol, istate=1, dt=0.5, nsteps=200, unit_dt="fs")
+md = mqc.SH(molecule=mol, istate=1, dt=0.25, nsteps=400, unit_dt="fs")
 md.run(qm=qm)

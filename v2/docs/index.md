@@ -2,9 +2,9 @@
 
 HTML: <https://reksstudio.github.io/v2/docs/>
 
-Psi4 b275f4294, 2026-10-11: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
-Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).
+Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
 Documentation
 
@@ -38,9 +38,15 @@ Then run `psi4 reks22_h2.dat` (download from [Worked inputs](https://reksstudio.
 
 ## Version
 
-Psi4 `b275f4294`, 2026-10-11: the commit of every output in the manual. Option names and defaults may change on this branch.
+Psi4 `d40267fc2`, 2026-10-13: the commit of every output in the manual. Option names and defaults may change on this branch.
 
 ## Changes
+
+### Psi4 `d40267fc2`, 2026-10-13
+
+* One-electron SI couplings are Slater–Condon elements over the Fock matrices of the microstates, the bra/ket mean for an excitation ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)); SSR energies and state properties follow from them.
+* SI gradients and NAC are analytic with meta-GGA functionals ([Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient), [Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac)); Laplacian-dependent meta-GGAs are rejected with an input error.
+* NTO holes, NDOs, state natural orbitals and EKT eigenvectors are in a canonical basis of each degenerate span ([Natural transition orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#nto), [Natural orbitals and occupations of the active space](https://reksstudio.github.io/v2/manual/properties/index.md#natural-orbitals)).
 
 ### Psi4 `b275f4294`, 2026-10-11
 
@@ -88,7 +94,7 @@ Name the method SSR (SI-SA-REKS, [§1](https://reksstudio.github.io/v2/manual/in
 
 Report:
 
-* the printed blocks `==> REKS Studio setup <==`, `=> SA pool <=`, `=> Pairing schemes (GVB(2,2) geminal pairs) <=`, `=> SI pools <=`, `==> State interaction: setup over the union of the SI cassettes <==`, which hold these names and weights;
+* the printed blocks `==> REKS Studio setup <==`, `=> SA pool <=`, `=> Pairing schemes (geminal orbitals) <=`, `=> SI pools <=`, `==> State interaction: setup over the union of the SI cassettes <==`, which hold these names and weights;
 * every REKS option set to a value other than its default (column Default of [§18](https://reksstudio.github.io/v2/manual/reference/index.md#option-table)), and always [`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md), [`SI_REKS_OVERLAP_CUTOFF`](https://reksstudio.github.io/v2/options/SI_REKS_OVERLAP_CUTOFF.md), [`REKS_CPREKS_CONV`](https://reksstudio.github.io/v2/options/REKS_CPREKS_CONV.md), [`GUESS_ACTIVE_WINDOW`](https://reksstudio.github.io/v2/options/GUESS_ACTIVE_WINDOW.md), [`REKS_<L>_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md), [`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md);
 * the Psi4 options [`basis`](https://psicode.org/psi4manual/master/autodir_options_c/scf__basis.html), [`puream`](https://psicode.org/psi4manual/master/autodir_options_c/globals__puream.html), [`dft_spherical_points`](https://psicode.org/psi4manual/master/autodir_options_c/scf__dft_spherical_points.html), [`dft_radial_points`](https://psicode.org/psi4manual/master/autodir_options_c/scf__dft_radial_points.html), [`scf_type`](https://psicode.org/psi4manual/master/autodir_options_c/globals__scf_type.html), [`df_basis_scf`](https://psicode.org/psi4manual/master/autodir_options_c/scf__df_basis_scf.html), [`e_convergence`](https://psicode.org/psi4manual/master/autodir_options_c/scf__e_convergence.html), [`d_convergence`](https://psicode.org/psi4manual/master/autodir_options_c/scf__d_convergence.html);
 * the full input file (the whole options block and the geometry) in the SI; it also covers Psi4 options outside the list above
