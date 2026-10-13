@@ -17,7 +17,6 @@ import { optionGroup, optionId, optionKeys, optionTitle, optionType } from './re
 import { BRANCH, REPO_URL, siteRev } from './site.mjs';
 
 const SUMMARY = 'REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.';
-const CONVENTION = 'Every page: `<page>/index.md` (markdown). Option cards: `options/<NAME>.md`. Raw files: `<file>.txt` (text/plain).';
 const LANG = { '.py': 'python', '.dat': 'text', '.bib': 'bibtex' };
 const IMAGE = new Set(['.avif', '.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg']);
 // Claude Code WebFetch truncates longer text
@@ -204,13 +203,14 @@ export default function aiLayer() {
         const llmsUrl = new URL('llms.txt', root).href;
         // the wording of the Documentation page: the measured commit, not claimed to be on the branch
         const revLine = `Psi4 ${rev.short}, ${rev.date}: the commit of every output on this site. Install: branch ${BRANCH} of <${REPO_URL}>.`;
-        const header = (title, html) =>
-          [
-            `# ${title}`,
-            `HTML: <${html}>`,
-            revLine,
-            `Site index: <${llmsUrl}>. ${CONVENTION}`,
-          ].join('\n\n') + '\n\n';
+        // absolute URL patterns, so that a summary of any generated file still carries usable addresses
+        const convention = [
+          `Every page: \`${root.href}<page>/index.md\` (markdown).`,
+          `Option cards: \`${root.href}options/<NAME>.md\`.`,
+          `Raw files: file URL + \`.txt\` (text/plain), e.g. \`${root.href}inputs/<file>.txt\`.`,
+        ].join(' ');
+        const header = (title, html, extra = []) =>
+          [`# ${title}`, `HTML: <${html}>`, ...extra, revLine, `Site index: <${llmsUrl}>. ${convention}`].join('\n\n') + '\n\n';
         const cardUrl = (key) => new URL(`options/${key}.md`, root).href;
         const twinOf = (url) => new URL('index.md', url).href;
         // entry href of an option with its own entry -> its card
@@ -260,12 +260,20 @@ export default function aiLayer() {
         const manual = PAGES.map(({ slug }) => pageOf(slug));
         const headings = PAGES.map(({ slug }, i) => ({ slug, headings: manual[i].headings }));
         const tables = manual.flatMap((p) => all(p.mdast, (n) => n.type === 'table'));
+        // manual URL of a card -> "Chapter: [title](twin#id)" of the h2 holding it, the context its text refers to
+        const sectionLine = (url) => {
+          const p = pages.find((x) => x.url.pathname === url.pathname);
+          const at = p.headings.findIndex((h) => h.slug === url.hash.slice(1));
+          if (at < 0) fail(`no heading ${url.hash} on ${p.name}`);
+          const h = p.headings.slice(0, at + 1).findLast((x) => x.depth === 2);
+          return `Chapter: [${h.text}](${twinOf(p.url)}#${h.slug})`;
+        };
         const cards = optionKeys().map((key) => {
           const { body, brief } = optionGroup(key).compact
             ? rowCard(key, tables)
             : sectionCard(key, pageOf(entryMap().get(optionId(key)).slug).mdast);
-          const html = new URL(optionHref(key, headings, null, root.pathname), root).href;
-          const text = header(`\`${optionTitle(key)}\``, html) + body;
+          const html = new URL(optionHref(key, headings, null, root.pathname), root);
+          const text = header(`\`${optionTitle(key)}\``, html.href, [sectionLine(html)]) + body;
           if (!/^Default: /m.test(body)) fail(`card ${key} has no Default line`);
           if (/^Type: /m.test(body) !== Boolean(optionType(key))) fail(`card ${key}: Type line does not match reference.json`);
           generated.set(`options/${key}.md`, text);
@@ -296,7 +304,7 @@ export default function aiLayer() {
         const llms = [
           '# REKS Studio',
           `> ${SUMMARY}`,
-          `${revLine}\n${CONVENTION}`,
+          `${revLine}\n${convention}`,
           `## Manual\n${manual.map((p) => `${twin(p)}: ${sections(p)}`).join('\n')}`,
           `## Options\n${cards.map(({ key, brief }) => `- [\`${optionTitle(key)}\`](${cardUrl(key)}): ${brief}`).join('\n')}`,
           `## Files\n${[...linked].sort().map(fileItem).join('\n')}`,
