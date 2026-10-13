@@ -4,7 +4,7 @@ title: Optimization and Dynamics
 
 ## 5\. Optimization and Dynamics {#opt-dynamics}
 
-After the solution check (§check-solution) the nuclear gradients of the SSR states and their nonadiabatic coupling vectors (NAC, $\mathbf d_{IJ} = \langle I|\partial J/\partial\mathbf R\rangle$, §nac) drive a geometry optimization with DL-FIND or a trajectory with PyUNIxMD; every point is one `psi4.gradient()` call. Procedure: one `gradient()` → optimization → check → dynamics → check.
+After the solution check (§check-solution), the nuclear gradients of the SSR states and their nonadiabatic coupling vectors (NAC, $\mathbf d_{IJ} = \langle I|\partial J/\partial\mathbf R\rangle$, §nac) drive a geometry optimization with DL-FIND or a trajectory with PyUNIxMD, where each point corresponds to a single `psi4.gradient()` call. Procedure: one `gradient()` → optimization → check → dynamics → check.
 
 -   **Start:** every run on this page starts from orbitals checked as in §check-solution; each further point reads the REKS orbitals of the previous one (§first-scans).
 -   **Integrals:** `scf_type df` for optimizations and trajectories (all runs on this page); `pk` (exact integrals) for an estimate of the DF error at single points.
@@ -18,7 +18,7 @@ After the solution check (§check-solution) the nuclear gradients of the SSR sta
 
 ### One gradient() call {#one-gradient}
 
-90° C₂H₄ from the RKS orbitals of `first_c2h4_90.py` (§first-inputs), S1 as the followed root and the NAC of all pairs of S0, S1, S2:
+90° C₂H₄ from the RKS orbitals of `first_c2h4_90.py` (§first-inputs), S1 as the target root and the NAC of all pairs of S0, S1, S2:
 
 ```python
 psi4.set_options({"scf_type": "df", "reference": "reks", "reks": [2, 2],
@@ -40,7 +40,7 @@ One CP-REKS solve covers every target (§reks_cpreks_conv). Wall time of the who
 | `[[1, 0, 2]]` | — | 3 | 1.3 | S1 |
 | `[[1]]` | three pairs | 9 | 1.7 | S1 |
 
--   **Followed root:** the first entry of `si_reks_grad`, marked `*` in the output (§si_reks_grad); `[[1, 0]]` prints `S1 *, S0`.
+-   **Target root:** the first entry of `si_reks_grad`, marked `*` in the output (§si_reks_grad); `[[1, 0]]` prints `S1 *, S0`.
 -   **Arrays:** the wavefunction holds `SSR ROOT r GRADIENT CASSETTE 0` for every target (§state-gradient) and `SSR NAC I J CASSETTE 0` for every pair (§nac).
 
 ### Gradients and couplings against finite differences {#grad-fd}
@@ -84,7 +84,7 @@ n<sub>min</sub>: smallest n<sub>a</sub> (FON of the occupied member) over the SA
 
 ### Geometry optimization {#geometry-optimization}
 
-S0 of C₂H₄ from a 30° twist; `optimize()` searches a minimum of the energy of the followed root and stops at a stationary point:
+S0 of C₂H₄ from a 30° twist; `optimize()` searches for a minimum of the energy of the target root and stops at a stationary point:
 
 ```python
 """S0 of C2H4, SSR(2,2) BH&HLYP/6-31G(d), DF, optimized with DL-FIND.
@@ -114,7 +114,7 @@ psi4.set_options({"basis": "6-31g(d)", "scf_type": "df"})
 e, wfn = psi4.energy("bhhlyp", return_wfn=True)
 wfn.to_file("opt_c2h4_rks.wfn")
 
-# optimize S0: the first entry of si_reks_grad is the followed root
+# optimize S0: the first entry of si_reks_grad is the target root
 psi4.set_options({"reference": "reks", "reks": [2, 2], "si_reks_grad": [[0]]})
 e, wfn = optimize("bhhlyp", mol, restart_file="opt_c2h4_rks.wfn.npy")
 
@@ -149,7 +149,7 @@ psi4.set_options({"reference": "reks", "reks": [6, 6],
 e, wfn = psi4.energy("bhhlyp", return_wfn=True, restart_file="opt_hexatriene_rks.wfn.npy")
 wfn.to_file("opt_hexatriene_start.wfn")
 
-# optimize T1: later points read the REKS orbitals of the previous point, the window is off
+# optimize T1: later points read the REKS orbitals of the previous point; the window is off
 psi4.set_options({"guess_active_window": [], "si_reks_grad": [[0]]})
 e, wfn = optimize("bhhlyp", mol, restart_file="opt_hexatriene_start.wfn.npy")
 ```
@@ -163,9 +163,9 @@ The minimum is planar (|z| < 10⁻⁷ Å).
 
 ### Check the optimization {#check-optimization}
 
--   **Converged:** all five criteria `yes` in the last cycle and `Optimisation converged`. Necessary, not sufficient: the end point is a stationary point, and the gradient criteria cannot tell a minimum from a saddle point.
+-   **Converged:** all five criteria were `yes` in the last cycle and `Optimisation converged`. Necessary, not sufficient: the endpoint is a stationary point, and the gradient criteria cannot distinguish a minimum from a saddle point.
 -   **Solution:** n<sub>a</sub> of the active pair at every point, `grep "n_a =" opt_c2h4.out`: here 1.999484 → 1.997742, and no `[GRAD-FON] … pinned` line (§diag-fon-pinned).
--   **Followed root:** `S0 *` (`T1 *` for hexatriene) in every `Gradient request`.
+-   **Target root:** `S0 *` (`T1 *` for hexatriene) in every `Gradient request`.
 -   **Errors:** an SCF that fails prints `reks_dlfind: SCFConvergenceError; stopping DL-FIND`; DL-FIND then ends with `Optimisation converged`, which does not count, and the script stops with Psi4's error.
 
 ### Surface hopping {#surface-hopping}
@@ -198,11 +198,11 @@ python md_c2h4.py
 ```
 
 -   **States:** `nstates` lowest roots of cassette 0 (§ssr-states); the default SSR(2,2) cassette (PPS, OSS, DES) has three singlet roots, S0, S1, S2.
--   **One call per step:** `REKS` sets `si_reks_grad` to the running state of PyUNIxMD alone (the followed root) and `si_reks_nac` to all state pairs; the pairs make every state a CP-REKS target (§one-gradient), so one `gradient()` returns the energies and gradients of all states and the NAC vectors of all pairs. Step 0 in `md_c2h4.out`:
+-   **One call per step:** `REKS` sets `si_reks_grad` to the running state of PyUNIxMD alone (the target root) and `si_reks_nac` to all state pairs; the pairs make every state a CP-REKS target (§one-gradient), so one `gradient()` returns the energies and gradients of all states and the NAC vectors of all pairs. Step 0 in `md_c2h4.out`:
 
 @@fragment dyn-md-step@@
 
--   **Start:** `molecule()` reads the geometry and draws one set of velocities from the Maxwell–Boltzmann distribution at 300 K (`seed=1`); the instantaneous temperature of this draw, printed at step 0, is 93.6 K. PyUNIxMD counts 3N − 6 = 12 degrees of freedom; over 10 000 draws (`seed` 1–10 000) the printed value has mean 376 K and standard deviation 136 K. Another `seed` gives another draw. One demonstration trajectory: a study samples initial conditions (e.g. Wigner) and runs an ensemble.
+-   **Start:** `molecule()` reads the geometry and draws one set of velocities from the Maxwell–Boltzmann distribution at 300 K (`seed=1`); the instantaneous temperature of this draw, printed at step 0, is 93.6 K. PyUNIxMD counts 3N − 6 = 12 degrees of freedom; over 10 000 draws (`seed` 1–10 000) the printed value has mean 376 K and standard deviation 136 K. Another `seed` gives another draw. One demonstration trajectory: a study samples initial conditions (e.g., Wigner) and runs an ensemble.
 -   **Hopping:** fewest-switches surface hopping without decoherence correction (`mqc.SH` default; option `dec_correction`); NAC phases are aligned between steps (`l_adj_nac`, default on).
 -   **Terminal:** one line per step:
 
@@ -230,7 +230,7 @@ md.run(qm=qm)
 One step (T1, T2, T3 gradients and three NAC vectors) takes 39 s on 8 threads (31–52 s over 50 steps).
 
 -   **Convergence:** `fail_on_maxiter False`: an SCF that reaches `maxiter` prints `Energy and/or wave function did not converge, but proceeding anyway.` and the step continues; `grep -c "did not converge" md_*.out` counts such steps.
--   **Hexatriene thresholds:** `d_convergence 1e-6`, `reks_cpreks_conv 1e-8`. With the defaults (1e-8, 1e-9) the same 50 steps also converge at every step, CP-REKS in 12–15 iterations; E<sub>tot</sub> drift +0.026, range 0.071 kcal mol⁻¹. n<sub>a</sub> of pair (a, f) stays 2.000000 along the run.
+-   **Hexatriene thresholds:** `d_convergence 1e-6`, `reks_cpreks_conv 1e-8`. With the defaults (1e-8, 1e-9), the same 50 steps also converge at every step; CP-REKS in 12–15 iterations; E<sub>tot</sub> drift +0.026, range 0.071 kcal mol⁻¹. n<sub>a</sub> of pair (a, f) stays 2.000000 along the run.
 -   **To 50 fs:** the same runs continued to 50 fs (dt 0.5 fs, 100 steps; dt 0.25 fs, 200 steps) converge at every step and stay on T1; E<sub>tot</sub> drift +0.23 and +0.37, range 0.31 and 0.40, largest step 0.11 kcal mol⁻¹ in both.
 
 ### Check the trajectory {#check-trajectory}
@@ -250,9 +250,9 @@ Total energy (column Total of `md/MDENERGY`), for the runs above and for reruns 
 <figcaption>Left: C₂H₄ on S1; right: hexatriene on T1. Top: E<sub>kin</sub>, E<sub>pot</sub> − E<sub>pot</sub>(0), E<sub>tot</sub> − E<sub>tot</sub>(0), dt 0.25 fs (C₂H₄) and 0.5 fs (hexatriene). Bottom: E<sub>tot</sub> − E<sub>tot</sub>(0) for dt 0.5 and 0.25 fs.</figcaption>
 </figure>
 
--   **Energy:** C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. At dt 0.5 fs the C₂H₄ E<sub>tot</sub> drops by 2.95 kcal mol⁻¹ at 62.0 fs, 1.96 at 84.0 fs and 4.97 at 94.5 fs: at 62.0 and 94.5 fs the SCF solution changes (Solution), at 84.0 fs a hop rescales the velocities uniformly (State). For hexatriene the range of E<sub>tot</sub> is 0.18 kcal mol⁻¹ at dt 0.5 fs and 0.16 at 0.25 fs.
+-   **Energy:** C₂H₄ exchanges 59 kcal mol⁻¹ between kinetic and potential energy, hexatriene 7 kcal mol⁻¹. At dt 0.5 fs, the C₂H₄ E<sub>tot</sub> drops by 2.95 kcal mol⁻¹ at 62.0 fs, 1.96 at 84.0 fs, and 4.97 at 94.5 fs: at 62.0 and 94.5 fs the SCF solution changes (Solution), at 84.0 fs a hop rescales the velocities uniformly (State). For hexatriene, the range of E<sub>tot</sub> is 0.18 kcal mol⁻¹ at dt 0.5 fs and 0.16 kcal mol⁻¹ at 0.25 fs.
 -   **Solution:** n<sub>a</sub> of the active pair per step, `grep "n_a =" md_c2h4.out`. The orbital labelled (a) carries n<sub>a</sub> ≥ 1 at every step (generation-0 ordering, §fons). dt 0.25 fs: (a) is 8A at all 401 steps, n<sub>a</sub> ≥ 1.010412, continuous. dt 0.5 fs: n<sub>a</sub> jumps from 1.760221 to 1.998407 between steps 123 and 124, and from 1.999810 to 1.368579 between steps 188 and 189, after (a) is 9A at steps 185–188; E<sub>tot</sub> drops at the same steps. If n<sub>a</sub> and the Total column jump together between two steps, the solution has changed. Steps with an unconverged SCF: §diag-maxiter.
--   **State:** `md/SHSTATE`. C₂H₄, dt 0.25 fs: S1 → S2 at 37.75 and 80.25 fs, back at 39.25 and 87.25 fs; at 37.75 and 80.25 fs the velocities are rescaled uniformly (`no solution to find rescale factor, but velocity is simply rescaled`). C₂H₄, dt 0.5 fs: S1 → S0 at 83.5 and 90.5 fs, S0 → S1 at 84.0 fs (rescaled uniformly). Hexatriene: T1 throughout. The followed root is an energy index, not a state character (§diag-quasi-degenerate).
+-   **State:** `md/SHSTATE`. C₂H₄, dt 0.25 fs: S1 → S2 at 37.75 and 80.25 fs, back at 39.25 and 87.25 fs; at 37.75 and 80.25 fs the velocities are rescaled uniformly (`no solution to find rescale factor, but velocity is simply rescaled`). C₂H₄, dt 0.5 fs: S1 → S0 at 83.5 and 90.5 fs, S0 → S1 at 84.0 fs (rescaled uniformly). Hexatriene: T1 throughout. The target root is an energy index, not a state character (§diag-quasi-degenerate).
 
 ### Worked inputs {#dynamics-inputs}
 
@@ -260,7 +260,7 @@ Scripts in run order, in one directory with `reks_dlfind.py` and `reks_unixmd.py
 
 | File | Calculation | Result |
 | --- | --- | --- |
-| [`reks_dlfind.py`](../../inputs/reks_dlfind.py) | `optimize(method, molecule, restart_file, tolerance=4.5e-4, maxcycle=100)`: DL-FIND L-BFGS in delocalized internal coordinates on the followed root; `tolerance`: largest gradient component in those coordinates, atomic units | — |
+| [`reks_dlfind.py`](../../inputs/reks_dlfind.py) | `optimize(method, molecule, restart_file, tolerance=4.5e-4, maxcycle=100)`: DL-FIND L-BFGS in delocalized internal coordinates on the target root; `tolerance`: largest gradient component in those coordinates, atomic units | — |
 | [`reks_unixmd.py`](../../inputs/reks_unixmd.py) | `molecule(xyz_file, nstates, temperature, charge=0, seed=1)`, `REKS(molecule, method, restart_file)`: PyUNIxMD QM interface, roots of cassette 0 | — |
 | [`first_c2h4_90.py`](../../inputs/first_c2h4_90.py) | §first-inputs; `python first_c2h4_90.py rks` writes `first_c2h4_90_rks.wfn.npy`, read by §one-gradient | — |
 | [`opt_c2h4.py`](../../inputs/opt_c2h4.py) | S0 of C₂H₄, SSR(2,2) BH&HLYP/6-31G(d), DF, RKS seed, DL-FIND | E(S0) = −78.52863042 E<sub>h</sub>, 8 gradients |
