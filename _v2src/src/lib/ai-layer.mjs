@@ -12,7 +12,7 @@ import { gfmTableToMarkdown } from 'mdast-util-gfm-table';
 import { mathToMarkdown } from 'mdast-util-math';
 import { mdxJsxToMarkdown } from 'mdast-util-mdx-jsx';
 import { textOf } from './manual-hast.mjs';
-import { PAGES, entryHref, entryMap, optionHref, pagePath } from './manual-pages.mjs';
+import { PAGES, entryHref, entryMap, optionHref, pagePath, stripNum } from './manual-pages.mjs';
 import { optionGroup, optionId, optionKeys, optionTitle, optionType } from './reference.mjs';
 import { BRANCH, REPO_URL, siteRev } from './site.mjs';
 
@@ -288,7 +288,7 @@ export default function aiLayer() {
         const twin = (p) => `- [${name(p)}](${twinOf(p.url)})`;
         // h2 and h3 titles without chapter numbers; one-letter headings (A-Z index) left out
         const sections = (p) =>
-          p.headings.filter((h) => h.depth <= 3 && h.text.length > 1).map((h) => h.text.replace(/^\d+\.\s+/, '')).join('; ');
+          p.headings.filter((h) => h.depth <= 3 && h.text.length > 1).map((h) => stripNum(h.text)).join('; ');
         // linked file -> the other cells of the first table row, in manual reading order, that links it
         const rowOf = new Map();
         const ordered = [...manual, ...pages.filter((p) => !manual.includes(p))];

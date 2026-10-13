@@ -142,7 +142,7 @@ const blockTerm = (header) =>
 const variableNames = (text = '') =>
   [...text.matchAll(/`([^`]+)`/g)].map((m) => m[1]).filter((s) => /^[A-Z]/.test(s) && !/[a-z]/.test(s.replace(/<[^>]*>/g, '')));
 
-const stripNum = (text) => text.replace(/^\d+\.\s+/, '');
+export const stripNum = (text) => text.replace(/^\d+\.\s+/, '');
 
 // option key -> { slug, id, title } of its manual target: its entry, else the entry of its compact group, else its
 // group heading (level 3, unique title) among pages [{ slug, headings }]
