@@ -38,7 +38,7 @@ $$
 n_p + n_q = 2.
 $$
 
-The pair is in one of four geminals, the triplet with its three components $m = 0, \pm 1$:
+There are six simplest geminals, three singlets and three triplets with $m = 0, \pm 1$:
 
 $$
 \begin{aligned}
@@ -46,9 +46,11 @@ $$
 \Phi_2 &= \tfrac{1}{\sqrt2}\big(\sqrt{n_q}\,|p\bar p| + \sqrt{n_p}\,|q\bar q|\big) && \text{doubly excited}\\
 \Phi_1 &= \tfrac{1}{\sqrt2}\big(|p\bar q| + |q\bar p|\big) && \text{open-shell singlet}\\
 \Phi_{\mathrm{T0}} &= \tfrac{1}{\sqrt2}\big(|p\bar q| - |q\bar p|\big) && \text{triplet, } m = 0\\
-\Phi_{\mathrm{T+}} &= |pq|, \quad \Phi_{\mathrm{T-}} = |\bar p\bar q| && \text{triplet, } m = \pm 1
+\Phi_{\mathrm{T+}} &= |pq|, \quad \Phi_{\mathrm{T-}} = |\bar p\bar q| && \text{triplet, } m = \pm 1 \>.
 \end{aligned}
 $$
+
+Only four geminals with $m = 0$ are included in `REKS [N, M]`.
 
 ### Pairing scheme {#pairing-scheme}
 
