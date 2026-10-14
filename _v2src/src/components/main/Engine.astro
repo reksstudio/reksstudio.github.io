@@ -1,0 +1,30 @@
+---
+import { fmtCount as fmt, history, html, landing } from '../../lib/overview.mjs';
+
+const base = import.meta.env.BASE_URL;
+const { engine, count, equations } = landing;
+// ladder: S = 0 counts up to the active space marked generated in the history record
+const last = history.generated.label.split(' ')[0];
+const rungs = count.slice(0, count.findIndex((c) => c.as === last) + 1).map((c) => ({ ...c, n: c.spins[0] }));
+const top = Math.log10(Math.max(...rungs.map((r) => r.n)));
+const eq = equations.rows.find((r) => r[0] === last)[2];
+const billions = Math.round(Number(eq.replaceAll(' ', '')) / 1e9);
+---
+<h2>{engine.title}</h2>
+<div class="eng">
+  <ol class="eladder" aria-label="Singlet (S = 0) configurations per active space, log scale">
+    {rungs.map((r, i) => (
+      <>
+        <li class="erung" style={`--h:${Math.max(Math.log10(r.n), 0.3) / top}`}>
+          <span class="ebar" aria-hidden="true" />
+          <span class="en">{fmt(r.n)}</span>
+          <span class="eas">{r.as}</span>
+          {r.mark && <span class="em">{r.href ? <a href={`${base}${r.href}`}>{r.mark}</a> : r.mark}</span>}
+        </li>
+        {i === 1 && <li class="ebracket" set:html={html(engine.exact)} />}
+      </>
+    ))}
+  </ol>
+  <p class="ebig"><strong>{billions} billion</strong> equations at {last} <small>({eq})</small></p>
+</div>
+<p class="elink"><a href={`${base}main/cost/#count`}>Full chart and table →</a></p>

@@ -1,0 +1,42 @@
+---
+import { html, landing, plain, resultHref } from '../../lib/overview.mjs';
+
+const base = import.meta.env.BASE_URL;
+const { curve, caption, callout } = landing.hero;
+const W = 520;
+const H = 330;
+const [L, R, T, B] = [52, 12, 14, 40];
+const [r0, r1] = [0.5, 3.5];
+const [e0, e1] = [-1.19, -0.84];
+const x = (r) => L + ((r - r0) / (r1 - r0)) * (W - L - R);
+const y = (e) => T + ((e1 - e) / (e1 - e0)) * (H - T - B);
+const pts = (c) => c.map(([r, e]) => `${x(r).toFixed(1)},${y(e).toFixed(1)}`).join(' ');
+const at = (c, r) => c.find((p) => p[0] === r)[1];
+const end = (c) => c.at(-1)[1];
+// callout: KS and FCI at the stretched point
+const rc = 2.5;
+const label = `H2 dissociation energy against H–H distance, 0.5 to 3.5 Å: ordinary DFT (RKS) rises to ${end(curve.ks)} Eh at 3.5 Å, exact FCI and REKS Studio (SSR) level off near ${end(curve.fci)} and ${end(curve.ssr)} Eh. ${plain(caption)}.`;
+---
+<figure class="hcurve">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label}>
+    {[-1.1, -1.0, -0.9].map((e) => (
+      <g>
+        <line x1={L} x2={W - R} y1={y(e)} y2={y(e)} class="grid" />
+        <text x={L - 6} y={y(e) + 5} text-anchor="end" class="tick">{e.toFixed(1)}</text>
+      </g>
+    ))}
+    {[1, 2, 3].map((r) => <text x={x(r)} y={H - B + 20} text-anchor="middle" class="tick">{r}</text>)}
+    <text x={W - R} y={H - 4} text-anchor="end" class="tick">R(H–H) / Å</text>
+    <text x={L - 6} y={T + 4} text-anchor="end" class="tick">E / E<tspan dy="4" font-size="11">h</tspan></text>
+    <polyline points={pts(curve.ks)} class="ks" />
+    <polyline points={pts(curve.ssr)} class="ssr" />
+    <polyline points={pts(curve.fci)} class="fci" />
+    <text x={W - R} y={y(end(curve.ks)) - 10} text-anchor="end" class="lab ks-l">ordinary DFT (RKS)</text>
+    <text x={W - R} y={y(end(curve.ssr)) - 10} text-anchor="end" class="lab ssr-l">REKS Studio</text>
+    <text x={W - R} y={y(end(curve.fci)) + 22} text-anchor="end" class="lab">exact (FCI)</text>
+    <line x1={x(rc)} x2={x(rc)} y1={y(at(curve.ks, rc)) + 4} y2={y(at(curve.fci, rc)) - 4} class="call" />
+    <circle cx={x(rc)} cy={y(at(curve.ks, rc))} r="4" class="call-dot" />
+    <text x={x(rc) - 10} y={y(at(curve.ks, rc)) - 14} text-anchor="end" class="lab call-l">{callout}</text>
+  </svg>
+  <figcaption><a href={resultHref(base, 'h-chains', 'h2')}><Fragment set:html={html(caption)} /> →</a></figcaption>
+</figure>

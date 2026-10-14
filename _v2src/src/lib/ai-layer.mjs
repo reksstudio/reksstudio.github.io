@@ -18,6 +18,7 @@ import { BRANCH, REPO_URL, siteRev } from './site.mjs';
 
 const SUMMARY = 'REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.';
 const LANG = { '.py': 'python', '.dat': 'text', '.bib': 'bibtex' };
+const DRAFT = 'main/';
 const IMAGE = new Set(['.avif', '.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg']);
 // Claude Code WebFetch truncates longer text
 const MAX_CHARS = 100000;
@@ -224,6 +225,8 @@ export default function aiLayer() {
           .sort()
           .map((f) => readPage(join(out, f), out, root));
         const linked = new Set(pages.flatMap((p) => p.links));
+        // pages of the draft Overview section (main/) get twins but stay out of llms.txt
+        const listed = pages.filter((p) => !p.name.startsWith(DRAFT));
         const rawUrl = (path) => new URL(`${path}.txt`, root).href;
         // link in a twin or card: site page -> its twin, option entry -> its card, linked file -> its .txt,
         // anything else absolute
@@ -295,16 +298,17 @@ export default function aiLayer() {
             .join('; ');
         // linked file -> the second cell of the first table row, in manual reading order, that links it
         const rowOf = new Map();
-        const ordered = [...manual, ...pages.filter((p) => !manual.includes(p))];
+        const nonManual = listed.filter((p) => !manual.includes(p));
+        const ordered = [...manual, ...nonManual];
         for (const row of ordered.flatMap((p) => all(p.mdast, (n) => n.type === 'tableRow'))) {
           const [first, second] = row.children;
           const url = all(first, (n) => n.type === 'link')[0]?.url;
           if (url && second && !rowOf.has(url)) rowOf.set(url, inline(second.children));
         }
         const fileItem = (path) =>
-          `- [${path}](${rawUrl(path)}): ${rowOf.get(rawUrl(path)) ?? pages.filter((p) => p.links.includes(path)).map(name).join('; ')}`;
+          `- [${path}](${rawUrl(path)}): ${rowOf.get(rawUrl(path)) ?? listed.filter((p) => p.links.includes(path)).map(name).join('; ')}`;
         // other pages: the landing (shortest path) first
-        const other = pages.filter((p) => !manual.includes(p)).sort((a, b) => a.name.length - b.name.length);
+        const other = [...nonManual].sort((a, b) => a.name.length - b.name.length);
         // site links root-relative: llms.txt is read from its own URL
         const llms = [
           '# REKS Studio',
@@ -312,7 +316,7 @@ export default function aiLayer() {
           revLine,
           `## Manual\n${manual.map((p) => `${twin(p)}: ${sections(p)}`).join('\n')}`,
           `## Options\n${cards.map(({ key, brief }) => `- [\`${optionTitle(key)}\`](${cardUrl(key)}): ${brief}`).join('\n')}`,
-          `## Files\n${[...linked].sort().map(fileItem).join('\n')}`,
+          `## Files\n${[...new Set(listed.flatMap((p) => p.links))].sort().map(fileItem).join('\n')}`,
           `## Optional\n${other.map(twin).join('\n')}`,
         ].join('\n\n').replaceAll(`](${root.origin}/`, '](/') + '\n';
         checkLlms(llms);

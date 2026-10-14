@@ -1,0 +1,63 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+import SubNav from '../../../components/main/SubNav.astro';
+import { classes, html, indexRows, parts } from '../../../lib/overview.mjs';
+import '../../../styles/main.css';
+
+const base = import.meta.env.BASE_URL;
+// first row of each result carries the anchor its page links back to
+const seen = new Set();
+const rowId = (row) => {
+  const slug = row.slug ?? row.system;
+  if (seen.has(slug)) return undefined;
+  seen.add(slug);
+  return `row-${slug}`;
+};
+---
+<Base title="Results — REKS Studio">
+<Nav variant="light" />
+<SubNav current="results" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <h1>Results</h1>
+    <p class="ident">Every result shown with REKS Studio, one row per system and question, each one click from its evidence.</p>
+  </div>
+</header>
+
+<div class="wrap mbody">
+  {parts.map((p) => (
+    <section class="mblock" id={p.id}>
+      <h2>{p.title}</h2>
+      {indexRows(p, base).map(({ group, rows }) => (
+        <>
+          <h3>{p.part === 1 ? `${group}: ` : ''}<Fragment set:html={html(classes[group].label)} /></h3>
+          <div class="tbl">
+            <table class="index">
+              <thead><tr><th>System</th><th>Problem class</th><th>Active space</th><th>Reference</th><th>Number</th><th>Evidence</th></tr></thead>
+              <tbody>
+                {rows.map((row) => (
+                  <tr id={rowId(row)}>
+                    <td set:html={html(row.system)} />
+                    <td set:html={html(row.problem)} />
+                    <td set:html={html(row.as)} />
+                    <td set:html={html(row.reference)} />
+                    <td set:html={html(row.number)} />
+                    <td><a href={row.href}>{row.manualRow ? 'Manual' : 'page'}</a></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ))}
+    </section>
+  ))}
+</div>
+</main>
+
+<Footer />
+</Base>

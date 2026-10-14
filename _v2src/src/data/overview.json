@@ -1,0 +1,469 @@
+{
+  "classes": {
+    "A": { "part": 1, "label": "implementation vs exact oracle" },
+    "B": { "part": 1, "label": "model vs near-exact theory (FCI/SHCI)" },
+    "C": { "part": 1, "label": "model vs benchmark set (TBE)" },
+    "D": { "part": 1, "label": "model vs experiment" },
+    "trend": { "part": 2, "label": "trend without reference" },
+    "object": { "part": 2, "label": "reference on a different object" },
+    "basis": { "part": 2, "label": "reference in a different basis" },
+    "workflow": { "part": 2, "label": "workflow demonstration" }
+  },
+  "parts": [
+    { "part": 1, "id": "against-reference", "title": "Part 1: against a reference", "groups": ["A", "B", "C", "D"] },
+    { "part": 2, "id": "beyond-reference", "title": "Part 2: beyond available references: trends and demonstrations", "groups": ["trend", "object", "basis", "workflow"] }
+  ],
+  "results": [
+    {
+      "slug": "exactness",
+      "cls": "A",
+      "kind": "checks",
+      "problem": "Implementation",
+      "title": "Exactness of the implementation",
+      "short": "Exactness",
+      "ident": "Identities, finite differences and conservation checks of the shipped code, each against an exact oracle.",
+      "key": "Model identities to ≤ 10^{−10} E_{h}; analytic gradients vs FD5 within 7.8·10^{−5} E_{h} a_{0}^{−1} (worst case, BH wide geminals).",
+      "rows": [
+        { "system": "BH, H_{2}", "as": "(2,2)–(4,6)", "reference": "CASSCF, same basis", "number": "≤ 10^{−10} E_{h} (model identities)", "anchor": "identities" },
+        { "system": "two H_{2} at 50 Å", "as": "(2,2)", "reference": "2 × E(H_{2})", "number": "9.3·10^{−11} E_{h} (size consistency)", "anchor": "identities" },
+        { "system": "C_{2}H_{4}, butadiene, BH", "as": "(2,2)–(4,6)", "reference": "five-point finite differences", "number": "≤ 7.8·10^{−5} E_{h} a_{0}^{−1} (gradients)", "anchor": "derivatives" }
+      ],
+      "blocks": [
+        {
+          "figure": { "todo": "overview figure, max deviation per check against its criterion" },
+          "scope": "Exact checks of the generated equations reach (4,6) PPS and (2,2) SI couplings; (6,6) and (8,8) checks to be added."
+        },
+        {
+          "id": "identities",
+          "title": "Model identities and size consistency",
+          "tables": [
+            {
+              "head": ["System", "Quantity", "Identity tested", "Oracle", "Criterion", "Max deviation", "Psi4 revision", "Manual"],
+              "rows": [
+                ["BH", "E(PPS1), REKS(2,3)", "one geminal = CASSCF(2,M)", "CASSCF(2,3)", "to be added", "≤ 10^{−10} E_{h}", "to be added", { "t": "Lone pair: REKS(2,3)", "manual": "wide-lone-pair" }],
+                ["to be added", "E(PPS1), (4,4), (4,5), (4,6)", "HF, δ → ∞: E(PPS1) = ⟨geminal product|H|geminal product⟩", "geminal product", "to be added", "≤ 10^{−11} E_{h}", "to be added", { "t": "Bond and lone pair", "manual": "wide-two-pairs" }],
+                ["H_{2}", "GVB(2,2)–(2,4)", "GVB = CASSCF", "CASSCF", "to be added", "≤ 9.9·10^{−12} E_{h}", "to be added (rerun at the site revision)", "to be added"],
+                ["two H_{2} at 50 Å", "total energy", "E(2 H_{2}) = 2 E(H_{2})", "two separate runs", "to be added", "9.3·10^{−11} E_{h}", "to be added (rerun at the site revision)", "to be added"],
+                ["He–H–H", "SI couplings", "SI couplings = MO-integral evaluation", "MO-integral oracle", "to be added", "agreement to 6 decimals", "to be added (rerun at the site revision)", "to be added"],
+                ["BH", "¹Π / ³Π pairs", "degenerate states stay degenerate", "symmetry", "to be added", "1.6·10^{−7} E_{h}", "to be added", { "t": "States: SI-SA-REKS(2,3)", "manual": "wide-states" }]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "derivatives",
+          "title": "Derivatives and dynamics",
+          "tables": [
+            {
+              "head": ["System", "Quantity", "Identity tested", "Oracle", "Criterion", "Max deviation", "Psi4 revision", "Manual"],
+              "rows": [
+                ["C_{2}H_{4}", "analytic gradients", "analytic = derivative of E", "FD5", "to be added", "5.6·10^{−7} E_{h} a_{0}^{−1}", "to be added", { "t": "Gradients and couplings against FD", "manual": "grad-fd" }],
+                ["butadiene, (4,4)", "analytic gradients", "analytic = derivative of E", "FD5", "to be added", "8.0·10^{−6} / 3.2·10^{−6} / 7.1·10^{−5} E_{h} a_{0}^{−1} (80° near-degenerate case)", "to be added", { "t": "Gradients and couplings against FD", "manual": "grad-fd" }],
+                ["BH, wide geminals", "analytic gradients, all roots", "analytic = derivative of E", "FD5", "to be added", "2.9·10^{−9} … 7.8·10^{−5} E_{h} a_{0}^{−1}", "to be added", { "t": "Gradients", "manual": "wide-gradients" }],
+                ["C_{2}H_{4}", "NAC, model part", "model part = FD of H and S", "FD", "to be added", "to be added", "to be added", { "t": "Gradients and couplings against FD", "manual": "grad-fd" }],
+                ["C_{2}H_{4} S1, hexatriene T1", "MD total energy", "to be added (no exact oracle; dt² scaling candidate)", "to be added", "to be added", "to be added", "to be added", { "t": "Check the trajectory", "manual": "check-trajectory" }]
+              ]
+            }
+          ]
+        }
+      ],
+      "exits": { "manual": "grad-fd" }
+    },
+    {
+      "slug": "h-chains",
+      "cls": "B",
+      "kind": "family",
+      "problem": "Bond breaking",
+      "title": "Hydrogen chains H_{2}, H_{4}, H_{6}, H_{8}",
+      "short": "H chains",
+      "ident": "Dissociation of linear hydrogen chains with SSR(n,n) along the H–H distance, against FCI in the same basis.",
+      "key": "Deviation from FCI along R: to be added.",
+      "rowRef": "FCI, same basis",
+      "blocks": [
+        {
+          "id": "h2", "title": "H_{2}", "system": "H_{2}", "as": "(2,2)",
+          "key": "SSR(2,2)/aug-cc-pVTZ vs FCI/aug-cc-pVTZ; deviation: to be added.",
+          "figure": { "src": "figures/main/h2.webp", "w": 784, "h": 435, "alt": "H2 potential energy curves, SSR(2,2), FCI and KS", "caption": "Absolute energies as printed in paper v1; curves relative to separated atoms to be added." },
+          "structure": { "todo": "occupations along R, SSR state natural orbitals vs FCI NOONs" },
+          "setup": [["Method", "SSR(2,2), BH&HLYP"], ["Basis", "aug-cc-pVTZ"], ["Coordinate", "R_{HH}, step 0.05 Å"], ["SA pool, SI cassette", "to be added"]],
+          "reference": ["FCI, aug-cc-pVTZ, Psi4.", "KS curve shown for contrast."],
+          "provenance": ["Paper v1, Fig. 2A.", "Curve data (CSV): to be added."]
+        },
+        {
+          "id": "h4", "title": "H_{4}", "system": "H_{4}", "as": "(4,4)",
+          "key": "SSR(4,4)/cc-pVTZ vs FCI/cc-pVTZ; deviation: to be added.",
+          "figure": { "src": "figures/main/h4.webp", "w": 784, "h": 435, "alt": "H4 potential energy curves, SSR(4,4) and FCI", "caption": "Absolute energies as printed in paper v1; curves relative to separated atoms to be added." },
+          "structure": { "todo": "occupations along R" },
+          "setup": [["Method", "SSR(4,4), BH&HLYP"], ["Basis", "cc-pVTZ"], ["Coordinate", "R_{HH}"], ["SA pool, SI cassette", "to be added"]],
+          "reference": ["FCI, cc-pVTZ, Psi4."],
+          "provenance": ["Paper v1, Fig. 2B.", "Curve data (CSV): to be added."]
+        },
+        {
+          "id": "h6", "title": "H_{6}", "system": "H_{6}", "as": "(6,6)",
+          "key": "SSR(6,6)/6-31G(d) vs FCI/6-31G(d); deviation: to be added.",
+          "figure": { "src": "figures/main/h6.webp", "w": 784, "h": 435, "alt": "H6 potential energy curves, SSR(6,6) and FCI", "caption": "Absolute energies as printed in paper v1; the FCI/aug-cc-pVDZ single point is a larger-basis point, not a measure of agreement." },
+          "structure": { "todo": "occupations along R" },
+          "setup": [["Method", "SSR(6,6), BH&HLYP"], ["Basis", "6-31G(d)"], ["Coordinate", "R_{HH}"], ["SA pool, SI cassette", "to be added"]],
+          "reference": ["FCI, 6-31G(d), Psi4.", "Single point FCI/aug-cc-pVDZ (larger basis), marked as such."],
+          "provenance": ["Paper v1, Fig. 2C.", "Curve data (CSV): to be added."]
+        },
+        {
+          "id": "h8", "title": "H_{8}", "system": "H_{8}", "as": "(8,8)",
+          "key": "SSR(8,8)/6-31G(d) vs FCI/6-31G(d); deviation: to be added.",
+          "figure": { "src": "figures/main/h8.webp", "w": 784, "h": 435, "alt": "H8 potential energy curves, SSR(8,8) and FCI", "caption": "Absolute energies as printed in paper v1; the FCI/cc-pVDZ single point is a larger-basis point, not a measure of agreement." },
+          "structure": { "todo": "occupations along R" },
+          "setup": [["Method", "SSR(8,8), BH&HLYP"], ["Basis", "6-31G(d)"], ["Coordinate", "R_{HH}"], ["SA pool, SI cassette", "to be added"]],
+          "reference": ["FCI, 6-31G(d), Psi4.", "Single point FCI/cc-pVDZ (larger basis), marked as such."],
+          "provenance": ["Paper v1, Fig. 2D.", "Curve data (CSV): to be added."]
+        }
+      ],
+      "scope": "Not shown: deviation numbers, occupations along R, absolute DFT vs absolute FCI as agreement.",
+      "exits": { "notInstalled": "(8,8)" }
+    },
+    {
+      "slug": "bond-breaking",
+      "cls": "C",
+      "secondary": "D",
+      "kind": "family",
+      "problem": "Bond breaking",
+      "title": "Single, double and triple bonds: C_{2}H_{4}, N_{2}, C_{2}H_{2}",
+      "short": "Bond breaking",
+      "ident": "Potential energy curves along the multiple bond with SSR; vertical excitations against TBE, bond lengths against experiment.",
+      "key": "Lowest vertical excitation vs TBE: 7.85 / 7.93, 9.49 / 9.88, 6.66 / 7.10 eV; R_{e} within 0.004 Å of experiment.",
+      "rowRef": "TBE (vertical); experiment (R_{e})",
+      "blocks": [
+        {
+          "id": "c2h4", "title": "C_{2}H_{4}", "system": "C_{2}H_{4}", "as": "(4,4)", "number": "B^{1}B_{1u} 7.85 eV (TBE 7.93); R_{e} 1.335 Å (exp. 1.339)",
+          "key": "B^{1}B_{1u} vertical 7.85 eV (TBE 7.93 eV); R_{e} 1.335 Å (experiment 1.339 Å).",
+          "figure": { "src": "figures/main/c2h4.webp", "w": 1357, "h": 520, "alt": "C2H4 potential energy curves along R_CC, SSR(4,4), and active orbitals with occupations at 4.000 Å", "caption": "PECs as computed (no reference curve in v1); active orbitals and occupations at 4.000 Å." },
+          "tables": [{ "head": ["Quantity", "SSR", "Reference", "Class"], "rows": [["B^{1}B_{1u} vertical / eV", "7.85", "7.93 (TBE)", "C"], ["R_{e} / Å", "1.335", "1.339 (experiment)", "D"]] }],
+          "setup": [["Method", "SSR(4,4), BH&HLYP; SA PPS1 + OSS1 + OSS2 + HS; SI 18 configurations"], ["Basis", "aug-cc-pVTZ"], ["Scan", "R_{CC}, step 0.05 Å, other coordinates fixed at experiment"], ["How the equilibrium distance was obtained", "not stated in v1"], ["Geometry of the vertical", "not stated in v1"]],
+          "reference": ["Vertical: QUEST TBE.", "R_{e}: experiment."],
+          "provenance": ["Paper v1, Fig. 3A,B; SI p90 (from the paper-scout digest, to be re-checked)."]
+        },
+        {
+          "id": "n2", "title": "N_{2}", "system": "N_{2}", "as": "(6,6)", "number": "vertical 9.49 eV (TBE 9.88); R_{e} 1.096 Å (exp. 1.098)",
+          "key": "Vertical 9.49 eV (TBE 9.88 eV), state label to be added; R_{e} 1.096 Å (experiment 1.098 Å).",
+          "figure": { "src": "figures/main/n2.webp", "w": 1357, "h": 500, "alt": "N2 potential energy curves along R_NN, SSR(6,6), KS curve, and active orbitals", "caption": "PECs as computed, KS curve for contrast; active orbitals and occupations at 1.096 and 4.000 Å." },
+          "tables": [{ "head": ["Quantity", "SSR", "Reference", "Class"], "rows": [["vertical / eV (state to be added)", "9.49", "9.88 (TBE)", "C"], ["R_{e} / Å", "1.096", "1.098 (experiment, Huber–Herzberg)", "D"]] }],
+          "setup": [["Method", "SSR(6,6), BH&HLYP"], ["Basis", "to be added"], ["Scan", "not stated in v1"], ["How the equilibrium distance was obtained", "not stated in v1"]],
+          "reference": ["Vertical: QUEST TBE.", "R_{e}: experiment (Huber–Herzberg)."],
+          "provenance": ["Paper v1, Fig. 3C,D."]
+        },
+        {
+          "id": "c2h2", "title": "C_{2}H_{2}", "system": "C_{2}H_{2}", "as": "(6,6)", "number": "vertical 6.66 eV (TBE 7.10); R_{e} 1.201 Å (exp. 1.203)",
+          "key": "Vertical 6.66 eV (TBE 7.10 eV), state label to be added; R_{e} 1.201 Å (experiment 1.203 Å); avoided crossing along R_{CC}.",
+          "figure": { "src": "figures/main/c2h2.webp", "w": 1357, "h": 567, "alt": "C2H2 potential energy curves along R_CC, SSR(6,6), with the avoided crossing, and active orbitals", "caption": "PECs as computed with the avoided crossing; active orbitals and occupations at 1.201, 2.500 and 4.000 Å." },
+          "tables": [{ "head": ["Quantity", "SSR", "Reference", "Class"], "rows": [["vertical / eV (state to be added)", "6.66", "7.10 (TBE)", "C"], ["R_{e} / Å", "1.201", "1.203 (experiment)", "D"]] }],
+          "setup": [["Method", "SSR(6,6), BH&HLYP"], ["Basis", "to be added"], ["Scan", "not stated in v1"], ["How the equilibrium distance was obtained", "not stated in v1"]],
+          "reference": ["Vertical: QUEST TBE.", "R_{e}: experiment; avoided crossing: Siegbahn 1981 (citation to be added)."],
+          "provenance": ["Paper v1, Fig. 3E,F."]
+        }
+      ],
+      "scope": "Not shown: reference curves along R (v1 has none); other states against TBE.",
+      "exits": { "notInstalled": null, "inputTodo": true }
+    },
+    {
+      "slug": "c2",
+      "cls": "D",
+      "kind": "single",
+      "problem": "Bond breaking",
+      "title": "Carbon dimer C_{2}",
+      "short": "C_{2}",
+      "ident": "Four lowest states of C_{2} along the C–C distance; spectroscopic constants against experiment.",
+      "key": "X: R_{e} 1.268 Å (exp. 1.243), D_{e} 6.28 eV (exp. 6.32 ± 0.2); B^{1}Δ_{g}: T_{e} 1.02 eV (exp. 1.50).",
+      "rows": [
+        { "system": "C_{2}", "as": "(6,6)", "reference": "experiment (SHCI comparison to be added)", "number": "D_{e} 6.28 vs 6.32 ± 0.2 eV; R_{e} 1.268 vs 1.243 Å" }
+      ],
+      "blocks": [
+        {
+          "figure": { "src": "figures/main/c2.webp", "w": 1600, "h": 1175, "alt": "C2: potential energy curves of four states, active orbitals, occupations along R_CC, table of Re, Te, De", "caption": "(A) PECs of X, a, A, B with the KS curve for contrast; (B) active orbitals; (C) occupations of X along R_{CC}; (D) constants, computed / experiment." },
+          "tables": [
+            {
+              "head": ["State", "R_{e} / Å", "R_{e} exp.", "T_{e} / eV", "T_{e} exp.", "D_{e} / eV", "D_{e} exp."],
+              "rows": [
+                ["X^{1}Σ_{g}^{+}", "1.268", "1.243", "0.0", "0.0", "6.28", "6.32 ± 0.2"],
+                ["a^{3}Π_{u}", "1.315", "1.312", "0.03", "0.09", "", ""],
+                ["A^{1}Π_{u}", "1.303", "1.318", "0.92", "1.04", "", ""],
+                ["B^{1}Δ_{g}", "1.373", "1.385", "1.02", "1.50", "", ""]
+              ]
+            }
+          ],
+          "setup": [["Method", "SSR(6,6), SA 9 states, singlet and triplet SI"], ["Functional", "M08-SO (all other results: BH&HLYP)"], ["Basis", "cc-pV5Z"], ["Dissociation asymptote","two carbon atoms, SSR(4,4); 0.08 eV from ROKS"]],
+          "reference": ["Experiment (Martin 1992; Huber–Herzberg), citations to be added.", "Near-exact curves: SHCI (Holmes et al. 2017, ref. 50 of v1, there called FCI); comparison number to be added (deferred item 12)."],
+          "provenance": ["Paper v1, Fig. 4; SI p91."]
+        }
+      ],
+      "scope": "Not shown: deviation from SHCI along R.",
+      "exits": { "inputTodo": true }
+    },
+    {
+      "slug": "quest",
+      "cls": "C",
+      "kind": "set",
+      "problem": "Excited states",
+      "title": "QUEST vertical excitations",
+      "short": "QUEST",
+      "ident": "Lowest singlet vertical excitation energy of 67 molecules with mono-configurational ground states (QUEST3/5/6/7), against theoretical best estimates.",
+      "key": "MAD 0.36 eV, RMSD 0.37 eV, mean signed error +0.22 eV over 67 molecules.",
+      "rows": [
+        { "system": "67 molecules, QUEST3/5/6/7", "as": "(4,4); (6,6) benzene, triazine", "reference": "TBE (aug-cc-pVTZ)", "number": "MAD 0.36 / RMSD 0.37 eV" }
+      ],
+      "blocks": [
+        {
+          "figure": { "src": "figures/main/quest.webp", "w": 1600, "h": 799, "alt": "QUEST: SSR vertical excitation energies against TBE, and the error distribution", "caption": "(A) SSR against TBE; (B) error distribution with a Gaussian fit at the mean error." },
+          "tables": [
+            { "title": "Error statistics", "head": ["Set", "MAD / eV", "RMSD / eV", "Mean signed / eV"], "rows": [["67 molecules, this work", "0.36", "0.37", "+0.22"]] },
+            { "title": "Comparator, shown apart (different set): Liang et al. 2022, their own set", "head": ["Method", "MAD / eV", "RMSD / eV"], "rows": [["TDDFT BH&HLYP", "0.30", "0.38"], ["TDDFT B3LYP", "0.37", "0.45"]] },
+            { "title": "Full table", "head": ["Molecule", "State", "SSR / eV", "TBE / eV"], "rows": [["to be added", "", "", ""]] }
+          ],
+          "setup": [["Method", "SSR(4,4); SSR(6,6) for benzene and triazine; full SI pool"], ["Functional, basis", "BH&HLYP/aug-cc-pVTZ"], ["Geometries", "to be added"]],
+          "reference": ["QUEST theoretical best estimates (QUESTDB)."],
+          "provenance": ["Paper v1, pp 8–9; SI Note 4, SI Fig. 8–9."]
+        }
+      ],
+      "scope": "Lowest singlet only; molecules with mono-configurational ground states; no same-set TDDFT comparison.",
+      "exits": { "inputTodo": true }
+    },
+    {
+      "slug": "ttr",
+      "cls": "object",
+      "kind": "ladder",
+      "problem": "Diradicals and magnetism",
+      "title": "Tetra[3]trianguleno[3]rhombene (TTR)",
+      "short": "TTR",
+      "ident": "Magnetic gap ladder of a 152-atom open-shell nanographene for active spaces (4,4) to (10,10); the experiment was measured on a surface, the calculation is gas phase.",
+      "key": "S–T gap 0.31 kcal/mol at (4,4) to 0.99 kcal/mol at (10,10); experiment 0.21 kcal/mol (STM on Au(111)).",
+      "rows": [
+        { "system": "TTR, 152 atoms", "as": "(4,4)–(10,10)", "reference": "experiment, STM on Au(111) (different object)", "number": "S–T 0.31–0.99 vs 0.21 kcal/mol" }
+      ],
+      "blocks": [
+        {
+          "figure": { "src": "figures/main/ttr.webp", "w": 1504, "h": 565, "alt": "TTR: S0, T1, Q1, H1 energies and FONs for active spaces (4,4) to (10,10)", "caption": "(A) Energies of S0, T1, Q1, H1 per active space, gaps in kcal/mol; (B) FONs of S0 per active space." },
+          "tables": [
+            { "title": "Vertical gaps from S0 / kcal mol^{−1}", "head": ["Gap", "(4,4)", "(6,6)", "(8,8)", "(10,10)", "Experiment"], "rows": [["S–T", "0.31", "0.51", "0.77", "0.99", "0.21"], ["S–Q", "0.53", "1.63", "2.37", "2.14", ""], ["S–H", "", "34.24", "33.09", "31.01", ""]] }
+          ],
+          "note": "Paper's own reading: (4,4) is closest to experiment, larger active spaces open the gap; the comparison is to be viewed cautiously (gas phase, fixed geometry vs STM on Au(111)).",
+          "setup": [["Functional, basis", "BH&HLYP/cc-pVTZ, 4016 basis functions"], ["SA pool", "not stated in v1"], ["Geometry source", "not stated in v1"], ["Convergence", "not stated in v1"]],
+          "reference": ["Experiment: spin-polarized STM on Au(111), Song et al. 2024 (citation and credit to be added)."],
+          "provenance": ["Paper v1, Fig. 1A,B; p6; methods p17."]
+        },
+        {
+          "id": "run",
+          "title": "Run size",
+          "key": "152 atoms, 4016 basis functions, SI over 29 082 configurations; 25 iterations, about 4 h on one 64-core node, hot start from a converged smaller-basis seed.",
+          "provenance": ["Paper v1, SI p88."]
+        }
+      ],
+      "scope": "Not shown: the same active space with another method; geometry relaxation; surface effects.",
+      "exits": { "notInstalled": "(10,10)" }
+    },
+    {
+      "slug": "zethrenes",
+      "cls": "trend",
+      "kind": "ladder",
+      "problem": "Diradicals and magnetism",
+      "title": "Zethrenes SHZ, SOZ, SNZ",
+      "short": "Zethrenes",
+      "ident": "Singlet–triplet gap of three zethrenes for active spaces (2,2) to (8,8); no external reference.",
+      "key": "S–T gap at (2,2) → (8,8): SHZ 2.05 → 4.23, SOZ 1.11 → 3.24, SNZ 0.64 → 3.05 kcal/mol.",
+      "rows": [
+        { "system": "SHZ, SOZ, SNZ", "as": "(2,2)–(8,8)", "reference": "none (broken-symmetry DFT qualitative only)", "number": "S–T at (8,8): 4.23 / 3.24 / 3.05 kcal/mol" }
+      ],
+      "blocks": [
+        {
+          "figure": { "src": "figures/main/zethrenes.webp", "w": 1504, "h": 798, "alt": "Zethrenes SHZ, SOZ, SNZ: S0, T1, Q1 energies and S0 FONs for active spaces (2,2) to (8,8)", "caption": "(C–E) S0, T1, Q1 energies per active space, S–T gap in kcal/mol; (F–H) FONs of S0." },
+          "tables": [
+            { "title": "S–T gap / kcal mol^{−1}", "head": ["Molecule", "(2,2)", "(4,4)", "(6,6)", "(8,8)"], "rows": [["SHZ", "2.05", "3.72", "3.46", "4.23"], ["SOZ", "1.11", "2.99", "2.88", "3.24"], ["SNZ", "0.64", "3.80", "2.91", "3.05"]] },
+            { "title": "Diradical character y_{0}", "head": ["Molecule", "(2,2)", "(4,4)", "(6,6)", "(8,8)"], "rows": [["to be added (from data; v1 gives no numbers)", "", "", "", ""]] }
+          ],
+          "setup": [["Functional, basis", "BH&HLYP/6-31G(d)"], ["Geometry", "experimental"], ["SA pool, SI cassette", "to be added"]],
+          "reference": ["No external reference; broken-symmetry DFT discussed qualitatively in v1."],
+          "provenance": ["Paper v1, Fig. 1C–H; p8 (numbers from the paper-scout digest, to be re-checked)."]
+        }
+      ],
+      "scope": "No external reference: experimental S–T gaps or a same-active-space method are not compared.",
+      "exits": { "notInstalled": "(8,8)" }
+    },
+    {
+      "slug": "c2h4-photochemistry",
+      "cls": "workflow",
+      "kind": "workflow",
+      "problem": "Photochemistry",
+      "title": "Ethylene photochemistry: MECI, torsion barrier, surface hopping",
+      "short": "C_{2}H_{4} photochemistry",
+      "ident": "S0/S1 minimum-energy conical intersection, the S0 torsion transition state by three methods, and an FSSH trajectory of C_{2}H_{4}, all from SSR gradients and couplings.",
+      "key": "MECI gap 1.49·10^{−4} E_{h}; S0 torsion barrier 0.1068793 E_{h} = 2.908 eV.",
+      "rows": [
+        { "system": "C_{2}H_{4}", "as": "(2,2)", "reference": "none (no reference MECI compared)", "number": "MECI gap 1.49·10^{−4} E_{h}; barrier 2.908 eV" }
+      ],
+      "blocks": [
+        {
+          "id": "meci", "title": "S0/S1 MECI",
+          "key": "Gap 1.49·10^{−4} E_{h}; twist 88–90°, pyramidalization 76°, R_{CC} 1.377 Å.",
+          "figure": { "todo": "MECI structure" },
+          "setup": [["Method", "to be added"], ["Input", "to be added"]],
+          "provenance": ["Site run, Psi4 d40267fc2 (2026-10-13)."]
+        },
+        {
+          "id": "ts", "title": "S0 torsion transition state",
+          "key": "Barrier 0.1068793 E_{h} = 2.908 eV, by NEB, dimer and P-RFO.",
+          "figure": { "todo": "the three TS searches side by side" },
+          "tables": [{ "head": ["Method", "Barrier / E_{h}"], "rows": [["NEB", "to be added"], ["dimer", "to be added"], ["P-RFO", "to be added"]] }],
+          "setup": [["Optimizer", "DL-FIND"], ["Input", "to be added"]],
+          "provenance": ["Site run, Psi4 d40267fc2 (2026-10-13)."]
+        },
+        {
+          "id": "trajectory", "title": "FSSH trajectory",
+          "key": "Trajectory, state history and total energy: Manual, Check the trajectory (not redrawn here).",
+          "links": [{ "t": "Check the trajectory", "manual": "check-trajectory" }, { "t": "Cost of one dynamics step", "href": "main/cost/#dynamics-step" }],
+          "provenance": ["Manual run; Psi4 revision as stated there."]
+        }
+      ],
+      "scope": "No reference MECI compared. Gradients, NACs and SSR dynamics are capabilities of the method lineage (History); here they are run with REKS Studio's implementation.",
+      "exits": { "manual": "dynamics-inputs" }
+    }
+  ],
+  "manualRows": [
+    { "cls": "basis", "problem": "Excited states", "system": "hexatriene", "as": "(6,6)", "reference": "QUEST TBE (aug-cc-pVTZ); SSR in 6-31G(d)", "number": "T1 2.736 / 2.73, S1 5.354 / 5.37 eV; deviations 0.006–0.31 eV", "manual": "first-spin" }
+  ],
+  "landing": {
+    "hero": {
+      "title": "Where ordinary DFT breaks, REKS Studio gets it right.",
+      "sub": "Ensemble DFT (REKS/SSR) in Psi4 for breaking bonds, diradicals, magnetic molecules and excited states. Its equations are generated, not derived by hand; (2,2)–(6,6) run from the install.",
+      "loop": "Not only H_{2}. How close is it to experiment?",
+      "caption": "H_{2} dissociation: SSR(2,2) and RKS, BH&HLYP; FCI; all aug-cc-pVTZ",
+      "callout": "fails at the stretched bond",
+      "curve": {
+        "ks": [[0.5, -1.1003], [0.55, -1.132], [0.6, -1.1522], [0.65, -1.1637], [0.7, -1.1691], [0.75, -1.17], [0.8, -1.1677], [0.85, -1.163], [0.9, -1.1567], [0.95, -1.149], [1.0, -1.1407], [1.05, -1.1318], [1.1, -1.1225], [1.15, -1.113], [1.2, -1.1035], [1.25, -1.094], [1.3, -1.0845], [1.35, -1.0752], [1.4, -1.0662], [1.45, -1.0573], [1.5, -1.0487], [1.55, -1.0403], [1.6, -1.0322], [1.65, -1.0244], [1.7, -1.0169], [1.75, -1.0096], [1.8, -1.0026], [1.85, -0.9959], [1.9, -0.9895], [1.95, -0.9833], [2.0, -0.9774], [2.05, -0.9717], [2.1, -0.9662], [2.15, -0.961], [2.2, -0.9561], [2.25, -0.9514], [2.3, -0.9468], [2.35, -0.9425], [2.4, -0.9383], [2.45, -0.9344], [2.5, -0.9306], [2.55, -0.927], [2.6, -0.9236], [2.65, -0.9203], [2.7, -0.9171], [2.75, -0.9142], [2.8, -0.9113], [2.85, -0.9086], [2.9, -0.906], [2.95, -0.9035], [3.0, -0.9012], [3.05, -0.899], [3.1, -0.8968], [3.15, -0.8948], [3.2, -0.8928], [3.25, -0.891], [3.3, -0.8892], [3.35, -0.8875], [3.4, -0.8859], [3.45, -0.8844], [3.5, -0.8829]],
+        "fci": [[0.5, -1.1011], [0.55, -1.1317], [0.6, -1.1537], [0.65, -1.1648], [0.7, -1.1713], [0.75, -1.1722], [0.8, -1.1707], [0.85, -1.1663], [0.9, -1.1608], [0.95, -1.1537], [1.0, -1.1462], [1.05, -1.138], [1.1, -1.1297], [1.15, -1.1212], [1.2, -1.1128], [1.25, -1.1045], [1.3, -1.0964], [1.35, -1.0886], [1.4, -1.0811], [1.45, -1.074], [1.5, -1.0673], [1.55, -1.0609], [1.6, -1.0549], [1.65, -1.0494], [1.7, -1.0443], [1.75, -1.0396], [1.8, -1.0353], [1.85, -1.0313], [1.9, -1.0277], [1.95, -1.0245], [2.0, -1.0215], [2.05, -1.0189], [2.1, -1.0165], [2.15, -1.0144], [2.2, -1.0126], [2.25, -1.011], [2.3, -1.0095], [2.35, -1.0082], [2.4, -1.0071], [2.45, -1.0061], [2.5, -1.0053], [2.55, -1.0045], [2.6, -1.0039], [2.65, -1.0033], [2.7, -1.0028], [2.75, -1.0024], [2.8, -1.002], [2.85, -1.0017], [2.9, -1.0014], [2.95, -1.0012], [3.0, -1.001], [3.05, -1.0008], [3.1, -1.0006], [3.15, -1.0005], [3.2, -1.0004], [3.25, -1.0003], [3.3, -1.0002], [3.35, -1.0001], [3.4, -1.0001], [3.45, -1.0], [3.5, -1.0]],
+        "ssr": [[0.5, -1.0855], [0.55, -1.1184], [0.6, -1.1398], [0.65, -1.1524], [0.7, -1.1589], [0.75, -1.1608], [0.8, -1.1595], [0.85, -1.1558], [0.9, -1.1503], [0.95, -1.1436], [1.0, -1.1359], [1.05, -1.1276], [1.1, -1.1188], [1.15, -1.1098], [1.2, -1.1007], [1.25, -1.0916], [1.3, -1.0825], [1.35, -1.0737], [1.4, -1.0653], [1.45, -1.0576], [1.5, -1.0507], [1.55, -1.0446], [1.6, -1.0392], [1.65, -1.0345], [1.7, -1.0302], [1.75, -1.0263], [1.8, -1.0228], [1.85, -1.0196], [1.9, -1.0167], [1.95, -1.0141], [2.0, -1.0118], [2.05, -1.0096], [2.1, -1.0077], [2.15, -1.0059], [2.2, -1.0044], [2.25, -1.003], [2.3, -1.0017], [2.35, -1.0006], [2.4, -0.9995], [2.45, -0.9986], [2.5, -0.9978], [2.55, -0.9971], [2.6, -0.9965], [2.65, -0.9959], [2.7, -0.9954], [2.75, -0.9949], [2.8, -0.9946], [2.85, -0.9942], [2.9, -0.9939], [2.95, -0.9936], [3.0, -0.9934], [3.05, -0.9932], [3.1, -0.993], [3.15, -0.9929], [3.2, -0.9928], [3.25, -0.9927], [3.3, -0.9926], [3.35, -0.9925], [3.4, -0.9924], [3.45, -0.9924], [3.5, -0.9923]]
+      }
+    },
+    "proof": {
+      "title": "Checked against experiment and exact references",
+      "cards": [
+        { "slug": "c2", "problem": "Strength of the C_{2} bond", "kind": "band", "axis": [5.9, 6.7], "ours": 6.28, "ref": 6.32, "err": 0.2, "big": "0.04 eV", "ref_name": "experiment, D_{e} 6.32 ± 0.2 eV: within experimental error", "sub": "SSR(6,6), M08-SO/cc-pV5Z" },
+        { "slug": "bond-breaking", "problem": "Single, double, triple bonds: lowest excitation", "kind": "pairs", "axis": [6.4, 10.1], "pairs": [["C_{2}H_{4}", 7.85, 7.93], ["N_{2}", 9.49, 9.88], ["C_{2}H_{2}", 6.66, 7.10]], "big": "0.08–0.44 eV", "ref_name": "theoretical best estimates (TBE)", "sub": "SSR(4,4) and (6,6), BH&HLYP/aug-cc-pVTZ" },
+        { "slug": "h-chains", "problem": "Hydrogen chains H_{2}–H_{8} pulled apart", "kind": "curves", "ref_name": "exact in the same basis (FCI)", "sub": "SSR(2,2)–(8,8), BH&HLYP; aug-cc-pVTZ, cc-pVTZ, 6-31G(d)",
+          "curves": [
+            { "name": "H_{2}", "fci": [[0.0, 0.393], [0.034, 0.094], [0.069, 0.0], [0.103, 0.009], [0.138, 0.07], [0.172, 0.157], [0.207, 0.253], [0.241, 0.35], [0.276, 0.443], [0.31, 0.529], [0.345, 0.607], [0.379, 0.674], [0.414, 0.732], [0.448, 0.78], [0.483, 0.82], [0.517, 0.852], [0.552, 0.878], [0.586, 0.897], [0.621, 0.913], [0.655, 0.924], [0.69, 0.933], [0.724, 0.94], [0.759, 0.945], [0.793, 0.948], [0.828, 0.951], [0.862, 0.953], [0.897, 0.955], [0.931, 0.956], [0.966, 0.957], [1.0, 0.957]], "ssr": [[0.0, 0.48], [0.034, 0.171], [0.069, 0.068], [0.103, 0.07], [0.138, 0.128], [0.172, 0.215], [0.207, 0.315], [0.241, 0.42], [0.276, 0.524], [0.31, 0.62], [0.345, 0.698], [0.379, 0.758], [0.414, 0.807], [0.448, 0.846], [0.483, 0.878], [0.517, 0.904], [0.552, 0.925], [0.586, 0.942], [0.621, 0.955], [0.655, 0.966], [0.69, 0.975], [0.724, 0.981], [0.759, 0.986], [0.793, 0.99], [0.828, 0.993], [0.862, 0.996], [0.897, 0.997], [0.931, 0.998], [0.966, 0.999], [1.0, 1.0]] },
+            { "name": "H_{4}", "fci": [[0.0, 0.957], [0.034, 0.381], [0.069, 0.117], [0.103, 0.015], [0.138, 0.0], [0.172, 0.031], [0.207, 0.085], [0.241, 0.15], [0.276, 0.218], [0.31, 0.285], [0.345, 0.347], [0.379, 0.402], [0.414, 0.451], [0.448, 0.492], [0.483, 0.526], [0.517, 0.553], [0.552, 0.575], [0.586, 0.592], [0.621, 0.605], [0.655, 0.615], [0.69, 0.622], [0.724, 0.628], [0.759, 0.632], [0.793, 0.634], [0.828, 0.637], [0.862, 0.638], [0.897, 0.639], [0.931, 0.64], [0.966, 0.641], [1.0, 0.641]], "ssr": [[0.0, 1.0], [0.034, 0.413], [0.069, 0.139], [0.103, 0.031], [0.138, 0.014], [0.172, 0.046], [0.207, 0.103], [0.241, 0.171], [0.276, 0.241], [0.31, 0.306], [0.345, 0.364], [0.379, 0.415], [0.414, 0.461], [0.448, 0.501], [0.483, 0.535], [0.517, 0.563], [0.552, 0.584], [0.586, 0.596], [0.621, 0.606], [0.655, 0.614], [0.69, 0.62], [0.724, 0.625], [0.759, 0.629], [0.793, 0.632], [0.828, 0.634], [0.862, 0.636], [0.897, 0.637], [0.931, 0.638], [0.966, 0.639], [1.0, 0.64]] },
+            { "name": "H_{6}", "fci": [[0.0, 0.486], [0.034, 0.237], [0.069, 0.148], [0.103, 0.15], [0.138, 0.202], [0.172, 0.279], [0.207, 0.366], [0.241, 0.455], [0.276, 0.54], [0.31, 0.618], [0.345, 0.689], [0.379, 0.749], [0.414, 0.801], [0.448, 0.845], [0.483, 0.88], [0.517, 0.908], [0.552, 0.931], [0.586, 0.948], [0.621, 0.961], [0.655, 0.971], [0.69, 0.979], [0.724, 0.985], [0.759, 0.989], [0.793, 0.992], [0.828, 0.994], [0.862, 0.996], [0.897, 0.998], [0.931, 0.999], [0.966, 0.999], [1.0, 1.0]], "ssr": [[0.0, 0.324], [0.034, 0.081], [0.069, 0.0], [0.103, 0.011], [0.138, 0.074], [0.172, 0.164], [0.207, 0.263], [0.241, 0.363], [0.276, 0.457], [0.31, 0.542], [0.345, 0.619], [0.379, 0.686], [0.414, 0.745], [0.448, 0.796], [0.483, 0.837], [0.517, 0.87], [0.552, 0.895], [0.586, 0.913], [0.621, 0.926], [0.655, 0.934], [0.69, 0.94], [0.724, 0.944], [0.759, 0.946], [0.793, 0.948], [0.828, 0.948], [0.862, 0.948], [0.897, 0.947], [0.931, 0.945], [0.966, 0.943], [1.0, 0.94]] },
+            { "name": "H_{8}", "fci": [[0.0, 0.563], [0.034, 0.274], [0.069, 0.162], [0.103, 0.152], [0.138, 0.197], [0.172, 0.271], [0.207, 0.356], [0.241, 0.445], [0.276, 0.531], [0.31, 0.61], [0.345, 0.682], [0.379, 0.744], [0.414, 0.797], [0.448, 0.841], [0.483, 0.877], [0.517, 0.906], [0.552, 0.929], [0.586, 0.946], [0.621, 0.96], [0.655, 0.969], [0.69, 0.982], [0.724, 0.994], [0.759, 0.995], [0.793, 0.997], [0.828, 0.998], [0.862, 0.998], [0.897, 0.999], [0.931, 0.999], [0.966, 1.0], [1.0, 1.0]], "ssr": [[0.0, 0.379], [0.034, 0.101], [0.069, 0.0], [0.103, 0.001], [0.138, 0.058], [0.172, 0.144], [0.207, 0.244], [0.241, 0.345], [0.276, 0.441], [0.31, 0.529], [0.345, 0.607], [0.379, 0.676], [0.414, 0.735], [0.448, 0.785], [0.483, 0.827], [0.517, 0.861], [0.552, 0.889], [0.586, 0.91], [0.621, 0.928], [0.655, 0.941], [0.69, 0.951], [0.724, 0.957], [0.759, 0.961], [0.793, 0.964], [0.828, 0.966], [0.862, 0.967], [0.897, 0.968], [0.931, 0.969], [0.966, 0.969], [1.0, 0.97]] }
+          ] }
+      ],
+      "trust": { "t": "Exact limits (GVB = CASSCF) reproduced to 10^{−10} E_{h}: H_{2} and BH, (2,2)–(4,6)", "slug": "exactness", "anchor": "identities" },
+      "demos": [
+        { "t": "S_{1}/S_{0} crossing of ethylene found and followed in dynamics, a case TDDFT cannot describe", "slug": "c2h4-photochemistry" },
+        { "t": "zethrene trend", "slug": "zethrenes" }
+      ],
+      "bridge": "Multireference accuracy is usually expensive. What does it cost here?"
+    },
+    "band": {
+      "groundFrame": "Time per whole SCF run, SA-REKS against RKS, same 16 molecules, same functional and basis (BH&HLYP); median.",
+      "excitedFrame": "Time per complete run, SSR against TDA, same 16 molecules, same functional and basis (BH&HLYP); median. TDA solves 20 states; the SSR states per active space are listed in SI Fig. 7.",
+      "scope": "From the install: up to (6,6). (10,10): one reported system.",
+      "ttrLine": "S–T gap 0.31–0.99 vs 0.21 kcal/mol measured on a surface, different environment",
+      "price": "Free and open source. No licence fee, no seat count, runs on your cluster."
+    },
+    "tryit": {
+      "out": "State           E [Eh]  E-E(S0) [eV]\nS0     -1.159238310496         0.000\nS1     -0.681521680456        12.999",
+      "change": "Change `[2, 2]` to `[4, 4]` and the molecule; that is all."
+    },
+    "engine": {
+      "title": "Equations no one derives by hand. Ours are generated.",
+      "exact": "Exact limits reproduced to 10^{−10} E_{h} against CASSCF: H_{2} and BH, (2,2)–(4,6)."
+    },
+    "installed": "(6,6)",
+    "count": [
+      { "as": "(2,2)", "spins": [3, 1] },
+      { "as": "(4,4)", "spins": [18, 11, 1], "mark": "largest REKS before this work", "href": "main/history/" },
+      { "as": "(6,6)", "spins": [161, 153, 41, 1], "mark": "in your install", "href": "docs/#install" },
+      { "as": "(8,8)", "spins": [1934, 2524, 1172, 199, 1] },
+      { "as": "(10,10)", "spins": [29082, 48090, 31275, 9635, 1209, 1], "mark": "applied, TTR", "href": "main/results/ttr/" },
+      { "as": "(12,12)", "spins": [524292, 1045737, 864275, 374554, 86454, 8651, 1], "mark": "generated", "href": "main/history/" },
+      { "as": "(14,14)", "spins": [11017869, 25684841, 25614281, 14112637, 4586673, 846797, 70573, 1] }
+    ],
+    "equations": {
+      "head": ["REKS", "Configurations, S = 0", "Equations", "Determinants", "in SCF"],
+      "rows": [
+        ["(2,2)", "3", "5", "4", "4"],
+        ["(4,4)", "18", "159", "37", "18"],
+        ["(6,6)", "161", "12 121", "435", "68"],
+        ["(8,8)", "1 934", "1 521 969", "5 537", "224"],
+        ["(10,10)", "29 082", "263 364 575", "73 078", "672"],
+        ["(12,12)", "524 292", "59 350 445 258", "986 534", "1 888"],
+        ["(14,14)", "11 017 869", "16 918 197 671 939", "13 544 877", "5 056"]
+      ]
+    },
+    "reach": { "atoms": 152, "nbf": 4016, "as": "(10,10)", "wall": "about 4 h on one 64-core node" },
+    "capabilities": [
+      { "t": "SI states and spin manifolds", "manual": "spin-manifolds" },
+      { "t": "analytic gradients", "manual": "state-gradient" },
+      { "t": "NACs", "manual": "nac" },
+      { "t": "MECI (DL-FIND)", "manual": "geometry-optimization" },
+      { "t": "surface hopping (PyUNIxMD)", "manual": "surface-hopping" }
+    ],
+    "capabilityLine": "Gradients, couplings, MECI and dynamics in one code.",
+    "team": "Komarov, Filatov, Min",
+    "institutions": "UNIST; IBS Center for Multidimensional Carbon Materials",
+    "paper": "ChemRxiv v1, 8 Sep 2026, preprint"
+  },
+  "cost": {
+    "flow": [
+      ["Integrals and grid", "Two-electron integrals and the DFT quadrature grid, evaluated once."],
+      ["Shared by configurations", "Every configuration of the ensemble reads the same integrals and grid."],
+      ["Weighted Fock assembly", "The Fock matrices of the configurations combine by weighted addition."],
+      ["Ensemble energy", "Energy and gradient of the ensemble from the assembled matrices."]
+    ],
+    "scf": {
+      "head": ["Functional", "(2,2)", "(4,4)", "(6,6)", "(8,8)"],
+      "rows": [["BH&HLYP, SA-REKS / RKS", "0.86", "1.53", "3.33", "10.47"], ["HF, SA-REKS / RHF", "0.80", "1.03", "2.14", "2.25"], ["Iterations, BH&HLYP (reference 20.5)", "12.5", "17.5", "25", "40.5"]]
+    },
+    "fock": {
+      "head": ["Functional", "(2,2)", "(4,4)", "(6,6)", "(8,8)"],
+      "rows": [["HF", "1.30", "1.65", "1.95", "2.29"], ["BH&HLYP", "1.57", "2.06", "2.96", "5.59"]]
+    },
+    "excited": {
+      "head": ["Functional", "(2,2)", "(4,4)", "(6,6)", "(8,8)"],
+      "rows": [["HF, SSR / CIS", "0.13", "0.18", "0.38", "0.81"], ["BH&HLYP, SSR / TDDFT-TDA", "0.14", "0.24", "0.57", "2.65"]]
+    },
+    "catalogue": [["(2,2)", "1.7 KB", "to be added"], ["(4,4)", "27.5 KB", "to be added"], ["(6,6)", "1.99 MB", "to be added"], ["(8,8), mixed-scheme", "11.9 MB", "to be added"], ["(8,8), full", "284 MB", "62.4 s, 804 MB"]],
+    "step": [["one-state gradient", "1.74"], ["three states", "1.87"], ["gradient + 3 NACs", "2.78"]]
+  },
+  "history": {
+    "lead": [
+      "Molecules with near-degenerate electronic configurations (breaking bonds, diradicals, excited-state crossings) are described poorly by single-determinant Kohn–Sham DFT.",
+      "REKS describes them inside DFT by an ensemble of configurations with fractional orbital occupations.",
+      "Each active space needs its own working equations, derived by hand; the largest REKS active space reported before this work is (4,4).",
+      "REKS Studio generates the equations symbolically for an arbitrary active space and runs them in Psi4."
+    ],
+    "steps": [
+      { "year": 1999, "m": 2, "label": "(2,2)" },
+      { "year": 2016, "m": 4, "label": "(4,4)" },
+      { "year": 2026, "m": 10, "label": "(10,10) applied" }
+    ],
+    "generated": { "year": 2026, "m": 12, "label": "(12,12) generated" },
+    "prehistory": [
+      { "year": "1979, 1988", "capability": "Ensemble DFT foundations", "refs": ["theophilou1979-excited", "gross1988-variational", "gross1988-ensemble-dft"] },
+      { "year": "1972–1977", "capability": "GVB perfect pairing", "authors": "W. J. Hunt, P. J. Hay, W. A. Goddard; F. W. Bobrowicz", "text": "Hunt, Hay, Goddard 1972; Goddard et al. 1973; Bobrowicz, Goddard 1977 (citations to be added)" }
+    ],
+    "rows": [
+      { "year": "1999", "capability": "REKS(2,2)", "refs": ["filatov1999-reks"], "text": "J. Phys. Chem. A 2000, 104, 6628 (citation to be added)", "host": "CADPAC5 (1999–2000)" },
+      { "year": "2000", "capability": "REKS(3,3) for doublet triradicals", "refs": ["filatov2000-symmetry-breaking"] },
+      { "year": "2007", "capability": "Damped interpolation f(n_{a}, n_{b}), δ = 0.4, introduced in a magnetic-coupling study; attribution per WIREs 2015, Eq. 9", "refs": ["moreira2007-interpolation", "filatov2015-wires"] },
+      { "year": "2008", "capability": "SA-REKS", "authors": "Kazaryan, Heuver, Filatov", "text": "J. Phys. Chem. A 2008, 112, 12980 (citation to be added)" },
+      { "year": "2013", "capability": "SI-SA-REKS (two papers, no order claim)", "refs": ["huix-rotllant2013-retinal", "filatov2013-ci-geometries"] },
+      { "year": "to be added", "capability": "The name SSR: source and year to be checked (TCC 368, 97, online 2015, or JCP 141, 124123, 2014)", "refs": ["filatov2016-sa-reks"] },
+      { "year": "2015", "capability": "Multi-state ensembles", "refs": ["filatov2015-si-sa-reks"] },
+      { "year": "2016", "capability": "REKS(4,4) in GVB-PP(2/4) two-pair form", "refs": ["filatov2016-gvb-ansatz", "filatov2016-reks44"], "host": "TeraChem development version (2016–2017)" },
+      { "year": "2017", "capability": "SI-SA-REKS(4,4); analytic gradient formalism", "refs": ["filatov2017-extended-space", "filatov2017-gradients"] },
+      { "year": "2018", "capability": "Nonadiabatic dynamics", "refs": ["filatov2018-nac-dynamics"] },
+      { "year": "2019", "capability": "DFTB/SSR", "authors": "I. S. Lee, Filatov, Min", "text": "J. Chem. Theory Comput. 2019, 15, 3021 (citation to be added)", "host": "DFTB+ development version" },
+      { "year": "2020", "capability": "Extended Koopmans' theorem, electron affinities", "refs": ["filatov2020-ekt", "filatov2020-electron-affinities"] },
+      { "year": "2021", "capability": "Analytic gradients implemented on GPUs; sudden polarization", "refs": ["liu2021-gradients-gpu", "filatov2021-sudden-polarization"], "host": "to be added" },
+      { "year": "2026", "capability": "REKS Studio: equations generated symbolically for an arbitrary active space; (10,10) applied; (12,12) generated; in Psi4", "refs": ["komarov2026-reks-studio"], "credit": ["smith2020-psi4"] }
+    ]
+  }
+}

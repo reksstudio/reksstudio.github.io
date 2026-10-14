@@ -1,0 +1,80 @@
+---
+import { html, landing, plain, resultHref } from '../../lib/overview.mjs';
+
+const base = import.meta.env.BASE_URL;
+const { cards, trust, demos, bridge } = landing.proof;
+// value axis spans x0 (56 after the row labels of 'pairs', else 8) to W - 8
+const W = 240;
+const H = 72;
+const ax = (c) => {
+  const x0 = c.kind === 'pairs' ? 56 : 8;
+  return (v) => x0 + ((v - c.axis[0]) / (c.axis[1] - c.axis[0])) * (W - 8 - x0);
+};
+// SVG text: _{digits} -> Unicode subscript digits
+const sub = (s) => s.replace(/_\{(\d+)\}/g, (_, d) => [...d].map((ch) => '₀₁₂₃₄₅₆₇₈₉'[ch]).join(''));
+// tick values at multiples of step inside the axis range
+const ticks = (c) => {
+  const [a, b] = c.axis;
+  const step = b - a > 2 ? 1 : 0.5;
+  return Array.from({ length: Math.floor(b / step) - Math.ceil(a / step) + 1 }, (_, k) => (Math.ceil(a / step) + k) * step);
+};
+const aria = (c) => {
+  if (c.kind === 'band') return `REKS Studio ${c.ours} eV, ${plain(c.ref_name)}`;
+  if (c.kind === 'pairs') return `REKS Studio against ${plain(c.ref_name)}: ${c.pairs.map(([m, o, r]) => `${plain(m)} ${o} vs ${r} eV`).join(', ')}`;
+  return `Potential energy curves of ${c.curves.map((k) => plain(k.name)).join(', ')}: REKS Studio and ${plain(c.ref_name)}`;
+};
+// polyline points: normalized (u, v) in [0,1]^2 -> x0 + u*w, y down from 6 with height h
+const poly = (p, x0, w, h) => p.map(([u, v]) => `${(x0 + u * w).toFixed(1)},${(6 + (1 - v) * h).toFixed(1)}`).join(' ');
+---
+<div class="pcards">
+  {cards.map((c) => {
+    const X = c.axis && ax(c);
+    return (
+      <div class="pcard">
+        <a class="pq" href={resultHref(base, c.slug)} set:html={html(c.problem)} />
+        <svg class="pviz" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={aria(c)}>
+          {c.kind === 'band' && (
+            <>
+              <rect x={X(c.ref - c.err)} y="20" width={X(c.ref + c.err) - X(c.ref - c.err)} height="20" class="err" />
+              <line x1="8" x2={W - 8} y1="30" y2="30" class="axis" />
+              <circle cx={X(c.ref)} cy="30" r="6" class="ref" />
+              <circle cx={X(c.ours)} cy="30" r="5" class="ours" />
+              {ticks(c).map((v) => <text x={X(v)} y="62" text-anchor="middle" class="tick">{v.toFixed(1)}</text>)}
+            </>
+          )}
+          {c.kind === 'pairs' && (
+            <>
+              {c.pairs.map(([m, o, r], i) => (
+                <g>
+                  <line x1={X(Math.min(o, r))} x2={X(Math.max(o, r))} y1={10 + i * 16} y2={10 + i * 16} class="link" />
+                  <circle cx={X(r)} cy={10 + i * 16} r="5" class="ref" />
+                  <circle cx={X(o)} cy={10 + i * 16} r="4" class="ours" />
+                  <text x="0" y={14 + i * 16} class="tick">{sub(m)}</text>
+                </g>
+              ))}
+              {ticks(c).map((v) => <text x={X(v)} y="66" text-anchor="middle" class="tick">{v}</text>)}
+            </>
+          )}
+          {c.kind === 'curves' && c.curves.map((k, i) => {
+            const w = (W - 8 * 3) / 4;
+            const x0 = i * (w + 8);
+            return (
+              <g>
+                <polyline points={poly(k.fci, x0, w, 46)} class="fci" />
+                <polyline points={poly(k.ssr, x0, w, 46)} class="ssr" />
+                <text x={x0 + w / 2} y="68" text-anchor="middle" class="tick">{sub(k.name)}</text>
+              </g>
+            );
+          })}
+        </svg>
+        {c.big && <span class="pbig">{c.big}</span>}
+        <span class="pref">vs <Fragment set:html={html(c.ref_name)} /></span>
+        <span class="psub" set:html={html(c.sub)} />
+      </div>
+    );
+  })}
+</div>
+<p class="ptrust"><a href={resultHref(base, trust.slug, trust.anchor)}><Fragment set:html={html(trust.t)} /> →</a></p>
+<p class="pdemo"><span>Beyond available references:</span> {demos.map((d, i) => <>{i > 0 && ' · '}<a href={resultHref(base, d.slug)} set:html={html(d.t)} /></>)} →</p>
+<p class="pall"><a href={`${base}main/results/`}>All comparisons →</a></p>
+<p class="bridge"><a href="#cost">{bridge} ↓</a></p>

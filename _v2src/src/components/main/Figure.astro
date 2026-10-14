@@ -1,0 +1,19 @@
+---
+import { html } from '../../lib/overview.mjs';
+
+interface Props {
+  fig: { src?: string; w?: number; h?: number; alt?: string; caption?: string; todo?: string };
+  source?: string;
+}
+
+const base = import.meta.env.BASE_URL;
+const { fig, source } = Astro.props;
+---
+{fig.todo ? (
+  <div class="figph"><p><span class="ph">Figure to be added:</span> {fig.todo}</p></div>
+) : (
+  <figure class="mfig">
+    <img src={`${base}${fig.src}`} width={fig.w} height={fig.h} alt={fig.alt} loading="lazy" decoding="async" />
+    <figcaption><Fragment set:html={html(fig.caption ?? '')} />{source && <> Source: <Fragment set:html={html(source)} /></>}</figcaption>
+  </figure>
+)}

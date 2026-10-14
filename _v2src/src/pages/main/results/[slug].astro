@@ -1,0 +1,41 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+import Block from '../../../components/main/Block.astro';
+import Exits from '../../../components/main/Exits.astro';
+import { classes, html, plain, results } from '../../../lib/overview.mjs';
+import '../../../styles/main.css';
+
+export function getStaticPaths() {
+  return results.map((r) => ({ params: { slug: r.slug }, props: { r } }));
+}
+
+const base = import.meta.env.BASE_URL;
+const { r } = Astro.props;
+const sections = r.blocks.filter((b) => b.id && b.title);
+---
+<Base title={`${plain(r.title)} — REKS Studio`}>
+<Nav variant="light" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href={`${base}main/`}>Overview</a> › <a href={`${base}main/results/`}>Results</a> › <span set:html={html(r.short)} /></nav>
+    <h1 set:html={html(r.title)} />
+    <p class="ident" set:html={html(r.ident)} />
+    <p class="refclass">Reference class: <Fragment set:html={html(classes[r.cls].label)} />{r.secondary && <>; secondary: <Fragment set:html={html(classes[r.secondary].label)} /></>}</p>
+    <p class="keyline" set:html={html(r.key)} />
+    {sections.length > 1 && <p class="sections">{sections.map((b, i) => <>{i > 0 && ' · '}<a href={`#${b.id}`} set:html={html(b.title)} /></>)}</p>}
+  </div>
+</header>
+
+<div class="wrap mbody">
+  {r.blocks.map((b) => <Block block={b} />)}
+  {r.scope && <p class="scope"><strong>Scope:</strong> <Fragment set:html={html(r.scope)} /></p>}
+  <Exits r={r} />
+</div>
+</main>
+
+<Footer />
+</Base>

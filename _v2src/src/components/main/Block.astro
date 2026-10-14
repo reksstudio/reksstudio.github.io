@@ -1,0 +1,35 @@
+---
+import Figure from './Figure.astro';
+import Table from './Table.astro';
+import { cellHtml, html } from '../../lib/overview.mjs';
+
+interface Props {
+  block: any;
+}
+
+const base = import.meta.env.BASE_URL;
+const { block: b } = Astro.props;
+---
+<section class="mblock" id={b.id}>
+  {b.title && <h2 set:html={html(b.title)} />}
+  {b.title && b.key && <p class="keyline" set:html={html(b.key)} />}
+  {b.figure && <Figure fig={b.figure} />}
+  {b.structure && <Figure fig={b.structure} />}
+  {b.tables?.map((t) => <Table table={t} />)}
+  {b.note && <p class="note" set:html={html(b.note)} />}
+  {b.links && <p class="links">{b.links.map((l, i) => <>{i > 0 && ' · '}<Fragment set:html={cellHtml(l, base)} /></>)}</p>}
+  {b.setup && (
+    <>
+      <h3>Setup</h3>
+      <dl class="fields">{b.setup.map(([k, v]) => <><dt set:html={html(k)} /><dd set:html={html(v)} /></>)}</dl>
+    </>
+  )}
+  {b.reference && (
+    <>
+      <h3>Reference</h3>
+      {b.reference.map((line) => <p set:html={html(line)} />)}
+    </>
+  )}
+  {b.scope && <p class="scope"><strong>Scope:</strong> <Fragment set:html={html(b.scope)} /></p>}
+  {b.provenance && <p class="prov"><strong>Provenance:</strong> <Fragment set:html={b.provenance.map(html).join(' ')} /></p>}
+</section>

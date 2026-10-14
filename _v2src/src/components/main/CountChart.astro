@@ -1,0 +1,67 @@
+---
+import { fmtCount, landing } from '../../lib/overview.mjs';
+
+// log10 bars per spin sector S; y axis is a fixed SVG, the plot SVG (viewBox from x = L) scrolls separately
+const bw = 17;
+const gap = 18;
+const L = 56;
+const R = 8;
+const B = 32;
+const T = 16;
+const plot = 340;
+const H = T + plot + B;
+// bars start at 10^lo < 1, so a count of 1 keeps a visible bar
+const lo = -0.4;
+const top = 8;
+const y = (n) => T + plot - ((Math.log10(n) - lo) / (top - lo)) * plot;
+const base = T + plot;
+// rotated label: 11px mono, advance 0.6 em per character, 4px pad at each end
+const labLen = (s) => s.length * 6.6 + 8;
+// thin-space groups in chart labels
+const fmt = (n) => fmtCount(n, ' ');
+const nS = Math.max(...landing.count.map((c) => c.spins.length));
+const groups = landing.count.reduce((acc, c) => {
+  const x0 = acc.length ? acc[acc.length - 1].x1 + gap : L + gap / 2;
+  return [...acc, { ...c, x0, x1: x0 + c.spins.length * bw }];
+}, []);
+const W = groups[groups.length - 1].x1 + gap / 2 + R;
+const label = `Linearly independent configurations per spin sector S and active space, log scale: ${landing.count
+  .map((c) => `${c.as} ${c.spins.map((n, s) => `S=${s} ${fmt(n)}`).join(', ')}`)
+  .join('; ')}`;
+---
+<div class="chart-row">
+  <svg class="count-chart" width={L} height={H} viewBox={`0 0 ${L} ${H}`} aria-hidden="true">
+    {Array.from({ length: top + 1 }, (_, k) => (
+      <text x={L - 8} y={y(10 ** k) + 4} text-anchor="end" class="tick">10<tspan dy="-6" font-size="9">{k}</tspan></text>
+    ))}
+  </svg>
+  <div class="chart-box">
+  <svg class="count-chart" width={W - L} height={H} viewBox={`${L} 0 ${W - L} ${H}`} role="img" aria-label={label}>
+    {Array.from({ length: top + 1 }, (_, k) => (
+      <line x1={L} x2={W - R} y1={y(10 ** k)} y2={y(10 ** k)} class="grid" />
+    ))}
+    <line x1={L} x2={W - R} y1={base} y2={base} class="grid" />
+    {groups.map((c) => (
+      <g>
+        {c.spins.map((n, s) => {
+          const x = c.x0 + s * bw;
+          const t = fmt(n);
+          const inside = base - y(n) >= labLen(t);
+          const lx = x + bw / 2 + 4;
+          const ly = inside ? base - 4 : y(n) - 4;
+          return (
+            <g class={`s${s}`}>
+              <rect x={x + 1} y={y(n)} width={bw - 2} height={base - y(n)} class="bar"><title>{`${c.as}, S = ${s}: ${t}`}</title></rect>
+              <text x={lx} y={ly} transform={`rotate(-90 ${lx} ${ly})`} class={inside ? 'lab in' : 'lab'}>{t}</text>
+            </g>
+          );
+        })}
+        <text x={(c.x0 + c.x1) / 2} y={base + 20} text-anchor="middle" class={c.mark ? 'tick mark' : 'tick'}>{c.as}</text>
+      </g>
+    ))}
+  </svg>
+  </div>
+</div>
+<ul class="spin-legend">
+  {Array.from({ length: nS }, (_, s) => <li><span class={`sw s${s}`} />S = {s}</li>)}
+</ul>

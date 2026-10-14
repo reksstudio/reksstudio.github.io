@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import SubNav from '../../components/main/SubNav.astro';
+import StepChart from '../../components/main/StepChart.astro';
+import { cite, history, html } from '../../lib/overview.mjs';
+import '../../styles/main.css';
+
+const base = import.meta.env.BASE_URL;
+// row authors: own field, else union of its refs' authors as initials + surname
+const initials = (a) => {
+  const [last, first = ''] = a.split(',').map((s) => s.trim());
+  return `${first.split(/[\s-]+/).filter(Boolean).map((p) => `${p[0]}.`).join(' ')} ${last}`.trim();
+};
+const table = (rows) => rows.map((row) => {
+  const refs = row.refs ?? [];
+  const cites = [...refs, ...(row.credit ?? [])].map(cite);
+  const who = row.authors ?? [...new Set(cites.slice(0, refs.length).flatMap((c) => c.authors).map(initials))].join(', ');
+  return { ...row, who, cites };
+});
+---
+<Base title="History — REKS Studio">
+<Nav variant="light" />
+<SubNav current="history" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <h1>History</h1>
+    {history.lead.map((p) => <p class="ident" set:html={html(p)} />)}
+  </div>
+</header>
+
+<div class="wrap mbody">
+  <section class="mblock" id="reach">
+    <h2>Largest active space reported, by year</h2>
+    <StepChart />
+    <p class="prov">Reported per paper; 2026: (10,10) applied to one system, (12,12) generated.</p>
+  </section>
+
+  {[['prehistory', 'Before REKS', history.prehistory], ['chronology', 'REKS, SA-REKS, SSR', history.rows]].map(([id, title, rows]) => (
+    <section class="mblock" id={id}>
+      <h2>{title}</h2>
+      <div class="tbl">
+        <table class="chron">
+          <thead><tr><th>Year</th><th>Capability</th><th>Authors</th><th>Paper</th><th>Implementation</th></tr></thead>
+          <tbody>
+            {table(rows).map((row) => (
+              <tr>
+                <td set:html={html(row.year)} />
+                <td set:html={html(row.capability)} />
+                <td set:html={html(row.who)} />
+                <td>{row.cites.map((c, i) => <>{i > 0 && '; '}<a href={c.href}>{c.text}</a></>)}{row.text && <>{row.cites.length > 0 && '; '}<Fragment set:html={html(row.text)} /></>}</td>
+                <td set:html={html(row.host ?? '')} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+
+  <p class="prov">Version history of the code: <a href={`${base}docs/#changes`}>Documentation, Changes</a>.</p>
+</div>
+</main>
+
+<Footer />
+</Base>

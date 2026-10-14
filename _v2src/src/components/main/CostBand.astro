@@ -1,0 +1,45 @@
+---
+import { costRow, landing, resultHref } from '../../lib/overview.mjs';
+import { doiUrl, reference } from '../../lib/literature.mjs';
+import { EMAIL } from '../../lib/site.mjs';
+
+const base = import.meta.env.BASE_URL;
+const paper = reference('komarov2026-reks-studio');
+const { band, reach, installed } = landing;
+// ratio as printed: two decimals below 1, one decimal from 1 on
+const fx = (v) => (v < 1 ? v.toFixed(2) : v.toFixed(1));
+const ladder = (table, ref, title) => {
+  const { head, values } = costRow(table);
+  const n = head.indexOf(installed) + 1;
+  return { title, ref, max: Math.max(...values), rungs: head.map((as, i) => ({ as, v: values[i] })), lo: values[0], hi: values[n - 1], tail: head.slice(n).map((as, i) => `${as}: ${fx(values[n + i])}×`) };
+};
+const g = ladder('scf', 'DFT', 'Ground state, × DFT');
+const x = ladder('excited', 'TDA', 'Excited states, × TDA');
+const span = `(2,2)–${installed}`;
+const aria = (l) => `${l.title}: ${l.rungs.map((r) => `${r.as} ${r.v.toFixed(2)}×`).join(', ')}`;
+---
+<h2 id="cost">Close to ordinary DFT: {fx(g.lo)}–{fx(g.hi)}× a DFT run for {span}.</h2>
+<p class="bsub">{g.tail.join(', ')}.</p>
+<div class="ladders">
+  {[g, x].map((l, k) => (
+    <a class="ladder" href={`${base}main/cost/#${k ? 'excited' : 'scf'}`} style={`--max:${l.max}`} aria-label={aria(l)}>
+      <span class="lt">{l.title}</span>
+      <span class="lscale" aria-hidden="true"><span>1× {l.ref}</span></span>
+      {l.rungs.map((r) => (
+        <span class="rung"><span class="sz">{r.as}</span><span class="bar" style={`--v:${r.v}`}><b>{r.v.toFixed(2)}×</b></span></span>
+      ))}
+      <span class="lsrc">{k ? band.excitedFrame : band.groundFrame}</span>
+    </a>
+  ))}
+</div>
+<p class="bscope">{band.scope}</p>
+
+<a class="reach" href={resultHref(base, 'ttr', 'run')}>
+  <span class="rk">Largest run</span>
+  <span class="rv">{reach.atoms} atoms · {reach.nbf} basis functions · {reach.as} · {reach.wall}</span>
+  <span class="rt">{band.ttrLine} →</span>
+</a>
+
+<p class="cta"><a class="btn install" href={`${base}docs/#install`}>Install, free</a> <a class="btn" href={`mailto:${EMAIL}`}>Talk to the team about your molecule</a></p>
+<p class="blinks"><a href={`${base}main/cost/`}>Full cost data</a> · <a href={doiUrl(paper)}>Read the paper</a></p>
+<p class="price">{band.price}</p>

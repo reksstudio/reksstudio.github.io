@@ -1,0 +1,18 @@
+---
+import { cellHtml, html } from '../../lib/overview.mjs';
+
+interface Props {
+  table: { title?: string; head: string[]; rows: (string | { t: string; manual?: string; href?: string })[][] };
+  numeric?: boolean;
+}
+
+const base = import.meta.env.BASE_URL;
+const { table, numeric } = Astro.props;
+---
+{table.title && <p class="tbl-title" set:html={html(table.title)} />}
+<div class="tbl">
+  <table class={numeric ? 'num' : undefined}>
+    <thead><tr>{table.head.map((h) => <th set:html={html(h)} />)}</tr></thead>
+    <tbody>{table.rows.map((row) => <tr>{row.map((c) => <td set:html={cellHtml(c, base)} />)}</tr>)}</tbody>
+  </table>
+</div>

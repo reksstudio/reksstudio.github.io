@@ -1,0 +1,19 @@
+---
+interface Props {
+  current: 'overview' | 'results' | 'cost' | 'history';
+}
+
+const base = import.meta.env.BASE_URL;
+const { current } = Astro.props;
+const links = [
+  ['overview', 'Overview', `${base}main/`],
+  ['results', 'Results', `${base}main/results/`],
+  ['cost', 'Cost', `${base}main/cost/`],
+  ['history', 'History', `${base}main/history/`],
+];
+---
+<nav class="subnav" aria-label="Overview section">
+  <div class="wrap">
+    {links.map(([id, label, href]) => <a href={href} aria-current={id === current ? 'page' : undefined}>{label}</a>)}
+  </div>
+</nav>

@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Code from '../../components/Code.astro';
+import SubNav from '../../components/main/SubNav.astro';
+import HeroCurve from '../../components/main/HeroCurve.astro';
+import ProofCards from '../../components/main/ProofCards.astro';
+import CostBand from '../../components/main/CostBand.astro';
+import Engine from '../../components/main/Engine.astro';
+import { readFileSync } from 'node:fs';
+import { html, landing, manualHref } from '../../lib/overview.mjs';
+import { doiUrl, reference } from '../../lib/literature.mjs';
+import { siteRev } from '../../lib/site.mjs';
+import { buildFromSource } from '../../data/snippets';
+import '../../styles/main.css';
+
+const base = import.meta.env.BASE_URL;
+const rev = siteRev();
+const paper = reference('komarov2026-reks-studio');
+const { hero, proof, tryit } = landing;
+// worked input of the manual, read from the published download at build time
+const workedInput = readFileSync(`${process.cwd()}/public/inputs/reks22_h2.dat`, 'utf8').trimEnd();
+---
+<Base title="Overview — REKS Studio">
+<Nav variant="light" />
+<SubNav current="overview" />
+<main>
+
+<header class="mhead hero">
+  <div class="wrap hgrid">
+    <h1>{hero.title}</h1>
+    <HeroCurve />
+    <p class="cta hbtn"><a class="btn" href="#evidence">See the evidence ↓</a> <a class="btn install" href={`${base}docs/#install`}>Install, free</a></p>
+    <p class="hsub">{hero.sub}</p>
+    <p class="hsmall"><a href={`${base}docs/#licence`}>Free and open source</a> · <a href={doiUrl(paper)}>ChemRxiv 2026</a> · UNIST · IBS</p>
+    <p class="loop"><a href="#evidence"><Fragment set:html={html(hero.loop)} /> ↓</a></p>
+  </div>
+</header>
+
+<div class="wrap mbody pre-band">
+  <section class="mblock" id="evidence">
+    <h2>{proof.title}</h2>
+    <ProofCards />
+  </section>
+</div>
+
+<section class="band">
+  <div class="wrap"><div class="mblock">
+    <CostBand />
+  </div></div>
+</section>
+
+<div class="wrap mbody">
+  <section class="mblock" id="install">
+    <h2>This is the whole input</h2>
+    <div class="try">
+      <Code code={workedInput} lang="text" />
+      <div class="youget">
+        <p class="yk">You get</p>
+        <pre>{tryit.out}</pre>
+      </div>
+    </div>
+    <p set:html={html(tryit.change)} />
+    <p>Install from source (<a href={`${base}docs/#install`}>build guide</a>):</p>
+    <Code code={buildFromSource} lang="bash" />
+    <p><a href={manualHref(base, 'active-space')}>Choosing the active space →</a></p>
+  </section>
+
+  <section class="mblock" id="engine">
+    <Engine />
+  </section>
+
+  <section class="mblock" id="capabilities">
+    <h2>Capabilities</h2>
+    <ul class="chips">
+      {landing.capabilities.map((c) => <li><a href={manualHref(base, c.manual)}>{c.t}</a></li>)}
+    </ul>
+    <p class="keyline">{landing.capabilityLine}</p>
+    <p class="credits">Preprint: <a href={doiUrl(paper)}>{landing.paper}, doi:{paper.doi}</a> · <a href={`${base}team/`}>{landing.team}</a>; {landing.institutions} · <a href={`${base}docs/#licence`}>Licence</a> · Psi4 <a href={`${base}docs/#changes`}><code>{rev.short}</code></a>, {rev.date}</p>
+  </section>
+</div>
+</main>
+
+<Footer />
+</Base>

@@ -1,0 +1,112 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import SubNav from '../../components/main/SubNav.astro';
+import Figure from '../../components/main/Figure.astro';
+import Table from '../../components/main/Table.astro';
+import CountChart from '../../components/main/CountChart.astro';
+import { cost, landing, resultHref } from '../../lib/overview.mjs';
+import '../../styles/main.css';
+
+const base = import.meta.env.BASE_URL;
+// keyline: first and last active-space columns of the BH&HLYP (rows[0]) and HF (rows[1]) whole-SCF ratios
+const [bh, hf] = cost.scf.rows;
+const [first, last] = [1, cost.scf.head.length - 1];
+---
+<Base title="Cost — REKS Studio">
+<Nav variant="light" />
+<SubNav current="cost" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <h1>Cost and scale</h1>
+    <p class="ident">Measured time and memory of SA-REKS and SSR against single-determinant references on the same molecules, per active space and functional.</p>
+    <p class="keyline">Whole SCF, SA-REKS / RKS, median: {bh[first]} at {cost.scf.head[first]} to {bh[last]} at {cost.scf.head[last]} with BH&amp;HLYP; {hf[first]} to {hf[last]} with HF.</p>
+  </div>
+</header>
+
+<div class="wrap mbody">
+  <section class="mblock" id="mechanism">
+    <h2>Mechanism</h2>
+    <div class="flow">
+      {cost.flow.map(([h, p], i) => (
+        <>
+          {i > 0 && <div class="flow-arrow" aria-hidden="true">→</div>}
+          <div class="flow-node"><h3>{h}</h3><p>{p}</p></div>
+        </>
+      ))}
+    </div>
+  </section>
+
+  <section class="mblock" id="scf">
+    <h2>Ground state: whole SCF</h2>
+    <p class="keyline">Median ratio of the complete SCF wall time, SA-REKS over the single-determinant reference (RKS for BH&amp;HLYP, RHF for HF), with the median iteration counts behind it.</p>
+    <Table table={{ head: cost.scf.head, rows: cost.scf.rows }} />
+    <p>Guess of the timed runs: <span class="ph">not stated in v1</span>. Iteration medians are stated for BH&amp;HLYP only.</p>
+    <Figure fig={{ todo: 'whole-SCF and Fock-build ratios redrawn from the SI Fig. 6 data' }} />
+    <p class="prov"><strong>Provenance:</strong> paper v1, SI S59–S62, SI Fig. 6.</p>
+  </section>
+
+  <section class="mblock" id="fock">
+    <h2>One Fock build</h2>
+    <p class="keyline">Median ratio per Fock build over the six largest molecules.</p>
+    <Table table={{ head: cost.fock.head, rows: cost.fock.rows }} />
+    <p>Fitted exponents of the Fock build: <span class="ph">to be added, with v1's sentence that the drop reflects the cache, not an improvement in scaling</span>.</p>
+  </section>
+
+  <section class="mblock" id="excited">
+    <h2>Excited states</h2>
+    <p class="keyline">Complete SSR calculation over the complete 20-state TDA calculation, median ratio; (8,8)/BH&amp;HLYP lies above parity on 14 of 16 molecules.</p>
+    <Table table={{ head: cost.excited.head, rows: cost.excited.rows }} />
+    <p>Secondary, SI step alone vs TDA (v1: not the same kind of object): <span class="ph">to be added</span>.</p>
+    <Figure fig={{ src: 'figures/main/cost_excited.webp', w: 1046, h: 1300, alt: 'SSR against 20-state TDA: step and complete-calculation time ratios and peak memory against the number of basis functions', caption: 'SSR against the 20-state TDA reference (CIS for HF, TDDFT-TDA for BH&HLYP), and peak memory, against the number of basis functions.' }} source="paper v1, SI Fig. 7." />
+  </section>
+
+  <section class="mblock" id="memory">
+    <h2>Memory</h2>
+    <p>Peak SCF memory, SA-REKS over the reference: median 1.01 × over the six largest molecules (0.93–1.02).</p>
+  </section>
+
+  <section class="mblock" id="hardware">
+    <h2>Hardware and test set</h2>
+    <dl class="fields">
+      <dt>Hardware</dt><dd>Intel Xeon E5-2697 v3, one exclusive node, 28 threads</dd>
+      <dt>Test set</dt><dd>16 molecules, 322–1868 basis functions (nine aug-cc-pVTZ, seven cc-pVTZ)</dd>
+    </dl>
+  </section>
+
+  <section class="mblock" id="count">
+    <h2>Configuration count</h2>
+    <p class="keyline">Singlet configurations generated for P electron pairs, (2P,2P): n<sub>SI</sub> = 3<sup>P</sup> P! − (P! − C<sub>P</sub>), C<sub>P</sub> the Catalan number.</p>
+    <h3>Configurations generated per active space and spin</h3>
+    <CountChart />
+    <h3 id="equations">Equations, determinants and SCF configurations</h3>
+    <Table table={landing.equations} numeric />
+    <p>Enumeration check of the formula to (8,8): <span class="ph">to be added</span>.</p>
+  </section>
+
+  <section class="mblock" id="catalogue">
+    <h2>Catalogue</h2>
+    <Table table={{ head: ['Active space', 'Catalogue size', 'Emission time, memory'], rows: cost.catalogue }} />
+    <p>Symbolic contraction of the full (12,12) ensemble: 40.47 h, 83 GB.</p>
+    <p class="prov"><strong>Provenance:</strong> paper v1, SI Tables 3 and 6.</p>
+  </section>
+
+  <section class="mblock" id="largest-run">
+    <h2>Largest run</h2>
+    <p>The (10,10) run on TTR: <a href={resultHref(base, 'ttr', 'run')}>Results, TTR, run size</a>.</p>
+  </section>
+
+  <section class="mblock" id="dynamics-step">
+    <h2>One dynamics step</h2>
+    <p class="keyline">C<sub>2</sub>H<sub>4</sub> twisted 90°, SSR(2,2)/6-31G(d), 4 threads; wall time per step in seconds.</p>
+    <Table table={{ head: ['Step', 'Time / s'], rows: cost.step }} />
+    <p class="prov"><strong>Provenance:</strong> site run, Psi4 43c226c04; <span class="ph">to be added: rerun at a recorded version</span>.</p>
+  </section>
+</div>
+</main>
+
+<Footer />
+</Base>
