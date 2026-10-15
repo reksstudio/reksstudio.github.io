@@ -1,18 +1,43 @@
 ---
 import { cellHtml, html } from '../../lib/overview.mjs';
 
+type Cell = string | { t: string; manual?: string; href?: string };
+
 interface Props {
-  table: { title?: string; head: string[]; rows: (string | { t: string; manual?: string; href?: string })[][] };
+  table: { title?: string; head: string[]; rows: Cell[][] };
   numeric?: boolean;
+  grouped?: boolean;
 }
 
 const base = import.meta.env.BASE_URL;
-const { table, numeric } = Astro.props;
+const { table, numeric, grouped } = Astro.props;
+const key = (c: Cell) => (typeof c === 'string' ? c : c.t);
+// grouped: consecutive rows with the same first cell form one tbody, the first cell spans the group
+const groups = grouped
+  ? table.rows.reduce((acc: Cell[][][], row) => {
+      const g = acc[acc.length - 1];
+      if (g && key(g[0][0]) === key(row[0])) g.push(row);
+      else acc.push([row]);
+      return acc;
+    }, [])
+  : [];
+const cls = [numeric && 'num', grouped && 'grp'].filter(Boolean).join(' ') || undefined;
 ---
 {table.title && <p class="tbl-title" set:html={html(table.title)} />}
 <div class="tbl">
-  <table class={numeric ? 'num' : undefined}>
+  <table class={cls}>
     <thead><tr>{table.head.map((h) => <th set:html={html(h)} />)}</tr></thead>
-    <tbody>{table.rows.map((row) => <tr>{row.map((c) => <td set:html={cellHtml(c, base)} />)}</tr>)}</tbody>
+    {grouped
+      ? groups.map((g) => (
+          <tbody>
+            {g.map((row, i) => (
+              <tr>
+                {i === 0 && <th scope="rowgroup" rowspan={g.length} set:html={cellHtml(row[0], base)} />}
+                {row.slice(1).map((c) => <td set:html={cellHtml(c, base)} />)}
+              </tr>
+            ))}
+          </tbody>
+        ))
+      : <tbody>{table.rows.map((row) => <tr>{row.map((c) => <td set:html={cellHtml(c, base)} />)}</tr>)}</tbody>}
   </table>
 </div>

@@ -219,12 +219,15 @@ header.hero{ padding: 28px 0 24px; }
 .spin-legend li{ display: flex; align-items: center; gap: 6px; }
 .spin-legend .sw{ width: 12px; height: 12px; border-radius: 2px; background: var(--spin); }
 .tbl table.num{ min-width: 0; }
-.tbl table.num th:not(:first-child), .tbl table.num td:not(:first-child){ text-align: right; padding-left: 20px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tbl table.num th:not(:first-child), .tbl table.num td:not(:first-child), .tbl table.grp td{ text-align: right; padding-left: 20px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tbl table.grp tbody th{ font-weight: 400; white-space: nowrap; }
+.tbl table.grp tbody tr:not(:last-child) td{ border-bottom: none; padding-bottom: 2px; }
+.tbl table.grp tbody tr:not(:first-child) td{ padding-top: 2px; }
 @media (max-width: 600px){
   .tbl table.num{ font-size: 0.74rem; }
   .tbl table.num th{ white-space: normal; }
   .tbl table.num th, .tbl table.num td{ padding-right: 0; }
-  .tbl table.num th:not(:first-child), .tbl table.num td:not(:first-child){ padding-left: 8px; }
+  .tbl table.num th:not(:first-child), .tbl table.num td:not(:first-child), .tbl table.grp td{ padding-left: 8px; }
 }
 .step-chart .step{ fill: none; stroke: var(--blue); stroke-width: 2; }
 .step-chart .pt{ fill: var(--blue); }
