@@ -131,6 +131,6 @@ Complete inputs, each running with this build. Run a `.dat` file with `psi4 file
 | File | Calculation | Result |
 | --- | --- | --- |
 | [`reks22_h2.dat`](../inputs/reks22_h2.dat) | SI-SA-REKS(2,2), H₂ (0.74 Å), BH&HLYP/cc-pVDZ, default pools | S0 = −1.159238310496 Eh |
-| [`reks44_h4_singlet_triplet.py`](../inputs/reks44_h4_singlet_triplet.py) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; SA `[PPS1, OSS1]` + `[T_PPS1]`, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.101144140471, T1 = −2.049371603420 Eh |
-| [`reks44_h4_heisenberg.dat`](../inputs/reks44_h4_heisenberg.dat) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; sectors 2S = 0, 2, 4; §spin-state-energetics | S0 = −2.072348701131, T1 = −2.045831290718, Q1 = −1.888567570704 Eh |
+| [`reks44_h4_singlet_triplet.py`](../inputs/reks44_h4_singlet_triplet.py) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; SA default pool + all-α determinant, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.100482886123, T1 = −2.049090638114 Eh |
+| [`reks44_h4_heisenberg.dat`](../inputs/reks44_h4_heisenberg.dat) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; SA default pool + all-α determinant, full SI cassettes on 2S = 0, 2, 4; §spin-state-energetics | S0 = −2.100474673257, T1 = −2.049091247233, Q1 = −1.889644027865 Eh |
 | [`reks22_h2_triplet_gradient.dat`](../inputs/reks22_h2_triplet_gradient.dat) | SI-SA-REKS(2,2), H₂ (1.6 Å), BH&HLYP/6-31G(d); analytic gradient and relaxed properties of T1 (§si_reks_grad) | T1 = −0.959546621300 Eh; dE/dz(H1) = 0.041765470832 Eh/bohr |
