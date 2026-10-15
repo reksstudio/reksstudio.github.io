@@ -433,24 +433,37 @@ Alias: `REKS_SI_2SPIN`
 
 ### Input patterns {#input-patterns}
 
+Linear H₄ (R = 1.6 Å), BH\&HLYP/6-31G. In all three the SA ensemble is the default 2S = 0 pool of REKS(4,4), `PPS1`, `OSS1`, `OSS2`, plus the all-α determinant from `sa_reks_extra`, weights 1/4 each; one SCF, E<sub>SA</sub> = −1.8826103083 E<sub>h</sub> in every case.
+
+**Triplet states only**
+
 ```python
-# triplet states: SA = default 2S=0 pool, SI cassette on 2S=2
 "reks": [4, 4],
+"sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],   # all-alpha determinant in SA
 "si_reks_2spin": [2],
-"sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],          # all-alpha determinant in SA
-
-# singlet + triplet, joint SA, one SI cassette per manifold
-"reks": [4, 4],
-"sa_reks_configs": [["PPS1", "OSS1"], ["T_PPS1"]],   # ladder: 2S = 0, 2
-"si_reks_configs": [[["full"]], [["full"]]],
-"si_reks_2spin": [0, 2],
-
-# singlet, triplet, quintet
-"sa_reks_2spin":   [0, 2, 4],
-"sa_reks_configs": [[0, 1, 2], [0, 1], [0]],
-"si_reks_configs": [[[0, 1, 2]], [[0, 1]], [[0]]],
-"si_reks_2spin":   [0, 2, 4],
 ```
+
+`SI_REKS_CONFIGS` is absent, so the single SI cassette is the whole 2S = 2 block: 11 configurations (`T_PPS1`–`4`, `T_DES1`–`4`, `T_OSS_SPS_0`–`2`), 11 triplet roots, printed as cassette 0. No singlet SI states are computed.
+
+**Singlet and triplet states**
+
+```python
+"reks": [4, 4],
+"sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],
+"si_reks_configs": [[["full"]], [["full"]]],   # 2S = 0, 2S = 2
+```
+
+Two SI groups without `SI_REKS_2SPIN` take the ladder: group 0 → 2S = 0, group 1 → 2S = 2. Cassette 0: 18 singlet configurations, 16 roots (2 overlap null modes); cassette 1: the 11 triplet configurations, the same 11 roots as above. Adding `"si_reks_2spin": [0, 2]` gives the identical run; `SI_REKS_2SPIN` is needed only to skip a manifold or to change the cassette order ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)).
+
+**Singlet, triplet and quintet states**
+
+```python
+"reks": [4, 4],
+"sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],
+"si_reks_configs": [[["full"]], [["full"]], [["full"]]],   # 2S = 0, 2, 4
+```
+
+The third group of the ladder is 2S = 4: one configuration, `TT_SPS_0`, one quintet root. The singlet and triplet cassettes are those of the previous pattern, with the same roots.
 
 ### State labels {#state-labels}
 

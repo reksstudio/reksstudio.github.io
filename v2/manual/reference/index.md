@@ -32,7 +32,7 @@ Chapters 18–19 of the REKS Studio user manual
 
 | Option | Default | Meaning | Used in |
 | - | - | - | - |
-| [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md) array · alias `REKS_SA_CONFIGS` | catalog `sa_default` pool on 2S = 0 | SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens. | §1 Minimal input · Explicit SA pool and SI cassettes §3 Higher spin states §4 Lone pair: REKS(2,3) §9 `SA_REKS_2SPIN` · Input patterns |
+| [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md) array · alias `REKS_SA_CONFIGS` | catalog `sa_default` pool on 2S = 0 | SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens. | §1 Minimal input · Explicit SA pool and SI cassettes §3 Higher spin states §4 Lone pair: REKS(2,3) §9 `SA_REKS_2SPIN` |
 | [`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md) array · alias `REKS_SA_WEIGHTS` | uniform `1/n` | Weights of the SA pool entries, configurations first, then the `sa_reks_extra` determinants; non-negative, summing to 1. | §1 Minimal input · Explicit SA pool and SI cassettes §2 SA-REKS ensemble and weights §8 `SA_REKS_CONFIGS` · `SA_REKS_EXTRA` §16 SCF |
 | [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md) array of arrays · alias `REKS_SA_EXTRA` | none | Extra Slater determinants of the SA ensemble, as occupation vectors; each has its own weight, carries no FON and enters no SI cassette. | §2 SA-REKS ensemble and weights · Spin manifold and run sector §3 Higher spin states §4 States: SI-SA-REKS(2,3) §5 Geometry optimization · Surface hopping §8 `SA_REKS_CONFIGS` · `SA_REKS_WEIGHTS` §9 Input patterns |
 
@@ -51,7 +51,7 @@ Chapters 18–19 of the REKS Studio user manual
 
 | Option | Default | Meaning | Used in |
 | - | - | - | - |
-| [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) array · alias `REKS_SA_2SPIN` | ladder, lowest manifold | Spin manifold 2S of each SA block, one integer per block. | §3 Higher spin states §6 `REKS` §8 `SA_REKS_CONFIGS` · `SA_REKS_WEIGHTS` §9 Input patterns |
+| [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) array · alias `REKS_SA_2SPIN` | ladder, lowest manifold | Spin manifold 2S of each SA block, one integer per block. | §3 Higher spin states §6 `REKS` §8 `SA_REKS_CONFIGS` · `SA_REKS_WEIGHTS` §9 |
 | [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) array · alias `REKS_SI_2SPIN` | ladder, lowest manifold | 2S of each SI group; more than one entry requires the 3-level `si_reks_configs` form. | §1 §3 Higher spin states §4 States: SI-SA-REKS(2,3) §5 Geometry optimization · Surface hopping §6 `REKS` §8 `SI_REKS_CONFIGS` · `SI_REKS_STORE_STATES` §9 `SA_REKS_2SPIN` · Input patterns · Cassette order §10 `SI_REKS_PROPERTY_FOR` · `SI_REKS_GRAD` · `SI_REKS_NAC` §16 SI states |
 
 ### State properties {#state-properties}
