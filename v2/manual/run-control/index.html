@@ -154,12 +154,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span></span></span>
 <span class="line"><span>                         Total Energy        Delta E     RMS |[F,D]|</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span> @DF-REKS iter SAD:    -1.87313880489000   -1.87314e+00   0.00000e+00</span></span>
+<span class="line"><span> @DF-REKS iter SAD:    -1.87313880489001   -1.87314e+00   0.00000e+00</span></span>
 <span class="line"><span> @DF-REKS iter   1:    -1.67191477831402    2.01224e-01   4.25060e-03 SHIFT</span></span>
 <span class="line"><span> @DF-REKS iter   2:    -1.85615375141313   -1.84239e-01   6.35543e-03 SHIFT</span></span>
 <span class="line"><span> @DF-REKS iter   3:    -1.85801940076408   -1.86565e-03   6.51017e-03 ORB-GVB-DIIS</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span> @DF-REKS iter  11:    -1.85941446727766    0.00000e+00   8.71126e-11 ORB-GVB-DIIS</span></span>
+<span class="line"><span> @DF-REKS iter  11:    -1.85941446727766    2.22045e-16   8.71143e-11 ORB-GVB-DIIS</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>Energy and wave function converged.</span></span></code></pre>
 <h4 id="reks_use_trah"><a href="/v2/manual/reference/#row-reks_use_trah"><code>REKS_USE_TRAH</code></a></h4>
@@ -259,8 +259,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>  Rotated solution kept (lower E_SA).</span></span></code></pre>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; REKS Geminal Delocalization &lt;==</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>  E_SA before rotation       -77.884884825217</span></span>
-<span class="line"><span>  E_SA after rotation        -77.884884825217</span></span>
+<span class="line"><span>  E_SA before rotation       -77.884884825216</span></span>
+<span class="line"><span>  E_SA after rotation        -77.884884825216</span></span>
 <span class="line"><span>  Rotated solution rejected; SCF restarts from the orbitals before the rotation.</span></span></code></pre>
 <ul>
 <li>After the SCF converges, every orbital pair (a, b) of every generation-0 geminal is tested: IPR<sub>ab</sub>, the Löwdin inverse participation ratio of the pair, runs over [IPR<sub>ab</sub>(0) + α − r, IPR<sub>ab</sub>(0) + α + r] under the rotation θ, and x is the position of the current orbitals in that range (0 = minimum, 1 = maximum). A pair with x &gt; 1/2 is rotated by θ<sup>*</sup> to the minimum; a pair with r ≤ 64 ε IPR<sub>ab</sub>(0) (ε the machine epsilon) is left alone. Sweeps over all pairs repeat until one rotates nothing; the FONs are not changed.</li>

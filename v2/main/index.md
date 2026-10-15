@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/>
 
-Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -165,4 +165,4 @@ Counts: (2,2)–(8,8) equal generator runs; larger spaces from exact counting ru
 
 Gradients, couplings, MECI and dynamics in one code.
 
-Preprint: [ChemRxiv v1, 8 Sep 2026, preprint, doi:10.26434/chemrxiv.15008475/v1](https://doi.org/10.26434/chemrxiv.15008475/v1) · [Komarov, Filatov, Min](https://reksstudio.github.io/v2/team/index.md); UNIST; IBS Center for Multidimensional Carbon Materials · [Licence](https://reksstudio.github.io/v2/docs/index.md#licence) · Psi4 [`f31cf1f94`](https://reksstudio.github.io/v2/docs/index.md#changes), 2026-10-15
+Preprint: [ChemRxiv v1, 8 Sep 2026, preprint, doi:10.26434/chemrxiv.15008475/v1](https://doi.org/10.26434/chemrxiv.15008475/v1) · [Komarov, Filatov, Min](https://reksstudio.github.io/v2/team/index.md); UNIST; IBS Center for Multidimensional Carbon Materials · [Licence](https://reksstudio.github.io/v2/docs/index.md#licence) · Psi4 [`bd0fb43ef`](https://reksstudio.github.io/v2/docs/index.md#changes), 2026-10-15
