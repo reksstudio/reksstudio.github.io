@@ -90,7 +90,7 @@ S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OS
 
 @@fragment start-adiabatic-3@@
 
-`ref` is S0 of cassette 0, the reference of the eV column. `PPS1` and `PPS2` overlap with 1.00 at this geometry (cassettes 0 and 3); S3 of cassette 0, the other `PPS1`/`PPS2` combination, lies at +3.64 E<sub>h</sub>.
+The first cassette of a spin is its main list: only its roots carry plain labels (`S0`, `S1`, …), `State summary` lists them, and `Alternative configuration lists` matches the states of the later cassettes (`S0[1]`, …) to them. `ref` and the eV column refer to the lowest state of the first cassette of the run (§cassette-order). `PPS1` and `PPS2` overlap with 1.00 at this geometry (cassettes 0 and 3); S3 of cassette 0, the other `PPS1`/`PPS2` combination, lies at +3.64 E<sub>h</sub>.
 
 Without `si_reks_grad` and `si_reks_nac`, as in both inputs above, `energy()` returns E<sub>SA</sub> (`CURRENT ENERGY` = `SCF TOTAL ENERGY`), not an SSR state energy: −1.643432513968 E<sub>h</sub> for this H₄ run, against S0 = −2.125272976235 to −2.157804217606 E<sub>h</sub> of the four cassettes. With a followed state: §si_reks_grad. Energies in the output and their variables:
 
