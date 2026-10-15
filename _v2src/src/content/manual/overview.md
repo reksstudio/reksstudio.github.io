@@ -80,7 +80,7 @@ Linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`), HF: one SCF, E<sub>SA</sub> =
 | 2: `mixed-scheme` | 9 (9) | −2.143592670888 | −1.575184105930 | −1.475834553802 |
 | 3: `full` | 18 (16) | −2.157804217606 | −1.578546559161 | −1.556892128760 |
 
-S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette: −1.575184 E<sub>h</sub> in cassettes 0 and 2, −1.578547 E<sub>h</sub> in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3. The first four states of each cassette in `Adiabatic states`:
+S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette: −1.575184 E<sub>h</sub> in cassettes 0 and 2, −1.578547 E<sub>h</sub> in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3 (with `DES3` 7.7 % in cassette 3). The first four states of each cassette in `Adiabatic states`:
 
 @@fragment start-adiabatic@@
 
