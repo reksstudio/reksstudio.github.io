@@ -4,7 +4,7 @@ HTML: <https://reksstudio.github.io/v2/manual/setup/#si_reks_solver>
 
 Chapter: [8. SA Pool and SI Cassettes](https://reksstudio.github.io/v2/manual/setup/index.md#selecting)
 
-Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -26,7 +26,7 @@ Default: `AUTO`
 
     Iter      Mean |R|       Max |R|   Remain   Applications   Time [s]
     -------------------------------------------------------------------
-       1     8.942e-16     1.251e-15        0            116       0.00
+       1     8.987e-16     1.513e-15        0            116       0.01
     -------------------------------------------------------------------
     14 roots converged in 1 iterations, 144 operator applications.
 [...]

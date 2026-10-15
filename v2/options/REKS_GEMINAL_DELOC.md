@@ -4,7 +4,7 @@ HTML: <https://reksstudio.github.io/v2/manual/run-control/#reks_geminal_deloc>
 
 Chapter: [14. Geminal Delocalization](https://reksstudio.github.io/v2/manual/run-control/index.md#geminal-deloc)
 
-Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -40,8 +40,8 @@ Default: `false`
 ```log
 ==> REKS Geminal Delocalization <==
 
-  E_SA before rotation       -77.884884825217
-  E_SA after rotation        -77.884884825217
+  E_SA before rotation       -77.884884825216
+  E_SA after rotation        -77.884884825216
   Rotated solution rejected; SCF restarts from the orbitals before the rotation.
 ```
 

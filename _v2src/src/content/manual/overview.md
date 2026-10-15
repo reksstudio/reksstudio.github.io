@@ -80,7 +80,7 @@ Linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`), HF: one SCF, E<sub>SA</sub> =
 | 2: `mixed-scheme` | 9 (9) | −2.143592670888 | −1.575184105930 | −1.475834553802 |
 | 3: `full` | 18 (16) | −2.157804217606 | −1.578546559161 | −1.556892128760 |
 
-S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette: −1.575184 E<sub>h</sub> in cassettes 0 and 2, −1.578547 E<sub>h</sub> in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3 (with `DES3` 7.7 % in cassette 3). The first four states of each cassette in `Adiabatic states`:
+S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette; it is lower in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3 (with `DES3` 7.7 % in cassette 3). The first four states of each cassette in `Adiabatic states`:
 
 @@fragment start-adiabatic@@
 
@@ -131,6 +131,6 @@ Complete inputs, each running with this build. Run a `.dat` file with `psi4 file
 | File | Calculation | Result |
 | --- | --- | --- |
 | [`reks22_h2.dat`](../inputs/reks22_h2.dat) | SI-SA-REKS(2,2), H₂ (0.74 Å), BH&HLYP/cc-pVDZ, default pools | S0 = −1.159238310496 Eh |
-| [`reks44_h4_singlet_triplet.py`](../inputs/reks44_h4_singlet_triplet.py) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; SA default pool + all-α determinant, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.100482886123, T1 = −2.049090638114 Eh |
-| [`reks44_h4_heisenberg.dat`](../inputs/reks44_h4_heisenberg.dat) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G; SA default pool + all-α determinant, full SI cassettes on 2S = 0, 2, 4; §spin-state-energetics | S0 = −2.100474673257, T1 = −2.049091247233, Q1 = −1.889644027865 Eh |
+| [`reks44_h4_singlet_triplet.py`](../inputs/reks44_h4_singlet_triplet.py) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G, DF; default SA pool, all-α determinant for SCF stability; full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.100482886123, T1 = −2.049090638114 Eh |
+| [`reks44_h4_heisenberg.dat`](../inputs/reks44_h4_heisenberg.dat) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH&HLYP/6-31G, PK; default SA pool, all-α determinant for SCF stability; full SI cassettes on 2S = 0, 2, 4; §spin-state-energetics | S0 = −2.100474673257, T1 = −2.049091247233, Q1 = −1.889644027865 Eh |
 | [`reks22_h2_triplet_gradient.dat`](../inputs/reks22_h2_triplet_gradient.dat) | SI-SA-REKS(2,2), H₂ (1.6 Å), BH&HLYP/6-31G(d); analytic gradient and relaxed properties of T1 (§si_reks_grad) | T1 = −0.959546621300 Eh; dE/dz(H1) = 0.041765470832 Eh/bohr |

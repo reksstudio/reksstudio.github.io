@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/>
 
-Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -12,7 +12,7 @@ User Manual
 
 A guide to the REKS(N,M) / SA-REKS / SI-REKS implementation in Psi4
 
-[Psi4 revision `f31cf1f94`, 2026-10-15](https://reksstudio.github.io/v2/docs/index.md#version)
+[Psi4 revision `bd0fb43ef`, 2026-10-15](https://reksstudio.github.io/v2/docs/index.md#version)
 
 Spin-Restricted Ensemble-referenced Kohn-Sham DFT\
 State-Averaged (SA-REKS) and State-Interaction (SI-SA-REKS = SSR)\
@@ -97,7 +97,7 @@ Linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`), HF: one SCF, E<sub>SA</sub> =
 | 2: `mixed-scheme` | 9 (9) | −2.143592670888 | −1.575184105930 | −1.475834553802 |
 | 3: `full` | 18 (16) | −2.157804217606 | −1.578546559161 | −1.556892128760 |
 
-S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette: −1.575184 E<sub>h</sub> in cassettes 0 and 2, −1.578547 E<sub>h</sub> in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3 (with `DES3` 7.7 % in cassette 3). The first four states of each cassette in `Adiabatic states`:
+S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette; it is lower in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3 (with `DES3` 7.7 % in cassette 3). The first four states of each cassette in `Adiabatic states`:
 
 ```log
 => Adiabatic states, cassette 0 <=
@@ -194,8 +194,8 @@ Complete inputs, each running with this build. Run a `.dat` file with `psi4 file
 | File | Calculation | Result |
 | - | - | - |
 | [`reks22_h2.dat`](https://reksstudio.github.io/v2/inputs/reks22_h2.dat.txt) | SI-SA-REKS(2,2), H₂ (0.74 Å), BH\&HLYP/cc-pVDZ, default pools | S0 = −1.159238310496 Eh |
-| [`reks44_h4_singlet_triplet.py`](https://reksstudio.github.io/v2/inputs/reks44_h4_singlet_triplet.py.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA default pool + all-α determinant, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.100482886123, T1 = −2.049090638114 Eh |
-| [`reks44_h4_heisenberg.dat`](https://reksstudio.github.io/v2/inputs/reks44_h4_heisenberg.dat.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA default pool + all-α determinant, full SI cassettes on 2S = 0, 2, 4; [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics) | S0 = −2.100474673257, T1 = −2.049091247233, Q1 = −1.889644027865 Eh |
+| [`reks44_h4_singlet_triplet.py`](https://reksstudio.github.io/v2/inputs/reks44_h4_singlet_triplet.py.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G, DF; default SA pool, all-α determinant for SCF stability; full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.100482886123, T1 = −2.049090638114 Eh |
+| [`reks44_h4_heisenberg.dat`](https://reksstudio.github.io/v2/inputs/reks44_h4_heisenberg.dat.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G, PK; default SA pool, all-α determinant for SCF stability; full SI cassettes on 2S = 0, 2, 4; [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics) | S0 = −2.100474673257, T1 = −2.049091247233, Q1 = −1.889644027865 Eh |
 | [`reks22_h2_triplet_gradient.dat`](https://reksstudio.github.io/v2/inputs/reks22_h2_triplet_gradient.dat.txt) | SI-SA-REKS(2,2), H₂ (1.6 Å), BH\&HLYP/6-31G(d); analytic gradient and relaxed properties of T1 ([`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md)) | T1 = −0.959546621300 Eh; dE/dz(H1) = 0.041765470832 Eh/bohr |
 
 ## Contents {#contents}
