@@ -123,7 +123,7 @@ cmake --build objdir --target install -j$(nproc)
 6. 29 082 (10,10) [applied, TTR](https://reksstudio.github.io/v2/main/results/ttr/index.md)
 7. 524 292 (12,12) [generated](https://reksstudio.github.io/v2/main/history/index.md)
 
-**59 billion** equations at (12,12) (59 350 445 258)
+**59 billion** equations at (12,12) (59 351 892 458)
 
 [Full chart and table →](https://reksstudio.github.io/v2/main/cost/index.md#count)
 
