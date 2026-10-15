@@ -238,7 +238,7 @@ Default: one full-block cassette, lowest manifold
 Alias: `REKS_SI_CONFIGS`
 
 ```python
-"si_reks_configs": [[["PPS1", "OSS1"], ["PPS2", "OSS3"]]],
+"si_reks_configs": [[["PPS1", "PPS2", "OSS1", "OSS2"], ["single-scheme"], ["mixed-scheme"], ["full"]]],
 ```
 
 ```log
@@ -277,15 +277,28 @@ Alias: `REKS_SI_CONFIGS`
 => Alternative configuration lists <=
 
    State           E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  E-E(own lowest) [eV]  Closest in cassette 0  dE_exc - closest [eV]   Main configurations (w_j in %)
-   -------------------------------------------------------------------------------------------------------------------------------------------------------------
-   S0[1]  -2.123574938693        -0.039               -0.89                 0.000  -                                          -   PPS2(99.8)
-   S1[1]  -1.334331072881        21.438              494.37                21.476  -                                          -   OSS3(99.8) 1A(a)->3A(c)
-   -------------------------------------------------------------------------------------------------------------------------------------------------------------
+   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   S0[1]  -2.140622335856        -0.418               -9.63                 0.000  S0 (99 %)                              0.000   PPS1(98.9)
+   S1[1]  -1.578546559161        14.877              343.08                15.295  S1 (100 %)                             0.326   OSS2(99.5) 2A(b)->3A(c)
+   S2[1]  -1.311136456214        22.154              510.88                22.571  -                                          -   DES2(94.3) 2A(b),2A(b)->3A(c),3A(c)
+   S3[1]  -0.759700282426        37.159              856.91                37.577  S2 (99 %)                              0.269   OSS1(99.0) 1A(a)->4A(d)
+   S4[1]  -0.316996802406        49.206             1134.71                49.623  -                                          -   DOSS_SPS_0(68.2) 1A(a)->4A(d), 2A(b)->3A(c); DOSS_SPS_1(27.9) 1A(a)->3A(c), 2A(b)->4A(d)
+   S0[2]  -2.143592670888        -0.499              -11.50                 0.000  S0 (98 %)                              0.000   PPS1(98.5)
+   S1[2]  -1.575184105930        14.969              345.19                15.467  S1 (100 %)                             0.499   OSS2(99.7) 2A(b)->3A(c)
+   S2[2]  -1.475834553802        17.672              407.53                18.171  -                                          -   OSS3(53.3) 1A(a)->3A(c); DES2(39.0) 2A(b),2A(b)->3A(c),3A(c)
+   S3[2]  -1.222179421667        24.574              566.70                25.073  -                                          -   DES2(50.3) 2A(b),2A(b)->3A(c),3A(c); OSS3(43.3) 1A(a)->3A(c)
+   S4[2]  -0.949704282395        31.989              737.68                32.487  -                                          -   OSS4(89.2) 2A(b)->4A(d)
+   S0[3]  -2.157804217606        -0.885              -20.41                 0.000  S0 (97 %)                              0.000   PPS1(49.1); PPS2(48.3)
+   S1[3]  -1.578546559161        14.877              343.08                15.762  S1 (100 %)                             0.794   OSS2(99.5) 2A(b)->3A(c)
+   S2[3]  -1.556892128760        15.466              356.66                16.352  -                                          -   OSS3(46.2) 1A(a)->3A(c); DES2(35.6) 2A(b),2A(b)->3A(c),3A(c)
+   S3[3]  -1.243261461583        24.001              553.47                24.886  -                                          -   OSS3(45.4) 1A(a)->3A(c); DES2(44.7) 2A(b),2A(b)->3A(c),3A(c)
+   S4[3]  -0.994944258185        30.758              709.29                31.643  -                                          -   OSS4(77.0) 2A(b)->4A(d)
+   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    Closest = state of the first list of largest weight overlap sum_j min(w_j(A), w_j(B)) >= 50 %
    (configurations of |S| >= 0.95 merged); dE_exc = E-E(own lowest).
 ```
 
-* 3-level `[[[...], ...], [[...], ...], ...]`: one group of cassettes per outer entry, each group mapped to a spin manifold like the SA blocks (ladder position or `SI_REKS_2SPIN`). The call above is one group of two cassettes, each with its own states (third fragment). A cassette is a set of names, indices or bulk tokens ([§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)); a repeated selection is kept at its first position. First two fragments: `[[["full"]], [["full"]]]` with `SI_REKS_2SPIN` `[0, 2]`.
+* 3-level `[[[...], ...], [[...], ...], ...]`: one group of cassettes per outer entry, each group mapped to a spin manifold like the SA blocks (ladder position or `SI_REKS_2SPIN`). The call above is one group of four cassettes, each with its own states (third fragment; energies: [Explicit SA pool and SI cassettes](https://reksstudio.github.io/v2/manual/index.md#explicit-input)). A cassette is a set of names, indices or bulk tokens ([§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)); a repeated selection is kept at its first position. First two fragments: `[[["full"]], [["full"]]]` with `SI_REKS_2SPIN` `[0, 2]`.
 * 2-level `[[...], [...], ...]`: the cassettes of a single group on the run's lowest manifold (or the one `SI_REKS_2SPIN` names); legal only when `SI_REKS_2SPIN` is absent or has length 1. The 3-level form without `SI_REKS_2SPIN` maps group 0 to ladder position 0, the catalog's first spin sector; the two forms coincide when that is the run's lowest manifold, as in the call above.
 * Absent: one cassette spanning the whole configuration block of the run's lowest (or `SI_REKS_2SPIN`-chosen) manifold. `[[]]` runs no SI step and sets no `SSR` arrays.
 * A flat list of names (`["PPS1", "OSS1"]`) is an input error: `SI_REKS_CONFIGS: scalar elements are not a cassette form; use a list of cassettes [[...], ...] (2-level) or cassette groups [[[...]], ...] (3-level).`
