@@ -20,5 +20,22 @@
    "SI gradients and NAC are analytic with meta-GGA functionals (§state-gradient, §nac); Laplacian-dependent meta-GGAs are rejected with an input error.",
    "NTO holes, NDOs, state natural orbitals and EKT eigenvectors are in a canonical basis of each degenerate span (§nto, §natural-orbitals)."
   ]
+ },
+ {
+  "rev": "f31cf1f94801d9cafcf7da125696880d624cf0f5",
+  "date": "2026-10-15",
+  "reachable": false,
+  "added": [
+   "SI_REKS_DAVIDSON_R_CONVERGENCE",
+   "SI_REKS_FON_BOUND_MARGIN",
+   "SI_REKS_SOLVER"
+  ],
+  "removed": [],
+  "defaults": [],
+  "notes": [
+   "Each SI cassette is solved by LAPACK (every root) or by block Davidson (the lowest roots), §si_reks_solver; on a Davidson cassette a count -1 means the 50 lowest roots (§si-solver, §si-davidson).",
+   "§si_reks_grad, §si_reks_nac, §si_reks_property_for and §si_reks_store_states take one entry per SI cassette in the spin order of §si_reks_2spin (spin groups as listed there, cassettes of a group in their §si_reks_configs order); the printed K stays in ascending 2S (§cassette-order).",
+   "The SI-only FONs stay in [m, 2 − m], m set by the SI FON bound margin (§si-only-fons, §fon-micro)."
+  ]
  }
 ]

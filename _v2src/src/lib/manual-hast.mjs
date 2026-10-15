@@ -2,7 +2,7 @@ import { basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import GithubSlugger from 'github-slugger';
 import { tex } from './inline.mjs';
-import { PAGES, entryLink, entryMap } from './manual-pages.mjs';
+import { PAGES, SECTION_REF, entryLink, entryMap, optionKeyOf, optionRowHref, optionUses } from './manual-pages.mjs';
 
 function element(tagName, className, children) {
   return { type: 'element', tagName, properties: { className: [className] }, children };
@@ -16,7 +16,6 @@ export function textOf(node) {
 }
 
 const HEADINGS = new Set(['h2', 'h3', 'h4']);
-const SECTION_REF = /§(\d+|[a-z][a-z0-9_-]*[a-z0-9])/g;
 const NO_LINK = new Set(['a', 'code', 'pre', 'h1', 'h2', 'h3', 'h4']);
 const isElement = (node, tagName) => node.type === 'element' && node.tagName === tagName;
 const isBlank = (node) => node.type === 'text' && !node.value.trim();
@@ -40,8 +39,9 @@ function fieldList(node) {
   return pairs.length ? element('dl', 'fields', pairs) : node;
 }
 
-// text "§<id>" -> link(id, match); skipped inside a/code/pre/h1-h4
-function linkSectionRefs(node, link) {
+// text "§<id>" -> link(id, match); inline code -> codeLink(code); skipped inside a/code/pre/h1-h4
+function linkSectionRefs(node, link, codeLink) {
+  if (isElement(node, 'code')) return [codeLink(node)];
   if (node.type === 'text') {
     const out = [];
     let last = 0;
@@ -56,7 +56,7 @@ function linkSectionRefs(node, link) {
   }
   if (node.type !== 'element' && node.type !== 'root') return [node];
   if (node.type === 'element' && NO_LINK.has(node.tagName)) return [node];
-  return [{ ...node, children: node.children.flatMap((c) => linkSectionRefs(c, link)) }];
+  return [{ ...node, children: node.children.flatMap((c) => linkSectionRefs(c, link, codeLink)) }];
 }
 
 // Satteri hast plugin for one manual page (ctx.fileURL = src/content/manual/<file>.md, listed in PAGES):
@@ -66,14 +66,22 @@ function linkSectionRefs(node, link) {
 //   ul of "**Label:** x"   ->  dl.fields > [dt Label, dd x]
 //   "§<id>" in text        ->  entryLink(id): a[href] > "§N" if the entry is chapter N, else its title
 //                             (in code for an option); numeric "§N" and an unknown id throw
+//   inline code naming one option (optionUses)  ->  a[href = its option-table row] > code
+//   option entry heading   ->  h4 > a[href = its option-table row] > heading content
 //   root > [h2, ...content]  ->  root > section.docsec > [h2, div.prose > content]
 //   table                  ->  div.reftable-wrap > table
 export default function manualHast(ctx, base) {
   const file = basename(fileURLToPath(ctx.fileURL), '.md');
   const page = PAGES.find((p) => p.file === file);
   if (!page) throw new Error(`manual-hast: ${file}.md is not in the manual page list (manual-pages.mjs)`);
+  const a = (href, children) => ({ type: 'element', tagName: 'a', properties: { href }, children });
+  // inline code naming exactly one option -> a[href = its option-table row] > code
+  const codeLink = (code) => {
+    if (code.properties?.className?.includes('math-inline')) return code;
+    const keys = optionUses(textOf(code));
+    return keys.length === 1 ? a(optionRowHref(keys[0], page.slug, base), [code]) : code;
+  };
   const link = (target, text) => {
-    const a = (href, children) => ({ type: 'element', tagName: 'a', properties: { href }, children });
     if (/^\d+$/.test(target)) throw new Error(`manual-hast: ${file}.md: "${text}": use §<id> of the chapter`);
     if (!entryMap().has(target)) throw new Error(`manual-hast: ${file}.md: unresolved "${text}"`);
     const l = entryLink(target, page.slug, base);
@@ -104,11 +112,13 @@ export default function manualHast(ctx, base) {
         if (entry && entry.title !== text) {
           throw new Error(`manual-hast: ${file}.md: heading "#${id}" reads "${text}", its "§${id}" link text is "${entry.title}"`);
         }
-        return { ...node, properties: { ...node.properties, id } };
+        const key = entry && optionKeyOf(id);
+        const children = key ? [a(optionRowHref(key, page.slug, base), node.children)] : node.children;
+        return { ...node, properties: { ...node.properties, id }, children };
       });
       const children = [];
       let prose = null;
-      for (const node of nodes.flatMap((c) => linkSectionRefs(c, link))) {
+      for (const node of nodes.flatMap((c) => linkSectionRefs(c, link, codeLink))) {
         if (isElement(node, 'h2')) {
           prose = element('div', 'prose', []);
           children.push(element('section', 'docsec', [node, prose]));

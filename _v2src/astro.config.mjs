@@ -3,6 +3,7 @@ import { satteri } from '@astrojs/markdown-satteri';
 import codeTheme from './src/code-theme.json' with { type: 'json' };
 import aiLayer from './src/lib/ai-layer.mjs';
 import manualHast from './src/lib/manual-hast.mjs';
+import { optionCodeTransformer } from './src/lib/manual-pages.mjs';
 import { referenceMdast } from './src/lib/reference.mjs';
 
 const base = '/v2/';
@@ -20,7 +21,7 @@ export default defineConfig({
   compressHTML: true,
   integrations: [aiLayer()],
   markdown: {
-    shikiConfig: { theme: codeTheme, langAlias: { psithon: 'text', log: 'text' } },
+    shikiConfig: { theme: codeTheme, langAlias: { psithon: 'text', log: 'text' }, transformers: [optionCodeTransformer(base)] },
     processor: satteri({
       features: { smartPunctuation: false, math: true, headingAttributes: true },
       mdastPlugins: [() => referenceMdast()],

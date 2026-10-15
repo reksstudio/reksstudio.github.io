@@ -51,18 +51,19 @@
   "SI_REKS_2SPIN": {"option": true, "type": "array", "default": "ladder, lowest manifold", "alias": "REKS_SI_2SPIN", "call": "[0, 2]",
    "rules": [
     "One integer 2S per SI group (explicit mode, §spin-manifolds), pairwise distinct, in any order; more than one entry requires the 3-level `si_reks_configs` form.",
-    "`[x]` alone: the default SA ensemble on 2S = 0 and the default SI cassette on 2S = x (§input-patterns)."
+    "`[x]` alone: the default SA ensemble on 2S = 0 and the default SI cassette on 2S = x (§input-patterns).",
+    "Sets the order of the SI cassettes: the spin groups follow this list, the cassettes of a group the order of its `SI_REKS_CONFIGS` block. The per-cassette lists §si_reks_grad, §si_reks_nac, §si_reks_property_for and §si_reks_store_states take their entries in this order: with `[2, 0]` entry 0 is the triplet cassette. The printed index K and the `K=e`, `CASSETTE e` names run in ascending 2S (the triplet is K = 1). Without the option (ladder) both orders are ascending 2S (§cassette-order)."
    ],
    "brief": "2S of each SI group; more than one entry requires the 3-level `si_reks_configs` form."},
   "SI_REKS_PRINT_STATES": {"option": true, "type": "int", "default": "`5`", "call": "-1",
    "rules": [
-    "States per cassette listed in the per-state and pair tables; `0` = none, `-1` = all. The SI eigenproblem is always solved in full.",
+    "States per cassette listed in the per-state and pair tables; `0` = none, `-1` = all, on a Davidson cassette the 50 lowest (§si-solver).",
     "Properties are computed for max(print, store) states (§si_reks_store_states). Counts are clamped to the number of physical states."
    ],
    "brief": "States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all."},
   "SI_REKS_STORE_STATES": {"option": true, "type": "array of int", "default": "all; the first 10 if `M ≥ 6` and > 10 configurations", "alias": "REKS_SI_STORE_STATES", "call": "[-1, 0]",
    "rules": [
-    "One integer per cassette, in cassette order K = 0, 1, … (ascending 2S): states whose properties are stored on the wavefunction (array variables, Molden and cube files); `0` = none, `-1` = all.",
+    "One integer per cassette, entry t = the t-th cassette in the spin order of §si_reks_2spin (§cassette-order): states whose properties are stored on the wavefunction (array variables, Molden and cube files); `0` = none, `-1` = all, on a Davidson cassette the 50 lowest (§si-solver).",
     "Roots requested in `SI_REKS_GRAD`, `SI_REKS_NAC`, `SI_REKS_PROPERTY_FOR` keep their eigenvectors regardless."
    ],
    "brief": "States per cassette whose properties are stored on the wavefunction (arrays, Molden and cube files); 0 = none, -1 = all."},
@@ -84,6 +85,18 @@
     "Ghost roots (configurations with s just above the cutoff): §ssr-states."
    ],
    "brief": "Overlap eigenvalues `s ≤ cutoff · s_{max}` of the SI basis are treated as null space and dropped."},
+  "SI_REKS_SOLVER": {"option": true, "type": "`AUTO`|`DIRECT`|`DAVIDSON`", "default": "`AUTO`", "call": "\"DAVIDSON\"", "fragments": ["si-davidson"],
+   "rules": [
+    "`DIRECT`: every root, LAPACK on the dense Hamiltonian of the cassette. `DAVIDSON`: the lowest roots, block Davidson on the sparse Hamiltonian; how many: §si-solver. `AUTO`: per cassette, `DIRECT` up to 4000 configurations, `DAVIDSON` above; the catalogs shipped with Psi4 stay below.",
+    "On a Davidson cassette `SSR ENERGIES K=e` holds the computed roots, and a count `-1` in `SI_REKS_PRINT_STATES`, `SI_REKS_STORE_STATES`, `SI_REKS_GRAD` or `SI_REKS_PROPERTY_FOR` stands for the 50 lowest roots."
+   ],
+   "brief": "Eigensolver of each SI cassette: LAPACK on every root, or Davidson on the lowest roots."},
+  "SI_REKS_DAVIDSON_R_CONVERGENCE": {"option": true, "type": "double", "default": "`1e-12`", "call": "1e-10",
+   "rules": [
+    "Residual norm ‖(A − θ) x‖_{2} (E_{h}) every Davidson root converges to, A the SI Hamiltonian in the orthonormalized configuration basis (§si-solver). A root whose residual stalls at the rounding level of its product is accepted there, and that level is printed.",
+    "A value ≤ 0 stops the run: `SI_REKS_DAVIDSON_R_CONVERGENCE is …; it must be positive (residual norm in Eh, default 1e-12).`"
+   ],
+   "brief": "Residual norm in E_h each Davidson root of the SI problem converges to."},
   "REKS_GEMINAL_WIDTHS": {"option": true, "type": "array", "default": "`[]` (all 2)", "callText": "\"reks\": [4, 5],\n\"reks_geminal_widths\": [2, 3],",
    "rules": [
     "Orbital count of each two-electron geminal: N/2 integers, each in [2, 8], summing to M. Empty (default): every geminal spans 2 orbitals.",
@@ -93,7 +106,7 @@
    "brief": "Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`."},
   "SI_REKS_GRAD": {"option": true, "type": "array of arrays", "default": "`[]` (SA ensemble)", "call": "[[1, 2]]", "fragments": ["gradient-request"],
    "rules": [
-    "Roots whose gradients are computed, one inner list per cassette (inner list e = cassette e); roots as in §ssr-states. Inner list `[-1]` = all roots of that cassette (`[[-1]]`); a flat `[-1]` is an input error. More inner lists than SI cassettes stop the run before the SCF: `REKS input error: SI_REKS_GRAD: 2 order list(s) for 1 SI cassette(s).`",
+    "Roots whose gradients are computed, one inner list per cassette; inner list t = the t-th cassette in the spin order of §si_reks_2spin (§cassette-order; with `si_reks_2spin` `[2, 0]` list 0 is the triplet cassette); roots as in §ssr-states. Inner list `[-1]` = all roots of that cassette (`[[-1]]`), on a Davidson cassette the 50 lowest; a flat `[-1]` is an input error. More inner lists than SI cassettes stop the run before the SCF: `REKS input error: SI_REKS_GRAD: 2 order list(s) for 1 SI cassette(s).`",
     "The followed root, marked `*` in `Gradient request`, is the first entry of the first non-empty inner list (`-1` → root 0). Without `SI_REKS_GRAD` it is the lowest root index in the pairs of the first non-empty `SI_REKS_NAC` list.",
     "With a followed root, `CURRENT ENERGY` is its energy, also stored as `REKS TARGET STATE ENERGY`, in `energy()` and `gradient()`; `gradient()` returns its gradient (§state-gradient). Without a followed root: §explicit-input.",
     "`CURRENT DIPOLE` is the relaxed dipole of the followed root when `SI_REKS_PROPERTY_FOR` lists that root, and is unset otherwise.",
@@ -102,15 +115,15 @@
    "brief": "Roots whose analytic gradients are computed, per cassette; the first listed root is followed (`CURRENT ENERGY`, returned gradient)."},
   "SI_REKS_NAC": {"option": true, "type": "array", "default": "`[]`", "call": "[[[1, 2]]]",
    "rules": [
-    "Pairs `[I, J]` per SI cassette, `[[[I, J], ...], ...]`, or `ALL`; the call above couples S1 and S2 of cassette 0. Computed in `gradient()`; the roots of each pair join the gradient targets.",
-    "Publishes `SSR NAC I J CASSETTE e` (1/bohr, §nac) and the conical-intersection topography `SSR CI TOPOGRAPHY I J CASSETTE e` (§ci-topography).",
+    "Pairs `[I, J]` per SI cassette, in the spin order of §si_reks_2spin (§cassette-order), `[[[I, J], ...], ...]`, or `ALL`; the call above couples S1 and S2 of cassette 0. Computed in `gradient()`; the roots of each pair join the gradient targets.",
+    "Publishes `SSR NAC I J CASSETTE e` (1/bohr, §nac) and the conical-intersection topography `SSR CI TOPOGRAPHY I J CASSETTE e` (§ci-topography); e is the printed cassette index K (ascending 2S).",
     "Without `SI_REKS_GRAD` the followed root: §si_reks_grad."
    ],
    "brief": "Root pairs `[I, J]` per cassette whose nonadiabatic couplings and conical-intersection topography are computed."},
   "SI_REKS_PROPERTY_FOR": {"option": true, "type": "array of arrays", "default": "`[]`", "call": "[[\"S1,S2\"], []]",
    "rules": [
     "States evaluated with the relaxed density: dipole, quadrupole, Mulliken/Löwdin charges, Mayer/Wiberg indices (§relaxed-properties, §relaxed-bond-indices).",
-    "Entries: indices or labels, ranges, lists (`\"S0..5\"`, `\"T1\"`), inside the per-cassette inner lists (`[[\"S0..1\"]]`); a flat list is rejected."
+    "Entries: indices or labels, ranges, lists (`\"S0..5\"`, `\"T1\"`), inside the per-cassette inner lists (`[[\"S0..1\"]]`), in the spin order of §si_reks_2spin (§cassette-order); a flat list is rejected."
    ],
    "brief": "States, per cassette, whose dipole, quadrupole, charges and bond indices are evaluated with the relaxed (CP-REKS) density."},
   "REKS_EKT": {"option": true, "type": "bool", "default": "`false`", "call": "True",
@@ -129,7 +142,10 @@
   "REKS_CPREKS_MAXITER": {"option": true, "brief": "Maximum number of rounds of the CP-REKS (Z-vector) solver; exceeding it stops the run with the residual reached.", "type": "int", "default": "`200`", "call": "400",
    "rules": ["CP-REKS rounds before an error is raised."]},
   "REKS_GRAD_DEGEN_TOL": {"option": true, "type": "double", "default": "`1e-6`", "call": "1e-5",
-   "rules": ["Gap (E_{h}) below which a requested root is computed with a quasi-degeneracy warning."],
+   "rules": [
+    "Gap (E_{h}) below which a requested root is computed with a quasi-degeneracy warning.",
+    "On a Davidson cassette, also the gap between the last requested and the last computed root below which the computed set grows (§si-solver)."
+   ],
    "brief": "Gap below which a requested root is flagged as quasi-degenerate."},
   "REKS_CI_TOPOGRAPHY_GAP": {"option": true, "type": "double", "default": "`5e-3`", "call": "1e-2",
    "rules": ["Largest pair gap (E_{h}) at which the topography table of a NAC pair is printed (§ci-topography)."],
@@ -156,7 +172,8 @@
   "REKS_FON_MICRO_LS_MAXITER": {"option": true, "type": "int", "default": "`20`", "brief": "Armijo backtracking (step halving) cap inside one Newton step."},
   "REKS_FON_MICRO_CONVERGENCE": {"option": true, "type": "double", "default": "`1e-12`", "brief": "Step-norm convergence threshold."},
   "REKS_FON_MICRO_MIN_EIGENVALUE": {"option": true, "type": "double", "default": "`1e-8`", "brief": "Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped."},
-  "REKS_FON_MICRO_BOUND_MARGIN": {"option": true, "type": "double", "default": "`1e-8`", "brief": "Margin m of the SCF FON box [ℓ, 2 − m] kept by the FON micro-solver and the TRAH step; must lie in (0, 1)."},
+  "REKS_FON_MICRO_BOUND_MARGIN": {"option": true, "type": "double", "default": "`1e-8`", "brief": "Margin m of the SCF FON box [ℓ, 2 − m] kept by the FON micro-solver and the TRAH step, in (0, 1); SI box: `SI_REKS_FON_BOUND_MARGIN`."},
+  "SI_REKS_FON_BOUND_MARGIN": {"option": true, "type": "double", "default": "`1e-8`", "brief": "Margin m of the box [m, 2 − m] of the SI-only FONs (§si-only-fons) and of their CP-REKS at-bound test, in [0, 1)."},
   "REKS_FON_MICRO_BOUNDARY_SKIN": {"option": true, "type": "double", "default": "`0.05`", "brief": "A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum."},
   "REKS_GEMINAL_DELOC": {"option": true, "type": "bool", "default": "`false`", "call": "True", "fragments": ["geminal-deloc", "geminal-deloc-kept", "geminal-deloc-rejected"],
    "formulas": [
@@ -239,13 +256,13 @@
   {"id": "active-space", "title": "Active space", "keys": ["REKS"]},
   {"id": "catalog", "title": "Catalog", "keys": ["REKS_GEMINAL_WIDTHS"]},
   {"id": "sa-pool", "title": "SA pool", "keys": ["SA_REKS_CONFIGS", "SA_REKS_WEIGHTS", "SA_REKS_EXTRA"]},
-  {"id": "si-cassettes", "title": "SI cassettes", "keys": ["SI_REKS_CONFIGS", "SI_REKS_PRINT_STATES", "SI_REKS_STORE_STATES", "SI_REKS_OVERLAP_CUTOFF"]},
+  {"id": "si-cassettes", "title": "SI cassettes", "keys": ["SI_REKS_CONFIGS", "SI_REKS_PRINT_STATES", "SI_REKS_STORE_STATES", "SI_REKS_OVERLAP_CUTOFF", "SI_REKS_SOLVER", "SI_REKS_DAVIDSON_R_CONVERGENCE"]},
   {"id": "spin", "title": "Spin manifolds", "keys": ["SA_REKS_2SPIN", "SI_REKS_2SPIN"]},
   {"id": "state-properties", "title": "State properties", "keys": ["SI_REKS_ANALYSIS", "SI_REKS_ANALYSIS_CHANGE_MIN", "SI_REKS_PROPERTY_FOR", "REKS_EKT", "REKS_EKT_OCC_TOL"]},
   {"id": "response", "title": "Gradients and couplings", "keys": ["SI_REKS_GRAD", "SI_REKS_NAC", "REKS_CPREKS_CONV", "REKS_CPREKS_MAXITER", "REKS_GRAD_DEGEN_TOL", "REKS_CI_TOPOGRAPHY_GAP"]},
   {"id": "guess", "title": "Guess", "keys": ["GUESS_ACTIVE_WINDOW"]},
   {"id": "fons", "title": "FONs", "keys": ["REKS_FON_INTERP_DELTA", "REKS_N_FON"]},
-  {"id": "fon-micro", "title": "FON micro-solver", "compact": true, "keys": ["REKS_FON_MICRO_NR_MAXITER", "REKS_FON_MICRO_LS_MAXITER", "REKS_FON_MICRO_CONVERGENCE", "REKS_FON_MICRO_MIN_EIGENVALUE", "REKS_FON_MICRO_BOUND_MARGIN", "REKS_FON_MICRO_BOUNDARY_SKIN"]},
+  {"id": "fon-micro", "title": "FON micro-solver", "compact": true, "keys": ["REKS_FON_MICRO_NR_MAXITER", "REKS_FON_MICRO_LS_MAXITER", "REKS_FON_MICRO_CONVERGENCE", "REKS_FON_MICRO_MIN_EIGENVALUE", "REKS_FON_MICRO_BOUND_MARGIN", "REKS_FON_MICRO_BOUNDARY_SKIN", "SI_REKS_FON_BOUND_MARGIN"]},
   {"id": "engines", "title": "Convergence engines", "keys": ["REKS_USE_TRAH", "REKS_GVB_DIIS", "REKS_DIIS_FORMULATION", "REKS_GVB_DIIS_START", "REKS_DIIS_ACTIVATION", "REKS_DIIS_CFM_ACTIVATION_GORB", "REKS_GVB_ROBUST_VERDICT", "REKS_GVB_LEVEL_SHIFT"]},
   {"id": "level-shift", "title": "Level shift", "keys": ["LEVEL_SHIFT_ADAPT"]},
   {"id": "diis-conditioning", "title": "GVB-DIIS conditioning chain (expert)", "compact": true, "keys": ["REKS_DIIS_COND_ANGLE_FILTER", "REKS_DIIS_COND_ANGLE_CUTOFF", "REKS_DIIS_COND_STALE_DELTA", "REKS_DIIS_COND_KAPPA_BYPASS", "REKS_DIIS_COND_SVD_RCOND", "REKS_DIIS_COND_COEFF_NORM_MAX", "REKS_DIIS_COND_TIKHONOV", "REKS_DIIS_COND_TIKHONOV_SCALE"]},

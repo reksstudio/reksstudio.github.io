@@ -12,8 +12,8 @@ import { gfmTableToMarkdown } from 'mdast-util-gfm-table';
 import { mathToMarkdown } from 'mdast-util-math';
 import { mdxJsxToMarkdown } from 'mdast-util-mdx-jsx';
 import { textOf } from './manual-hast.mjs';
-import { PAGES, entryHref, entryMap, optionHref, pagePath, stripNum } from './manual-pages.mjs';
-import { optionGroup, optionId, optionKeys, optionTitle, optionType } from './reference.mjs';
+import { PAGES, entryHref, entryMap, optionHref, optionRowHref, pagePath, stripNum } from './manual-pages.mjs';
+import { USED_IN, optionGroup, optionId, optionKeys, optionTitle, optionType } from './reference.mjs';
 import { BRANCH, REPO_URL, siteRev } from './site.mjs';
 
 const SUMMARY = 'REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.';
@@ -87,7 +87,7 @@ const handlers = {
   svg: (state, node) => ({ type: 'paragraph', children: [{ type: 'text', value: node.properties.ariaLabel }] }),
 };
 
-// counted pairs: hast test in the pruned <main>, mdast test in its conversion
+// counted pairs: hast test in the pruned <main> minus the subtrees of the optional 4th tag, mdast test in its conversion
 const COUNTS = [
   ['math', (n) => isEl(n, 'math'), (n) => n.type === 'inlineMath' || n.type === 'math'],
   ['sub', (n) => isEl(n, 'sub'), (n) => n.type === 'mdxJsxTextElement' && n.name === 'sub'],
@@ -95,14 +95,14 @@ const COUNTS = [
   ['pre', (n) => isEl(n, 'pre'), (n) => n.type === 'code'],
   ['table row', (n) => isEl(n, 'tr'), (n) => n.type === 'tableRow'],
   ['h2-h4', (n) => isEl(n, 'h2', 'h3', 'h4'), (n) => n.type === 'heading' && n.depth >= 2 && n.depth <= 4],
-  ['link', (n) => isEl(n, 'a') && n.properties.href !== undefined, (n) => n.type === 'link'],
+  ['link', (n) => isEl(n, 'a') && n.properties.href !== undefined, (n) => n.type === 'link', 'pre'],
 ];
 
 // structural counts; the text of <main> (math removed, sub/sup delimited, svg = its label) found
 // token by token, in order, in the plain text of the mdast (math removed); no inline math with "|" in a table cell
 function checkCoverage(name, main, mdast) {
-  for (const [what, inHast, inMdast] of COUNTS) {
-    const h = all(main, inHast).length;
+  for (const [what, inHast, inMdast, skip] of COUNTS) {
+    const h = all(skip ? keepOnly(main, (n) => !isEl(n, skip)) : main, inHast).length;
     const m = all(mdast, inMdast).length;
     if (h !== m) fail(`${name}: ${h} ${what} in <main>, ${m} in the twin`);
   }
@@ -220,6 +220,8 @@ export default function aiLayer() {
             .filter((key) => entryMap().has(optionId(key)))
             .map((key) => [entryHref(optionId(key), null, root.pathname), cardUrl(key)]),
         );
+        // option-table row hrefs (links to them are dropped in twins)
+        const rowHrefs = new Set(optionKeys().map((key) => optionRowHref(key, null, root.pathname)));
         const pages = readdirSync(out, { recursive: true })
           .filter((f) => f.endsWith('.html'))
           .sort()
@@ -243,6 +245,19 @@ export default function aiLayer() {
         for (const p of pages) {
           p.mdast = toMdast({ type: 'root', children: p.main.children }, { handlers });
           checkCoverage(p.name, p.main, p.mdast);
+          // links to option-table rows, and every link of the option table's "Used in" column -> their text
+          const usedIn = new Set(
+            all(p.mdast, (x) => x.type === 'table').flatMap((t) => {
+              const col = t.children[0].children.findIndex((c) => inline(c.children) === USED_IN);
+              return col < 0 ? [] : t.children.slice(1).map((row) => row.children[col]);
+            }),
+          );
+          for (const n of all(p.mdast, (x) => x.children?.some((c) => c.type === 'link'))) {
+            n.children = n.children.flatMap((c) => {
+              const url = c.type === 'link' && new URL(c.url, p.url);
+              return url && (rowHrefs.has(url.pathname + url.hash) || usedIn.has(n)) ? c.children : [c];
+            });
+          }
           for (const n of all(p.mdast, (x) => x.type === 'link' || x.type === 'image')) n.url = target(n.url, p.url);
         }
 

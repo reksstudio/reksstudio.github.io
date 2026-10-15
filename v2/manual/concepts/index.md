@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/concepts/>
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -156,17 +156,17 @@ $$
 
 ### SI cassette {#si-cassette}
 
-A cassette is a set of configurations of one manifold over which the SI Hamiltonian and overlap are built and diagonalized after the SCF, in the converged SA orbitals. It is chosen independently of the SA pool. A run may hold several cassettes, each its own eigenproblem. The label `kSI-lSA-REKS(N,M)` denotes $k$ SI configurations in the orbitals of an SA ensemble of $l$ configurations ([`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)).
+A cassette is a set of configurations of one manifold over which the SI Hamiltonian and overlap are built and diagonalized after the SCF, in the converged SA orbitals. It is chosen independently of the SA pool. A run may hold several cassettes, each its own eigenproblem ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)). The label `kSI-lSA-REKS(N,M)` denotes $k$ SI configurations in the orbitals of an SA ensemble of $l$ configurations ([`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)).
 
 ### SI-only FONs {#si-only-fons}
 
 FONs that no SA configuration uses (higher generations, or schemes absent from the SA pool) are optimized once after the SCF, with the SA FONs held fixed. Each SI-only geminal belongs to its primary configuration $K$, the lowest-index configuration of the cassette among those that use it. Its FONs minimize, at the microstate energies $E_L$ of the converged SA orbitals,
 
 $$
-E_K = \sum_L C_L^K(\{n\})\,E_L, \qquad 1 \le n_p \le 2 - 10^{-8},
+E_K = \sum_L C_L^K(\{n\})\,E_L, \qquad m \le n_p \le 2 - m,
 $$
 
-for a two-orbital geminal; in a geminal of width $w$ each free FON is $\ge 10^{-8}$ and their sum $\le 2 - 10^{-8}$. These bounds are fixed; `REKS_<L>_FON` does not apply. The geminals of one generation with the same $K$ are solved jointly; Gauss–Seidel sweeps over these groups repeat until no FON changes by more than $10^{-7}$. Output: [FONs of the SI-only geminals](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons).
+for a two-orbital geminal; in a geminal of width $w$ each free FON is $\ge m$ and their sum $\le 2 - m$; $m$ = `SI_REKS_FON_BOUND_MARGIN` (default $10^{-8}$). A FON pushed past its bound stops on it and counts as converged there. `REKS_<L>_FON` does not apply. The geminals of one generation with the same $K$ are solved jointly; Gauss–Seidel sweeps over these groups repeat until no FON changes by more than $10^{-7}$. Output: [FONs of the SI-only geminals](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons).
 
 ### SI Hamiltonian and overlap {#si-hamiltonian}
 
@@ -206,6 +206,30 @@ $$
 
 ($s_{\max}$ the largest eigenvalue of $\mathbf{S}$, $c$ = `SI_REKS_OVERLAP_CUTOFF`) are null modes, removed before diagonalization; the rank of $\mathbf{S}$ depends on the FONs. In full singlet cassettes the 18 configurations of REKS(4,4) span 16 dimensions and the 161 of REKS(6,6) span 115 ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices)).
 
+### SI eigensolver {#si-solver}
+
+In the basis left after the null modes (dimension $r$), each cassette solves the standard eigenproblem $\mathbf A\mathbf x = \theta\mathbf x$ with one of two solvers (`SI_REKS_SOLVER`); $n$ is the number of configurations of the cassette:
+
+| Solver | Roots | Memory |
+| - | - | - |
+| `DIRECT` | every root, LAPACK on the dense matrix | $n^2$ |
+| `DAVIDSON` | the lowest $k$ roots, block Davidson on the sparse $\mathbf H$ | no dense $\mathbf H$; up to $\max(200, 8k)$ vectors of length $r$ ($r^2$ when the whole space is solved) |
+| `AUTO` (default) | `DIRECT` for $n \le 4000$, `DAVIDSON` above | |
+
+The catalogs shipped with Psi4 end at REKS(6,6) (161 singlet configurations), so `AUTO` runs `DIRECT` on them; a cassette above 4000 configurations, from a catalog in `PSI4_REKS_CATALOG` ([§6](https://reksstudio.github.io/v2/manual/setup/index.md#catalog)), runs `DAVIDSON`. Davidson computes
+
+$$
+k = \min\big(r,\ n_{\mathrm{req}} + \max(4, \lceil n_{\mathrm{req}}/4 \rceil)\big), \qquad n_{\mathrm{req}} = \min\big(r,\ \max(1,\ n_{\mathrm{store}},\ n_{\mathrm{print}},\ 1 + r_{\max})\big),
+$$
+
+$n_{\mathrm{store}}$, $n_{\mathrm{print}}$ the counts of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`, $r_{\max}$ the highest root named in `SI_REKS_GRAD`, `SI_REKS_NAC` or `SI_REKS_PROPERTY_FOR`; a count of `-1` stands for the 50 lowest roots. The search space holds up to $\min\big(r, \max(40, 6k)\big)$ vectors; when that reaches $r$, the whole space is solved and every root returned. Each root converges to
+
+$$
+\lVert(\mathbf A - \theta)\,\mathbf x\rVert_2 \le \tau, \qquad \tau = \texttt{SI\_REKS\_DAVIDSON\_R\_CONVERGENCE} = 10^{-12}\ E_{\mathrm h};
+$$
+
+a root whose residual stalls at the rounding level of its product is accepted there, and that level is printed. When the last computed root lies within `REKS_GRAD_DEGEN_TOL` of the last requested one, $k$ grows by the margin and the iteration continues. Roots above $k$ are not computed: `SSR ENERGIES K=e` holds the $k$ roots ($r$ when the whole space is solved). Hexatriene REKS(6,6), singlet and triplet cassettes: the printed roots of `DAVIDSON` differ from those of `DIRECT` by at most $1\times10^{-12}\ E_{\mathrm h}$. Output: [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson).
+
 ### Coupling damping below 100 % exact exchange {#coupling-damping}
 
 With a functional whose global (short-range) exact-exchange fraction is below 100 %, range-separated functionals included, the off-diagonal elements $H_{ij}$ that the catalog marks as carried only by four-orbital active integrals $(pq|rs)$ are scaled, energies in $E_{\mathrm{h}}$ ([Filatov et al., J. Chem. Phys. 2017, 147, 064104](https://reksstudio.github.io/v2/manual/reference/index.md#filatov2017-extended-space), Eq. B50; parameters from [Grimme and Waletzke, J. Chem. Phys. 1999, 111, 5645](https://reksstudio.github.io/v2/manual/reference/index.md#grimme1999-dft-mrci)):
@@ -224,7 +248,7 @@ $$
 \mathbf{H}\mathbf{c}_k = E_k\,\mathbf{S}\mathbf{c}_k.
 $$
 
-Roots are 0-based and sorted by energy; they are labeled `S0`, `S1`, … for $2S$ zero and `T1`, `Q1`, … (counted from 1) for positive $2S$ ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Physical roots exclude the overlap null modes and ghost roots more than 100 $E_{\mathrm{h}}$ above the lowest root ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)); `SSR ENERGIES K=e` holds every physical root of cassette e ([SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)).
+Roots are 0-based and sorted by energy; they are labeled `S0`, `S1`, … for $2S$ zero and `T1`, `Q1`, … (counted from 1) for positive $2S$ ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Physical roots exclude the overlap null modes and ghost roots more than 100 $E_{\mathrm{h}}$ above the lowest root ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)); `SSR ENERGIES K=e` holds every physical root of cassette e, on the Davidson path its computed roots ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver), [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)).
 
 ### Chirgwin–Coulson weights {#cc-weights}
 

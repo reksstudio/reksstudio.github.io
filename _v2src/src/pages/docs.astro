@@ -7,8 +7,8 @@ import { buildFromSource, buildJobsMac } from '../data/snippets';
 import changes from '../data/changes.json' with { type: 'json' };
 import checklist from '../data/docs-checklist.json' with { type: 'json' };
 import { escape, toHtml } from '../lib/inline.mjs';
-import { entryLink, entryMap } from '../lib/manual-pages.mjs';
-import { fragmentText, optionId } from '../lib/reference.mjs';
+import { SECTION_REF, entryLink, entryMap } from '../lib/manual-pages.mjs';
+import { fragmentText, optionGroup, optionId } from '../lib/reference.mjs';
 import { citeRows } from '../lib/literature.mjs';
 import { BRANCH, EMAIL, PSI4_MANUAL, REPO_URL, shortRev, siteRev } from '../lib/site.mjs';
 import '../styles/docs.css';
@@ -28,10 +28,15 @@ const link = (id) => {
   return `<a href="${l.href}">${label}</a>`;
 };
 // inline markup -> HTML with every "§<id>" linked
-const refs = (text) => toHtml(text).replace(/§(\d+|[a-z][a-z0-9_-]*[a-z0-9])/g, (m, id) => link(id));
+const refs = (text) => toHtml(text).replace(SECTION_REF, (m, id) => link(id));
 // headers of the checklist blocks as printed: first line of each fragment, each once
 const blockHeaders = [...new Set(checklist.fragments.map((id) => fragmentText(id).split('\n')[0].trim()))];
-const option = (key) => link(optionId(key));
+// option of a compact group (no entry of its own) -> the group table
+const option = (key) => {
+  const g = optionGroup(key);
+  if (!g.compact) return link(optionId(key));
+  return `<a href="${entryLink(g.id, null, base).href}"><code>${escape(key)}</code></a>`;
+};
 const toc = [
   ['install', 'Install'],
   ['check', 'Check the build'],

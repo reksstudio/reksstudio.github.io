@@ -14,6 +14,7 @@
  {"id": "sa-reks-decomposition", "header": "=> SA-REKS energy decomposition <=", "owner": "sa-energy"},
  {"id": "si-setup", "header": "==> State interaction: setup over the union of the SI cassettes <==", "owner": "si_reks_configs"},
  {"id": "fon-optimization-after-scf", "header": "=> FON optimization after the SCF <=", "owner": "si-fons"},
+ {"id": "si-davidson", "header": "==> SI Davidson solver (cassette 0) <==", "owner": "si-davidson"},
  {"id": "si-cassette", "header": "==> State interaction: cassette 0, 18SI-3SA-REKS(4,4), 2S=0 (singlet) <==", "owner": "si_reks_configs"},
  {"id": "hamiltonian", "header": "=> Hamiltonian, cassette 0 <=", "owner": "si-matrices"},
  {"id": "adiabatic-states", "header": "=> Adiabatic states, cassette 0 <=", "owner": "ssr-energies"},

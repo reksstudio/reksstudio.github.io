@@ -56,17 +56,32 @@
    ]
   },
   {
+   "id": "si-davidson", "stage": "si",
+   "name": "SI Davidson solver",
+   "brief": "Convergence of the Davidson eigensolver of each cassette it solves (§si-solver): roots computed, residual per iteration, operator applications.",
+   "on": "a cassette solved by Davidson (`SI_REKS_SOLVER`)",
+   "units": "E_{h} (residuals); s (time)",
+   "fragments": ["si-davidson"],
+   "bullets": [
+    "One block per Davidson cassette, after `FON optimization after the SCF` and before the cassette blocks. Fragment: hexatriene REKS(6,6) with `si_reks_solver` `davidson`, 10 requested roots (stored states) + 4 margin; the cassette's `Hamiltonian` block ends with `Computed states`.",
+    "`Roots`: k (requested + margin) of r, or `k (whole space, n requested)` when the search space reaches r. Mean |R| and Max |R|: residual norms of the roots still above `Convergence`, or of all roots once none remains; `Remain`: their number; `Applications`: cumulative products A·x, one per vector (start columns, corrections, two per root at each verification).",
+    "A root stalled at its rounding level adds the line `n root(s) closed at the roundoff floor (max |R| = …, max phi = …)`.",
+    "In the fragment one iteration converges all 14 roots of the 115-dimensional space.",
+    "`REKS_REPORT_LEVEL` ≥ 4 adds a line per subspace collapse, `SI Davidson: n collapses, shift … Eh`, per root E, |r| and φ, the `apply calls` counts and the CSR passes."
+   ]
+  },
+  {
    "id": "ssr-energies", "stage": "si",
    "name": "SSR state energies",
    "brief": "Eigenvalues of the SI eigenproblem of each cassette after removal of the overlap null modes (§si-hamiltonian); states ordered by energy, root index 0-based.",
    "on": "SI present",
-   "for": "every physical root of every SI cassette with at least one configuration, independent of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`",
-   "units": "E_{h} (stored); E_{h} and eV relative to the lowest state of the first typed SI cassette, S0 when that cassette is a singlet (printed)",
+   "for": "every physical root of every SI cassette with at least one configuration, independent of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`; on the Davidson path the computed lowest roots (§si-solver)",
+   "units": "E_{h} (stored); E_{h} and eV relative to the lowest state of the first SI cassette in the order of §cassette-order, S0 when that cassette is a singlet (printed)",
    "fragments": ["adiabatic-states", "state-summary"],
    "variables": "`SSR ENERGIES K=<e>`; bookkeeping `SSR SI LIST`, `SSR CASSETTE 2S K=<e>`, `SSR STORED STATES K=<e>`, `SSR ACTIVE ORBITALS K=<e>`, `SSR CASSETTE SECTOR K=<e>`",
    "bullets": [
     "The four bookkeeping scalars never take the sector prefix.",
-    "`Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats S0 of cassette 0.",
+    "`Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats the lowest state of the first cassette in the order of §cassette-order (H₂ with `si_reks_2spin` `[2, 0]`: `ref … T1 of cassette 1`).",
     "`State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.",
     "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.03–0.51 E_{h} below E_{SA}; an E(S0) far below this range marks ghost roots (§diag-ghost-states)."
    ]
@@ -91,10 +106,10 @@
    "units": "E_{h} (H); dimensionless (S)",
    "formulas": ["V_{ij} = \\tilde H_{ij} - \\tilde S_{ij}\\,\\frac{\\tilde H_{ii} + \\tilde H_{jj}}{2}, \\qquad \\tilde S_{ij} = \\frac{S_{ij}}{\\sqrt{S_{ii} S_{jj}}}, \\quad \\tilde H_{ij} = \\frac{H_{ij}}{\\sqrt{S_{ii} S_{jj}}}"],
    "fragments": ["hamiltonian", "consistency"],
-   "variables": "`SSR HAMILTONIAN K=<e>`, `SSR OVERLAP SPARSE K=<e>` (rows [i n_{cfg} + j, S_{ij}]), stored at `REKS_REPORT_LEVEL` ≥ 3",
+   "variables": "`SSR HAMILTONIAN K=<e>`, `SSR OVERLAP SPARSE K=<e>` (rows [i n_{cfg} + j, S_{ij}]), stored at `REKS_REPORT_LEVEL` ≥ 3, up to 8 active orbitals",
    "bullets": [
-    "Matrices printed only at `REKS_REPORT_LEVEL` ≥ 4. No bare (cassette 0) alias.",
-    "`Independent states` = `Configurations` − overlap null modes − ghost roots. A `Regularization` line appears when null modes are removed, a `Ghost states` line when ghost roots (§ssr-states) are removed.",
+    "Matrices printed only at `REKS_REPORT_LEVEL` ≥ 4, up to 8 active orbitals. No bare (cassette 0) alias.",
+    "`Independent states` = `Configurations` − overlap null modes − ghost roots. A `Regularization` line appears when null modes are removed, a `Ghost states` line when ghost roots (§ssr-states) are removed. On the Davidson path the last line reads `Computed states  k of r (lowest roots, Davidson)` (§si-davidson).",
     "Two configurations with |S̃_{ij}| close to 1 are nearly the same function; their coupling then follows from the overlap, and V_{ij} vanishes for two identical functions.",
     "The `Consistency` line (second fragment, H_{4} REKS(4,4)) gives the largest |V_{ij}| in mE_{h} over the pairs with |S̃_{ij}| > 0.99 (a fixed bound, not an option) and the pair where it occurs; without such a pair the line is absent. The code sets no bound on |V_{ij}|."
    ]

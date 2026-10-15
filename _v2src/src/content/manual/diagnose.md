@@ -54,7 +54,7 @@ No catalog file exists for that active space; the error lists the installed ones
 
 #### Ghost states and a collapsed SI spectrum {#diag-ghost-states}
 
-Compare `Independent states` with `Configurations` and the null modes, and E(S0) with `@REKS Final Energy` (§si-matrices).
+Compare `Independent states` (on the Davidson path r of `Computed states k of r`) with `Configurations` and the null modes, and E(S0) with `@REKS Final Energy` (§si-matrices).
 
 #### Quasi-degenerate roots {#diag-quasi-degenerate}
 

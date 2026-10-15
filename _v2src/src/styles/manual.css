@@ -147,11 +147,13 @@ tbody tr:last-child td{ border-bottom: none; }
 /* references: doi links break inside on narrow screens */
 .refs a{ overflow-wrap: anywhere; }
 
-/* option table: Option | Default | Meaning on one grid for all groups; type and alias in small under the name;
-   phones: one block per option, Default labelled */
+/* option table: Option | Default | Meaning | Used in on one grid for all groups; type and alias in small under the
+   name; Used in one chapter per line, smaller; phones: one block per option, Default and Used in labelled */
 section:has(> h2[id$="option-table"]) table{ table-layout: fixed; min-width: 0; }
-section:has(> h2[id$="option-table"]) th:nth-child(1){ width: 36%; }
-section:has(> h2[id$="option-table"]) th:nth-child(2){ width: 20%; }
+section:has(> h2[id$="option-table"]) th:nth-child(1){ width: 30%; }
+section:has(> h2[id$="option-table"]) th:nth-child(2){ width: 15%; }
+section:has(> h2[id$="option-table"]) th:nth-child(3){ width: 30%; }
+section:has(> h2[id$="option-table"]) td:nth-child(4){ font-size: 0.85rem; }
 section:has(> h2[id$="option-table"]) td{ overflow-wrap: break-word; }
 section:has(> h2[id$="option-table"]) td:first-child code{ white-space: normal; overflow-wrap: anywhere; }
 section:has(> h2[id$="option-table"]) td small{ display: inline-block; margin-top: 3px; font: 0.76rem/1.35 var(--sans); color: var(--ink-faint); }
@@ -162,4 +164,5 @@ section:has(> h2[id$="option-table"]) td small code{ color: inherit; font-size: 
   section:has(> h2[id$="option-table"]) tr{ padding: 10px 0; border-bottom: 1px solid var(--line); }
   section:has(> h2[id$="option-table"]) tbody td{ padding: 2px 0; border: none; }
   section:has(> h2[id$="option-table"]) td:nth-child(2)::before{ content: "Default: "; color: var(--ink-faint); font-family: var(--sans); }
+  section:has(> h2[id$="option-table"]) td:nth-child(4):not(:empty)::before{ content: "Used in: "; color: var(--ink-faint); font-family: var(--sans); }
 }

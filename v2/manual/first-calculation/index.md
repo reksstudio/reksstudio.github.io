@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/first-calculation/>
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -135,7 +135,7 @@ GUESS READ: active window ['HOMO-2', 'HOMO', 'LUMO', 'LUMO+1'] -> MO columns [13
       16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812
       17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000
 [...]
-@REKS Final Energy:  -155.67155759813016
+@REKS Final Energy:  -155.67155759813022
 ```
 
 ### Check the solution {#check-solution}

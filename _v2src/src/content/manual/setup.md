@@ -135,9 +135,22 @@ All sectors of a run (§run-sector) share one SCF. Without `SA_REKS_CONFIGS` the
 
 With SI states on two or more manifolds the report prints §spin-state-energetics. Per-sector arrays carry a sector prefix for s > 0 (§variable-names).
 
+### Cassette order {#cassette-order}
+
+`SI_REKS_2SPIN` sets the order of the SI cassettes: spin groups as listed, the cassettes of a group in the order of its `SI_REKS_CONFIGS` block. The per-cassette lists `SI_REKS_GRAD`, `SI_REKS_NAC`, `SI_REKS_PROPERTY_FOR` and `SI_REKS_STORE_STATES` take one entry per cassette in this order. The cassette blocks are printed in this order, and state energies are given relative to the lowest state of its first cassette. The cassette index K in headers and in the `K=e` and `CASSETTE e` names runs in ascending 2S. Without `SI_REKS_2SPIN` (ladder) both orders are ascending 2S.
+
+```python
+"si_reks_2spin":        [2, 0],
+"si_reks_configs":      [[[0]], [[0, 1]]],   # triplet, singlet
+"si_reks_grad":         [[0], []],           # T1: printed as cassette 1, SSR ROOT 0 GRADIENT CASSETTE 1
+"si_reks_store_states": [1, 0],              # 1 triplet state stored, no singlet
+```
+
+H₂ REKS(2,2): with `[2, 0]` the gradient and the stored state go to the triplet (K = 1), the triplet block is printed first and energies are given as `E-E(T1)`; with `[0, 2]` the same lists select the singlet (K = 0).
+
 ## 10\. Properties, Gradients, Couplings {#response}
 
-Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `e` refers to cassette `e`; roots as in §ssr-states.
+Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `t` refers to the t-th cassette in the order of §cassette-order; roots as in §ssr-states.
 
 ### State properties {#state-properties}
 

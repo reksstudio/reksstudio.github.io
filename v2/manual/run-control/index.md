@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/run-control/>
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -134,8 +134,9 @@ FON micro-solver traces are printed at `REKS_REPORT_LEVEL` ≥ 4.
 | `REKS_FON_MICRO_LS_MAXITER` | `20` | Armijo backtracking (step halving) cap inside one Newton step. |
 | `REKS_FON_MICRO_CONVERGENCE` | `1e-12` | Step-norm convergence threshold. |
 | `REKS_FON_MICRO_MIN_EIGENVALUE` | `1e-8` | Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped. |
-| `REKS_FON_MICRO_BOUND_MARGIN` | `1e-8` | Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step; must lie in (0, 1). |
+| `REKS_FON_MICRO_BOUND_MARGIN` | `1e-8` | Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step, in (0, 1); SI box: `SI_REKS_FON_BOUND_MARGIN`. |
 | `REKS_FON_MICRO_BOUNDARY_SKIN` | `0.05` | A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum. |
+| `SI_REKS_FON_BOUND_MARGIN` | `1e-8` | Margin m of the box \[m, 2 − m] of the SI-only FONs ([SI-only FONs](https://reksstudio.github.io/v2/manual/concepts/index.md#si-only-fons)) and of their CP-REKS at-bound test, in \[0, 1). |
 
 ## 13. SCF Convergence Engines {#scf-engines}
 
@@ -168,7 +169,7 @@ with $\mathbf g_{\mathrm{orb}}$, $\mathbf g_{\mathrm{FON}}$ the orbital and FON 
  @DF-REKS iter   2:    -1.85615375141313   -1.84239e-01   6.35543e-03 SHIFT
  @DF-REKS iter   3:    -1.85801940076408   -1.86565e-03   6.51017e-03 ORB-GVB-DIIS
 [...]
- @DF-REKS iter  11:    -1.85941446727766    2.22045e-16   8.68918e-11 ORB-GVB-DIIS
+ @DF-REKS iter  11:    -1.85941446727766    0.00000e+00   8.71126e-11 ORB-GVB-DIIS
 
 Energy and wave function converged.
 ```
@@ -362,8 +363,8 @@ Default: `false`
 ```log
 ==> REKS Geminal Delocalization <==
 
-  E_SA before rotation       -77.884884825216
-  E_SA after rotation        -77.884884825216
+  E_SA before rotation       -77.884884825217
+  E_SA after rotation        -77.884884825217
   Rotated solution rejected; SCF restarts from the orbitals before the rotation.
 ```
 

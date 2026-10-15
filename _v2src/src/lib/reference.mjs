@@ -3,7 +3,7 @@ import { properties } from '../data/properties.json' with { type: 'json' };
 import blocks from '../data/blocks.json' with { type: 'json' };
 import fragmentList from '../data/fragments.json' with { type: 'json' };
 import { toMd } from './inline.mjs';
-import { entryMap } from './manual-pages.mjs';
+import { entryMap, optionPlaces, optionRowId } from './manual-pages.mjs';
 import { literatureHtml, references, shortRef } from './literature.mjs';
 
 function entry(key) {
@@ -36,6 +36,8 @@ export function optionGroup(key) {
 export const optionKeys = () => Object.keys(ref.entries).filter((key) => ref.entries[key].option);
 export const optionId = (key) => entry(key).id ?? key.toLowerCase();
 export const optionAlias = (key) => entry(key).alias;
+// every name of the option: its names (default [key]) and its alias
+export const optionNamesOf = (key) => [...(entry(key).names ?? [key]), optionAlias(key)].filter(Boolean);
 export const optionType = (key) => entry(key).type;
 export const optionTitle = (key) => entry(key).title ?? key;
 
@@ -116,20 +118,34 @@ const propertyTableMd = () =>
 // print order of the report blocks: Block | Entry, one row per header, linked to the entry or section that explains it
 const printOrderMd = () => mdTable(['Block', 'Entry'], blocks.map((b) => [`\`${b.header}\``, `§${b.owner}`]));
 
-// option cell: name (linked unless compact) + <small> "type · alias" line when either is set
+// option cell: name in span#row-<id> (linked unless compact) + <small> "type · alias" line when either is set
 function optionCellMd(key, linked) {
   const e = entry(key);
   const meta = [e.type, e.alias && `alias \`${e.alias}\``].filter(Boolean).join(' · ');
-  return (linked ? `§${optionId(key)}` : `\`${key}\``) + (meta ? `<br><small>${meta}</small>` : '');
+  const name = linked ? `§${optionId(key)}` : `<code>${key}</code>`;
+  return `<span id="${optionRowId(key)}">${name}</span>` + (meta ? `<br><small>${meta}</small>` : '');
 }
 
-// Option table chapter: per group "### title" + Option | Default | Meaning
+export const USED_IN = 'Used in';
+
+// places using an option, one line per chapter: "§chapter §place · §place<br>§chapter ..."
+function usedInMd(key) {
+  const chapters = Map.groupBy(optionPlaces().get(key), (p) => p.chapter);
+  return [...chapters]
+    .map(([chapter, list]) => {
+      const inside = list.filter((p) => p.place !== chapter).map((p) => `§${p.place}`);
+      return inside.length ? `§${chapter} ${inside.join(' · ')}` : `§${chapter}`;
+    })
+    .join('<br>');
+}
+
+// Option table chapter: per group "### title" + Option | Default | Meaning | Used in
 function optionTableMd() {
   return ref.groups
     .map((g) => {
       const described = g.compact && entryMap().has(g.id) ? `§${g.id}` : '';
-      const rows = g.keys.map((key) => [optionCellMd(key, !g.compact), entry(key).default, entry(key).brief]);
-      return blocksMd([`### ${g.title}`, described, mdTable(['Option', 'Default', 'Meaning'], rows)]);
+      const rows = g.keys.map((key) => [optionCellMd(key, !g.compact), entry(key).default, entry(key).brief, usedInMd(key)]);
+      return blocksMd([`### ${g.title}`, described, mdTable(['Option', 'Default', 'Meaning', USED_IN], rows)]);
     })
     .join('\n\n');
 }
@@ -176,6 +192,8 @@ export function markerContent({ name, arg }) {
   if (name === 'literature') return { entries: references().map((e) => ({ id: e.key, title: shortRef(e), code: false })), fragments: [] };
   return { entries: [], fragments: [] };
 }
+
+export const markerMd = ({ name, arg }) => MARKERS[name][1](arg);
 
 export const fragmentIds = () => [...FRAGMENTS.keys()];
 export const fragmentText = (id) => fragment(id).text;

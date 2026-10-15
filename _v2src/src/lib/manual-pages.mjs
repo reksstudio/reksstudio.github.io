@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { properties } from '../data/properties.json' with { type: 'json' };
 import blocks from '../data/blocks.json' with { type: 'json' };
-import { fragmentIds, markerContent, optionAlias, optionGroup, optionGroups, optionId, optionKeys, parseMarker } from './reference.mjs';
+import { fragmentIds, markerContent, markerMd, optionAlias, optionGroup, optionGroups, optionId, optionKeys, optionNamesOf, parseMarker } from './reference.mjs';
 
 // Manual pages in reading order: src/content/manual/<file>.md -> <base>manual/<slug>/ ('' = <base>manual/).
 // Page titles live in the frontmatter of each file. tocDepth = deepest heading level in the page TOC (default 3);
@@ -132,6 +132,133 @@ export function entryLink(id, fromSlug, base) {
   if (!e) throw new Error(`manual: no entry §${id}`);
   const href = anchorHref(e.slug, id, fromSlug, base);
   return e.chapter ? { href, text: `§${e.chapter}`, code: false } : { href, text: e.title, code: e.code };
+}
+
+let names;
+// option name (optionNamesOf, upper or lower case) -> key
+const optionNames = () =>
+  (names ??= new Map(optionKeys().flatMap((key) => optionNamesOf(key).flatMap((n) => [[n, key], [n.toLowerCase(), key]]))));
+
+// option names in a code text -> [{ key, start, end }]: a token [A-Za-z0-9_]+ equal to a name; a name without "_"
+// (REKS, also the method name) only in input form, followed by "[" ("reks [2, 2]", '"reks": [4, 4]')
+function optionMatches(code) {
+  const found = [];
+  for (const m of code.matchAll(/[A-Za-z0-9_]+/g)) {
+    const key = optionNames().get(m[0]);
+    const end = m.index + m[0].length;
+    if (key && (m[0].includes('_') || /^"?:?\s*\[/.test(code.slice(end)))) found.push({ key, start: m.index, end });
+  }
+  return found;
+}
+
+// distinct option keys named in a code text (optionMatches)
+export const optionUses = (code) => [...new Set(optionMatches(code).map((m) => m.key))];
+
+// Shiki transformer: each option name in a fenced line (optionMatches) is wrapped in a[href = its option-table row]
+export function optionCodeTransformer(base) {
+  let source, lines;
+  return {
+    name: 'option-rows',
+    line(node, n) {
+      // lines of the current block, split once per block
+      if (this.source !== source) [source, lines] = [this.source, this.source.split('\n')];
+      const matches = optionMatches(lines[n - 1]);
+      if (!matches.length) return;
+      let offset = 0;
+      const split = (text) => {
+        const from = offset;
+        offset += text.value.length;
+        const inside = matches.filter((m) => m.start >= from && m.end <= offset);
+        if (!inside.length) return [text];
+        const out = [];
+        let last = from;
+        for (const m of inside) {
+          if (m.start > last) out.push({ type: 'text', value: text.value.slice(last - from, m.start - from) });
+          const label = { type: 'text', value: text.value.slice(m.start - from, m.end - from) };
+          out.push({ type: 'element', tagName: 'a', properties: { href: optionRowHref(m.key, null, base) }, children: [label] });
+          last = m.end;
+        }
+        if (last < offset) out.push({ type: 'text', value: text.value.slice(last - from) });
+        return out;
+      };
+      const walk = (el) => {
+        el.children = el.children.flatMap((c) => {
+          if (c.type === 'text') return split(c);
+          if (c.children) walk(c);
+          return [c];
+        });
+      };
+      walk(node);
+    },
+  };
+}
+
+let keyOf;
+// option entry id -> option key (undefined for any other id)
+export const optionKeyOf = (id) => (keyOf ??= new Map(optionKeys().map((key) => [optionId(key), key]))).get(id);
+
+// tables that restate options rather than use them
+const RESTATING = new Set(['option-table', 'property-table', 'print-order', 'literature']);
+// "§<id>" in text; group 1 = the id (numeric ids included)
+export const SECTION_REF = /§(\d+|[a-z][a-z0-9_-]*[a-z0-9])/g;
+let places;
+
+// option key -> [{ chapter, place }] in reading order: the sections that use it. Pages are scanned with markers
+// expanded. A use: "§<option id>", or optionUses() of a code span or a fenced line.
+// Place = nearest enclosing h2/h3 with an explicit "{#id}", option entry or compact option group; the option's own
+// entry (compact: its group) and the option-table chapter are left out.
+export function optionPlaces() {
+  if (places) return places;
+  const optionEntries = new Set([...optionKeys().map(optionId), ...optionGroups().filter((g) => g.compact).map((g) => g.id)]);
+  const found = new Map(optionKeys().map((key) => [key, new Map()]));
+  for (const { file } of PAGES) {
+    const md = source(file).replace(MARKER_LINE, (line) => {
+      const marker = parseMarker(line.trim());
+      return RESTATING.has(marker.name) ? '' : markerMd(marker);
+    });
+    const open = [];
+    let fence = false;
+    const use = (key) => {
+      const [chapter, place = chapter] = [open[0], open.filter(Boolean).at(-1)];
+      if (key && chapter && chapter !== 'option-table') found.get(key).set(place, chapter);
+    };
+    for (const line of md.split('\n')) {
+      if (line.startsWith('```')) {
+        fence = !fence;
+        continue;
+      }
+      if (fence) {
+        optionUses(line).forEach(use);
+        continue;
+      }
+      const h = line.match(/^(#{2,4}) .*?(?: \{#([^}\s]+)\})?$/);
+      if (h) {
+        const level = h[1].length;
+        open.length = level - 1;
+        open[level - 2] = h[2] && (level < 4 || optionEntries.has(h[2])) ? h[2] : undefined;
+        continue;
+      }
+      for (const [, code] of line.matchAll(/`([^`]+)`/g)) optionUses(code).forEach(use);
+      for (const [, id] of line.matchAll(SECTION_REF)) use(optionKeyOf(id));
+    }
+  }
+  places = new Map();
+  for (const [key, map] of found) {
+    const g = optionGroup(key);
+    map.delete(g.compact ? g.id : optionId(key));
+    places.set(key, [...map].map(([place, chapter]) => ({ chapter, place })));
+  }
+  return places;
+}
+
+// anchor of the option's row in the option table
+export const optionRowId = (key) => `row-${optionId(key)}`;
+
+// href of the option's row in the option table, relative to the page fromSlug (null: from anywhere)
+export function optionRowHref(key, fromSlug, base) {
+  const e = entryMap().get('option-table');
+  if (!e) throw new Error('manual: no entry §option-table');
+  return anchorHref(e.slug, optionRowId(key), fromSlug, base);
 }
 
 // printed block header -> index term: "=> X, cassette 0 <=" -> "X"; a cassette clause and everything after it dropped
