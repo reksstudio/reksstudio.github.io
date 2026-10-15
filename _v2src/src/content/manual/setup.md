@@ -104,6 +104,8 @@ All sectors of a run (§run-sector) share one SCF. Without `SA_REKS_CONFIGS` the
 
 ### Input patterns {#input-patterns}
 
+States on several spin manifolds share one SA ensemble: the default 2S = 0 pool (PPS and every OSS) plus the all-α determinant; the T_PPS configurations of T1/T2 may be added, nothing of higher spin.
+
 Linear H₄ (R = 1.6 Å), BH&HLYP/6-31G. In all three the SA ensemble is the default 2S = 0 pool of REKS(4,4), `PPS1`, `OSS1`, `OSS2`, plus the all-α determinant from `sa_reks_extra`, weights 1/4 each; one SCF, E<sub>SA</sub> = −1.8826103083 E<sub>h</sub> in every case.
 
 **Triplet states only**
