@@ -62,7 +62,7 @@ Only `reference reks` and `reks [N, M]` are required. Absent `sa_reks_configs`: 
 
 ### Explicit SA pool and SI cassettes {#explicit-input}
 
-SI-SA-REKS(4,4) with an explicit SA pool, weights and two SI cassettes, written as one group (one spin manifold) of two cassettes `[[[…], […]]]` ([`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)); `PPS2` and `OSS3` belong to pairing scheme 1 (`SI pools` prints the definition of every name, [Pairing scheme](https://reksstudio.github.io/v2/manual/concepts/index.md#pairing-scheme)):
+SI-SA-REKS(4,4) with an explicit SA pool and weights and four SI cassettes, written as one group (one spin manifold) of four cassettes `[[[…], […], […], […]]]` ([`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)). Each cassette is its own eigenproblem in the same SA orbitals; `PPS2` belongs to pairing scheme 1 (`SI pools` prints the definition of every name, [Pairing scheme](https://reksstudio.github.io/v2/manual/concepts/index.md#pairing-scheme); tokens: [§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)):
 
 ```python
 psi4.set_options({
@@ -70,7 +70,7 @@ psi4.set_options({
     'reks':            [4, 4],
     'sa_reks_configs': ['PPS1', 'OSS1', 'OSS2'],
     'sa_reks_weights': [0.5, 0.25, 0.25],
-    'si_reks_configs': [[['PPS1', 'OSS1'], ['PPS2', 'OSS3']]],
+    'si_reks_configs': [[['PPS1', 'PPS2', 'OSS1', 'OSS2'], ['single-scheme'], ['mixed-scheme'], ['full']]],
 })
 psi4.energy('scf')
 ```
@@ -83,26 +83,40 @@ set {
     reks             [ 4, 4 ]
     sa_reks_configs  [ PPS1, OSS1, OSS2 ]
     sa_reks_weights  [ 0.5, 0.25, 0.25 ]
-    si_reks_configs  [ [ [PPS1, OSS1], [PPS2, OSS3] ] ]
+    si_reks_configs  [ [ [PPS1, PPS2, OSS1, OSS2], [single-scheme], [mixed-scheme], [full] ] ]
 }
 energy('scf')
 ```
 
-For linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`) the first cassette prints:
+Linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`), HF: one SCF, E<sub>SA</sub> = −1.643432513968 E<sub>h</sub>; the four cassettes give (E<sub>h</sub>):
+
+| Cassette | Configurations (states) | S0 | S1 | S2 |
+| - | - | - | - | - |
+| 0: `PPS1`, `PPS2`, `OSS1`, `OSS2` | 4 (4) | −2.125272976235 | −1.575184105930 | −0.754226404381 |
+| 1: `single-scheme` (scheme 0 + `DOSS_SPS_0`, `_1`) | 10 (10) | −2.140622335856 | −1.578546559161 | −1.311136456214 |
+| 2: `mixed-scheme` | 9 (9) | −2.143592670888 | −1.575184105930 | −1.475834553802 |
+| 3: `full` | 18 (16) | −2.157804217606 | −1.578546559161 | −1.556892128760 |
+
+S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette; it is identical in cassettes 0 and 2 and in cassettes 1 and 3 (the latter add `OSS_DES1`). S2 depends most on the cassette: without `DES2` and `OSS3` it is the `OSS1` state at −0.754 E<sub>h</sub> (cassette 0); with them it is an `OSS3`/`DES2` mixture (cassettes 2, 3), with `DES2` alone `DES2` (cassette 1). Cassette 0 as printed; `PPS1` and `PPS2` overlap with 1.00 at this geometry, and S3 lies at +3.64 E<sub>h</sub>:
 
 ```log
 => Adiabatic states, cassette 0 <=
 
    State           E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)
    ------------------------------------------------------------------------
-   S0     -2.122159772781         0.000   PPS1(100.0)
-   S1     -0.756937216100        37.150   OSS1(100.0)
+   S0     -2.125272976235         0.000   PPS1(51.1) PPS2(48.9)
+   S1     -1.575184105930        14.969   OSS2(99.7) OSS1(0.3)
+   S2     -0.754226404381        37.308   OSS1(99.7) OSS2(0.3)
+   S3      3.641662279045       156.926   PPS2(51.1) PPS1(48.9)
    ------------------------------------------------------------------------
    w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;
    listed: the three largest |w_j| >= 0.1 %, then every further |w_j| > 5 %.
+
+   Overlap S_ij / sqrt(S_ii S_jj) of configuration pairs listed in the same row above 0.5 in magnitude:
+   PPS1 / PPS2   1.00
 ```
 
-Without `si_reks_grad` and `si_reks_nac`, as in both inputs above, `energy()` returns E<sub>SA</sub> (`CURRENT ENERGY` = `SCF TOTAL ENERGY`), not an SSR state energy: −1.643432513968 E<sub>h</sub> for this H₄ run, against S0 = −2.122159772781 E<sub>h</sub>. With a followed state: [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md). Energies in the output and their variables:
+Without `si_reks_grad` and `si_reks_nac`, as in both inputs above, `energy()` returns E<sub>SA</sub> (`CURRENT ENERGY` = `SCF TOTAL ENERGY`), not an SSR state energy: −1.643432513968 E<sub>h</sub> for this H₄ run, against S0 = −2.125272976235 to −2.157804217606 E<sub>h</sub> of the four cassettes. With a followed state: [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md). Energies in the output and their variables:
 
 | Quantity | Printed in | Variable |
 | - | - | - |
