@@ -97,7 +97,7 @@ Linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`), HF: one SCF, E<sub>SA</sub> =
 | 2: `mixed-scheme` | 9 (9) | −2.143592670888 | −1.575184105930 | −1.475834553802 |
 | 3: `full` | 18 (16) | −2.157804217606 | −1.578546559161 | −1.556892128760 |
 
-S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette: −1.575184 E<sub>h</sub> in cassettes 0 and 2, −1.578547 E<sub>h</sub> in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3. The `OSS1` state, S2 of cassette 0, moves up to S5 in cassette 2 (same energy) and to S3 and S6 in cassettes 1 and 3 (−0.759700 E<sub>h</sub>). The first four states of each cassette in `Adiabatic states`:
+S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette: −1.575184 E<sub>h</sub> in cassettes 0 and 2, −1.578547 E<sub>h</sub> in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3. The first four states of each cassette in `Adiabatic states`:
 
 ```log
 => Adiabatic states, cassette 0 <=
@@ -146,7 +146,7 @@ S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OS
    S3[3]   -1.243261461583        24.001   OSS3(45.4) DES2(44.7) OSS4(4.7)
 ```
 
-The first cassette of a spin is its main list: only its roots carry plain labels (`S0`, `S1`, …), `State summary` lists them, and `Alternative configuration lists` matches the states of the later cassettes (`S0[1]`, …) to them. `ref` and the eV column refer to the lowest state of the first cassette of the run ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)). `PPS1` and `PPS2` overlap with 1.00 at this geometry (cassettes 0 and 3); S3 of cassette 0, the other `PPS1`/`PPS2` combination, lies at +3.64 E<sub>h</sub>.
+The first cassette of a spin is its main list: only its roots carry plain labels (`S0`, `S1`, …), `State summary` lists them, and `Alternative configuration lists` matches the states of the later cassettes (`S0[1]`, …) to them. `ref` and the eV column refer to the lowest state of the first cassette of the run ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)). S3 of cassette 0, the other `PPS1`/`PPS2` combination, lies at +3.64 E<sub>h</sub>.
 
 Without `si_reks_grad` and `si_reks_nac`, as in both inputs above, `energy()` returns E<sub>SA</sub> (`CURRENT ENERGY` = `SCF TOTAL ENERGY`), not an SSR state energy: −1.643432513968 E<sub>h</sub> for this H₄ run, against S0 = −2.125272976235 to −2.157804217606 E<sub>h</sub> of the four cassettes. With a followed state: [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md). Energies in the output and their variables:
 
