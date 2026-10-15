@@ -108,6 +108,9 @@ S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OS
    S1     -1.575184105930        14.969   OSS2(99.7) OSS1(0.3)
    S2     -0.754226404381        37.308   OSS1(99.7) OSS2(0.3)
    S3      3.641662279045       156.926   PPS2(51.1) PPS1(48.9)
+   ------------------------------------------------------------------------
+   w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;
+   listed: the three largest |w_j| >= 0.1 %, then every further |w_j| > 5 %.
 ```
 
 ```log
