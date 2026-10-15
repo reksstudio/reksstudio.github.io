@@ -194,8 +194,8 @@ Complete inputs, each running with this build. Run a `.dat` file with `psi4 file
 | File | Calculation | Result |
 | - | - | - |
 | [`reks22_h2.dat`](https://reksstudio.github.io/v2/inputs/reks22_h2.dat.txt) | SI-SA-REKS(2,2), H₂ (0.74 Å), BH\&HLYP/cc-pVDZ, default pools | S0 = −1.159238310496 Eh |
-| [`reks44_h4_singlet_triplet.py`](https://reksstudio.github.io/v2/inputs/reks44_h4_singlet_triplet.py.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA `[PPS1, OSS1]` + `[T_PPS1]`, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.101144140471, T1 = −2.049371603420 Eh |
-| [`reks44_h4_heisenberg.dat`](https://reksstudio.github.io/v2/inputs/reks44_h4_heisenberg.dat.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; sectors 2S = 0, 2, 4; [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics) | S0 = −2.072348701131, T1 = −2.045831290718, Q1 = −1.888567570704 Eh |
+| [`reks44_h4_singlet_triplet.py`](https://reksstudio.github.io/v2/inputs/reks44_h4_singlet_triplet.py.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA default pool + all-α determinant, full SI cassette on 2S = 0 and 2S = 2 | S0 = −2.100482886123, T1 = −2.049090638114 Eh |
+| [`reks44_h4_heisenberg.dat`](https://reksstudio.github.io/v2/inputs/reks44_h4_heisenberg.dat.txt) | SI-SA-REKS(4,4), linear H₄ (1.6 Å), BH\&HLYP/6-31G; SA default pool + all-α determinant, full SI cassettes on 2S = 0, 2, 4; [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics) | S0 = −2.100474673257, T1 = −2.049091247233, Q1 = −1.889644027865 Eh |
 | [`reks22_h2_triplet_gradient.dat`](https://reksstudio.github.io/v2/inputs/reks22_h2_triplet_gradient.dat.txt) | SI-SA-REKS(2,2), H₂ (1.6 Å), BH\&HLYP/6-31G(d); analytic gradient and relaxed properties of T1 ([`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md)) | T1 = −0.959546621300 Eh; dE/dz(H1) = 0.041765470832 Eh/bohr |
 
 ## Contents {#contents}
@@ -370,8 +370,8 @@ energy('bhhlyp')
 [inputs/reks44_h4_singlet_triplet.py](https://reksstudio.github.io/v2/inputs/reks44_h4_singlet_triplet.py.txt)
 
 ```python
-"""SI-SA-REKS(4,4) of linear H4 (R = 1.6 A), BH&HLYP/6-31G: joint singlet + triplet SA,
-one full SI cassette per manifold."""
+"""SI-SA-REKS(4,4) of linear H4 (R = 1.6 A), BH&HLYP/6-31G: default SA pool + all-alpha determinant,
+one full SI cassette per manifold (2S = 0, 2)."""
 import psi4
 
 psi4.set_output_file("reks44_h4_singlet_triplet.out", False)
@@ -393,9 +393,8 @@ psi4.set_options({
     "reks_use_trah": True,
     "e_convergence": 1e-8,
     "d_convergence": 1e-6,
-    "sa_reks_configs": [["PPS1", "OSS1"], ["T_PPS1"]],
+    "sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],
     "si_reks_configs": [[["full"]], [["full"]]],
-    "si_reks_2spin": [0, 2],
 })
 
 e_sa, wfn = psi4.energy("bhhlyp", return_wfn=True)
@@ -408,8 +407,8 @@ print("J [Eh]  :", wfn.array_variable("REKS HEISENBERG J").np.ravel())
 [inputs/reks44_h4_heisenberg.dat](https://reksstudio.github.io/v2/inputs/reks44_h4_heisenberg.dat.txt)
 
 ```text
-#! SI-SA-REKS(4,4) of linear H4 (R = 1.6 A), BH&HLYP/6-31G: singlet, triplet and quintet
-#! sectors, SA weights 1/6. Prints the Spin-state energetics table (J for H = -2J S_A.S_B).
+#! SI-SA-REKS(4,4) of linear H4 (R = 1.6 A), BH&HLYP/6-31G: default SA pool + all-alpha determinant,
+#! full SI cassettes on 2S = 0, 2, 4. Prints the Spin-state energetics table (J for H = -2J S_A.S_B).
 
 molecule h4 {
 0 1
@@ -430,11 +429,8 @@ set {
   maxiter          150
   e_convergence    1e-10
   d_convergence    1e-8
-  sa_reks_2spin    [0, 2, 4]
-  sa_reks_configs  [[0, 1, 2], [0, 1], [0]]
-  sa_reks_weights  [0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.1666666666666665]
-  si_reks_configs  [[[0, 1, 2]], [[0, 1]], [[0]]]
-  si_reks_2spin    [0, 2, 4]
+  sa_reks_extra    [[1, 1, 1, 1, 0, 0, 0, 0]]
+  si_reks_configs  [[[full]], [[full]], [[full]]]
 }
 
 energy('bhhlyp')

@@ -1,5 +1,5 @@
-"""SI-SA-REKS(4,4) of linear H4 (R = 1.6 A), BH&HLYP/6-31G: joint singlet + triplet SA,
-one full SI cassette per manifold."""
+"""SI-SA-REKS(4,4) of linear H4 (R = 1.6 A), BH&HLYP/6-31G: default SA pool + all-alpha determinant,
+one full SI cassette per manifold (2S = 0, 2)."""
 import psi4
 
 psi4.set_output_file("reks44_h4_singlet_triplet.out", False)
@@ -21,9 +21,8 @@ psi4.set_options({
     "reks_use_trah": True,
     "e_convergence": 1e-8,
     "d_convergence": 1e-6,
-    "sa_reks_configs": [["PPS1", "OSS1"], ["T_PPS1"]],
+    "sa_reks_extra": [[1, 1, 1, 1, 0, 0, 0, 0]],
     "si_reks_configs": [[["full"]], [["full"]]],
-    "si_reks_2spin": [0, 2],
 })
 
 e_sa, wfn = psi4.energy("bhhlyp", return_wfn=True)
