@@ -440,11 +440,13 @@ Alias: `REKS_SI_2SPIN`
 "si_reks_2spin": [0, 2],
 ```
 
-* One integer 2S per SI group (explicit mode, [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)), pairwise distinct, in any order; more than one entry requires the 3-level `si_reks_configs` form.
+* One integer 2S per SI group (explicit mode, [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)), pairwise distinct, in any order; more than one entry requires the 3-level `si_reks_configs` form. The 2-level form is one group of cassettes on one manifold; the 3-level form adds the group level, one group per entry. A 2-level list with two entries stops the run: `REKS input error: SI_REKS_2SPIN has 2 labels (one per SI group), which requires the 3-level SI_REKS_CONFIGS form [[[...]], ...] (one group of cassettes per label); got a 2-level list of cassettes.`
 * `[x]` alone: the default SA ensemble on 2S = 0 and the default SI cassette on 2S = x ([Input patterns](https://reksstudio.github.io/v2/manual/setup/index.md#input-patterns)).
 * Sets the order of the SI cassettes: the spin groups follow this list, the cassettes of a group the order of its `SI_REKS_CONFIGS` block. The per-cassette lists [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md), [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md), [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md) and [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) take their entries in this order: with `[2, 0]` entry 0 is the triplet cassette. The printed index K and the `K=e`, `CASSETTE e` names run in ascending 2S (the triplet is K = 1). Without the option (ladder) both orders are ascending 2S ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)).
 
 ### Input patterns {#input-patterns}
+
+States on several spin manifolds share one SA ensemble: the default 2S = 0 pool (PPS and every OSS) plus the all-α determinant; the T_PPS configurations of T1/T2 may be added, nothing of higher spin.
 
 Linear H₄ (R = 1.6 Å), BH\&HLYP/6-31G. In all three the SA ensemble is the default 2S = 0 pool of REKS(4,4), `PPS1`, `OSS1`, `OSS2`, plus the all-α determinant from `sa_reks_extra`, weights 1/4 each; one SCF, E<sub>SA</sub> = −1.8826103083 E<sub>h</sub> in every case.
 
