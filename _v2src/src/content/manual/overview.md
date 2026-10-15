@@ -80,9 +80,17 @@ Linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`), HF: one SCF, E<sub>SA</sub> =
 | 2: `mixed-scheme` | 9 (9) | −2.143592670888 | −1.575184105930 | −1.475834553802 |
 | 3: `full` | 18 (16) | −2.157804217606 | −1.578546559161 | −1.556892128760 |
 
-S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette; it is identical in cassettes 0 and 2 and in cassettes 1 and 3 (the latter add `OSS_DES1`). S2 depends most on the cassette: without `DES2` and `OSS3` it is the `OSS1` state at −0.754 E<sub>h</sub> (cassette 0); with them it is an `OSS3`/`DES2` mixture (cassettes 2, 3), with `DES2` alone `DES2` (cassette 1). Cassette 0 as printed; `PPS1` and `PPS2` overlap with 1.00 at this geometry, and S3 lies at +3.64 E<sub>h</sub>:
+S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette: −1.575184 E<sub>h</sub> in cassettes 0 and 2, −1.578547 E<sub>h</sub> in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3. The `OSS1` state, S2 of cassette 0, moves up to S5 in cassette 2 (same energy) and to S3 and S6 in cassettes 1 and 3 (−0.759700 E<sub>h</sub>). The four `Adiabatic states` tables:
 
 @@fragment start-adiabatic@@
+
+@@fragment start-adiabatic-1@@
+
+@@fragment start-adiabatic-2@@
+
+@@fragment start-adiabatic-3@@
+
+`ref` is S0 of cassette 0, the reference of the eV column. `PPS1` and `PPS2` overlap with 1.00 at this geometry (cassettes 0 and 3); S3 of cassette 0, the other `PPS1`/`PPS2` combination, lies at +3.64 E<sub>h</sub>.
 
 Without `si_reks_grad` and `si_reks_nac`, as in both inputs above, `energy()` returns E<sub>SA</sub> (`CURRENT ENERGY` = `SCF TOTAL ENERGY`), not an SSR state energy: −1.643432513968 E<sub>h</sub> for this H₄ run, against S0 = −2.125272976235 to −2.157804217606 E<sub>h</sub> of the four cassettes. With a followed state: §si_reks_grad. Energies in the output and their variables:
 

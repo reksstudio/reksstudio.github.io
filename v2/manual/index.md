@@ -97,7 +97,7 @@ Linear H₄ (sto-3g, H–H 0.9 Å, `symmetry c1`), HF: one SCF, E<sub>SA</sub> =
 | 2: `mixed-scheme` | 9 (9) | −2.143592670888 | −1.575184105930 | −1.475834553802 |
 | 3: `full` | 18 (16) | −2.157804217606 | −1.578546559161 | −1.556892128760 |
 
-S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette; it is identical in cassettes 0 and 2 and in cassettes 1 and 3 (the latter add `OSS_DES1`). S2 depends most on the cassette: without `DES2` and `OSS3` it is the `OSS1` state at −0.754 E<sub>h</sub> (cassette 0); with them it is an `OSS3`/`DES2` mixture (cassettes 2, 3), with `DES2` alone `DES2` (cassette 1). Cassette 0 as printed; `PPS1` and `PPS2` overlap with 1.00 at this geometry, and S3 lies at +3.64 E<sub>h</sub>:
+S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OSS2` state in every cassette: −1.575184 E<sub>h</sub> in cassettes 0 and 2, −1.578547 E<sub>h</sub> in cassettes 1 and 3, which add `OSS_DES1`. S2 changes character with the cassette: `OSS1` in cassette 0, `DES2` in cassette 1, an `OSS3`/`DES2` mixture in cassettes 2 and 3. The `OSS1` state, S2 of cassette 0, moves up to S5 in cassette 2 (same energy) and to S3 and S6 in cassettes 1 and 3 (−0.759700 E<sub>h</sub>). The four `Adiabatic states` tables:
 
 ```log
 => Adiabatic states, cassette 0 <=
@@ -115,6 +115,79 @@ S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the `OS
    Overlap S_ij / sqrt(S_ii S_jj) of configuration pairs listed in the same row above 0.5 in magnitude:
    PPS1 / PPS2   1.00
 ```
+
+```log
+=> Adiabatic states, cassette 1 <=
+
+   State           E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)
+   -----------------------------------------------------------------------------------
+   ref    -2.125272976235         0.000   S0 of cassette 0
+   S0[1]  -2.140622335856        -0.418   PPS1(98.9) DOSS_SPS_1(1.0)
+   S1[1]  -1.578546559161        14.877   OSS2(99.5) OSS1(0.3) OSS_DES1(0.1)
+   S2[1]  -1.311136456214        22.154   DES2(94.3) DOSS_SPS_1(5.0) DDES1(0.3)
+   S3[1]  -0.759700282426        37.159   OSS1(99.0) OSS_DES2(0.7) OSS2(0.3)
+   S4[1]  -0.316996802406        49.206   DOSS_SPS_0(68.2) DOSS_SPS_1(27.9) DES1(2.1)
+   S5[1]  -0.146502273691        53.845   DOSS_SPS_1(49.4) DOSS_SPS_0(30.7) DES1(14.4)
+   S6[1]   0.025866246557        58.535   OSS_DES2(99.0) OSS1(0.7) OSS_DES1(0.2)
+   S7[1]   0.583716625951        73.715   DES1(82.5) DOSS_SPS_1(15.9) DOSS_SPS_0(1.0)
+   S8[1]   0.919636705226        82.856   OSS_DES1(99.6) OSS_DES2(0.3) OSS2(0.1)
+   S9[1]   1.170788605323        89.690   DDES1(98.1) DOSS_SPS_1(1.0) DES1(0.9)
+   -----------------------------------------------------------------------------------
+   w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;
+   listed: the three largest |w_j| >= 0.1 %, then every further |w_j| > 5 %.
+```
+
+```log
+=> Adiabatic states, cassette 2 <=
+
+   State           E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)
+   -----------------------------------------------------------------------------------
+   ref    -2.125272976235         0.000   S0 of cassette 0
+   S0[2]  -2.143592670888        -0.499   PPS1(98.5) DOSS_SPS_1(0.9) OSS3(0.3)
+   S1[2]  -1.575184105930        14.969   OSS2(99.7) OSS1(0.3)
+   S2[2]  -1.475834553802        17.672   OSS3(53.3) DES2(39.0) OSS4(5.3)
+   S3[2]  -1.222179421667        24.574   DES2(50.3) OSS3(43.3) DOSS_SPS_1(3.7)
+   S4[2]  -0.949704282395        31.989   OSS4(89.2) DES2(4.9) DOSS_SPS_0(2.7)
+   S5[2]  -0.754226404381        37.308   OSS1(99.7) OSS2(0.3)
+   S6[2]  -0.300919686184        49.643   DOSS_SPS_0(60.3) DOSS_SPS_1(34.8) DES1(2.5)
+   S7[2]  -0.094264473304        55.267   DOSS_SPS_1(42.3) DOSS_SPS_0(33.7) DES1(15.8)
+   S8[2]   0.596839748783        74.072   DES1(81.5) DOSS_SPS_1(15.8) DOSS_SPS_0(1.4)
+   -----------------------------------------------------------------------------------
+   w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;
+   listed: the three largest |w_j| >= 0.1 %, then every further |w_j| > 5 %.
+```
+
+```log
+=> Adiabatic states, cassette 3 <=
+
+   State            E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)
+   -----------------------------------------------------------------------------------------------------------------------
+   ref     -2.125272976235         0.000   S0 of cassette 0
+   S0[3]   -2.157804217606        -0.885   PPS1(49.1) PPS2(48.3) DOSS_SPS_1(1.1)
+   S1[3]   -1.578546559161        14.877   OSS2(99.5) OSS1(0.3) OSS_DES1(0.1)
+   S2[3]   -1.556892128760        15.466   OSS3(46.2) DES2(35.6) DES3(7.7)
+   S3[3]   -1.243261461583        24.001   OSS3(45.4) DES2(44.7) OSS4(4.7)
+   S4[3]   -0.994944258185        30.758   OSS4(77.0) DES2(10.4) DOSS_SPS_0(4.9)
+   S5[3]   -0.782002831796        36.552   DES3(74.2) DOSS_SPS_0(10.2) OSS3(5.9) OSS4(5.4)
+   S6[3]   -0.759700282426        37.159   OSS1(99.0) OSS_DES2(0.7) OSS2(0.3)
+   S7[3]   -0.306971418288        49.479   DOSS_SPS_1(47.1) DOSS_SPS_0(37.0) DES3(4.6)
+   S8[3]   -0.213443534482        52.024   DOSS_SPS_1(25.4) DOSS_SPS_0(20.9) DES4(20.4) DES3(10.5) OSS_DES3(6.4) OSS4(6.0)
+   S9[3]    0.025866246557        58.535   OSS_DES2(99.0) OSS1(0.7) OSS_DES1(0.2)
+   S10[3]   0.164742871402        62.315   DES1(37.8) DES4(36.7) DOSS_SPS_0(17.7)
+   S11[3]   0.237268815103        64.288   OSS_DES3(68.5) DES4(22.3) DES1(5.6)
+   S12[3]   0.623308933249        74.793   OSS_DES4(42.2) DES1(21.2) OSS_DES3(14.9) DES4(9.9)
+   S13[3]   0.919636705226        82.856   OSS_DES1(99.6) OSS_DES2(0.3) OSS2(0.1)
+   S14[3]   0.920768049864        82.887   OSS_DES4(47.4) DES1(23.4) DOSS_SPS_1(14.0)
+   S15[3]   1.242339480860        91.637   DDES1(43.7) DDES2(42.2) DES1(5.4)
+   -----------------------------------------------------------------------------------------------------------------------
+   w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;
+   listed: the three largest |w_j| >= 0.1 %, then every further |w_j| > 5 %.
+
+   Overlap S_ij / sqrt(S_ii S_jj) of configuration pairs listed in the same row above 0.5 in magnitude:
+   PPS1  / PPS2    1.00    DDES1 / DDES2   1.00
+```
+
+`ref` is S0 of cassette 0, the reference of the eV column. `PPS1` and `PPS2` overlap with 1.00 at this geometry (cassettes 0 and 3); S3 of cassette 0, the other `PPS1`/`PPS2` combination, lies at +3.64 E<sub>h</sub>.
 
 Without `si_reks_grad` and `si_reks_nac`, as in both inputs above, `energy()` returns E<sub>SA</sub> (`CURRENT ENERGY` = `SCF TOTAL ENERGY`), not an SSR state energy: −1.643432513968 E<sub>h</sub> for this H₄ run, against S0 = −2.125272976235 to −2.157804217606 E<sub>h</sub> of the four cassettes. With a followed state: [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md). Energies in the output and their variables:
 
