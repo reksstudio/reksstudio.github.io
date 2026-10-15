@@ -204,25 +204,50 @@
       "problem": "Excited states",
       "title": "QUEST vertical excitations",
       "short": "QUEST",
-      "ident": "Lowest singlet vertical excitation energy of 67 molecules with mono-configurational ground states (QUEST3/5/6/7), against theoretical best estimates.",
-      "key": "MAD 0.36 eV, RMSD 0.37 eV, mean signed error +0.22 eV over 67 molecules.",
+      "ident": "S1, S2, T1 and T2 vertical excitation energies of {quest:molecules} molecules from QUEST3/5/6/7 against theoretical best estimates (TBE): {quest:pairs} state pairs ({quest:singlet} singlet, {quest:triplet} triplet); SSR with BH&HLYP, M08-SO and ωB97X, {quest:basis}.",
+      "key": "MAE {quest:mae} eV (BH&HLYP / M08-SO / ωB97X); median absolute error {quest:medae} eV.",
+      "rule": "Per state, the value of the active space (2,2)–(8,8) closest to the TBE.",
       "rows": [
-        { "system": "67 molecules, QUEST3/5/6/7", "as": "(4,4); (6,6) benzene, triazine", "reference": "TBE (aug-cc-pVTZ)", "number": "MAD 0.36 / RMSD 0.37 eV" }
+        { "system": "{quest:molecules} molecules, QUEST3/5/6/7; S1, S2, T1, T2", "as": "(2,2)–(8,8), closest to TBE per state", "reference": "TBE", "number": "MAE {quest:mae} eV (BH&HLYP / M08-SO / ωB97X)" }
       ],
       "blocks": [
         {
-          "figure": { "src": "figures/main/quest.webp", "w": 1600, "h": 799, "alt": "QUEST: SSR vertical excitation energies against TBE, and the error distribution", "caption": "(A) SSR against TBE; (B) error distribution with a Gaussian fit at the mean error." },
-          "tables": [
-            { "title": "Error statistics", "head": ["Set", "MAD / eV", "RMSD / eV", "Mean signed / eV"], "rows": [["67 molecules, this work", "0.36", "0.37", "+0.22"]] },
-            { "title": "Comparator, shown apart (different set): Liang et al. 2022, their own set", "head": ["Method", "MAD / eV", "RMSD / eV"], "rows": [["TDDFT BH&HLYP", "0.30", "0.38"], ["TDDFT B3LYP", "0.37", "0.45"]] },
-            { "title": "Full table", "head": ["Molecule", "State", "SSR / eV", "TBE / eV"], "rows": [["to be added", "", "", ""]] }
-          ],
-          "setup": [["Method", "SSR(4,4); SSR(6,6) for benzene and triazine; full SI pool"], ["Functional, basis", "BH&HLYP/aug-cc-pVTZ"], ["Geometries", "to be added"]],
-          "reference": ["QUEST theoretical best estimates (QUESTDB)."],
-          "provenance": ["Paper v1, pp 8–9; SI Note 4, SI Fig. 8–9."]
+          "id": "errors",
+          "title": "Errors by state",
+          "key": "Δ = E_{SSR} − E_{TBE}. ME: mean signed error; MedAE: median absolute error.",
+          "quest": ["strip", "stats"]
+        },
+        {
+          "id": "sets",
+          "title": "By QUEST set",
+          "quest": ["sets"]
+        },
+        {
+          "id": "parity",
+          "title": "SSR against TBE",
+          "quest": ["parity"]
+        },
+        {
+          "id": "molecules",
+          "title": "Molecules",
+          "key": "Drawings of the computed geometries: explicit hydrogens, no bond orders, one scale for all molecules. Δ / eV per state and functional; –: no pair for this state. A card opens the molecule page: every active space per state.",
+          "quest": ["gallery"]
+        },
+        {
+          "id": "table",
+          "title": "Full table",
+          "quest": ["table"],
+          "note": "Irreps: TBE in the molecular point group, SSR in an abelian subgroup (the calculations run without symmetry, C_{1}). ^{a} SSR irrep differs from the TBE irrep; the two are consistent with the correlation tables D_{6h} → D_{2h}, D_{3h} → C_{2v}, C_{∞v} → C_{2v}, D_{∞h} → D_{2h}. ^{m} no irrep assigned to the SSR state (–)."
+        },
+        {
+          "id": "setup",
+          "title": "Setup and reference",
+          "setup": [["Method", "SSR, active spaces (2,2), (4,4), (6,6), (8,8)"], ["Functionals", "BH&HLYP, M08-SO, ωB97X"], ["Basis", "{quest:basis}"], ["Symmetry", "none in the calculation (C_{1}); SSR irreps assigned in an abelian subgroup afterwards"], ["Value per state", "the active space closest to the TBE; the active space of each value is in the full table"], ["Pairs", "each SSR state paired with one TBE row of the same multiplicity; TBE state, both irreps and the active space on the molecule pages"], ["Code", "Psi4 commit ddc2f581c"], ["Geometries", "to be added"]],
+          "reference": ["Theoretical best estimates of QUEST3, 5, 6, 7 as listed in QUESTDB: Véril, M. et al. WIREs Comput. Mol. Sci. 2021, 11, e1517."],
+          "provenance": ["to be added"]
         }
       ],
-      "scope": "Lowest singlet only; molecules with mono-configurational ground states; no same-set TDDFT comparison.",
+      "scope": "S1, S2, T1, T2 of each molecule where a pair exists: N = {quest:perState} (S1 / S2 / T1 / T2); {quest:complete} molecules have all four. Every paired TBE state is of valence or charge-transfer type (kind V or CT in the TBE data); no Rydberg state is among the pairs. QUEST6 {quest:geometryOnly} have no pair and are not shown.",
       "exits": { "inputTodo": true }
     },
     {

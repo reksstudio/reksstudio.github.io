@@ -1,0 +1,113 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Nav from '../../../../components/Nav.astro';
+import Footer from '../../../../components/Footer.astro';
+import QuestElements from '../../../../components/main/QuestElements.astro';
+import QuestSwitch from '../../../../components/main/QuestSwitch.astro';
+import Table from '../../../../components/main/Table.astro';
+import { html, results } from '../../../../lib/overview.mjs';
+import { funcLabels, funcs, irrep, molecules, quest, signed, states } from '../../../../lib/quest.mjs';
+import '../../../../styles/main.css';
+
+export function getStaticPaths() {
+  return molecules.map((m, i) => ({ params: { mol: m.slug }, props: { m, prev: molecules[i - 1], next: molecules[i + 1] } }));
+}
+
+const base = import.meta.env.BASE_URL;
+const { m, prev, next } = Astro.props;
+const irrepNote = results.find((r) => r.slug === 'quest').blocks.find((b) => b.id === 'table').note;
+const shown = states.filter((s) => m.states[s]);
+// TBE of a state; functionals listed only where their paired TBE rows differ
+function tbeLine(s) {
+  const groups = Map.groupBy(funcs, (f) => `${irrep(m.states[s][f.key].tbeSym)} ${m.states[s][f.key].tbe} eV`);
+  return [...groups].map(([t, fs]) => (groups.size > 1 ? `${t} (${fs.map((f) => f.label).join(', ')})` : t)).join('; ');
+}
+// rows of a state: per functional one row per active space, the used one bold
+const statesTable = (s) => ({
+  head: ['Functional', 'Active space', 'SSR / eV', 'Δ / eV', 'SSR irrep'],
+  rows: funcs.flatMap((f) => {
+    const p = m.states[s][f.key];
+    return quest.rungs.map(([k, label]) => {
+      const r = p.rungs[k];
+      const B = (v) => (k === p.rung ? `**${v}**` : v);
+      return r
+        ? [f.label, B(label), B(r.reks), B(signed(r.d)), `${irrep(r.reksSym)}${r.mark ? `^{${r.mark}}` : ''}`]
+        : [f.label, B(label), '–', '–', '–'];
+    });
+  }),
+});
+const PLANE = {
+  above: 'slice 0.6 Å above the molecular plane',
+  nonplanar: 'non-planar molecule: slice 0.6 Å above the best plane of the heavy atoms',
+  axis: 'linear molecule: slice in a plane through the axis, turned per orbital to its largest lobe',
+};
+const eps = (v) => `${v < 0 ? '−' : ''}${Math.abs(v).toFixed(4)}`;
+const sections = [...shown.map((s) => [s.toLowerCase(), s]), ['orbitals', 'Orbitals']];
+---
+<Base title={`${m.name} — QUEST — REKS Studio`}>
+<Nav variant="light" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href={`${base}main/`}>Overview</a> › <a href={`${base}main/results/`}>Results</a> › <a href="../">QUEST</a> › <span>{m.name}</span></nav>
+    <h1>{m.name}</h1>
+    <p class="ident">QUEST{m.q}: SSR vertical excitation energies of every active space against the TBE; {funcLabels}; {quest.basis.join(', ')}.</p>
+    <p class="sections">{sections.map(([id, t], i) => <>{i > 0 && ' · '}<a href={`#${id}`}>{t}</a></>)}</p>
+  </div>
+</header>
+
+<div class="wrap mbody">
+  <section class="mblock">
+    <figure class="qmol">
+      <img src={`${base}${m.svg}`} width={2 * m.w} height={2 * m.h} alt={`${m.name}: drawing of the computed geometry`} />
+      <figcaption>Computed geometry: explicit hydrogens, no bond orders.</figcaption>
+    </figure>
+    <QuestElements />
+  </section>
+
+  <section class="mblock" id="states">
+    <h2>States by active space</h2>
+    <p class="qcap">Δ = E<sub>SSR</sub> − E<sub>TBE</sub>. Bold: the value used on the QUEST page. –: the state is not matched at this active space.</p>
+    <div class="qstates">
+    {shown.map((s) => (
+      <div>
+        <h3 id={s.toLowerCase()}>{s}</h3>
+        <p class="qcap">TBE: <Fragment set:html={html(tbeLine(s))} /></p>
+        <Table table={statesTable(s)} numeric grouped />
+      </div>
+    ))}
+    </div>
+    <p class="qcap" set:html={html(irrepNote)} />
+  </section>
+
+  <section class="mblock" id="orbitals">
+    <h2>Active orbitals</h2>
+    <p class="qcap">SA-REKS orbitals of the calculations in the table, {PLANE[m.plane]}; blue + / copper −. One column per pair of pairing scheme 0: antibonding orbital above, bonding orbital below; slot, MO, FON, ε / E<sub>h</sub>.</p>
+    <QuestSwitch />
+    {funcs.map((f) => (
+      <div class="qtab" id={`qt-${f.id}`}>
+        {m.orbitals[f.id].map((b) => (
+          <figure class="qorb">
+            <figcaption>{f.label}, {b.label}</figcaption>
+            <div class={`g n${b.pairs.length}`}>
+              {b.pairs.map((p) => <div class="h">({p.bond.slot}, {p.anti.slot})</div>)}
+              {['anti', 'bond'].flatMap((role) => b.pairs.map((p) => {
+                const o = p[role];
+                return (
+                  <div><img src={`${base}${o.svg}`} width={o.w} height={o.h} alt={`${m.name}, ${f.label} ${b.label}, orbital ${o.mo}`} loading="lazy" decoding="async" /><span><b>{o.slot}</b> {o.mo} · {o.fon.toFixed(6)}<br />{eps(o.eps)}</span></div>
+                );
+              }))}
+            </div>
+          </figure>
+        ))}
+      </div>
+    ))}
+  </section>
+
+  <p class="siblings">{prev && <><a href={`../${prev.slug}/`}>← {prev.name}</a> · </>}<a href={`../#m-${m.id}`}>Back to the gallery</a>{next && <> · <a href={`../${next.slug}/`}>{next.name} →</a></>}</p>
+</div>
+</main>
+
+<Footer />
+</Base>

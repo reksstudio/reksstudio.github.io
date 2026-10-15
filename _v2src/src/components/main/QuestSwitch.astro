@@ -1,0 +1,12 @@
+---
+import { funcs } from '../../lib/quest.mjs';
+---
+<fieldset class="qsw">
+  <legend>Functional</legend>
+  {funcs.map((f, i) => (
+    <>
+      <input type="radio" name="qf" id={`qf-${f.id}`} checked={i === 0} />
+      <label for={`qf-${f.id}`}>{f.label}</label>
+    </>
+  ))}
+</fieldset>

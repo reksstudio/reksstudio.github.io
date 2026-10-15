@@ -1,0 +1,22 @@
+---
+import QuestGallery from './QuestGallery.astro';
+import QuestParity from './QuestParity.astro';
+import QuestStats from './QuestStats.astro';
+import QuestStrip from './QuestStrip.astro';
+import QuestTable from './QuestTable.astro';
+
+interface Props {
+  parts: string[];
+}
+
+const { parts } = Astro.props;
+---
+{parts.map((p) => {
+  if (p === 'strip') return <QuestStrip />;
+  if (p === 'stats') return <QuestStats kind="state" />;
+  if (p === 'sets') return <QuestStats kind="set" />;
+  if (p === 'parity') return <QuestParity />;
+  if (p === 'gallery') return <QuestGallery />;
+  if (p === 'table') return <QuestTable />;
+  throw new Error(`overview.json: unknown quest part ${p}`);
+})}

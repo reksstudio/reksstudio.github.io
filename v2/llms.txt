@@ -104,6 +104,12 @@ Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: br
 - [inputs/wide_bh_states.py](/v2/inputs/wide_bh_states.py.txt): SI-SA-REKS(2,3), BH\&HLYP/cc-pVDZ, RKS seed; SA default pool + all-α |ab|, |ac|, |bc|; SI on 2S = 0, 2; TRAH
 - [reks-studio.bib](/v2/reks-studio.bib.txt): Documentation
 
+## Data
+- [data/quest3_rows.tsv](/v2/data/quest3_rows.tsv.txt): QUEST3, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.
+- [data/quest5_rows.tsv](/v2/data/quest5_rows.tsv.txt): QUEST5, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.
+- [data/quest6_rows.tsv](/v2/data/quest6_rows.tsv.txt): QUEST6, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.
+- [data/quest7_rows.tsv](/v2/data/quest7_rows.tsv.txt): QUEST7, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.
+
 ## Optional
 - [REKS Studio](/v2/index.md)
 - [Documentation](/v2/docs/index.md)

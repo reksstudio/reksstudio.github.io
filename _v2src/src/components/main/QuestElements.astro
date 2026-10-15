@@ -1,0 +1,6 @@
+---
+const ELEMENTS = ['C', 'H', 'N', 'O', 'S'];
+---
+<ul class="qels" aria-label="Atom colours">
+  {ELEMENTS.map((e) => <li><span class={`el el-${e}`}></span>{e}</li>)}
+</ul>

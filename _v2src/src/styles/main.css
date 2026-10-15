@@ -91,8 +91,9 @@ header.hero{ padding: 28px 0 24px; }
 /* proof cards: hollow grey dot = reference (band = its error), filled blue dot = REKS Studio */
 .pcards{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
 /* the whole card is the link: the title anchor stretched over the card */
-.pcard{ position: relative; display: flex; flex-direction: column; gap: 4px; border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; background: var(--bg-raised); }
-.pcard:hover{ border-color: var(--ours); }
+.pcard, .qcard{ position: relative; border: 1px solid var(--line); border-radius: 4px; background: var(--bg-raised); }
+.pcard{ display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; }
+.pcard:hover, .qcard:hover{ border-color: var(--ours); }
 .pq{ font-weight: 600; font-size: 0.95rem; color: var(--ink); text-decoration: none; }
 .pq::after{ content: ""; position: absolute; inset: 0; }
 .pviz{ display: block; width: 100%; height: auto; margin: 6px 0; }
@@ -217,7 +218,8 @@ header.hero{ padding: 28px 0 24px; }
 
 /* capability chips */
 .chips{ list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 12px; }
-.chips a{ display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 0.88rem; text-decoration: none; color: var(--ink); }
+.chips a, .qsw label{ border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 0.88rem; }
+.chips a{ display: inline-block; text-decoration: none; color: var(--ink); }
 .chips a:hover{ border-color: var(--ours); }
 .credits{ font-size: 0.88rem; color: var(--ink-soft); }
 
@@ -227,7 +229,7 @@ header.hero{ padding: 28px 0 24px; }
 .chart-row > svg{ flex: none; }
 .chart-box{ min-width: 0; overflow-x: auto; }
 .count-chart{ display: block; }
-.count-chart .grid, .step-chart .grid{ stroke: var(--line); stroke-width: 1; }
+.count-chart .grid, .step-chart .grid, .qstrip .grid, .qparity .grid{ stroke: var(--line); stroke-width: 1; }
 .count-chart .tick, .step-chart .tick{ font: 12px var(--mono); fill: var(--ink-soft); }
 .step-chart .val{ font: 12px var(--mono); fill: var(--ink); }
 /* spin-sector colours S = 0..7; --on-spin: label ink inside the bar */
@@ -269,6 +271,74 @@ header.hero{ padding: 28px 0 24px; }
 .flow-node p{ margin: 0; font-size: 0.86rem; color: var(--ink-soft); }
 .flow-arrow{ align-self: center; color: var(--ink-faint); }
 @media (max-width: 780px){ .flow{ flex-direction: column; } .flow-arrow{ transform: rotate(90deg); } }
+
+/* QUEST: error strips 2 x 2, parity panels 3 x 1, molecule cards, functional switch of the full table */
+.mhead p.rule{ margin-top: 4px; font-size: 0.92rem; color: var(--ink-soft); }
+.qstrip, .qparity{ display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px 32px; margin: 12px 0 4px; }
+.qstrip svg, .qparity svg{ display: block; width: 100%; height: auto; max-width: 420px; }
+@media (min-width: 760px){ .qstrip{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px){ .qparity{ grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.qstrip .zero{ stroke: var(--ink-faint); stroke-width: 1; }
+.qstrip .tick, .qparity .tick{ font: 11px var(--mono); fill: var(--ink-soft); }
+.qstrip .val{ font: 11px var(--mono); fill: var(--ink); }
+.qstrip .ttl, .qparity .ttl{ font: 600 13px var(--sans); fill: var(--ink); }
+/* dots are links, drawn last; strip: transparent stroke widens the hit radius to 4.5 < dot spacing 5.2;
+   parity dots overlap, so no widening there */
+.qstrip svg *, .qparity svg *{ pointer-events: none; }
+.qstrip circle, .qparity circle{ pointer-events: all; }
+.qstrip a:focus, .qparity a:focus{ outline: none; }
+.qstrip .dot circle, .qparity .dot circle{ fill: var(--spin); stroke: transparent; stroke-width: 4; }
+.qparity .dot circle{ stroke-width: 0; }
+.qparity .ring circle{ fill: transparent; stroke: var(--spin); stroke-width: 1.5; }
+.dot a:hover circle{ stroke: color-mix(in srgb, var(--spin) 45%, transparent); stroke-width: 4; }
+.ring a:hover circle{ fill: color-mix(in srgb, var(--spin) 45%, transparent); stroke-width: 2.5; }
+.qstrip a:focus-visible circle, .qparity a:focus-visible circle{ stroke: var(--ink); stroke-width: 2; }
+.qparity .diag{ stroke: var(--ink-faint); stroke-width: 1; stroke-dasharray: 4 4; }
+.qstrip .me{ stroke: var(--ink); stroke-width: 2; }
+.mblock .qcap{ font-size: 0.86rem; color: var(--ink-soft); }
+.qlegend{ margin-bottom: 8px; }
+.qmore summary{ cursor: pointer; font-size: 0.92rem; margin: 8px 0; }
+.qels{ list-style: none; display: flex; gap: 14px; padding: 0; margin: 4px 0 8px; font: 0.84rem var(--mono); color: var(--ink-soft); }
+.qels li{ display: flex; align-items: center; gap: 5px; }
+.el{ width: 11px; height: 11px; border-radius: 50%; border: 1px solid #8a8f98; }
+.el-C{ background: #3d434e; } .el-H{ background: #fff; } .el-N{ background: #2a78d6; } .el-O{ background: #e34948; } .el-S{ background: #eda100; }
+.qcards{ list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; padding: 0; margin: 0 0 8px; }
+.qcard{ padding: 8px; scroll-margin-top: var(--nav-offset); }
+.qcard:has(a:focus-visible){ outline: 2px solid var(--ours); outline-offset: 2px; }
+/* the whole card is the link: the name anchor stretched over the card */
+.qcard .qname a{ color: var(--ink); text-decoration: none; }
+.qcard .qname a::after{ content: ""; position: absolute; inset: 0; }
+/* drawing box as tall as the tallest drawing (97 px), so names align across a row */
+.qcard .qimg{ display: flex; align-items: center; justify-content: center; height: 97px; }
+.qcard img{ display: block; max-width: 100%; height: auto; }
+.qcard .qname{ margin: 6px 0 4px; font-weight: 600; font-size: 0.9rem; hyphens: auto; overflow-wrap: anywhere; }
+.qcard table{ width: 100%; border-collapse: collapse; font: 0.74rem var(--mono); font-variant-numeric: tabular-nums; }
+.qcard th, .qcard td{ padding: 1px 0 1px 4px; text-align: right; font-weight: 400; white-space: nowrap; }
+.qcard th:first-child{ text-align: left; padding-left: 0; }
+.qcard thead th{ color: var(--ink-soft); font-size: 0.64rem; }
+@media (max-width: 600px){ .qcards{ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); } .qcard{ padding: 6px; } .qcard table{ font-size: 0.62rem; } .qcard th, .qcard td{ padding-left: 2px; } .qcard thead th{ font-size: 0.56rem; } }
+.qmol{ margin: 0; }
+.qmol img{ display: block; max-width: 100%; height: auto; }
+.qstates{ display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 48px; }
+@media (min-width: 900px){ .qstates{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.qmol figcaption{ font-size: 0.86rem; color: var(--ink-soft); margin-top: 8px; }
+.qsw{ display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border: 0; padding: 0; margin: 8px 0; }
+.qsw legend{ float: left; margin-right: 6px; font-size: 0.9rem; color: var(--ink-soft); }
+.qsw input{ position: absolute; opacity: 0; width: 1px; height: 1px; }
+.qsw label{ cursor: pointer; }
+.qsw input:checked + label{ border-color: var(--ours); background: color-mix(in srgb, var(--ours) 12%, transparent); }
+.qsw input:focus-visible + label{ outline: 2px solid var(--ours); outline-offset: 2px; }
+.mblock:has(#qf-bh:checked) .qtab:not(#qt-bh), .mblock:has(#qf-m08:checked) .qtab:not(#qt-m08), .mblock:has(#qf-wb:checked) .qtab:not(#qt-wb){ display: none; }
+.qtab tbody th{ scroll-margin-top: var(--nav-offset); }
+.qorb{ margin: 0 0 20px; }
+.qorb figcaption{ font-weight: 600; font-size: 0.92rem; margin-bottom: 4px; }
+.qorb .g{ display: grid; gap: 4px 12px; }
+.qorb .n1{ grid-template-columns: minmax(0, 180px); } .qorb .n2{ grid-template-columns: repeat(2, minmax(0, 180px)); }
+.qorb .n3{ grid-template-columns: repeat(3, minmax(0, 180px)); } .qorb .n4{ grid-template-columns: repeat(4, minmax(0, 180px)); }
+.qorb .h{ font-size: 0.85rem; font-weight: 600; text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+.qorb img{ display: block; max-width: 100%; height: auto; margin: 0 auto 2px; }
+.qorb .g span{ display: block; text-align: center; font-size: 0.78rem; line-height: 1.3; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.qorb .g span b{ color: var(--ink); font-weight: 600; }
 
 .terminal{ padding: 20px 22px; font-size: 0.86rem; overflow-x: auto; }
 .exits ul{ padding-left: 20px; font-size: 0.95rem; }

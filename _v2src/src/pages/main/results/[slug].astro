@@ -26,6 +26,7 @@ const sections = r.blocks.filter((b) => b.id && b.title);
     <p class="ident" set:html={html(r.ident)} />
     <p class="refclass">Reference class: <Fragment set:html={html(classes[r.cls].label)} />{r.secondary && <>; secondary: <Fragment set:html={html(classes[r.secondary].label)} /></>}</p>
     <p class="keyline" set:html={html(r.key)} />
+    {r.rule && <p class="rule" set:html={html(r.rule)} />}
     {sections.length > 1 && <p class="sections">{sections.map((b, i) => <>{i > 0 && ' · '}<a href={`#${b.id}`} set:html={html(b.title)} /></>)}</p>}
   </div>
 </header>

@@ -1,0 +1,31 @@
+---
+import QuestSwitch from './QuestSwitch.astro';
+import Table from './Table.astro';
+import { funcs, irrep, molecules, signed, states } from '../../lib/quest.mjs';
+
+const HEAD = ['Molecule', 'State', 'TBE / eV', 'SSR / eV', 'Δ / eV', 'Active space', 'TBE irrep', 'SSR irrep'];
+// rows of one functional, one per (molecule, state); the molecule cell links to its gallery card
+const tables = funcs.map((f) => ({
+  f,
+  table: {
+    title: f.label,
+    head: HEAD,
+    rows: molecules.flatMap((m) =>
+      states.filter((s) => m.states[s]).map((s) => {
+        const r = m.states[s][f.key];
+        return [
+          { t: m.name, href: `main/results/quest/#m-${m.id}` },
+          s, r.tbe, r.reks, signed(r.d), r.as, irrep(r.tbeSym),
+          `${irrep(r.reksSym)}${r.mark ? `^{${r.mark}}` : ''}`,
+        ];
+      }),
+    ),
+  },
+}));
+---
+<QuestSwitch />
+{tables.map(({ f, table }) => (
+  <div class="qtab" id={`qt-${f.id}`}>
+    <Table table={table} numeric grouped />
+  </div>
+))}

@@ -15,9 +15,17 @@ import { textOf } from './manual-hast.mjs';
 import { PAGES, entryHref, entryMap, optionHref, optionRowHref, pagePath, stripNum } from './manual-pages.mjs';
 import { USED_IN, optionGroup, optionId, optionKeys, optionTitle, optionType } from './reference.mjs';
 import { BRANCH, REPO_URL, siteRev } from './site.mjs';
+import { sets } from './quest.mjs';
 
 const SUMMARY = 'REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.';
 const LANG = { '.py': 'python', '.dat': 'text', '.bib': 'bibtex' };
+// public/data/<file>.txt: tables for agents, listed in llms.txt only, linked from no page
+const DATA = Object.fromEntries(
+  sets.map((q) => [
+    `data/quest${q}_rows.tsv`,
+    `QUEST${q}, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.`,
+  ]),
+);
 const DRAFT = 'main/';
 const IMAGE = new Set(['.avif', '.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg']);
 // Claude Code WebFetch truncates longer text
@@ -47,7 +55,7 @@ const kept = (n) =>
   !(
     isEl(n, 'nav', 'script') ||
     n.properties?.ariaHidden === 'true' ||
-    (isEl(n, 'svg') && n.properties.role !== 'img') ||
+    (isEl(n, 'svg') && !['img', 'group'].includes(n.properties.role)) ||
     (isEl(n, 'details') && all(n, (x) => isEl(x, 'nav')).length)
   );
 
@@ -87,7 +95,7 @@ const handlers = {
   svg: (state, node) => ({ type: 'paragraph', children: [{ type: 'text', value: node.properties.ariaLabel }] }),
 };
 
-// counted pairs: hast test in the pruned <main> minus the subtrees of the optional 4th tag, mdast test in its conversion
+// counted pairs: hast test in the pruned <main> minus the subtrees of the optional 4th tags, mdast test in its conversion
 const COUNTS = [
   ['math', (n) => isEl(n, 'math'), (n) => n.type === 'inlineMath' || n.type === 'math'],
   ['sub', (n) => isEl(n, 'sub'), (n) => n.type === 'mdxJsxTextElement' && n.name === 'sub'],
@@ -95,14 +103,14 @@ const COUNTS = [
   ['pre', (n) => isEl(n, 'pre'), (n) => n.type === 'code'],
   ['table row', (n) => isEl(n, 'tr'), (n) => n.type === 'tableRow'],
   ['h2-h4', (n) => isEl(n, 'h2', 'h3', 'h4'), (n) => n.type === 'heading' && n.depth >= 2 && n.depth <= 4],
-  ['link', (n) => isEl(n, 'a') && n.properties.href !== undefined, (n) => n.type === 'link', 'pre'],
+  ['link', (n) => isEl(n, 'a') && n.properties.href !== undefined, (n) => n.type === 'link', ['pre', 'svg']],
 ];
 
 // structural counts; the text of <main> (math removed, sub/sup delimited, svg = its label) found
 // token by token, in order, in the plain text of the mdast (math removed); no inline math with "|" in a table cell
 function checkCoverage(name, main, mdast) {
   for (const [what, inHast, inMdast, skip] of COUNTS) {
-    const h = all(skip ? keepOnly(main, (n) => !isEl(n, skip)) : main, inHast).length;
+    const h = all(skip ? keepOnly(main, (n) => !isEl(n, ...skip)) : main, inHast).length;
     const m = all(mdast, inMdast).length;
     if (h !== m) fail(`${name}: ${h} ${what} in <main>, ${m} in the twin`);
   }
@@ -301,6 +309,14 @@ export default function aiLayer() {
         for (const name of readdirSync(new URL('inputs/', publicDir))) {
           if (!linked.has(`inputs/${name}`)) fail(`inputs/${name} is linked from no <main>`);
         }
+        const data = readdirSync(new URL('data/', publicDir)).sort().map((file) => {
+          const path = `data/${file.replace(/\.txt$/, '')}`;
+          if (!file.endsWith('.txt') || !DATA[path]) fail(`public/data/${file}: no .txt name or no entry in DATA`);
+          if (pages.some((p) => p.html.includes(path))) fail(`${path} is linked from a page`);
+          const chars = readFileSync(new URL(`data/${file}`, publicDir), 'utf8').length;
+          if (chars >= MAX_CHARS) fail(`data/${file}: ${chars} characters (limit ${MAX_CHARS})`);
+          return `- [${path}](${rawUrl(path)}): ${DATA[path]}`;
+        });
 
         const name = (p) => p.title.split(' — ')[0];
         const twin = (p) => `- [${name(p)}](${twinOf(p.url)})`;
@@ -332,6 +348,7 @@ export default function aiLayer() {
           `## Manual\n${manual.map((p) => `${twin(p)}: ${sections(p)}`).join('\n')}`,
           `## Options\n${cards.map(({ key, brief }) => `- [\`${optionTitle(key)}\`](${cardUrl(key)}): ${brief}`).join('\n')}`,
           `## Files\n${[...new Set(listed.flatMap((p) => p.links))].sort().map(fileItem).join('\n')}`,
+          `## Data\n${data.join('\n')}`,
           `## Optional\n${other.map(twin).join('\n')}`,
         ].join('\n\n').replaceAll(`](${root.origin}/`, '](/') + '\n';
         checkLlms(llms);

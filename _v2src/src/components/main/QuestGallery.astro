@@ -1,0 +1,35 @@
+---
+import QuestElements from './QuestElements.astro';
+import { funcs, molecules, molHref, sets, signed, states } from '../../lib/quest.mjs';
+
+const base = import.meta.env.BASE_URL;
+const groups = sets.map((q) => ({ q, mols: molecules.filter((m) => m.q === q) }));
+---
+<QuestElements />
+{groups.map((g) => (
+  <>
+    <h3 id={`quest${g.q}`}>QUEST{g.q}: {g.mols.length} molecules</h3>
+    <ul class="qcards">
+      {g.mols.map((m) => (
+        <li class="qcard" id={`m-${m.id}`}>
+          <div class="qimg"><img src={`${base}${m.svg}`} width={m.w} height={m.h} alt={`${m.name}: drawing of the computed geometry`} loading="lazy" decoding="async" /></div>
+          <p class="qname"><a href={molHref(m)}>{m.name}</a></p>
+          <table>
+            <thead><tr><th>Δ</th>{funcs.map((f) => <th>{f.label}</th>)}</tr></thead>
+            <tbody>
+              {states.map((s) => (
+                <tr>
+                  <th>{s}</th>
+                  {funcs.map((f) => {
+                    const r = m.states[s]?.[f.key];
+                    return <td>{r ? signed(r.d) : '–'}</td>;
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </li>
+      ))}
+    </ul>
+  </>
+))}

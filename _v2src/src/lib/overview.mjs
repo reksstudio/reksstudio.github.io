@@ -1,7 +1,16 @@
-import data from '../data/overview.json' with { type: 'json' };
+import raw from '../data/overview.json' with { type: 'json' };
 import { toHtml } from './inline.mjs';
 import { entryHref } from './manual-pages.mjs';
 import { doiUrl, reference, shortRef } from './literature.mjs';
+import { vars } from './quest.mjs';
+
+// {quest:name} in any text -> the value computed from quest.json
+const data = JSON.parse(
+  JSON.stringify(raw).replace(/\{quest:(\w+)\}/g, (_, k) => {
+    if (!(k in vars)) throw new Error(`overview.json: unknown token {quest:${k}}`);
+    return vars[k];
+  }),
+);
 
 export const { classes, parts, results, manualRows, landing, cost, history } = data;
 
@@ -51,7 +60,7 @@ export function costRow(table) {
   return { head: cost[table].head.slice(1), values: row.slice(1).map(Number) };
 }
 
-// history citation: literature.json key -> {text, href}
+// literature.json key -> {text, href, authors}
 export const cite = (key) => {
   const e = reference(key);
   return { text: shortRef(e), href: doiUrl(e), authors: e.authors };

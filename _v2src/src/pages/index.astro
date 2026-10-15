@@ -8,12 +8,13 @@ import { toHtml } from '../lib/inline.mjs';
 import { readFileSync } from 'node:fs';
 import { entryLink } from '../lib/manual-pages.mjs';
 import { SOURCE_URL } from '../lib/site.mjs';
+import { vars as quest } from '../lib/quest.mjs';
 import figure from '../assets/figures/BFN_energies.svg?url';
 import '../styles/landing.css';
 
 const base = import.meta.env.BASE_URL;
 const landingRefs = references().filter((e) => e.landing).sort((a, b) => a.year - b.year);
-// worked input of the manual (Start #worked-inputs), read from the published download at build time
+// input text read from the published download at build time
 const workedInput = readFileSync(`${process.cwd()}/public/inputs/reks22_h2.dat`, 'utf8').trimEnd();
 const chart = [
   ['3', '8px', '0.80rem', '(2,2)'],
@@ -120,13 +121,13 @@ const chart = [
 <section id="results">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="kicker">Validated at scale</div>
+      <div class="kicker">Tested at scale</div>
       <h2>Active spaces up to ten electrons in ten orbitals</h2>
     </div>
     <div class="stats reveal">
       <div>
-        <div class="stat-num">67</div>
-        <div class="stat-label">molecules from the QUEST benchmark set, checked against theoretical best estimates</div>
+        <div class="stat-num">{quest.molecules}</div>
+        <div class="stat-label">molecules from QUEST3/5/6/7: {quest.pairs} S1, S2, T1, T2 excitations against theoretical best estimates</div>
       </div>
       <div>
         <div class="stat-num">10e,10o</div>

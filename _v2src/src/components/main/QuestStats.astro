@@ -1,0 +1,37 @@
+---
+import Table from './Table.astro';
+import { funcs, n3, sets, signed, stat, states } from '../../lib/quest.mjs';
+
+interface Props {
+  kind: 'state' | 'set';
+}
+
+const { kind } = Astro.props;
+const HEAD = ['', 'Functional', 'N', 'MAE / eV', 'ME / eV', 'RMSD / eV', 'MedAE / eV'];
+const GROUP = { S: 'S1 + S2', T: 'T1 + T2', all: 'all' };
+// set_stats rows of (QUEST set, group) pairs, one row per functional
+const table = (title, head, keys) => ({
+  title,
+  head: [head, ...HEAD.slice(1)],
+  rows: keys.flatMap(([q, g, label]) =>
+    funcs.map((f) => {
+      const s = stat(q, f.key, g);
+      return [label, f.label, String(s.N), n3(s.MAE), signed(s.ME), n3(s.RMSD), n3(s.MedAE)];
+    }),
+  ),
+});
+const byState = table('All sets, per state', 'States', [...states, 'S', 'T', 'all'].map((g) => ['all', g, GROUP[g] ?? g]));
+const bySet = table('Per QUEST set, all states', 'Set', sets.map((q) => [q, 'all', `QUEST${q}`]));
+const bySetST = table('Per QUEST set, singlets and triplets', 'Set, states', sets.flatMap((q) => ['S', 'T'].map((g) => [q, g, `QUEST${q}, ${GROUP[g]}`])));
+---
+{kind === 'state' ? (
+  <Table table={byState} numeric grouped />
+) : (
+  <>
+    <Table table={bySet} numeric grouped />
+    <details class="qmore">
+      <summary>Singlets and triplets per set</summary>
+      <Table table={bySetST} numeric grouped />
+    </details>
+  </>
+)}

@@ -56,13 +56,13 @@ Configuration energies combine by weighted addition instead of separate SCF calc
 
 Multiconfigurational accuracy at a cost that tracks ordinary Kohn–Sham DFT.
 
-Validated at scale
+Tested at scale
 
 ## Active spaces up to ten electrons in ten orbitals
 
-67
+62
 
-molecules from the QUEST benchmark set, checked against theoretical best estimates
+molecules from QUEST3/5/6/7: 192 S1, S2, T1, T2 excitations against theoretical best estimates
 
 10e,10o
 

@@ -1,0 +1,58 @@
+---
+import { counts, dotTitle, funcs, molecules, molHref, n3, stat, states } from '../../lib/quest.mjs';
+
+// SSR (y) against TBE (x) per functional; dot = first root (S1, T1), ring = second root (S2, T2); colour = spin;
+// each dot links to its molecule page
+const W = 300;
+const L = 34;
+const B = 30;
+const T = 8;
+const R = 8;
+const [e0, e1] = [0.5, 9];
+const x = (e) => L + ((e - e0) / (e1 - e0)) * (W - L - R);
+const y = (e) => W - B - ((e - e0) / (e1 - e0)) * (W - B - T);
+const f1 = (v) => Math.round(v * 10) / 10;
+const ticks = [1, 3, 5, 7, 9];
+// state -> group class, in drawing order (rings on top)
+const GROUPS = { S1: 'dot s0', T1: 'dot s1', S2: 'ring s0', T2: 'ring s1' };
+
+const tbe = molecules.flatMap((m) => states.flatMap((s) => (m.states[s] ? funcs.map((f) => Number(m.states[s][f.key].tbe)) : [])));
+const range = `${Math.min(...tbe).toFixed(2)}–${Math.max(...tbe).toFixed(2)} eV`;
+const panels = funcs.map((f) => {
+  const groups = Object.keys(GROUPS).map((s) => ({
+    cls: GROUPS[s],
+    dots: molecules.flatMap((m) => {
+      const r = m.states[s]?.[f.key];
+      return r ? [{ cx: f1(x(Number(r.tbe))), cy: f1(y(Number(r.reks))), href: molHref(m, s), title: dotTitle(m, s, f, r) }] : [];
+    }),
+  }));
+  const st = stat('all', f.key, 'all');
+  return { f, groups, label: `${f.label}: SSR against TBE excitation energy, ${counts.pairs} state pairs, TBE ${range}; MAE ${n3(st.MAE)} eV` };
+});
+---
+<div class="qparity">
+  {panels.map((p) => (
+    <svg viewBox={`0 0 ${W} ${W}`} role="group" aria-label={p.label}>
+      {ticks.map((e) => (
+        <g>
+          <line x1={L} x2={W - R} y1={y(e)} y2={y(e)} class="grid" />
+          <line x1={x(e)} x2={x(e)} y1={T} y2={W - B} class="grid" />
+          <text x={L - 6} y={y(e) + 4} text-anchor="end" class="tick">{e}</text>
+          <text x={x(e)} y={W - B + 16} text-anchor="middle" class="tick">{e}</text>
+        </g>
+      ))}
+      <line x1={x(e0)} y1={y(e0)} x2={x(e1)} y2={y(e1)} class="diag" />
+      <text x={L + 8} y={T + 16} class="ttl">{p.f.label}</text>
+      <text x={W - R} y={W - 2} text-anchor="end" class="tick">TBE / eV</text>
+      <text x={L + 8} y={T + 32} class="tick">SSR / eV</text>
+      {p.groups.map((g) => (
+        <g class={g.cls}>{g.dots.map((d) => <a href={d.href}><title>{d.title}</title><circle cx={d.cx} cy={d.cy} r="3" /></a>)}</g>
+      ))}
+    </svg>
+  ))}
+</div>
+<ul class="spin-legend qlegend">
+  <li class="s0"><span class="sw"></span>S1 (dot), S2 (ring)</li>
+  <li class="s1"><span class="sw"></span>T1 (dot), T2 (ring)</li>
+  <li>dashed: SSR = TBE</li>
+</ul>

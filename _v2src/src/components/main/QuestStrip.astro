@@ -1,0 +1,76 @@
+---
+import { dotTitle, funcs, molecules, molHref, n3, signed, stat, states } from '../../lib/quest.mjs';
+
+// one panel per state: x = Delta / eV on a common range, one sub-row per functional, dots dodged off the row
+// centre, tick at ME, MAE as text at the right end; each dot links to its molecule page
+const W = 360;
+const L = 64;
+const R = 44;
+const TOP = 26;
+const D = 5.2;
+const [x0, x1] = [-1.4, 1.4];
+const x = (d) => L + ((d - x0) / (x1 - x0)) * (W - L - R);
+const f1 = (v) => Math.round(v * 10) / 10;
+
+// beeswarm offsets: each dot (in ascending x) at the first of 0, -D, +D, -2D, ... clear of the placed dots
+function swarm(items) {
+  const placed = [];
+  return items
+    .toSorted((a, b) => a.d - b.d)
+    .map((it) => {
+      const px = x(it.d);
+      let off = 0;
+      for (let k = 1; placed.some(([qx, qo]) => (px - qx) ** 2 + (off - qo) ** 2 < D * D); k++) off = (k % 2 ? -1 : 1) * Math.ceil(k / 2) * D;
+      placed.push([px, off]);
+      return { ...it, px, off };
+    });
+}
+
+const rows = states.map((s) =>
+  funcs.map((f) => ({
+    f,
+    st: stat('all', f.key, s),
+    dots: swarm(molecules.flatMap((m) => {
+      const r = m.states[s]?.[f.key];
+      return r ? [{ d: r.d, href: molHref(m, s), title: dotTitle(m, s, f, r) }] : [];
+    })),
+  })),
+);
+const reach = Math.max(...rows.flat().flatMap((r) => r.dots.map((p) => Math.abs(p.off))));
+const ROW = 2 * reach + D + 6;
+const H = TOP + funcs.length * ROW + 26;
+const grid = [-1, -0.5, 0, 0.5, 1];
+const panels = states.map((s, i) => ({
+  s,
+  spin: s[0] === 'S' ? 's0' : 's1',
+  rows: rows[i],
+  label: `${s}, N = ${rows[i][0].st.N}: Δ = E(SSR) − E(TBE) per state pair; ${rows[i].map((r) => `${r.f.label} MAE ${n3(r.st.MAE)} eV, ME ${signed(r.st.ME)} eV`).join('; ')}`,
+}));
+---
+<div class="qstrip">
+  {panels.map((p) => (
+    <svg class={p.spin} viewBox={`0 0 ${W} ${H}`} role="group" aria-label={p.label}>
+      <text x="0" y="14" class="ttl">{p.s}</text>
+      <text x="22" y="14" class="tick">N = {p.rows[0].st.N}</text>
+      <text x={W} y="14" text-anchor="end" class="tick">MAE</text>
+      {grid.map((v) => (
+        <g>
+          <line x1={x(v)} x2={x(v)} y1={TOP - 4} y2={TOP + funcs.length * ROW} class={v === 0 ? 'zero' : 'grid'} />
+          <text x={x(v)} y={H - 8} text-anchor="middle" class="tick">{v === 0 ? '0' : signed(v, 1)}</text>
+        </g>
+      ))}
+      {p.rows.map((r, k) => {
+        const yc = TOP + k * ROW + ROW / 2;
+        return (
+          <g>
+            <text x={L - 8} y={yc + 4} text-anchor="end" class="tick">{r.f.label}</text>
+            <line x1={x(r.st.ME)} x2={x(r.st.ME)} y1={yc - ROW / 2 + 2} y2={yc + ROW / 2 - 2} class="me" />
+            <text x={W} y={yc + 4} text-anchor="end" class="val">{n3(r.st.MAE)}</text>
+            <g class="dot">{r.dots.map((p) => <a href={p.href}><title>{p.title}</title><circle cx={f1(p.px)} cy={f1(yc + p.off)} r="2.5" /></a>)}</g>
+          </g>
+        );
+      })}
+    </svg>
+  ))}
+</div>
+<p class="qcap">Δ / eV, common axis for all panels. One dot per state pair, linked to its molecule page; vertical bar: mean signed error (ME); right: MAE / eV. Blue: singlets, orange: triplets.</p>
