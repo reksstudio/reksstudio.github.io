@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/setup/>
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -307,7 +307,7 @@ Default: `5`
 "si_reks_print_states": -1,
 ```
 
-* States per cassette listed in the per-state and pair tables; `0` = none, `-1` = all. The SI eigenproblem is always solved in full.
+* States per cassette listed in the per-state and pair tables; `0` = none, `-1` = all, on a Davidson cassette the 50 lowest ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)).
 * Properties are computed for max(print, store) states ([`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md)). Counts are clamped to the number of physical states.
 
 #### `SI_REKS_STORE_STATES` {#si_reks_store_states}
@@ -324,7 +324,7 @@ Alias: `REKS_SI_STORE_STATES`
 "si_reks_store_states": [-1, 0],
 ```
 
-* One integer per cassette, in cassette order K = 0, 1, … (ascending 2S): states whose properties are stored on the wavefunction (array variables, Molden and cube files); `0` = none, `-1` = all.
+* One integer per cassette, entry t = the t-th cassette in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)): states whose properties are stored on the wavefunction (array variables, Molden and cube files); `0` = none, `-1` = all, on a Davidson cassette the 50 lowest ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)).
 * Roots requested in `SI_REKS_GRAD`, `SI_REKS_NAC`, `SI_REKS_PROPERTY_FOR` keep their eigenvectors regardless.
 
 #### `SI_REKS_OVERLAP_CUTOFF` {#si_reks_overlap_cutoff}
@@ -341,6 +341,51 @@ Default: `1e-10`
 
 * Eigenvectors of the SI overlap with s ≤ cutoff · s<sub>max</sub> form the null space and are removed before diagonalization ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices)).
 * Ghost roots (configurations with s just above the cutoff): [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states).
+
+#### `SI_REKS_SOLVER` {#si_reks_solver}
+
+Eigensolver of each SI cassette: LAPACK on every root, or Davidson on the lowest roots.
+
+Type: `AUTO`|`DIRECT`|`DAVIDSON`
+
+Default: `AUTO`
+
+```python
+"si_reks_solver": "DAVIDSON",
+```
+
+```log
+==> SI Davidson solver (cassette 0) <==
+
+    Roots                 14 (10 requested + 4 margin) of 115
+    Convergence           1.000e-12
+
+    Iter      Mean |R|       Max |R|   Remain   Applications   Time [s]
+    -------------------------------------------------------------------
+       1     8.942e-16     1.251e-15        0            116       0.00
+    -------------------------------------------------------------------
+    14 roots converged in 1 iterations, 144 operator applications.
+[...]
+    Computed states       14 of 115 (lowest roots, Davidson)
+```
+
+* `DIRECT`: every root, LAPACK on the dense Hamiltonian of the cassette. `DAVIDSON`: the lowest roots, block Davidson on the sparse Hamiltonian; how many: [SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver). `AUTO`: per cassette, `DIRECT` up to 4000 configurations, `DAVIDSON` above; the catalogs shipped with Psi4 stay below.
+* On a Davidson cassette `SSR ENERGIES K=e` holds the computed roots, and a count `-1` in `SI_REKS_PRINT_STATES`, `SI_REKS_STORE_STATES`, `SI_REKS_GRAD` or `SI_REKS_PROPERTY_FOR` stands for the 50 lowest roots.
+
+#### `SI_REKS_DAVIDSON_R_CONVERGENCE` {#si_reks_davidson_r_convergence}
+
+Residual norm in E_h each Davidson root of the SI problem converges to.
+
+Type: double
+
+Default: `1e-12`
+
+```python
+"si_reks_davidson_r_convergence": 1e-10,
+```
+
+* Residual norm ‖(A − θ) x‖<sub>2</sub> (E<sub>h</sub>) every Davidson root converges to, A the SI Hamiltonian in the orthonormalized configuration basis ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)). A root whose residual stalls at the rounding level of its product is accepted there, and that level is printed.
+* A value ≤ 0 stops the run: `SI_REKS_DAVIDSON_R_CONVERGENCE is …; it must be positive (residual norm in Eh, default 1e-12).`
 
 ## 9. Spin Manifolds (2S) and Multi-Sector Runs {#spin-manifolds}
 
@@ -384,6 +429,7 @@ Alias: `REKS_SI_2SPIN`
 
 * One integer 2S per SI group (explicit mode, [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)), pairwise distinct, in any order; more than one entry requires the 3-level `si_reks_configs` form.
 * `[x]` alone: the default SA ensemble on 2S = 0 and the default SI cassette on 2S = x ([Input patterns](https://reksstudio.github.io/v2/manual/setup/index.md#input-patterns)).
+* Sets the order of the SI cassettes: the spin groups follow this list, the cassettes of a group the order of its `SI_REKS_CONFIGS` block. The per-cassette lists [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md), [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md), [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md) and [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) take their entries in this order: with `[2, 0]` entry 0 is the triplet cassette. The printed index K and the `K=e`, `CASSETTE e` names run in ascending 2S (the triplet is K = 1). Without the option (ladder) both orders are ascending 2S ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)).
 
 ### Input patterns {#input-patterns}
 
@@ -418,9 +464,22 @@ Alias: `REKS_SI_2SPIN`
 
 With SI states on two or more manifolds the report prints [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics). Per-sector arrays carry a sector prefix for s > 0 ([Variable names](https://reksstudio.github.io/v2/manual/properties/index.md#variable-names)).
 
+### Cassette order {#cassette-order}
+
+`SI_REKS_2SPIN` sets the order of the SI cassettes: spin groups as listed, the cassettes of a group in the order of its `SI_REKS_CONFIGS` block. The per-cassette lists `SI_REKS_GRAD`, `SI_REKS_NAC`, `SI_REKS_PROPERTY_FOR` and `SI_REKS_STORE_STATES` take one entry per cassette in this order. The cassette blocks are printed in this order, and state energies are given relative to the lowest state of its first cassette. The cassette index K in headers and in the `K=e` and `CASSETTE e` names runs in ascending 2S. Without `SI_REKS_2SPIN` (ladder) both orders are ascending 2S.
+
+```python
+"si_reks_2spin":        [2, 0],
+"si_reks_configs":      [[[0]], [[0, 1]]],   # triplet, singlet
+"si_reks_grad":         [[0], []],           # T1: printed as cassette 1, SSR ROOT 0 GRADIENT CASSETTE 1
+"si_reks_store_states": [1, 0],              # 1 triplet state stored, no singlet
+```
+
+H₂ REKS(2,2): with `[2, 0]` the gradient and the stored state go to the triplet (K = 1), the triplet block is printed first and energies are given as `E-E(T1)`; with `[0, 2]` the same lists select the singlet (K = 0).
+
 ## 10. Properties, Gradients, Couplings {#response}
 
-Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `e` refers to cassette `e`; roots as in [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states).
+Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `t` refers to the t-th cassette in the order of [Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order); roots as in [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states).
 
 ### State properties {#state-properties}
 
@@ -501,7 +560,7 @@ Default: `[]`
 ```
 
 * States evaluated with the relaxed density: dipole, quadrupole, Mulliken/Löwdin charges, Mayer/Wiberg indices ([Relaxed dipole, quadrupole and atomic charges](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties), [Bond indices of the relaxed density](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-bond-indices)).
-* Entries: indices or labels, ranges, lists (`"S0..5"`, `"T1"`), inside the per-cassette inner lists (`[["S0..1"]]`); a flat list is rejected.
+* Entries: indices or labels, ranges, lists (`"S0..5"`, `"T1"`), inside the per-cassette inner lists (`[["S0..1"]]`), in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)); a flat list is rejected.
 
 #### `REKS_EKT` {#reks_ekt}
 
@@ -557,7 +616,7 @@ Default: `[]` (SA ensemble)
    States = SI states whose nuclear gradient is computed. * = followed state, returned by gradient().
 ```
 
-* Roots whose gradients are computed, one inner list per cassette (inner list e = cassette e); roots as in [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states). Inner list `[-1]` = all roots of that cassette (`[[-1]]`); a flat `[-1]` is an input error. More inner lists than SI cassettes stop the run before the SCF: `REKS input error: SI_REKS_GRAD: 2 order list(s) for 1 SI cassette(s).`
+* Roots whose gradients are computed, one inner list per cassette; inner list t = the t-th cassette in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order); with `si_reks_2spin` `[2, 0]` list 0 is the triplet cassette); roots as in [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states). Inner list `[-1]` = all roots of that cassette (`[[-1]]`), on a Davidson cassette the 50 lowest; a flat `[-1]` is an input error. More inner lists than SI cassettes stop the run before the SCF: `REKS input error: SI_REKS_GRAD: 2 order list(s) for 1 SI cassette(s).`
 * The followed root, marked `*` in `Gradient request`, is the first entry of the first non-empty inner list (`-1` → root 0). Without `SI_REKS_GRAD` it is the lowest root index in the pairs of the first non-empty `SI_REKS_NAC` list.
 * With a followed root, `CURRENT ENERGY` is its energy, also stored as `REKS TARGET STATE ENERGY`, in `energy()` and `gradient()`; `gradient()` returns its gradient ([Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient)). Without a followed root: [Explicit SA pool and SI cassettes](https://reksstudio.github.io/v2/manual/index.md#explicit-input).
 * `CURRENT DIPOLE` is the relaxed dipole of the followed root when `SI_REKS_PROPERTY_FOR` lists that root, and is unset otherwise.
@@ -575,8 +634,8 @@ Default: `[]`
 "si_reks_nac": [[[1, 2]]],
 ```
 
-* Pairs `[I, J]` per SI cassette, `[[[I, J], ...], ...]`, or `ALL`; the call above couples S1 and S2 of cassette 0. Computed in `gradient()`; the roots of each pair join the gradient targets.
-* Publishes `SSR NAC I J CASSETTE e` (1/bohr, [Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac)) and the conical-intersection topography `SSR CI TOPOGRAPHY I J CASSETTE e` ([Conical-intersection topography](https://reksstudio.github.io/v2/manual/properties/index.md#ci-topography)).
+* Pairs `[I, J]` per SI cassette, in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)), `[[[I, J], ...], ...]`, or `ALL`; the call above couples S1 and S2 of cassette 0. Computed in `gradient()`; the roots of each pair join the gradient targets.
+* Publishes `SSR NAC I J CASSETTE e` (1/bohr, [Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac)) and the conical-intersection topography `SSR CI TOPOGRAPHY I J CASSETTE e` ([Conical-intersection topography](https://reksstudio.github.io/v2/manual/properties/index.md#ci-topography)); e is the printed cassette index K (ascending 2S).
 * Without `SI_REKS_GRAD` the followed root: [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md).
 
 #### `REKS_CPREKS_CONV` {#reks_cpreks_conv}
@@ -605,10 +664,10 @@ Default: `1e-9`
     Iter      Mean |R|       Max |R|   Remain   Time [s]
     ----------------------------------------------------
        1     2.988e-01     9.691e-01        4       0.01
-       2     1.648e-01     5.702e-01        4       0.02
+       2     1.648e-01     5.702e-01        4       0.03
 [...]
-      12     1.091e-08     1.091e-08        1       0.12
-      13     5.914e-10     5.914e-10        0       0.13
+      12     1.091e-08     1.091e-08        1       0.19
+      13     5.914e-10     5.914e-10        0       0.21
     ----------------------------------------------------
     Z-vectors converged in 13 iterations.
 ```
@@ -645,6 +704,7 @@ Default: `1e-6`
 ```
 
 * Gap (E<sub>h</sub>) below which a requested root is computed with a quasi-degeneracy warning.
+* On a Davidson cassette, also the gap between the last requested and the last computed root below which the computed set grows ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)).
 
 #### `REKS_CI_TOPOGRAPHY_GAP` {#reks_ci_topography_gap}
 

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/reference/>
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -18,149 +18,152 @@ Chapters 18–19 of the REKS Studio user manual
 
 ### Active space {#active-space}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`REKS`](https://reksstudio.github.io/v2/options/REKS.md) `[N, M]` | — (required) | Active space `[N, M]`: N active electrons in M active orbitals; selects the catalog. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`REKS`](https://reksstudio.github.io/v2/options/REKS.md) `[N, M]` | — (required) | Active space `[N, M]`: N active electrons in M active orbitals; selects the catalog. | §1 Minimal input · Explicit SA pool and SI cassettes §2 Active space, core, virtual §3 Start REKS §4 Lone pair: REKS(2,3) §5 One gradient() call · Geometry optimization · Surface hopping §6 `REKS_GEMINAL_WIDTHS` §9 Input patterns §10 `SI_REKS_GRAD` §11 Restart mechanism · `GUESS_ACTIVE_WINDOW` |
 
 ### Catalog {#catalog}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md) array | `[]` (all 2) | Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md) array | `[]` (all 2) | Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`. | §1 §2 Pairing scheme §4 Geminal of width w · Lone pair: REKS(2,3) §6 |
 
 ### SA pool {#sa-pool}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md) array · alias `REKS_SA_CONFIGS` | catalog `sa_default` pool on 2S = 0 | SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens. |
-| [`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md) array · alias `REKS_SA_WEIGHTS` | uniform `1/n` | Weights of the SA pool entries, configurations first, then the `sa_reks_extra` determinants; non-negative, summing to 1. |
-| [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md) array of arrays · alias `REKS_SA_EXTRA` | none | Extra Slater determinants of the SA ensemble, as occupation vectors; each has its own weight, carries no FON and enters no SI cassette. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md) array · alias `REKS_SA_CONFIGS` | catalog `sa_default` pool on 2S = 0 | SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens. | §1 Minimal input · Explicit SA pool and SI cassettes §3 Higher spin states §4 Lone pair: REKS(2,3) §9 `SA_REKS_2SPIN` · Input patterns |
+| [`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md) array · alias `REKS_SA_WEIGHTS` | uniform `1/n` | Weights of the SA pool entries, configurations first, then the `sa_reks_extra` determinants; non-negative, summing to 1. | §1 Minimal input · Explicit SA pool and SI cassettes §2 SA-REKS ensemble and weights §8 `SA_REKS_CONFIGS` · `SA_REKS_EXTRA` §16 SCF |
+| [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md) array of arrays · alias `REKS_SA_EXTRA` | none | Extra Slater determinants of the SA ensemble, as occupation vectors; each has its own weight, carries no FON and enters no SI cassette. | §2 SA-REKS ensemble and weights · Spin manifold and run sector §3 Higher spin states §4 States: SI-SA-REKS(2,3) §5 Geometry optimization · Surface hopping §8 `SA_REKS_CONFIGS` · `SA_REKS_WEIGHTS` §9 Input patterns |
 
 ### SI cassettes {#si-cassettes}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) array · alias `REKS_SI_CONFIGS` | one full-block cassette, lowest manifold | SI-SA-REKS cassettes: the configuration sets whose secular equations give the states, in groups per spin manifold. |
-| [`SI_REKS_PRINT_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_PRINT_STATES.md) int | `5` | States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all. |
-| [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) array of int · alias `REKS_SI_STORE_STATES` | all; the first 10 if `M ≥ 6` and > 10 configurations | States per cassette whose properties are stored on the wavefunction (arrays, Molden and cube files); 0 = none, -1 = all. |
-| [`SI_REKS_OVERLAP_CUTOFF`](https://reksstudio.github.io/v2/options/SI_REKS_OVERLAP_CUTOFF.md) double | `1e-10` | Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) array · alias `REKS_SI_CONFIGS` | one full-block cassette, lowest manifold | SI-SA-REKS cassettes: the configuration sets whose secular equations give the states, in groups per spin manifold. | §1 Minimal input · Explicit SA pool and SI cassettes §2 SI cassette §3 Higher spin states §4 Lone pair: REKS(2,3) · Gradients · States: SI-SA-REKS(2,3) §9 `SI_REKS_2SPIN` · Input patterns · Cassette order §10 §16 |
+| [`SI_REKS_PRINT_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_PRINT_STATES.md) int | `5` | States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all. | §2 SI eigensolver §8 `SI_REKS_SOLVER` §16 SI states |
+| [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) array of int · alias `REKS_SI_STORE_STATES` | all; the first 10 if `M ≥ 6` and > 10 configurations | States per cassette whose properties are stored on the wavefunction (arrays, Molden and cube files); 0 = none, -1 = all. | §2 SI eigensolver §3 Higher spin states §8 `SI_REKS_CONFIGS` · `SI_REKS_PRINT_STATES` · `SI_REKS_SOLVER` §9 `SI_REKS_2SPIN` · Cassette order §15 Files §16 SI states |
+| [`SI_REKS_OVERLAP_CUTOFF`](https://reksstudio.github.io/v2/options/SI_REKS_OVERLAP_CUTOFF.md) double | `1e-10` | Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped. | §2 SI Hamiltonian and overlap |
+| [`SI_REKS_SOLVER`](https://reksstudio.github.io/v2/options/SI_REKS_SOLVER.md) `AUTO`\|`DIRECT`\|`DAVIDSON` | `AUTO` | Eigensolver of each SI cassette: LAPACK on every root, or Davidson on the lowest roots. | §2 SI eigensolver §16 SI states |
+| [`SI_REKS_DAVIDSON_R_CONVERGENCE`](https://reksstudio.github.io/v2/options/SI_REKS_DAVIDSON_R_CONVERGENCE.md) double | `1e-12` | Residual norm in E_h each Davidson root of the SI problem converges to. | |
 
 ### Spin manifolds {#spin-manifolds}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) array · alias `REKS_SA_2SPIN` | ladder, lowest manifold | Spin manifold 2S of each SA block, one integer per block. |
-| [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) array · alias `REKS_SI_2SPIN` | ladder, lowest manifold | 2S of each SI group; more than one entry requires the 3-level `si_reks_configs` form. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) array · alias `REKS_SA_2SPIN` | ladder, lowest manifold | Spin manifold 2S of each SA block, one integer per block. | §3 Higher spin states §6 `REKS` §8 `SA_REKS_CONFIGS` · `SA_REKS_WEIGHTS` §9 Input patterns |
+| [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) array · alias `REKS_SI_2SPIN` | ladder, lowest manifold | 2S of each SI group; more than one entry requires the 3-level `si_reks_configs` form. | §1 §3 Higher spin states §4 States: SI-SA-REKS(2,3) §5 Geometry optimization · Surface hopping §6 `REKS` §8 `SI_REKS_CONFIGS` · `SI_REKS_STORE_STATES` §9 `SA_REKS_2SPIN` · Input patterns · Cassette order §10 `SI_REKS_PROPERTY_FOR` · `SI_REKS_GRAD` · `SI_REKS_NAC` §16 SI states |
 
 ### State properties {#state-properties}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md) array | all blocks except multipoles > 2 | State-property blocks of the SI states to compute, print and store (moments, charges, bond indices, NTO, exciton, …). |
-| [`SI_REKS_ANALYSIS_CHANGE_MIN`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS_CHANGE_MIN.md) double | `0.1` | Smallest state-to-state change of a charge or bond index that is printed. |
-| [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md) array of arrays | `[]` | States, per cassette, whose dipole, quadrupole, charges and bond indices are evaluated with the relaxed (CP-REKS) density. |
-| [`REKS_EKT`](https://reksstudio.github.io/v2/options/REKS_EKT.md) bool | `false` | Enables EKT: ionization energies, pole strengths and Dyson orbitals of the `si_reks_property_for` states or of the SA ensemble. |
-| [`REKS_EKT_OCC_TOL`](https://reksstudio.github.io/v2/options/REKS_EKT_OCC_TOL.md) double | `1e-6` | Cutoff on the density eigenvalues: those at or below it are dropped from the EKT metric. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md) array | all blocks except multipoles > 2 | State-property blocks of the SI states to compute, print and store (moments, charges, bond indices, NTO, exciton, …). | §1 §2 Unrelaxed and relaxed densities §10 State properties §15 Files §16 Unrelaxed state and transition properties · Gradients, NAC, conical intersections |
+| [`SI_REKS_ANALYSIS_CHANGE_MIN`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS_CHANGE_MIN.md) double | `0.1` | Smallest state-to-state change of a charge or bond index that is printed. | §16 Unrelaxed state and transition properties |
+| [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md) array of arrays | `[]` | States, per cassette, whose dipole, quadrupole, charges and bond indices are evaluated with the relaxed (CP-REKS) density. | §2 SI eigensolver · Unrelaxed and relaxed densities §8 `SI_REKS_STORE_STATES` · `SI_REKS_SOLVER` §9 `SI_REKS_2SPIN` · Cassette order §10 State properties · `SI_REKS_ANALYSIS` · `REKS_EKT` · `SI_REKS_GRAD` · `REKS_CPREKS_CONV` §16 Relaxed properties and EKT |
+| [`REKS_EKT`](https://reksstudio.github.io/v2/options/REKS_EKT.md) bool | `false` | Enables EKT: ionization energies, pole strengths and Dyson orbitals of the `si_reks_property_for` states or of the SA ensemble. | §2 Orbitals, orbital energies, SCF convergence §10 State properties · `SI_REKS_ANALYSIS` §16 Relaxed properties and EKT |
+| [`REKS_EKT_OCC_TOL`](https://reksstudio.github.io/v2/options/REKS_EKT_OCC_TOL.md) double | `1e-6` | Cutoff on the density eigenvalues: those at or below it are dropped from the EKT metric. | §16 Relaxed properties and EKT |
 
 ### Gradients and couplings {#gradients-and-couplings}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md) array of arrays | `[]` (SA ensemble) | Roots whose analytic gradients are computed, per cassette; the first listed root is followed (`CURRENT ENERGY`, returned gradient). |
-| [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md) array | `[]` | Root pairs `[I, J]` per cassette whose nonadiabatic couplings and conical-intersection topography are computed. |
-| [`REKS_CPREKS_CONV`](https://reksstudio.github.io/v2/options/REKS_CPREKS_CONV.md) double | `1e-9` | Residual threshold of the CP-REKS (Z-vector) solver. `reks_cpreks_maxiter` (200) bounds its rounds. |
-| [`REKS_CPREKS_MAXITER`](https://reksstudio.github.io/v2/options/REKS_CPREKS_MAXITER.md) int | `200` | Maximum number of rounds of the CP-REKS (Z-vector) solver; exceeding it stops the run with the residual reached. |
-| [`REKS_GRAD_DEGEN_TOL`](https://reksstudio.github.io/v2/options/REKS_GRAD_DEGEN_TOL.md) double | `1e-6` | Gap below which a requested root is flagged as quasi-degenerate. |
-| [`REKS_CI_TOPOGRAPHY_GAP`](https://reksstudio.github.io/v2/options/REKS_CI_TOPOGRAPHY_GAP.md) double | `5e-3` | Largest gap at which the topography table of a NAC pair is printed. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md) array of arrays | `[]` (SA ensemble) | Roots whose analytic gradients are computed, per cassette; the first listed root is followed (`CURRENT ENERGY`, returned gradient). | §1 Explicit SA pool and SI cassettes · Worked inputs §2 SI eigensolver §4 Gradients §5 One gradient() call · Gradients and couplings against finite differences · Geometry optimization · Surface hopping §8 `SI_REKS_STORE_STATES` · `SI_REKS_SOLVER` §9 `SI_REKS_2SPIN` · Cassette order §10 `SI_REKS_NAC` · `REKS_CPREKS_CONV` §16 SCF · Gradients, NAC, conical intersections §17 |
+| [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md) array | `[]` | Root pairs `[I, J]` per cassette whose nonadiabatic couplings and conical-intersection topography are computed. | §1 Explicit SA pool and SI cassettes §2 SI eigensolver §5 One gradient() call · Gradients and couplings against finite differences · Surface hopping §8 `SI_REKS_STORE_STATES` §9 `SI_REKS_2SPIN` · Cassette order §10 `SI_REKS_GRAD` · `REKS_CPREKS_CONV` §16 Gradients, NAC, conical intersections |
+| [`REKS_CPREKS_CONV`](https://reksstudio.github.io/v2/options/REKS_CPREKS_CONV.md) double | `1e-9` | Residual threshold of the CP-REKS (Z-vector) solver. `reks_cpreks_maxiter` (200) bounds its rounds. | §5 One gradient() call · Surface hopping §16 Gradients, NAC, conical intersections |
+| [`REKS_CPREKS_MAXITER`](https://reksstudio.github.io/v2/options/REKS_CPREKS_MAXITER.md) int | `200` | Maximum number of rounds of the CP-REKS (Z-vector) solver; exceeding it stops the run with the residual reached. | §10 `REKS_CPREKS_CONV` |
+| [`REKS_GRAD_DEGEN_TOL`](https://reksstudio.github.io/v2/options/REKS_GRAD_DEGEN_TOL.md) double | `1e-6` | Gap below which a requested root is flagged as quasi-degenerate. | §2 SI eigensolver §16 Gradients, NAC, conical intersections |
+| [`REKS_CI_TOPOGRAPHY_GAP`](https://reksstudio.github.io/v2/options/REKS_CI_TOPOGRAPHY_GAP.md) double | `5e-3` | Largest gap at which the topography table of a NAC pair is printed. | §16 Gradients, NAC, conical intersections §17 |
 
 ### Guess {#guess}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`GUESS_ACTIVE_WINDOW`](https://reksstudio.github.io/v2/options/GUESS_ACTIVE_WINDOW.md) array | `[]` (off) | MOs of the read guess placed in the active columns, one token per active orbital: 0-based index, `HOMO-k` or `LUMO+k`. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`GUESS_ACTIVE_WINDOW`](https://reksstudio.github.io/v2/options/GUESS_ACTIVE_WINDOW.md) array | `[]` (off) | MOs of the read guess placed in the active columns, one token per active orbital: 0-based index, `HOMO-k` or `LUMO+k`. | §1 §3 Start REKS §4 Geminal of width w §5 Geometry optimization §11 §17 |
 
 ### FONs {#fons}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`REKS_FON_INTERP_DELTA`](https://reksstudio.github.io/v2/options/REKS_FON_INTERP_DELTA.md) double | `0.4` | Parameter δ of the factor f(n_p n_q) that multiplies the coupling term of each geminal in the REKS energy. |
-| [`REKS_<L>_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md) double | `-1.0` each | Lower bound on the free FON n_p of every geminal of one FON generation (`reks_n_fon`, `reks_m_fon`, …); negative disables it. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`REKS_FON_INTERP_DELTA`](https://reksstudio.github.io/v2/options/REKS_FON_INTERP_DELTA.md) double | `0.4` | Parameter δ of the factor f(n_p n_q) that multiplies the coupling term of each geminal in the REKS energy. | §2 Coupling Δ and factor f §4 Lone pair: REKS(2,3) · States: SI-SA-REKS(2,3) |
+| [`REKS_<L>_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md) double | `-1.0` each | Lower bound on the free FON n_p of every geminal of one FON generation (`reks_n_fon`, `reks_m_fon`, …); negative disables it. | §6 FON sets §12 §17 |
 
 ### FON micro-solver {#fon-micro-solver}
 
 [FON micro-solver](https://reksstudio.github.io/v2/manual/run-control/index.md#fon-micro)
 
-| Option | Default | Meaning |
-| - | - | - |
-| `REKS_FON_MICRO_NR_MAXITER` int | `20` | Newton iteration cap per geminal block per SCF iteration. |
-| `REKS_FON_MICRO_LS_MAXITER` int | `20` | Armijo backtracking (step halving) cap inside one Newton step. |
-| `REKS_FON_MICRO_CONVERGENCE` double | `1e-12` | Step-norm convergence threshold. |
-| `REKS_FON_MICRO_MIN_EIGENVALUE` double | `1e-8` | Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped. |
-| `REKS_FON_MICRO_BOUND_MARGIN` double | `1e-8` | Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step; must lie in (0, 1). |
-| `REKS_FON_MICRO_BOUNDARY_SKIN` double | `0.05` | A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| `REKS_FON_MICRO_NR_MAXITER` int | `20` | Newton iteration cap per geminal block per SCF iteration. | |
+| `REKS_FON_MICRO_LS_MAXITER` int | `20` | Armijo backtracking (step halving) cap inside one Newton step. | |
+| `REKS_FON_MICRO_CONVERGENCE` double | `1e-12` | Step-norm convergence threshold. | |
+| `REKS_FON_MICRO_MIN_EIGENVALUE` double | `1e-8` | Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped. | |
+| `REKS_FON_MICRO_BOUND_MARGIN` double | `1e-8` | Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step, in (0, 1); SI box: `SI_REKS_FON_BOUND_MARGIN`. | §12 `REKS_<L>_FON` |
+| `REKS_FON_MICRO_BOUNDARY_SKIN` double | `0.05` | A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum. | |
+| `SI_REKS_FON_BOUND_MARGIN` double | `1e-8` | Margin m of the box \[m, 2 − m] of the SI-only FONs ([SI-only FONs](https://reksstudio.github.io/v2/manual/concepts/index.md#si-only-fons)) and of their CP-REKS at-bound test, in \[0, 1). | §2 SI-only FONs |
 
 ### Convergence engines {#convergence-engines}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`REKS_USE_TRAH`](https://reksstudio.github.io/v2/options/REKS_USE_TRAH.md) bool | `false` | Trust-region Newton (TRAH) step on the active–active rotations and FONs: warm-up before GVB-DIIS, or the whole SCF without it. |
-| [`REKS_GVB_DIIS`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS.md) bool | `true` | GVB-DIIS accelerator of the orbital optimization, in the formulation set by `reks_diis_formulation`. |
-| [`REKS_DIIS_FORMULATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_FORMULATION.md) `CFM`\|`ORBITAL` | `ORBITAL` | GVB-DIIS formulation: extrapolation of the orbital-rotation generators κ, or of the composite multishell Fock matrix (`CFM`). |
-| [`REKS_GVB_DIIS_START`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS_START.md) int | `3` | First SCF iteration of GVB-DIIS; earlier iterations run the level-shifted burn-in or TRAH. |
-| [`REKS_DIIS_ACTIVATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_ACTIVATION.md) `ITERATION`\|`GRADIENT` | `ITERATION` | Criterion for `ORBITAL` GVB-DIIS to take over from the TRAH warm-up: the iteration count alone, or also the orbital gradient. |
-| [`REKS_DIIS_CFM_ACTIVATION_GORB`](https://reksstudio.github.io/v2/options/REKS_DIIS_CFM_ACTIVATION_GORB.md) double | `1e-3` | Orbital-gradient norm ‖g_orb‖\_F below which GVB-DIIS takes over from the TRAH warm-up. |
-| [`REKS_GVB_ROBUST_VERDICT`](https://reksstudio.github.io/v2/options/REKS_GVB_ROBUST_VERDICT.md) bool | `true` | Enables the post-hoc verdict that rewinds extrapolated GVB-DIIS steps whose orbital gradient grows. |
-| [`REKS_GVB_LEVEL_SHIFT`](https://reksstudio.github.io/v2/options/REKS_GVB_LEVEL_SHIFT.md) double | `1.0` (CFM only) | Shell gap of the multishell Fock matrix in the `CFM` formulation of GVB-DIIS. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`REKS_USE_TRAH`](https://reksstudio.github.io/v2/options/REKS_USE_TRAH.md) bool | `false` | Trust-region Newton (TRAH) step on the active–active rotations and FONs: warm-up before GVB-DIIS, or the whole SCF without it. | §4 States: SI-SA-REKS(2,3) §12 §13 The three engines · `REKS_DIIS_ACTIVATION` · `REKS_DIIS_CFM_ACTIVATION_GORB` §14 `REKS_GEMINAL_DELOC` §17 |
+| [`REKS_GVB_DIIS`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS.md) bool | `true` | GVB-DIIS accelerator of the orbital optimization, in the formulation set by `reks_diis_formulation`. | §4 States: SI-SA-REKS(2,3) §13 The three engines §14 `REKS_GEMINAL_DELOC` §16 SCF |
+| [`REKS_DIIS_FORMULATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_FORMULATION.md) `CFM`\|`ORBITAL` | `ORBITAL` | GVB-DIIS formulation: extrapolation of the orbital-rotation generators κ, or of the composite multishell Fock matrix (`CFM`). | §13 `REKS_GVB_DIIS` · `REKS_GVB_LEVEL_SHIFT` §17 |
+| [`REKS_GVB_DIIS_START`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS_START.md) int | `3` | First SCF iteration of GVB-DIIS; earlier iterations run the level-shifted burn-in or TRAH. | §13 The three engines · `REKS_DIIS_ACTIVATION` · `REKS_DIIS_CFM_ACTIVATION_GORB` |
+| [`REKS_DIIS_ACTIVATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_ACTIVATION.md) `ITERATION`\|`GRADIENT` | `ITERATION` | Criterion for `ORBITAL` GVB-DIIS to take over from the TRAH warm-up: the iteration count alone, or also the orbital gradient. | §13 The three engines · `REKS_DIIS_CFM_ACTIVATION_GORB` |
+| [`REKS_DIIS_CFM_ACTIVATION_GORB`](https://reksstudio.github.io/v2/options/REKS_DIIS_CFM_ACTIVATION_GORB.md) double | `1e-3` | Orbital-gradient norm ‖g_orb‖\_F below which GVB-DIIS takes over from the TRAH warm-up. | §13 The three engines · `REKS_DIIS_ACTIVATION` |
+| [`REKS_GVB_ROBUST_VERDICT`](https://reksstudio.github.io/v2/options/REKS_GVB_ROBUST_VERDICT.md) bool | `true` | Enables the post-hoc verdict that rewinds extrapolated GVB-DIIS steps whose orbital gradient grows. | |
+| [`REKS_GVB_LEVEL_SHIFT`](https://reksstudio.github.io/v2/options/REKS_GVB_LEVEL_SHIFT.md) double | `1.0` (CFM only) | Shell gap of the multishell Fock matrix in the `CFM` formulation of GVB-DIIS. | |
 
 ### Level shift {#level-shift}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`LEVEL_SHIFT_ADAPT`](https://reksstudio.github.io/v2/options/LEVEL_SHIFT_ADAPT.md) bool | `true` | Adaptive base of the staircase level shift: decays while the orbitals are stable, grows back up to `level_shift` on swaps or strong mixing. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`LEVEL_SHIFT_ADAPT`](https://reksstudio.github.io/v2/options/LEVEL_SHIFT_ADAPT.md) bool | `true` | Adaptive base of the staircase level shift: decays while the orbitals are stable, grows back up to `level_shift` on swaps or strong mixing. | |
 
 ### GVB-DIIS conditioning chain (expert) {#gvb-diis-conditioning-chain-expert}
 
-| Option | Default | Meaning |
-| - | - | - |
-| `REKS_DIIS_COND_ANGLE_FILTER` | `true` | Enables the angle filter with stale-drop that prunes near-dependent and stale GVB-DIIS error vectors. |
-| `REKS_DIIS_COND_ANGLE_CUTOFF` | `0.1` | Angle-filter cutoff c_s: smallest sine of the angle to the kept differences for a GVB-DIIS error vector to stay. |
-| `REKS_DIIS_COND_STALE_DELTA` | `1e-4` | Stale-drop threshold δ: GVB-DIIS error vectors with norm above the newest norm / √δ are dropped; 0 switches it off. |
-| `REKS_DIIS_COND_KAPPA_BYPASS` | `1e9` | Condition number of the GVB-DIIS error matrix above which the SVD-conditioned solve replaces the plain bordered solve. |
-| `REKS_DIIS_COND_SVD_RCOND` | `1e-8` | Relative singular-value cutoff of the SVD-conditioned GVB-DIIS solve. |
-| `REKS_DIIS_COND_COEFF_NORM_MAX` | `1e3` | Bound c_max on the GVB-DIIS coefficient norm \|c\|², also used by the angle filter to drop near-duplicate error vectors. |
-| `REKS_DIIS_COND_TIKHONOV` | `true` | Enables the Tikhonov ridge on the SVD-conditioned GVB-DIIS solve. |
-| `REKS_DIIS_COND_TIKHONOV_SCALE` | `0.0` | Ridge magnitude of the Tikhonov-regularized GVB-DIIS SVD solve; 0 applies no ridge. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| `REKS_DIIS_COND_ANGLE_FILTER` | `true` | Enables the angle filter with stale-drop that prunes near-dependent and stale GVB-DIIS error vectors. | §13 |
+| `REKS_DIIS_COND_ANGLE_CUTOFF` | `0.1` | Angle-filter cutoff c_s: smallest sine of the angle to the kept differences for a GVB-DIIS error vector to stay. | §13 |
+| `REKS_DIIS_COND_STALE_DELTA` | `1e-4` | Stale-drop threshold δ: GVB-DIIS error vectors with norm above the newest norm / √δ are dropped; 0 switches it off. | §13 |
+| `REKS_DIIS_COND_KAPPA_BYPASS` | `1e9` | Condition number of the GVB-DIIS error matrix above which the SVD-conditioned solve replaces the plain bordered solve. | |
+| `REKS_DIIS_COND_SVD_RCOND` | `1e-8` | Relative singular-value cutoff of the SVD-conditioned GVB-DIIS solve. | |
+| `REKS_DIIS_COND_COEFF_NORM_MAX` | `1e3` | Bound c_max on the GVB-DIIS coefficient norm \|c\|², also used by the angle filter to drop near-duplicate error vectors. | §13 |
+| `REKS_DIIS_COND_TIKHONOV` | `true` | Enables the Tikhonov ridge on the SVD-conditioned GVB-DIIS solve. | |
+| `REKS_DIIS_COND_TIKHONOV_SCALE` | `0.0` | Ridge magnitude of the Tikhonov-regularized GVB-DIIS SVD solve; 0 applies no ridge. | |
 
 ### GVB-DIIS monitors / verdicts (expert) {#gvb-diis-monitors-verdicts-expert}
 
-| Option | Default | Meaning |
-| - | - | - |
-| `REKS_DIIS_MON_VERDICT_RHO` | `1.5` | Verdict trip ratio: a GVB-DIIS step is rewound when ‖g_orb‖ exceeds this multiple of its maximum over the recent iterates. |
-| `REKS_DIIS_MON_VERDICT_STREAK` | `3` | Consecutive verdict rewinds without a new best iterate before GVB-DIIS restarts from the best iterate. |
-| `REKS_DIIS_MON_SUPPRESS_WINDOW` | `3` | Iterations after a GVB-DIIS rewind, restart or switch during which the verdict is suspended. |
-| `REKS_DIIS_MON_NONMONOTONE_M` | `3` | Depth M of the nonmonotone references of the GVB-DIIS monitors: max ‖g_orb‖ and min E_SA over the last M iterates. |
-| `REKS_GVB_GATE_STREAK` | `2` | Consecutive iterations meeting the energy and gradient thresholds before GVB-DIIS reports convergence. |
-| `REKS_DIIS_GUARD_LATCH_GRACE` | `3` | Consecutive iterations without the basin signal after which the GVB-DIIS outcome guard clears its basin latch. |
-| `REKS_DIIS_GUARD_LANDING_TOLERANCE` | `1e-12` | Relative tolerance at which a GVB-DIIS rewind landing counts as a repeat (best E_SA and best ‖g_orb‖ reproduced). |
-| `REKS_DIIS_MON_PROGRESS_EPS` | `1e-2` | Sufficient-decrease fraction ε: a GVB-DIIS iterate counts as progress only if ‖g_orb‖ ≤ (1 − ε) × best ‖g_orb‖. |
-| `REKS_DIIS_FON_BRANCH_CUTOFF` | `0.1` | FON displacement from the best iterate at or above which the GVB-DIIS guard reads an energy drop as a basin transition. |
-| `REKS_DIIS_RESTART_BUDGET` | `2` | GVB-DIIS monitor restarts without sufficient improvement allowed before the monitors stop and rewind once to the best iterate. |
-| `REKS_DIIS_MON_CYCLE` | `true` | Enables the GVB-DIIS no-progress / step-cap monitor, which restarts from the best iterate. |
-| `REKS_DIIS_MON_CYCLE_WINDOW` | `12` | Iterations without a new best ‖g_orb‖ before the GVB-DIIS cycle monitor restarts from the best iterate. |
-| `REKS_DIIS_MON_CYCLE_CAP_STREAK` | `3` | Consecutive `ORBITAL` step-cap hits before the GVB-DIIS cycle monitor restarts. |
-| `REKS_DIIS_ORB_BASE_MAP_DAMP` | `0.6` | Damping α of the `ORBITAL` GVB-DIIS Newton step from the re-anchored frame after a restart. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| `REKS_DIIS_MON_VERDICT_RHO` | `1.5` | Verdict trip ratio: a GVB-DIIS step is rewound when ‖g_orb‖ exceeds this multiple of its maximum over the recent iterates. | §13 `REKS_GVB_ROBUST_VERDICT` |
+| `REKS_DIIS_MON_VERDICT_STREAK` | `3` | Consecutive verdict rewinds without a new best iterate before GVB-DIIS restarts from the best iterate. | |
+| `REKS_DIIS_MON_SUPPRESS_WINDOW` | `3` | Iterations after a GVB-DIIS rewind, restart or switch during which the verdict is suspended. | |
+| `REKS_DIIS_MON_NONMONOTONE_M` | `3` | Depth M of the nonmonotone references of the GVB-DIIS monitors: max ‖g_orb‖ and min E_SA over the last M iterates. | |
+| `REKS_GVB_GATE_STREAK` | `2` | Consecutive iterations meeting the energy and gradient thresholds before GVB-DIIS reports convergence. | §13 The three engines |
+| `REKS_DIIS_GUARD_LATCH_GRACE` | `3` | Consecutive iterations without the basin signal after which the GVB-DIIS outcome guard clears its basin latch. | |
+| `REKS_DIIS_GUARD_LANDING_TOLERANCE` | `1e-12` | Relative tolerance at which a GVB-DIIS rewind landing counts as a repeat (best E_SA and best ‖g_orb‖ reproduced). | |
+| `REKS_DIIS_MON_PROGRESS_EPS` | `1e-2` | Sufficient-decrease fraction ε: a GVB-DIIS iterate counts as progress only if ‖g_orb‖ ≤ (1 − ε) × best ‖g_orb‖. | |
+| `REKS_DIIS_FON_BRANCH_CUTOFF` | `0.1` | FON displacement from the best iterate at or above which the GVB-DIIS guard reads an energy drop as a basin transition. | |
+| `REKS_DIIS_RESTART_BUDGET` | `2` | GVB-DIIS monitor restarts without sufficient improvement allowed before the monitors stop and rewind once to the best iterate. | |
+| `REKS_DIIS_MON_CYCLE` | `true` | Enables the GVB-DIIS no-progress / step-cap monitor, which restarts from the best iterate. | |
+| `REKS_DIIS_MON_CYCLE_WINDOW` | `12` | Iterations without a new best ‖g_orb‖ before the GVB-DIIS cycle monitor restarts from the best iterate. | |
+| `REKS_DIIS_MON_CYCLE_CAP_STREAK` | `3` | Consecutive `ORBITAL` step-cap hits before the GVB-DIIS cycle monitor restarts. | |
+| `REKS_DIIS_ORB_BASE_MAP_DAMP` | `0.6` | Damping α of the `ORBITAL` GVB-DIIS Newton step from the re-anchored frame after a restart. | |
 
 ### Geminal delocalization {#geminal-delocalization}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md) bool | `false` | After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md) bool | `false` | After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA. | §14 §15 `REKS_REPORT_LEVEL` §17 |
 
 ### Reporting {#reporting}
 
-| Option | Default | Meaning |
-| - | - | - |
-| [`REKS_REPORT_LEVEL`](https://reksstudio.github.io/v2/options/REKS_REPORT_LEVEL.md) int (1–5) | `2` | Verbosity of the REKS output, 1–5: from the SCF trace and energetics up to per-iteration solver traces and intermediate matrices. |
+| Option | Default | Meaning | Used in |
+| - | - | - | - |
+| [`REKS_REPORT_LEVEL`](https://reksstudio.github.io/v2/options/REKS_REPORT_LEVEL.md) int (1–5) | `2` | Verbosity of the REKS output, 1–5: from the SCF trace and energetics up to per-iteration solver traces and intermediate matrices. | §2 SI Hamiltonian and overlap · Coupling damping below 100 % exact exchange §10 `REKS_CPREKS_CONV` §12 `REKS_<L>_FON` §13 §15 Print order · Run report §16 SCF · SI states · Unrelaxed state and transition properties · Relaxed properties and EKT §17 |
 
 ## 19. References {#references}
 
@@ -274,6 +277,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 ### C {#index-c}
 
 * [Cartesian multipole moments of order l ≥ 3](https://reksstudio.github.io/v2/manual/properties/index.md#multipoles)
+* [Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)
 * [Catalog](https://reksstudio.github.io/v2/manual/reference/index.md#catalog)
 * [Check the optimization](https://reksstudio.github.io/v2/manual/dynamics/index.md#check-optimization)
 * Check the solution [First Calculation](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)[Wide Geminals](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-check)
@@ -554,6 +558,8 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [Seed orbitals](https://reksstudio.github.io/v2/manual/first-calculation/index.md#seed-orbitals)
 * [SI cassette](https://reksstudio.github.io/v2/manual/concepts/index.md#si-cassette)
 * SI cassettes [Input](https://reksstudio.github.io/v2/manual/setup/index.md#si-cassettes)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#si-cassettes)
+* [`SI Davidson solver`](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)
+* [SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)
 * SI Hamiltonian and overlap [Output and properties](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices)[Concepts](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)
 * [`SI pools`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)
 * [SI states](https://reksstudio.github.io/v2/manual/properties/index.md#si-states)
@@ -561,11 +567,14 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md)
 * [`SI_REKS_ANALYSIS_CHANGE_MIN`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS_CHANGE_MIN.md)
 * [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)
+* [`SI_REKS_DAVIDSON_R_CONVERGENCE`](https://reksstudio.github.io/v2/options/SI_REKS_DAVIDSON_R_CONVERGENCE.md)
+* [`SI_REKS_FON_BOUND_MARGIN`](https://reksstudio.github.io/v2/manual/run-control/index.md#fon-micro)
 * [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md)
 * [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md)
 * [`SI_REKS_OVERLAP_CUTOFF`](https://reksstudio.github.io/v2/options/SI_REKS_OVERLAP_CUTOFF.md)
 * [`SI_REKS_PRINT_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_PRINT_STATES.md)
 * [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md)
+* [`SI_REKS_SOLVER`](https://reksstudio.github.io/v2/options/SI_REKS_SOLVER.md)
 * [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md)
 * [SI-only FONs](https://reksstudio.github.io/v2/manual/concepts/index.md#si-only-fons)
 * [`SI-SA-REKS analytic gradient: targets`](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient)

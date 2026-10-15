@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/>
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -12,7 +12,7 @@ User Manual
 
 A guide to the REKS(N,M) / SA-REKS / SI-REKS implementation in Psi4
 
-[Psi4 revision `d40267fc2`, 2026-10-13](https://reksstudio.github.io/v2/docs/index.md#version)
+[Psi4 revision `f31cf1f94`, 2026-10-15](https://reksstudio.github.io/v2/docs/index.md#version)
 
 Spin-Restricted Ensemble-referenced Kohn-Sham DFT\
 State-Averaged (SA-REKS) and State-Interaction (SI-SA-REKS = SSR)\
@@ -178,6 +178,7 @@ Complete inputs, each running with this build. Run a `.dat` file with `psi4 file
 * [SI cassette](https://reksstudio.github.io/v2/manual/concepts/index.md#si-cassette)
 * [SI-only FONs](https://reksstudio.github.io/v2/manual/concepts/index.md#si-only-fons)
 * [SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)
+* [SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)
 * [Coupling damping below 100 % exact exchange](https://reksstudio.github.io/v2/manual/concepts/index.md#coupling-damping)
 * [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states)
 * [Chirgwin–Coulson weights](https://reksstudio.github.io/v2/manual/concepts/index.md#cc-weights)
@@ -235,6 +236,7 @@ Complete inputs, each running with this build. Run a `.dat` file with `psi4 file
 * [Input patterns](https://reksstudio.github.io/v2/manual/setup/index.md#input-patterns)
 * [State labels](https://reksstudio.github.io/v2/manual/setup/index.md#state-labels)
 * [Output](https://reksstudio.github.io/v2/manual/setup/index.md#output)
+* [Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)
 * [10. Properties, Gradients, Couplings](https://reksstudio.github.io/v2/manual/setup/index.md#response)
 * [State properties](https://reksstudio.github.io/v2/manual/setup/index.md#state-properties)
 * [Gradients and couplings](https://reksstudio.github.io/v2/manual/setup/index.md#gradients-couplings)

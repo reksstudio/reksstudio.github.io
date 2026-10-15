@@ -2,15 +2,15 @@
 
 > REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 ## Manual
 - [Start](/v2/manual/index.md): Tasks; Minimal input; Explicit SA pool and SI cassettes; Required and rejected settings; Worked inputs; Contents
-- [Concepts](/v2/manual/concepts/index.md): Active space, core, virtual; Ensemble Kohn–Sham reference and FONs; Microstate; Geminals; Pairing scheme; Configuration and its energy; Coupling Δ and factor f; FON set and generation; SA-REKS ensemble and weights; Orbitals, orbital energies, SCF convergence; Spin-polarized configurations; Spin manifold and run sector; SI cassette; SI-only FONs; SI Hamiltonian and overlap; Coupling damping below 100 % exact exchange; Adiabatic (SSR) states; Chirgwin–Coulson weights; Unrelaxed and relaxed densities
+- [Concepts](/v2/manual/concepts/index.md): Active space, core, virtual; Ensemble Kohn–Sham reference and FONs; Microstate; Geminals; Pairing scheme; Configuration and its energy; Coupling Δ and factor f; FON set and generation; SA-REKS ensemble and weights; Orbitals, orbital energies, SCF convergence; Spin-polarized configurations; Spin manifold and run sector; SI cassette; SI-only FONs; SI Hamiltonian and overlap; SI eigensolver; Coupling damping below 100 % exact exchange; Adiabatic (SSR) states; Chirgwin–Coulson weights; Unrelaxed and relaxed densities
 - [First Calculation](/v2/manual/first-calculation/index.md): Which active space?; Choose the pairs; Seed orbitals; Inspect the orbitals; Start REKS; Check the solution; Higher spin states; Worked inputs; Scans; If the SCF does not converge
 - [Wide Geminals](/v2/manual/wide-geminals/index.md): Geminal of width w; Lone pair: REKS(2,3); Bond and lone pair: REKS(4,5), REKS(4,6); Check the solution; Gradients; States: SI-SA-REKS(2,3); Worked inputs
 - [Optimization and Dynamics](/v2/manual/dynamics/index.md): Requirements; One gradient() call; Gradients and couplings against finite differences; Geometry optimization; Check the optimization; Surface hopping; Check the trajectory; Worked inputs
-- [Input](/v2/manual/setup/index.md): Active Space and Catalog; Active space; Naming convention; FON sets; Pairing schemes; Bulk Tokens and Pattern Syntax; SA Pool and SI Cassettes; SA pool; SI cassettes; Spin Manifolds (2S) and Multi-Sector Runs; Input patterns; State labels; Output; Properties, Gradients, Couplings; State properties; Gradients and couplings
+- [Input](/v2/manual/setup/index.md): Active Space and Catalog; Active space; Naming convention; FON sets; Pairing schemes; Bulk Tokens and Pattern Syntax; SA Pool and SI Cassettes; SA pool; SI cassettes; Spin Manifolds (2S) and Multi-Sector Runs; Input patterns; State labels; Output; Cassette order; Properties, Gradients, Couplings; State properties; Gradients and couplings
 - [Run control](/v2/manual/run-control/index.md): Guesses and Restarts; Restart mechanism; Fractional Occupation Numbers (FONs); SCF Convergence Engines; The three engines; Level shift; Expert stabilizers; Geminal Delocalization
 - [Output and properties](/v2/manual/properties/index.md): Reading the Output; Print order; Run report; Report level; Variable names; Files; Properties; Rules for all entries; Summary; SCF; SI states; Unrelaxed state and transition properties; Spin energetics; Relaxed properties and EKT; Gradients, NAC, conical intersections
 - [Diagnose](/v2/manual/diagnose/index.md): 
@@ -29,6 +29,8 @@ Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: br
 - [`SI_REKS_ANALYSIS`](/v2/options/SI_REKS_ANALYSIS.md): State-property blocks of the SI states to compute, print and store (moments, charges, bond indices, NTO, exciton, …).
 - [`SI_REKS_ANALYSIS_CHANGE_MIN`](/v2/options/SI_REKS_ANALYSIS_CHANGE_MIN.md): Smallest state-to-state change of a charge or bond index that is printed.
 - [`SI_REKS_OVERLAP_CUTOFF`](/v2/options/SI_REKS_OVERLAP_CUTOFF.md): Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped.
+- [`SI_REKS_SOLVER`](/v2/options/SI_REKS_SOLVER.md): Eigensolver of each SI cassette: LAPACK on every root, or Davidson on the lowest roots.
+- [`SI_REKS_DAVIDSON_R_CONVERGENCE`](/v2/options/SI_REKS_DAVIDSON_R_CONVERGENCE.md): Residual norm in E_h each Davidson root of the SI problem converges to.
 - [`REKS_GEMINAL_WIDTHS`](/v2/options/REKS_GEMINAL_WIDTHS.md): Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`.
 - [`SI_REKS_GRAD`](/v2/options/SI_REKS_GRAD.md): Roots whose analytic gradients are computed, per cassette; the first listed root is followed (`CURRENT ENERGY`, returned gradient).
 - [`SI_REKS_NAC`](/v2/options/SI_REKS_NAC.md): Root pairs `[I, J]` per cassette whose nonadiabatic couplings and conical-intersection topography are computed.
@@ -46,7 +48,8 @@ Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: br
 - [`REKS_FON_MICRO_LS_MAXITER`](/v2/options/REKS_FON_MICRO_LS_MAXITER.md): Armijo backtracking (step halving) cap inside one Newton step.
 - [`REKS_FON_MICRO_CONVERGENCE`](/v2/options/REKS_FON_MICRO_CONVERGENCE.md): Step-norm convergence threshold.
 - [`REKS_FON_MICRO_MIN_EIGENVALUE`](/v2/options/REKS_FON_MICRO_MIN_EIGENVALUE.md): Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped.
-- [`REKS_FON_MICRO_BOUND_MARGIN`](/v2/options/REKS_FON_MICRO_BOUND_MARGIN.md): Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step; must lie in (0, 1).
+- [`REKS_FON_MICRO_BOUND_MARGIN`](/v2/options/REKS_FON_MICRO_BOUND_MARGIN.md): Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step, in (0, 1); SI box: `SI_REKS_FON_BOUND_MARGIN`.
+- [`SI_REKS_FON_BOUND_MARGIN`](/v2/options/SI_REKS_FON_BOUND_MARGIN.md): Margin m of the box \[m, 2 − m] of the SI-only FONs ([SI-only FONs](/v2/manual/concepts/index.md#si-only-fons)) and of their CP-REKS at-bound test, in \[0, 1).
 - [`REKS_FON_MICRO_BOUNDARY_SKIN`](/v2/options/REKS_FON_MICRO_BOUNDARY_SKIN.md): A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum.
 - [`REKS_GEMINAL_DELOC`](/v2/options/REKS_GEMINAL_DELOC.md): After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA.
 - [`REKS_REPORT_LEVEL`](/v2/options/REKS_REPORT_LEVEL.md): Verbosity of the REKS output, 1–5: from the SCF trace and energetics up to per-iteration solver traces and intermediate matrices.

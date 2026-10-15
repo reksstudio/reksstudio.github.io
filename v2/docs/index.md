@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/docs/>
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -38,9 +38,18 @@ Then run `psi4 reks22_h2.dat` (download from [Worked inputs](https://reksstudio.
 
 ## Version
 
-Psi4 `d40267fc2`, 2026-10-13: the commit of every output in the manual. Option names and defaults may change on this branch.
+Psi4 `f31cf1f94`, 2026-10-15: the commit of every output in the manual. Option names and defaults may change on this branch.
 
 ## Changes
+
+### Psi4 `f31cf1f94`, 2026-10-15
+
+* Each SI cassette is solved by LAPACK (every root) or by block Davidson (the lowest roots), [`SI_REKS_SOLVER`](https://reksstudio.github.io/v2/options/SI_REKS_SOLVER.md); on a Davidson cassette a count -1 means the 50 lowest roots ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver), [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)).
+* [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md), [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md), [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md) and [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) take one entry per SI cassette in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) (spin groups as listed there, cassettes of a group in their [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) order); the printed K stays in ascending 2S ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)).
+* The SI-only FONs stay in \[m, 2 − m], m set by the SI FON bound margin ([SI-only FONs](https://reksstudio.github.io/v2/manual/concepts/index.md#si-only-fons), [FON micro-solver](https://reksstudio.github.io/v2/manual/run-control/index.md#fon-micro)).
+* Added: [`SI_REKS_DAVIDSON_R_CONVERGENCE`](https://reksstudio.github.io/v2/options/SI_REKS_DAVIDSON_R_CONVERGENCE.md)
+* Added: [`SI_REKS_FON_BOUND_MARGIN`](https://reksstudio.github.io/v2/manual/run-control/index.md#fon-micro)
+* Added: [`SI_REKS_SOLVER`](https://reksstudio.github.io/v2/options/SI_REKS_SOLVER.md)
 
 ### Psi4 `d40267fc2`, 2026-10-13
 

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/properties/>
 
-Psi4 d40267fc2, 2026-10-13: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 f31cf1f94, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -35,6 +35,7 @@ Blocks of a `gradient()` run with every block on, at `REKS_REPORT_LEVEL` 2; an `
 | `=> SA-REKS energy decomposition <=` | [SA-REKS ensemble energy and configuration energies](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy) |
 | `==> State interaction: setup over the union of the SI cassettes <==` | [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) |
 | `=> FON optimization after the SCF <=` | [FONs of the SI-only geminals](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons) |
+| `==> SI Davidson solver (cassette 0) <==` | [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson) |
 | `==> State interaction: cassette 0, 18SI-3SA-REKS(4,4), 2S=0 (singlet) <==` | [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) |
 | `=> Hamiltonian, cassette 0 <=` | [SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices) |
 | `=> Adiabatic states, cassette 0 <=` | [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies) |
@@ -125,11 +126,11 @@ Blocks added at each level; each level prints everything of the levels below. Ou
 | Level | Adds | Lines |
 | - | - | - |
 | 1 | `Pre-Iterations` with the `REKS orbitals` line; `Iterations` and the convergence line; `Post-Iterations` (grid electrons, final energy); `Energetics`; `Summary` / `Summary of the energy phase` (`MOLDEN_WRITE`); `Returned gradient` with Psi4's `-Total Gradient` | 670 |
-| 2 (default) | Banner; `REKS Studio setup` with `Pairing schemes`, `SA pool`, `SI pools`, `State analysis`, `Gradient request`; `REKS Geminal Delocalization` ([`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md)); orbital energies with the FONs in `Post-Iterations`; `SA-REKS energy decomposition`; SI setup, `FON optimization after the SCF`, per cassette `Hamiltonian`, `Adiabatic states` and the property blocks; `State summary`; `Spin-state energetics`; CP-REKS solver (Psi4 `PRINT` ≥ 1); `Relaxed properties`; EKT; gradient targets, `Gradient of …`, `NAC …`, CI topography | 2148 |
+| 2 (default) | Banner; `REKS Studio setup` with `Pairing schemes`, `SA pool`, `SI pools`, `State analysis`, `Gradient request`; `REKS Geminal Delocalization` ([`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md)); orbital energies with the FONs in `Post-Iterations`; `SA-REKS energy decomposition`; SI setup, `FON optimization after the SCF`, `SI Davidson solver` (Davidson cassettes, [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)), per cassette `Hamiltonian`, `Adiabatic states` and the property blocks; `State summary`; `Spin-state energetics`; CP-REKS solver (Psi4 `PRINT` ≥ 1); `Relaxed properties`; EKT; gradient targets, `Gradient of …`, `NAC …`, CI topography | 2148 |
 | 3 | `XC evaluation … per string … per key` in the setup; Hamiltonian counters (`coupled`/`zero`, `Terms`, `Reuse`, overlap terms) and the `Off-diagonal channel` table; EKT `dropped eigenvalues` and the Dyson MO matrix; `[REKS-GRAD]` `C_eff` per microstate and Psi4 per-channel gradient terms; `==> References <==` | 2549 |
-| 4–5 | 4: `REKS Memory Footprint`, `Run diagnostics`, per-iteration solver traces (`[GVB-FON]`, `[ORB-DIIS]`, `[TRAH]`, `[LEVEL_SHIFT]`, …), `CP-REKS Z-Vector Profile`; per cassette `Microstate energies (sorted by energy)`, `Fractional Occupation Numbers (active orbitals)`, `Lagrangian eps_pq and ERI (pq\|st)`, `Pre-diagonalization SI Hamiltonian` and `SI Overlap S` in blocks of 18 columns. 5: per SCF iteration the active orbitals, Fock asymmetry, orbital update, coupling Fock matrix, SA energy, weighting factors C<sub>L</sub> and the microstate energies | 4079; 8137 |
+| 4–5 | 4: `REKS Memory Footprint`, `Run diagnostics`, per-iteration solver traces (`[GVB-FON]`, `[ORB-DIIS]`, `[TRAH]`, `[LEVEL_SHIFT]`, …), `CP-REKS Z-Vector Profile`; per cassette `Microstate energies (sorted by energy)`, `Fractional Occupation Numbers (active orbitals)`, `Lagrangian eps_pq and ERI (pq\|st)`, `Pre-diagonalization SI Hamiltonian` and `SI Overlap S` in blocks of 18 columns (up to 8 active orbitals); the Davidson trace ([SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)). 5: per SCF iteration the active orbitals, Fock asymmetry, orbital update, coupling Fock matrix, SA energy, weighting factors C<sub>L</sub> and the microstate energies | 4125; 8183 |
 
-From level 3 the configuration-axis arrays `SSR COEFFICIENTS K=e`, `SSR HAMILTONIAN K=e`, `SSR OVERLAP SPARSE K=e` and `SSR 1-RDM DIABATIC SPARSE K=e` are stored; level 4 prints the Hamiltonian and overlap. Levels 4–5 grow with the active space and the cassette dimension.
+From level 3 the configuration-axis arrays `SSR COEFFICIENTS K=e`, `SSR HAMILTONIAN K=e`, `SSR OVERLAP SPARSE K=e` and `SSR 1-RDM DIABATIC SPARSE K=e` are stored (the Hamiltonian and overlap up to 8 active orbitals); level 4 prints the Hamiltonian and overlap. Levels 4–5 grow with the active space and the cassette dimension.
 
 ### Variable names {#variable-names}
 
@@ -178,7 +179,7 @@ Unrelaxed properties (`SI_REKS_ANALYSIS`) use the densities ρ<sup>(IJ)</sup> = 
 * Tables are printed at `REKS_REPORT_LEVEL` ≥ 2 unless an entry states otherwise.
 * A switch named as an `SI_REKS_ANALYSIS` block is on by default ([`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md)). "SI present" = at least one SI cassette with configurations, the default when `SI_REKS_CONFIGS` is absent; an all-empty `SI_REKS_CONFIGS` turns it off.
 * Transition quantities are computed for pairs I \< J within one cassette and printed when at least 2 states are printed; per-state and pair tables are bounded by `SI_REKS_PRINT_STATES`.
-* The per-state and per-pair `SSR … K=e` arrays exist only for the states stored by `SI_REKS_STORE_STATES`; `SSR ENERGIES K=e` holds every physical root, and the `SSR ROOT r … CASSETTE e`, `SSR NAC …`, `SSR CI …` and EKT arrays are stored whenever their block runs.
+* The per-state and per-pair `SSR … K=e` arrays exist only for the states stored by `SI_REKS_STORE_STATES`; `SSR ENERGIES K=e` holds every physical root (on the Davidson path the computed roots, [SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)), and the `SSR ROOT r … CASSETTE e`, `SSR NAC …`, `SSR CI …` and EKT arrays are stored whenever their block runs.
 * The `=>` sub-block headers of a cassette carry `, cassette e`; with a single SI cassette that suffix is absent. The `==>` headers (`State interaction: cassette e`, `Relaxed properties`, EKT, `Gradient of`, `NAC`, CI topography) always name the cassette.
 * The sign of a phase-odd quantity (transition dipole, velocity and magnetic moments, transition multipoles and charges, NAC vectors and their sum over atoms, g̃ and h̃ of the CI topography, FCD/FED couplings, NTO particles) is arbitrary between runs, also of the same input (H₄: S0→S1 `mu_z` = −2.943014 in one run, 2.943014 in another). Moduli, f, |d|, R<sub>len</sub> and R<sub>vel</sub> agree. Within one run all quantities share one phase, so their relations hold (Σ<sub>A</sub> d<sub>A</sub> = −p<sub>IJ</sub>; φ and s<sub>y</sub> of the CI topography from the same d).
 
@@ -190,6 +191,7 @@ Unrelaxed properties (`SI_REKS_ANALYSIS`) use the densities ρ<sup>(IJ)</sup> = 
 | [Fractional occupation numbers of the SA-REKS ensemble](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons) | every REKS run | | yes |
 | [GVB-DIIS convergence quality](https://reksstudio.github.io/v2/manual/properties/index.md#convergence-quality) | `REKS_GVB_DIIS` true | on | yes |
 | [FONs of the SI-only geminals](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons) | SI present | | yes |
+| [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson) | a cassette solved by Davidson (`SI_REKS_SOLVER`) | | yes |
 | [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies) | SI present | | yes |
 | [SSR eigenvectors and Chirgwin–Coulson weights](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-composition) | SI present | | yes |
 | [SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices) | SI present | | yes |
@@ -240,12 +242,12 @@ $$
 => Energetics <=
 
  Nuclear Repulsion Energy =             25.1844817236300855
- One-Electron Energy =                -153.5867652831177281
+ One-Electron Energy =                -153.5867652831176997
  Two-Electron Energy =                  56.4995948627346962
- DFT Exchange-Correlation Energy =      -6.2238541886040730
+ DFT Exchange-Correlation Energy =      -6.2238541886040757
  Empirical Dispersion Energy =           0.0000000000000000
  VV10 Nonlocal Energy =                  0.0000000000000000
- Total Energy =                        -78.1265428853570256
+ Total Energy =                        -78.1265428853569972
 ```
 
 ```log
@@ -328,7 +330,7 @@ Units: electrons
    Set     Geminals  Iterations   Last change      Residual
    --------------------------------------------------------
    n              2           2       0.0e+00       1.1e-10
-   m              2           2       0.0e+00       1.1e-14
+   m              2           2       0.0e+00       3.6e-15
    mt1            4           2       0.0e+00       2.6e-12
    --------------------------------------------------------
 
@@ -350,15 +352,44 @@ Stored: `REKS FON K=<e>`, `REKS <L>_FON K=<e>`, `REKS FON META K=<e>`, `REKS <L>
 * No bare (cassette 0) alias.
 * Read the `Residual` column. Geminals without `*` printed as `2.000000/0.000000` lie at the bound, as scheme 1 `(a,c)` above; compare the same columns between runs.
 
+#### SI Davidson solver {#si-davidson}
+
+Convergence of the Davidson eigensolver of each cassette it solves ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)): roots computed, residual per iteration, operator applications.
+
+On: a cassette solved by Davidson (`SI_REKS_SOLVER`)
+
+Units: E<sub>h</sub> (residuals); s (time)
+
+```log
+==> SI Davidson solver (cassette 0) <==
+
+    Roots                 14 (10 requested + 4 margin) of 115
+    Convergence           1.000e-12
+
+    Iter      Mean |R|       Max |R|   Remain   Applications   Time [s]
+    -------------------------------------------------------------------
+       1     8.942e-16     1.251e-15        0            116       0.00
+    -------------------------------------------------------------------
+    14 roots converged in 1 iterations, 144 operator applications.
+[...]
+    Computed states       14 of 115 (lowest roots, Davidson)
+```
+
+* One block per Davidson cassette, after `FON optimization after the SCF` and before the cassette blocks. Fragment: hexatriene REKS(6,6) with `si_reks_solver` `davidson`, 10 requested roots (stored states) + 4 margin; the cassette's `Hamiltonian` block ends with `Computed states`.
+* `Roots`: k (requested + margin) of r, or `k (whole space, n requested)` when the search space reaches r. Mean |R| and Max |R|: residual norms of the roots still above `Convergence`, or of all roots once none remains; `Remain`: their number; `Applications`: cumulative products A·x, one per vector (start columns, corrections, two per root at each verification).
+* A root stalled at its rounding level adds the line `n root(s) closed at the roundoff floor (max |R| = …, max phi = …)`.
+* In the fragment one iteration converges all 14 roots of the 115-dimensional space.
+* `REKS_REPORT_LEVEL` ≥ 4 adds a line per subspace collapse, `SI Davidson: n collapses, shift … Eh`, per root E, |r| and φ, the `apply calls` counts and the CSR passes.
+
 #### SSR state energies {#ssr-energies}
 
 Eigenvalues of the SI eigenproblem of each cassette after removal of the overlap null modes ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)); states ordered by energy, root index 0-based.
 
 On: SI present
 
-For: every physical root of every SI cassette with at least one configuration, independent of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`
+For: every physical root of every SI cassette with at least one configuration, independent of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`; on the Davidson path the computed lowest roots ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver))
 
-Units: E<sub>h</sub> (stored); E<sub>h</sub> and eV relative to the lowest state of the first typed SI cassette, S0 when that cassette is a singlet (printed)
+Units: E<sub>h</sub> (stored); E<sub>h</sub> and eV relative to the lowest state of the first SI cassette in the order of [Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order), S0 when that cassette is a singlet (printed)
 
 ```log
 => Adiabatic states, cassette 0 <=
@@ -400,7 +431,7 @@ Units: E<sub>h</sub> (stored); E<sub>h</sub> and eV relative to the lowest state
 Stored: `SSR ENERGIES K=<e>`; bookkeeping `SSR SI LIST`, `SSR CASSETTE 2S K=<e>`, `SSR STORED STATES K=<e>`, `SSR ACTIVE ORBITALS K=<e>`, `SSR CASSETTE SECTOR K=<e>`
 
 * The four bookkeeping scalars never take the sector prefix.
-* `Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats S0 of cassette 0.
+* `Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats the lowest state of the first cassette in the order of [Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order) (H₂ with `si_reks_2spin` `[2, 0]`: `ref … T1 of cassette 1`).
 * `State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.
 * Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.03–0.51 E<sub>h</sub> below E<sub>SA</sub>; an E(S0) far below this range marks ghost roots ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)).
 
@@ -446,10 +477,10 @@ $$
 Consistency           max |V| = 2.5706 mEh over pairs with |S_ij|/sqrt(S_ii S_jj) > 0.99 (PPS1 / PPS2)
 ```
 
-Stored: `SSR HAMILTONIAN K=<e>`, `SSR OVERLAP SPARSE K=<e>` (rows \[i n<sub>cfg</sub> + j, S<sub>ij</sub>]), stored at `REKS_REPORT_LEVEL` ≥ 3
+Stored: `SSR HAMILTONIAN K=<e>`, `SSR OVERLAP SPARSE K=<e>` (rows \[i n<sub>cfg</sub> + j, S<sub>ij</sub>]), stored at `REKS_REPORT_LEVEL` ≥ 3, up to 8 active orbitals
 
-* Matrices printed only at `REKS_REPORT_LEVEL` ≥ 4. No bare (cassette 0) alias.
-* `Independent states` = `Configurations` − overlap null modes − ghost roots. A `Regularization` line appears when null modes are removed, a `Ghost states` line when ghost roots ([Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states)) are removed.
+* Matrices printed only at `REKS_REPORT_LEVEL` ≥ 4, up to 8 active orbitals. No bare (cassette 0) alias.
+* `Independent states` = `Configurations` − overlap null modes − ghost roots. A `Regularization` line appears when null modes are removed, a `Ghost states` line when ghost roots ([Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states)) are removed. On the Davidson path the last line reads `Computed states k of r (lowest roots, Davidson)` ([SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)).
 * Two configurations with |S̃<sub>ij</sub>| close to 1 are nearly the same function; their coupling then follows from the overlap, and V<sub>ij</sub> vanishes for two identical functions.
 * The `Consistency` line (second fragment, H<sub>4</sub> REKS(4,4)) gives the largest |V<sub>ij</sub>| in mE<sub>h</sub> over the pairs with |S̃<sub>ij</sub>| > 0.99 (a fixed bound, not an option) and the pair where it occurs; without such a pair the line is absent. The code sets no bound on |V<sub>ij</sub>|.
 
@@ -496,8 +527,8 @@ $$
 
    Transition   dE [eV]  lambda [nm]  mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]   |mu| [D]      f_len
    -------------------------------------------------------------------------------------------------------------
-   S0->S1         3.239        382.8     0.000000     0.000656     0.000000     0.000656   0.001667    0.00000
-   S0->S2         3.491        355.1     0.000000     0.000000    -0.048983     0.048983   0.124503    0.00021
+   S0->S1         3.239        382.8     0.000000    -0.000656     0.000000     0.000656   0.001667    0.00000
+   S0->S2         3.491        355.1     0.000000     0.000000     0.048983     0.048983   0.124503    0.00021
    S0->S3         3.534        350.9     0.000000     0.000000    -0.371471     0.371471   0.944186    0.01195 *
 [...]
    * = length and velocity forms differ by more than a factor of 3 (tested when f_len or f_vel > 1e-3):
@@ -528,8 +559,8 @@ $$
 
    Transition         p_x         p_y         p_z         m_x         m_y         m_z       f_vel         R_vel
    ------------------------------------------------------------------------------------------------------------
-   S0->S1        0.000000    0.000175    0.000000    0.378467    0.000000    0.000000    0.000000      0.000000
-   S0->S2        0.000000    0.000000    0.002048    0.000000    0.000000    0.000000    0.000022      0.000000
+   S0->S1        0.000000   -0.000175    0.000000   -0.378467    0.000000    0.000000    0.000000      0.000000
+   S0->S2        0.000000    0.000000   -0.002048    0.000000    0.000000    0.000000    0.000022      0.000000
    S0->S3        0.000000    0.000000    0.014465    0.000000    0.000000    0.000000    0.001074 *    0.000000
 ```
 
@@ -695,8 +726,8 @@ $$
 
    Transition          xx          xy          xz          yy          yz          zz
    ----------------------------------------------------------------------------------
-   S0->S1        0.000000    0.000000    0.000000    0.000000   -0.389350    0.000000
-   S0->S2       -0.056698    0.000000    0.000000   -0.138333    0.000000    0.457178
+   S0->S1        0.000000    0.000000    0.000000    0.000000    0.389350    0.000000
+   S0->S2        0.056698    0.000000    0.000000    0.138333    0.000000   -0.457178
 [...]
    Its traceless part governs electric-quadrupole transitions, not contained in f_len.
 ```
@@ -828,10 +859,10 @@ Units: e
    Mulliken
    Atom            S0->S1      S0->S2      S0->S3      S0->S4      S1->S2      S1->S3      S1->S4      S2->S3      S2->S4      S3->S4
    ----------------------------------------------------------------------------------------------------------------------------------
-   H1            0.530557   -0.105539    0.426363   -0.451059    0.070580    0.453847    0.520155   -0.000677   -0.069094   -0.039562
-   H2           -0.260284    0.105539   -0.426363    0.451059   -0.247025   -0.161391   -0.067391    0.000677    0.069094    0.039562
-   H3            0.260284    0.105539   -0.426363    0.451059    0.247025    0.161391    0.067391    0.000677    0.069094    0.039562
-   H4           -0.530557   -0.105539    0.426363   -0.451059   -0.070580   -0.453847   -0.520155   -0.000677   -0.069094   -0.039562
+   H1           -0.530557   -0.105539    0.426363   -0.451059   -0.070580   -0.453847   -0.520155   -0.000677   -0.069094   -0.039562
+   H2            0.260284    0.105539   -0.426363    0.451059    0.247025    0.161391    0.067391    0.000677    0.069094    0.039562
+   H3           -0.260284    0.105539   -0.426363    0.451059   -0.247025   -0.161391   -0.067391    0.000677    0.069094    0.039562
+   H4            0.530557   -0.105539    0.426363   -0.451059    0.070580    0.453847    0.520155   -0.000677   -0.069094   -0.039562
    ----------------------------------------------------------------------------------------------------------------------------------
 [...]
    Transition charge of each atom for I -> J (e); measures the localization of the transition density.
@@ -1097,11 +1128,11 @@ $$
 
    FCD (fragment charge difference), all pairs of states
    Coupling     V_F Lowdin [Eh]    V_F Lowdin [meV]   V_F Mulliken [Eh]  V_F Mulliken [meV]
-   ----------------------------------------------------------------------------------------
-   S0/S2              -0.013292            -361.700           -0.010127            -275.583
+   -------------------------------------------------------------------------------------------
+   S0/S2               0.013292             361.700            0.010127             275.583
    S0/S3              -0.055030           -1497.452           -0.049473           -1346.228
 [...]
-   ----------------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------------------
    91 of 120 pairs not printed (|D_I - D_J| < 0.1)
 
    FED (fragment excitation difference): no pair of excited states with |D_I - D_J| >= 0.1,
@@ -1383,14 +1414,14 @@ $$
     Gradient dE/dR of S2 (cassette 0) [Eh/a0]
     Atom                  X                  Y                  Z
     -------------------------------------------------------------
-    C1       0.000000000000     0.000000000000    -0.075254969375
-    H2       0.004012538035     0.000000000000     0.019099258469
-    H3      -0.004012538035     0.000000000000     0.019099258469
-    C4      -0.000000000001     0.000000000000     0.057911423691
-    H5       0.015107910717     0.000000000000    -0.010427485628
+    C1       0.000000000000     0.000000000000    -0.075254969376
+    H2       0.004012538035     0.000000000000     0.019099258470
+    H3      -0.004012538034     0.000000000000     0.019099258470
+    C4      -0.000000000001     0.000000000000     0.057911423690
+    H5       0.015107910718     0.000000000000    -0.010427485627
     H6      -0.015107910717     0.000000000000    -0.010427485627
     -------------------------------------------------------------
-    max |g| = 7.525e-02 Eh/a0   rms |g| = 2.410e-02 Eh/a0   |sum over atoms| = 2.5e-14 Eh/a0
+    max |g| = 7.525e-02 Eh/a0   rms |g| = 2.410e-02 Eh/a0   |sum over atoms| = 3.9e-15 Eh/a0
 ```
 
 ```log
@@ -1399,7 +1430,7 @@ $$
 -Total Gradient:
    Atom            X                  Y                   Z
   ------   -----------------  -----------------  -----------------
-     1       -0.000000000000     0.000000000000    -0.044084341933
+     1       -0.000000000000     0.000000000000    -0.044084341934
      2        0.007401694804    -0.000000000000    -0.001232538601
      3       -0.007401694804    -0.000000000000    -0.001232538601
 [...]
@@ -1459,17 +1490,17 @@ $$
     Nonadiabatic coupling d_12 = <S1|d/dR S2> [1/a0]
     Atom                  X                  Y                  Z
     -------------------------------------------------------------
-    C1       0.000000000000     5.207065892962     0.000000000000
-    H2       0.000000000000    -1.584259370894    -0.000000000001
-    H3       0.000000000000    -1.584259370895    -0.000000000001
-    C4       0.000000000000    -6.162643638639     0.000000000006
-    H5       0.000000000000     2.059102095027    -0.000000000002
-    H6       0.000000000000     2.059102095027    -0.000000000002
+    C1       0.000000000000     5.207065892869    -0.000000000006
+    H2      -0.000000000001    -1.584259370856     0.000000000002
+    H3       0.000000000001    -1.584259370857     0.000000000002
+    C4       0.000000000000    -6.162643638635     0.000000000005
+    H5       0.000000000001     2.059102095032    -0.000000000001
+    H6      -0.000000000001     2.059102095033    -0.000000000001
     -------------------------------------------------------------
     |d_12| = 8.865e+00 1/a0   |E(S2) - E(S1)| |d_12| = 8.210e-02 Eh/a0
     |d_model| = 5.711e+00, |d_residual| = 3.169e+00 (1/a0)
-    sum over atoms of d_12       = (-3.851e-15, -5.892e-03,  2.086e-13) 1/a0
-    -p from the velocity moments = (-2.675e-15, -5.892e-03,  2.115e-13) 1/a0   consistent (deviation 2.9e-14)
+    sum over atoms of d_12       = (-4.327e-15, -5.892e-03,  1.724e-13) 1/a0
+    -p from the velocity moments = (-2.675e-15, -5.892e-03,  1.717e-13) 1/a0   consistent (deviation 2.2e-13)
 ```
 
 Stored: `SSR NAC <I> <J> CASSETTE <e>`, `SSR NAC MODEL <I> <J> CASSETTE <e>`, `SSR NAC RESIDUAL <I> <J> CASSETTE <e>`; the root gradients `SSR ROOT <I> GRADIENT CASSETTE <e>`, `SSR ROOT <J> GRADIENT CASSETTE <e>`
