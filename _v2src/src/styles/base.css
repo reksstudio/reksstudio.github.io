@@ -1,5 +1,7 @@
 *{ box-sizing: border-box; }
 @media (prefers-reduced-motion: no-preference){ @view-transition{ navigation: auto; } }
+/* MathML (temml): system math fonts */
+math{ font-family: 'STIX Two Math', 'Cambria Math', 'Noto Sans Math', math; }
 
 body{
   margin: 0;

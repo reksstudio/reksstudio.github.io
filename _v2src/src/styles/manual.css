@@ -62,8 +62,7 @@ figure.mo .g span b{ color: var(--ink); font-weight: 600; }
 
 h2 code, h3 code, h4 code{ background: none; padding: 0; font-size: 0.9em; }
 
-/* MathML (temml): system math fonts; display math centred, scrolls when wider than the column */
-math{ font-family: 'STIX Two Math', 'Cambria Math', 'Noto Sans Math', math; }
+/* MathML (temml) display math: centred, scrolls when wider than the column */
 math[display="block"]{ max-width: 74ch; overflow-x: auto; overflow-y: hidden; margin: 4px 0 18px; padding: 2px 0; font-size: 1.15em; text-align: center; }
 .tml-right{ text-align: right; }
 .tml-left{ text-align: left; }

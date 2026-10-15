@@ -373,7 +373,22 @@
     },
     "engine": {
       "title": "Equations no one derives by hand. Ours are generated.",
-      "exact": "Exact limits reproduced to 10^{−10} E_{h} against CASSCF: H_{2} and BH, (2,2)–(4,6)."
+      "exact": "Exact limits reproduced to 10^{−10} E_{h} against CASSCF: H_{2} and BH, (2,2)–(4,6).",
+      "def": "H_{KK′} ≠ 0, K ≤ K′",
+      "defText": "One equation: one nonzero Hamiltonian matrix element between configurations K and K′ of one spin sector (each pair once), an algebraic expression the engine writes.",
+      "prov": "Counts: (2,2)–(8,8) equal generator runs; larger spaces from exact counting rules that reproduce every run.",
+      "before": "(4,4)",
+      "sample": {
+        "caption": "One of them, as the engine writes it",
+        "label": "REKS(2,2), S = 0: the perfectly paired singlet (PPS), diagonal element",
+        "tex": "\\begin{aligned} &H_{\\mathrm{PPS1},\\mathrm{PPS1}} = \\\\ &\\quad \\tfrac{1}{2}\\,n_a\\,E[|a\\bar{a}|] - f(n_a, n_b)\\,E[|a\\bar{b}|] \\\\ &\\quad + f(n_a, n_b)\\,E[|ab|] + \\tfrac{1}{2}\\,n_b\\,E[|b\\bar{b}|] \\end{aligned}",
+        "where": [
+          { "tex": "E[|\\ldots|]", "t": "Kohn–Sham energy of one microstate; a bar marks β spin" },
+          { "tex": "n_a + n_b = 2", "t": "fractional occupations of the pair" },
+          { "tex": "f(n_a, n_b) = (n_a n_b)^{1 - \\frac{1}{2}(n_a n_b + \\delta)/(1+\\delta)},\\ \\delta = 0.4", "t": "damping of the closed-shell mixing" }
+        ]
+      },
+      "counted": { "as": "(14,14)", "mark": "counted", "href": "main/cost/#count" }
     },
     "installed": "(6,6)",
     "count": [
@@ -382,7 +397,7 @@
       { "as": "(6,6)", "spins": [161, 153, 41, 1], "mark": "in your install", "href": "docs/#install" },
       { "as": "(8,8)", "spins": [1934, 2524, 1172, 199, 1] },
       { "as": "(10,10)", "spins": [29082, 48090, 31275, 9635, 1209, 1], "mark": "applied, TTR", "href": "main/results/ttr/" },
-      { "as": "(12,12)", "spins": [524292, 1045737, 864275, 374554, 86454, 8651, 1], "mark": "generated", "href": "main/history/" },
+      { "as": "(12,12)", "spins": [524292, 1045737, 864275, 374554, 86454, 8651, 1] },
       { "as": "(14,14)", "spins": [11017869, 25684841, 25614281, 14112637, 4586673, 846797, 70573, 1] }
     ],
     "equations": {

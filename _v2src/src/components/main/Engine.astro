@@ -1,35 +1,66 @@
 ---
 import { fmtCount as fmt, html, landing } from '../../lib/overview.mjs';
+import { tex } from '../../lib/inline.mjs';
 
 const base = import.meta.env.BASE_URL;
 const { engine, count, equations } = landing;
-// ladder: S = 0 counts up to the active space marked generated
-const end = count.findIndex((c) => c.mark === 'generated');
-if (end < 0) throw new Error('overview.json: no landing.count entry marked generated');
-const last = count[end].as;
-const rungs = count.slice(0, end + 1).map((c) => ({ ...c, n: c.spins[0] }));
-const top = Math.log10(Math.max(...rungs.map((r) => r.n)));
 const col = equations.head.indexOf('Equations');
-const row = equations.rows.find((r) => r[0] === last && r[1] === '0');
-if (!row || col < 0) throw new Error(`overview.json: no ${last} 2S = 0 Equations cell in landing.equations`);
-const eq = row[col];
-const billions = Math.round(Number(eq.replaceAll(' ', '')) / 1e9);
+if (col < 0) throw new Error('overview.json: no Equations column in landing.equations');
+// equations per active space = sum of the Equations cells over all spin sectors
+const total = (as) => {
+  const rows = equations.rows.filter((r) => r[0] === as);
+  if (!rows.length) throw new Error(`overview.json: no ${as} Equations cells in landing.equations`);
+  return rows.reduce((s, r) => s + BigInt(r[col].replaceAll(' ', '')), 0n);
+};
+// zones: before = up to engine.before, gen = up to the entry before engine.counted.as, counted = the rest
+const cut = count.findIndex((c) => c.as === engine.counted.as);
+if (cut < 0) throw new Error(`overview.json: landing.engine.counted.as ${engine.counted.as} not in landing.count`);
+const gen = cut - 1;
+const pre = count.findIndex((c) => c.as === engine.before);
+if (pre < 0 || pre >= gen) throw new Error(`overview.json: landing.engine.before ${engine.before} missing or not before ${engine.counted.as}`);
+const rows = count.map((c, i) => ({ ...c, ...(i > gen ? { mark: engine.counted.mark, href: engine.counted.href } : {}), n: fmt(total(c.as), ' ') }));
+const zones = [
+  ['before', rows.slice(0, pre + 1)],
+  ['gen', rows.slice(pre + 1, gen + 1)],
+  ['counted', rows.slice(gen + 1)],
+];
+// one ruler tick per digit group of the last numeral
+const ruler = ['quadrillions', 'trillions', 'billions', 'millions', 'thousands', 'ones'].slice(-rows.at(-1).n.split(' ').length);
 ---
 <h2>{engine.title}</h2>
-<div class="eng">
-  <ol class="eladder" aria-label="Singlet (S = 0) configurations per active space, log scale">
-    {rungs.map((r, i) => (
+<p class="eform" set:html={html(engine.def)} />
+<p class="edef" id="edef" set:html={html(engine.defText)} />
+<div class="egrid">
+<figure class="esample">
+  <figcaption>{engine.sample.caption}</figcaption>
+  <p class="esub">{engine.sample.label}</p>
+  <Fragment set:html={tex(engine.sample.tex, true)} />
+  <dl>
+    {engine.sample.where.map((w) => (
       <>
-        <li class="erung" style={`--h:${Math.max(Math.log10(r.n), 0.3) / top}`}>
-          <span class="ebar" aria-hidden="true" />
-          <span class="en">{fmt(r.n)}</span>
-          <span class="eas">{r.as}</span>
-          {r.mark && <span class="em">{r.href ? <a href={`${base}${r.href}`}>{r.mark}</a> : r.mark}</span>}
-        </li>
-        {i === 1 && <li class="ebracket" set:html={html(engine.exact)} />}
+        <dt set:html={tex(w.tex, false)} />
+        <dd>{w.t}</dd>
       </>
     ))}
-  </ol>
-  <p class="ebig"><strong>{billions} billion</strong> equations at {last} <small>({eq})</small></p>
+  </dl>
+</figure>
+<table class="eqlad" aria-describedby="edef">
+  <thead><tr><th scope="col">REKS</th><th scope="col">Equations, all spin sectors</th></tr></thead>
+  {zones.map(([z, rs]) => (
+    <tbody class={z}>
+      {rs.map((r) => (
+        <tr>
+          <th scope="row">{r.as} {r.mark && <small>{r.href ? <a href={`${base}${r.href}`}>{r.mark}</a> : r.mark}</small>}</th>
+          <td><span class="en">{r.n}</span></td>
+        </tr>
+      ))}
+      {z === 'counted' && (
+        <tr class="eruler" aria-hidden="true"><th /><td>{ruler.map((l) => <span><i>{l}</i></span>)}</td></tr>
+      )}
+    </tbody>
+  ))}
+</table>
 </div>
-<p class="elink"><a href={`${base}main/cost/#count`}>Full chart and table →</a></p>
+<p class="eexact" set:html={html(engine.exact)} />
+<p class="eprov" set:html={html(engine.prov)} />
+<p class="elink"><a href={`${base}${engine.counted.href}`}>Configurations, determinants and every spin sector →</a></p>

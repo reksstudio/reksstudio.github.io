@@ -115,17 +115,45 @@ cmake --build objdir --target install -j$(nproc)
 
 ## Equations no one derives by hand. Ours are generated.
 
-1. 3 (2,2)
-2. 18 (4,4) [largest REKS before this work](https://reksstudio.github.io/v2/main/history/index.md)
-3. Exact limits reproduced to 10<sup>−10</sup> E<sub>h</sub> against CASSCF: H<sub>2</sub> and BH, (2,2)–(4,6).
-4. 161 (6,6) [in your install](https://reksstudio.github.io/v2/docs/index.md#install)
-5. 1 934 (8,8)
-6. 29 082 (10,10) [applied, TTR](https://reksstudio.github.io/v2/main/results/ttr/index.md)
-7. 524 292 (12,12) [generated](https://reksstudio.github.io/v2/main/history/index.md)
+H<sub>KK′</sub> ≠ 0, K ≤ K′
 
-**59 billion** equations at (12,12) (59 351 892 458)
+One equation: one nonzero Hamiltonian matrix element between configurations K and K′ of one spin sector (each pair once), an algebraic expression the engine writes.
 
-[Full chart and table →](https://reksstudio.github.io/v2/main/cost/index.md#count)
+One of them, as the engine writes it
+
+REKS(2,2), S = 0: the perfectly paired singlet (PPS), diagonal element
+
+$$
+\begin{aligned} &H_{\mathrm{PPS1},\mathrm{PPS1}} = \\ &\quad \tfrac{1}{2}\,n_a\,E[|a\bar{a}|] - f(n_a, n_b)\,E[|a\bar{b}|] \\ &\quad + f(n_a, n_b)\,E[|ab|] + \tfrac{1}{2}\,n_b\,E[|b\bar{b}|] \end{aligned}
+$$
+
+* $E[|\ldots|]$
+
+  Kohn–Sham energy of one microstate; a bar marks β spin
+
+* $n_a + n_b = 2$
+
+  fractional occupations of the pair
+
+* $f(n_a, n_b) = (n_a n_b)^{1 - \frac{1}{2}(n_a n_b + \delta)/(1+\delta)},\ \delta = 0.4$
+
+  damping of the closed-shell mixing
+
+| REKS | Equations, all spin sectors |
+| - | - |
+| (2,2) | 6 |
+| (4,4) [largest REKS before this work](https://reksstudio.github.io/v2/main/history/index.md) | 234 |
+| (6,6) [in your install](https://reksstudio.github.io/v2/docs/index.md#install) | 23 962 |
+| (8,8) | 4 266 350 |
+| (10,10) [applied, TTR](https://reksstudio.github.io/v2/main/results/ttr/index.md) | 1 007 587 692 |
+| (12,12) | 293 819 094 700 |
+| (14,14) [counted](https://reksstudio.github.io/v2/main/cost/index.md#count) | 103 564 870 568 976 |
+
+Exact limits reproduced to 10<sup>−10</sup> E<sub>h</sub> against CASSCF: H<sub>2</sub> and BH, (2,2)–(4,6).
+
+Counts: (2,2)–(8,8) equal generator runs; larger spaces from exact counting rules that reproduce every run.
+
+[Configurations, determinants and every spin sector →](https://reksstudio.github.io/v2/main/cost/index.md#count)
 
 ## Capabilities
 
