@@ -89,6 +89,16 @@ REKS active space [N=8, M=8] is not installed. Installed [N,M] active spaces: [2
 
 Compare `Independent states` (on the Davidson path r of `Computed states k of r`) with `Configurations` and the null modes, and E(S0) with `@REKS Final Energy` ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices)).
 
+In large active spaces the SI configurations can be nearly linearly dependent. An overlap direction just above the cutoff σ = c · s<sub>max</sub> (c = [`SI_REKS_OVERLAP_CUTOFF`](https://reksstudio.github.io/v2/options/SI_REKS_OVERLAP_CUTOFF.md)) may then give a spurious lowest root, most often with several FONs at the bound (n ≈ 2 / 0). Signs, all in the output:
+
+1. The lowest root lies tens to thousands of E<sub>h</sub> below E<sub>SA</sub> (`@REKS Final Energy`); in the runs of this manual it lies 0.03–0.51 E<sub>h</sub> below.
+2. A `Ghost states` line next to the lowest root, and `Computed states k of r` with k below the count requested by [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) / [`SI_REKS_PRINT_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_PRINT_STATES.md): the physical roots lie more than 100 E<sub>h</sub> above the spurious one and are removed as ghost roots.
+3. The lowest root is led by one or two configurations, or by pairs with overlap 1.00 in the table below it.
+
+Sign 1 can occur alone: the physical roots then follow above the spurious one.
+
+Remedy: raise the cutoff, e.g. `"si_reks_overlap_cutoff": 1e-4`. Check: the lowest physical roots with and without the raised cutoff agree within a few 10<sup>−4</sup> E<sub>h</sub>. The rank r in `span r dimensions` drops and caps the number of roots. In the hexatriene REKS(6,6) cassettes of this manual 1e-4 removes no further mode and changes no root (≤ 10<sup>−12</sup> E<sub>h</sub>). The cutoff is relative to s<sub>max</sub>; no single value is shown to suit every active space.
+
 #### Quasi-degenerate roots {#diag-quasi-degenerate}
 
 `SI_REKS_GRAD` follows a root by index. The gap of the followed pair is printed in the `NAC` header ([Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac)) and in the CI-topography header when it is below `REKS_CI_TOPOGRAPHY_GAP` ([Conical-intersection topography](https://reksstudio.github.io/v2/manual/properties/index.md#ci-topography)); compare the leading configurations of the followed root in `Adiabatic states` between runs.

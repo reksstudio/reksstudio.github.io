@@ -82,7 +82,9 @@
   "SI_REKS_OVERLAP_CUTOFF": {"option": true, "type": "double", "default": "`1e-10`", "call": "1e-8",
    "rules": [
     "Eigenvectors of the SI overlap with s ≤ cutoff · s_{max} form the null space and are removed before diagonalization (§si-matrices).",
-    "Ghost roots (configurations with s just above the cutoff): §ssr-states."
+    "Ghost roots (configurations with s just above the cutoff): §ssr-states.",
+    "The printed σ = cutoff · s_{max}: `Regularization … sigma = σ: the N configurations span r dimensions (K overlap null modes removed)`. A larger cutoff removes more modes; the number of roots is capped by r.",
+    "Large active spaces, spurious lowest root: signs and the value 1e-4 in §diag-ghost-states."
    ],
    "brief": "Overlap eigenvalues `s ≤ cutoff · s_{max}` of the SI basis are treated as null space and dropped."},
   "SI_REKS_SOLVER": {"option": true, "type": "`AUTO`|`DIRECT`|`DAVIDSON`", "default": "`AUTO`", "call": "\"DAVIDSON\"", "fragments": ["si-davidson"],

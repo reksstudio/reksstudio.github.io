@@ -378,6 +378,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <ul>
 <li>Eigenvectors of the SI overlap with s ≤ cutoff · s<sub>max</sub> form the null space and are removed before diagonalization (<a href="/v2/manual/properties/#si-matrices">SI Hamiltonian and overlap</a>).</li>
 <li>Ghost roots (configurations with s just above the cutoff): <a href="/v2/manual/concepts/#ssr-states">Adiabatic (SSR) states</a>.</li>
+<li>The printed σ = cutoff · s<sub>max</sub>: <code>Regularization … sigma = σ: the N configurations span r dimensions (K overlap null modes removed)</code>. A larger cutoff removes more modes; the number of roots is capped by r.</li>
+<li>Large active spaces, spurious lowest root: signs and the value 1e-4 in <a href="/v2/manual/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a>.</li>
 </ul>
 <h4 id="si_reks_solver"><a href="/v2/manual/reference/#row-si_reks_solver"><code>SI_REKS_SOLVER</code></a></h4>
 <p>Eigensolver of each SI cassette: LAPACK on every root, or Davidson on the lowest roots.</p>

@@ -20,3 +20,5 @@ Default: `1e-10`
 
 * Eigenvectors of the SI overlap with s ≤ cutoff · s<sub>max</sub> form the null space and are removed before diagonalization ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices)).
 * Ghost roots (configurations with s just above the cutoff): [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states).
+* The printed σ = cutoff · s<sub>max</sub>: `Regularization … sigma = σ: the N configurations span r dimensions (K overlap null modes removed)`. A larger cutoff removes more modes; the number of roots is capped by r.
+* Large active spaces, spurious lowest root: signs and the value 1e-4 in [Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states).
