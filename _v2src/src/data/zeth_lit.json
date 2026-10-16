@@ -1,0 +1,3794 @@
+{
+ "refs": [
+  {
+   "key": "li2012-heptazethrene",
+   "type": "article",
+   "authors": [
+    "Li, Y.",
+    "Heng, W.-K.",
+    "Lee, B. S.",
+    "Aratani, N.",
+    "Zafra, J. L.",
+    "Bao, N.",
+    "Lee, R.",
+    "Sung, Y. M.",
+    "Sun, Z.",
+    "Huang, K.-W.",
+    "Webster, R. D.",
+    "López Navarrete, J. T.",
+    "Kim, D.",
+    "Osuka, A.",
+    "Casado, J.",
+    "Ding, J.",
+    "Wu, J."
+   ],
+   "title": "Kinetically blocked stable heptazethrene and octazethrene: Closed-shell or open-shell in the ground state?",
+   "journal": "J. Am. Chem. Soc.",
+   "year": 2012,
+   "volume": "134",
+   "pages": "14913–14922",
+   "doi": "10.1021/ja304618v"
+  },
+  {
+   "key": "hu2017-zethrene-review",
+   "type": "article",
+   "authors": [
+    "Hu, P.",
+    "Wu, J."
+   ],
+   "title": "Modern zethrene chemistry",
+   "journal": "Can. J. Chem.",
+   "year": 2017,
+   "volume": "95",
+   "pages": "223–233",
+   "doi": "10.1139/cjc-2016-0568"
+  },
+  {
+   "key": "zeng2016-super-heptazethrene",
+   "type": "article",
+   "authors": [
+    "Zeng, W.",
+    "Sun, Z.",
+    "Herng, T. S.",
+    "Gonçalves, T. P.",
+    "Gopalakrishna, T. Y.",
+    "Huang, K.-W.",
+    "Ding, J.",
+    "Wu, J."
+   ],
+   "title": "Super-heptazethrene",
+   "journal": "Angew. Chem. Int. Ed.",
+   "year": 2016,
+   "volume": "55",
+   "pages": "8615–8619",
+   "doi": "10.1002/anie.201602997"
+  },
+  {
+   "key": "das2016-polyradical",
+   "type": "article",
+   "authors": [
+    "Das, A.",
+    "Müller, T.",
+    "Plasser, F.",
+    "Lischka, H."
+   ],
+   "title": "Polyradical character of triangular non-Kekulé structures, zethrenes, p-quinodimethane-linked bisphenalenyl, and the Clar goblet in comparison: An extended multireference study",
+   "journal": "J. Phys. Chem. A",
+   "year": 2016,
+   "volume": "120",
+   "pages": "1625–1636",
+   "doi": "10.1021/acs.jpca.5b12393"
+  },
+  {
+   "key": "kamata2017-heptazethrene",
+   "type": "article",
+   "authors": [
+    "Kamata, S.",
+    "Sato, S.",
+    "Wu, J.",
+    "Isobe, H."
+   ],
+   "title": "Crystal structure of 7,15-bis(4-tert-butylphenyl)-1,9-dimethylheptazethrene",
+   "journal": "Acta Cryst. E",
+   "year": 2017,
+   "volume": "73",
+   "pages": "99–102",
+   "doi": "10.1107/s2056989016020247"
+  },
+  {
+   "key": "huang2016-nonazethrene",
+   "type": "article",
+   "authors": [
+    "Huang, R.",
+    "Phan, H.",
+    "Herng, T. S.",
+    "Hu, P.",
+    "Zeng, W.",
+    "Dong, S.",
+    "Das, S.",
+    "Shen, Y.",
+    "Ding, J.",
+    "Casanova, D.",
+    "Wu, J."
+   ],
+   "title": "Higher order π-conjugated polycyclic hydrocarbons with open-shell singlet ground state: Nonazethrene versus nonacene",
+   "journal": "J. Am. Chem. Soc.",
+   "year": 2016,
+   "volume": "138",
+   "pages": "10323–10330",
+   "doi": "10.1021/jacs.6b06188"
+  },
+  {
+   "key": "lukman2017-singlet-fission",
+   "type": "article",
+   "authors": [
+    "Lukman, S.",
+    "Richter, J. M.",
+    "Yang, L.",
+    "Hu, P.",
+    "Wu, J.",
+    "Greenham, N. C.",
+    "Musser, A. J."
+   ],
+   "title": "Efficient singlet fission and triplet-pair emission in a family of zethrene diradicaloids",
+   "journal": "J. Am. Chem. Soc.",
+   "year": 2017,
+   "volume": "139",
+   "pages": "18376–18385",
+   "doi": "10.1021/jacs.7b10762"
+  },
+  {
+   "key": "sharma2024-biindenofluorene",
+   "type": "article",
+   "authors": [
+    "Sharma, H.",
+    "Jana, P.",
+    "Mallick, D.",
+    "Bandyopadhyay, S.",
+    "Das, S."
+   ],
+   "title": "6,6′-Biindeno[1,2-b]fluorene: An open-shell indenofluorene dimer",
+   "journal": "Chem. Sci.",
+   "year": 2024,
+   "volume": "15",
+   "pages": "20215–20222",
+   "doi": "10.1039/d4sc03996c"
+  },
+  {
+   "key": "george2024-indenofluorene",
+   "type": "article",
+   "authors": [
+    "George, G.",
+    "Stasyuk, A. J.",
+    "Solà, M."
+   ],
+   "title": "Prediction of the ground state for indenofluorene-type systems with Clar's π-sextet model",
+   "journal": "Chem. Sci.",
+   "year": 2024,
+   "volume": "15",
+   "pages": "13676–13687",
+   "doi": "10.1039/d4sc03465a"
+  },
+  {
+   "key": "zeng2018-superoctazethrene",
+   "type": "article",
+   "authors": [
+    "Zeng, W.",
+    "Gopalakrishna, T. Y.",
+    "Phan, H.",
+    "Tanaka, T.",
+    "Herng, T. S.",
+    "Ding, J.",
+    "Osuka, A.",
+    "Wu, J."
+   ],
+   "title": "Superoctazethrene: An open-shell graphene-like molecule possessing large diradical character but still with reasonable stability",
+   "journal": "J. Am. Chem. Soc.",
+   "year": 2018,
+   "volume": "140",
+   "pages": "14054–14058",
+   "doi": "10.1021/jacs.8b09075"
+  },
+  {
+   "key": "turco2021-super-nonazethrene",
+   "type": "article",
+   "authors": [
+    "Turco, E.",
+    "Mishra, S.",
+    "Melidonie, J.",
+    "Eimre, K.",
+    "Obermann, S.",
+    "Pignedoli, C. A.",
+    "Fasel, R.",
+    "Feng, X.",
+    "Ruffieux, P."
+   ],
+   "title": "On-surface synthesis and characterization of super-nonazethrene",
+   "journal": "J. Phys. Chem. Lett.",
+   "year": 2021,
+   "volume": "12",
+   "pages": "8314–8319",
+   "doi": "10.1021/acs.jpclett.1c02381"
+  }
+ ],
+ "glosses": [
+  {
+   "suffix": "-M",
+   "text": "mesityl",
+   "quote": "bulky mesityl groups (in HZD-M)",
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "p. 1068"
+    }
+   ]
+  },
+  {
+   "suffix": "-F",
+   "text": "pentafluorophenyl",
+   "quote": "pentafluorophenyl groups (in HZD-F)",
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "p. 1068"
+    }
+   ]
+  },
+  {
+   "suffix": "-CF3",
+   "text": "3,5-bis(trifluoromethyl)phenyl",
+   "quote": "R = mesityl, pentafluorophenyl, or 3,5-bis(trifluoromethyl)phenyl",
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Scheme 4"
+    }
+   ]
+  },
+  {
+   "suffix": "-TIPS",
+   "text": "triisopropylsilylacetylene",
+   "quote": "triisopropylsilylacetylene (TIPS) groups",
+   "src": [
+    {
+     "key": "li2012-heptazethrene",
+     "loc": "p. 14914"
+    }
+   ]
+  },
+  {
+   "suffix": "-DI",
+   "text": "diimide",
+   "quote": "heptazethrene diimide (HZ-DI",
+   "src": [
+    {
+     "key": "li2012-heptazethrene",
+     "loc": "p. 14914"
+    }
+   ]
+  },
+  {
+   "suffix": "-ONE",
+   "text": "dioxo-product",
+   "quote": "gave dioxo-product upon contact with air",
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "p. 1075"
+    }
+   ]
+  }
+ ],
+ "cores": [
+  {
+   "id": "HZ",
+   "name": "heptazethrene",
+   "parent": [
+    {
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "Introduction"
+      }
+     ],
+     "quote": "The synthesis of parent heptazethrene16 was not successful due to its high reactivity."
+    },
+    {
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 223"
+      }
+     ],
+     "scope": "Clar 1962 on the parent: green solid, violet solution, 586 nm",
+     "quote": "However, it is a very reactive hydrocarbon that can be easily protonated by hydrochloric acid and oxidized into heptazethrene-quinone. Later, we will correlate such high reactivity to its intrinsic open-shell diradical character."
+    },
+    {
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 226"
+      }
+     ],
+     "scope": "compound 34 = HZ-DI in the review numbering",
+     "quote": "Unlike the parent heptazethrene 13, compound 34 is reasonably stable"
+    },
+    {
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 231"
+      }
+     ],
+     "quote": "Since the parent heptazethrene (HZ) was proved to have a significant diradical character (y0 = 0.17), our group first attempted to synthesize the derivatives of the fused heptazethrene dimer HZD (Fig. 3a), which could exhibit both diradical and tetraradical characters.31"
+    },
+    {
+     "src": [
+      {
+       "key": "zeng2016-super-heptazethrene",
+       "loc": "p. 8615"
+      }
+     ],
+     "scope": "parent; UCAM-B3LYP/6-31G**",
+     "quote": [
+      {
+       "text": "Interestingly, from heptazethrene on, these quinoidal PHs display significant diradical character (y0; calculated at the UCAM-B3LYP/6-31G** level) which increases with the increase of the molecular length due to the recovery of aromatic benzene, naphthalene, and anthracene rings in heptazethrene (y0 = 17.0 %), ..."
+      },
+      {
+       "at": "footnote [8]",
+       "text": "The diradical character (y0) is a theoretical index that depends on the calculation method. A list of y0 values calculated at different level of theory is shown in Table S1."
+      }
+     ]
+    },
+    {
+     "src": [
+      {
+       "key": "das2016-polyradical",
+       "loc": "Introduction"
+      }
+     ],
+     "scope": "class statement; scope: “zethrenes19,20 starting with heptazethrene21,22 (4) (Chart 2), n-acenes longer than pentacene,23−27 and some zigzag-edged graphene nanoribbons27−31 (GNRs)”",
+     "quote": "...have a singlet ground state but nevertheless significant biradical or even polyradical character."
+    },
+    {
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1066"
+      }
+     ],
+     "scope": "derivatives",
+     "quote": "derivatives of the pro-aromatic heptazethrene (HZ) with moderate diradical characters"
+    }
+   ],
+   "exp": [
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "ESR",
+     "qclass": "other",
+     "value": "no signal in solution or powder, up to 400 K",
+     "cond": "CW X-band",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14916"
+      }
+     ],
+     "quote": "did not show any electron spin resonance (ESR) signal, even at elevated temperatures (up to 400 K), further supporting its closed-shell structure."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "SQUID",
+     "qclass": "other",
+     "value": "diamagnetism only",
+     "cond": "MPMS-XL, 1000 Oe, 5-380 K",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14916, 14920"
+      }
+     ],
+     "quote": "SQUID measurement on HZ-TIPS only revealed diamagnetism."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "VT ^{1}H NMR",
+     "qclass": "other",
+     "value": "well resolved at 100 °C",
+     "cond": "CDCl_{2}CDCl_{2}",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14914"
+      }
+     ],
+     "quote": "HZ-TIPS displays a well-resolved 1H NMR spectrum even under elevated temperatures (e.g., 100 °C ...)"
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "authors' summary of OPA, PL and VT-NMR",
+     "qclass": "other",
+     "value": "“likely has a closed-shell structure”",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14914"
+      }
+     ],
+     "quote": "All these indicate that HZ-TIPS likely has a closed-shell structure in the ground state, which is in contrast to its analogue HZ-DI, which possesses the same heptazethrene chromophore but with a different substituent."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "FT-Raman",
+     "qclass": "other",
+     "value": "ν(C=C) 1590 cm^{−1} at rt (1602 cm^{−1} in OZ-TIPS); no significant change with temperature",
+     "cond": "solid, 1064 nm",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14916, Fig. 5"
+      }
+     ],
+     "quote": "At room temperature, a diagnostic ν(C=C) band at 1590 cm−1 was observed for HZ-TIPS, while this band was shifted to 1602 cm−1 in OZ-TIPS (Figure 5). Such a change could be explained by the evolution of a p-quinodimethane-like structure in the closed-shell HZ-TIPS to a pseudoaromatic naphthalene structure in the open-shell OZ-TIPS (highlighted in Figure 5). Variation of temperature did not result in significant change for the Raman spectrum of HZ-TIPS."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "X-ray, exo-methylene bond",
+     "qclass": "other",
+     "value": "C2=C15 1.398(2) Å (OZ-TIPS C3=C6 1.4088(19) Å)",
+     "cond": "single crystal, 90 K",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14918, Fig. 11"
+      }
+     ],
+     "quote": "Both molecules are completely flat with point symmetry and exhibit large bond length alternation for the p-xylene framework in HZ-TIPS and the 2,6-naphthodimethene framework in OZ-TIPS. Importantly, the exo-methylene double bonds, C2=C15 [1.398(2) Å] in HZ-TIPS and C3=C6 [1.4088(19) Å] in OZ-TIPS, are both significantly longer than those in typical olefins (1.33−1.34 A), suggesting the contribution of biradical character."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "Li et al. 2012 Table 1",
+     "qclass": "other",
+     "value": "λ_{abs} 584, 634 nm; ε_{max} 60000; PL 704 nm; QY 16 %; τ_{f} 3.4 ns; k_{r} 4.7 × 10^{7} s^{−1}; k_{nr} 2.5 × 10^{8} s^{−1}; E^{ox}_{1/2} 0.17, 0.69 V; E^{red}_{1/2} −1.48, −1.86 V; HOMO −4.87, LUMO −3.41 eV; E_{g}^{EC} 1.46 eV; E_{g}^{Opt} 1.82 eV",
+     "cond": "Table 1 footnote: “HOMO and LUMO are determined from the oxidation and reduction onset, respectively”",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "Table 1, p. 14915"
+      }
+     ],
+     "quote": "a well-resolved one-photon absorption (OPA) spectrum with a p-band at 634 nm (Figure 1 and Table 1), which is typical for many closed-shell PAHs, such as rylenes and acenes."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "fluorescence",
+     "qclass": "other",
+     "value": "QY 16 %, emission max 704 nm",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14914"
+      }
+     ],
+     "quote": "HZ-TIPS also exhibits a moderate fluorescence quantum yield (16%) with emission maximum at 704 nm"
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "TPA",
+     "qclass": "other",
+     "value": "σ^{(2)}_{max} 920 GM at 1250 nm",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "abstract; p. 14918"
+      }
+     ],
+     "quote": "...determined for HZ-TIPS (σ(2)max = 920 GM at 1250 nm)"
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "half-life",
+     "qclass": "other",
+     "value": "main text: “as long as 4 days”; SI: “around 4 days” (ambient light); 25 h (white light); complete decomposition in 90 min (UV, 4 W, 254 nm)",
+     "cond": "CHCl_{3}, air, rt",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14918 (main); SI S15 (all three)"
+      }
+     ],
+     "quote": [
+      {
+       "at": "main text",
+       "text": "to be as long as 4 days"
+      },
+      {
+       "at": "SI",
+       "text": "For HZ-TIPS, the half-life time (t1/2) are around 4 days upon ambient light irradiation and 25 hours under white light irradiation"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "storage",
+     "qclass": "other",
+     "value": "unchanged for at least 3 months",
+     "cond": "solid and CHCl_{3}, 4 °C, N_{2}, dark",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14918"
+      }
+     ],
+     "quote": "Compounds HZ-TIPS and OZ-TIPS remained unchanged in the solid state and in chloroform solution for at least 3 months when stored at 4 °C under nitrogen protection and in the absence of light. In contrast, solid HZ-DI decomposed in 1 week under the same conditions."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "ground state (authors)",
+     "qclass": "other",
+     "value": "closed-shell",
+     "cond": "methods listed in the Li et al. 2012 abstract: “steady-state and transient absorption spectroscopy, variable temperature NMR, electron spin resonance (ESR), superconducting quantum interfering device (SQUID), FT Raman, and X-ray crystallographic analysis, assisted by unrestricted symmetry-broken density functional theory (DFT) calculations” (for HZ-TIPS and OZ-TIPS together)",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "abstract; conclusion"
+      }
+     ],
+     "quote": [
+      {
+       "at": "abstract",
+       "text": "the heptazethrene derivative HZ-TIPS has a closed-shell ground state"
+      },
+      {
+       "at": "conclusion",
+       "text": "In contrast to our previously reported open-shell heptazethrene diimide (HZ-DI),17 the HZ-TIPS has a closed-shell ground state, although it has the same heptazethrene core. This can be explained by the relatively large energy gap of the latter, indicating that a small energy gap is crucial for an open-shell ground state structure."
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS",
+     "quantity": "theory vs experiment (authors' sentence)",
+     "qclass": "other",
+     "value": "“While HZ-TIPS was predicted to have some lower degree of singlet biradical character in the ground state, our experimental data suggested its closed-shell electronic structure. Such difference between theory and experiment has been observed for other PAHs, especially for those having borderline biradical characters.”",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14917"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS (review wording)",
+     "quantity": "ground state",
+     "qclass": "other",
+     "value": "“Interestingly, it was found that HZ-TIPS behaves like a typical closed-shell PAH (such as zethrene), different from the HZ-DI with the same heptazethrene core. Such a difference can be explained by the relatively small HOMO–LUMO energy gap of HZ-DI (0.99 eV) compared to HZ-TIPS (1.47 eV). That is, the large energy gap in HZ-TIPS makes the admixing of HOMO and LUMO in the ground state less efficient, and thus leads to smaller diradical character.”",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 227"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS (as “derivative 2” in Kamata et al. 2017)",
+     "quantity": "wording",
+     "qclass": "other",
+     "value": "“a derivative, 2, with methyl and silylethynyl substituents at the 1,9- and 7,15-positions has been reported as the first closed-shell congener (Li et al., 2012).”",
+     "src": [
+      {
+       "key": "kamata2017-heptazethrene",
+       "loc": "Introduction"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-DI",
+     "quantity": "Li et al. 2012 Table 1",
+     "qclass": "other",
+     "value": "λ_{abs} 641, 701, 747, 827 nm; ε_{max} 24382; E^{ox}_{1/2} 0.62, 0.93 V; E^{red}_{1/2} −0.65, −0.69 V; HOMO −5.22, LUMO −4.23 eV; E_{g}^{EC} 0.99 eV; E_{g}^{Opt} 1.16 eV; PL, QY, τ_{f} cells “−”",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "Table 1, p. 14915"
+      }
+     ],
+     "quote": "HZ-DI 641, 701, 747, 24382 − − − − − 0.62, 0.93 −0.65, −0.69 −5.22 −4.23 0.99 1.16 … 827"
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-DI",
+     "quantity": "VT ^{1}H NMR",
+     "qclass": "other",
+     "value": "no core signals at rt; signals emerge and sharpen on cooling; Fig. 1b panels labelled RT, 0, −20, −40, −60 °C",
+     "cond": "CD_{2}Cl_{2}",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 226 and Fig. 1b (review of Sun et al. 2011)"
+      }
+     ],
+     "quote": "1H NMR measurement of HZ-DI in CD2Cl2 exhibited no resonance signals for the heptazethrene core at room temperature, while peaks began to emerge and sharpen upon cooling (Fig. 1b). This phenomenon is strong evidence that this molecule has open-shell singlet ground state, and that the NMR broadening results from a thermally excited triplet species, which is slightly higher in energy than singlet diradical state."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-DI",
+     "quantity": "ESR",
+     "qclass": "other",
+     "value": "weak signal",
+     "cond": "powder, rt",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 226"
+      }
+     ],
+     "quote": "In fact, weak ESR signal was observed for HZ-DI in powder form at room temperature."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-DI (“compound 34” in the review)",
+     "quantity": "half-life",
+     "qclass": "other",
+     "value": "6 days",
+     "cond": "CHCl_{3}, ambient air and light",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 226"
+      }
+     ],
+     "quote": "Its half-life time in chloroform exposed to ambient air and light conditions was found to be 6 days."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-DI",
+     "quantity": "solid stability",
+     "qclass": "other",
+     "value": "decomposed in 1 week",
+     "cond": "solid, 4 °C, N_{2}, dark",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14918"
+      }
+     ],
+     "quote": "In contrast, solid HZ-DI decomposed in 1 week under the same conditions."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-M, PF-M, IF-M",
+     "quantity": "NMR",
+     "qclass": "other",
+     "value": "“clear and sharp”",
+     "cond": "crystallographic formula of HZ-M C_{58}H_{60}O_{2}; main text names no solvent; SI spectra: HZ-M ^{1}H and ^{13}C in C_{6}D_{6} at 298 K (SI Figs. S37, S38), PF-M ^{1}H and ^{13}C in C_{6}D_{6} at 298 K (SI Figs. S42, S43); the SI prints no IF-M NMR spectrum (IF-M “prepared according to the literature”, Chase et al. 2012)",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074; SI Figs. S37, S38, S42, S43"
+      }
+     ],
+     "quote": "All three compounds exhibit clear and sharp NMR signals, indicating their closed-shell character in the ground state."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-M, PF-M, IF-M",
+     "quantity": "X-ray bond lengths",
+     "qclass": "other",
+     "value": "central p-QDM unit: large bond length alternation (HZ-M ref. 17, PF-M ref. 18; IF-M structure “previously reported4a”)",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074, Fig. 7"
+      }
+     ],
+     "quote": "Bond length analyses reveal that the central p-QDM unit in three compounds shows large bond length alternation (Figure 7d−f), indicating their quinoidal characters."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-M",
+     "quantity": "TPA (authors' sentence)",
+     "qclass": "other",
+     "value": "σ^{(2)}_{max} 730 GM at 1200 nm (PF-M 400 GM at 1300 nm)",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074"
+      }
+     ],
+     "quote": "TPA measurements disclosed that HZ-M showed a larger σ(2)max value (730 GM at 1200 nm) than PF-M (400 GM at 1300 nm) (Table 2 and Figure S10), presumably due to its larger diradical character."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-Mes (as labelled in Huang et al. 2016)",
+     "quantity": "Huang et al. 2016 Table 1 row",
+     "qclass": "other",
+     "value": "λ(abs) 613; ε_{max} 70030; E_{1/2}^{ox} −0.27, 0.17; E_{1/2}^{red} −2.03, −2.36; HOMO −4.47; LUMO −2.87; E_{g}^{EC} 1.60; E_{g}^{opt} 1.91; the ΔE_{S−T}(Exp) cell is blank (also blank for HZ-TIPS)",
+     "cond": "ref. 7o = Hu et al. J. Org. Chem. 2016, 81, 2911, as printed",
+     "src": [
+      {
+       "key": "huang2016-nonazethrene",
+       "loc": "Table 1, p. 10326"
+      }
+     ],
+     "quote": "HZ-Mes7o 613 70030 −0.27, 0.17 −2.03, −2.36 −4.47 −2.87 1.60 1.91"
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-M",
+     "quantity": "E(T1) − E(S0)",
+     "qclass": "energy",
+     "value": "0.85 eV (“sol”) / 0.84 eV (film)",
+     "def": "E(T1) − E(S0)",
+     "cond": "PtOEP-sensitized phosphorescence. Methods: “The final weight percentage of molecule:PtOEP:polymer in the mixture was 1:5:94” (wt %, polystyrene matrix); film: “target molecule:PtOEP ratio was varied from 95:5 to 98:2 wt %”.",
+     "derived": "The “sol” column = matrix sample: derived from Lukman et al. 2017, Methods, not stated by the authors.",
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1; Methods p. 18377"
+      }
+     ],
+     "quote": [
+      {
+       "at": "footnote c",
+       "text": "Measured with Pt−porphyrin-sensitized phosphorescence"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-F",
+     "quantity": "E(T1) − E(S0)",
+     "qclass": "energy",
+     "value": "0.86 / 0.89 eV",
+     "def": "E(T1) − E(S0)",
+     "cond": "as above",
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1"
+      }
+     ],
+     "quote": "HZ-F sol 42 180 5100 65 0.167 2.01 1.89 0.86 … film 0.26 <1 1.82 1.72 1.57 (1.69) 0.89"
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-T",
+     "quantity": "E(T1) − E(S0)",
+     "qclass": "energy",
+     "value": "0.83 / 0.82 eV",
+     "def": "E(T1) − E(S0)",
+     "cond": "as above",
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1"
+      }
+     ],
+     "quote": "HZ-T sol 60 000 3400 69 0.154 1.95 1.76 0.83 … film 0.21 <1 1.70 1.66 1.51 (1.64) 0.82"
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-M / HZ-F / HZ-T",
+     "quantity": "PLQE, solution",
+     "qclass": "other",
+     "value": "67 % / 65 % / 69 %",
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1"
+      }
+     ],
+     "quote": "HZ-M sol 70 030 5500 67 … HZ-F sol 42 180 5100 65 … HZ-T sol 60 000 3400 69"
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-M / HZ-F / HZ-T",
+     "quantity": "y (Lukman et al. 2017 Table 1 column)",
+     "qclass": "other",
+     "value": "0.167 / 0.167 / 0.154",
+     "cond": "Table 1 footnote b: “Adopted from refs 33, 36, and 37” (33 = Minami & Nakano, J. Phys. Chem. Lett. 2012, 3, 145; 36 = Umeda et al., Org. Lett. 2009, 11, 4104; 37 = Wu et al., Angew. Chem. Int. Ed. 2010, 49, 7059). Methods, “Diradical Character”: “The diradical index was taken from literature sources, and the values were calculated on the basis of the LUMO occupation number (n) in natural orbital analysis, for the UCAM-B3LYP/6-31G(d,p) optimized open-shell singlet geometry. y is formally expressed as y = 1 − (2T/(1 + T2)), where T is represented by using the occupation numbers of natural orbitals as T = (nHOMO − nLUMO)/2.”",
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1 fn b; Methods"
+      }
+     ],
+     "quote": "HZ-M sol 70 030 5500 67 0.167 … HZ-F sol 42 180 5100 65 0.167 … HZ-T sol 60 000 3400 69 0.154"
+    }
+   ],
+   "theory": [
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "BS-UCAM-B3LYP; Table 1 caption names no basis (“Calculated (UCAM-B3LYP)”); main text 6-31G(d,p), SI 6-31G*",
+     "occ": "y_{0} 0.17 (SI 0.167); SI “HOMO: 1.53579 LUMO: 0.46421”; y_{1} cell blank",
+     "gap": "ΔE_{S−T} −8.1 kcal/mol",
+     "def": "definition not stated",
+     "derived": "G(S) − G(T), each at its own optimized geometry (adiabatic): derived from SI pp. S211-S216, not stated by the authors.",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 1 p. 1068; SI S211"
+      }
+     ],
+     "quote": [
+      {
+       "at": "p. 1074",
+       "text": "DFT calculations (UCAM-B3LYP/6-31G(d,p)) predicted that HZ has a small diradical character (y0 = 0.17)."
+      }
+     ]
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "UCAM-B3LYP/6-31G(d,p)",
+     "occ": "y_{0} 0.17",
+     "gap": "−9.0 kcal/mol",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "huang2016-nonazethrene",
+       "loc": "SI Table S1"
+      }
+     ],
+     "quote": "HZ 0.17 -9.0"
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "RAS-SF(4,4)/6-31G(d,p) at UCAM-B3LYP geometry",
+     "occ": "y_{0} 0.04 (Yamaguchi formula, SI p. S6); N_{U} 0.57",
+     "gap": "−18.3 kcal/mol",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "huang2016-nonazethrene",
+       "loc": "Table 2 p. 10327"
+      }
+     ],
+     "quote": [
+      {
+       "at": "Table 2",
+       "text": "HZ 0.04 0.57 −18.3"
+      },
+      {
+       "at": "p. 10327",
+       "text": "Our calculations predict that the parent zethrene has a zero diradical character with a closed-shell ground state, which is in accordance with experimental observations.7i The extended zethrenes, all have an open-shell singlet ground state and with extension of the molecule length, the diradical character increases while the singlet−triplet energy gap decreases (Table 2)."
+      }
+     ]
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "SF-BHHLYP/6-31G(d,p)",
+     "occ": "L2 0.25",
+     "gap": "−18.7 kcal/mol",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "huang2016-nonazethrene",
+       "loc": "SI Table S2"
+      }
+     ],
+     "quote": "HZ 0.25 -18.7"
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ (structure 4)",
+     "method": "MR-CISD / MR-CISD+Q / π-MR-AQCC, π-CAS(4,4), 6-31G*, all σ orbitals frozen (footnotes a, b); UDFT B3LYP/6-31G*",
+     "occ": "⟨S²_{BS}⟩ 0.228 (UDFT/B3LYP)",
+     "gap": "vertical (adiabatic): 1.188 (0.944) / 0.904 (0.612) / 0.927 (0.699) / 0.598 (0.424) eV; ΔE_{proj} 0.672 eV; “expt” cell blank",
+     "def": "E(1³B_{u}) − E(1¹A_{g}), positive = triplet above. Geometry of the vertical values not stated in words; singlet optimized at UDFT/B3LYP/6-31G* (SI Fig. S1)",
+     "src": [
+      {
+       "key": "das2016-polyradical",
+       "loc": "Table 2"
+      }
+     ],
+     "quote": [
+      {
+       "at": "Table 2",
+       "text": "4 | E(13Bu) – E(11Ag) | 1.188 (0.944) | 0.904 (0.612) | 0.927 (0.699) | 0.598 (0.424) | 0.228 | 0.672 |"
+      },
+      {
+       "text": "Vertical as well as the adiabatic ΔE(S–T) values for structures 4–8 are positive at all computational levels used, showing that these structures maintain a singlet ground state."
+      }
+     ]
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "π-MR-AQCC/6-311G(2d), 1¹A_{g}",
+     "occ": "SI Table S6 columns “HONO / LUNO” 1.705 / 0.295; N_{U} 1.026 (Table 4 / SI S7), printed as 1.03 e in the Fig. 5 caption",
+     "gap": "0.939 eV vertical (SI Table S5)",
+     "def": "as above",
+     "src": [
+      {
+       "key": "das2016-polyradical",
+       "loc": "SI S5-S7; Table 4; Fig. 5"
+      }
+     ],
+     "quote": [
+      {
+       "at": "SI Table S6",
+       "text": "4 11Ag 1.678 0.325 1.705 0.295"
+      },
+      {
+       "at": "SI Table S5",
+       "text": "π-space/6-311G(2d) 1.642 1.211 0.911 0.939"
+      }
+     ]
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "P-UHF/6-31G*",
+     "occ": "2y_{0} 1.112, 2y_{1} 0.182",
+     "def": "Yamaguchi y_{i}",
+     "src": [
+      {
+       "key": "das2016-polyradical",
+       "loc": "Table 4"
+      }
+     ],
+     "quote": "4 | 1.026 | 0.506 | 0.124 | 0.520 | 1.112 | 0.182 |"
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "UHF / UB3LYP / UCAM-B3LYP, 6-31G** (UHF at UB3LYP geometry)",
+     "occ": "y_{0} 0.56 / 0.01 / 0.17",
+     "src": [
+      {
+       "key": "zeng2016-super-heptazethrene",
+       "loc": "SI Table S1"
+      }
+     ],
+     "quote": [
+      {
+       "at": "ref. [8]",
+       "text": "The diradical character (y0) is a theoretical index that depends on the calculation method. A list of y0 values calculated at different level of theory is shown in Table S1."
+      },
+      {
+       "at": "SI Table S1",
+       "text": "UHF/6-31G** 0.41 0.56 … UB3LYP/6-31G** 0 0.01 … UCAM-B3LYP/6-31G** 0 0.17"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-M",
+     "method": "TD-DFT B3LYP/6-31G*",
+     "gap": "HOMO→LUMO at 655.9 nm (f = 0.7036)",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074"
+      }
+     ],
+     "quote": "...an intense p-band at 613 nm (ε = 70 030 M−1 cm−1), which can be correlated to a HOMO→LUMO transition (λabs = 655.9 nm, f = 0.7036) based on TD DFT calculations (B3LYP/6-31G*)."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-TIPS (computed)",
+     "method": "UCAM-B3LYP/6-31G*",
+     "occ": "y_{0} 0.159; SI n 1.54564 / 0.45436 (S47); ⟨S²⟩ OS 0.9005 (S49), T 2.1673 (S52)",
+     "gap": "ΔE_{S‑T} 8.1 kcal/mol “(triplet above singlet)”; CS vs OS “−3.7” kcal/mol",
+     "def": "SI coordinates C_{52}H_{60}Si_{2}. ΔE_{S‑T} as printed. The text frames −3.7 as the difference “between the closed-shell singlet and the open-shell singlet biradical”.",
+     "derived": "8.1 = G(T) − G(OS) (8.07); −3.7 = G(OS) − G(CS) (G(CS) − G(OS) = +3.72): derived from SI section 9, not stated by the authors.",
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "p. 14917; SI S47-S52"
+      }
+     ],
+     "quote": "ΔES‑T values were calculated to be 8.1 and 4.4 kcal/mol for HZ-TIPS and OZ-TIPS, respectively (triplet above singlet), and the computed energy differences between the closed-shell singlet and the open-shell singlet biradical states were −3.7 and −11.3 kcal/mol for HZ-TIPS and OZ-TIPS, respectively, suggesting that both molecules may contain a certain degree of the singlet biradical property in the ground state."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZ-DI",
+     "method": "UCAM-B3LYP (spin-unrestricted DFT), basis not given in the review",
+     "gap": "OS singlet 5.8 kcal/mol below CS singlet, 7.5 kcal/mol below triplet",
+     "def": "worded in the review",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 226"
+      }
+     ],
+     "quote": "Our spin-unrestricted DFT calculations (UCAM-B3LYP) also predicted that the open-shell singlet diradical form of HZ-DI was located to be 5.8 and 7.5 kcal/mol (1 cal = 4.184 J) more stable than the closed-shell singlet and the triplet biradical forms, respectively."
+    }
+   ],
+   "table2": {
+    "cols": [
+     "HZ-M",
+     "HZ-F"
+    ],
+    "rows": [
+     {
+      "q": "λ_{abs} (nm)",
+      "cells": [
+       "327, 613",
+       "326, 610"
+      ]
+     },
+     {
+      "q": "ε_{max} (M^{−1} cm^{−1})",
+      "cells": [
+       "36 590, 70 030",
+       "25 220, 42 180"
+      ]
+     },
+     {
+      "q": "τ (ps)",
+      "cells": [
+       "55 (t1), 5500 (t2)",
+       "80 (t1), 5100 (t2)"
+      ]
+     },
+     {
+      "q": "σ^{(2)}_{max} (GM)",
+      "cells": [
+       "730e",
+       "900e"
+      ]
+     },
+     {
+      "q": "E^{ox}_{1/2} (V)",
+      "cells": [
+       "−0.27, 0.17",
+       "0.07, 0.47"
+      ]
+     },
+     {
+      "q": "E^{red}_{1/2} (V)",
+      "cells": [
+       "−2.03, −2.36",
+       "−1.67, −2.09"
+      ]
+     },
+     {
+      "q": "HOMO (eV)",
+      "cells": [
+       "−4.47",
+       "−4.8"
+      ]
+     },
+     {
+      "q": "LUMO (eV)",
+      "cells": [
+       "−2.87",
+       "−3.23"
+      ]
+     },
+     {
+      "q": "E_{g}^{EC} (eV)",
+      "cells": [
+       "1.60",
+       "1.57"
+      ]
+     },
+     {
+      "q": "E_{g}^{opt} (eV)",
+      "cells": [
+       "1.91",
+       "1.90"
+      ]
+     }
+    ],
+    "notes": [
+     {
+      "mol": "HZ-M",
+      "cond": "crystallographic formula C_{58}H_{60}O_{2}; absorption in DCM (p. 1074; Fig. 8a caption)",
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "Table 2, p. 1069; p. 1074"
+       }
+      ],
+      "quote": [
+       {
+        "at": "p. 1074",
+        "text": "The 6-6 fused HZ-M displays a well-resolved spectrum with an intense p-band at 613 nm (ε = 70 030 M−1 cm−1)"
+       }
+      ]
+     },
+     {
+      "mol": "HZ-F",
+      "cond": "crystallographic formula C_{52}H_{38}F_{10}O_{2}; X-ray structure reported in Hu et al. 2016 (ref. 21); 1H NMR (C6D6) in Hu et al. 2016 SI",
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "Table 2"
+       }
+      ]
+     }
+    ],
+    "foot": [
+     "λabs: absorption maximum. εmax: molar extinction coefficient at the absorption maximum. τ is the singlet excited-state lifetime obtained from TA in toluene. E1/2ox and E1/2red are half-wave potentials of the oxidative and reductive waves, respectively, with potentials vs Fc/Fc+ couple. HOMO and LUMO energy levels were calculated according to equations: HOMO = −(4.8 + Eoxonset) and LUMO = −(4.8 + Eredonset), where Eoxonset and Eredonset are the onset potentials of the first oxidative and reductive redox wave, respectively. EgEC: electrochemical energy gap derived from LUMO−HOMO. EgOpt: optical energy gap derived from the lowest energy absorption onset in the absorption spectra.",
+     "eσ(2)max is the maximum TPA cross section at the wavelength of 1200 nm measured in DCM."
+    ]
+   },
+   "scope": [
+    {
+     "mol": "HZ-M",
+     "items": [
+      {
+       "tech": "^{1}H NMR",
+       "cond": "in C_{6}D_{6} at 298 K",
+       "fig": "S37"
+      },
+      {
+       "tech": "^{13}C NMR",
+       "cond": "in C_{6}D_{6} at 298 K",
+       "fig": "S38"
+      }
+     ],
+     "text": "Magnetic-resonance and magnetic measurements reported in Hu et al. 2016 for HZ-M: ^{1}H NMR, in C_{6}D_{6} at 298 K (SI Fig. S37); ^{13}C NMR, in C_{6}D_{6} at 298 K (SI Fig. S38)."
+    }
+   ],
+   "ident": [
+    {
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Materials, p. 18377"
+      }
+     ],
+     "text": "“Z-P, HZ-T, HZ-M, HZ-F, OZ-M, OZ-T, and PF-M were synthesized as previously reported.35,37−39” (ref. 39 = Hu et al. 2016). The source of each compound is not singled out."
+    },
+    {
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1"
+      },
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "Table 1"
+      }
+     ],
+     "text": "HZ-T = HZ-TIPS: derived from Lukman et al. 2017, Table 1 and Li et al. 2012, Table 1, not stated by the authors (Lukman et al. 2017 prints ε_{max} 60 000 and τ_{s} 3400 ps for HZ-T; Li et al. 2012 prints ε_{max} 60000 and τ_{f} 3.4 ns for HZ-TIPS)."
+    }
+   ],
+   "printed": [
+    {
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "Experimental, p. 14920"
+      }
+     ],
+     "text": "Li et al. 2012 Experimental (p. 14920) states: “To simplify calculation, the triisopropylsilyl groups are replaced by triethylsilyl units.” The same sentence is in the Fig. 8 caption (OZ-TIPS)."
+    },
+    {
+     "src": [
+      {
+       "key": "li2012-heptazethrene",
+       "loc": "SI"
+      }
+     ],
+     "text": "The Li et al. 2012 SI coordinate blocks for HZ-TIPS (CS, OS, T) count to C_{52}H_{60}Si_{2}, the full TIPS formula. The OZ-TIPS blocks count to the triethylsilyl model."
+    },
+    {
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074; Fig. 8 caption; Table 2 footnote"
+      }
+     ],
+     "text": "TA solvent: p. 1074 says HZ-M, PF-M and IF-M “displayed distinctly different TA spectra in DCM (Figure 8b−d)”; the Fig. 8 caption says the transient absorption spectra were “recorded in toluene”, and the Table 2 footnote says “TA in toluene”."
+    },
+    {
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 2 footnote e; SI Fig. S10"
+      }
+     ],
+     "text": "Z-scan solvent: Table 2 footnote e says “1200 nm measured in DCM”; SI Fig. S10 gives the Z-scan curves of HZ-M and HZ-F (among others) “in toluene”."
+    }
+   ]
+  },
+  {
+   "id": "HZD",
+   "name": "fused heptazethrene dimer",
+   "parent": [],
+   "exp": [
+    {
+     "kind": "derivative",
+     "mol": "HZD-M / HZD-F",
+     "quantity": "isolability",
+     "qclass": "other",
+     "value": "not isolated; converted to HZD-M-ONE / HZD-F-ONE within 1 h",
+     "cond": "DDQ, toluene, rt",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1068"
+      }
+     ],
+     "quote": "could transform into the dioxo- compounds HZD-M-ONE and HZD-F-ONE (dark green solid) in 1 h."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZD-M (in situ)",
+     "quantity": "ESR",
+     "qclass": "other",
+     "value": "single line, g_{e} = 2.00280",
+     "cond": "sealed tube, N_{2}, 10 min after DDQ",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1068"
+      }
+     ],
+     "quote": "An intense single-line ESR signal (ge = 2.00280) was observed after adding the DDQ in 10 min (Figure S8)."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZD-M (in situ, solid)",
+     "quantity": "VT-ESR",
+     "qclass": "other",
+     "value": "I approx. ∝ 1/T; 293-133 K (SI Fig. S8 legend labels)",
+     "cond": "solid after solvent removal, N_{2}",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1068; SI Fig. S8"
+      }
+     ],
+     "quote": "The variable temperature (VT) ESR measurements on the solid sample after removing the solvent under nitrogen showed that the ESR intensity (I) increased with decreasing temperature (T), with I being approximately proportional to 1/T (Figure S8), indicating that the major magnetically active species in the mixture is a monoradical intermediate rather than the diradical, which may be due to the high reactivity and the short lifetime of HZD-M."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZD-F (in situ)",
+     "quantity": "ESR",
+     "qclass": "other",
+     "value": "",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1068"
+      }
+     ],
+     "quote": "Experiments by using in situ generated HZD-F gave similar results."
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZD-M / HZD-F",
+     "quantity": "authors' causal sentence (primary)",
+     "qclass": "other",
+     "value": "“The large diradical character explains the very high chemical reactivity of HZD-M and HZD-F, although they are stabilized by bulky mesityl groups (in HZD-M) or electron-deficient pentafluorophenyl groups (in HZD-F).”",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1068"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "HZD 61 (review numbering)",
+     "quantity": "authors' causal sentence",
+     "qclass": "other",
+     "value": "“HZD has a large diradical character (y0 = 0.713), and thus its derivative 61 is highly reactive and gave dioxo-product 63 upon contact with air (Fig. 3b).”",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 231"
+      }
+     ]
+    }
+   ],
+   "theory": [
+    {
+     "kind": "parent",
+     "mol": "HZD",
+     "method": "BS-UCAM-B3LYP",
+     "occ": "y_{0} 0.713; y_{1} 0.009; SI “HOMO: 1.14647 LUMO: 0.85353”",
+     "gap": "−3.0 kcal/mol",
+     "def": "not stated",
+     "derived": "G(S) − G(T), adiabatic: derived from SI S173-S179, not stated by the authors.",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 1; SI S173"
+      }
+     ],
+     "quote": [
+      {
+       "at": "p. 1068",
+       "text": "Indeed, a large diradical character (y0 = 0.713) was calculated, but the tetraradical character (y1 = 0.009) turned out to be very small (Table 1). A small singlet−triplet energy gap (ΔES−T = −3.0 kcal/mol) was predicted."
+      },
+      {
+       "at": "p. 1068",
+       "text": "The calculated bond lengths and NICS(1)zz values of the ground-state singlet diradical indicate large aromatic character for the rings A−C and E,F, implying a large contribution of the diradical form to the ground-state structure."
+      }
+     ]
+    }
+   ],
+   "ones": {
+    "mol": "HZD-M-ONE, HZD-F-ONE",
+    "quantity": "dioxo products (different molecules)",
+    "value": "Table 2 rows",
+    "cond": "OPA “in dichloromethane (DCM)” (p. 1068)",
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "Table 2"
+     }
+    ],
+    "table2": {
+     "cols": [
+      "HZD-M-ONE",
+      "HZD-F-ONE"
+     ],
+     "rows": [
+      {
+       "q": "λ_{abs} (nm)",
+       "cells": [
+        "450, 667, 612",
+        "446, 643, 591"
+       ]
+      },
+      {
+       "q": "ε_{max} (M^{−1} cm^{−1})",
+       "cells": [
+        "11 050, 6580, 3380",
+        "76 220, 52 790, 28 210"
+       ]
+      },
+      {
+       "q": "τ (ps)",
+       "cells": [
+        "20 (t1), 2900 (t2)",
+        "2450"
+       ]
+      },
+      {
+       "q": "σ^{(2)}_{max} (GM)",
+       "cells": [
+        "1300b",
+        "1400b"
+       ]
+      },
+      {
+       "q": "E^{ox}_{1/2} (V)",
+       "cells": [
+        "0.14, 0.72",
+        "0.55"
+       ]
+      },
+      {
+       "q": "E^{red}_{1/2} (V)",
+       "cells": [
+        "−1.67, −2.27",
+        "−1.39, −1.95"
+       ]
+      },
+      {
+       "q": "HOMO (eV)",
+       "cells": [
+        "−4.86",
+        "−5.3"
+       ]
+      },
+      {
+       "q": "LUMO (eV)",
+       "cells": [
+        "−3.23",
+        "−3.53"
+       ]
+      },
+      {
+       "q": "E_{g}^{EC} (eV)",
+       "cells": [
+        "1.63",
+        "1.77"
+       ]
+      },
+      {
+       "q": "E_{g}^{opt} (eV)",
+       "cells": [
+        "1.75",
+        "1.83"
+       ]
+      }
+     ],
+     "foot": [
+      "λabs: absorption maximum. εmax: molar extinction coefficient at the absorption maximum. τ is the singlet excited-state lifetime obtained from TA in toluene. E1/2ox and E1/2red are half-wave potentials of the oxidative and reductive waves, respectively, with potentials vs Fc/Fc+ couple. HOMO and LUMO energy levels were calculated according to equations: HOMO = −(4.8 + Eoxonset) and LUMO = −(4.8 + Eredonset), where Eoxonset and Eredonset are the onset potentials of the first oxidative and reductive redox wave, respectively. EgEC: electrochemical energy gap derived from LUMO−HOMO. EgOpt: optical energy gap derived from the lowest energy absorption onset in the absorption spectra.",
+      "bσ(2)max is the maximum TPA cross section at the wavelength of 1300 nm."
+     ]
+    }
+   },
+   "scope": [
+    {
+     "mol": "HZD-M",
+     "items": [
+      {
+       "tech": "ESR",
+       "cond": "after adding the DDQ in 10 min",
+       "at": "p. 1068"
+      },
+      {
+       "tech": "VT ESR",
+       "cond": "of in-situ generated radical of HZD-M in solid form",
+       "fig": "S8"
+      }
+     ],
+     "text": "Magnetic-resonance and magnetic measurements reported in Hu et al. 2016 for HZD-M: ESR, after adding the DDQ in 10 min (p. 1068); VT ESR, of in-situ generated radical of HZD-M in solid form (SI Fig. S8)."
+    },
+    {
+     "mol": "HZD-F",
+     "items": [
+      {
+       "tech": "ESR",
+       "cond": "in situ generated HZD-F gave similar results",
+       "at": "p. 1068"
+      }
+     ],
+     "text": "Magnetic-resonance and magnetic measurements reported in Hu et al. 2016 for HZD-F: ESR, in situ generated HZD-F gave similar results (p. 1068)."
+    }
+   ],
+   "ident": [],
+   "printed": [
+    {
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1068; SI Fig. S12"
+      }
+     ],
+     "text": "HZD-ONE OPA solvent: p. 1068 says the OPA spectra of HZD-M-ONE/HZD-F-ONE “in dichloromethane (DCM) are shown in Figure 2d and Figure S12”; the SI Fig. S12 caption says “recorded in toluene”."
+    }
+   ]
+  },
+  {
+   "id": "FP",
+   "name": "bis-fluoreno-pyrene",
+   "parent": [],
+   "exp": [
+    {
+     "kind": "derivative",
+     "mol": "FP-M",
+     "quantity": "SQUID 2J/k_{B}",
+     "qclass": "energy",
+     "value": "−852.6 K (−1.69 kcal/mol); the Fig. 3b inset prints “-2J/kB=852.6 K” and “g=2.0”; the Fig. 3 caption prints “the fitting curve was drawn using the Bleaney−Bowers equation with ge = 2.00”",
+     "def": "“(2J/kB, i.e., ΔES−T)”",
+     "cond": "crystallographic formula C_{86}H_{84}O_{2}; powder 5-10 mg, MPMS-XL, 5-300 K, Bleaney-Bowers fit. SI p. S2 formula as printed: χ = (Nβ²g²/3kT)·[1 + (1/3)·exp(J_{s−t}/kT)]^{−1}",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1069 (text), Fig. 3b p. 1071; SI p. S2"
+      }
+     ],
+     "quote": "The singlet−triplet energy gap (2J/kB, i.e., ΔES−T) was calculated to be −852.6 K (−1.69 kcal/mol) for FP-M by a careful fitting of the data using the Bleaney−Bowers equation (Figure 3b)."
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-M",
+     "quantity": "χT vs T",
+     "qclass": "other",
+     "value": "plotted in Fig. 3b",
+     "cond": "solid",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1069; Fig. 3b p. 1071"
+      }
+     ],
+     "quote": "its magnetic susceptibility increases as temperature increases after 100 K, which further implies a singlet ground state for FP-M compound (Figure 3b)."
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-M",
+     "quantity": "ESR",
+     "qclass": "other",
+     "value": "broad three-line signal, g_{e} = 2.0027; intensity falls on cooling",
+     "cond": "DCM, rt; VT in frozen CH_{2}Cl_{2}, 123-153 K",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1069; SI S14"
+      }
+     ],
+     "quote": "FP-M in DCM exhibits a broad three-line ESR signal with ge = 2.0027 (Figure 3a), and the signal intensity gradually decreases as temperature decreases, indicating a singlet diradical ground state (Figure S14)."
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-M",
+     "quantity": "VT-ESR fit",
+     "qclass": "other",
+     "value": "I vs 1/T: slope −0.08341 (SE 0.01893), adj. R² 0.85994",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "SI Fig. S14b"
+      }
+     ],
+     "quote": "Adj. R-Square 0.85994 … Slope -0.08341 0.01893"
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-M",
+     "quantity": "^{1}H NMR",
+     "qclass": "other",
+     "value": "broadened even at low T; no aromatic signal at rt",
+     "cond": "d_{8}-THF; “down to −100 °C” (main text) / “298K to 183K” (SI Fig. S13)",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1069; SI p. S9 (FP-M synthesis and characterization); SI Fig. S13"
+      }
+     ],
+     "quote": [
+      {
+       "at": "p. 1069",
+       "text": "Compound FP-M only shows a broadened 1H NMR spectrum in solution even at low temperature (down to −100 °C, Figure S13)."
+      },
+      {
+       "at": "SI p. S9",
+       "text": "No NMR spectrum for aromatic protons can be recorded at room temperature due to the paramagnetic properties."
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-M",
+     "quantity": "X-ray",
+     "qclass": "other",
+     "value": "C1-C2 1.400 Å",
+     "cond": "CCDC 1434045",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1070"
+      }
+     ],
+     "quote": "Bond length analysis reveals that the length of the C1−C2 bond (1.400 Å) is significantly longer than that of the typical olefins (1.33−1.34 Å), but is much shorter than a typical C(sp2)−C(sp2) single bond (∼1.45 Å), indicating a large contribution of the diradical form to the ground-state electronic structure (Figure 4b)."
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-M",
+     "quantity": "TPA (authors' sentence)",
+     "qclass": "other",
+     "value": "σ^{(2)}_{max} 1500 GM at 1700 nm",
+     "cond": "DCM",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1072"
+      }
+     ],
+     "quote": "FP-M exhibited a remarkable cross-section maximum value σ(2)max of 1500 GM at 1700 nm, which is much larger than that for the closed-shell compounds PIF-M-ONE and PIF-F-ONE (σ(2)max = 770 and 970 GM, respectively)."
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-M",
+     "quantity": "stability (authors)",
+     "qclass": "other",
+     "value": "isolated as a dark green solid",
+     "cond": "DDQ, 80 °C, 0.5 h",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1069, 1074"
+      }
+     ],
+     "quote": "Reasonable stability can be achieved if the reactive sites with high spin density are appropriately protected (as seen in FP-M)."
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-M (review numbering 67)",
+     "quantity": "wording in the review",
+     "qclass": "other",
+     "value": "“The FP derivative 67 is a reasonably stable singlet diradicaloid”",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 231"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "FP-F (precursor 7b)",
+     "quantity": "isolability",
+     "qclass": "other",
+     "value": "not obtained",
+     "cond": "DDQ, reflux, toluene",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1069"
+      }
+     ],
+     "quote": "However, the pentafluorophenyl-substituted compound 7b could not be dehydrogenated by DDQ even under reflux in toluene."
+    }
+   ],
+   "theory": [
+    {
+     "kind": "parent",
+     "mol": "FP",
+     "method": "BS-UCAM-B3LYP",
+     "occ": "y_{0} 0.635; y_{1} 0.003; SI “HOMO: 1.18888 LUMO: 0.81112”",
+     "gap": "ΔE_{S−T} −2.3 kcal/mol",
+     "def": "not stated",
+     "derived": "G(S) − G(T), adiabatic: derived from SI S197-S202, not stated by the authors.",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 1; SI S197"
+      }
+     ],
+     "quote": [
+      {
+       "at": "p. 1070",
+       "text": "DFT calculations (UCAM-B3LYP/6-31G(d,p)) indicate that the parent FP has an open-shell singlet ground state, with a moderate diradical character (y0 = 0.635) and a very small tetraradical character (y1 = 0.003) (Table 1). The singlet triplet energy gap was calculated to be −2.3 kcal/mol, which is close to the experimental data of FP-M."
+      }
+     ]
+    }
+   ],
+   "table2": {
+    "cols": [
+     "FP-M"
+    ],
+    "rows": [
+     {
+      "q": "λ_{abs} (nm)",
+      "cells": [
+       "836, 960, 1005, 1096"
+      ]
+     },
+     {
+      "q": "ε_{max} (M^{−1} cm^{−1})",
+      "cells": [
+       "50 750, 6510, 9860, 1550"
+      ]
+     },
+     {
+      "q": "τ (ps)",
+      "cells": [
+       "25"
+      ]
+     },
+     {
+      "q": "σ^{(2)}_{max} (GM)",
+      "cells": [
+       "1500c"
+      ]
+     },
+     {
+      "q": "E^{ox}_{1/2} (V)",
+      "cells": [
+       "−0.26, −0.05, 0.39, 0.67"
+      ]
+     },
+     {
+      "q": "E^{red}_{1/2} (V)",
+      "cells": [
+       "−1.45, −1.65, −1.84, −2.37"
+      ]
+     },
+     {
+      "q": "HOMO (eV)",
+      "cells": [
+       "−4.41"
+      ]
+     },
+     {
+      "q": "LUMO (eV)",
+      "cells": [
+       "−3.47"
+      ]
+     },
+     {
+      "q": "E_{g}^{EC} (eV)",
+      "cells": [
+       "0.94"
+      ]
+     },
+     {
+      "q": "E_{g}^{opt} (eV)",
+      "cells": [
+       "1.10"
+      ]
+     }
+    ],
+    "notes": [
+     {
+      "mol": "FP-M",
+      "cond": "absorption in DCM (p. 1071)",
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "Table 2; p. 1071-1072"
+       }
+      ],
+      "quote": [
+       {
+        "at": "p. 1071-1072",
+        "text": "The green-color solution of FP-M in DCM shows a strong absorption at 836 nm (ε = 50 750 M−1 cm−1) and several weak absorption bands with peaks at 960, 1005, and 1096 nm in the lower energy region (Figure 5a and Table 2). Similar to many other singlet diradicaloids, the lowest-energy absorption band likely originates from the presence of a low-lying singlet excited state dominated by a doubly excited electronic configuration (H,H→L,L).14"
+       }
+      ]
+     }
+    ],
+    "foot": [
+     "λabs: absorption maximum. εmax: molar extinction coefficient at the absorption maximum. τ is the singlet excited-state lifetime obtained from TA in toluene. E1/2ox and E1/2red are half-wave potentials of the oxidative and reductive waves, respectively, with potentials vs Fc/Fc+ couple. HOMO and LUMO energy levels were calculated according to equations: HOMO = −(4.8 + Eoxonset) and LUMO = −(4.8 + Eredonset), where Eoxonset and Eredonset are the onset potentials of the first oxidative and reductive redox wave, respectively. EgEC: electrochemical energy gap derived from LUMO−HOMO. EgOpt: optical energy gap derived from the lowest energy absorption onset in the absorption spectra.",
+     "cσ(2)max is the maximum TPA cross section at the wavelength of 1700 nm."
+    ]
+   },
+   "scope": [
+    {
+     "mol": "FP-M",
+     "items": [
+      {
+       "tech": "SQUID",
+       "cond": "Powder sample of FP-M … in the temperature range of 5 to 300 K",
+       "at": "SI p. S2"
+      },
+      {
+       "tech": "ESR",
+       "cond": "FP-M in DCM",
+       "at": "p. 1069"
+      },
+      {
+       "tech": "VT-ESR",
+       "cond": "in the frozen CH_{2}Cl_{2} solution",
+       "fig": "S14"
+      },
+      {
+       "tech": "VT ^{1}H NMR",
+       "cond": "500 MHz, d_{8}-THF, from 298K to 183K",
+       "fig": "S13"
+      }
+     ],
+     "text": "Magnetic-resonance and magnetic measurements reported in Hu et al. 2016 for FP-M: SQUID, Powder sample of FP-M … in the temperature range of 5 to 300 K (SI p. S2); ESR, FP-M in DCM (p. 1069); VT-ESR, in the frozen CH_{2}Cl_{2} solution (SI Fig. S14); VT ^{1}H NMR, 500 MHz, d_{8}-THF, from 298K to 183K (SI Fig. S13)."
+    }
+   ],
+   "ident": [],
+   "printed": [
+    {
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Fig. 3b; SI p. S2"
+      }
+     ],
+     "text": "Fig. 3b plots χT data only to about 250 K, while SI p. S2 states the measurement range as 5-300 K."
+    },
+    {
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Fig. 3b; p. 1069"
+      }
+     ],
+     "text": "The Fig. 3b inset prints “-2J/kB=852.6 K”, while the text prints “2J/kB ... −852.6 K”."
+    },
+    {
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1069; SI Fig. S13"
+      }
+     ],
+     "text": "The FP-M VT-NMR range is given as “down to −100 °C” in the main text and as “298K to 183K” in SI Fig. S13."
+    }
+   ]
+  },
+  {
+   "id": "PIF",
+   "name": "bisphenaleno-indenofluorene",
+   "parent": [],
+   "exp": [
+    {
+     "kind": "derivative",
+     "mol": "PIF-M / PIF-F",
+     "quantity": "isolability",
+     "qclass": "other",
+     "value": "only the dioxo PIF-M-ONE / PIF-F-ONE obtained",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1069"
+      }
+     ],
+     "quote": "only gave the dioxo- product PIF-M-ONE/PIF-F-ONE instead of the target PIF-M/PIF-F compounds."
+    },
+    {
+     "kind": "derivative",
+     "mol": "PIF-M (in situ, solid)",
+     "quantity": "VT-ESR",
+     "qclass": "other",
+     "value": "monoradical species only; I approx. ∝ 1/T; 273-123 K (SI Fig. S8 legend labels)",
+     "cond": "solid after solvent removal, N_{2}",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1070; SI Fig. S8"
+      }
+     ],
+     "quote": "However, similar to HZD-M, only monoradical species were detected during the test. More specifically, the VT ESR measurements on the solid sample after removing the solvent under nitrogen showed that the ESR intensity (I) increased as temperature (T) decreased, with I being approximately proportional to 1/T (Figure S8), indicating the formation of the monoradical intermediates presumably due to extremely high reactivity of the diradical species."
+    },
+    {
+     "kind": "derivative",
+     "mol": "PIF 64 (review numbering)",
+     "quantity": "wording in the review",
+     "qclass": "other",
+     "value": "“Similar to 61, the PIF derivative 64 is very reactive and was converted to the dioxo-product 66 during the work-up in air.”",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 231"
+      }
+     ]
+    }
+   ],
+   "theory": [
+    {
+     "kind": "parent",
+     "mol": "PIF",
+     "method": "BS-UCAM-B3LYP",
+     "occ": "y_{0} 0.351; y_{1} 0.031; SI “HOMO: 1.36832 LUMO: 0.63168”",
+     "gap": "−4.2 kcal/mol",
+     "def": "not stated",
+     "derived": "G(S) − G(T), adiabatic: derived from SI S189-S195, not stated by the authors.",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 1; SI S189"
+      }
+     ],
+     "quote": [
+      {
+       "at": "p. 1070",
+       "text": "DFT calculations (UCAM-B3LYP/6-31G(d,p)) suggest that PIF also has an open-shell singlet ground state, with a moderate diradical character (y0 = 0.351) and a small tetraradical character (y1 = 0.031) (Table 1). The singlet−triplet energy gap was calculated to be −4.2 kcal/mol."
+      },
+      {
+       "at": "p. 1070",
+       "text": "Although PIF has a smaller diradical character and larger singlet−triplet energy gap than FP, ..."
+      }
+     ]
+    }
+   ],
+   "ones": {
+    "mol": "PIF-M-ONE, PIF-F-ONE",
+    "quantity": "authors' classification (different molecules)",
+    "value": "“closed-shell compounds”",
+    "cond": "crystallographic formula of PIF-M-ONE C_{102}H_{110}O_{6} (ref. 13)",
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "p. 1072"
+     }
+    ],
+    "table2": {
+     "cols": [
+      "PIF-M-ONE",
+      "PIF-F-ONE"
+     ],
+     "rows": [
+      {
+       "q": "λ_{abs} (nm)",
+       "cells": [
+        "355, 620",
+        "357, 625"
+       ]
+      },
+      {
+       "q": "ε_{max} (M^{−1} cm^{−1})",
+       "cells": [
+        "56 060, 41 260",
+        "51 870, 36 530"
+       ]
+      },
+      {
+       "q": "τ (ps)",
+       "cells": [
+        "7.2",
+        "2.2"
+       ]
+      },
+      {
+       "q": "σ^{(2)}_{max} (GM)",
+       "cells": [
+        "770b",
+        "970b"
+       ]
+      },
+      {
+       "q": "E^{ox}_{1/2} (V)",
+       "cells": [
+        "0.49, 0.95",
+        "0.92"
+       ]
+      },
+      {
+       "q": "E^{red}_{1/2} (V)",
+       "cells": [
+        "−1.41, −1.59",
+        "−1.00, −1.19, −1.99"
+       ]
+      },
+      {
+       "q": "HOMO (eV)",
+       "cells": [
+        "−5.09",
+        "−5.65"
+       ]
+      },
+      {
+       "q": "LUMO (eV)",
+       "cells": [
+        "−3.54",
+        "−3.87"
+       ]
+      },
+      {
+       "q": "E_{g}^{EC} (eV)",
+       "cells": [
+        "1.57",
+        "1.78"
+       ]
+      },
+      {
+       "q": "E_{g}^{opt} (eV)",
+       "cells": [
+        "1.85",
+        "1.83"
+       ]
+      }
+     ],
+     "foot": [
+      "λabs: absorption maximum. εmax: molar extinction coefficient at the absorption maximum. τ is the singlet excited-state lifetime obtained from TA in toluene. E1/2ox and E1/2red are half-wave potentials of the oxidative and reductive waves, respectively, with potentials vs Fc/Fc+ couple. HOMO and LUMO energy levels were calculated according to equations: HOMO = −(4.8 + Eoxonset) and LUMO = −(4.8 + Eredonset), where Eoxonset and Eredonset are the onset potentials of the first oxidative and reductive redox wave, respectively. EgEC: electrochemical energy gap derived from LUMO−HOMO. EgOpt: optical energy gap derived from the lowest energy absorption onset in the absorption spectra.",
+      "bσ(2)max is the maximum TPA cross section at the wavelength of 1300 nm."
+     ]
+    }
+   },
+   "scope": [
+    {
+     "mol": "PIF-M",
+     "items": [
+      {
+       "tech": "VT ESR",
+       "cond": "of in-situ generated radical of PIF-M in solid powder form",
+       "fig": "S8"
+      }
+     ],
+     "text": "Magnetic-resonance and magnetic measurements reported in Hu et al. 2016 for PIF-M: VT ESR, of in-situ generated radical of PIF-M in solid powder form (SI Fig. S8)."
+    }
+   ],
+   "ident": [],
+   "printed": []
+  },
+  {
+   "id": "IFD",
+   "name": "linearly fused indenofluorene dimer",
+   "parent": [],
+   "exp": [
+    {
+     "kind": "derivative",
+     "mol": "IFD-CF3",
+     "quantity": "NMR / ESR",
+     "qclass": "other",
+     "value": "sharp NMR; no ESR in solution or solid",
+     "cond": "crystallographic formula C_{78}H_{50}F_{24}O_{2}; SI spectra: ^{1}H and ^{13}C NMR in d_{8}-THF at 298 K (SI Figs. S33, S34)",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1073; SI Figs. S33, S34"
+      }
+     ],
+     "quote": "In accordance with this, IFD-CF3 showed sharp NMR signals in solution, and there was no detectable ESR signal for both solution and solid. Therefore, IFD-CF3 is better described as a closed-shell compound."
+    },
+    {
+     "kind": "derivative",
+     "mol": "IFD-CF3",
+     "quantity": "X-ray bond lengths",
+     "qclass": "other",
+     "value": "a 1.392, c 1.365, b 1.431 Å",
+     "cond": "CCDC 1434047",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1072"
+      }
+     ],
+     "quote": "a (1.392 Å) … c (1.365 Å) … b (1.431 Å)"
+    },
+    {
+     "kind": "derivative",
+     "mol": "IFD-M (precursor 12b)",
+     "quantity": "isolability",
+     "qclass": "other",
+     "value": "dark-green solid, mass matched; too insoluble for further characterization",
+     "cond": "DDQ",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1072"
+      }
+     ],
+     "quote": "A dark-green solid product was obtained, and the mass was matched with the target product (see the Supporting Information). However, due to the very poor solubility of the product in common organic solvents, it is difficult to do further characterization."
+    },
+    {
+     "kind": "derivative",
+     "mol": "IFD-F (precursor 12c)",
+     "quantity": "isolability",
+     "qclass": "other",
+     "value": "not obtained",
+     "cond": "DDQ, reflux, toluene",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1072"
+      }
+     ],
+     "quote": "Unfortunately, the pentafluorophenyl-substituted precursor 12c could not be dehydrogenated by DDQ even under reflux in toluene."
+    },
+    {
+     "kind": "core, as named by the authors",
+     "mol": "IFD (authors' conclusion)",
+     "quantity": "",
+     "qclass": "other",
+     "value": "“The indenofluorene dimer IFD with four cyclopenta rings has a very small diradical character and behaves as a closed-shell compound.”",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Conclusions p. 1075"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "IFD 68 (review numbering)",
+     "quantity": "wording in the review",
+     "qclass": "other",
+     "value": "“the IFD derivative 68 is a very stable closed-shell compound.”",
+     "src": [
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 231-232"
+      }
+     ]
+    }
+   ],
+   "theory": [
+    {
+     "kind": "parent",
+     "mol": "IFD",
+     "method": "BS-UCAM-B3LYP",
+     "occ": "y_{0} 0.038; y_{1} 0.005; SI “HOMO: 1.75667 LUMO: 0.24333”",
+     "gap": "−8.4 kcal/mol",
+     "def": "not stated",
+     "derived": "G(S) − G(T), adiabatic: derived from SI S182-S187, not stated by the authors.",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 1; SI S182"
+      }
+     ],
+     "quote": [
+      {
+       "at": "p. 1072-1073",
+       "text": "DFT calculations (UCAM-B3LYP/6-31G(d,p)) predicted that the parent IFD has a very small diradical character (y0 = 0.038) and a large singlet−triplet energy gap (ΔES−T = −8.4 kcal/mol)."
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "IFD-CF3, closed-shell form",
+     "method": "TD-DFT B3LYP/6-31G*",
+     "gap": "HOMO→LUMO at 802.6 nm (f = 1.0936)",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1073"
+      }
+     ],
+     "quote": "TD DFT calculations (B3LYP/6-31G*) on the closed-shell form predicted a strong HOMO→LUMO transition at 802.6 nm (f = 1.0936)"
+    }
+   ],
+   "table2": {
+    "cols": [
+     "IFD-CF3"
+    ],
+    "rows": [
+     {
+      "q": "λ_{abs} (nm)",
+      "cells": [
+       "367, 662, 722"
+      ]
+     },
+     {
+      "q": "ε_{max} (M^{−1} cm^{−1})",
+      "cells": [
+       "53 320, 23 680, 41 420"
+      ]
+     },
+     {
+      "q": "τ (ps)",
+      "cells": [
+       "0.7 (t1), 3.7 (t2)"
+      ]
+     },
+     {
+      "q": "σ^{(2)}_{max} (GM)",
+      "cells": [
+       "800d"
+      ]
+     },
+     {
+      "q": "E^{ox}_{1/2} (V)",
+      "cells": [
+       "0.49, 0.74"
+      ]
+     },
+     {
+      "q": "E^{red}_{1/2} (V)",
+      "cells": [
+       "−1.01, −1.23"
+      ]
+     },
+     {
+      "q": "HOMO (eV)",
+      "cells": [
+       "−5.25"
+      ]
+     },
+     {
+      "q": "LUMO (eV)",
+      "cells": [
+       "−3.88"
+      ]
+     },
+     {
+      "q": "E_{g}^{EC} (eV)",
+      "cells": [
+       "1.37"
+      ]
+     },
+     {
+      "q": "E_{g}^{opt} (eV)",
+      "cells": [
+       "1.39"
+      ]
+     }
+    ],
+    "notes": [
+     {
+      "mol": "IFD-CF3",
+      "cond": "absorption in DCM (p. 1073)",
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "Table 2; p. 1073"
+       }
+      ],
+      "quote": "The electronic absorption spectrum of IFD-CF3 in DCM showed an intense absorption band at 722 nm (ε = 41 420 M−1 cm−1) with a long tail extending beyond 1000 nm (Figure 6c and Table 2). This spectral feature is similar to that for the antiaromatic indeno[2,1-b]fluorene itself containing 4n monocyclic conjugated π electrons."
+     }
+    ],
+    "foot": [
+     "λabs: absorption maximum. εmax: molar extinction coefficient at the absorption maximum. τ is the singlet excited-state lifetime obtained from TA in toluene. E1/2ox and E1/2red are half-wave potentials of the oxidative and reductive waves, respectively, with potentials vs Fc/Fc+ couple. HOMO and LUMO energy levels were calculated according to equations: HOMO = −(4.8 + Eoxonset) and LUMO = −(4.8 + Eredonset), where Eoxonset and Eredonset are the onset potentials of the first oxidative and reductive redox wave, respectively. EgEC: electrochemical energy gap derived from LUMO−HOMO. EgOpt: optical energy gap derived from the lowest energy absorption onset in the absorption spectra.",
+     "dσ(2)max is the maximum TPA cross section at the wavelength of 1500 nm."
+    ]
+   },
+   "scope": [
+    {
+     "mol": "IFD-CF3",
+     "items": [
+      {
+       "tech": "^{1}H NMR",
+       "cond": "in d_{8}-THF at 298 K",
+       "fig": "S33"
+      },
+      {
+       "tech": "^{13}C NMR",
+       "cond": "in d_{8}-THF at 298 K",
+       "fig": "S34"
+      },
+      {
+       "tech": "NMR",
+       "cond": "sharp NMR signals in solution",
+       "at": "p. 1073"
+      },
+      {
+       "tech": "ESR",
+       "cond": "no detectable ESR signal for both solution and solid",
+       "at": "p. 1073"
+      }
+     ],
+     "text": "Magnetic-resonance and magnetic measurements reported in Hu et al. 2016 for IFD-CF3: ^{1}H NMR, in d_{8}-THF at 298 K (SI Fig. S33); ^{13}C NMR, in d_{8}-THF at 298 K (SI Fig. S34); NMR, sharp NMR signals in solution (p. 1073); ESR, no detectable ESR signal for both solution and solid (p. 1073)."
+    }
+   ],
+   "ident": [],
+   "printed": []
+  },
+  {
+   "id": "PF",
+   "name": "phenalenofluorene",
+   "parent": [],
+   "exp": [
+    {
+     "kind": "derivative",
+     "mol": "PF-M",
+     "quantity": "^{1}H and ^{13}C NMR",
+     "qclass": "other",
+     "value": "clear and sharp",
+     "cond": "crystallographic formula C_{48}H_{46}O; C_{6}D_{6}, 298 K (SI Figs. S42, S43)",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074; SI Figs. S42, S43"
+      }
+     ],
+     "quote": "All three compounds exhibit clear and sharp NMR signals, indicating their closed-shell character in the ground state."
+    },
+    {
+     "kind": "derivative",
+     "mol": "PF-M",
+     "quantity": "X-ray bond lengths",
+     "qclass": "other",
+     "value": "shared sentence with HZ-M and IF-M",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074"
+      }
+     ],
+     "quote": "Bond length analyses reveal that the central p-QDM unit in three compounds shows large bond length alternation (Figure 7d−f), indicating their quinoidal characters."
+    },
+    {
+     "kind": "derivative",
+     "mol": "PF-M",
+     "quantity": "E(T1) − E(S0)",
+     "qclass": "energy",
+     "value": "0.93 eV (“sol”) / 0.92 eV (film)",
+     "def": "E(T1) − E(S0)",
+     "cond": "PtOEP-sensitized phosphorescence; molecule:PtOEP:polymer 1:5:94 wt %, polystyrene matrix (Methods); film molecule:PtOEP 95:5 to 98:2 wt %.",
+     "derived": "The “sol” column = matrix sample: derived from Lukman et al. 2017, Methods, not stated by the authors.",
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1; Methods"
+      }
+     ],
+     "quote": "PF-M sol 6760 7.20 <1 0.051 1.85 1.73 0.93 … film 1.81 14 1.81 1.69 1.59 (1.69) 0.92"
+    },
+    {
+     "kind": "derivative",
+     "mol": "PF-M",
+     "quantity": "PLQE, solution",
+     "qclass": "other",
+     "value": "< 1 %",
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1"
+      }
+     ],
+     "quote": "PF-M sol 6760 7.20 <1"
+    },
+    {
+     "kind": "derivative",
+     "mol": "PF-M",
+     "quantity": "y (Lukman et al. 2017 Table 1 column)",
+     "qclass": "other",
+     "value": "0.051",
+     "cond": "fn b “Adopted from refs 33, 36, and 37”; Methods “Diradical Character” (UCAM-B3LYP/6-31G(d,p), LUMO occupation number, open-shell singlet geometry)",
+     "src": [
+      {
+       "key": "lukman2017-singlet-fission",
+       "loc": "Table 1 fn b; Methods"
+      }
+     ],
+     "quote": "PF-M sol 6760 7.20 <1 0.051"
+    }
+   ],
+   "theory": [
+    {
+     "kind": "parent",
+     "mol": "PF",
+     "method": "BS-UCAM-B3LYP",
+     "occ": "y_{0} 0.05 (SI 0.051); SI “HOMO: 1.72234 LUMO: 0.27766”; y_{1} cell blank",
+     "gap": "−9.1 kcal/mol",
+     "def": "not stated",
+     "derived": "G(S) − G(T), adiabatic: derived from SI S205-S209, not stated by the authors.",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 1; SI S205"
+      },
+      {
+       "key": "hu2017-zethrene-review",
+       "loc": "p. 231"
+      }
+     ],
+     "quote": [
+      {
+       "at": "p. 1074",
+       "text": "On the other hand, PF and IF have a negligible diradical character (y0 = 0.05) and a zero diradical character, respectively (Table 1)."
+      },
+      {
+       "at": "Hu and Wu 2017",
+       "text": "0.05 and 0 for PF and IF"
+      }
+     ]
+    },
+    {
+     "kind": "derivative",
+     "mol": "PF-M",
+     "method": "TD-DFT (level as for HZ-M, p. 1074)",
+     "gap": "HOMO→LUMO 658 nm (f = 0.3826); HOMO−1→LUMO 463.1 nm (f = 0.1319); HOMO→LUMO+1 435.6 nm (f = 0.1999)",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074; SI Fig. S7"
+      }
+     ],
+     "quote": "Consistent with experimental results, TD DFT calculations predicted a broad absorption at 658 nm (HOMO→LUMO transition, f = 0.3826) and two close transitions at 463.1 nm (HOMO−1→LUMO transition, f = 0.1319) and 435.6 nm (HOMO→LUMO+1 transition, f = 0.1999) (Figure S7)."
+    }
+   ],
+   "table2": {
+    "cols": [
+     "PF-M",
+     "PF-F"
+    ],
+    "rows": [
+     {
+      "q": "λ_{abs} (nm)",
+      "cells": [
+       "436, 627",
+       "436, 627"
+      ]
+     },
+     {
+      "q": "ε_{max} (M^{−1} cm^{−1})",
+      "cells": [
+       "12 440, 6760",
+       "12 440, 6760"
+      ]
+     },
+     {
+      "q": "τ (ps)",
+      "cells": [
+       "7.2",
+       "7.2"
+      ]
+     },
+     {
+      "q": "σ^{(2)}_{max} (GM)",
+      "cells": [
+       "400b",
+       "410b"
+      ]
+     },
+     {
+      "q": "E^{ox}_{1/2} (V)",
+      "cells": [
+       "−0.07, 0.62",
+       "0.25, 0.77"
+      ]
+     },
+     {
+      "q": "E^{red}_{1/2} (V)",
+      "cells": [
+       "−1.87, −2.37",
+       "−1.43, −1.97"
+      ]
+     },
+     {
+      "q": "HOMO (eV)",
+      "cells": [
+       "−4.65",
+       "−4.98"
+      ]
+     },
+     {
+      "q": "LUMO (eV)",
+      "cells": [
+       "−3.03",
+       "−3.49"
+      ]
+     },
+     {
+      "q": "E_{g}^{EC} (eV)",
+      "cells": [
+       "1.62",
+       "1.49"
+      ]
+     },
+     {
+      "q": "E_{g}^{opt} (eV)",
+      "cells": [
+       "1.56",
+       "1.43"
+      ]
+     }
+    ],
+    "notes": [
+     {
+      "mol": "PF-M",
+      "cond": "crystallographic formula C_{48}H_{46}O; absorption in DCM (p. 1074; Fig. 8a caption)",
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "Table 2; p. 1074"
+       }
+      ],
+      "quote": "The unsymmetric 6-5 fused PF-M exhibits a very different absorption spectrum, with a moderately intense band at 436 nm (ε = 12 440 M−1 cm−1) and a broad band extending into the near-IR region."
+     },
+     {
+      "mol": "PF-F",
+      "cond": "",
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "Table 2"
+       }
+      ]
+     }
+    ],
+    "foot": [
+     "λabs: absorption maximum. εmax: molar extinction coefficient at the absorption maximum. τ is the singlet excited-state lifetime obtained from TA in toluene. E1/2ox and E1/2red are half-wave potentials of the oxidative and reductive waves, respectively, with potentials vs Fc/Fc+ couple. HOMO and LUMO energy levels were calculated according to equations: HOMO = −(4.8 + Eoxonset) and LUMO = −(4.8 + Eredonset), where Eoxonset and Eredonset are the onset potentials of the first oxidative and reductive redox wave, respectively. EgEC: electrochemical energy gap derived from LUMO−HOMO. EgOpt: optical energy gap derived from the lowest energy absorption onset in the absorption spectra.",
+     "bσ(2)max is the maximum TPA cross section at the wavelength of 1300 nm."
+    ]
+   },
+   "scope": [
+    {
+     "mol": "PF-M",
+     "items": [
+      {
+       "tech": "^{1}H NMR",
+       "cond": "in C_{6}D_{6} at 298 K",
+       "fig": "S42"
+      },
+      {
+       "tech": "^{13}C NMR",
+       "cond": "in C_{6}D_{6} at 298 K",
+       "fig": "S43"
+      }
+     ],
+     "text": "Magnetic-resonance and magnetic measurements reported in Hu et al. 2016 for PF-M: ^{1}H NMR, in C_{6}D_{6} at 298 K (SI Fig. S42); ^{13}C NMR, in C_{6}D_{6} at 298 K (SI Fig. S43)."
+    }
+   ],
+   "ident": [],
+   "printed": []
+  },
+  {
+   "id": "IF",
+   "name": "indenofluorene",
+   "parent": [],
+   "exp": [
+    {
+     "kind": "derivative",
+     "mol": "IF-M",
+     "quantity": "NMR",
+     "qclass": "other",
+     "value": "“clear and sharp”",
+     "cond": "solvent not stated; the SI prints no IF-M NMR spectrum",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074"
+      }
+     ],
+     "quote": "All three compounds exhibit clear and sharp NMR signals, indicating their closed-shell character in the ground state."
+    },
+    {
+     "kind": "derivative",
+     "mol": "IF-M",
+     "quantity": "X-ray bond lengths",
+     "qclass": "other",
+     "value": "structure “previously reported4a”; shared sentence with HZ-M and PF-M",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074"
+      }
+     ],
+     "quote": "Bond length analyses reveal that the central p-QDM unit in three compounds shows large bond length alternation (Figure 7d−f), indicating their quinoidal characters."
+    },
+    {
+     "kind": "class",
+     "mol": "6,12-aryl [1,2-b]IFs",
+     "quantity": "open-shell evidence",
+     "qclass": "other",
+     "value": "none observed experimentally",
+     "cond": "literature summary",
+     "src": [
+      {
+       "key": "sharma2024-biindenofluorene",
+       "loc": "Abstract"
+      }
+     ],
+     "quote": "Nakano et al. reported that the antiaromatic indenofluorene (IF) isomers are diradicaloid molecules having varying degrees of open-shell character, with indeno[1,2-b]fluorene displaying a weaker diradical character index (y0 = 0.072). Unlike 6,12-trimethylsilylethynyl disubstituted [1,2-b]IF, the 6,12-aryl disubstituted [1,2-b]IF derivatives did not show any experimental evidence of diradical properties."
+    },
+    {
+     "kind": "class",
+     "mol": "6,12-aryl and 6,12-TIPSE [1,2-b]IFs (ref. 14 = Chase et al. 2011 + Chase et al. 2012)",
+     "quantity": "open-shell evidence",
+     "qclass": "other",
+     "value": "none observed experimentally",
+     "cond": "literature summary",
+     "src": [
+      {
+       "key": "sharma2024-biindenofluorene",
+       "loc": "Introduction"
+      }
+     ],
+     "quote": "Indeed, 6,12-aryl and 6,12-triisopropylsilylethynyl (TIPSE) disubstituted [1,2-b]IFs14 didn't show any experimental evidence of OS diradicaloid features despite carrying a proaromatic para-QDM (p-QDM shown in red, Fig. 1a) subunit in the π-backbone."
+    }
+   ],
+   "theory": [
+    {
+     "kind": "parent",
+     "mol": "IF",
+     "method": "CAM-B3LYP closed-shell singlet vs UCAM-B3LYP triplet; no BS structure listed",
+     "occ": "y_{0} 0.00; no occupation printed; y_{1} cell blank",
+     "gap": "−13.2 kcal/mol",
+     "def": "not stated",
+     "derived": "G(CS) − G(T), adiabatic: derived from SI S218-S220, not stated by the authors.",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 1; SI Fig. S6"
+      }
+     ],
+     "quote": "Calculated (CAM-B3LYP) frontier molecular orbitals of parent IF molecule in the closed-shell ground state."
+    },
+    {
+     "kind": "derivative",
+     "mol": "IF-M",
+     "method": "TD-DFT (level as for HZ-M, p. 1074)",
+     "gap": "HOMO→LUMO 518.7 nm (f = 0.5126); HOMO−1→LUMO 606.2 nm (f = 0.0)",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "p. 1074"
+      }
+     ],
+     "quote": "TD DFT calculations predicted an intense HOMO→LUMO transition at 518.7 nm (f = 0.5126), while the HOMO−1→LUMO transition (606.2 nm, f = 0.0) is forbidden."
+    },
+    {
+     "kind": "parent",
+     "mol": "IF-1b",
+     "method": "(U)LC-ωPBE-D3BJ/def2-TZVPP (methods text, reference numbers omitted: “long-range corrected LC-ωPBE functional with empirical (D3BJ) Grimme dispersion correction and triple-ζ def2-TZVPP basis set”; “OS structures were optimized using broken-symmetry approximation with the spin-unrestricted ULC-ωPBE-D3BJ/def2-TZVPP level of theory”)",
+     "occ": "y_{0} 0.03; N_{FOD} 0.68; E(OSS) −0.51 kcal/mol vs CS 0.00; E(T) 13.61",
+     "gap": "ΔE_{S–T} −14.12 kcal/mol",
+     "def": "E(OSS) − E(T)",
+     "cond": "Scope: “all the IF systems” = all IF isomers of that paper; “OS” there includes the computed triplet ground states of other isomers.",
+     "derived": "identity as indeno[1,2-b]fluorene: derived from the IF-1b structure in George et al. 2024, not stated by the authors.",
+     "src": [
+      {
+       "key": "george2024-indenofluorene",
+       "loc": "Table 1"
+      }
+     ],
+     "quote": [
+      {
+       "at": "scope",
+       "text": "DFT calculations reveal that all the IF systems have an OS ground state. In particular, IF-1a and IF-2a possess a triplet ground state with a ΔES–T gap of 2.04 and 3.65 kcal mol−1, respectively (Table 1)."
+      },
+      {
+       "text": "The calculated larger ΔES–T gap of −14.12 kcal mol−1 together with the smaller biradical character makes IF-1b behave nearly like a CS system."
+      }
+     ]
+    },
+    {
+     "kind": "parent",
+     "mol": "[1,2-b]IF",
+     "method": "method not given in the citing text",
+     "occ": "y_{0} 0.072",
+     "cond": "cited to refs 13c = Fukuda et al. 2015 and 13f = Di Giovannantonio et al., J. Am. Chem. Soc. 2019, 141, 12346",
+     "src": [
+      {
+       "key": "sharma2024-biindenofluorene",
+       "loc": "Abstract (“Nakano et al.”) and Introduction"
+      }
+     ],
+     "quote": [
+      {
+       "at": "Abstract",
+       "text": "Nakano et al. reported that the antiaromatic indenofluorene (IF) isomers are diradicaloid molecules having varying degrees of open-shell character, with indeno[1,2-b]fluorene displaying a weaker diradical character index (y0 = 0.072)."
+      },
+      {
+       "at": "Introduction",
+       "text": "The five IF isomers are predicted to be OS diradicaloids,13c,13f but the degree of diradical character (y0) for indeno[1,2-a]fluorene and indeno[2,1-b]fluorene is larger than that of the other three isomers including indeno[1,2-b]fluorene (y0 = 0.072)."
+      }
+     ]
+    }
+   ],
+   "table2": {
+    "cols": [
+     "IF-M",
+     "IF-CF3"
+    ],
+    "rows": [
+     {
+      "q": "λ_{abs} (nm)",
+      "cells": [
+       "515",
+       "541"
+      ]
+     },
+     {
+      "q": "ε_{max} (M^{−1} cm^{−1})",
+      "cells": [
+       "42 640",
+       "11 530"
+      ]
+     },
+     {
+      "q": "τ (ps)",
+      "cells": [
+       "0.7 (t1), 14 (t2)",
+       "0.6"
+      ]
+     },
+     {
+      "q": "σ^{(2)}_{max} (GM)",
+      "cells": [
+       "",
+       ""
+      ]
+     },
+     {
+      "q": "E^{ox}_{1/2} (V)",
+      "cells": [
+       "0.71",
+       "0.89"
+      ]
+     },
+     {
+      "q": "E^{red}_{1/2} (V)",
+      "cells": [
+       "−1.56, −2.07",
+       "−1.14, −1.48"
+      ]
+     },
+     {
+      "q": "HOMO (eV)",
+      "cells": [
+       "−5.41",
+       "−5.64"
+      ]
+     },
+     {
+      "q": "LUMO (eV)",
+      "cells": [
+       "−3.32",
+       "−3.75"
+      ]
+     },
+     {
+      "q": "E_{g}^{EC} (eV)",
+      "cells": [
+       "2.09",
+       "1.89"
+      ]
+     },
+     {
+      "q": "E_{g}^{opt} (eV)",
+      "cells": [
+       "2.21",
+       "2.16"
+      ]
+     }
+    ],
+    "notes": [
+     {
+      "mol": "IF-M",
+      "cond": "absorption in DCM (p. 1074; Fig. 8a caption)",
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "Table 2; p. 1074"
+       }
+      ],
+      "quote": "The 5-5 fused compound IF-M shows a typical absorption spectrum of antiaromatic compounds with an intense band at 515 nm (ε = 42 640 M−1 cm−1) and a weak absorption tail extending to 700 nm."
+     },
+     {
+      "mol": "IF-CF3",
+      "cond": "",
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "Table 2"
+       }
+      ]
+     }
+    ],
+    "foot": [
+     "λabs: absorption maximum. εmax: molar extinction coefficient at the absorption maximum. τ is the singlet excited-state lifetime obtained from TA in toluene. E1/2ox and E1/2red are half-wave potentials of the oxidative and reductive waves, respectively, with potentials vs Fc/Fc+ couple. HOMO and LUMO energy levels were calculated according to equations: HOMO = −(4.8 + Eoxonset) and LUMO = −(4.8 + Eredonset), where Eoxonset and Eredonset are the onset potentials of the first oxidative and reductive redox wave, respectively. EgEC: electrochemical energy gap derived from LUMO−HOMO. EgOpt: optical energy gap derived from the lowest energy absorption onset in the absorption spectra."
+    ]
+   },
+   "scope": [
+    {
+     "mol": "IF-M",
+     "items": [
+      {
+       "tech": "NMR",
+       "cond": "clear and sharp NMR signals",
+       "at": "p. 1074; solvent not stated"
+      }
+     ],
+     "text": "Magnetic-resonance and magnetic measurements reported in Hu et al. 2016 for IF-M: NMR, clear and sharp NMR signals (p. 1074; solvent not stated)."
+    }
+   ],
+   "ident": [],
+   "printed": []
+  }
+ ],
+ "cross": {
+  "hu16Table1": {
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 1, p. 1068"
+    }
+   ],
+   "caption": "Calculated (UCAM-B3LYP) Diradical Character (y0), Tetraradical Character (y1), and Singlet−Triplet Energy Gap (ΔES−T) for the Parent Systems",
+   "caption2": "Parent hydrocarbons; computed. No footnote in the source. Basis printed as 6-31G(d,p) (main text) and 6-31G* (SI, p. S16). All seven ΔE_{S−T} values printed negative; sign convention not stated in words; p. 1069, on the FP-M SQUID fit: “(2J/kB, i.e., ΔES−T)”. y_{0} formula not printed.",
+   "caption3": "G(singlet structure) − G(triplet), each at its own optimized geometry (adiabatic); singlet structure: broken-symmetry open-shell for six cores, closed-shell for IF; G = “Sum of electronic and thermal Free Energies” (SI); temperature not stated; derived from the Hu et al. 2016 SI appendix, not stated by the authors.",
+   "head": [
+    "fusion mode",
+    "compd",
+    "y_{0}",
+    "y_{1}",
+    "ΔE_{S−T} (kcal/mol)"
+   ],
+   "rows": [
+    [
+     "6-6-6-6",
+     "HZD",
+     "0.713",
+     "0.009",
+     "−3.0"
+    ],
+    [
+     "5-6-6-5",
+     "FP",
+     "0.635",
+     "0.003",
+     "−2.3"
+    ],
+    [
+     "6-5-5-6",
+     "PIF",
+     "0.351",
+     "0.031",
+     "−4.2"
+    ],
+    [
+     "5-5-5-5",
+     "IFD",
+     "0.038",
+     "0.005",
+     "−8.4"
+    ],
+    [
+     "6-6",
+     "HZ",
+     "0.17",
+     "",
+     "−8.1"
+    ],
+    [
+     "6-5",
+     "PF",
+     "0.05",
+     "",
+     "−9.1"
+    ],
+    [
+     "5-5",
+     "IF",
+     "0.00",
+     "",
+     "−13.2"
+    ]
+   ]
+  },
+  "wording": [
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "p. 1065"
+     }
+    ],
+    "scope": "the definition used for all seven",
+    "quote": "According to broken symmetry density functional theory (DFT) calculations, any molecule with a nonzero diradical character in the ground state can be classified as a diradicaloid (diradical-like molecule)."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "SI Figs. S1-S5 captions"
+     }
+    ],
+    "scope": "HZD, FP, PIF, IFD, HZ, PF",
+    "quote": "in the singlet diradical ground state"
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "SI Fig. S6"
+     }
+    ],
+    "scope": "IF",
+    "quote": "in the closed-shell ground state"
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "Section 4, p. 1075"
+     }
+    ],
+    "scope": "HZD, FP, PIF, IFD",
+    "quote": "Although our original intention is to synthesize stable compounds with significant tetraradical character, all four systems we studied should be better described as diradicaloids because the tetraradical characters are substantially small."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "Conclusions, p. 1075"
+     }
+    ],
+    "scope": "",
+    "quote": "It turned out that the fusion mode has a dramatic effect on the ground-state electronic structures, diradical character and tetraradical characters, and chemical reactivity."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "Conclusions, p. 1075"
+     }
+    ],
+    "scope": "",
+    "quote": "The HZ dimer HZD has a large diradical character and is highly reactive and gave dioxo-product upon contact with air. Upon introducing two cyclopenta rings in FP and PIF, the diradical character greatly decreases."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "Conclusions, p. 1075"
+     }
+    ],
+    "scope": "",
+    "quote": "Because of unbalanced radical−radical interactions, these compounds exhibited small tetraradical character and are better described as diradicaloids with tunable diradical character."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "abstract"
+     }
+    ],
+    "scope": "the class “open-shell singlet diradicaloids”",
+    "quote": "Open-shell singlet diradicaloids display unique electronic, nonlinear optical, and magnetic activity and could become novel molecular materials for organic electronics, photonics, and spintronics."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "abstract"
+     }
+    ],
+    "scope": "the seven systems of the paper",
+    "quote": "It was found that their diradical and tetraradical characters show a clear dependence on the fusion mode. Upon the introduction of more five-membered rings, the diradical characters greatly decrease."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "Introduction p. 1065"
+     }
+    ],
+    "scope": "PHs with an open-shell singlet diradical ground state",
+    "quote": "π-Conjugated polycyclic hydrocarbons (PHs) with an open-shell singlet diradical ground state have recently attracted tremendous interest due to their unique electronic, optical, and magnetic properties and potential applications in organic electronics, nonlinear optics, spintronics, and energy storage devices."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "Introduction p. 1065-1066"
+     }
+    ],
+    "scope": "tetraradicaloids / polyradicaloids (target)",
+    "quote": "The next natural target is to access stable open-shell singlet tetraradicaloids or even polyradicaloids, which may open the opportunities to investigate multiple spin interactions and molecular magnetism."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2017-zethrene-review",
+      "loc": "abstract"
+     }
+    ],
+    "scope": "zethrenes and extended zethrenes",
+    "quote": "One of the most important discoveries for this type of molecule is their open-shell diradical character, which is the origin of their unique optical, electronic, and magnetic properties."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2017-zethrene-review",
+      "loc": "p. 230"
+     }
+    ],
+    "scope": "extended zethrenes reported so far",
+    "quote": "So far, most reported extended zethrene molecules have a singlet diradical ground state. The next natural target is to access stable zethrene-based tetraradicaloids or even polyradicaloids, which may open opportunities to investigate multiple spin interactions and molecular magnetism."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2017-zethrene-review",
+      "loc": "p. 226"
+     }
+    ],
+    "scope": "higher-order zethrenes (on HZ-DI)",
+    "quote": "This was the first time that we revealed the unique open-shell singlet ground state for higher order zethrenes"
+   },
+   {
+    "src": [
+     {
+      "key": "hu2017-zethrene-review",
+      "loc": "conclusions p. 232"
+     }
+    ],
+    "scope": "extended zethrenes",
+    "quote": "The discovery of the open-shell diradial character of extended zethrenes is of importance as it explains why all previous attempts were not so successful, and it also opens the door to approach many other stable open-shell singlet diradicaloids and polyradicalids.15"
+   },
+   {
+    "src": [
+     {
+      "key": "hu2017-zethrene-review",
+      "loc": "conclusions p. 232"
+     }
+    ],
+    "scope": "“Extended zethrenes and their analogues with small to moderate diradical characters”",
+    "quote": "Extended zethrenes and their analogues with small to moderate diradical characters exhibit long-wavelength absorption in NIR region and large TPA cross sections, and thus they can be used as both organic NIR dyes and nonlinear optical chromophores. They display unique magnetic activity due to the small singlet-triplet energy gap. ... Future applications for spin-based electronics are possible if long-range ordered packing can be achieved and spin concentration can be controlled."
+   },
+   {
+    "src": [
+     {
+      "key": "huang2016-nonazethrene",
+      "loc": "Introduction p. 10324"
+     }
+    ],
+    "scope": "derivatives of heptazethrene (ref. 7d = Sun et al. 2011, HZ-DI) and octazethrene (7e)",
+    "quote": "As a result, open-shell singlet diradical character was experimentally observed for the derivatives of heptazethrene7d and octazethrene.7e A prominent feature is the observation of thermal population from singlet to triplet state at room temperature, which results in nuclear magnetic resonance (NMR) signal broadening and paramagnetic signal in electron spin resonance (ESR) spectrum."
+   }
+  ],
+  "lukman": {
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "pp. 18378-18379"
+    }
+   ],
+   "quote": "We note that the observed phosphorescence contrasts with energies estimated from temperature-dependent SQUID measurements,35,38 which generally suggest E(T1) < ∼200 meV. The long triplet lifetimes we measure in solution sensitization experiments (Supplementary Figures 2 and 4−8) and porphyrin-sensitized phosphorescence spectra cannot be reconciled with such low triplet energies. Our comprehensive spectroscopic study here can only be rationalized in terms of these markedly higher triplet energies, measured with the most direct method available, and we suggest that the earlier measurements reflected charged species rather than excitonic triplets, as suggested by ESR measurements.47",
+   "refs": [
+    {
+     "n": "35",
+     "text": "Li et al. 2012 (SQUID on OZ-TIPS; HZ-TIPS diamagnetic)"
+    },
+    {
+     "n": "38",
+     "text": "Hu et al. 2016, J. Org. Chem."
+    },
+    {
+     "n": "47",
+     "text": "Huang et al. 2016"
+    }
+   ],
+   "note": "Hu et al. 2016 (FP-M) is not among the cited SQUID references."
+  },
+  "y0method": {
+   "src": [
+    {
+     "key": "zeng2016-super-heptazethrene",
+     "loc": "ref. [8]"
+    }
+   ],
+   "quote": "The diradical character (y0) is a theoretical index that depends on the calculation method.",
+   "rows": [
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "BS-UCAM-B3LYP; Table 1 caption names no basis (“Calculated (UCAM-B3LYP)”); main text 6-31G(d,p), SI 6-31G*",
+     "occ": "y_{0} 0.17 (SI 0.167); SI “HOMO: 1.53579 LUMO: 0.46421”; y_{1} cell blank",
+     "gap": "ΔE_{S−T} −8.1 kcal/mol",
+     "def": "definition not stated",
+     "derived": "G(S) − G(T), each at its own optimized geometry (adiabatic): derived from SI pp. S211-S216, not stated by the authors.",
+     "src": [
+      {
+       "key": "hu2016-tetraradicaloid",
+       "loc": "Table 1 p. 1068; SI S211"
+      }
+     ],
+     "quote": [
+      {
+       "at": "p. 1074",
+       "text": "DFT calculations (UCAM-B3LYP/6-31G(d,p)) predicted that HZ has a small diradical character (y0 = 0.17)."
+      }
+     ]
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "UCAM-B3LYP/6-31G(d,p)",
+     "occ": "y_{0} 0.17",
+     "gap": "−9.0 kcal/mol",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "huang2016-nonazethrene",
+       "loc": "SI Table S1"
+      }
+     ],
+     "quote": "HZ 0.17 -9.0"
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "RAS-SF(4,4)/6-31G(d,p) at UCAM-B3LYP geometry",
+     "occ": "y_{0} 0.04 (Yamaguchi formula, SI p. S6); N_{U} 0.57",
+     "gap": "−18.3 kcal/mol",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "huang2016-nonazethrene",
+       "loc": "Table 2 p. 10327"
+      }
+     ],
+     "quote": [
+      {
+       "at": "Table 2",
+       "text": "HZ 0.04 0.57 −18.3"
+      },
+      {
+       "at": "p. 10327",
+       "text": "Our calculations predict that the parent zethrene has a zero diradical character with a closed-shell ground state, which is in accordance with experimental observations.7i The extended zethrenes, all have an open-shell singlet ground state and with extension of the molecule length, the diradical character increases while the singlet−triplet energy gap decreases (Table 2)."
+      }
+     ]
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "SF-BHHLYP/6-31G(d,p)",
+     "occ": "L2 0.25",
+     "gap": "−18.7 kcal/mol",
+     "def": "not stated",
+     "src": [
+      {
+       "key": "huang2016-nonazethrene",
+       "loc": "SI Table S2"
+      }
+     ],
+     "quote": "HZ 0.25 -18.7"
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "P-UHF/6-31G*",
+     "occ": "2y_{0} 1.112, 2y_{1} 0.182",
+     "def": "Yamaguchi y_{i}",
+     "src": [
+      {
+       "key": "das2016-polyradical",
+       "loc": "Table 4"
+      }
+     ],
+     "quote": "4 | 1.026 | 0.506 | 0.124 | 0.520 | 1.112 | 0.182 |"
+    },
+    {
+     "kind": "parent",
+     "mol": "HZ",
+     "method": "UHF / UB3LYP / UCAM-B3LYP, 6-31G** (UHF at UB3LYP geometry)",
+     "occ": "y_{0} 0.56 / 0.01 / 0.17",
+     "src": [
+      {
+       "key": "zeng2016-super-heptazethrene",
+       "loc": "SI Table S1"
+      }
+     ],
+     "quote": [
+      {
+       "at": "ref. [8]",
+       "text": "The diradical character (y0) is a theoretical index that depends on the calculation method. A list of y0 values calculated at different level of theory is shown in Table S1."
+      },
+      {
+       "at": "SI Table S1",
+       "text": "UHF/6-31G** 0.41 0.56 … UB3LYP/6-31G** 0 0.01 … UCAM-B3LYP/6-31G** 0 0.17"
+      }
+     ]
+    }
+   ]
+  },
+  "signs": [
+   {
+    "group": "Negative = singlet below triplet",
+    "items": [
+     {
+      "src": [
+       {
+        "key": "hu2016-tetraradicaloid",
+        "loc": "p. 1069; Fig. 3b inset"
+       }
+      ],
+      "text": "convention not stated in words; p. 1069 “(2J/kB, i.e., ΔES−T)”; Fig. 3b inset “-2J/kB=852.6 K”"
+     },
+     {
+      "src": [
+       {
+        "key": "huang2016-nonazethrene",
+        "loc": "Table 1 footnote; p. 10328"
+       }
+      ],
+      "text": "Tables (sign not stated in words; Table 1 footnote: “ΔES−TExp is experimentally measured singlet−triplet energy gap by SQUID method.”). Huang et al. 2016 p. 10328 also gives the gap as a positive magnitude: “JA-NA has a slightly larger singlet−triplet energy difference (5.8 kcal/mol) than HR-NZ (5.4 kcal/mol)”"
+     },
+     {
+      "src": [
+       {
+        "key": "zeng2016-super-heptazethrene",
+        "loc": "Fig. 4b"
+       }
+      ],
+      "text": "“2J/kB = −473.4 K”"
+     },
+     {
+      "src": [
+       {
+        "key": "zeng2018-superoctazethrene",
+        "loc": "SI"
+       }
+      ],
+      "text": "SI: “−2J is correlated to the excitation energy from the singlet ground state to the triplet excited state”"
+     },
+     {
+      "src": [
+       {
+        "key": "george2024-indenofluorene",
+        "loc": "Table 1"
+       }
+      ],
+      "text": "E(OSS) − E(T)"
+     }
+    ]
+   },
+   {
+    "group": "Positive = triplet above singlet",
+    "items": [
+     {
+      "src": [
+       {
+        "key": "das2016-polyradical",
+        "loc": "Table 2"
+       }
+      ],
+      "text": "E(1³B_{u}) − E(1¹A_{g})"
+     },
+     {
+      "src": [
+       {
+        "key": "li2012-heptazethrene",
+        "loc": "p. 14917"
+       }
+      ],
+      "text": "computed values (“triplet above singlet”)"
+     },
+     {
+      "src": [
+       {
+        "key": "lukman2017-singlet-fission",
+        "loc": "Table 1"
+       }
+      ],
+      "text": "E(T1) − E(S0)"
+     }
+    ]
+   },
+   {
+    "group": "Both signs in one statement",
+    "items": [
+     {
+      "src": [
+       {
+        "key": "li2012-heptazethrene",
+        "loc": "p. 14916"
+       }
+      ],
+      "text": "OZ-TIPS “2J/kB = −1946 K (0.168 eV or 3.87 kcal/mol)”"
+     }
+    ]
+   }
+  ],
+  "others": [
+   {
+    "mol": "OZ-TIPS",
+    "name": "octazethrene",
+    "quantity": "SQUID 2J/k_{B}",
+    "value": "“2J/kB = −1946 K (0.168 eV or 3.87 kcal/mol)”; “(ΔES‑T ≈ 3.87 kcal/mol)”; triplet population at rt “about 0.14%”",
+    "src": [
+     {
+      "key": "li2012-heptazethrene",
+      "loc": "p. 14916"
+     }
+    ],
+    "quote": [
+     {
+      "text": "These measurements prove that OZ-TIPS has a singlet open-shell ground state, which can be thermally excited to its triplet excited state at room temperature due to a small singlet−triplet energy gap (ΔES‑T ≈ 3.87 kcal/mol)."
+     },
+     {
+      "text": "The percentage of the triplet species at room temperature was thus estimated to be about 0.14%."
+     }
+    ]
+   },
+   {
+    "mol": "HR-NZ",
+    "name": "nonazethrene",
+    "quantity": "ΔE_{S−T} from SQUID",
+    "value": "−5.2 kcal/mol; y_{0} 0.48 (UCAM-B3LYP)",
+    "src": [
+     {
+      "key": "huang2016-nonazethrene",
+      "loc": "abstract"
+     }
+    ],
+    "quote": "Compound HR-NZ has an open-shell singlet ground state with a moderate diradical character (y0 = 0.48 based on UCAM-B3LYP calculation) and a small singlet−triplet gap (ΔES−T = −5.2 kcal/mol based on SQUID data), thus showing magnetic activity at room temperature."
+   },
+   {
+    "mol": "SHZ-CF3",
+    "name": "super-heptazethrene",
+    "quantity": "SQUID 2J/k_{B}",
+    "value": "−473.4 K (−0.94 kcal mol^{−1}); Fig. 4b inset “2J/kB=-473.4 K”",
+    "src": [
+     {
+      "key": "zeng2016-super-heptazethrene",
+      "loc": "p. 8618"
+     }
+    ],
+    "quote": "The singlet-triplet energy gap ΔES-T was roughly estimated to be −473.4 K (−0.94 kcal mol−1) by fitting the data using the Bleaney–Bowers equation."
+   },
+   {
+    "mol": "SOZ-Cl",
+    "name": "superoctazethrene",
+    "quantity": "SQUID ΔE_{S‑T}",
+    "value": "−2.30 kcal/mol",
+    "src": [
+     {
+      "key": "zeng2018-superoctazethrene",
+      "loc": "p. 14056"
+     }
+    ],
+    "quote": "Fitting of the data using Bleaney−Bowers equation11 gave a singlet−triplet energy gap (ΔES‑T) of −2.30 kcal/mol"
+   },
+   {
+    "mol": "super-nonazethrene",
+    "name": "on Au(111)",
+    "quantity": "STS singlet−triplet spin excitation; frontier electronic gap",
+    "value": "51 meV; 1.00 eV (“1 eV” in the abstract)",
+    "src": [
+     {
+      "key": "turco2021-super-nonazethrene",
+      "loc": "abstract (p. 8314); p. 8317 (51 meV, 1.00 eV)"
+     }
+    ],
+    "quote": "we show that super-nonazethrene exhibits an open-shell singlet ground state featuring a large spin polarization-driven electronic gap of 1 eV. Consistent with the emergence of an open-shell ground state, high-resolution tunneling spectroscopy reveals singlet−triplet spin excitations in super-nonazethrene, characterized by a strong intramolecular magnetic exchange coupling of 51 meV."
+   }
+  ],
+  "othersPrinted": [
+   {
+    "src": [
+     {
+      "key": "li2012-heptazethrene",
+      "loc": "p. 14916"
+     }
+    ],
+    "text": "OZ-TIPS: “2J/kB = −1946 K” is printed beside the positive “0.168 eV or 3.87 kcal/mol” and “ΔES‑T ≈ 3.87 kcal/mol”."
+   }
+  ],
+  "printed": [
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "p. 1068; Table 1; p. 1069"
+     }
+    ],
+    "text": "The p. 1068 section heading reads “6-5-5-6 (FP) and 5-6-6-5 (PIF)”. p. 1068 text: “the syntheses of derivatives of the 5-6-6-5 fused PF”. Table 1 lists FP as 5-6-6-5, PIF as 6-5-5-6 and PF as 6-5. The p. 1069 text matches Table 1."
+   },
+   {
+    "src": [
+     {
+      "key": "hu2016-tetraradicaloid",
+      "loc": "SI Fig. S12; p. 1072"
+     }
+    ],
+    "text": "SI Fig. S12 caption lists “(c) IFD-M”; p. 1072 says that for IFD-M “due to the very poor solubility of the product in common organic solvents, it is difficult to do further characterization.”"
+   }
+  ]
+ },
+ "vsexp": [
+  {
+   "id": "t1-hz-m",
+   "kind": "T1",
+   "group": "main",
+   "core": "HZ",
+   "mol": "HZ-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 0.85,
+    "unit": "eV"
+   },
+   "film": 0.84,
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "Table 1"
+    }
+   ]
+  },
+  {
+   "id": "t1-hz-f",
+   "kind": "T1",
+   "group": "main",
+   "core": "HZ",
+   "mol": "HZ-F",
+   "subst": "pentafluorophenyl",
+   "printed": {
+    "v": 0.86,
+    "unit": "eV"
+   },
+   "film": 0.89,
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "Table 1"
+    }
+   ]
+  },
+  {
+   "id": "t1-hz-tips",
+   "kind": "T1",
+   "group": "main",
+   "core": "HZ",
+   "mol": "HZ-TIPS",
+   "subst": "TIPS-ethynyl",
+   "printed": {
+    "v": 0.83,
+    "unit": "eV"
+   },
+   "film": 0.82,
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "Table 1"
+    }
+   ]
+  },
+  {
+   "id": "t1-pf-m",
+   "kind": "T1",
+   "group": "main",
+   "core": "PF",
+   "mol": "PF-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 0.93,
+    "unit": "eV"
+   },
+   "film": 0.92,
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "Table 1"
+    }
+   ]
+  },
+  {
+   "id": "abs-hz",
+   "kind": "abs",
+   "group": "main",
+   "core": "HZ",
+   "mol": "HZ (parent)",
+   "printed": {
+    "v": 586,
+    "unit": "nm"
+   },
+   "medium": "not given",
+   "config": "H>L",
+   "assigned": false,
+   "secondary": true,
+   "src": [
+    {
+     "key": "hu2017-zethrene-review",
+     "loc": "p. 223"
+    }
+   ]
+  },
+  {
+   "id": "abs-hz-m",
+   "kind": "abs",
+   "group": "main",
+   "core": "HZ",
+   "mol": "HZ-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 613,
+    "unit": "nm"
+   },
+   "medium": "CH_{2}Cl_{2}",
+   "config": "H>L",
+   "assigned": true,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ]
+  },
+  {
+   "id": "abs-hz-f",
+   "kind": "abs",
+   "group": "main",
+   "core": "HZ",
+   "mol": "HZ-F",
+   "subst": "pentafluorophenyl",
+   "printed": {
+    "v": 610,
+    "unit": "nm"
+   },
+   "medium": "toluene",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ],
+   "conflict": {
+    "at": "p. 1068",
+    "text": "Their one-photon absorption spectra (OPA) in dichloromethane (DCM) are shown in Figure 2d and Figure S12"
+   },
+   "mediumAt": "SI Fig. S12 caption"
+  },
+  {
+   "id": "abs-hz-tips",
+   "kind": "abs",
+   "group": "main",
+   "core": "HZ",
+   "mol": "HZ-TIPS",
+   "subst": "TIPS-ethynyl",
+   "printed": {
+    "v": 634,
+    "unit": "nm"
+   },
+   "medium": "CHCl_{3}",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "li2012-heptazethrene",
+     "loc": "Table 1"
+    }
+   ],
+   "mediumAt": "Fig. 1"
+  },
+  {
+   "id": "abs-pf-m",
+   "kind": "abs",
+   "group": "main",
+   "core": "PF",
+   "mol": "PF-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 627,
+    "unit": "nm"
+   },
+   "medium": "CH_{2}Cl_{2}",
+   "config": "H>L",
+   "assigned": true,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ]
+  },
+  {
+   "id": "abs-fp-m",
+   "kind": "abs",
+   "group": "main",
+   "core": "FP",
+   "mol": "FP-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 836,
+    "unit": "nm"
+   },
+   "medium": "CH_{2}Cl_{2}",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ]
+  },
+  {
+   "id": "abs-ifd-cf3",
+   "kind": "abs",
+   "group": "main",
+   "core": "IFD",
+   "mol": "IFD-CF3",
+   "subst": "3,5-bis(CF3)phenyl",
+   "printed": {
+    "v": 722,
+    "unit": "nm"
+   },
+   "medium": "CH_{2}Cl_{2}",
+   "config": "H>L",
+   "assigned": true,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ]
+  },
+  {
+   "id": "abs-if-m",
+   "kind": "abs",
+   "group": "main",
+   "core": "IF",
+   "mol": "IF-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 515,
+    "unit": "nm"
+   },
+   "medium": "CH_{2}Cl_{2}",
+   "config": "H>L",
+   "assigned": true,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ]
+  },
+  {
+   "id": "abs-if-cf3",
+   "kind": "abs",
+   "group": "main",
+   "core": "IF",
+   "mol": "IF-CF3",
+   "subst": "3,5-bis(CF3)phenyl",
+   "printed": {
+    "v": 541,
+    "unit": "nm"
+   },
+   "medium": "toluene",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ],
+   "conflict": {
+    "at": "p. 1068",
+    "text": "Their one-photon absorption spectra (OPA) in dichloromethane (DCM) are shown in Figure 2d and Figure S12"
+   },
+   "mediumAt": "SI Fig. S12 caption"
+  },
+  {
+   "id": "luk-hz-m",
+   "kind": "abs",
+   "group": "more",
+   "core": "HZ",
+   "mol": "HZ-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 2.02,
+    "unit": "eV"
+   },
+   "film": 1.84,
+   "medium": "CHCl_{3}, 0.1 mM",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "Table 1"
+    }
+   ],
+   "mediumAt": "Methods"
+  },
+  {
+   "id": "luk-hz-f",
+   "kind": "abs",
+   "group": "more",
+   "core": "HZ",
+   "mol": "HZ-F",
+   "subst": "pentafluorophenyl",
+   "printed": {
+    "v": 2.01,
+    "unit": "eV"
+   },
+   "film": 1.82,
+   "medium": "CHCl_{3}, 0.1 mM",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "Table 1"
+    }
+   ],
+   "mediumAt": "Methods"
+  },
+  {
+   "id": "luk-hz-tips",
+   "kind": "abs",
+   "group": "more",
+   "core": "HZ",
+   "mol": "HZ-TIPS",
+   "subst": "TIPS-ethynyl",
+   "printed": {
+    "v": 1.95,
+    "unit": "eV"
+   },
+   "film": 1.7,
+   "medium": "CHCl_{3}, 0.1 mM",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "Table 1"
+    }
+   ],
+   "mediumAt": "Methods"
+  },
+  {
+   "id": "luk-pf-m",
+   "kind": "abs",
+   "group": "more",
+   "core": "PF",
+   "mol": "PF-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 1.85,
+    "unit": "eV"
+   },
+   "film": 1.81,
+   "medium": "CHCl_{3}, 0.1 mM",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "lukman2017-singlet-fission",
+     "loc": "Table 1"
+    }
+   ],
+   "mediumAt": "Methods"
+  },
+  {
+   "id": "abs-pf-f",
+   "kind": "abs",
+   "group": "more",
+   "core": "PF",
+   "mol": "PF-F",
+   "subst": "pentafluorophenyl",
+   "printed": {
+    "v": 627,
+    "unit": "nm"
+   },
+   "medium": "toluene",
+   "config": "H>L",
+   "assigned": false,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ],
+   "conflict": {
+    "at": "p. 1068",
+    "text": "Their one-photon absorption spectra (OPA) in dichloromethane (DCM) are shown in Figure 2d and Figure S12"
+   },
+   "mediumAt": "SI Fig. S12 caption"
+  },
+  {
+   "id": "2j-fp-m",
+   "kind": "2J",
+   "group": "tierB",
+   "core": "FP",
+   "mol": "FP-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": -852.6,
+    "unit": "K"
+   },
+   "medium": "powder",
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "p. 1069"
+    }
+   ]
+  },
+  {
+   "id": "band-fp-m",
+   "kind": "band",
+   "group": "tierB",
+   "core": "FP",
+   "mol": "FP-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 1096,
+    "unit": "nm"
+   },
+   "medium": "CH_{2}Cl_{2}",
+   "config": "H,H>L,L",
+   "assigned": true,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ]
+  },
+  {
+   "id": "band-pf-m",
+   "kind": "band",
+   "group": "tierB",
+   "core": "PF",
+   "mol": "PF-M",
+   "subst": "mesityl",
+   "printed": {
+    "v": 436,
+    "unit": "nm"
+   },
+   "medium": "CH_{2}Cl_{2}",
+   "config": "H-1>L",
+   "assigned": true,
+   "src": [
+    {
+     "key": "hu2016-tetraradicaloid",
+     "loc": "Table 2"
+    }
+   ]
+  }
+ ]
+}

@@ -2,6 +2,7 @@
 import Base from '../../../../layouts/Base.astro';
 import Nav from '../../../../components/Nav.astro';
 import Footer from '../../../../components/Footer.astro';
+import OrbBlock from '../../../../components/main/OrbBlock.astro';
 import QuestElements from '../../../../components/main/QuestElements.astro';
 import QuestSwitch from '../../../../components/main/QuestSwitch.astro';
 import Table from '../../../../components/main/Table.astro';
@@ -41,7 +42,6 @@ const PLANE = {
   nonplanar: 'non-planar molecule: slice 0.6 Å above the best plane of the heavy atoms',
   axis: 'linear molecule: slice in a plane through the axis, turned per orbital to its largest lobe',
 };
-const eps = (v) => `${v < 0 ? '−' : ''}${Math.abs(v).toFixed(4)}`;
 const sections = [...shown.map((s) => [s.toLowerCase(), s]), ['orbitals', 'Orbitals']];
 ---
 <Base title={`${m.name} — QUEST — REKS Studio`}>
@@ -74,6 +74,7 @@ const sections = [...shown.map((s) => [s.toLowerCase(), s]), ['orbitals', 'Orbit
       <div>
         <h3 id={s.toLowerCase()}>{s}</h3>
         <p class="qcap">TBE: <Fragment set:html={html(tbeLine(s))} /></p>
+        {m.notes[s] && <p class="qcap">{m.notes[s]}</p>}
         <Table table={statesTable(s)} numeric grouped />
       </div>
     ))}
@@ -87,20 +88,7 @@ const sections = [...shown.map((s) => [s.toLowerCase(), s]), ['orbitals', 'Orbit
     <QuestSwitch />
     {funcs.map((f) => (
       <div class="qtab" id={`qt-${f.id}`}>
-        {m.orbitals[f.id].map((b) => (
-          <figure class="qorb">
-            <figcaption>{f.label}, {b.label}</figcaption>
-            <div class={`g n${b.pairs.length}`}>
-              {b.pairs.map((p) => <div class="h">({p.bond.slot}, {p.anti.slot})</div>)}
-              {['anti', 'bond'].flatMap((role) => b.pairs.map((p) => {
-                const o = p[role];
-                return (
-                  <div><img src={`${base}${o.svg}`} width={o.w} height={o.h} alt={`${m.name}, ${f.label} ${b.label}, orbital ${o.mo}`} loading="lazy" decoding="async" /><span><b>{o.slot}</b> {o.mo} · {o.fon.toFixed(6)}<br />{eps(o.eps)}</span></div>
-                );
-              }))}
-            </div>
-          </figure>
-        ))}
+        {m.orbitals[f.id].map((b) => <OrbBlock pairs={b.pairs} alt={`${m.name}, ${f.label} ${b.label}`} caption={`${f.label}, ${b.label}`} />)}
       </div>
     ))}
   </section>

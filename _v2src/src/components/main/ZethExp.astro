@@ -1,0 +1,326 @@
+---
+import Table from './Table.astro';
+import { codeHtml } from '../../lib/inline.mjs';
+import { authorYear, doiUrl } from '../../lib/literature.mjs';
+import { NOT_COMPUTED, cmpHref, f1, geoms, method, pattern, rungs, sg } from '../../lib/zeth.mjs';
+import { pairs } from '../../lib/zethexp.mjs';
+import { coreOf, refOf } from '../../lib/zethlit.mjs';
+
+interface Props {
+  core?: string;
+}
+
+// REKS(10,10) next to measured energies. Open: summary line, legend, T1 panel, absorption panel, ladder step,
+// two paragraphs, sources. Details: definitions, Tables 1-2, ladder table, further and other measurements.
+const { core } = Astro.props;
+const ps = pairs(core);
+const main = (kind) => ps.filter((p) => p.kind === kind && p.group === 'main');
+const t1 = main('T1');
+const ab = main('abs');
+const more = ps.filter((p) => p.group === 'more');
+const tierB = ps.filter((p) => p.group === 'tierB');
+const top = rungs.at(-1).label;
+const REKS = `REKS${top}`;
+const geo = (key) => geoms.find((g) => g.key === key);
+const d2 = (v) => sg(v, 2);
+const plainText = (s) => s.replace(/_\{([^}]+)\}/g, '$1').replace(/\^\{([^}]+)\}/g, '$1');
+const cite = (p) => authorYear(refOf(p.src[0].key));
+const list = (xs) => (xs.length < 3 ? xs.join(' and ') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
+if (ab.some((p) => p.config !== 'H>L')) throw new Error('ZethExp: a main absorption row not led by H>L');
+const HL = pattern('H>L');
+const RT = geo('T').html;
+
+// "R_os" or "R_os (IF: R_cs)": the zero geometry of the rows, exceptions by core
+const zeroOf = (rows, fmt = (g) => g.html) => {
+  const count = new Map();
+  for (const p of rows) count.set(p.c.zero, (count.get(p.c.zero) ?? 0) + 1);
+  const common = [...count].sort((a, b) => b[1] - a[1])[0][0];
+  const other = [...new Set(rows.filter((p) => p.c.zero !== common).map((p) => `${p.core}: ${fmt(geo(p.c.zero))}`))];
+  return `${fmt(geo(common))}${other.length ? ` (${other.join('; ')})` : ''}`;
+};
+const range = (ds) => {
+  const [a, b] = [d2(Math.min(...ds)), d2(Math.max(...ds))];
+  return a === b ? `${a} eV` : `${a} to ${b} eV`;
+};
+const counted = (rows) => {
+  const k = new Set(rows.map((p) => p.core)).size;
+  return `${rows.length} ${rows.length === 1 ? 'molecule' : 'molecules'} (${k} ${k === 1 ? 'core' : 'cores'})`;
+};
+
+// summary line: T1 with its counterpart and the vertical-emission range; absorption maximum
+const keys = [
+  t1.length && `T1 = E(T1) at ${RT} − E(S0) at ${zeroOf(t1)}: Δ ${range(t1.map((p) => p.d))}, ${counted(t1)}; vertical emission: Δ ${range(t1.map((p) => p.vert.ours - p.exp))}`,
+  ab.length && `Absorption maximum: Δ ${range(ab.map((p) => p.d))}, ${counted(ab)}`,
+].filter(Boolean);
+
+// legend: experiment ring, REKS dots in the rung colours of the ladder charts, Δ
+const sec = ab.filter((p) => p.secondary);
+const what = [t1.length && 'T1 in polystyrene', ab.length && 'absorption maximum in solution'].filter(Boolean).join(', ');
+const ringItem = `experiment: substituted derivative${sec.length ? ` (dashed: parent ${sec.map((p) => p.core).join(', ')}, secondary source ‡)` : ''}; ${what}`;
+const reksItem = 'REKS, parent hydrocarbon, isolated molecule (gas phase), one dot per active space, the larger at the last:';
+const deltaItem = `Δ = REKS${top} − experiment / eV`;
+
+// panels: one x domain (0.5 eV ticks) for all pages; the REKS dot of rung i sits (i − 2)·DY below the row centre,
+// the ring and the Δ link at the level of the last rung
+const W = 380;
+const L = 120;
+const R = 56;
+const RH = 22;
+const DY = 3.2;
+const X1 = W - R - 8;
+const xs = pairs().filter((p) => p.group === 'main').flatMap((p) => [p.exp, ...p.ladder.filter((v) => v != null)]);
+const lo = Math.floor(Math.min(...xs) / 0.5) * 0.5;
+const hi = Math.ceil(Math.max(...xs) / 0.5) * 0.5;
+const x = (v) => L + ((v - lo) / (hi - lo)) * (X1 - L);
+const PX = (X1 - L) / (hi - lo);
+const ticks = [];
+for (let v = lo; v <= hi + 1e-9; v += 0.5) ticks.push(v);
+const expText = (p) => (p.printed.unit === 'eV' ? p.exp.toFixed(2) : p.exp.toFixed(3));
+const oursText = (p) => (p.kind === 'T1' ? p.ours.toFixed(2) : p.ours.toFixed(3));
+const zero = (p) => geo(p.c.zero).plain;
+const ringTitle = (p) => `${p.mol} · experiment ${expText(p)} eV, ${p.kind === 'T1' ? 'polystyrene' : `${p.printed.v} nm, ${plainText(p.medium)}`} (${cite(p)})`;
+// "HZ-M · REKS(6,6) 0.757 eV"; at the last rung also the definition
+const dotTitle = (p, i) =>
+  `${p.mol} · REKS${rungs[i].label} ${p.ladder[i].toFixed(3)} eV${i === rungs.length - 1 ? `, ${p.kind === 'T1' ? `T1 at R_T − S0 at ${zero(p)}` : `${p.state.label} (${HL}, f ${p.state.f.toFixed(2)}) at ${zero(p)}`}` : ''}`;
+const LAST = rungs.length - 1;
+const dy = (i) => (i - 2) * DY;
+const panel = (ttl, rows, aria) => {
+  const out = [];
+  let y = 22;
+  const y0 = 28;
+  let prev = null;
+  for (const p of rows) {
+    if (prev && p.core !== prev) y += 6;
+    out.push({ p, yc: y + RH / 2 + 4, first: p.core !== prev });
+    prev = p.core;
+    y += RH;
+  }
+  const bot = y + 12;
+  return { ttl, rows: out, top: y0, bot, H: bot + 44, aria };
+};
+const panels = [
+  t1.length && panel('E(T1) − E(S0) · phosphorescence', t1, `E(T1) − E(S0) / eV, experiment and ${REKS}: ${t1.length} molecules; values in Table 1 of the details`),
+  ab.length && panel('S0 → Sn · absorption maximum', ab, `Absorption maximum / eV, experiment and ${REKS}: ${ab.length} molecules; values in Table 2 of the details`),
+].filter(Boolean);
+const absLabel = ab.length && `S0 → Sn vertical at ${zeroOf(ab)}, Sn the ${HL}-led singlet of largest f; experiment E = 1239.84 / λ(nm)`;
+
+// step from the second-last to the last rung
+const prevRung = rungs.at(-2).label;
+const step = (p) => p.ladder.at(-1) - p.ladder.at(-2);
+const byCore = (rows) => [...new Map(rows.map((p) => [p.core, p])).values()];
+const stepLine = `${prevRung} → ${top}: ${[
+  t1.length && `T1 ${byCore(t1).map((p) => d2(step(p))).join(' / ')} eV (${byCore(t1).map((p) => p.core).join(' / ')})`,
+  ab.length && `absorption ${range(byCore(ab).map(step))}`,
+].filter(Boolean).join(', ')}; every active space in the details.`;
+
+// two short paragraphs
+const substituents = [...new Map(ps.filter((p) => p.subst).map((p) => [p.subst, `${p.subst} (${p.mol.slice(p.core.length + 1)})`])).values()];
+const srcList = (rows) => [...new Set(rows.map((p) => cite(p)))].join(', ');
+const expPara = [
+  'Experiment.',
+  t1.length && `T1: Pt-porphyrin-sensitized phosphorescence (${srcList(t1)}).`,
+  ab.length && `Absorption: band maximum in solution (${srcList(ab.filter((p) => !p.secondary))}${sec.length ? `; ‡ ${srcList(sec)}, review` : ''}).`,
+  substituents.length && `Substituents: ${substituents.join(', ')}.`,
+].filter(Boolean).join(' ');
+const reksPara = `REKS. Parent hydrocarbon without substituents, isolated molecule (gas phase); SI-SA-${REKS}/${method.functional}/${method.basis} at the UCAM-B3LYP/6-31G* geometries of Hu et al. (2016), not reoptimized; electronic energies without zero-point energy${ab.length ? '; absorption as a vertical energy' : ''}.`;
+
+// details: definitions
+const defs = [
+  t1.length && `T1: E(T1) at ${RT} − E(S0) at ${zeroOf(t1)}, each state at its own geometry; vertical emission: E(T1) − E(S0) at ${RT}`,
+  ab.length && `Absorption: E(Sn) − E(S0) at ${zeroOf(ab)}, vertical (no Sn geometry computed); Sn: the ${HL}-led singlet of largest f; experiment E = 1239.84 / λ(nm)`,
+  'Δ = REKS − experiment, from energies in E<sub>h</sub>',
+].filter(Boolean);
+
+// Table 1 and its notes
+const table1 = {
+  title: `E(T1) − E(S0) / eV; REKS at ${top}`,
+  head: ['Molecule', 'Exp. PS', 'REKS', 'Δ', 'Exp. film', 'Vert.', 'Δ vert.'],
+  rows: t1.map((p) => [p.mol, p.exp.toFixed(2), p.ours.toFixed(2), d2(p.d), p.film.toFixed(2), p.vert.ours.toFixed(2), d2(p.vert.ours - p.exp)]),
+};
+const t1Notes = [
+  `Exp.: Lukman et al. (2017), Table 1, Pt-porphyrin-sensitized phosphorescence after triplet energy transfer from Pt-octaethylporphyrin (PtOEP). PS: column “sol”, read as the polystyrene sample of the Methods (molecule:PtOEP:polystyrene 1:5:94 wt %, drop-cast, for isolated chromophores); derived from the Methods, not stated by the authors. Film: column “film”, molecule:PtOEP 95:5 to 98:2 wt %. Vert.: REKS vertical emission.`,
+  `E(T1) at ${RT} − E(S0) at ${zeroOf(t1.length ? t1 : ps)} corresponds to the 0-0 band without zero-point energy, the vertical emission to the band maximum; Lukman et al. (2017) do not state which one Table 1 gives (Supplementary Fig. 1, not archived).`,
+];
+
+// Table 2 and its notes: solvents with their source, the source's DCM sentence, assignments, the secondary row
+const table2 = {
+  title: `Absorption maximum / eV; REKS at ${top}`,
+  head: ['Molecule', 'λ / nm', 'Exp.', 'REKS', 'Δ', 'Sn · f'],
+  rows: ab.map((p) => [p.secondary ? `${p.mol} ‡` : p.mol, String(p.printed.v), expText(p), oursText(p), d2(p.d), `${p.state.label} · ${p.state.f.toFixed(2)}`]),
+};
+// solvents in row order, the secondary row last
+const solventRows = [...ab.filter((p) => !p.secondary), ...sec];
+const bySolvent = [...new Map(solventRows.map((p) => [p.medium, solventRows.filter((q) => q.medium === p.medium)])).entries()];
+const solventLine = `Solvent: ${bySolvent.map(([m, rows]) => `${codeHtml(m)}: ${rows.map((p) => p.mol).join(', ')}${rows[0].mediumAt ? ` (${cite(rows[0])}, ${rows[0].mediumAt})` : ''}`).join('; ')}.`;
+const conflicts = [...new Map(ab.concat(more).filter((p) => p.conflict).map((p) => [p.conflict.text, p])).values()].map(
+  (p) => `${cite(p)}, ${p.conflict.at}, on the one-photon spectra: “${codeHtml(p.conflict.text)}”; the ${p.mediumAt} names toluene.`,
+);
+const assigned = ab.filter((p) => p.assigned);
+const sibling = ab.filter((p) => !p.assigned && !p.secondary && assigned.some((a) => a.core === p.core));
+const lone = ab.filter((p) => !p.assigned && !p.secondary && !assigned.some((a) => a.core === p.core));
+const t2Notes = [
+  solventLine,
+  ...conflicts,
+  [
+    assigned.length && `The authors' TD-DFT (B3LYP/6-31G*) assigns the band to HOMO→LUMO for ${list(assigned.map((p) => p.mol))}.`,
+    sibling.length && `${list(sibling.map((p) => p.mol))}: the same band of the core, not assigned in the source.`,
+    lone.length && `${list(lone.map((p) => p.mol))}: the band of largest ε<sub>max</sub>, not assigned in the source; its ${HL} pairing is ours.`,
+  ].filter(Boolean).join(' '),
+  ...sec.map((p) => `‡ ${p.mol}: Clar and Macpherson (1962) as quoted by ${cite(p)} (review), ${p.src[0].loc}.`),
+].filter(Boolean);
+
+// ladder table: short row labels, keyed under the table
+const NC = NOT_COMPUTED;
+const cell = (v, nd) => (v == null ? NC : v.toFixed(nd));
+const ladderRows = byCore([...t1, ...ab]).flatMap((first) => {
+  const c = first.core;
+  const out = [];
+  const t = t1.find((p) => p.core === c);
+  if (t) {
+    out.push([c, 'T1', ...t.ladder.map((v) => cell(v, 3)), NC]);
+    out.push([c, 'T1 kcal', ...t.kcal.map((v) => cell(v, 2)), NC]);
+    out.push([c, 'vert.', ...t.vert.ladder.map((v) => cell(v, 3)), NC]);
+    out.push([c, 'min', ...t.min.map((v) => cell(v, 3)), NC]);
+  }
+  const a = ab.find((p) => p.core === c);
+  if (a) out.push([c, 'Sn', ...a.ladder.map((v) => cell(v, 3)), cell(a.cs, 3)]);
+  return out;
+});
+const ladder = { title: 'REKS along the active-space ladder / eV', head: ['Core', '', ...rungs.map((r) => r.label), 'R_{cs}'], rows: ladderRows };
+// geometries of the lowest T1 and S0 where they are not R_T and the zero geometry
+const lowest = byCore(t1).flatMap((p) =>
+  rungs.flatMap((r) => {
+    const rs = Object.entries(p.c.geoms).filter(([, g]) => g.rungs[r.key]);
+    const at = (s) => rs.reduce((a, b) => (b[1].rungs[r.key].e0[s] < a[1].rungs[r.key].e0[s] ? b : a))[0];
+    return [['T1', at('2'), 'T'], ['S0', at('0'), p.c.zero]].filter(([, g, ref]) => g !== ref).map(([s, g]) => ({ core: p.core, s, g, r: r.label }));
+  }),
+);
+const lowestText = [...Map.groupBy(lowest, (o) => `${o.s} at ${geo(o.g).html}`)]
+  .map(([k, os]) => `${k}: ${[...Map.groupBy(os, (o) => o.core)].map(([cc, xs2]) => `${cc} ${xs2.map((o) => o.r).join(', ')}`).join('; ')}`)
+  .join('; ');
+const ladderKey = [
+  t1.length && `T1: E(T1) at ${RT} − E(S0) at ${zeroOf(t1)}, in eV and in kcal mol⁻¹; vert.: vertical emission at ${RT}; min: lowest T1 − lowest S0 over the computed geometries of the same active space${lowest.length ? ` (lowest at ${RT} and ${zeroOf(t1)} except ${lowestText})` : ''}.`,
+  ab.length && `Sn: S0 → Sn (${HL}) at ${zeroOf(ab)}, Sn chosen per active space by the rule of Table 2.`,
+  `R<sub>cs</sub>: the same quantity at ${top} and R<sub>cs</sub>. ${NC}: not computed.`,
+].filter(Boolean);
+
+// further measurements of the same molecules
+const moreTable = {
+  title: `Further measurements of the same molecules / eV; REKS at ${top}`,
+  head: ['Molecule', 'Exp.', 'Exp. film', 'REKS', 'Δ', 'Sn · f'],
+  rows: more.map((p) => [p.mol, expText(p), cell(p.film, 2), oursText(p), d2(p.d), `${p.state.label} · ${p.state.f.toFixed(2)}`]),
+};
+const lukMore = more.filter((p) => p.printed.unit === 'eV');
+const moreNotes = [
+  lukMore.length && `${list(lukMore.map((p) => p.mol))}: E(S1) abs of ${cite(lukMore[0])}, ${lukMore[0].src[0].loc}, in ${codeHtml(lukMore[0].medium)} (${lukMore[0].mediumAt}), peak or onset not stated; film: thin film; Δ for the solution value.`,
+  ...more
+    .filter((p) => p.printed.unit === 'nm')
+    .map((p) => {
+      const t = coreOf(p.core).table2;
+      const col = (m) => t.rows.slice(0, 3).map((r) => r.cells[t.cols.indexOf(m)]).join('|');
+      const twin = t.cols.filter((m) => m !== p.mol && col(m) === col(p.mol));
+      return `${p.mol}: absorption maximum ${p.printed.v} nm, ${cite(p)}, ${p.src[0].loc}, in ${codeHtml(p.medium)} (${p.mediumAt})${twin.length ? `; λ<sub>abs</sub>, ε<sub>max</sub> and τ printed as for ${twin.join(', ')}` : ''}.`;
+    }),
+].filter(Boolean);
+
+// other measured quantities
+const neg = (v) => `${v < 0 ? '−' : ''}${Math.abs(v)}`;
+const otherTable = {
+  title: `Other measured quantities; REKS at ${top}`,
+  head: ['Molecule', 'Quantity', 'Exp.', 'REKS', 'Δ', 'Unit'],
+  rows: tierB.map((p) =>
+    p.kind === '2J'
+      ? [p.mol, '2J', d2(p.exp), d2(p.ours), d2(p.d), 'kcal mol^{−1}']
+      : [p.mol, `${p.printed.v} nm`, expText(p), oursText(p), d2(p.d), 'eV'],
+  ),
+};
+const otherNotes = tierB.map((p) =>
+  p.kind === '2J'
+    ? `${p.mol} 2J: 2J/k<sub>B</sub> = ΔE<sub>S−T</sub> = ${neg(p.printed.v)} K (${cite(p)}, ${p.src[0].loc}), SQUID, ${p.medium}, Bleaney-Bowers fit; REKS: E(S0) at ${geo(p.c.zero).html} − E(T1) at ${RT}.`
+    : `${p.mol} ${p.printed.v} nm: absorption band assigned by the authors to ${pattern(p.config)} (${cite(p)}, ${p.src[0].loc}); REKS: ${p.state.label} (${pattern(p.config)}), f ${p.state.f.toFixed(2)}, at ${geo(p.c.zero).html}.`,
+);
+
+const further = [
+  lukMore.length && `E(S1) absorption (${cite(lukMore[0])})`,
+  ...more.filter((p) => p.printed.unit === 'nm').map((p) => `${p.mol} ${p.printed.v} nm`),
+  ...tierB.map((p) => (p.kind === '2J' ? `${p.mol} SQUID 2J` : `${p.mol} ${p.printed.v} nm`)),
+].filter(Boolean);
+const summary = `Tables, definitions and every active space${further.length ? ` · further measurements: ${further.join(', ')}` : ''}`;
+
+// sources: per reference its locations and molecules, doi link
+const refs = [...new Set(ps.map((p) => p.src[0].key))].map((k) => {
+  const e = refOf(k);
+  const rs = ps.filter((p) => p.src[0].key === k);
+  return { text: `${authorYear(e)}${rs.some((p) => p.secondary) ? ' ‡' : ''}, ${[...new Set(rs.map((p) => p.src[0].loc))].join(', ')} (${[...new Set(rs.map((p) => p.mol))].join(', ')})`, doi: e.doi, href: doiUrl(e) };
+});
+---
+<p class="keyline zxk">{keys.map((k, i) => <>{i > 0 && <span class="zxd"> · </span>}<span set:html={k} /></>)}</p>
+<ul class="zrl zx">
+  <li><svg width="12" height="12" viewBox="-6 -6 12 12" aria-hidden="true"><circle r="4.5" class="ref" /></svg>{ringItem}</li>
+  <li>{reksItem}</li>
+  {rungs.map((r, i) => <li class={`ra${i}`}><span class="sw"></span>{r.label}</li>)}
+  <li>{deltaItem}</li>
+</ul>
+{panels.map((pn, i) => (
+  <>
+    {i > 0 && absLabel && <p class="zf" set:html={absLabel} />}
+    <svg class="zc zx" viewBox={`0 0 ${W} ${pn.H}`} role="img" aria-label={pn.aria}>
+      <text x="0" y="15" class="ttl">{pn.ttl}</text>
+      <text x={W - 4} y="15" text-anchor="end" class="tick">Δ / eV</text>
+      {ticks.map((v) => (
+        <g>
+          <line x1={f1(x(v))} x2={f1(x(v))} y1={pn.top} y2={pn.bot} class="grid" />
+          <text x={f1(x(v))} y={pn.bot + 16} text-anchor="middle" class="tick">{v.toFixed(1)}</text>
+        </g>
+      ))}
+      {pn.rows.map(({ p, yc, first }) => (
+        <g>
+          {first && (core ? <text x="0" y={yc + 4.5} class="cmp">{p.core}</text> : <a href={cmpHref(p.c)} class="zcl"><text x="0" y={yc + 4.5} class="cmp">{p.core}</text></a>)}
+          <text x={L - 8} y={yc + 4.5} text-anchor="end" class="tick">{p.mol}</text>
+          {Math.abs(p.d) * PX >= 9 && <line x1={f1(x(p.exp))} x2={f1(x(p.ours))} y1={f1(yc + dy(LAST))} y2={f1(yc + dy(LAST))} class="link" />}
+          <circle cx={f1(x(p.exp))} cy={f1(yc + dy(LAST))} r="4.5" class="ref" stroke-dasharray={p.secondary ? '2 2' : undefined}><title>{ringTitle(p)}</title></circle>
+          {p.ladder.map((v, i) => v != null && (
+            <circle cx={f1(x(v))} cy={f1(yc + dy(i))} r={i === LAST ? 3.6 : 2.6} class={`rd ra${i}`}><title>{dotTitle(p, i)}</title></circle>
+          ))}
+          <text x={W - 4} y={yc + 4.5} text-anchor="end" class="val">{p.secondary ? `‡ ${d2(p.d)}` : d2(p.d)}</text>
+        </g>
+      ))}
+      <text x={f1((L + X1) / 2)} y={pn.bot + 34} text-anchor="middle" class="tick">E − E(S0) / eV</text>
+    </svg>
+  </>
+))}
+<p>{stepLine}</p>
+<p class="qcap" set:html={expPara} />
+<p class="qcap" set:html={reksPara} />
+<details class="zcalc">
+  <summary set:html={summary} />
+  {defs.map((d) => <p class="zf" set:html={d} />)}
+  {t1.length > 0 && (
+    <>
+      <Table table={table1} numeric />
+      {t1Notes.map((s) => <p class="qcap" set:html={s} />)}
+    </>
+  )}
+  {ab.length > 0 && (
+    <>
+      <Table table={table2} numeric />
+      {t2Notes.map((s) => <p class="qcap" set:html={s} />)}
+    </>
+  )}
+  <Table table={ladder} numeric grouped />
+  {ladderKey.map((s) => <p class="qcap" set:html={s} />)}
+  {more.length > 0 && (
+    <>
+      <Table table={moreTable} numeric />
+      {moreNotes.map((s) => <p class="qcap" set:html={s} />)}
+    </>
+  )}
+  {tierB.length > 0 && (
+    <>
+      <Table table={otherTable} numeric />
+      {otherNotes.map((s) => <p class="qcap" set:html={s} />)}
+    </>
+  )}
+</details>
+<p class="qcap">Sources: {refs.map((r, i) => <>{i > 0 && '; '}{r.text}, <a href={r.href}>doi:{r.doi}</a></>)}.</p>
+{core && <p class="links"><a href="../#experiment">All compounds</a></p>}

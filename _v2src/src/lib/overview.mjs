@@ -2,13 +2,15 @@ import raw from '../data/overview.json' with { type: 'json' };
 import { toHtml } from './inline.mjs';
 import { entryHref } from './manual-pages.mjs';
 import { doiUrl, reference, shortRef } from './literature.mjs';
-import { vars } from './quest.mjs';
+import { vars as quest } from './quest.mjs';
+import { vars as zeth } from './zeth.mjs';
 
-// {quest:name} in any text -> the value computed from quest.json
+const VARS = { quest, zeth };
+// {quest:name}, {zeth:name} in any text -> the value computed from quest.json, zeth.json
 const data = JSON.parse(
-  JSON.stringify(raw).replace(/\{quest:(\w+)\}/g, (_, k) => {
-    if (!(k in vars)) throw new Error(`overview.json: unknown token {quest:${k}}`);
-    return vars[k];
+  JSON.stringify(raw).replace(/\{(quest|zeth):(\w+)\}/g, (_, lib, k) => {
+    if (!(k in VARS[lib])) throw new Error(`overview.json: unknown token {${lib}:${k}}`);
+    return VARS[lib][k];
   }),
 );
 
@@ -18,9 +20,6 @@ const PLACEHOLDER = /^(to be added|not stated in v1)/;
 
 // inline markup -> HTML; a value starting with "to be added" or "not stated in v1" is set as a placeholder
 export const html = (s) => (PLACEHOLDER.test(s) ? `<span class="ph">${toHtml(s)}</span>` : toHtml(s));
-
-// count with thousands separated by sep: 1234567 -> "1 234 567"
-export const fmtCount = (n, sep = ' ') => n.toLocaleString('en-US').replaceAll(',', sep);
 
 export const resultHref = (base, slug, anchor) => `${base}main/results/${slug}/${anchor ? `#${anchor}` : ''}`;
 export const manualHref = (base, id) => entryHref(id, null, base);
@@ -35,7 +34,7 @@ export function cellHtml(c, base) {
 // index rows of a result: its own rows, else one row per block with an id (family page)
 export const rowsOf = (r) =>
   r.rows ??
-  r.blocks.filter((b) => b.id).map((b) => ({ system: b.system, as: b.as, reference: r.rowRef, number: b.number ?? 'to be added', anchor: b.id }));
+  r.blocks.filter((b) => b.id && !b.hidden).map((b) => ({ system: b.system, as: b.as, reference: r.rowRef, number: b.number ?? 'to be added', anchor: b.id }));
 
 // [{group, rows: [{...row, cls, problem, href}]}] of one part, groups in the order of the part
 export function indexRows(part, base) {

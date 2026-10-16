@@ -1,0 +1,114 @@
+---
+import Table from './Table.astro';
+import { NOT_COMPUTED, cmpHref, compounds, f1, geomsOf, rungs } from '../../lib/zeth.mjs';
+
+interface Props {
+  panels: any[];
+  twin: { title: string; cell: (r: any) => string }[];
+  // caption html from the axis ranges of the panels ("0.0 to 2.0")
+  caption: (ranges: string[]) => string;
+  summary: string;
+  note: string;
+}
+
+// One panel per quantity: one row per compound and geometry, skeleton under the compound name (common scale).
+// Dot of rung i in its rung colour at y = row centre + (i - 2)*DY; a trail joins the dots when each rung has one,
+// the largest computed rung is the larger dot, its value in the right column († when it is not the last rung).
+// x range = data rounded out to the panel step.
+const { panels, twin, caption, summary, note } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const W = 360;
+const L = 80;
+const TOP = 28;
+const RH = 20;
+const GAP = 8;
+const DY = 3.2;
+// skeleton box width and top offset below the compound name
+const SKW = 44;
+const SKY = 22;
+const last = rungs.at(-1);
+const DAGGER = '†';
+const layout = (cs) => {
+  const rows = [];
+  const heads = [];
+  let y = TOP;
+  for (const c of cs) {
+    const gs = geomsOf(c);
+    heads.push({ c, y, h: gs.length * RH });
+    gs.forEach((g) => {
+      rows.push({ c, g, yc: y + RH / 2 });
+      y += RH;
+    });
+    y += GAP;
+  }
+  return { rows, heads, H: y + 36 };
+};
+const sk = Math.min(...compounds.map((c) => Math.min(SKW / c.sw, (geomsOf(c).length * RH - SKY - 2) / c.sh)));
+const charts = panels.map((p) => {
+  const { rows, heads, H } = layout(p.compounds);
+  const R = p.end ? 58 : 8;
+  const vs = rows.flatMap(({ c, g }) => Object.values(c.geoms[g.key].rungs).flatMap((r) => p.dots(r).map((d) => d.v)));
+  const [k0, k1] = [Math.floor(Math.min(...vs) / p.step), Math.ceil(Math.max(...vs) / p.step)];
+  const x = (v) => L + ((v / p.step - k0) / (k1 - k0)) * (W - L - R - 8);
+  const digits = Math.max(0, -Math.floor(Math.log10(p.step) + 1e-9));
+  return {
+    p, x, H, R, heads,
+    ticks: Array.from({ length: k1 - k0 + 1 }, (_, i) => ({ v: (k0 + i) * p.step, t: ((k0 + i) * p.step).toFixed(digits) })),
+    label: `${p.axis.join('_').replace('_ ', ' ')} of ${p.compounds.map((c) => c.id).join(', ')}, every geometry, ${rungs[0].label} to ${last.label}; values in the table below`,
+    rows: rows.map((row) => {
+      const rs = row.c.geoms[row.g.key].rungs;
+      const pts = rungs.flatMap((r, i) => (rs[r.key] ? p.dots(rs[r.key]).map((d) => ({ ...d, i, r, y: row.yc + (i - 2) * DY })) : []));
+      return { ...row, pts, end: pts.at(-1), trail: pts.length === new Set(pts.map((pt) => pt.i)).size };
+    }),
+  };
+});
+const allRows = layout(compounds).rows;
+const tables = twin.map((t) => ({
+  title: t.title,
+  head: ['Compound', 'Geometry', ...rungs.map((r) => r.label)],
+  rows: allRows.map(({ c, g }) => [c.id, g.markup, ...rungs.map((r) => {
+    const rr = c.geoms[g.key].rungs[r.key];
+    return rr ? t.cell(rr) : NOT_COMPUTED;
+  })]),
+}));
+---
+<div class="zw">
+<ul class="zrl" aria-hidden="true">{rungs.map((r, i) => <li class={`ra${i}`}><span class="sw"></span>{r.label}</li>)}</ul>
+<div class="zgrid">
+  {charts.map(({ p, x, H, R, heads, ticks, label, rows }) => (
+    <svg class="zc za" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label}>
+      {p.title && <text x="0" y="15" class="ttl">{p.title[0]}<tspan class="sb" dy="3">{p.title[1]}</tspan></text>}
+      {p.end && <text x={W} y="15" text-anchor="end" class="tick">{last.label}</text>}
+      {ticks.map((t) => (
+        <g>
+          <line x1={f1(x(t.v))} x2={f1(x(t.v))} y1={TOP - 4} y2={H - 34} class="grid" />
+          <text x={f1(x(t.v))} y={H - 19} text-anchor="middle" class="tick">{t.t}</text>
+        </g>
+      ))}
+      <text x={f1((L + W - R - 8) / 2)} y={H - 3} text-anchor="middle" class="tick">{p.axis[0]}<tspan class="sb" dy="3">{p.axis[1]}</tspan><tspan dy="-3">{p.axis[2]}</tspan></text>
+      {heads.map((h) => (
+        <a href={cmpHref(h.c)} class="zcl">
+          <text x="0" y={h.y + RH / 2 + 4.5} class="cmp">{h.c.id}</text>
+          <image href={`${base}${h.c.skel}`} x="0" y={f1(h.y + SKY)} width={f1(h.c.sw * sk)} height={f1(h.c.sh * sk)} />
+        </a>
+      ))}
+      {rows.map((row) => (
+        <g>
+          <text x={L - 8} y={row.yc + 4.5} text-anchor="end" class="tick">R<tspan class="sb" dy="3">{row.g.plain.slice(2)}</tspan></text>
+          {row.trail && <polyline points={row.pts.map((pt) => `${f1(x(pt.v))},${f1(pt.y)}`).join(' ')} class="trail" />}
+          {row.pts.map((pt) => (
+            <circle cx={f1(x(pt.v))} cy={f1(pt.y)} r={row.trail && pt === row.end ? 3.6 : 2.6} class={`ra${pt.i}`}><title>{row.c.id} {row.g.plain} {pt.r.label} {pt.tip}</title></circle>
+          ))}
+          {p.end && <text x={W} y={row.yc + 4.5} text-anchor="end" class="val">{p.end(row.end.v)}{row.end.r === last ? '' : DAGGER}</text>}
+        </g>
+      ))}
+    </svg>
+  ))}
+</div>
+<p class="qcap" set:html={caption(charts.map((ch) => `${ch.ticks[0].t} to ${ch.ticks.at(-1).t}`))} />
+<details class="qmore">
+  <summary set:html={summary} />
+  {tables.map((t) => <Table table={t} numeric grouped />)}
+  <p class="qcap" set:html={note} />
+</details>
+</div>

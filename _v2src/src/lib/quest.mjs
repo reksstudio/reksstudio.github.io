@@ -1,4 +1,5 @@
 import data from '../data/quest.json' with { type: 'json' };
+import { BRANCH, REPO_URL } from './site.mjs';
 
 export const quest = data;
 export const { funcs, states, sets, molecules, counts } = data;
@@ -33,8 +34,22 @@ export function irrep(s) {
   return `${m[1]}${m[2] ? `_{${m[2]}}` : ''}${'′'.repeat(m[3].length)}`;
 }
 
+// public/data/<file>.txt for agents: path -> llms.txt description
+export const DATA = Object.fromEntries(
+  sets.map((q) => [
+    `data/quest${q}_rows.tsv`,
+    `QUEST${q}, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.`,
+  ]),
+);
+
+// output path prefix of the section; provenance line of the psi4 commit of its calculations
+export const PSI4 = 'ddc2f581c';
+export const PREFIX = 'main/results/quest/';
+export const revLine = `Psi4 commit of these outputs: ${PSI4} (kk/reks.v42). Install: branch ${BRANCH} of <${REPO_URL}>.`;
+
 // tokens {quest:name} in overview.json text
 export const vars = {
+  psi4: PSI4,
   molecules: counts.molecules,
   pairs: counts.pairs,
   singlet: counts.perState.S1 + counts.perState.S2,

@@ -1,0 +1,31 @@
+---
+interface Orb { slot: string; mo: string; fon: number; eps: number; svg: string; w: number; h: number }
+interface Props {
+  pairs: { bond: Orb; anti: Orb }[];
+  alt: string;
+  caption?: string;
+  legend?: string;
+  auto?: boolean;
+  fonDigits?: number;
+  epsDigits?: number;
+}
+
+// one column per pair: header (bond slot, anti slot), antibonding orbital above bonding;
+// each orbital captioned slot, MO · FON, eps / Eh; auto: columns fill the width, else one fixed column per pair
+const base = import.meta.env.BASE_URL;
+const { pairs, alt, caption, legend, auto, fonDigits = 6, epsDigits = 4 } = Astro.props;
+const eps = (v) => `${v < 0 ? '−' : ''}${Math.abs(v).toFixed(epsDigits)}`;
+---
+<figure class="qorb">
+  {caption && <figcaption>{caption}</figcaption>}{legend && <p class="qcap" set:html={legend} />}
+  <div class={`g ${auto ? 'auto' : `n${pairs.length}`}`}>
+    {pairs.map((p) => (
+      <div class="p">
+        <div class="h">({p.bond.slot}, {p.anti.slot})</div>
+        {[p.anti, p.bond].map((o) => (
+          <div><img src={`${base}${o.svg}`} width={o.w} height={o.h} alt={`${alt}, orbital ${o.mo}`} loading="lazy" decoding="async" /><span><b>{o.slot}</b> {o.mo} · {o.fon.toFixed(fonDigits)}<br />{eps(o.eps)}</span></div>
+        ))}
+      </div>
+    ))}
+  </div>
+</figure>

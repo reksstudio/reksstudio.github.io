@@ -1,0 +1,134 @@
+---
+import Table from './Table.astro';
+import { f1, geomsOf, levelTitle, rungs } from '../../lib/zeth.mjs';
+
+interface Props {
+  c: any;
+}
+
+// Panel per geometry: x = active space, y = E - E(S0) / eV in [0, ymax], ymax = highest shown state rounded up to 0.5
+const { c } = Astro.props;
+const BW = 340;
+const BL = 34;
+// column pitch leaves 34 px right of the plot; the width grows for long state labels (W below)
+const P = (BW - BL - 34) / rungs.length;
+const BT = 42;
+const PH = 270;
+const LW = 26;
+const MINSEP = 5;
+const LABSEP = 11;
+// label advance at 11 px in viewBox units (mono)
+const CHAR = 6.7;
+const SPIN = { S: 's0', T: 's1', Q: 's2' };
+const ORDER = { S: 0, T: 1, Q: 2 };
+const gs = geomsOf(c);
+const shown = (r) => r.states.filter((s) => s.eV != null);
+const all = gs.flatMap((g) => Object.values(c.geoms[g.key].rungs).flatMap(shown));
+const ymax = Math.ceil(Math.max(...all.map((s) => s.eV)) * 2) / 2;
+const yv = (v) => BT + PH - (v / ymax) * PH;
+const grid = Array.from({ length: Math.round(ymax / 0.5) + 1 }, (_, i) => i * 0.5);
+
+// Levels closer than MINSEP px in a column share its width side by side (order S, T, Q, then energy);
+// labels of the last computed column
+const panels = gs.map((g) => {
+  const rs = c.geoms[g.key].rungs;
+  const cols = rungs.map((rg, i) => ({ rg, i, r: rs[rg.key] }));
+  const done = cols.filter((col) => col.r);
+  const last = done.at(-1);
+  const seg = {};
+  const levels = [];
+  let labels = [];
+  for (const col of done) {
+    const xl = BL + col.i * P + (P - LW) / 2;
+    const groups = [];
+    for (const s of [...shown(col.r)].sort((a, b) => a.eV - b.eV)) {
+      const gp = groups.at(-1);
+      if (gp && yv(gp.at(-1).eV) - yv(s.eV) < MINSEP) gp.push(s);
+      else groups.push([s]);
+    }
+    for (const gp of groups) {
+      gp.sort((a, b) => ORDER[a.label[0]] - ORDER[b.label[0]] || a.eV - b.eV);
+      const w = (LW - 2 * (gp.length - 1)) / gp.length;
+      gp.forEach((s, k) => {
+        const x0 = xl + k * (w + 2);
+        seg[`${col.rg.key}|${s.label}`] = { x0, x1: x0 + w, y: yv(s.eV) };
+        levels.push({ s, rg: col.rg, x0, w, y: yv(s.eV) });
+      });
+      if (col === last) {
+        const y = gp.reduce((t, s) => t + yv(s.eV), 0) / gp.length;
+        labels.push({ y0: y, y, x: xl + LW, text: gp.map((s) => s.label).join('·') });
+      }
+    }
+  }
+  // symmetric push of neighbouring labels (y descending = energy ascending)
+  for (let it = 0; it < 50; it++) {
+    for (let k = 0; k + 1 < labels.length; k++) {
+      const d = labels[k].y - labels[k + 1].y;
+      if (d < LABSEP) {
+        labels[k].y += (LABSEP - d) / 2;
+        labels[k + 1].y -= (LABSEP - d) / 2;
+      }
+    }
+  }
+  // thread: right end of a level -> left end of its state.next partner in the next computed column
+  const threads = [];
+  done.forEach((col, k) => {
+    const nx = done[k + 1];
+    if (!nx) return;
+    for (const s of shown(col.r)) {
+      if (!s.next) continue;
+      const a = seg[`${col.rg.key}|${s.label}`];
+      const b = seg[`${nx.rg.key}|${s.next}`];
+      threads.push({ cls: SPIN[s.label[0]], skip: nx.i - col.i > 1, d: `M${f1(a.x1)} ${f1(a.y)}L${f1(b.x0)} ${f1(b.y)}` });
+    }
+  });
+  // threads table twin: one row per 2S and pair of adjacent computed active spaces
+  const rows = Object.keys(SPIN).flatMap((L) =>
+    done.slice(0, -1).filter((col) => shown(col.r).some((s) => s.label[0] === L)).map((col) => {
+      const ts = shown(col.r).filter((s) => s.label[0] === L && s.next).map((s) => `${s.label}→${s.next}`);
+      return [String(2 * ORDER[L]), `${col.rg.label} → ${done[done.indexOf(col) + 1].rg.label}`, ts.length ? ts.join(', ') : 'none'];
+    }));
+  return { g, cols, levels, labels, threads, table: { title: `${g.markup}: threads`, head: ['2S', 'Active spaces', 'Threads'], rows } };
+});
+const longest = Math.max(...panels.flatMap((p) => p.labels.map((l) => l.text.length)));
+const W = Math.max(BW, BL + rungs.length * P - (P - LW) / 2 + 8 + CHAR * longest);
+const H = BT + PH + 38;
+---
+<ul class="spin-legend qlegend">
+  <li class="s0"><span class="sw"></span>2S = 0: S0–S5</li>
+  <li class="s1"><span class="sw"></span>2S = 2: T1–T3</li>
+  <li class="s2"><span class="sw"></span>2S = 4: Q1</li>
+</ul>
+<div class="zgrid z3">
+  {panels.map((p) => (
+    <svg class="zc zb" viewBox={`0 0 ${f1(W)} ${H}`} role="img" aria-label={`${c.id} ${p.g.plain}: SI states per active space, E − E(S0) / eV, 0 to ${ymax}, joined across active spaces; numbers in the tables below`}>
+      <text x="0" y="15" class="ttl">R<tspan class="sb" dy="3">{p.g.plain.slice(2)}</tspan></text>
+      <text x="0" y={BT - 12} class="tick">E − E(S0) / eV</text>
+      {grid.map((t) => (
+        <g>
+          <line x1={BL} x2={f1(BL + rungs.length * P)} y1={f1(yv(t))} y2={f1(yv(t))} class="grid" />
+          <text x={BL - 6} y={f1(yv(t) + 4)} text-anchor="end" class="tick">{t}</text>
+        </g>
+      ))}
+      {p.cols.map((col) => (
+        <>
+          <text x={f1(BL + col.i * P + P / 2)} y={BT + PH + 18} text-anchor="middle" class={col.r ? 'tick' : 'tick nc'}>{col.rg.label}</text>
+          {!col.r && <text x={f1(BL + col.i * P + P / 2)} y={BT + PH + 30} text-anchor="middle" class="tick nc">–</text>}
+        </>
+      ))}
+      {p.threads.map((t) => <path class={`th ${t.cls}${t.skip ? ' sk' : ''}`} d={t.d} />)}
+      {p.levels.map((l) => <path class={`lv ${SPIN[l.s.label[0]]}`} d={`M${f1(l.x0)} ${f1(l.y)}h${f1(l.w)}`}><title>{levelTitle(c, p.g, l.rg, l.s)}</title></path>)}
+      {p.labels.map((l) => (
+        <>
+          {Math.abs(l.y - l.y0) > 2 && <path class="ld" d={`M${f1(l.x + 1)} ${f1(l.y0)}L${f1(l.x + 5)} ${f1(l.y)}`} />}
+          <text x={f1(l.x + 6)} y={f1(l.y + 3.8)} class="lab">{l.text}</text>
+        </>
+      ))}
+    </svg>
+  ))}
+</div>
+<p class="qcap">One column per active space and one level per SI state shown on this page at E − E(S0) / eV (same geometry and active space); colour = 2S; levels closer than about 0.08 eV sit side by side. A thin line joins a level to one level of the same 2S at the next computed active space when their leading excitation patterns agree (same dominant pattern, or pattern weights that overlap by at least one half) or their density changes ΔD differ by at most 0.15; the joins are one-to-one, as many as the rule allows. A level without a line has no such partner among the shown states. Patterns come from the leading configurations listed in the output (the three largest, then every further one above 5 %); at (8,8) and (10,10) these often carry a small share of the state, which the hover gives. ΔD: change of the active orbital occupations (diagonal of the active one-particle density) from S0. H−k … H, L … L+k: bonding and antibonding active orbitals in pair order, H and L the frontier pair; H→L moves one electron, H,H→L,L two. –: not computed, a dashed line spans it; Q1 at (2,2): n/a. Spin gaps on this page in kcal mol⁻¹, SI state energies in eV; the T1 level of each column is E(T1) − E(S0).</p>
+<details class="qmore">
+  <summary>Table: threads per geometry</summary>
+  {panels.map((p) => <Table table={p.table} grouped />)}
+</details>

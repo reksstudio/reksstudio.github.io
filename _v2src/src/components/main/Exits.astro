@@ -14,7 +14,7 @@ const siblings = results.filter((s) => s.slug !== r.slug);
   <h2>Run, ask, cite</h2>
   <ul>
     {x.input && <li>Input: <a href={`${base}${x.input}`}>{x.input.split('/').at(-1)}</a></li>}
-    {x.notInstalled && <li>Paper result; catalogue {x.notInstalled} not installed. Ask via <a href={`${base}docs/#contact`}>Contact</a>.</li>}
+    {x.notInstalled && <li><Fragment set:html={html(x.notInstalled)} /> Ask via <a href={`${base}docs/#contact`}>Contact</a>.</li>}
     {x.inputTodo && <li>Input: <span class="ph">to be added</span>.</li>}
     {x.manual && <li>Manual: <a href={manualHref(base, x.manual)}>worked inputs and checks</a></li>}
     <li><a href={manualHref(base, 'overview')}>Manual: Start</a> · <a href={`${base}docs/#install`}>Install</a> · <a href={`${base}docs/#cite`}>Cite</a> · <a href={`${base}docs/#contact`}>Contact</a></li>

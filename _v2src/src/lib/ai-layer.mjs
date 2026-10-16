@@ -15,17 +15,14 @@ import { textOf } from './manual-hast.mjs';
 import { PAGES, entryHref, entryMap, optionHref, optionRowHref, pagePath, stripNum } from './manual-pages.mjs';
 import { USED_IN, optionGroup, optionId, optionKeys, optionTitle, optionType } from './reference.mjs';
 import { BRANCH, REPO_URL, siteRev } from './site.mjs';
-import { sets } from './quest.mjs';
+import { DATA as questData, PREFIX as questPrefix, revLine as questRev } from './quest.mjs';
+import { DATA as zethData, PREFIX as zethPrefix, revLine as zethRev } from './zeth.mjs';
+import { DATA as zethLitData, LIT_HIDDEN } from './zethlit.mjs';
 
 const SUMMARY = 'REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.';
 const LANG = { '.py': 'python', '.dat': 'text', '.bib': 'bibtex' };
 // public/data/<file>.txt: tables for agents, listed in llms.txt only, linked from no page
-const DATA = Object.fromEntries(
-  sets.map((q) => [
-    `data/quest${q}_rows.tsv`,
-    `QUEST${q}, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.`,
-  ]),
-);
+const DATA = { ...questData, ...zethData, ...(LIT_HIDDEN ? {} : zethLitData) };
 const DRAFT = 'main/';
 const IMAGE = new Set(['.avif', '.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg']);
 // Claude Code WebFetch truncates longer text
@@ -61,7 +58,7 @@ const kept = (n) =>
 
 const texOf = (math) => all(math, (n) => isEl(n, 'annotation') && n.properties.encoding === TEX)[0];
 const jsx = (name) => (state, node) => ({ type: 'mdxJsxTextElement', name, attributes: [], children: state.all(node) });
-// h2-h4: heading + " {#id}"; the id is kept in data for cutting cards
+// h2-h4: heading + " {#id}"; the id is also kept in data
 const withId = (tag) => (state, node) => {
   const h = defaultHandlers[tag](state, node);
   if (node.properties.id) {
@@ -212,14 +209,17 @@ export default function aiLayer() {
         const llmsUrl = new URL('llms.txt', root).href;
         // the wording of the Documentation page: the measured commit, not claimed to be on the branch
         const revLine = `Psi4 ${rev.short}, ${rev.date}: the commit of every output on this site. Install: branch ${BRANCH} of <${REPO_URL}>.`;
+        // pages whose outputs come from other builds: path prefix -> their line
+        const ownRev = { [zethPrefix]: zethRev, [questPrefix]: questRev };
+        const revOf = (name) => ownRev[Object.keys(ownRev).find((prefix) => name.startsWith(prefix))] ?? revLine;
         // absolute URL patterns, so that a summary of any generated file still carries usable addresses
         const convention = [
           `Every page: \`${root.href}<page>/index.md\` (markdown).`,
           `Option cards: \`${root.href}options/<NAME>.md\`.`,
           `Raw files: file URL + \`.txt\` (text/plain), e.g. \`${root.href}inputs/<file>.txt\`.`,
         ].join(' ');
-        const header = (title, html, extra = []) =>
-          [`# ${title}`, `HTML: <${html}>`, ...extra, revLine, `Site index: <${llmsUrl}>. ${convention}`].join('\n\n') + '\n\n';
+        const header = (title, html, extra = [], rev = revLine) =>
+          [`# ${title}`, `HTML: <${html}>`, ...extra, rev, `Site index: <${llmsUrl}>. ${convention}`].join('\n\n') + '\n\n';
         const cardUrl = (key) => new URL(`options/${key}.md`, root).href;
         const twinOf = (url) => new URL('index.md', url).href;
         // entry href of an option with its own entry -> its card
@@ -271,15 +271,17 @@ export default function aiLayer() {
 
         const generated = new Map();
         for (const p of pages) {
+          // main/ pages list their files as links; other pages also embed each file
           const files = p.links.flatMap((path) => {
+            const link = { type: 'link', url: rawUrl(path), children: [{ type: 'text', value: path }] };
+            if (p.name.startsWith(DRAFT)) return [{ type: 'paragraph', children: [link] }];
             const lang = LANG[extname(path)];
             if (!lang) fail(`${p.name} links ${path}: no fence language for "${extname(path)}"`);
             const value = readFileSync(join(out, path), 'utf8').replace(/\n+$/, '');
-            const link = { type: 'link', url: rawUrl(path), children: [{ type: 'text', value: path }] };
             return [{ type: 'paragraph', children: [link] }, { type: 'code', lang, value }];
           });
           const tail = files.length ? [{ type: 'heading', depth: 2, children: [{ type: 'text', value: 'Linked files' }] }, ...files] : [];
-          generated.set(p.name.replace(/\.html$/, '.md'), header(p.title, p.url.href) + markdown([...p.mdast.children, ...tail]));
+          generated.set(p.name.replace(/\.html$/, '.md'), header(p.title, p.url.href, [], revOf(p.name)) + markdown([...p.mdast.children, ...tail]));
         }
 
         const pageOf = (slug) => pages.find((p) => p.name === `${pagePath(slug)}index.html`);
@@ -306,7 +308,9 @@ export default function aiLayer() {
           return { key, brief };
         });
 
-        for (const name of readdirSync(new URL('inputs/', publicDir))) {
+        const inputs = fileURLToPath(new URL('inputs/', publicDir));
+        for (const f of readdirSync(inputs, { recursive: true, withFileTypes: true }).filter((d) => d.isFile())) {
+          const name = relative(inputs, join(f.parentPath, f.name));
           if (!linked.has(`inputs/${name}`)) fail(`inputs/${name} is linked from no <main>`);
         }
         const data = readdirSync(new URL('data/', publicDir)).sort().map((file) => {

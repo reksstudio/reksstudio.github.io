@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest5-strepto-c5/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -88,16 +88,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![streptocyanine-C5, BH\&HLYP (4,4), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_44m_28A.svg)**d** 28A · 0.000000\
 −0.2070
 
-![streptocyanine-C5, BH\&HLYP (4,4), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_44m_27A.svg)**c** 27A · 0.000132\
-−0.3099
-
 ![streptocyanine-C5, BH\&HLYP (4,4), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_44m_25A.svg)**a** 25A · 2.000000\
 −0.5256
+
+(b, c)
+
+![streptocyanine-C5, BH\&HLYP (4,4), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_44m_27A.svg)**c** 27A · 0.000132\
+−0.3099
 
 ![streptocyanine-C5, BH\&HLYP (4,4), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_44m_26A.svg)**b** 26A · 1.999868\
 −0.4184
@@ -106,24 +106,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![streptocyanine-C5, BH\&HLYP (6,6), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_66_28A.svg)**f** 28A · 0.000000\
 −0.2019
-
-![streptocyanine-C5, BH\&HLYP (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_66_27A.svg)**e** 27A · 0.000013\
-−0.2940
-
-![streptocyanine-C5, BH\&HLYP (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_66_29A.svg)**d** 29A · 0.000000\
-−0.1873
 
 ![streptocyanine-C5, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_66_23A.svg)**a** 23A · 2.000000\
 −0.6047
 
+(b, e)
+
+![streptocyanine-C5, BH\&HLYP (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_66_27A.svg)**e** 27A · 0.000013\
+−0.2940
+
 ![streptocyanine-C5, BH\&HLYP (6,6), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_66_25A.svg)**b** 25A · 1.999987\
 −0.5160
+
+(c, d)
+
+![streptocyanine-C5, BH\&HLYP (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_66_29A.svg)**d** 29A · 0.000000\
+−0.1873
 
 ![streptocyanine-C5, BH\&HLYP (6,6), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_66_26A.svg)**c** 26A · 2.000000\
 −0.4176
@@ -132,32 +132,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![streptocyanine-C5, BH\&HLYP (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_30A.svg)**h** 30A · 0.000000\
 −0.1657
-
-![streptocyanine-C5, BH\&HLYP (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_28A.svg)**g** 28A · 0.000000\
-−0.2221
-
-![streptocyanine-C5, BH\&HLYP (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_27A.svg)**f** 27A · 0.000012\
-−0.3068
-
-![streptocyanine-C5, BH\&HLYP (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_29A.svg)**e** 29A · 0.000000\
-−0.2166
 
 ![streptocyanine-C5, BH\&HLYP (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_19A.svg)**a** 19A · 2.000000\
 −0.6750
 
+(b, g)
+
+![streptocyanine-C5, BH\&HLYP (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_28A.svg)**g** 28A · 0.000000\
+−0.2221
+
 ![streptocyanine-C5, BH\&HLYP (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_23A.svg)**b** 23A · 2.000000\
 −0.6174
 
+(c, f)
+
+![streptocyanine-C5, BH\&HLYP (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_27A.svg)**f** 27A · 0.000012\
+−0.3068
+
 ![streptocyanine-C5, BH\&HLYP (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_25A.svg)**c** 25A · 1.999988\
 −0.5299
+
+(d, e)
+
+![streptocyanine-C5, BH\&HLYP (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_29A.svg)**e** 29A · 0.000000\
+−0.2166
 
 ![streptocyanine-C5, BH\&HLYP (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/bh_88_26A.svg)**d** 26A · 2.000000\
 −0.4269
@@ -176,16 +176,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![streptocyanine-C5, M08-SO (4,4), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_44m_28A.svg)**d** 28A · 0.000000\
 −0.2224
 
-![streptocyanine-C5, M08-SO (4,4), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_44m_27A.svg)**c** 27A · 0.000213\
-−0.3198
-
 ![streptocyanine-C5, M08-SO (4,4), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_44m_25A.svg)**a** 25A · 2.000000\
 −0.5396
+
+(b, c)
+
+![streptocyanine-C5, M08-SO (4,4), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_44m_27A.svg)**c** 27A · 0.000213\
+−0.3198
 
 ![streptocyanine-C5, M08-SO (4,4), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_44m_26A.svg)**b** 26A · 1.999787\
 −0.4304
@@ -194,24 +194,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![streptocyanine-C5, M08-SO (6,6), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_66_28A.svg)**f** 28A · 0.000000\
 −0.2204
-
-![streptocyanine-C5, M08-SO (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_66_27A.svg)**e** 27A · 0.000008\
-−0.3095
-
-![streptocyanine-C5, M08-SO (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_66_29A.svg)**d** 29A · 0.000000\
-−0.2063
 
 ![streptocyanine-C5, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_66_23A.svg)**a** 23A · 2.000000\
 −0.6184
 
+(b, e)
+
+![streptocyanine-C5, M08-SO (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_66_27A.svg)**e** 27A · 0.000008\
+−0.3095
+
 ![streptocyanine-C5, M08-SO (6,6), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_66_25A.svg)**b** 25A · 1.999992\
 −0.5302
+
+(c, d)
+
+![streptocyanine-C5, M08-SO (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_66_29A.svg)**d** 29A · 0.000000\
+−0.2063
 
 ![streptocyanine-C5, M08-SO (6,6), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_66_26A.svg)**c** 26A · 2.000000\
 −0.4305
@@ -220,32 +220,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![streptocyanine-C5, M08-SO (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_30A.svg)**h** 30A · 0.000000\
 −0.1755
-
-![streptocyanine-C5, M08-SO (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_28A.svg)**g** 28A · 0.000000\
-−0.2403
-
-![streptocyanine-C5, M08-SO (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_27A.svg)**f** 27A · 0.000007\
-−0.3219
-
-![streptocyanine-C5, M08-SO (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_29A.svg)**e** 29A · 0.000000\
-−0.2352
 
 ![streptocyanine-C5, M08-SO (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_19A.svg)**a** 19A · 2.000000\
 −0.6753
 
+(b, g)
+
+![streptocyanine-C5, M08-SO (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_28A.svg)**g** 28A · 0.000000\
+−0.2403
+
 ![streptocyanine-C5, M08-SO (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_23A.svg)**b** 23A · 2.000000\
 −0.6309
 
+(c, f)
+
+![streptocyanine-C5, M08-SO (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_27A.svg)**f** 27A · 0.000007\
+−0.3219
+
 ![streptocyanine-C5, M08-SO (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_25A.svg)**c** 25A · 1.999993\
 −0.5439
+
+(d, e)
+
+![streptocyanine-C5, M08-SO (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_29A.svg)**e** 29A · 0.000000\
+−0.2352
 
 ![streptocyanine-C5, M08-SO (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/m08_88_26A.svg)**d** 26A · 2.000000\
 −0.4396
@@ -264,16 +264,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![streptocyanine-C5, ωB97X (4,4), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_44_27A.svg)**d** 27A · 0.000008\
 −0.3372
 
-![streptocyanine-C5, ωB97X (4,4), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_44_28A.svg)**c** 28A · 0.000003\
-−0.2365
-
 ![streptocyanine-C5, ωB97X (4,4), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_44_25A.svg)**a** 25A · 1.999992\
 −0.5690
+
+(b, c)
+
+![streptocyanine-C5, ωB97X (4,4), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_44_28A.svg)**c** 28A · 0.000003\
+−0.2365
 
 ![streptocyanine-C5, ωB97X (4,4), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_44_26A.svg)**b** 26A · 1.999997\
 −0.4587
@@ -282,24 +282,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![streptocyanine-C5, ωB97X (6,6), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_66_28A.svg)**f** 28A · 0.000000\
 −0.2404
-
-![streptocyanine-C5, ωB97X (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_66_27A.svg)**e** 27A · 0.000008\
-−0.3364
-
-![streptocyanine-C5, ωB97X (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_66_29A.svg)**d** 29A · 0.000000\
-−0.2275
 
 ![streptocyanine-C5, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_66_22A.svg)**a** 22A · 2.000000\
 −0.6517
 
+(b, e)
+
+![streptocyanine-C5, ωB97X (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_66_27A.svg)**e** 27A · 0.000008\
+−0.3364
+
 ![streptocyanine-C5, ωB97X (6,6), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_66_25A.svg)**b** 25A · 1.999992\
 −0.5633
+
+(c, d)
+
+![streptocyanine-C5, ωB97X (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_66_29A.svg)**d** 29A · 0.000000\
+−0.2275
 
 ![streptocyanine-C5, ωB97X (6,6), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_66_26A.svg)**c** 26A · 2.000000\
 −0.4589
@@ -308,32 +308,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![streptocyanine-C5, ωB97X (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_30A.svg)**h** 30A · 0.000000\
 −0.1744
-
-![streptocyanine-C5, ωB97X (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_28A.svg)**g** 28A · 0.000000\
-−0.2619
-
-![streptocyanine-C5, ωB97X (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_27A.svg)**f** 27A · 0.000007\
-−0.3487
-
-![streptocyanine-C5, ωB97X (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_29A.svg)**e** 29A · 0.000000\
-−0.2601
 
 ![streptocyanine-C5, ωB97X (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_19A.svg)**a** 19A · 2.000000\
 −0.7100
 
+(b, g)
+
+![streptocyanine-C5, ωB97X (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_28A.svg)**g** 28A · 0.000000\
+−0.2619
+
 ![streptocyanine-C5, ωB97X (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_23A.svg)**b** 23A · 2.000000\
 −0.6653
 
+(c, f)
+
+![streptocyanine-C5, ωB97X (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_27A.svg)**f** 27A · 0.000007\
+−0.3487
+
 ![streptocyanine-C5, ωB97X (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_25A.svg)**c** 25A · 1.999993\
 −0.5781
+
+(d, e)
+
+![streptocyanine-C5, ωB97X (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_29A.svg)**e** 29A · 0.000000\
+−0.2601
 
 ![streptocyanine-C5, ωB97X (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_strepto-c5/wb_88_26A.svg)**d** 26A · 2.000000\
 −0.4692

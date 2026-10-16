@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest5-octatetraene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![octatetraene, BH\&HLYP (4,4), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_44_31A.svg)**d** 31A · 0.000000\
 −0.0470
 
-![octatetraene, BH\&HLYP (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_44_30A.svg)**c** 30A · 0.000399\
-−0.1215
-
 ![octatetraene, BH\&HLYP (4,4), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_44_28A.svg)**a** 28A · 2.000000\
 −0.3181
+
+(b, c)
+
+![octatetraene, BH\&HLYP (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_44_30A.svg)**c** 30A · 0.000399\
+−0.1215
 
 ![octatetraene, BH\&HLYP (4,4), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_44_29A.svg)**b** 29A · 1.999601\
 −0.2443
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![octatetraene, BH\&HLYP (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_66_32A.svg)**f** 32A · 0.000000\
 −0.0303
-
-![octatetraene, BH\&HLYP (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_66_31A.svg)**e** 31A · 0.000001\
-−0.0627
-
-![octatetraene, BH\&HLYP (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_66_30A.svg)**d** 30A · 0.000424\
-−0.1248
 
 ![octatetraene, BH\&HLYP (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_66_27A.svg)**a** 27A · 2.000000\
 −0.3816
 
+(b, e)
+
+![octatetraene, BH\&HLYP (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_66_31A.svg)**e** 31A · 0.000001\
+−0.0627
+
 ![octatetraene, BH\&HLYP (6,6), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_66_28A.svg)**b** 28A · 1.999999\
 −0.3229
+
+(c, d)
+
+![octatetraene, BH\&HLYP (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_66_30A.svg)**d** 30A · 0.000424\
+−0.1248
 
 ![octatetraene, BH\&HLYP (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_66_29A.svg)**c** 29A · 1.999576\
 −0.2501
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![octatetraene, BH\&HLYP (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_32A.svg)**h** 32A · 0.000000\
 −0.0533
-
-![octatetraene, BH\&HLYP (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_33A.svg)**g** 33A · 0.000000\
-−0.0410
-
-![octatetraene, BH\&HLYP (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_31A.svg)**f** 31A · 0.000000\
-−0.0740
-
-![octatetraene, BH\&HLYP (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_30A.svg)**e** 30A · 0.000674\
-−0.1290
 
 ![octatetraene, BH\&HLYP (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_26A.svg)**a** 26A · 2.000000\
 −0.4136
 
+(b, g)
+
+![octatetraene, BH\&HLYP (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_33A.svg)**g** 33A · 0.000000\
+−0.0410
+
 ![octatetraene, BH\&HLYP (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_27A.svg)**b** 27A · 2.000000\
 −0.3822
 
+(c, f)
+
+![octatetraene, BH\&HLYP (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_31A.svg)**f** 31A · 0.000000\
+−0.0740
+
 ![octatetraene, BH\&HLYP (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_28A.svg)**c** 28A · 2.000000\
 −0.3310
+
+(d, e)
+
+![octatetraene, BH\&HLYP (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_30A.svg)**e** 30A · 0.000674\
+−0.1290
 
 ![octatetraene, BH\&HLYP (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/bh_88_29A.svg)**d** 29A · 1.999326\
 −0.2522
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![octatetraene, M08-SO (4,4), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_44m_31A.svg)**d** 31A · 0.000000\
 −0.0800
 
-![octatetraene, M08-SO (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_44m_30A.svg)**c** 30A · 0.000064\
-−0.1562
-
 ![octatetraene, M08-SO (4,4), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_44m_28A.svg)**a** 28A · 2.000000\
 −0.3358
+
+(b, c)
+
+![octatetraene, M08-SO (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_44m_30A.svg)**c** 30A · 0.000064\
+−0.1562
 
 ![octatetraene, M08-SO (4,4), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_44m_29A.svg)**b** 29A · 1.999936\
 −0.2648
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![octatetraene, M08-SO (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_66_32A.svg)**f** 32A · 0.000000\
 −0.0467
-
-![octatetraene, M08-SO (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_66_31A.svg)**e** 31A · 0.000000\
-−0.0798
-
-![octatetraene, M08-SO (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_66_30A.svg)**d** 30A · 0.000095\
-−0.1430
 
 ![octatetraene, M08-SO (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_66_27A.svg)**a** 27A · 2.000000\
 −0.3953
 
+(b, e)
+
+![octatetraene, M08-SO (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_66_31A.svg)**e** 31A · 0.000000\
+−0.0798
+
 ![octatetraene, M08-SO (6,6), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_66_28A.svg)**b** 28A · 2.000000\
 −0.3374
+
+(c, d)
+
+![octatetraene, M08-SO (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_66_30A.svg)**d** 30A · 0.000095\
+−0.1430
 
 ![octatetraene, M08-SO (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_66_29A.svg)**c** 29A · 1.999905\
 −0.2658
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![octatetraene, M08-SO (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_32A.svg)**h** 32A · 0.000000\
 −0.0702
-
-![octatetraene, M08-SO (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_33A.svg)**g** 33A · 0.000000\
-−0.0589
-
-![octatetraene, M08-SO (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_31A.svg)**f** 31A · 0.000000\
-−0.0908
-
-![octatetraene, M08-SO (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_30A.svg)**e** 30A · 0.000163\
-−0.1481
 
 ![octatetraene, M08-SO (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_26A.svg)**a** 26A · 2.000000\
 −0.4266
 
+(b, g)
+
+![octatetraene, M08-SO (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_33A.svg)**g** 33A · 0.000000\
+−0.0589
+
 ![octatetraene, M08-SO (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_27A.svg)**b** 27A · 2.000000\
 −0.3967
 
+(c, f)
+
+![octatetraene, M08-SO (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_31A.svg)**f** 31A · 0.000000\
+−0.0908
+
 ![octatetraene, M08-SO (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_28A.svg)**c** 28A · 2.000000\
 −0.3470
+
+(d, e)
+
+![octatetraene, M08-SO (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_30A.svg)**e** 30A · 0.000163\
+−0.1481
 
 ![octatetraene, M08-SO (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/m08_88_29A.svg)**d** 29A · 1.999837\
 −0.2684
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![octatetraene, ωB97X (4,4), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_44m_31A.svg)**d** 31A · 0.000000\
 −0.0964
 
-![octatetraene, ωB97X (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_44m_30A.svg)**c** 30A · 0.000159\
-−0.1801
-
 ![octatetraene, ωB97X (4,4), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_44m_28A.svg)**a** 28A · 2.000000\
 −0.3694
+
+(b, c)
+
+![octatetraene, ωB97X (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_44m_30A.svg)**c** 30A · 0.000159\
+−0.1801
 
 ![octatetraene, ωB97X (4,4), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_44m_29A.svg)**b** 29A · 1.999841\
 −0.2943
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![octatetraene, ωB97X (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_66_32A.svg)**f** 32A · 0.000000\
 −0.0530
-
-![octatetraene, ωB97X (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_66_31A.svg)**e** 31A · 0.000000\
-−0.0927
-
-![octatetraene, ωB97X (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_66_30A.svg)**d** 30A · 0.000397\
-−0.1623
 
 ![octatetraene, ωB97X (6,6), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_66_27A.svg)**a** 27A · 2.000000\
 −0.4320
 
+(b, e)
+
+![octatetraene, ωB97X (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_66_31A.svg)**e** 31A · 0.000000\
+−0.0927
+
 ![octatetraene, ωB97X (6,6), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_66_28A.svg)**b** 28A · 2.000000\
 −0.3689
+
+(c, d)
+
+![octatetraene, ωB97X (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_66_30A.svg)**d** 30A · 0.000397\
+−0.1623
 
 ![octatetraene, ωB97X (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_66_29A.svg)**c** 29A · 1.999603\
 −0.2937
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![octatetraene, ωB97X (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_32A.svg)**h** 32A · 0.000000\
 −0.0855
-
-![octatetraene, ωB97X (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_33A.svg)**g** 33A · 0.000000\
-−0.0681
-
-![octatetraene, ωB97X (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_31A.svg)**f** 31A · 0.000000\
-−0.1018
-
-![octatetraene, ωB97X (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_30A.svg)**e** 30A · 0.000790\
-−0.1685
 
 ![octatetraene, ωB97X (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_26A.svg)**a** 26A · 2.000000\
 −0.4561
 
+(b, g)
+
+![octatetraene, ωB97X (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_33A.svg)**g** 33A · 0.000000\
+−0.0681
+
 ![octatetraene, ωB97X (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_27A.svg)**b** 27A · 2.000000\
 −0.4325
 
+(c, f)
+
+![octatetraene, ωB97X (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_31A.svg)**f** 31A · 0.000000\
+−0.1018
+
 ![octatetraene, ωB97X (8,8), orbital 28A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_28A.svg)**c** 28A · 2.000000\
 −0.3880
+
+(d, e)
+
+![octatetraene, ωB97X (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_30A.svg)**e** 30A · 0.000790\
+−0.1685
 
 ![octatetraene, ωB97X (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_octatetraene/wb_88_29A.svg)**d** 29A · 1.999210\
 −0.2974

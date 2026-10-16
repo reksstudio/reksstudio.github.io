@@ -1,0 +1,88 @@
+---
+import { SPINS, f1, f4, geomsOf, rungs } from '../../lib/zeth.mjs';
+
+interface Props {
+  c: any;
+}
+
+// Per geometry and multiplicity: bars of n_i/2 of the cell height, centred on the HOMO | LUMO divide; y0, y1 right of S0
+const { c } = Astro.props;
+const CW = 14;
+const CG = 2;
+const BH = 18;
+const LH = 12;
+const RG = 6;
+const L = 58;
+const TOP = 26;
+const NCOL = 2 * rungs.length;
+const PLOT = NCOL * (CW + CG);
+const R = 112;
+// right edge of the y0 column (y1 ends at W)
+const XY0 = 266;
+const W = L + PLOT + R;
+const H = TOP + rungs.length * (BH + LH + RG);
+const xc = (col) => L + col * (CW + CG);
+const xDiv = xc(NCOL / 2) - CG / 2;
+const groups = geomsOf(c).map((g) => ({
+  g,
+  panels: SPINS.map((sp) => ({
+    sp,
+    label: `${c.id} ${g.plain}, ${sp.label}: natural occupations per active space in the order printed, 0 to 2${sp.s === '0' ? '; y0, y1' : ''}`,
+    rows: rungs.map((rg, i) => {
+      const r = c.geoms[g.key].rungs[rg.key];
+      const n = r?.occ[sp.s];
+      const k = r ? r.slots.length / 2 : 0;
+      return { rg, r, y0: TOP + i * (BH + LH + RG), cells: n && n.map((v, j) => ({ v, slot: r.slots[j], x: xc(NCOL / 2 - k + j) })) };
+    }),
+  })),
+}));
+---
+{groups.map(({ g, panels }) => (
+  <>
+    <p class="zsub" set:html={g.html} />
+    <div class="zocc">
+      {panels.map((p) => (
+        <svg class={`zc zd ${p.sp.cls}`} viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" aria-label={p.label}>
+          <text x="0" y="14" class="ttl">{p.sp.label}</text>
+          {p.sp.s === '0' && (
+            <>
+              <text x={XY0} y="14" text-anchor="end" class="tick">y<tspan class="sb" dy="3">0</tspan></text>
+              <text x={W} y="14" text-anchor="end" class="tick">y<tspan class="sb" dy="3">1</tspan></text>
+            </>
+          )}
+          {p.rows.map((row) => (
+            <g>
+              <text x={L - 6} y={row.y0 + BH / 2 + 4} text-anchor="end" class="tick">{row.rg.label}</text>
+              {!row.r ? (
+                <text x={L} y={row.y0 + BH / 2 + 4} class="tick nc">– not computed</text>
+              ) : !row.cells ? (
+                <>
+                  <line x1={xDiv} x2={xDiv} y1={row.y0 - 2} y2={row.y0 + BH + 2} class="div" />
+                  <text x={xDiv + 6} y={row.y0 + BH / 2 + 4} class="tick">n/a</text>
+                </>
+              ) : (
+                <>
+                  {row.cells.map((cl) => (
+                    <g>
+                      <rect x={cl.x} y={row.y0} width={CW} height={BH} class="cell" />
+                      <rect x={cl.x} y={f1(row.y0 + BH - (cl.v / 2) * BH)} width={CW} height={f1((cl.v / 2) * BH)} class="bar"><title>{row.rg.label}, slot {cl.slot}: {f4(cl.v)}</title></rect>
+                      <text x={cl.x + CW / 2} y={row.y0 + BH + 10} text-anchor="middle" class="sl">{cl.slot}</text>
+                    </g>
+                  ))}
+                  <line x1={xDiv} x2={xDiv} y1={row.y0 - 2} y2={row.y0 + BH + 2} class="div" />
+                  {p.sp.s === '0' && (
+                    <>
+                      <text x={XY0} y={row.y0 + BH / 2 + 4} text-anchor="end" class="val">{f4(row.r.y0)}</text>
+                      <text x={W} y={row.y0 + BH / 2 + 4} text-anchor="end" class="val">{f4(row.r.y1)}</text>
+                    </>
+                  )}
+                </>
+              )}
+            </g>
+          ))}
+        </svg>
+      ))}
+    </div>
+  </>
+))}
+<p class="qcap">Natural occupations n<sub>i</sub> of the SI state (0 to 2, the cell is 2), the "occ" line of the output block "Natural orbitals of the active space" in the order printed, centred on the HOMO | LUMO divide (dashed), so an orbital keeps its column along the ladder; y<sub>0</sub> = n<sub>LUNO</sub>, y<sub>1</sub> = n<sub>LUNO+1</sub>, as the code prints them; y<sub>0</sub>, y<sub>1</sub> for S0 only (n/a for T1, Q1); otherwise n/a: no such state or orbital in the SI space of this active space.</p>

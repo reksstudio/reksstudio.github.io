@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenethione/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -116,16 +116,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyclopropenethione, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/bh_44m_20A.svg)**d** 20A · 0.000003\
 −0.1083
 
-![cyclopropenethione, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/bh_44m_19A.svg)**c** 19A · 0.000000\
-−0.1458
-
 ![cyclopropenethione, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/bh_44m_17A.svg)**a** 17A · 1.999997\
 −0.3286
+
+(b, c)
+
+![cyclopropenethione, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/bh_44m_19A.svg)**c** 19A · 0.000000\
+−0.1458
 
 ![cyclopropenethione, BH\&HLYP (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/bh_44m_18A.svg)**b** 18A · 2.000000\
 −0.3038
@@ -134,16 +134,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyclopropenethione, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/m08_44m_20A.svg)**d** 20A · 0.000001\
 −0.1229
 
-![cyclopropenethione, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/m08_44m_19A.svg)**c** 19A · 0.000000\
-−0.1531
-
 ![cyclopropenethione, M08-SO (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/m08_44m_17A.svg)**a** 17A · 1.999999\
 −0.3408
+
+(b, c)
+
+![cyclopropenethione, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/m08_44m_19A.svg)**c** 19A · 0.000000\
+−0.1531
 
 ![cyclopropenethione, M08-SO (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/m08_44m_18A.svg)**b** 18A · 2.000000\
 −0.3114
@@ -152,16 +152,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyclopropenethione, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/wb_44m_20A.svg)**d** 20A · 0.000002\
 −0.1568
 
-![cyclopropenethione, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/wb_44m_19A.svg)**c** 19A · 0.000000\
-−0.1891
-
 ![cyclopropenethione, ωB97X (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/wb_44m_17A.svg)**a** 17A · 1.999998\
 −0.3782
+
+(b, c)
+
+![cyclopropenethione, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/wb_44m_19A.svg)**c** 19A · 0.000000\
+−0.1891
 
 ![cyclopropenethione, ωB97X (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenethione/wb_44m_18A.svg)**b** 18A · 2.000000\
 −0.3474

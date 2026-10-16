@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-propynal/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -107,16 +107,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![propynal, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_44m_16A.svg)**d** 16A · 0.000000\
 −0.1304
 
-![propynal, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_44m_15A.svg)**c** 15A · 0.000000\
-−0.2440
-
 ![propynal, BH\&HLYP (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_44m_13A.svg)**a** 13A · 2.000000\
 −0.3833
+
+(b, c)
+
+![propynal, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_44m_15A.svg)**c** 15A · 0.000000\
+−0.2440
 
 ![propynal, BH\&HLYP (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_44m_12A.svg)**b** 12A · 2.000000\
 −0.3958
@@ -125,24 +125,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![propynal, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_66_17A.svg)**f** 17A · 0.000000\
 −0.0716
-
-![propynal, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_66_16A.svg)**e** 16A · 0.000124\
-−0.1219
-
-![propynal, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_66_15A.svg)**d** 15A · 0.000190\
-−0.1853
 
 ![propynal, BH\&HLYP (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_66_11A.svg)**a** 11A · 2.000000\
 −0.4987
 
+(b, e)
+
+![propynal, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_66_16A.svg)**e** 16A · 0.000124\
+−0.1219
+
 ![propynal, BH\&HLYP (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_66_14A.svg)**b** 14A · 1.999876\
 −0.3999
+
+(c, d)
+
+![propynal, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_66_15A.svg)**d** 15A · 0.000190\
+−0.1853
 
 ![propynal, BH\&HLYP (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_66_12A.svg)**c** 12A · 1.999810\
 −0.4036
@@ -151,32 +151,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![propynal, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_17A.svg)**h** 17A · 0.000000\
 −0.1123
-
-![propynal, BH\&HLYP (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_18A.svg)**g** 18A · 0.000000\
-−0.0790
-
-![propynal, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_16A.svg)**f** 16A · 0.000000\
-−0.1344
-
-![propynal, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_15A.svg)**e** 15A · 0.000223\
-−0.2091
 
 ![propynal, BH\&HLYP (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_13A.svg)**a** 13A · 2.000000\
 −0.4102
 
+(b, g)
+
+![propynal, BH\&HLYP (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_18A.svg)**g** 18A · 0.000000\
+−0.0790
+
 ![propynal, BH\&HLYP (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_11A.svg)**b** 11A · 2.000000\
 −0.5168
 
+(c, f)
+
+![propynal, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_16A.svg)**f** 16A · 0.000000\
+−0.1344
+
 ![propynal, BH\&HLYP (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_14A.svg)**c** 14A · 2.000000\
 −0.4093
+
+(d, e)
+
+![propynal, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_15A.svg)**e** 15A · 0.000223\
+−0.2091
 
 ![propynal, BH\&HLYP (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/bh_88_12A.svg)**d** 12A · 1.999777\
 −0.4153
@@ -195,16 +195,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![propynal, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_44m_16A.svg)**d** 16A · 0.000000\
 −0.1400
 
-![propynal, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_44m_15A.svg)**c** 15A · 0.000000\
-−0.2499
-
 ![propynal, M08-SO (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_44m_13A.svg)**a** 13A · 2.000000\
 −0.3910
+
+(b, c)
+
+![propynal, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_44m_15A.svg)**c** 15A · 0.000000\
+−0.2499
 
 ![propynal, M08-SO (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_44m_12A.svg)**b** 12A · 2.000000\
 −0.3999
@@ -213,24 +213,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![propynal, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_66_17A.svg)**f** 17A · 0.000000\
 −0.0885
-
-![propynal, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_66_16A.svg)**e** 16A · 0.000011\
-−0.1326
-
-![propynal, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_66_15A.svg)**d** 15A · 0.000045\
-−0.1997
 
 ![propynal, M08-SO (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_66_11A.svg)**a** 11A · 2.000000\
 −0.5105
 
+(b, e)
+
+![propynal, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_66_16A.svg)**e** 16A · 0.000011\
+−0.1326
+
 ![propynal, M08-SO (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_66_14A.svg)**b** 14A · 1.999989\
 −0.4071
+
+(c, d)
+
+![propynal, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_66_15A.svg)**d** 15A · 0.000045\
+−0.1997
 
 ![propynal, M08-SO (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_66_12A.svg)**c** 12A · 1.999955\
 −0.4137
@@ -239,32 +239,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![propynal, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_17A.svg)**h** 17A · 0.000000\
 −0.1254
-
-![propynal, M08-SO (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_18A.svg)**g** 18A · 0.000000\
-−0.0989
-
-![propynal, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_16A.svg)**f** 16A · 0.000000\
-−0.1456
-
-![propynal, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_15A.svg)**e** 15A · 0.000063\
-−0.2214
 
 ![propynal, M08-SO (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_13A.svg)**a** 13A · 2.000000\
 −0.4189
 
+(b, g)
+
+![propynal, M08-SO (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_18A.svg)**g** 18A · 0.000000\
+−0.0989
+
 ![propynal, M08-SO (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_11A.svg)**b** 11A · 2.000000\
 −0.5286
 
+(c, f)
+
+![propynal, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_16A.svg)**f** 16A · 0.000000\
+−0.1456
+
 ![propynal, M08-SO (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_14A.svg)**c** 14A · 2.000000\
 −0.4162
+
+(d, e)
+
+![propynal, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_15A.svg)**e** 15A · 0.000063\
+−0.2214
 
 ![propynal, M08-SO (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/m08_88_12A.svg)**d** 12A · 1.999937\
 −0.4253
@@ -283,16 +283,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![propynal, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_44m_16A.svg)**d** 16A · 0.000000\
 −0.1717
 
-![propynal, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_44m_15A.svg)**c** 15A · 0.000000\
-−0.2805
-
 ![propynal, ωB97X (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_44m_12A.svg)**a** 12A · 2.000000\
 −0.4313
+
+(b, c)
+
+![propynal, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_44m_15A.svg)**c** 15A · 0.000000\
+−0.2805
 
 ![propynal, ωB97X (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_44m_13A.svg)**b** 13A · 2.000000\
 −0.4232
@@ -301,24 +301,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![propynal, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_66_17A.svg)**f** 17A · 0.000000\
 −0.1043
-
-![propynal, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_66_16A.svg)**e** 16A · 0.000028\
-−0.1569
-
-![propynal, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_66_15A.svg)**d** 15A · 0.000107\
-−0.2313
 
 ![propynal, ωB97X (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_66_11A.svg)**a** 11A · 2.000000\
 −0.5428
 
+(b, e)
+
+![propynal, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_66_16A.svg)**e** 16A · 0.000028\
+−0.1569
+
 ![propynal, ωB97X (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_66_13A.svg)**b** 13A · 1.999972\
 −0.4375
+
+(c, d)
+
+![propynal, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_66_15A.svg)**d** 15A · 0.000107\
+−0.2313
 
 ![propynal, ωB97X (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_66_12A.svg)**c** 12A · 1.999893\
 −0.4436
@@ -327,32 +327,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![propynal, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_17A.svg)**h** 17A · 0.000000\
 −0.1462
-
-![propynal, ωB97X (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_18A.svg)**g** 18A · 0.000000\
-−0.1199
-
-![propynal, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_16A.svg)**f** 16A · 0.000000\
-−0.1623
-
-![propynal, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_15A.svg)**e** 15A · 0.000114\
-−0.2537
 
 ![propynal, ωB97X (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_13A.svg)**a** 13A · 2.000000\
 −0.4471
 
+(b, g)
+
+![propynal, ωB97X (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_18A.svg)**g** 18A · 0.000000\
+−0.1199
+
 ![propynal, ωB97X (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_11A.svg)**b** 11A · 2.000000\
 −0.5623
 
+(c, f)
+
+![propynal, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_16A.svg)**f** 16A · 0.000000\
+−0.1623
+
 ![propynal, ωB97X (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_14A.svg)**c** 14A · 2.000000\
 −0.4448
+
+(d, e)
+
+![propynal, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_15A.svg)**e** 15A · 0.000114\
+−0.2537
 
 ![propynal, ωB97X (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_propynal/wb_88_12A.svg)**d** 12A · 1.999886\
 −0.4570

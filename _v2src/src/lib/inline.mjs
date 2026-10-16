@@ -1,4 +1,4 @@
-// Inline mini-markup of reference.json / properties.json / blocks.json text fields:
+// Inline mini-markup of data text fields:
 //   `x` -> code    **x** -> strong    *x* -> em    _{x} -> sub    ^{x} -> sup
 // Code content is literal except _{x} and ^{x}; other spans nest. Everything else is text.
 import temml from 'temml';
@@ -14,8 +14,7 @@ const LATIN_BAR = new RegExp(`<mover>${NOT_MOVER}<mi>[A-Za-z]${NOT_MOVER}${OVERL
 
 // TeX -> MathML (temml; a TeX error throws). \bar on one Latin letter -> one <mi> holding the math-italic
 // letter + U+0304; any other overbar over Latin letters throws. Display math keeps display="block" only.
-// The TeX source rides along as <semantics> + <annotation encoding="application/x-tex">, read and stripped
-// after the build (ai-layer.mjs).
+// The TeX source rides along as <semantics> + <annotation encoding="application/x-tex">.
 export function tex(s, display) {
   const out = temml
     .renderToString(s, { displayMode: display, throwOnError: true, annotate: true })
@@ -31,7 +30,8 @@ const TAG = { _: 'sub', '^': 'sup' };
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '{': '&#123;', '}': '&#125;' };
 export const escape = (s) => s.replace(/[&<>{}]/g, (c) => ESC[c]);
 
-function codeHtml(s) {
+// escaped text with _{x} -> <sub>x</sub>, ^{x} -> <sup>x</sup> only
+export function codeHtml(s) {
   let out = '';
   let last = 0;
   for (const m of s.matchAll(SCRIPT)) {
@@ -47,7 +47,11 @@ function noMath(s) {
   return s;
 }
 
-// HTML for templates (set:html); quotes stay literal
+// count with thousands separated by sep (default narrow no-break space U+202F): 1234567 -> "1 234 567"
+const NNBSP = String.fromCodePoint(0x202f);
+export const fmtCount = (n, sep = NNBSP) => n.toLocaleString('en-US').replaceAll(',', sep);
+
+// Markup -> HTML; quotes stay literal
 export function toHtml(s) {
   noMath(s);
   let out = '';

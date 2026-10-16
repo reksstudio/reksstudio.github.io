@@ -1,0 +1,173 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Nav from '../../../../components/Nav.astro';
+import Footer from '../../../../components/Footer.astro';
+import OrbBlock from '../../../../components/main/OrbBlock.astro';
+import QuestElements from '../../../../components/main/QuestElements.astro';
+import Table from '../../../../components/main/Table.astro';
+import ZethDefs from '../../../../components/main/ZethDefs.astro';
+import ZethExp from '../../../../components/main/ZethExp.astro';
+import ZethLit from '../../../../components/main/ZethLit.astro';
+import ZethOcc from '../../../../components/main/ZethOcc.astro';
+import ZethStates from '../../../../components/main/ZethStates.astro';
+import { fmtCount } from '../../../../lib/inline.mjs';
+import { html } from '../../../../lib/overview.mjs';
+import { GAP_TWIN, KCAL, NOT_COMPUTED, absentLine, cardId, compounds, formulaMarkup, geoms, geomsOf, leadText, method, rungId, rungs, sg, sigText, title, topRung, zeth } from '../../../../lib/zeth.mjs';
+import { pairs } from '../../../../lib/zethexp.mjs';
+import { LIT_HIDDEN } from '../../../../lib/zethlit.mjs';
+import '../../../../styles/main.css';
+
+export function getStaticPaths() {
+  return compounds.map((c, i) => ({ params: { cmp: c.slug }, props: { c, prev: compounds[i - 1], next: compounds[i + 1] } }));
+}
+
+const base = import.meta.env.BASE_URL;
+const { c, prev, next } = Astro.props;
+const gs = geomsOf(c);
+const name = title(c);
+const absent = absentLine(c);
+// rows active space, columns geometries; value(rung record) per cell, "–" where not computed
+const byGeom = (label, value) => ({
+  title: label,
+  head: ['Active space', ...gs.map((g) => g.markup)],
+  rows: rungs.map((rg) => [rg.label, ...gs.map((g) => {
+    const r = c.geoms[g.key].rungs[rg.key];
+    return r ? value(r) : NOT_COMPUTED;
+  })]),
+});
+const gaps = GAP_TWIN.map((t) => byGeom(t.title, t.cell));
+// ΔE_geom rows: S0, T1, Q1 per active space and geometry; a single "–" row where the zero geometry is missing
+const zero = geoms.find((g) => g.key === c.zero);
+const geo = {
+  title: 'ΔE_{geom} / kcal mol^{−1}',
+  head: ['Active space', 'State', ...gs.map((g) => g.markup)],
+  rows: rungs.flatMap((rg) => {
+    const rs = gs.map((g) => c.geoms[g.key].rungs[rg.key]);
+    if (!c.geoms[c.zero].rungs[rg.key]) return [[rg.label, NOT_COMPUTED, ...gs.map(() => NOT_COMPUTED)]];
+    return ['S0', 'T1', 'Q1'].map((s) => [rg.label, s, ...rs.map((r) => (r ? sg(r.geo[s], 1) : NOT_COMPUTED))]);
+  }),
+};
+const hasGap = geo.rows.some((row) => row.includes(NOT_COMPUTED));
+const STATES = zeth.states;
+const stateTable = (r) => ({
+  head: ['State', 'E − E(S0) / eV', 'f (length)', 'Leading patterns', 'ΔD'],
+  rows: STATES.map((label) => {
+    const s = r.states.find((x) => x.label === label);
+    if (s.eV == null) return [label, 'n/a', '', '', ''];
+    return [label, sg(s.eV), s.f == null ? '' : `${s.f.toFixed(5)}${s.flag ? '*' : ''}`, leadText(s), sigText(s)];
+  }),
+});
+// "ΔE_ST +6.9 · ΔE_SQ +63.0 kcal mol⁻¹", the unit after the last number
+const gapLine = (r) =>
+  r.dE.SQ == null
+    ? `ΔE<sub>ST</sub> <b>${sg(r.dE.ST, 1)}</b> ${KCAL} · ΔE<sub>SQ</sub> <b>n/a</b>`
+    : `ΔE<sub>ST</sub> <b>${sg(r.dE.ST, 1)}</b> · ΔE<sub>SQ</sub> <b>${sg(r.dE.SQ, 1)}</b> ${KCAL}`;
+const flagged = (r) => r.states.some((s) => s.flag);
+const ORB_KEY = '<b>slot</b> MO · SA-REKS FON / ε (E<sub>h</sub>); header: (bonding, antibonding) slots of the pair';
+const NBSP = String.fromCodePoint(0xa0);
+// non-breaking spaces keep "2S = s: n" on one line
+const runLine = (r) =>
+  `SI configurations ${Object.entries(r.si).map(([s, v]) => `2S${NBSP}=${NBSP}${s}:${NBSP}${fmtCount(v.n)}`).join(', ')} · wall time ${r.run.wall_s} s, ${r.run.threads} threads · ${r.run.host}, ${r.run.date.slice(0, 10)} · Psi4 ${r.run.commit}`;
+// whether experiment pairs exist for this core
+const hasExp = pairs(c.id).length > 0;
+const sections = [
+  ['gaps', 'Spin gaps'],
+  ['geometries', 'Energies across geometries'],
+  ['states', 'SI states'],
+  ['occupations', 'Natural occupations'],
+  ...(LIT_HIDDEN ? [] : [['literature', 'Literature']]),
+  ...(hasExp ? [['experiment', 'vs experiment']] : []),
+  ['calculations', 'Calculations'],
+];
+---
+<Base title={`${c.id}: ${name} — Zethrenes — REKS Studio`}>
+<Nav variant="light" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href={`${base}main/`}>Overview</a> › <a href={`${base}main/results/`}>Results</a> › <a href="../">Zethrenes</a> › <span>{c.id}</span></nav>
+    <h1>{name} ({c.id})</h1>
+    <p class="ident"><Fragment set:html={html(formulaMarkup(c.formula))} />, {c.atoms} atoms, {c.nbf} basis functions ({method.basis}); compound {c.figure} of Hu et al. (2016). Geometries: <Fragment set:html={gs.map((g) => g.html).join(', ')} />. {absent && <Fragment set:html={absent} />}</p>
+    <p class="sections zlinks">{gs.map((g, i) => <>{i > 0 && ' · '}<a href={`#${rungId(g, topRung(c, g))}`}><Fragment set:html={g.html} /> {topRung(c, g).label} details</a></>)}</p>
+    <p class="sections">{sections.map(([id, t], i) => <>{i > 0 && ' · '}<a href={`#${id}`}>{t}</a></>)}</p>
+  </div>
+</header>
+
+<div class="wrap mbody">
+  <section class="mblock">
+    <figure class="qmol">
+      <img src={`${base}${c.svg}`} width={c.w} height={c.h} alt={`${c.id}: drawing of the R_cs geometry`} />
+      <figcaption>R<sub>cs</sub> geometry, 16 px/Å: explicit hydrogens, no bond orders.</figcaption>
+    </figure>
+    <QuestElements elements={['C', 'H']} />
+  </section>
+
+  <section class="mblock" id="gaps">
+    <h2>Spin gaps</h2>
+    <ZethDefs />
+    <div class="zt2">{gaps.map((t) => <div><Table table={t} numeric /></div>)}</div>
+    <p class="qcap">–: not computed; n/a: no 2S = 4 state in the SI space of this active space.</p>
+  </section>
+
+  <section class="mblock" id="geometries">
+    <h2>Energies across geometries</h2>
+    <p class="zf">ΔE<sub>geom</sub>(X, R) = E<sub>X</sub>(R) − E<sub>S0</sub>(<Fragment set:html={zero.html} />)</p>
+    <p class="qcap">Same active space; zero = E(S0) at <Fragment set:html={zero.html} />; SI-SA-REKS electronic energies; positive: above the zero.{hasGap && ` ${NOT_COMPUTED}: not computed.`}</p>
+    <Table table={geo} numeric grouped />
+  </section>
+
+  <section class="mblock" id="states">
+    <h2>SI states along the ladder</h2>
+    <ZethStates c={c} />
+  </section>
+
+  <section class="mblock" id="occupations">
+    <h2>Natural occupations</h2>
+    <ZethOcc c={c} />
+  </section>
+
+  {!LIT_HIDDEN && (
+    <section class="mblock" id="literature">
+      <h2>Literature</h2>
+      <ZethLit core={c.id} />
+    </section>
+  )}
+
+  {hasExp && (
+    <section class="mblock" id="experiment">
+      <h2>REKS vs experiment</h2>
+      <ZethExp core={c.id} />
+    </section>
+  )}
+
+  <section class="mblock" id="calculations">
+    <h2>Calculations</h2>
+    <p class="qcap">One entry per geometry and active space; the summary gives ΔE<sub>ST</sub>, ΔE<sub>SQ</sub> / kcal mol⁻¹ to 1 decimal. Inside: the run line, the SI states (f (length) of S0 → Sn; leading excitation patterns as a share of the listed configurations, given where these carry at least half of the state, else the listed share; ΔD entries with |ΔD| ≥ 0.15, as in the hover of the SI-state chart), the SA-REKS active orbitals and the input. Inputs as run; starting orbitals read from a seed file (RKS or ROHF orbitals; for HZ and HZD the orbitals of an earlier REKS(2,2) run), active pairs set per rung.</p>
+    <p class="qcap">Orbitals: one column per active pair as the code pairs them, frontier pair first, antibonding orbital above, bonding below. Contours ±{method.levels.join(', ±')} a.u. in a plane {method.planeA} Å above the molecular plane; blue + / copper −.</p>
+    {gs.map((g) => (
+      <>
+        <h3 id={`geom-${g.id}`} set:html={g.html} />
+        {rungs.map((rg) => {
+          const r = c.geoms[g.key].rungs[rg.key];
+          if (!r) return <p class="zrung"><Fragment set:html={g.html} /> · {rg.label} · – (not computed)</p>;
+          return (
+            <details class="zcalc" id={rungId(g, rg)}>
+              <summary><span class="zs"><Fragment set:html={g.html} /> · {rg.label} · {r.slots.length} orbitals ·</span> <span class="zs" set:html={gapLine(r)} /></summary>
+              <p class="qcap">{runLine(r)} · input <a href={`${base}${r.input}`}>{r.input.split('/').at(-1)}</a></p>
+              <div class="zst"><Table table={stateTable(r)} numeric /></div>
+              {flagged(r) && <p class="qcap">* f (length) and f (velocity) differ by more than 3× (tested when f &gt; 10<sup>−3</sup>).</p>}
+              <OrbBlock pairs={r.pairs} alt={`${c.id} ${g.plain} ${rg.label}`} legend={ORB_KEY} auto fonDigits={4} epsDigits={6} />
+            </details>
+          );
+        })}
+      </>
+    ))}
+  </section>
+
+  <p class="siblings">{prev && <><a href={`../${prev.slug}/`}>← {prev.id}</a> · </>}<a href={`../#${cardId(c)}`}>Back to the compounds</a>{next && <> · <a href={`../${next.slug}/`}>{next.id} →</a></>}</p>
+</div>
+</main>
+
+<Footer />
+</Base>

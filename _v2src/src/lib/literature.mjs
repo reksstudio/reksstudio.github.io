@@ -11,14 +11,22 @@ export const GROUPS = ['Method', 'Properties', 'Solvers', 'Optimization and dyna
 
 const functions = new Map(lit.functions.map((f) => [f.id, f]));
 const entries = new Map();
+// throws unless: slug key, DOI (article) or ISBN/DOI (other types), no "et al." in authors
+export function checkEntry(e, file) {
+  const fail = (msg) => {
+    throw new Error(`${file}: ${e.key}: ${msg}`);
+  };
+  if (!KEY.test(e.key)) fail('key is not a slug');
+  if (e.type === 'article' && !e.doi) fail('article without DOI');
+  if (e.type !== 'article' && !e.isbn && !e.doi) fail(`${e.type} without ISBN or DOI`);
+  if (e.authors.some((a) => a.includes('et al'))) fail('"et al." in authors');
+}
 for (const e of lit.entries) {
   const fail = (msg) => {
     throw new Error(`literature.json: ${e.key}: ${msg}`);
   };
-  if (!KEY.test(e.key)) fail('key is not a slug');
+  checkEntry(e, 'literature.json');
   if (entries.has(e.key)) fail('duplicate key');
-  if (e.type === 'article' && !e.doi) fail('article without DOI');
-  if (e.type !== 'article' && !e.isbn && !e.doi) fail(`${e.type} without ISBN or DOI`);
   if (!e.for?.length) fail('no "for"');
   for (const { fn } of e.for) if (!functions.has(fn)) fail(`unknown function "${fn}"`);
   if (!GROUPS.includes(e.group)) fail(`unknown group "${e.group}"`);
@@ -41,6 +49,9 @@ const surname = (author) => author.split(',')[0];
 const authorShort = (a) => (a.length === 1 ? surname(a[0]) : a.length === 2 ? `${surname(a[0])} and ${surname(a[1])}` : `${surname(a[0])} et al.`);
 const source = (e) => e.journal ?? e.series ?? e.booktitle ?? e.title;
 const firstPage = (pages) => pages?.split('–')[0];
+
+// "Hu et al. 2016"; with the journal when two cited references share it: "Hu et al., J. Am. Chem. Soc. 2016"
+export const authorYear = (e, journal) => (journal ? `${authorShort(e.authors)}, ${source(e)} ${e.year}` : `${authorShort(e.authors)} ${e.year}`);
 
 // "Filatov, WIREs Comput. Mol. Sci. 2015, 5, 146"
 export const shortRef = (e) =>

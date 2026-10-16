@@ -2,6 +2,7 @@
 import Figure from './Figure.astro';
 import Quest from './Quest.astro';
 import Table from './Table.astro';
+import Zeth from './Zeth.astro';
 import { cellHtml, html } from '../../lib/overview.mjs';
 
 interface Props {
@@ -14,7 +15,7 @@ const { block: b } = Astro.props;
 <section class="mblock" id={b.id}>
   {b.title && <h2 set:html={html(b.title)} />}
   {b.title && b.key && <p class="keyline" set:html={html(b.key)} />}
-  {b.quest && <Quest parts={b.quest} />}
+  {b.quest && <Quest parts={b.quest} />}{b.zeth && <Zeth parts={b.zeth} />}
   {b.figure && <Figure fig={b.figure} />}
   {b.structure && <Figure fig={b.structure} />}
   {b.tables?.map((t) => <Table table={t} />)}

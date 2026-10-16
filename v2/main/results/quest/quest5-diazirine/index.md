@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest5-diazirine/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -78,16 +78,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![diazirine, BH\&HLYP (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/bh_44m_13A.svg)**d** 13A · 0.000000\
 −0.1005
 
-![diazirine, BH\&HLYP (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/bh_44m_12A.svg)**c** 12A · 0.000000\
-−0.2818
-
 ![diazirine, BH\&HLYP (4,4), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/bh_44m_10A.svg)**a** 10A · 2.000000\
 −0.4696
+
+(b, c)
+
+![diazirine, BH\&HLYP (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/bh_44m_12A.svg)**c** 12A · 0.000000\
+−0.2818
 
 ![diazirine, BH\&HLYP (4,4), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/bh_44m_11A.svg)**b** 11A · 2.000000\
 −0.4172
@@ -96,16 +96,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![diazirine, M08-SO (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/m08_44m_13A.svg)**d** 13A · 0.000000\
 −0.1123
 
-![diazirine, M08-SO (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/m08_44m_12A.svg)**c** 12A · 0.000000\
-−0.2741
-
 ![diazirine, M08-SO (4,4), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/m08_44m_10A.svg)**a** 10A · 2.000000\
 −0.4742
+
+(b, c)
+
+![diazirine, M08-SO (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/m08_44m_12A.svg)**c** 12A · 0.000000\
+−0.2741
 
 ![diazirine, M08-SO (4,4), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/m08_44m_11A.svg)**b** 11A · 2.000000\
 −0.4185
@@ -114,16 +114,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![diazirine, ωB97X (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/wb_44m_13A.svg)**d** 13A · 0.000000\
 −0.1300
 
-![diazirine, ωB97X (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/wb_44m_12A.svg)**c** 12A · 0.000000\
-−0.3114
-
 ![diazirine, ωB97X (4,4), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/wb_44m_10A.svg)**a** 10A · 2.000000\
 −0.5102
+
+(b, c)
+
+![diazirine, ωB97X (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/wb_44m_12A.svg)**c** 12A · 0.000000\
+−0.3114
 
 ![diazirine, ωB97X (4,4), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_diazirine/wb_44m_11A.svg)**b** 11A · 2.000000\
 −0.4590

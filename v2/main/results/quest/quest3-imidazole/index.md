@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-imidazole/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![imidazole, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_44m_19A.svg)**d** 19A · 0.000000\
 −0.1182
 
-![imidazole, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_44m_20A.svg)**c** 20A · 0.000141\
-−0.0721
-
 ![imidazole, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_44m_16A.svg)**a** 16A · 2.000000\
 −0.3801
+
+(b, c)
+
+![imidazole, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_44m_20A.svg)**c** 20A · 0.000141\
+−0.0721
 
 ![imidazole, BH\&HLYP (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_44m_18A.svg)**b** 18A · 1.999859\
 −0.2892
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![imidazole, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_66_21A.svg)**f** 21A · 0.000000\
 −0.0669
-
-![imidazole, BH\&HLYP (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_66_20A.svg)**e** 20A · 0.000003\
-−0.0720
-
-![imidazole, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_66_19A.svg)**d** 19A · 0.000075\
-−0.0981
 
 ![imidazole, BH\&HLYP (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_66_11A.svg)**a** 11A · 2.000000\
 −0.6888
 
+(b, e)
+
+![imidazole, BH\&HLYP (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_66_20A.svg)**e** 20A · 0.000003\
+−0.0720
+
 ![imidazole, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_66_17A.svg)**b** 17A · 1.999997\
 −0.3807
+
+(c, d)
+
+![imidazole, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_66_19A.svg)**d** 19A · 0.000075\
+−0.0981
 
 ![imidazole, BH\&HLYP (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_66_18A.svg)**c** 18A · 1.999925\
 −0.3222
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![imidazole, BH\&HLYP (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_22A.svg)**h** 22A · 0.000000\
 −0.0794
-
-![imidazole, BH\&HLYP (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_21A.svg)**g** 21A · 0.000000\
-−0.1039
-
-![imidazole, BH\&HLYP (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_19A.svg)**f** 19A · 0.000002\
-−0.1086
-
-![imidazole, BH\&HLYP (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_20A.svg)**e** 20A · 0.000050\
-−0.1066
 
 ![imidazole, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_16A.svg)**a** 16A · 2.000000\
 −0.4913
 
+(b, g)
+
+![imidazole, BH\&HLYP (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_21A.svg)**g** 21A · 0.000000\
+−0.1039
+
 ![imidazole, BH\&HLYP (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_11A.svg)**b** 11A · 2.000000\
 −0.6050
 
+(c, f)
+
+![imidazole, BH\&HLYP (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_19A.svg)**f** 19A · 0.000002\
+−0.1086
+
 ![imidazole, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_17A.svg)**c** 17A · 1.999998\
 −0.3925
+
+(d, e)
+
+![imidazole, BH\&HLYP (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_20A.svg)**e** 20A · 0.000050\
+−0.1066
 
 ![imidazole, BH\&HLYP (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/bh_88_18A.svg)**d** 18A · 1.999950\
 −0.3274
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![imidazole, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_44m_19A.svg)**d** 19A · 0.000000\
 −0.1277
 
-![imidazole, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_44m_20A.svg)**c** 20A · 0.000026\
-−0.0914
-
 ![imidazole, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_44m_16A.svg)**a** 16A · 2.000000\
 −0.3811
+
+(b, c)
+
+![imidazole, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_44m_20A.svg)**c** 20A · 0.000026\
+−0.0914
 
 ![imidazole, M08-SO (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_44m_18A.svg)**b** 18A · 1.999974\
 −0.3035
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![imidazole, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_66_21A.svg)**f** 21A · 0.000000\
 −0.0752
-
-![imidazole, M08-SO (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_66_20A.svg)**e** 20A · 0.000000\
-−0.0911
-
-![imidazole, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_66_19A.svg)**d** 19A · 0.000012\
-−0.1160
 
 ![imidazole, M08-SO (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_66_11A.svg)**a** 11A · 2.000000\
 −0.6880
 
+(b, e)
+
+![imidazole, M08-SO (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_66_20A.svg)**e** 20A · 0.000000\
+−0.0911
+
 ![imidazole, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_66_17A.svg)**b** 17A · 2.000000\
 −0.3929
+
+(c, d)
+
+![imidazole, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_66_19A.svg)**d** 19A · 0.000012\
+−0.1160
 
 ![imidazole, M08-SO (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_66_18A.svg)**c** 18A · 1.999988\
 −0.3360
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![imidazole, M08-SO (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_22A.svg)**h** 22A · 0.000000\
 −0.0880
-
-![imidazole, M08-SO (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_21A.svg)**g** 21A · 0.000000\
-−0.1127
-
-![imidazole, M08-SO (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_19A.svg)**f** 19A · 0.000000\
-−0.1290
-
-![imidazole, M08-SO (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_20A.svg)**e** 20A · 0.000009\
-−0.1230
 
 ![imidazole, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_16A.svg)**a** 16A · 2.000000\
 −0.4898
 
+(b, g)
+
+![imidazole, M08-SO (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_21A.svg)**g** 21A · 0.000000\
+−0.1127
+
 ![imidazole, M08-SO (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_11A.svg)**b** 11A · 2.000000\
 −0.6120
 
+(c, f)
+
+![imidazole, M08-SO (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_19A.svg)**f** 19A · 0.000000\
+−0.1290
+
 ![imidazole, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_17A.svg)**c** 17A · 2.000000\
 −0.4050
+
+(d, e)
+
+![imidazole, M08-SO (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_20A.svg)**e** 20A · 0.000009\
+−0.1230
 
 ![imidazole, M08-SO (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/m08_88_18A.svg)**d** 18A · 1.999991\
 −0.3416
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![imidazole, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_44m_19A.svg)**d** 19A · 0.000000\
 −0.1562
 
-![imidazole, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_44m_20A.svg)**c** 20A · 0.000080\
-−0.1186
-
 ![imidazole, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_44m_16A.svg)**a** 16A · 2.000000\
 −0.4102
+
+(b, c)
+
+![imidazole, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_44m_20A.svg)**c** 20A · 0.000080\
+−0.1186
 
 ![imidazole, ωB97X (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_44m_18A.svg)**b** 18A · 1.999920\
 −0.3380
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![imidazole, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_66_21A.svg)**f** 21A · 0.000000\
 −0.0808
-
-![imidazole, ωB97X (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_66_20A.svg)**e** 20A · 0.000001\
-−0.1203
-
-![imidazole, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_66_19A.svg)**d** 19A · 0.000030\
-−0.1446
 
 ![imidazole, ωB97X (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_66_11A.svg)**a** 11A · 2.000000\
 −0.7207
 
+(b, e)
+
+![imidazole, ωB97X (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_66_20A.svg)**e** 20A · 0.000001\
+−0.1203
+
 ![imidazole, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_66_16A.svg)**b** 16A · 1.999999\
 −0.4246
+
+(c, d)
+
+![imidazole, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_66_19A.svg)**d** 19A · 0.000030\
+−0.1446
 
 ![imidazole, ωB97X (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_66_18A.svg)**c** 18A · 1.999970\
 −0.3729
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![imidazole, ωB97X (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_22A.svg)**h** 22A · 0.000000\
 −0.0993
-
-![imidazole, ωB97X (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_21A.svg)**g** 21A · 0.000000\
-−0.1275
-
-![imidazole, ωB97X (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_19A.svg)**f** 19A · 0.000001\
-−0.1600
-
-![imidazole, ωB97X (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_20A.svg)**e** 20A · 0.000020\
-−0.1529
 
 ![imidazole, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_16A.svg)**a** 16A · 2.000000\
 −0.5183
 
+(b, g)
+
+![imidazole, ωB97X (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_21A.svg)**g** 21A · 0.000000\
+−0.1275
+
 ![imidazole, ωB97X (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_11A.svg)**b** 11A · 2.000000\
 −0.6469
 
+(c, f)
+
+![imidazole, ωB97X (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_19A.svg)**f** 19A · 0.000001\
+−0.1600
+
 ![imidazole, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_17A.svg)**c** 17A · 1.999999\
 −0.4365
+
+(d, e)
+
+![imidazole, ωB97X (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_20A.svg)**e** 20A · 0.000020\
+−0.1529
 
 ![imidazole, ωB97X (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_imidazole/wb_88_18A.svg)**d** 18A · 1.999980\
 −0.3797

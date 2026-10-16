@@ -42,7 +42,7 @@ vs exact in the same basis (FCI) SSR(2,2)–(8,8), BH\&HLYP; aug-cc-pVTZ, cc-pVT
 
 [Exact limits (GVB = CASSCF) reproduced to 10<sup>−10</sup> E<sub>h</sub>: H<sub>2</sub> and BH, (2,2)–(4,6) →](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
 
-Beyond available references: [S<sub>1</sub>/S<sub>0</sub> crossing of ethylene found and followed in dynamics, a case TDDFT cannot describe](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md) · [zethrene trend](https://reksstudio.github.io/v2/main/results/zethrenes/index.md) →
+Beyond available references: [S<sub>1</sub>/S<sub>0</sub> crossing of ethylene found and followed in dynamics, a case TDDFT cannot describe](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md) · [seven zethrenes and related PAHs from (2,2) to (10,10), 98 calculations](https://reksstudio.github.io/v2/main/results/zethrenes/index.md) →
 
 [All comparisons →](https://reksstudio.github.io/v2/main/results/index.md)
 

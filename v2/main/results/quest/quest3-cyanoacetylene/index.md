@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-cyanoacetylene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -116,16 +116,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyanoacetylene, BH\&HLYP (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_44m_14A.svg)**d** 14A · 0.000000\
-−0.1921
-
-![cyanoacetylene, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_44m_15A.svg)**c** 15A · 0.000000\
 −0.1921
 
 ![cyanoacetylene, BH\&HLYP (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_44m_12A.svg)**a** 12A · 2.000000\
 −0.3932
+
+(b, c)
+
+![cyanoacetylene, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_44m_15A.svg)**c** 15A · 0.000000\
+−0.1921
 
 ![cyanoacetylene, BH\&HLYP (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_44m_13A.svg)**b** 13A · 2.000000\
 −0.3931
@@ -134,32 +134,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![cyanoacetylene, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_16A.svg)**h** 16A · 0.000000\
 −0.0678
-
-![cyanoacetylene, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_17A.svg)**g** 17A · 0.000000\
-−0.0611
-
-![cyanoacetylene, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_15A.svg)**f** 15A · 0.000207\
-−0.1894
-
-![cyanoacetylene, BH\&HLYP (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_14A.svg)**e** 14A · 0.000376\
-−0.2580
 
 ![cyanoacetylene, BH\&HLYP (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_10A.svg)**a** 10A · 2.000000\
 −0.5114
 
+(b, g)
+
+![cyanoacetylene, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_17A.svg)**g** 17A · 0.000000\
+−0.0611
+
 ![cyanoacetylene, BH\&HLYP (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_11A.svg)**b** 11A · 2.000000\
 −0.5084
 
+(c, f)
+
+![cyanoacetylene, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_15A.svg)**f** 15A · 0.000207\
+−0.1894
+
 ![cyanoacetylene, BH\&HLYP (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_12A.svg)**c** 12A · 1.999793\
 −0.4208
+
+(d, e)
+
+![cyanoacetylene, BH\&HLYP (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_14A.svg)**e** 14A · 0.000376\
+−0.2580
 
 ![cyanoacetylene, BH\&HLYP (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/bh_88_13A.svg)**d** 13A · 1.999624\
 −0.4138
@@ -168,16 +168,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyanoacetylene, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_44m_15A.svg)**d** 15A · 0.000000\
 −0.1997
 
-![cyanoacetylene, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_44m_14A.svg)**c** 14A · 0.000000\
-−0.1998
-
 ![cyanoacetylene, M08-SO (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_44m_13A.svg)**a** 13A · 2.000000\
 −0.4033
+
+(b, c)
+
+![cyanoacetylene, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_44m_14A.svg)**c** 14A · 0.000000\
+−0.1998
 
 ![cyanoacetylene, M08-SO (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_44m_12A.svg)**b** 12A · 2.000000\
 −0.4033
@@ -186,32 +186,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![cyanoacetylene, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_16A.svg)**h** 16A · 0.000000\
 −0.0812
-
-![cyanoacetylene, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_17A.svg)**g** 17A · 0.000000\
-−0.0735
-
-![cyanoacetylene, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_15A.svg)**f** 15A · 0.000040\
-−0.1982
-
-![cyanoacetylene, M08-SO (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_14A.svg)**e** 14A · 0.000076\
-−0.2609
 
 ![cyanoacetylene, M08-SO (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_10A.svg)**a** 10A · 2.000000\
 −0.5188
 
+(b, g)
+
+![cyanoacetylene, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_17A.svg)**g** 17A · 0.000000\
+−0.0735
+
 ![cyanoacetylene, M08-SO (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_11A.svg)**b** 11A · 2.000000\
 −0.5151
 
+(c, f)
+
+![cyanoacetylene, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_15A.svg)**f** 15A · 0.000040\
+−0.1982
+
 ![cyanoacetylene, M08-SO (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_12A.svg)**c** 12A · 1.999960\
 −0.4271
+
+(d, e)
+
+![cyanoacetylene, M08-SO (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_14A.svg)**e** 14A · 0.000076\
+−0.2609
 
 ![cyanoacetylene, M08-SO (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/m08_88_13A.svg)**d** 13A · 1.999924\
 −0.4211
@@ -220,16 +220,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![cyanoacetylene, ωB97X (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_44m_14A.svg)**d** 14A · 0.000000\
-−0.2328
-
-![cyanoacetylene, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_44m_15A.svg)**c** 15A · 0.000000\
 −0.2328
 
 ![cyanoacetylene, ωB97X (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_44m_12A.svg)**a** 12A · 2.000000\
 −0.4386
+
+(b, c)
+
+![cyanoacetylene, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_44m_15A.svg)**c** 15A · 0.000000\
+−0.2328
 
 ![cyanoacetylene, ωB97X (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_44m_13A.svg)**b** 13A · 2.000000\
 −0.4386
@@ -238,32 +238,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![cyanoacetylene, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_16A.svg)**h** 16A · 0.000000\
 −0.0933
-
-![cyanoacetylene, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_17A.svg)**g** 17A · 0.000000\
-−0.0859
-
-![cyanoacetylene, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_15A.svg)**f** 15A · 0.000112\
-−0.2309
-
-![cyanoacetylene, ωB97X (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_14A.svg)**e** 14A · 0.000168\
-−0.2881
 
 ![cyanoacetylene, ωB97X (8,8), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_9A.svg)**a** 9A · 2.000000\
 −0.5529
 
+(b, g)
+
+![cyanoacetylene, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_17A.svg)**g** 17A · 0.000000\
+−0.0859
+
 ![cyanoacetylene, ωB97X (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_10A.svg)**b** 10A · 2.000000\
 −0.5502
 
+(c, f)
+
+![cyanoacetylene, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_15A.svg)**f** 15A · 0.000112\
+−0.2309
+
 ![cyanoacetylene, ωB97X (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_12A.svg)**c** 12A · 1.999888\
 −0.4577
+
+(d, e)
+
+![cyanoacetylene, ωB97X (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_14A.svg)**e** 14A · 0.000168\
+−0.2881
 
 ![cyanoacetylene, ωB97X (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanoacetylene/wb_88_13A.svg)**d** 13A · 1.999832\
 −0.4526

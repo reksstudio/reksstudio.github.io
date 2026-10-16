@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-cyanogen/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -97,16 +97,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyanogen, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_44m_15A.svg)**d** 15A · 0.000000\
 −0.2325
 
-![cyanogen, BH\&HLYP (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_44m_14A.svg)**c** 14A · 0.000000\
-−0.2326
-
 ![cyanogen, BH\&HLYP (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_44m_13A.svg)**a** 13A · 2.000000\
 −0.4542
+
+(b, c)
+
+![cyanogen, BH\&HLYP (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_44m_14A.svg)**c** 14A · 0.000000\
+−0.2326
 
 ![cyanogen, BH\&HLYP (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_44m_12A.svg)**b** 12A · 2.000000\
 −0.4542
@@ -115,24 +115,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyanogen, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_66_16A.svg)**f** 16A · 0.000000\
 −0.0745
-
-![cyanogen, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_66_15A.svg)**e** 15A · 0.000332\
-−0.2243
-
-![cyanogen, BH\&HLYP (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_66_14A.svg)**d** 14A · 0.000391\
-−0.2381
 
 ![cyanogen, BH\&HLYP (6,6), orbital 7A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_66_7A.svg)**a** 7A · 2.000000\
 −0.8734
 
+(b, e)
+
+![cyanogen, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_66_15A.svg)**e** 15A · 0.000332\
+−0.2243
+
 ![cyanogen, BH\&HLYP (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_66_12A.svg)**b** 12A · 1.999668\
 −0.4628
+
+(c, d)
+
+![cyanogen, BH\&HLYP (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_66_14A.svg)**d** 14A · 0.000391\
+−0.2381
 
 ![cyanogen, BH\&HLYP (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_66_13A.svg)**c** 13A · 1.999609\
 −0.4607
@@ -141,32 +141,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![cyanogen, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_16A.svg)**h** 16A · 0.000000\
 −0.0341
-
-![cyanogen, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_17A.svg)**g** 17A · 0.000000\
-−0.0235
-
-![cyanogen, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_15A.svg)**f** 15A · 0.000287\
-−0.2167
-
-![cyanogen, BH\&HLYP (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_14A.svg)**e** 14A · 0.000396\
-−0.2536
 
 ![cyanogen, BH\&HLYP (8,8), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_9A.svg)**a** 9A · 2.000000\
 −0.5395
 
+(b, g)
+
+![cyanogen, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_17A.svg)**g** 17A · 0.000000\
+−0.0235
+
 ![cyanogen, BH\&HLYP (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_10A.svg)**b** 10A · 2.000000\
 −0.5333
 
+(c, f)
+
+![cyanogen, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_15A.svg)**f** 15A · 0.000287\
+−0.2167
+
 ![cyanogen, BH\&HLYP (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_12A.svg)**c** 12A · 1.999713\
 −0.4550
+
+(d, e)
+
+![cyanogen, BH\&HLYP (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_14A.svg)**e** 14A · 0.000396\
+−0.2536
 
 ![cyanogen, BH\&HLYP (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/bh_88_13A.svg)**d** 13A · 1.999604\
 −0.4501
@@ -175,16 +175,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyanogen, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_44m_15A.svg)**d** 15A · 0.000000\
-−0.2346
-
-![cyanogen, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_44m_14A.svg)**c** 14A · 0.000000\
 −0.2346
 
 ![cyanogen, M08-SO (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_44m_13A.svg)**a** 13A · 2.000000\
 −0.4614
+
+(b, c)
+
+![cyanogen, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_44m_14A.svg)**c** 14A · 0.000000\
+−0.2346
 
 ![cyanogen, M08-SO (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_44m_12A.svg)**b** 12A · 2.000000\
 −0.4614
@@ -193,24 +193,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyanogen, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_66_16A.svg)**f** 16A · 0.000000\
 −0.0846
-
-![cyanogen, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_66_15A.svg)**e** 15A · 0.000067\
-−0.2326
-
-![cyanogen, M08-SO (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_66_14A.svg)**d** 14A · 0.000077\
-−0.2500
 
 ![cyanogen, M08-SO (6,6), orbital 7A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_66_7A.svg)**a** 7A · 2.000000\
 −0.8535
 
+(b, e)
+
+![cyanogen, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_66_15A.svg)**e** 15A · 0.000067\
+−0.2326
+
 ![cyanogen, M08-SO (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_66_12A.svg)**b** 12A · 1.999933\
 −0.4734
+
+(c, d)
+
+![cyanogen, M08-SO (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_66_14A.svg)**d** 14A · 0.000077\
+−0.2500
 
 ![cyanogen, M08-SO (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_66_13A.svg)**c** 13A · 1.999923\
 −0.4716
@@ -219,32 +219,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![cyanogen, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_16A.svg)**h** 16A · 0.000000\
 −0.0491
-
-![cyanogen, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_17A.svg)**g** 17A · 0.000000\
-−0.0403
-
-![cyanogen, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_15A.svg)**f** 15A · 0.000058\
-−0.2244
-
-![cyanogen, M08-SO (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_14A.svg)**e** 14A · 0.000075\
-−0.2615
 
 ![cyanogen, M08-SO (8,8), orbital 8A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_8A.svg)**a** 8A · 2.000000\
 −0.5480
 
+(b, g)
+
+![cyanogen, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_17A.svg)**g** 17A · 0.000000\
+−0.0403
+
 ![cyanogen, M08-SO (8,8), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_9A.svg)**b** 9A · 2.000000\
 −0.5419
 
+(c, f)
+
+![cyanogen, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_15A.svg)**f** 15A · 0.000058\
+−0.2244
+
 ![cyanogen, M08-SO (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_12A.svg)**c** 12A · 1.999942\
 −0.4627
+
+(d, e)
+
+![cyanogen, M08-SO (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_14A.svg)**e** 14A · 0.000075\
+−0.2615
 
 ![cyanogen, M08-SO (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/m08_88_13A.svg)**d** 13A · 1.999925\
 −0.4587
@@ -253,16 +253,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![cyanogen, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_44m_15A.svg)**d** 15A · 0.000000\
-−0.2702
-
-![cyanogen, ωB97X (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_44m_14A.svg)**c** 14A · 0.000000\
 −0.2702
 
 ![cyanogen, ωB97X (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_44m_13A.svg)**a** 13A · 2.000000\
 −0.4958
+
+(b, c)
+
+![cyanogen, ωB97X (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_44m_14A.svg)**c** 14A · 0.000000\
+−0.2702
 
 ![cyanogen, ωB97X (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_44m_12A.svg)**b** 12A · 2.000000\
 −0.4958
@@ -271,24 +271,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyanogen, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_66_16A.svg)**f** 16A · 0.000000\
 −0.1080
-
-![cyanogen, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_66_15A.svg)**e** 15A · 0.000120\
-−0.2647
-
-![cyanogen, ωB97X (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_66_14A.svg)**d** 14A · 0.000148\
-−0.2769
 
 ![cyanogen, ωB97X (6,6), orbital 7A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_66_7A.svg)**a** 7A · 2.000000\
 −0.8903
 
+(b, e)
+
+![cyanogen, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_66_15A.svg)**e** 15A · 0.000120\
+−0.2647
+
 ![cyanogen, ωB97X (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_66_12A.svg)**b** 12A · 1.999880\
 −0.5024
+
+(c, d)
+
+![cyanogen, ωB97X (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_66_14A.svg)**d** 14A · 0.000148\
+−0.2769
 
 ![cyanogen, ωB97X (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_66_13A.svg)**c** 13A · 1.999852\
 −0.5022
@@ -297,32 +297,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![cyanogen, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_16A.svg)**h** 16A · 0.000000\
 −0.0691
-
-![cyanogen, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_17A.svg)**g** 17A · 0.000000\
-−0.0585
-
-![cyanogen, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_15A.svg)**f** 15A · 0.000101\
-−0.2574
-
-![cyanogen, ωB97X (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_14A.svg)**e** 14A · 0.000137\
-−0.2853
 
 ![cyanogen, ωB97X (8,8), orbital 8A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_8A.svg)**a** 8A · 2.000000\
 −0.5780
 
+(b, g)
+
+![cyanogen, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_17A.svg)**g** 17A · 0.000000\
+−0.0585
+
 ![cyanogen, ωB97X (8,8), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_9A.svg)**b** 9A · 2.000000\
 −0.5746
 
+(c, f)
+
+![cyanogen, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_15A.svg)**f** 15A · 0.000101\
+−0.2574
+
 ![cyanogen, ωB97X (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_12A.svg)**c** 12A · 1.999899\
 −0.4902
+
+(d, e)
+
+![cyanogen, ωB97X (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_14A.svg)**e** 14A · 0.000137\
+−0.2853
 
 ![cyanogen, ωB97X (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyanogen/wb_88_13A.svg)**d** 13A · 1.999863\
 −0.4875

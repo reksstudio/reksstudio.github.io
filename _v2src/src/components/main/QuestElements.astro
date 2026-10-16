@@ -1,6 +1,10 @@
 ---
-const ELEMENTS = ['C', 'H', 'N', 'O', 'S'];
+interface Props {
+  elements?: string[];
+}
+
+const { elements = ['C', 'H', 'N', 'O', 'S'] } = Astro.props;
 ---
 <ul class="qels" aria-label="Atom colours">
-  {ELEMENTS.map((e) => <li><span class={`el el-${e}`}></span>{e}</li>)}
+  {elements.map((e) => <li><span class={`el el-${e}`}></span>{e}</li>)}
 </ul>

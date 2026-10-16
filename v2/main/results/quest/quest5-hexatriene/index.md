@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest5-hexatriene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![hexatriene, BH\&HLYP (4,4), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_44m_24A.svg)**d** 24A · 0.000001\
 −0.0584
 
-![hexatriene, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_44m_23A.svg)**c** 23A · 0.000326\
-−0.1417
-
 ![hexatriene, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_44m_21A.svg)**a** 21A · 1.999999\
 −0.3521
+
+(b, c)
+
+![hexatriene, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_44m_23A.svg)**c** 23A · 0.000326\
+−0.1417
 
 ![hexatriene, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_44m_22A.svg)**b** 22A · 1.999674\
 −0.2684
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![hexatriene, BH\&HLYP (6,6), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_66_25A.svg)**f** 25A · 0.000000\
 −0.0522
-
-![hexatriene, BH\&HLYP (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_66_24A.svg)**e** 24A · 0.000001\
-−0.0588
-
-![hexatriene, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_66_23A.svg)**d** 23A · 0.001053\
-−0.1278
 
 ![hexatriene, BH\&HLYP (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_66_20A.svg)**a** 20A · 2.000000\
 −0.4135
 
+(b, e)
+
+![hexatriene, BH\&HLYP (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_66_24A.svg)**e** 24A · 0.000001\
+−0.0588
+
 ![hexatriene, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_66_21A.svg)**b** 21A · 1.999999\
 −0.3546
+
+(c, d)
+
+![hexatriene, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_66_23A.svg)**d** 23A · 0.001053\
+−0.1278
 
 ![hexatriene, BH\&HLYP (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_66_22A.svg)**c** 22A · 1.998947\
 −0.2711
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![hexatriene, BH\&HLYP (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_25A.svg)**h** 25A · 0.000000\
 −0.0689
-
-![hexatriene, BH\&HLYP (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_26A.svg)**g** 26A · 0.000000\
-−0.0653
-
-![hexatriene, BH\&HLYP (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_24A.svg)**f** 24A · 0.000001\
-−0.0817
-
-![hexatriene, BH\&HLYP (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_23A.svg)**e** 23A · 0.001127\
-−0.1394
 
 ![hexatriene, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_16A.svg)**a** 16A · 2.000000\
 −0.5027
 
+(b, g)
+
+![hexatriene, BH\&HLYP (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_26A.svg)**g** 26A · 0.000000\
+−0.0653
+
 ![hexatriene, BH\&HLYP (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_20A.svg)**b** 20A · 2.000000\
 −0.4237
 
+(c, f)
+
+![hexatriene, BH\&HLYP (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_24A.svg)**f** 24A · 0.000001\
+−0.0817
+
 ![hexatriene, BH\&HLYP (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_21A.svg)**c** 21A · 1.999999\
 −0.3659
+
+(d, e)
+
+![hexatriene, BH\&HLYP (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_23A.svg)**e** 23A · 0.001127\
+−0.1394
 
 ![hexatriene, BH\&HLYP (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/bh_88_22A.svg)**d** 22A · 1.998873\
 −0.2792
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![hexatriene, M08-SO (4,4), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_44m_24A.svg)**d** 24A · 0.000000\
 −0.0770
 
-![hexatriene, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_44m_23A.svg)**c** 23A · 0.000077\
-−0.1577
-
 ![hexatriene, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_44m_21A.svg)**a** 21A · 2.000000\
 −0.3667
+
+(b, c)
+
+![hexatriene, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_44m_23A.svg)**c** 23A · 0.000077\
+−0.1577
 
 ![hexatriene, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_44m_22A.svg)**b** 22A · 1.999923\
 −0.2841
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![hexatriene, M08-SO (6,6), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_66_25A.svg)**f** 25A · 0.000000\
 −0.0691
-
-![hexatriene, M08-SO (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_66_24A.svg)**e** 24A · 0.000000\
-−0.0762
-
-![hexatriene, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_66_23A.svg)**d** 23A · 0.000228\
-−0.1472
 
 ![hexatriene, M08-SO (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_66_20A.svg)**a** 20A · 2.000000\
 −0.4270
 
+(b, e)
+
+![hexatriene, M08-SO (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_66_24A.svg)**e** 24A · 0.000000\
+−0.0762
+
 ![hexatriene, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_66_21A.svg)**b** 21A · 2.000000\
 −0.3687
+
+(c, d)
+
+![hexatriene, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_66_23A.svg)**d** 23A · 0.000228\
+−0.1472
 
 ![hexatriene, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_66_22A.svg)**c** 22A · 1.999772\
 −0.2860
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![hexatriene, M08-SO (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_26A.svg)**h** 26A · 0.000000\
 −0.0773
-
-![hexatriene, M08-SO (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_25A.svg)**g** 25A · 0.000000\
-−0.0841
-
-![hexatriene, M08-SO (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_24A.svg)**f** 24A · 0.000000\
-−0.0997
-
-![hexatriene, M08-SO (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_23A.svg)**e** 23A · 0.000261\
-−0.1574
 
 ![hexatriene, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_16A.svg)**a** 16A · 2.000000\
 −0.5016
 
+(b, g)
+
+![hexatriene, M08-SO (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_25A.svg)**g** 25A · 0.000000\
+−0.0841
+
 ![hexatriene, M08-SO (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_20A.svg)**b** 20A · 2.000000\
 −0.4376
 
+(c, f)
+
+![hexatriene, M08-SO (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_24A.svg)**f** 24A · 0.000000\
+−0.0997
+
 ![hexatriene, M08-SO (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_21A.svg)**c** 21A · 2.000000\
 −0.3804
+
+(d, e)
+
+![hexatriene, M08-SO (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_23A.svg)**e** 23A · 0.000261\
+−0.1574
 
 ![hexatriene, M08-SO (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/m08_88_22A.svg)**d** 22A · 1.999739\
 −0.2943
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![hexatriene, ωB97X (4,4), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_44m_24A.svg)**d** 24A · 0.000000\
 −0.0958
 
-![hexatriene, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_44m_23A.svg)**c** 23A · 0.000193\
-−0.1837
-
 ![hexatriene, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_44m_21A.svg)**a** 21A · 2.000000\
 −0.4017
+
+(b, c)
+
+![hexatriene, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_44m_23A.svg)**c** 23A · 0.000193\
+−0.1837
 
 ![hexatriene, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_44m_22A.svg)**b** 22A · 1.999807\
 −0.3145
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![hexatriene, ωB97X (6,6), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_66_25A.svg)**f** 25A · 0.000000\
 −0.0850
-
-![hexatriene, ωB97X (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_66_24A.svg)**e** 24A · 0.000000\
-−0.0926
-
-![hexatriene, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_66_23A.svg)**d** 23A · 0.001005\
-−0.1712
 
 ![hexatriene, ωB97X (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_66_20A.svg)**a** 20A · 2.000000\
 −0.4641
 
+(b, e)
+
+![hexatriene, ωB97X (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_66_24A.svg)**e** 24A · 0.000000\
+−0.0926
+
 ![hexatriene, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_66_21A.svg)**b** 21A · 2.000000\
 −0.4022
+
+(c, d)
+
+![hexatriene, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_66_23A.svg)**d** 23A · 0.001005\
+−0.1712
 
 ![hexatriene, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_66_22A.svg)**c** 22A · 1.998995\
 −0.3166
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![hexatriene, ωB97X (8,8), orbital 26A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_26A.svg)**h** 26A · 0.000000\
 −0.0848
-
-![hexatriene, ωB97X (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_25A.svg)**g** 25A · 0.000000\
-−0.1014
-
-![hexatriene, ωB97X (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_24A.svg)**f** 24A · 0.000000\
-−0.1181
-
-![hexatriene, ωB97X (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_23A.svg)**e** 23A · 0.001075\
-−0.1814
 
 ![hexatriene, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_16A.svg)**a** 16A · 2.000000\
 −0.5356
 
+(b, g)
+
+![hexatriene, ωB97X (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_25A.svg)**g** 25A · 0.000000\
+−0.1014
+
 ![hexatriene, ωB97X (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_20A.svg)**b** 20A · 2.000000\
 −0.4762
 
+(c, f)
+
+![hexatriene, ωB97X (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_24A.svg)**f** 24A · 0.000000\
+−0.1181
+
 ![hexatriene, ωB97X (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_21A.svg)**c** 21A · 2.000000\
 −0.4157
+
+(d, e)
+
+![hexatriene, ωB97X (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_23A.svg)**e** 23A · 0.001075\
+−0.1814
 
 ![hexatriene, ωB97X (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_hexatriene/wb_88_22A.svg)**d** 22A · 1.998925\
 −0.3258

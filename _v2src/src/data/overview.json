@@ -118,7 +118,7 @@
         }
       ],
       "scope": "Not shown: deviation numbers, occupations along R, absolute DFT vs absolute FCI as agreement.",
-      "exits": { "notInstalled": "(8,8)" }
+      "exits": { "notInstalled": "Paper result; catalogue (8,8) not installed." }
     },
     {
       "slug": "bond-breaking",
@@ -242,13 +242,12 @@
         {
           "id": "setup",
           "title": "Setup and reference",
-          "setup": [["Method", "SSR, active spaces (2,2), (4,4), (6,6), (8,8)"], ["Functionals", "BH&HLYP, M08-SO, ωB97X"], ["Basis", "{quest:basis}"], ["Symmetry", "none in the calculation (C_{1}); SSR irreps assigned in an abelian subgroup afterwards"], ["Value per state", "the active space closest to the TBE; the active space of each value is in the full table"], ["Pairs", "each SSR state paired with one TBE row of the same multiplicity; TBE state, both irreps and the active space on the molecule pages"], ["Code", "Psi4 commit ddc2f581c"], ["Geometries", "to be added"]],
-          "reference": ["Theoretical best estimates of QUEST3, 5, 6, 7 as listed in QUESTDB: Véril, M. et al. WIREs Comput. Mol. Sci. 2021, 11, e1517."],
-          "provenance": ["to be added"]
+          "setup": [["Method", "SSR, active spaces (2,2), (4,4), (6,6), (8,8)"], ["Functionals", "BH&HLYP, M08-SO, ωB97X"], ["Basis", "{quest:basis}"], ["Symmetry", "none in the calculation (C_{1}); SSR irreps assigned in an abelian subgroup afterwards"], ["Value per state", "the active space closest to the TBE; the active space of each value is in the full table"], ["Pairs", "each SSR state paired with one TBE row of the same multiplicity; TBE state, both irreps and the active space on the molecule pages"], ["Code", "Psi4 commit {quest:psi4}"]],
+          "reference": ["Theoretical best estimates of QUEST3, 5, 6, 7 as listed in QUESTDB: Véril, M. et al. WIREs Comput. Mol. Sci. 2021, 11, e1517."]
         }
       ],
-      "scope": "S1, S2, T1, T2 of each molecule where a pair exists: N = {quest:perState} (S1 / S2 / T1 / T2); {quest:complete} molecules have all four. Every paired TBE state is of valence or charge-transfer type (kind V or CT in the TBE data); no Rydberg state is among the pairs. QUEST6 {quest:geometryOnly} have no pair and are not shown.",
-      "exits": { "inputTodo": true }
+      "scope": "S1, S2, T1, T2 of each molecule where a pair exists: N = {quest:perState} (S1 / S2 / T1 / T2); {quest:complete} molecules have all four. Every paired TBE state is of valence or charge-transfer type (kind V or CT in the TBE data); no Rydberg state is among the pairs. QUEST6 {quest:geometryOnly}: no pair, not shown.",
+      "exits": { "manual": "first-calculation" }
     },
     {
       "slug": "ttr",
@@ -281,34 +280,47 @@
         }
       ],
       "scope": "Not shown: the same active space with another method; geometry relaxation; surface effects.",
-      "exits": { "notInstalled": "(10,10)" }
+      "exits": { "notInstalled": "Paper result; catalogue (10,10) not installed." }
     },
     {
       "slug": "zethrenes",
       "cls": "trend",
       "kind": "ladder",
       "problem": "Diradicals and magnetism",
-      "title": "Zethrenes SHZ, SOZ, SNZ",
+      "title": "Zethrenes and related PAHs, REKS(2,2) to (10,10)",
       "short": "Zethrenes",
-      "ident": "Singlet–triplet gap of three zethrenes for active spaces (2,2) to (8,8); no external reference.",
-      "key": "S–T gap at (2,2) → (8,8): SHZ 2.05 → 4.23, SOZ 1.11 → 3.24, SNZ 0.64 → 3.05 kcal/mol.",
+      "ident": "Seven PAHs of Hu et al. (2016), {zeth:atoms} atoms, {zeth:geometries} geometries (three per compound, two for IF); SA-REKS and SI-SA-REKS from (2,2) to (10,10), {zeth:functional}/{zeth:basis}; {zeth:calculations} calculations; energies, occupations and active orbitals of every one, with its input.",
+      "key": "{zeth:compounds} compounds · {zeth:geometries} geometries · {zeth:calculations} calculations · up to {zeth:atomsMax} atoms, {zeth:nbfMax} basis functions · SI up to {zeth:siMax} configurations (2S = 0)",
       "rows": [
-        { "system": "SHZ, SOZ, SNZ", "as": "(2,2)–(8,8)", "reference": "none (broken-symmetry DFT qualitative only)", "number": "S–T at (8,8): 4.23 / 3.24 / 3.05 kcal/mol" }
+        { "system": "{zeth:compounds} PAHs of Hu et al. (2016), {zeth:geometries} geometries", "as": "(2,2)–(10,10)", "reference": "none", "number": "{zeth:calculations} calculations, {zeth:atoms} atoms, {zeth:basis}, (2,2)–(10,10)" }
       ],
       "blocks": [
+        { "id": "definitions", "title": "Definitions", "zeth": ["defs"] },
+        { "id": "compounds", "title": "Compounds", "zeth": ["cards"] },
+        { "id": "ladder", "title": "Spin gaps along the active-space ladder", "zeth": ["ladder"] },
+        { "id": "occupations", "title": "Natural occupations of S0 along the ladder", "zeth": ["occ"] },
+        { "id": "literature", "title": "Literature", "zeth": ["lit"], "hidden": true },
+        { "id": "experiment", "title": "REKS vs experiment", "nav": "vs experiment", "zeth": ["exp"] },
         {
-          "figure": { "src": "figures/main/zethrenes.webp", "w": 1504, "h": 798, "alt": "Zethrenes SHZ, SOZ, SNZ: S0, T1, Q1 energies and S0 FONs for active spaces (2,2) to (8,8)", "caption": "(C–E) S0, T1, Q1 energies per active space, S–T gap in kcal/mol; (F–H) FONs of S0." },
-          "tables": [
-            { "title": "S–T gap / kcal mol^{−1}", "head": ["Molecule", "(2,2)", "(4,4)", "(6,6)", "(8,8)"], "rows": [["SHZ", "2.05", "3.72", "3.46", "4.23"], ["SOZ", "1.11", "2.99", "2.88", "3.24"], ["SNZ", "0.64", "3.80", "2.91", "3.05"]] },
-            { "title": "Diradical character y_{0}", "head": ["Molecule", "(2,2)", "(4,4)", "(6,6)", "(8,8)"], "rows": [["to be added (from data; v1 gives no numbers)", "", "", "", ""]] }
+          "id": "setup",
+          "title": "Setup and reference",
+          "setup": [
+            ["Method", "SA-REKS(M,M), ensemble {zeth:sa}; SI-SA-REKS over the full catalog for every spin the input lists; states shown for 2S = 0, 2, 4"],
+            ["Active spaces", "(2,2), (4,4), (6,6), (8,8), (10,10); SI configurations at (10,10), 2S = 0: {zeth:siMax}"],
+            ["Functional, basis", "{zeth:functional}/{zeth:basis}"],
+            ["Geometries", "R_{cs}, R_{os}, R_{T}: optima of the closed-shell singlet, the broken-symmetry open-shell singlet and the triplet of the parent hydrocarbons (SI appendix blocks “Singlet Closed Shell”, “Singlet Biradical Open Shell”, “Triplet”; UCAM-B3LYP/6-31G*, Hu et al. 2016, SI p. S16); three per compound, two for IF"],
+            ["Not computed", "IF R_{cs} (6,6), PIF R_{T} (10,10)"],
+            ["Inputs", "as run, on the compound pages; starting orbitals read from a seed file (RKS or ROHF orbitals; for HZ and HZD the orbitals of an earlier REKS(2,2) run), active pairs set per rung"],
+            ["Code", "Psi4 {zeth:branch}; builds {zeth:revisions}; the .out headers carry no revision"],
+            ["Numbers", "every number from the .out of its calculation; orbital energies and FONs of the SA-REKS SCF, states and natural occupations of the SI"],
+            ["Experiment", "{zeth:expSources} sources, cited in the experiment block"]
           ],
-          "setup": [["Functional, basis", "BH&HLYP/6-31G(d)"], ["Geometry", "experimental"], ["SA pool, SI cassette", "to be added"]],
-          "reference": ["No external reference; broken-symmetry DFT discussed qualitatively in v1."],
-          "provenance": ["Paper v1, Fig. 1C–H; p8 (numbers from the paper-scout digest, to be re-checked)."]
+          "reference": ["Geometries: {zeth:hu}, doi:{zeth:huDoi}."],
+          "provenance": ["to be added"]
         }
       ],
-      "scope": "No external reference: experimental S–T gaps or a same-active-space method are not compared.",
-      "exits": { "notInstalled": "(8,8)" }
+      "scope": "Calculated values: these calculations. Experiment: values as printed in the cited sources, in the experiment block; wavelengths there also in eV (E = 1239.84 / λ).",
+      "exits": { "notInstalled": "Catalogues {zeth:notInstalledAs} not installed; their {zeth:notInstalled} inputs run on request." }
     },
     {
       "slug": "c2h4-photochemistry",
@@ -381,7 +393,7 @@
       "trust": { "t": "Exact limits (GVB = CASSCF) reproduced to 10^{−10} E_{h}: H_{2} and BH, (2,2)–(4,6)", "slug": "exactness", "anchor": "identities" },
       "demos": [
         { "t": "S_{1}/S_{0} crossing of ethylene found and followed in dynamics, a case TDDFT cannot describe", "slug": "c2h4-photochemistry" },
-        { "t": "zethrene trend", "slug": "zethrenes" }
+        { "t": "seven zethrenes and related PAHs from (2,2) to (10,10), {zeth:calculations} calculations", "slug": "zethrenes" }
       ],
       "bridge": "Multireference accuracy is usually expensive. What does it cost here?"
     },

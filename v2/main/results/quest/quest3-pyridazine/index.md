@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-pyridazine/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -116,16 +116,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![pyridazine, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/bh_44m_23A.svg)**d** 23A · 0.000081\
 −0.1266
 
-![pyridazine, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/bh_44m_22A.svg)**c** 22A · 0.000000\
-−0.1956
-
 ![pyridazine, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/bh_44m_20A.svg)**a** 20A · 1.999919\
 −0.3561
+
+(b, c)
+
+![pyridazine, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/bh_44m_22A.svg)**c** 22A · 0.000000\
+−0.1956
 
 ![pyridazine, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/bh_44m_21A.svg)**b** 21A · 2.000000\
 −0.3367
@@ -134,16 +134,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![pyridazine, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/m08_44m_23A.svg)**d** 23A · 0.000013\
 −0.1462
 
-![pyridazine, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/m08_44m_22A.svg)**c** 22A · 0.000000\
-−0.2035
-
 ![pyridazine, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/m08_44m_20A.svg)**a** 20A · 1.999987\
 −0.3710
+
+(b, c)
+
+![pyridazine, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/m08_44m_22A.svg)**c** 22A · 0.000000\
+−0.2035
 
 ![pyridazine, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/m08_44m_21A.svg)**b** 21A · 2.000000\
 −0.3375
@@ -152,16 +152,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![pyridazine, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/wb_44m_23A.svg)**d** 23A · 0.000041\
 −0.1762
 
-![pyridazine, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/wb_44m_22A.svg)**c** 22A · 0.000000\
-−0.2355
-
 ![pyridazine, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/wb_44m_20A.svg)**a** 20A · 1.999959\
 −0.4060
+
+(b, c)
+
+![pyridazine, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/wb_44m_22A.svg)**c** 22A · 0.000000\
+−0.2355
 
 ![pyridazine, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridazine/wb_44m_21A.svg)**b** 21A · 2.000000\
 −0.3684

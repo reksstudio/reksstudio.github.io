@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-nitroaniline/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -69,16 +69,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![nitroaniline, BH\&HLYP (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_44m_38A.svg)**d** 38A · 0.000123\
 −0.1230
 
-![nitroaniline, BH\&HLYP (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_44m_37A.svg)**c** 37A · 0.000011\
-−0.1343
-
 ![nitroaniline, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_44m_35A.svg)**a** 35A · 1.999877\
 −0.3366
+
+(b, c)
+
+![nitroaniline, BH\&HLYP (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_44m_37A.svg)**c** 37A · 0.000011\
+−0.1343
 
 ![nitroaniline, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_44m_36A.svg)**b** 36A · 1.999989\
 −0.2925
@@ -87,24 +87,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![nitroaniline, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_66_37A.svg)**f** 37A · 0.000035\
 −0.1430
-
-![nitroaniline, BH\&HLYP (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_66_38A.svg)**e** 38A · 0.000003\
-−0.0898
-
-![nitroaniline, BH\&HLYP (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_66_39A.svg)**d** 39A · 0.000000\
-−0.0756
 
 ![nitroaniline, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_66_34A.svg)**a** 34A · 1.999965\
 −0.3572
 
+(b, e)
+
+![nitroaniline, BH\&HLYP (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_66_38A.svg)**e** 38A · 0.000003\
+−0.0898
+
 ![nitroaniline, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_66_35A.svg)**b** 35A · 1.999997\
 −0.3354
+
+(c, d)
+
+![nitroaniline, BH\&HLYP (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_66_39A.svg)**d** 39A · 0.000000\
+−0.0756
 
 ![nitroaniline, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_66_36A.svg)**c** 36A · 2.000000\
 −0.2843
@@ -113,32 +113,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![nitroaniline, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_37A.svg)**h** 37A · 0.000000\
 −0.1479
-
-![nitroaniline, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_39A.svg)**g** 39A · 0.000000\
-−0.0730
-
-![nitroaniline, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_38A.svg)**f** 38A · 0.000000\
-−0.1113
-
-![nitroaniline, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_40A.svg)**e** 40A · 0.000000\
-−0.0570
 
 ![nitroaniline, BH\&HLYP (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_31A.svg)**a** 31A · 2.000000\
 −0.4186
 
+(b, g)
+
+![nitroaniline, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_39A.svg)**g** 39A · 0.000000\
+−0.0730
+
 ![nitroaniline, BH\&HLYP (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_34A.svg)**b** 34A · 2.000000\
 −0.3607
 
+(c, f)
+
+![nitroaniline, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_38A.svg)**f** 38A · 0.000000\
+−0.1113
+
 ![nitroaniline, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_35A.svg)**c** 35A · 2.000000\
 −0.3445
+
+(d, e)
+
+![nitroaniline, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_40A.svg)**e** 40A · 0.000000\
+−0.0570
 
 ![nitroaniline, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/bh_88_36A.svg)**d** 36A · 2.000000\
 −0.2879
@@ -157,16 +157,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![nitroaniline, M08-SO (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_44_38A.svg)**d** 38A · 0.000012\
 −0.1196
 
-![nitroaniline, M08-SO (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_44_37A.svg)**c** 37A · 0.000006\
-−0.1400
-
 ![nitroaniline, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_44_35A.svg)**a** 35A · 1.999988\
 −0.3456
+
+(b, c)
+
+![nitroaniline, M08-SO (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_44_37A.svg)**c** 37A · 0.000006\
+−0.1400
 
 ![nitroaniline, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_44_36A.svg)**b** 36A · 1.999994\
 −0.3038
@@ -175,24 +175,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![nitroaniline, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_66_37A.svg)**f** 37A · 0.000013\
 −0.1573
-
-![nitroaniline, M08-SO (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_66_38A.svg)**e** 38A · 0.000000\
-−0.1070
-
-![nitroaniline, M08-SO (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_66_39A.svg)**d** 39A · 0.000000\
-−0.0910
 
 ![nitroaniline, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_66_34A.svg)**a** 34A · 1.999987\
 −0.3695
 
+(b, e)
+
+![nitroaniline, M08-SO (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_66_38A.svg)**e** 38A · 0.000000\
+−0.1070
+
 ![nitroaniline, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_66_35A.svg)**b** 35A · 2.000000\
 −0.3491
+
+(c, d)
+
+![nitroaniline, M08-SO (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_66_39A.svg)**d** 39A · 0.000000\
+−0.0910
 
 ![nitroaniline, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_66_36A.svg)**c** 36A · 2.000000\
 −0.2977
@@ -201,32 +201,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![nitroaniline, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_37A.svg)**h** 37A · 0.000000\
 −0.1629
-
-![nitroaniline, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_39A.svg)**g** 39A · 0.000000\
-−0.0913
-
-![nitroaniline, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_38A.svg)**f** 38A · 0.000000\
-−0.1285
-
-![nitroaniline, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_40A.svg)**e** 40A · 0.000000\
-−0.0710
 
 ![nitroaniline, M08-SO (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_31A.svg)**a** 31A · 2.000000\
 −0.4322
 
+(b, g)
+
+![nitroaniline, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_39A.svg)**g** 39A · 0.000000\
+−0.0913
+
 ![nitroaniline, M08-SO (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_34A.svg)**b** 34A · 2.000000\
 −0.3741
 
+(c, f)
+
+![nitroaniline, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_38A.svg)**f** 38A · 0.000000\
+−0.1285
+
 ![nitroaniline, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_35A.svg)**c** 35A · 2.000000\
 −0.3582
+
+(d, e)
+
+![nitroaniline, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_40A.svg)**e** 40A · 0.000000\
+−0.0710
 
 ![nitroaniline, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/m08_88_36A.svg)**d** 36A · 2.000000\
 −0.3012
@@ -245,16 +245,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![nitroaniline, ωB97X (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_44_38A.svg)**d** 38A · 0.000052\
 −0.1470
 
-![nitroaniline, ωB97X (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_44_37A.svg)**c** 37A · 0.000013\
-−0.1616
-
 ![nitroaniline, ωB97X (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_44_34A.svg)**a** 34A · 1.999948\
 −0.3798
+
+(b, c)
+
+![nitroaniline, ωB97X (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_44_37A.svg)**c** 37A · 0.000013\
+−0.1616
 
 ![nitroaniline, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_44_36A.svg)**b** 36A · 1.999987\
 −0.3354
@@ -263,24 +263,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![nitroaniline, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_66_37A.svg)**f** 37A · 0.000020\
 −0.1829
-
-![nitroaniline, ωB97X (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_66_38A.svg)**e** 38A · 0.000003\
-−0.1325
-
-![nitroaniline, ωB97X (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_66_39A.svg)**d** 39A · 0.000000\
-−0.1073
 
 ![nitroaniline, ωB97X (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_66_33A.svg)**a** 33A · 1.999980\
 −0.3975
 
+(b, e)
+
+![nitroaniline, ωB97X (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_66_38A.svg)**e** 38A · 0.000003\
+−0.1325
+
 ![nitroaniline, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_66_35A.svg)**b** 35A · 1.999997\
 −0.3804
+
+(c, d)
+
+![nitroaniline, ωB97X (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_66_39A.svg)**d** 39A · 0.000000\
+−0.1073
 
 ![nitroaniline, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_66_36A.svg)**c** 36A · 2.000000\
 −0.3293
@@ -289,32 +289,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![nitroaniline, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_37A.svg)**h** 37A · 0.000000\
 −0.1886
-
-![nitroaniline, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_39A.svg)**g** 39A · 0.000000\
-−0.1210
-
-![nitroaniline, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_38A.svg)**f** 38A · 0.000000\
-−0.1555
-
-![nitroaniline, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_40A.svg)**e** 40A · 0.000000\
-−0.0677
 
 ![nitroaniline, ωB97X (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_31A.svg)**a** 31A · 2.000000\
 −0.4667
 
+(b, g)
+
+![nitroaniline, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_39A.svg)**g** 39A · 0.000000\
+−0.1210
+
 ![nitroaniline, ωB97X (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_34A.svg)**b** 34A · 2.000000\
 −0.4039
 
+(c, f)
+
+![nitroaniline, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_38A.svg)**f** 38A · 0.000000\
+−0.1555
+
 ![nitroaniline, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_35A.svg)**c** 35A · 2.000000\
 −0.3893
+
+(d, e)
+
+![nitroaniline, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_40A.svg)**e** 40A · 0.000000\
+−0.0677
 
 ![nitroaniline, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_nitroaniline/wb_88_36A.svg)**d** 36A · 2.000000\
 −0.3319

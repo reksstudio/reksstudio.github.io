@@ -1,0 +1,154 @@
+---
+import Table from './Table.astro';
+import { EXP_HEAD, THEORY_HEAD, coreBlock, indexBlock } from '../../lib/zethlit.mjs';
+
+interface Props {
+  core?: string;
+}
+
+const { core } = Astro.props;
+const FOOTER = 'Literature values are shown as printed; units and sign conventions follow each source.';
+const b = core ? coreBlock(core) : null;
+const x = core ? null : indexBlock();
+const rowTable = (head, rows) => ({ head, rows });
+const tables = b ? [['lit-exp', 'Experiment', rowTable(EXP_HEAD, b.exp)], ['lit-theory', 'Computed', rowTable(THEORY_HEAD, b.theory)]] : [];
+// header HTML -> plain text for data-l (column label in the stacked phone layout)
+const plain =(h) => h.replace(/<[^>]+>/g, '');
+---
+{b && (
+  <>
+    <p>Values and statements on the <span data-lit set:html={b.name} /> core, as printed in the cited sources. Each row names its molecule. Units and sign conventions follow each source.</p>
+    <p class="zlm">{b.kinds}</p>
+    {b.glosses && <p class="zlm" data-lit set:html={`Substituent labels: ${b.glosses}`} />}
+    {tables.map(([id, title, t], i) => (
+      <>
+        <h3 id={id}>{title}</h3>
+        {t.rows.length > 0 && (
+          <div class="tbl">
+            <table class="zlt">
+              <thead><tr>{t.head.map((h) => <th set:html={h} />)}</tr></thead>
+              <tbody>{t.rows.map((row) => <tr>{row.map((c, k) => <td data-lit data-l={plain(t.head[k])} set:html={c} />)}</tr>)}</tbody>
+            </table>
+          </div>
+        )}
+        {i === 0 && b.table2 && (
+          <>
+            <p class="tbl-title" data-lit set:html={b.t2caption} />
+            <div class="tbl">
+              <table class="zlt2">
+                <thead><tr>{b.table2.head.map((h, k) => (k ? <th data-lit set:html={h} /> : <th set:html={h} />))}</tr></thead>
+                <tbody>{b.table2.rows.map((row) => <tr>{row.map((c) => <td data-lit set:html={c} />)}</tr>)}</tbody>
+              </table>
+            </div>
+            <ul class="zln">{b.table2.notes.map((n) => <li data-lit set:html={n} />)}</ul>
+            {b.table2.foot.map((f) => <p class="zlm" data-lit set:html={f} />)}
+          </>
+        )}
+        {i === 0 && b.ones && (
+          <details class="qmore">
+            <summary data-lit set:html={b.ones.summary} />
+            <p data-lit set:html={b.ones.line} />
+            <div class="tbl">
+              <table class="zlt2">
+                <thead><tr>{b.ones.table2.head.map((h, k) => (k ? <th data-lit set:html={h} /> : <th set:html={h} />))}</tr></thead>
+                <tbody>{b.ones.table2.rows.map((row) => <tr>{row.map((c) => <td data-lit set:html={c} />)}</tr>)}</tbody>
+              </table>
+            </div>
+            {b.ones.table2.foot.map((f) => <p class="zlm" data-lit set:html={f} />)}
+          </details>
+        )}
+        {i === 0 && b.scope.map((s) => <p class="zlm" data-lit set:html={s} />)}
+      </>
+    ))}
+    {b.parent.length > 0 && (
+      <>
+        <h3 id="lit-parent">Statements on the parent hydrocarbon</h3>
+        <ul class="zln">{b.parent.map((p) => <li data-lit set:html={p} />)}</ul>
+      </>
+    )}
+    {b.ident.length > 0 && (
+      <>
+        <p>Identity notes (as printed):</p>
+        <ul class="zln">{b.ident.map((p) => <li data-lit set:html={p} />)}</ul>
+      </>
+    )}
+    {b.printed.length > 0 && (
+      <details class="qmore">
+        <summary>Printed inconsistencies (as printed)</summary>
+        <ul class="zln">{b.printed.map((p) => <li data-lit set:html={p} />)}</ul>
+      </details>
+    )}
+    <p class="qcap">{FOOTER}</p>
+    <h3 id="lit-sources">Sources</h3>
+    <ul class="refs zlr">{b.sources.map((s) => <li id={s.id} data-lit><Fragment set:html={s.html} /> <a href={s.href}>doi:{s.doi}</a></li>)}</ul>
+  </>
+)}
+{x && (
+  <>
+    <p>Values and statements on the seven cores, their derivatives and other zethrene-family molecules, as printed in the cited sources; units and sign conventions follow each source.</p>
+    <p class="tbl-title" data-lit set:html={x.tableA.title} />
+    {x.tableA.caption.map((c) => <p class="zlm" data-lit set:html={c} />)}
+    <Table table={{ head: x.tableA.head, rows: x.tableA.rows }} />
+    <p class="tbl-title">Experiment rows on the compound pages</p>
+    <p class="zlm">Molecules with experiment rows on each compound page.</p>
+    <div class="tbl">
+      <table class="zlt">
+        <thead><tr><th>Compound</th><th>Molecules with experiment rows</th><th>Sources</th><th>Rows</th></tr></thead>
+        <tbody>{x.tableB.map(([id, mols, srcs, href]) => (
+          <tr><td data-lit data-l="Compound" set:html={id} /><td data-lit data-l="Molecules" set:html={mols} /><td data-lit data-l="Sources" set:html={srcs} /><td data-l="Rows"><a href={href}>Experiment rows</a></td></tr>
+        ))}</tbody>
+      </table>
+    </div>
+    <details class="qmore">
+      <summary>Authors' wording on spin state and magnetism</summary>
+      <div class="tbl">
+        <table class="zlt">
+          <thead><tr><th>Source</th><th>Scope</th><th>Wording as printed</th></tr></thead>
+          <tbody>{x.wording.map((row) => <tr>{row.map((c, k) => <td data-lit data-l={['Source', 'Scope', 'Wording'][k]} set:html={c} />)}</tr>)}</tbody>
+        </table>
+      </div>
+    </details>
+    <details class="qmore">
+      <summary>Passage on triplet energies (Lukman et al. 2017, pp. 18378-18379)</summary>
+      <p data-lit set:html={`${x.lukman.quote} (${x.lukman.cite})`} />
+      <p class="zlm" data-lit set:html={`${x.lukman.refs}. ${x.lukman.note}`} />
+    </details>
+    <details class="qmore">
+      <summary>Method dependence of y<sub>0</sub></summary>
+      <p data-lit set:html={x.y0.line} />
+      <div class="tbl">
+        <table class="zlt">
+          <thead><tr><th>Method (HZ parent)</th><th>y<sub>0</sub> / occupation</th><th>Source</th></tr></thead>
+          <tbody>{x.y0.rows.map((row) => <tr>{row.map((c, k) => <td data-lit data-l={['Method', 'y0 / occupation', 'Source'][k]} set:html={c} />)}</tr>)}</tbody>
+        </table>
+      </div>
+    </details>
+    <details class="qmore">
+      <summary>Sign conventions as printed</summary>
+      {x.signs.map((g) => (
+        <>
+          <p data-lit set:html={g.group} />
+          <ul class="zln">{g.items.map((it) => <li data-lit set:html={it} />)}</ul>
+        </>
+      ))}
+    </details>
+    <details class="qmore">
+      <summary>Other zethrene-family compounds (outside the seven cores)</summary>
+      <div class="tbl">
+        <table class="zlt">
+          <thead><tr><th>Molecule</th><th>Quantity</th><th>Value as printed</th><th>Source</th></tr></thead>
+          <tbody>{x.others.map((row) => <tr>{row.map((c, k) => <td data-lit data-l={['Molecule', 'Quantity', 'Value as printed', 'Source'][k]} set:html={c} />)}</tr>)}</tbody>
+        </table>
+      </div>
+      <p>Printed inconsistencies (as printed):</p>
+      <ul class="zln">{x.othersPrinted.map((p) => <li data-lit set:html={p} />)}</ul>
+    </details>
+    <details class="qmore">
+      <summary>Printed inconsistencies (as printed), Hu et al. 2016</summary>
+      <ul class="zln">{x.printed.map((p) => <li data-lit set:html={p} />)}</ul>
+    </details>
+    <p class="qcap">{FOOTER}</p>
+    <h3 id="lit-sources">Sources</h3>
+    <ul class="refs zlr">{x.sources.map((s) => <li id={s.id} data-lit><Fragment set:html={s.html} /> <a href={s.href}>doi:{s.doi}</a></li>)}</ul>
+  </>
+)}

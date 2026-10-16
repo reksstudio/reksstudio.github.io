@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenone/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyclopropenone, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_44m_16A.svg)**d** 16A · 0.000002\
 −0.0891
 
-![cyclopropenone, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_44m_15A.svg)**c** 15A · 0.000000\
-−0.1700
-
 ![cyclopropenone, BH\&HLYP (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_44m_13A.svg)**a** 13A · 1.999998\
 −0.3903
+
+(b, c)
+
+![cyclopropenone, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_44m_15A.svg)**c** 15A · 0.000000\
+−0.1700
 
 ![cyclopropenone, BH\&HLYP (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_44m_14A.svg)**b** 14A · 2.000000\
 −0.3446
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyclopropenone, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_66_17A.svg)**f** 17A · 0.000000\
 −0.0938
-
-![cyclopropenone, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_66_16A.svg)**e** 16A · 0.000007\
-−0.1123
-
-![cyclopropenone, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_66_15A.svg)**d** 15A · 0.000003\
-−0.1472
 
 ![cyclopropenone, BH\&HLYP (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_66_14A.svg)**a** 14A · 2.000000\
 −0.3671
 
+(b, e)
+
+![cyclopropenone, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_66_16A.svg)**e** 16A · 0.000007\
+−0.1123
+
 ![cyclopropenone, BH\&HLYP (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_66_11A.svg)**b** 11A · 1.999993\
 −0.5456
+
+(c, d)
+
+![cyclopropenone, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_66_15A.svg)**d** 15A · 0.000003\
+−0.1472
 
 ![cyclopropenone, BH\&HLYP (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/bh_66_13A.svg)**c** 13A · 1.999997\
 −0.4110
@@ -180,16 +180,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyclopropenone, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_44m_16A.svg)**d** 16A · 0.000002\
 −0.1001
 
-![cyclopropenone, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_44m_15A.svg)**c** 15A · 0.000000\
-−0.1751
-
 ![cyclopropenone, M08-SO (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_44m_13A.svg)**a** 13A · 1.999998\
 −0.4012
+
+(b, c)
+
+![cyclopropenone, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_44m_15A.svg)**c** 15A · 0.000000\
+−0.1751
 
 ![cyclopropenone, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_44m_14A.svg)**b** 14A · 2.000000\
 −0.3485
@@ -198,24 +198,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyclopropenone, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_66_17A.svg)**f** 17A · 0.000000\
 −0.1037
-
-![cyclopropenone, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_66_16A.svg)**e** 16A · 0.000001\
-−0.1284
-
-![cyclopropenone, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_66_15A.svg)**d** 15A · 0.000000\
-−0.1573
 
 ![cyclopropenone, M08-SO (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_66_14A.svg)**a** 14A · 2.000000\
 −0.3715
 
+(b, e)
+
+![cyclopropenone, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_66_16A.svg)**e** 16A · 0.000001\
+−0.1284
+
 ![cyclopropenone, M08-SO (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_66_11A.svg)**b** 11A · 1.999999\
 −0.5601
+
+(c, d)
+
+![cyclopropenone, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_66_15A.svg)**d** 15A · 0.000000\
+−0.1573
 
 ![cyclopropenone, M08-SO (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/m08_66_13A.svg)**c** 13A · 2.000000\
 −0.4217
@@ -234,16 +234,16 @@ M08-SO, (6,6)
 
 (a, d)
 
-(b, c)
-
 ![cyclopropenone, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_44m_16A.svg)**d** 16A · 0.000002\
 −0.1283
 
-![cyclopropenone, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_44m_15A.svg)**c** 15A · 0.000000\
-−0.2105
-
 ![cyclopropenone, ωB97X (4,4), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_44m_13A.svg)**a** 13A · 1.999998\
 −0.4317
+
+(b, c)
+
+![cyclopropenone, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_44m_15A.svg)**c** 15A · 0.000000\
+−0.2105
 
 ![cyclopropenone, ωB97X (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_44m_14A.svg)**b** 14A · 2.000000\
 −0.3788
@@ -252,24 +252,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyclopropenone, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_66_17A.svg)**f** 17A · 0.000000\
 −0.1171
-
-![cyclopropenone, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_66_16A.svg)**e** 16A · 0.000001\
-−0.1612
-
-![cyclopropenone, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_66_15A.svg)**d** 15A · 0.000001\
-−0.1928
 
 ![cyclopropenone, ωB97X (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_66_14A.svg)**a** 14A · 2.000000\
 −0.3996
 
+(b, e)
+
+![cyclopropenone, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_66_16A.svg)**e** 16A · 0.000001\
+−0.1612
+
 ![cyclopropenone, ωB97X (6,6), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_66_10A.svg)**b** 10A · 1.999999\
 −0.5918
+
+(c, d)
+
+![cyclopropenone, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_66_15A.svg)**d** 15A · 0.000001\
+−0.1928
 
 ![cyclopropenone, ωB97X (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_cyclopropenone/wb_66_13A.svg)**c** 13A · 1.999999\
 −0.4517

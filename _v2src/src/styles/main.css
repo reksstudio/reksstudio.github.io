@@ -99,8 +99,8 @@ header.hero{ padding: 28px 0 24px; }
 .pviz{ display: block; width: 100%; height: auto; margin: 6px 0; }
 .pviz .axis{ stroke: var(--ink-faint); stroke-width: 1; }
 .pviz .err{ fill: var(--line); }
-.pviz .link{ stroke: var(--line); stroke-width: 3; }
-.pviz .ref{ fill: var(--bg-raised); stroke: var(--ref); stroke-width: 1.5; }
+.pviz .link, .zx .link{ stroke: var(--line); stroke-width: 3; }
+.pviz .ref, .zx .ref{ fill: var(--bg-raised); stroke: var(--ref); stroke-width: 1.5; }
 .pviz .ours{ fill: var(--ours); }
 .pviz .tick{ font: 11px var(--mono); fill: var(--ink-soft); }
 .pviz polyline{ fill: none; stroke-linejoin: round; }
@@ -335,10 +335,100 @@ header.hero{ padding: 28px 0 24px; }
 .qorb .g{ display: grid; gap: 4px 12px; }
 .qorb .n1{ grid-template-columns: minmax(0, 180px); } .qorb .n2{ grid-template-columns: repeat(2, minmax(0, 180px)); }
 .qorb .n3{ grid-template-columns: repeat(3, minmax(0, 180px)); } .qorb .n4{ grid-template-columns: repeat(4, minmax(0, 180px)); }
+/* a pair column spans the grid's three rows (header, antibonding, bonding), so rows align across pairs */
+.qorb .p{ display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+.qorb .auto{ grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); }
+@media (max-width: 600px){ .qorb .auto{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .qorb .h{ font-size: 0.85rem; font-weight: 600; text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
 .qorb img{ display: block; max-width: 100%; height: auto; margin: 0 auto 2px; }
 .qorb .g span{ display: block; text-align: center; font-size: 0.78rem; line-height: 1.3; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .qorb .g span b{ color: var(--ink); font-weight: 600; }
+
+/* zethrenes: compound cards 4 per row (2 on a phone); inline SVG charts on tokens, text sizes in viewBox units */
+.zcards{ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+@media (min-width: 900px){ .zcards{ grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 600px){ .zcards{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.zcards .qimg{ height: 44px; }
+.zcards .qname span{ font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); }
+.zgrid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 12px 24px; margin: 8px 0 4px; }
+.zgrid svg{ display: block; width: 100%; height: auto; max-width: 440px; }
+.zocc{ display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.zocc svg{ display: block; max-width: 100%; height: auto; }
+.zc text{ font-family: var(--mono); }
+.zc .tick{ font-size: 12.5px; fill: var(--ink-soft); }
+.zc .val{ font-size: 12.5px; fill: var(--ink); font-variant-numeric: tabular-nums; }
+.zc .ttl{ font: 600 14px var(--sans); fill: var(--ink); }
+.zc .cmp{ font: 600 13px var(--sans); fill: var(--ink); }
+.zc .sb{ font-size: 0.8em; }
+.zc .grid{ stroke: var(--line); stroke-width: 1; }
+/* label over grid lines: a halo in the page colour */
+.zc .nc{ paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round; }
+.zd .tick, .zd .val{ font-size: 11px; }
+.zd .ttl{ font-size: 12px; }
+/* active-space colours (2,2)..(10,10), one set for light and dark */
+:root{ --rung-0: #e0a905; --rung-1: #01aac6; --rung-2: #cf3f84; --rung-3: #7541b8; --rung-4: var(--ink); }
+.ra0{ --rung: var(--rung-0); } .ra1{ --rung: var(--rung-1); } .ra2{ --rung: var(--rung-2); }
+.ra3{ --rung: var(--rung-3); } .ra4{ --rung: var(--rung-4); }
+.za .trail{ fill: none; stroke: var(--line); stroke-width: 1.2; }
+.za circle, .zx .rd{ fill: var(--rung); stroke: var(--bg); stroke-width: 1; }
+.za .zcl:hover .cmp, .za .zcl:focus-visible .cmp, .zx .zcl:hover .cmp, .zx .zcl:focus-visible .cmp{ text-decoration: underline; }
+.za .zcl:focus-visible, .zx .zcl:focus-visible{ outline: 2px solid var(--ours); outline-offset: 2px; }
+/* REKS vs experiment chart; keyline spans one per line on phones */
+svg.zx{ display: block; width: 100%; height: auto; max-width: 480px; margin: 6px 0; }
+@media (max-width: 600px){ .zxk span{ display: block; } .zxk .zxd{ display: none; } }
+.zrl{ list-style: none; display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 0; margin: 4px 0; font: 0.78rem var(--mono); color: var(--ink-soft); }
+.zrl li{ display: flex; align-items: center; gap: 5px; }
+.zrl .sw{ width: 9px; height: 9px; border-radius: 50%; background: var(--rung); }
+/* index row charts: two 440 px panels and their caption on one width; chart captions span their chart */
+.zw{ max-width: 904px; }
+.zgrid ~ .qcap, .zocc ~ .qcap, .zcards ~ .qcap{ max-width: none; }
+.zgrid.z3{ grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.zgrid.z3 svg{ max-width: 380px; }
+.zb .lv{ stroke: var(--spin); stroke-width: 2.5; }
+.zb .th{ fill: none; stroke: var(--spin); stroke-width: 1; opacity: 0.55; }
+.zb .sk{ stroke-dasharray: 3 2; }
+.zb .lab{ font-size: 11px; fill: var(--ink-soft); }
+.zb .ld{ stroke: var(--ink-faint); stroke-width: 0.6; }
+.zb .tick{ font-size: 11px; }
+.zd .cell{ fill: none; stroke: var(--line); stroke-width: 1; }
+.zd .bar{ fill: var(--spin); }
+.zd .div{ stroke: var(--ink-faint); stroke-width: 1; stroke-dasharray: 2 2; }
+.zd .sl{ font-size: 9px; fill: var(--ink-soft); }
+.zsub{ font-weight: 600; margin: 16px 0 4px; }
+.zdefs{ margin-bottom: 8px; }
+.mblock .zf{ font: 0.92rem var(--mono); margin: 8px 0; }
+.zlinks a{ text-underline-offset: 0.4em; }
+.zgl{ font-size: 0.9rem; color: var(--ink-soft); }
+.zt2{ display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 0 32px; }
+.zcalc, .zrung{ border-top: 1px solid var(--line); padding: 6px 0; margin: 0; }
+.zcalc summary{ cursor: pointer; font-size: 0.92rem; }
+.zcalc summary b{ font: 400 0.86rem var(--mono); }
+.zcalc[open] > :not(summary){ margin-left: 1.1em; }
+.zrung{ font-size: 0.92rem; color: var(--ink-soft); }
+.zs{ white-space: nowrap; }
+.zst{ max-width: 760px; }
+/* literature block: ink only, values in the body face with tabular figures, left-aligned */
+.zlm{ font-size: 0.88rem; color: var(--ink-soft); }
+.zlt td, .zlt2 td{ font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+.zlt td:first-child{ min-width: 9em; }
+.zlt td:last-child{ min-width: 10em; }
+.tbl table.zlt2{ min-width: 0; }
+.zlt2 th, .zlt2 td{ padding-right: 28px; }
+.zlt2 th:first-child, .zlt2 td:first-child{ white-space: nowrap; }
+.zlt summary, .zln summary{ cursor: pointer; color: var(--ink-soft); }
+.zlt a, .zlt2 a, .zln a, .zlr a, .zlm a, .tbl-title a{ color: inherit; text-decoration: underline; }
+.zlb{ font-weight: 600; }
+.zln{ padding-left: 1.2em; font-size: 0.9rem; }
+.zln li, .zlr li{ margin: 4px 0; }
+.zlr{ font-size: 0.88rem; padding-left: 1.2em; }
+@media (max-width: 600px){
+  .zlt, .zlt tbody, .zlt tr, .zlt td{ display: block; }
+  .zlt thead{ display: none; }
+  .zlt tr{ border-bottom: 1px solid var(--line); padding: 6px 0; }
+  .zlt td, .zlt td:first-child, .zlt td:last-child{ border: none; padding: 2px 0; min-width: 0; }
+  .zlt td:empty{ display: none; }
+  .zlt td::before{ content: attr(data-l); display: block; font-size: 0.76rem; color: var(--ink-faint); }
+}
 
 .terminal{ padding: 20px 22px; font-size: 0.86rem; overflow-x: auto; }
 .exits ul{ padding-left: 20px; font-size: 0.95rem; }

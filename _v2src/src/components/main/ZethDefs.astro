@@ -1,0 +1,23 @@
+---
+import { manualHref } from '../../lib/overview.mjs';
+import { geoms } from '../../lib/zeth.mjs';
+
+interface Props {
+  glossary?: boolean;
+}
+
+const base = import.meta.env.BASE_URL;
+const { glossary } = Astro.props;
+const GLOSSARY = [
+  ['SA-REKS', 'sa-ensemble', 'ensemble SCF, gives the orbitals and their FONs'],
+  ['SI', 'si-cassette', 'configurations of one spin manifold diagonalized in the SA-REKS orbitals, gives the states S0, T1, Q1, …'],
+  ['FON', 'ensemble-fons', 'fractional occupation of an active orbital in the SA-REKS ensemble'],
+  ['natural occupation', 'natural-orbitals', 'eigenvalue of the active 1-RDM of one SI state'],
+];
+---
+<div class="zdefs">
+  <p class="zf"><span class="zs">ΔE<sub>ST</sub> = E(T1) − E(S0),</span> <span class="zs">ΔE<sub>SQ</sub> = E(Q1) − E(S0)</span></p>
+  <p>Same geometry, same active space; S0, T1, Q1 = lowest state with 2S = 0, 2, 4; positive: T1 (Q1) above S0. Spin gaps and ΔE<sub>geom</sub> in kcal mol⁻¹ (1 decimal, with sign); SI state energies E − E(S0) in eV.</p>
+  <p><Fragment set:html={geoms.map((g) => g.html).join(', ')} />: optima of the closed-shell singlet, the broken-symmetry open-shell singlet and the triplet (SI appendix blocks “Singlet Closed Shell”, “Singlet Biradical Open Shell”, “Triplet”; UCAM-B3LYP/6-31G*, Hu et al. 2016, SI p. S16).</p>
+  {glossary && <p class="zgl">{GLOSSARY.map(([t, id, d], i) => <>{i > 0 && ' · '}<a href={manualHref(base, id)}>{t}</a>: {d}</>)}.</p>}
+</div>

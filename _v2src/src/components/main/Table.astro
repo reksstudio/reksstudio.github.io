@@ -1,10 +1,11 @@
 ---
+import { codeHtml } from '../../lib/inline.mjs';
 import { cellHtml, html } from '../../lib/overview.mjs';
 
-type Cell = string | { t: string; manual?: string; href?: string };
+type Cell = string | { t: string; manual?: string; href?: string; lit?: boolean };
 
 interface Props {
-  table: { title?: string; head: string[]; rows: Cell[][] };
+  table: { title?: string; head: Cell[]; rows: Cell[][] };
   numeric?: boolean;
   grouped?: boolean;
 }
@@ -12,6 +13,11 @@ interface Props {
 const base = import.meta.env.BASE_URL;
 const { table, numeric, grouped } = Astro.props;
 const key = (c: Cell) => (typeof c === 'string' ? c : c.t);
+// literature cell {t, lit: true, href?}: text as printed (escaped, _{x} / ^{x} only), marked data-lit
+const lit = (c: Cell) => (typeof c === 'object' && c.lit ? '' : undefined);
+const litBody = (c: { t: string; href?: string }) => (c.href ? `<a href="${base}${c.href}">${codeHtml(c.t)}</a>` : codeHtml(c.t));
+const body = (c: Cell) => (lit(c) === undefined ? cellHtml(c, base) : litBody(c as { t: string; href?: string }));
+const head = (c: Cell) => (lit(c) === undefined ? html(key(c)) : codeHtml(key(c)));
 // grouped: consecutive rows with the same first cell form one tbody, the first cell spans the group
 const groups = grouped
   ? table.rows.reduce((acc: Cell[][][], row) => {
@@ -26,7 +32,7 @@ const cls = [numeric && 'num', grouped && 'grp'].filter(Boolean).join(' ') || un
 {table.title && <p class="tbl-title" set:html={html(table.title)} />}
 <div class="tbl">
   <table class={cls}>
-    <thead><tr>{table.head.map((h) => <th set:html={html(h)} />)}</tr></thead>
+    <thead><tr>{table.head.map((h) => <th data-lit={lit(h)} set:html={head(h)} />)}</tr></thead>
     {grouped
       ? groups.map((g) => (
           <tbody>
@@ -38,6 +44,6 @@ const cls = [numeric && 'num', grouped && 'grp'].filter(Boolean).join(' ') || un
             ))}
           </tbody>
         ))
-      : <tbody>{table.rows.map((row) => <tr>{row.map((c) => <td set:html={cellHtml(c, base)} />)}</tr>)}</tbody>}
+      : <tbody>{table.rows.map((row) => <tr>{row.map((c) => <td data-lit={lit(c)} set:html={body(c)} />)}</tr>)}</tbody>}
   </table>
 </div>

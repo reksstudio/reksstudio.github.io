@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-pyrrole/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![pyrrole, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_44_20A.svg)**d** 20A · 0.000001\
 −0.0245
 
-![pyrrole, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_44_19A.svg)**c** 19A · 0.000041\
-−0.0598
-
 ![pyrrole, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_44_17A.svg)**a** 17A · 1.999999\
 −0.3133
+
+(b, c)
+
+![pyrrole, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_44_19A.svg)**c** 19A · 0.000041\
+−0.0598
 
 ![pyrrole, BH\&HLYP (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_44_18A.svg)**b** 18A · 1.999959\
 −0.2755
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![pyrrole, BH\&HLYP (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_66_20A.svg)**f** 20A · 0.000000\
 −0.0652
-
-![pyrrole, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_66_21A.svg)**e** 21A · 0.000003\
-−0.0576
-
-![pyrrole, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_66_19A.svg)**d** 19A · 0.000097\
-−0.0796
 
 ![pyrrole, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_66_16A.svg)**a** 16A · 2.000000\
 −0.4851
 
+(b, e)
+
+![pyrrole, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_66_21A.svg)**e** 21A · 0.000003\
+−0.0576
+
 ![pyrrole, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_66_17A.svg)**b** 17A · 1.999997\
 −0.3438
+
+(c, d)
+
+![pyrrole, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_66_19A.svg)**d** 19A · 0.000097\
+−0.0796
 
 ![pyrrole, BH\&HLYP (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_66_18A.svg)**c** 18A · 1.999903\
 −0.2988
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![pyrrole, BH\&HLYP (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_21A.svg)**h** 21A · 0.000000\
 −0.0686
-
-![pyrrole, BH\&HLYP (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_22A.svg)**g** 22A · 0.000000\
-−0.0621
-
-![pyrrole, BH\&HLYP (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_19A.svg)**f** 19A · 0.000005\
-−0.0933
-
-![pyrrole, BH\&HLYP (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_20A.svg)**e** 20A · 0.000123\
-−0.0924
 
 ![pyrrole, BH\&HLYP (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_14A.svg)**a** 14A · 2.000000\
 −0.5291
 
+(b, g)
+
+![pyrrole, BH\&HLYP (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_22A.svg)**g** 22A · 0.000000\
+−0.0621
+
 ![pyrrole, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_16A.svg)**b** 16A · 2.000000\
 −0.5200
 
+(c, f)
+
+![pyrrole, BH\&HLYP (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_19A.svg)**f** 19A · 0.000005\
+−0.0933
+
 ![pyrrole, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_17A.svg)**c** 17A · 1.999995\
 −0.3530
+
+(d, e)
+
+![pyrrole, BH\&HLYP (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_20A.svg)**e** 20A · 0.000123\
+−0.0924
 
 ![pyrrole, BH\&HLYP (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/bh_88_18A.svg)**d** 18A · 1.999877\
 −0.3054
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![pyrrole, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_44_20A.svg)**d** 20A · 0.000000\
 −0.0447
 
-![pyrrole, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_44_19A.svg)**c** 19A · 0.000007\
-−0.0782
-
 ![pyrrole, M08-SO (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_44_17A.svg)**a** 17A · 2.000000\
 −0.3251
+
+(b, c)
+
+![pyrrole, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_44_19A.svg)**c** 19A · 0.000007\
+−0.0782
 
 ![pyrrole, M08-SO (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_44_18A.svg)**b** 18A · 1.999993\
 −0.2898
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![pyrrole, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_66_21A.svg)**f** 21A · 0.000000\
 −0.0732
-
-![pyrrole, M08-SO (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_66_20A.svg)**e** 20A · 0.000000\
-−0.0781
-
-![pyrrole, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_66_19A.svg)**d** 19A · 0.000016\
-−0.0965
 
 ![pyrrole, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_66_16A.svg)**a** 16A · 2.000000\
 −0.4859
 
+(b, e)
+
+![pyrrole, M08-SO (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_66_20A.svg)**e** 20A · 0.000000\
+−0.0781
+
 ![pyrrole, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_66_17A.svg)**b** 17A · 2.000000\
 −0.3559
+
+(c, d)
+
+![pyrrole, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_66_19A.svg)**d** 19A · 0.000016\
+−0.0965
 
 ![pyrrole, M08-SO (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_66_18A.svg)**c** 18A · 1.999984\
 −0.3134
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![pyrrole, M08-SO (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_21A.svg)**h** 21A · 0.000000\
 −0.0798
-
-![pyrrole, M08-SO (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_22A.svg)**g** 22A · 0.000000\
-−0.0685
-
-![pyrrole, M08-SO (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_19A.svg)**f** 19A · 0.000001\
-−0.1132
-
-![pyrrole, M08-SO (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_20A.svg)**e** 20A · 0.000020\
-−0.1086
 
 ![pyrrole, M08-SO (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_14A.svg)**a** 14A · 2.000000\
 −0.5269
 
+(b, g)
+
+![pyrrole, M08-SO (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_22A.svg)**g** 22A · 0.000000\
+−0.0685
+
 ![pyrrole, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_15A.svg)**b** 15A · 2.000000\
 −0.5232
 
+(c, f)
+
+![pyrrole, M08-SO (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_19A.svg)**f** 19A · 0.000001\
+−0.1132
+
 ![pyrrole, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_17A.svg)**c** 17A · 1.999999\
 −0.3654
+
+(d, e)
+
+![pyrrole, M08-SO (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_20A.svg)**e** 20A · 0.000020\
+−0.1086
 
 ![pyrrole, M08-SO (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/m08_88_18A.svg)**d** 18A · 1.999980\
 −0.3196
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![pyrrole, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_44_20A.svg)**d** 20A · 0.000001\
 −0.0673
 
-![pyrrole, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_44_19A.svg)**c** 19A · 0.000025\
-−0.1030
-
 ![pyrrole, ωB97X (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_44_17A.svg)**a** 17A · 1.999999\
 −0.3561
+
+(b, c)
+
+![pyrrole, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_44_19A.svg)**c** 19A · 0.000025\
+−0.1030
 
 ![pyrrole, ωB97X (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_44_18A.svg)**b** 18A · 1.999975\
 −0.3214
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![pyrrole, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_66_21A.svg)**f** 21A · 0.000000\
 −0.0794
-
-![pyrrole, ωB97X (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_66_20A.svg)**e** 20A · 0.000001\
-−0.1059
-
-![pyrrole, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_66_19A.svg)**d** 19A · 0.000043\
-−0.1252
 
 ![pyrrole, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_66_16A.svg)**a** 16A · 2.000000\
 −0.5193
 
+(b, e)
+
+![pyrrole, ωB97X (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_66_20A.svg)**e** 20A · 0.000001\
+−0.1059
+
 ![pyrrole, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_66_17A.svg)**b** 17A · 1.999999\
 −0.3918
+
+(c, d)
+
+![pyrrole, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_66_19A.svg)**d** 19A · 0.000043\
+−0.1252
 
 ![pyrrole, ωB97X (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_66_18A.svg)**c** 18A · 1.999957\
 −0.3489
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![pyrrole, ωB97X (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_22A.svg)**h** 22A · 0.000000\
 −0.0831
-
-![pyrrole, ωB97X (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_21A.svg)**g** 21A · 0.000000\
-−0.0866
-
-![pyrrole, ωB97X (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_19A.svg)**f** 19A · 0.000002\
-−0.1444
-
-![pyrrole, ωB97X (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_20A.svg)**e** 20A · 0.000049\
-−0.1380
 
 ![pyrrole, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_15A.svg)**a** 15A · 2.000000\
 −0.5557
 
+(b, g)
+
+![pyrrole, ωB97X (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_21A.svg)**g** 21A · 0.000000\
+−0.0866
+
 ![pyrrole, ωB97X (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_14A.svg)**b** 14A · 2.000000\
 −0.5629
 
+(c, f)
+
+![pyrrole, ωB97X (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_19A.svg)**f** 19A · 0.000002\
+−0.1444
+
 ![pyrrole, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_17A.svg)**c** 17A · 1.999998\
 −0.4016
+
+(d, e)
+
+![pyrrole, ωB97X (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_20A.svg)**e** 20A · 0.000049\
+−0.1380
 
 ![pyrrole, ωB97X (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyrrole/wb_88_18A.svg)**d** 18A · 1.999951\
 −0.3560

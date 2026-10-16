@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-aminobenzonitrile/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -69,16 +69,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![aminobenzonitrile, BH\&HLYP (4,4), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_44m_32A.svg)**d** 32A · 0.000125\
 −0.1161
 
-![aminobenzonitrile, BH\&HLYP (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_44m_33A.svg)**c** 33A · 0.000040\
-−0.1075
-
 ![aminobenzonitrile, BH\&HLYP (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_44m_30A.svg)**a** 30A · 1.999875\
 −0.3288
+
+(b, c)
+
+![aminobenzonitrile, BH\&HLYP (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_44m_33A.svg)**c** 33A · 0.000040\
+−0.1075
 
 ![aminobenzonitrile, BH\&HLYP (4,4), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_44m_31A.svg)**b** 31A · 1.999960\
 −0.2779
@@ -87,24 +87,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![aminobenzonitrile, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_66_34A.svg)**f** 34A · 0.000000\
 −0.0503
-
-![aminobenzonitrile, BH\&HLYP (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_66_32A.svg)**e** 32A · 0.000109\
-−0.1138
-
-![aminobenzonitrile, BH\&HLYP (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_66_33A.svg)**d** 33A · 0.000017\
-−0.1053
 
 ![aminobenzonitrile, BH\&HLYP (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_66_29A.svg)**a** 29A · 2.000000\
 −0.3916
 
+(b, e)
+
+![aminobenzonitrile, BH\&HLYP (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_66_32A.svg)**e** 32A · 0.000109\
+−0.1138
+
 ![aminobenzonitrile, BH\&HLYP (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_66_30A.svg)**b** 30A · 1.999891\
 −0.3376
+
+(c, d)
+
+![aminobenzonitrile, BH\&HLYP (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_66_33A.svg)**d** 33A · 0.000017\
+−0.1053
 
 ![aminobenzonitrile, BH\&HLYP (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_66_31A.svg)**c** 31A · 1.999983\
 −0.2865
@@ -113,32 +113,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![aminobenzonitrile, BH\&HLYP (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_34A.svg)**h** 34A · 0.000000\
 −0.0567
-
-![aminobenzonitrile, BH\&HLYP (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_33A.svg)**g** 33A · 0.000000\
-−0.1128
-
-![aminobenzonitrile, BH\&HLYP (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_32A.svg)**f** 32A · 0.000112\
-−0.1279
-
-![aminobenzonitrile, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_35A.svg)**e** 35A · 0.000000\
-−0.0301
 
 ![aminobenzonitrile, BH\&HLYP (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_27A.svg)**a** 27A · 2.000000\
 −0.4540
 
+(b, g)
+
+![aminobenzonitrile, BH\&HLYP (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_33A.svg)**g** 33A · 0.000000\
+−0.1128
+
 ![aminobenzonitrile, BH\&HLYP (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_29A.svg)**b** 29A · 2.000000\
 −0.3910
 
+(c, f)
+
+![aminobenzonitrile, BH\&HLYP (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_32A.svg)**f** 32A · 0.000112\
+−0.1279
+
 ![aminobenzonitrile, BH\&HLYP (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_30A.svg)**c** 30A · 1.999888\
 −0.3370
+
+(d, e)
+
+![aminobenzonitrile, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_35A.svg)**e** 35A · 0.000000\
+−0.0301
 
 ![aminobenzonitrile, BH\&HLYP (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/bh_88_31A.svg)**d** 31A · 2.000000\
 −0.2870
@@ -157,16 +157,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![aminobenzonitrile, M08-SO (4,4), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_44m_32A.svg)**d** 32A · 0.000019\
 −0.1357
 
-![aminobenzonitrile, M08-SO (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_44m_33A.svg)**c** 33A · 0.000018\
-−0.1227
-
 ![aminobenzonitrile, M08-SO (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_44m_30A.svg)**a** 30A · 1.999981\
 −0.3438
+
+(b, c)
+
+![aminobenzonitrile, M08-SO (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_44m_33A.svg)**c** 33A · 0.000018\
+−0.1227
 
 ![aminobenzonitrile, M08-SO (4,4), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_44m_31A.svg)**b** 31A · 1.999982\
 −0.2915
@@ -175,24 +175,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![aminobenzonitrile, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_66_34A.svg)**f** 34A · 0.000000\
 −0.0691
-
-![aminobenzonitrile, M08-SO (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_66_32A.svg)**e** 32A · 0.000016\
-−0.1327
-
-![aminobenzonitrile, M08-SO (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_66_33A.svg)**d** 33A · 0.000004\
-−0.1201
 
 ![aminobenzonitrile, M08-SO (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_66_29A.svg)**a** 29A · 2.000000\
 −0.4066
 
+(b, e)
+
+![aminobenzonitrile, M08-SO (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_66_32A.svg)**e** 32A · 0.000016\
+−0.1327
+
 ![aminobenzonitrile, M08-SO (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_66_30A.svg)**b** 30A · 1.999984\
 −0.3537
+
+(c, d)
+
+![aminobenzonitrile, M08-SO (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_66_33A.svg)**d** 33A · 0.000004\
+−0.1201
 
 ![aminobenzonitrile, M08-SO (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_66_31A.svg)**c** 31A · 1.999996\
 −0.3011
@@ -201,32 +201,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![aminobenzonitrile, M08-SO (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_34A.svg)**h** 34A · 0.000000\
 −0.0721
-
-![aminobenzonitrile, M08-SO (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_33A.svg)**g** 33A · 0.000000\
-−0.1304
-
-![aminobenzonitrile, M08-SO (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_32A.svg)**f** 32A · 0.000017\
-−0.1455
-
-![aminobenzonitrile, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_36A.svg)**e** 36A · 0.000000\
-−0.0436
 
 ![aminobenzonitrile, M08-SO (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_25A.svg)**a** 25A · 2.000000\
 −0.4655
 
+(b, g)
+
+![aminobenzonitrile, M08-SO (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_33A.svg)**g** 33A · 0.000000\
+−0.1304
+
 ![aminobenzonitrile, M08-SO (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_29A.svg)**b** 29A · 2.000000\
 −0.4039
 
+(c, f)
+
+![aminobenzonitrile, M08-SO (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_32A.svg)**f** 32A · 0.000017\
+−0.1455
+
 ![aminobenzonitrile, M08-SO (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_30A.svg)**c** 30A · 1.999983\
 −0.3516
+
+(d, e)
+
+![aminobenzonitrile, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_36A.svg)**e** 36A · 0.000000\
+−0.0436
 
 ![aminobenzonitrile, M08-SO (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/m08_88_31A.svg)**d** 31A · 2.000000\
 −0.2998
@@ -245,16 +245,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![aminobenzonitrile, ωB97X (4,4), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_44m_32A.svg)**d** 32A · 0.000074\
 −0.1634
 
-![aminobenzonitrile, ωB97X (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_44m_33A.svg)**c** 33A · 0.000041\
-−0.1481
-
 ![aminobenzonitrile, ωB97X (4,4), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_44m_30A.svg)**a** 30A · 1.999926\
 −0.3786
+
+(b, c)
+
+![aminobenzonitrile, ωB97X (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_44m_33A.svg)**c** 33A · 0.000041\
+−0.1481
 
 ![aminobenzonitrile, ωB97X (4,4), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_44m_31A.svg)**b** 31A · 1.999959\
 −0.3241
@@ -263,24 +263,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![aminobenzonitrile, ωB97X (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_66_34A.svg)**f** 34A · 0.000000\
 −0.0646
-
-![aminobenzonitrile, ωB97X (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_66_32A.svg)**e** 32A · 0.000065\
-−0.1605
-
-![aminobenzonitrile, ωB97X (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_66_33A.svg)**d** 33A · 0.000043\
-−0.1478
 
 ![aminobenzonitrile, ωB97X (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_66_29A.svg)**a** 29A · 2.000000\
 −0.4385
 
+(b, e)
+
+![aminobenzonitrile, ωB97X (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_66_32A.svg)**e** 32A · 0.000065\
+−0.1605
+
 ![aminobenzonitrile, ωB97X (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_66_30A.svg)**b** 30A · 1.999935\
 −0.3870
+
+(c, d)
+
+![aminobenzonitrile, ωB97X (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_66_33A.svg)**d** 33A · 0.000043\
+−0.1478
 
 ![aminobenzonitrile, ωB97X (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_66_31A.svg)**c** 31A · 1.999957\
 −0.3290
@@ -289,32 +289,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![aminobenzonitrile, ωB97X (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_34A.svg)**h** 34A · 0.000000\
 −0.0768
-
-![aminobenzonitrile, ωB97X (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_33A.svg)**g** 33A · 0.000000\
-−0.1559
-
-![aminobenzonitrile, ωB97X (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_32A.svg)**f** 32A · 0.000064\
-−0.1708
-
-![aminobenzonitrile, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_35A.svg)**e** 35A · 0.000000\
-−0.0471
 
 ![aminobenzonitrile, ωB97X (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_25A.svg)**a** 25A · 2.000000\
 −0.4990
 
+(b, g)
+
+![aminobenzonitrile, ωB97X (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_33A.svg)**g** 33A · 0.000000\
+−0.1559
+
 ![aminobenzonitrile, ωB97X (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_29A.svg)**b** 29A · 2.000000\
 −0.4335
 
+(c, f)
+
+![aminobenzonitrile, ωB97X (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_32A.svg)**f** 32A · 0.000064\
+−0.1708
+
 ![aminobenzonitrile, ωB97X (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_30A.svg)**c** 30A · 1.999936\
 −0.3846
+
+(d, e)
+
+![aminobenzonitrile, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_35A.svg)**e** 35A · 0.000000\
+−0.0471
 
 ![aminobenzonitrile, ωB97X (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_aminobenzonitrile/wb_88_31A.svg)**d** 31A · 2.000000\
 −0.3273

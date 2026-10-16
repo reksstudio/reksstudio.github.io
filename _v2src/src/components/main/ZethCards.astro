@@ -1,0 +1,30 @@
+---
+import { html } from '../../lib/overview.mjs';
+import { absentLine, cardId, cmpHref, compounds, formulaMarkup, geomsOf, rungs, sg, shortTop, title, topRung } from '../../lib/zeth.mjs';
+
+const base = import.meta.env.BASE_URL;
+const last = rungs.at(-1);
+const DAGGER = '†';
+const short = shortTop();
+const absent = absentLine();
+---
+<ul class="qcards zcards">
+  {compounds.map((c) => (
+    <li class="qcard" id={cardId(c)}>
+      <div class="qimg"><img src={`${base}${c.skel}`} width={c.sw} height={c.sh} alt={`${c.id}: carbon skeleton`} loading="lazy" decoding="async" /></div>
+      <p class="qname"><a href={cmpHref(c)} title={title(c)}>{c.id}</a> <span set:html={html(formulaMarkup(c.formula))} /></p>
+      <table>
+        <thead><tr><th>kcal mol⁻¹</th><th>ΔE<sub>ST</sub></th><th>ΔE<sub>SQ</sub></th></tr></thead>
+        <tbody>
+          {geomsOf(c).map((g) => {
+            const top = topRung(c, g);
+            const r = c.geoms[g.key].rungs[top.key];
+            const mark = top === last ? '' : DAGGER;
+            return <tr><th set:html={g.html} /><td>{sg(r.dE.ST, 1)}{mark}</td><td>{sg(r.dE.SQ, 1)}{mark}</td></tr>;
+          })}
+        </tbody>
+      </table>
+    </li>
+  ))}
+</ul>
+<p class="qcap">Carbon skeletons, one scale for all seven. ΔE<sub>ST</sub> = E(T1) − E(S0), ΔE<sub>SQ</sub> = E(Q1) − E(S0) / kcal mol⁻¹ at the largest computed active space, {last.label}{short.length > 0 && <>; {DAGGER} <Fragment set:html={short.join(', ')} /> ({last.label} not computed)</>}; the full ladder in the chart below. <Fragment set:html={absent} /> Each compound page: SI states joined across active spaces by excitation pattern, natural occupations, active orbitals and the input of every calculation.</p>

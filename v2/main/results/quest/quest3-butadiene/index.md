@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-butadiene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![butadiene, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_44_17A.svg)**d** 17A · 0.000000\
 −0.0560
 
-![butadiene, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_44_16A.svg)**c** 16A · 0.000815\
-−0.1235
-
 ![butadiene, BH\&HLYP (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_44_14A.svg)**a** 14A · 2.000000\
 −0.3993
+
+(b, c)
+
+![butadiene, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_44_16A.svg)**c** 16A · 0.000815\
+−0.1235
 
 ![butadiene, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_44_15A.svg)**b** 15A · 1.999185\
 −0.3000
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![butadiene, BH\&HLYP (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_66_18A.svg)**f** 18A · 0.000000\
 −0.0744
-
-![butadiene, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_66_17A.svg)**e** 17A · 0.000000\
-−0.0781
-
-![butadiene, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_66_16A.svg)**d** 16A · 0.001148\
-−0.1410
 
 ![butadiene, BH\&HLYP (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_66_13A.svg)**a** 13A · 2.000000\
 −0.4483
 
+(b, e)
+
+![butadiene, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_66_17A.svg)**e** 17A · 0.000000\
+−0.0781
+
 ![butadiene, BH\&HLYP (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_66_14A.svg)**b** 14A · 2.000000\
 −0.4192
+
+(c, d)
+
+![butadiene, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_66_16A.svg)**d** 16A · 0.001148\
+−0.1410
 
 ![butadiene, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/bh_66_15A.svg)**c** 15A · 1.998852\
 −0.3141
@@ -180,16 +180,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![butadiene, M08-SO (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_44_17A.svg)**d** 17A · 0.000000\
 −0.0739
 
-![butadiene, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_44_16A.svg)**c** 16A · 0.000167\
-−0.1432
-
 ![butadiene, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_44_14A.svg)**a** 14A · 2.000000\
 −0.4113
+
+(b, c)
+
+![butadiene, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_44_16A.svg)**c** 16A · 0.000167\
+−0.1432
 
 ![butadiene, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_44_15A.svg)**b** 15A · 1.999833\
 −0.3139
@@ -198,24 +198,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![butadiene, M08-SO (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_66_18A.svg)**f** 18A · 0.000000\
 −0.0834
-
-![butadiene, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_66_17A.svg)**e** 17A · 0.000000\
-−0.0971
-
-![butadiene, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_66_16A.svg)**d** 16A · 0.000243\
-−0.1577
 
 ![butadiene, M08-SO (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_66_13A.svg)**a** 13A · 2.000000\
 −0.4481
 
+(b, e)
+
+![butadiene, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_66_17A.svg)**e** 17A · 0.000000\
+−0.0971
+
 ![butadiene, M08-SO (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_66_14A.svg)**b** 14A · 2.000000\
 −0.4314
+
+(c, d)
+
+![butadiene, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_66_16A.svg)**d** 16A · 0.000243\
+−0.1577
 
 ![butadiene, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/m08_66_15A.svg)**c** 15A · 1.999757\
 −0.3280
@@ -234,16 +234,16 @@ M08-SO, (6,6)
 
 (a, d)
 
-(b, c)
-
 ![butadiene, ωB97X (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_44_17A.svg)**d** 17A · 0.000000\
 −0.0950
 
-![butadiene, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_44_16A.svg)**c** 16A · 0.000552\
-−0.1719
-
 ![butadiene, ωB97X (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_44_14A.svg)**a** 14A · 2.000000\
 −0.4480
+
+(b, c)
+
+![butadiene, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_44_16A.svg)**c** 16A · 0.000552\
+−0.1719
 
 ![butadiene, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_44_15A.svg)**b** 15A · 1.999448\
 −0.3465
@@ -252,24 +252,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![butadiene, ωB97X (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_66_18A.svg)**f** 18A · 0.000000\
 −0.0927
-
-![butadiene, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_66_17A.svg)**e** 17A · 0.000000\
-−0.1213
-
-![butadiene, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_66_16A.svg)**d** 16A · 0.000775\
-−0.1882
 
 ![butadiene, ωB97X (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_66_13A.svg)**a** 13A · 2.000000\
 −0.4830
 
+(b, e)
+
+![butadiene, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_66_17A.svg)**e** 17A · 0.000000\
+−0.1213
+
 ![butadiene, ωB97X (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_66_14A.svg)**b** 14A · 2.000000\
 −0.4713
+
+(c, d)
+
+![butadiene, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_66_16A.svg)**d** 16A · 0.000775\
+−0.1882
 
 ![butadiene, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_butadiene/wb_66_15A.svg)**c** 15A · 1.999225\
 −0.3628
