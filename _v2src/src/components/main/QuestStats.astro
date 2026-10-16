@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { kind } = Astro.props;
-const HEAD = ['', 'Functional', 'N', 'MAE / eV', 'ME / eV', 'RMSD / eV', 'MedAE / eV'];
+const HEAD = ['', 'Functional', 'N', 'MAE / eV', 'MSE / eV', 'SDE / eV', 'MedAE / eV'];
 const GROUP = { S: 'S1 + S2', T: 'T1 + T2', all: 'all' };
 // set_stats rows of (QUEST set, group) pairs, one row per functional
 const table = (title, head, keys) => ({
@@ -16,12 +16,12 @@ const table = (title, head, keys) => ({
   rows: keys.flatMap(([q, g, label]) =>
     funcs.map((f) => {
       const s = stat(q, f.key, g);
-      return [label, f.label, String(s.N), n3(s.MAE), signed(s.ME), n3(s.RMSD), n3(s.MedAE)];
+      return [label, f.label, String(s.N), n3(s.MAE), signed(s.MSE), n3(s.SDE), n3(s.MedAE)];
     }),
   ),
 });
 const byState = table('All sets, per state', 'States', [...states, 'S', 'T', 'all'].map((g) => ['all', g, GROUP[g] ?? g]));
-const bySet = table('Per QUEST set, all states', 'Set', sets.map((q) => [q, 'all', `QUEST${q}`]));
+const bySet = table('Per QUEST set, all states', 'Set', [...sets.map((q) => [q, 'all', `QUEST${q}`]), ['all', 'all', 'All QUEST']]);
 const bySetST = table('Per QUEST set, singlets and triplets', 'Set, states', sets.flatMap((q) => ['S', 'T'].map((g) => [q, g, `QUEST${q}, ${GROUP[g]}`])));
 ---
 {kind === 'state' ? (

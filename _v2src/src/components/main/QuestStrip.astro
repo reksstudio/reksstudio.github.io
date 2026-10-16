@@ -2,7 +2,7 @@
 import { dotTitle, funcs, molecules, molHref, n3, signed, stat, states } from '../../lib/quest.mjs';
 
 // one panel per state: x = Delta / eV on a common range, one sub-row per functional, dots dodged off the row
-// centre, tick at ME, MAE as text at the right end; each dot links to its molecule page
+// centre, tick at MSE, MAE as text at the right end; each dot links to its molecule page
 const W = 360;
 const L = 64;
 const R = 44;
@@ -44,7 +44,7 @@ const panels = states.map((s, i) => ({
   s,
   spin: s[0] === 'S' ? 's0' : 's1',
   rows: rows[i],
-  label: `${s}, N = ${rows[i][0].st.N}: Δ = E(SSR) − E(TBE) per state pair; ${rows[i].map((r) => `${r.f.label} MAE ${n3(r.st.MAE)} eV, ME ${signed(r.st.ME)} eV`).join('; ')}`,
+  label: `${s}, N = ${rows[i][0].st.N}: Δ = E(SSR) − E(TBE) per state pair; ${rows[i].map((r) => `${r.f.label} MAE ${n3(r.st.MAE)} eV, MSE ${signed(r.st.MSE)} eV`).join('; ')}`,
 }));
 ---
 <div class="qstrip">
@@ -64,7 +64,7 @@ const panels = states.map((s, i) => ({
         return (
           <g>
             <text x={L - 8} y={yc + 4} text-anchor="end" class="tick">{r.f.label}</text>
-            <line x1={x(r.st.ME)} x2={x(r.st.ME)} y1={yc - ROW / 2 + 2} y2={yc + ROW / 2 - 2} class="me" />
+            <line x1={x(r.st.MSE)} x2={x(r.st.MSE)} y1={yc - ROW / 2 + 2} y2={yc + ROW / 2 - 2} class="me" />
             <text x={W} y={yc + 4} text-anchor="end" class="val">{n3(r.st.MAE)}</text>
             <g class="dot">{r.dots.map((p) => <a href={p.href}><title>{p.title}</title><circle cx={f1(p.px)} cy={f1(yc + p.off)} r="2.5" /></a>)}</g>
           </g>
@@ -73,4 +73,4 @@ const panels = states.map((s, i) => ({
     </svg>
   ))}
 </div>
-<p class="qcap">Δ / eV, common axis for all panels. One dot per state pair, linked to its molecule page; vertical bar: mean signed error (ME); right: MAE / eV. Blue: singlets, orange: triplets.</p>
+<p class="qcap">Δ / eV, common axis for all panels. One dot per state pair, linked to its molecule page; vertical bar: mean signed error (MSE); right: MAE / eV. Blue: singlets, orange: triplets.</p>

@@ -214,7 +214,7 @@
         {
           "id": "errors",
           "title": "Errors by state",
-          "key": "Δ = E_{SSR} − E_{TBE}. ME: mean signed error; MedAE: median absolute error.",
+          "key": "Δ = E_{SSR} − E_{TBE}. MSE: mean signed error; SDE: standard deviation of Δ; MedAE: median absolute error.",
           "quest": ["strip", "stats"]
         },
         {
