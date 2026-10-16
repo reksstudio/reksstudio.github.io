@@ -93,19 +93,19 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><span id="row-si_reks_print_states"><a href="/v2/manual/setup/#si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a></span><br><small>int</small></td>
 <td><code>5</code></td>
 <td>States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all.</td>
-<td><a href="/v2/manual/concepts/#concepts">§2</a> <a href="/v2/manual/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/manual/setup/#selecting">§8</a> <a href="/v2/manual/setup/#si_reks_solver"><code>SI_REKS_SOLVER</code></a><br><a href="/v2/manual/properties/#properties">§16</a> <a href="/v2/manual/properties/#si-states">SI states</a></td>
+<td><a href="/v2/manual/concepts/#concepts">§2</a> <a href="/v2/manual/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/manual/setup/#selecting">§8</a> <a href="/v2/manual/setup/#si_reks_solver"><code>SI_REKS_SOLVER</code></a><br><a href="/v2/manual/properties/#properties">§16</a> <a href="/v2/manual/properties/#si-states">SI states</a><br><a href="/v2/manual/diagnose/#diagnose">§17</a></td>
 </tr>
 <tr>
 <td><span id="row-si_reks_store_states"><a href="/v2/manual/setup/#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a></span><br><small>array of int · alias <a href="#row-si_reks_store_states"><code>REKS_SI_STORE_STATES</code></a></small></td>
 <td>all; the first 10 if <code>M ≥ 6</code> and &gt; 10 configurations</td>
 <td>States per cassette whose properties are stored on the wavefunction (arrays, Molden and cube files); 0 = none, -1 = all.</td>
-<td><a href="/v2/manual/concepts/#concepts">§2</a> <a href="/v2/manual/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/manual/first-calculation/#first-calculation">§3</a> <a href="/v2/manual/first-calculation/#first-spin">Higher spin states</a><br><a href="/v2/manual/setup/#selecting">§8</a> <a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a> · <a href="/v2/manual/setup/#si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a> · <a href="/v2/manual/setup/#si_reks_solver"><code>SI_REKS_SOLVER</code></a><br><a href="/v2/manual/setup/#spin-manifolds">§9</a> <a href="/v2/manual/setup/#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> · <a href="/v2/manual/setup/#cassette-order">Cassette order</a><br><a href="/v2/manual/properties/#reading-output">§15</a> <a href="/v2/manual/properties/#files">Files</a><br><a href="/v2/manual/properties/#properties">§16</a> <a href="/v2/manual/properties/#si-states">SI states</a></td>
+<td><a href="/v2/manual/concepts/#concepts">§2</a> <a href="/v2/manual/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/manual/first-calculation/#first-calculation">§3</a> <a href="/v2/manual/first-calculation/#first-spin">Higher spin states</a><br><a href="/v2/manual/setup/#selecting">§8</a> <a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a> · <a href="/v2/manual/setup/#si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a> · <a href="/v2/manual/setup/#si_reks_solver"><code>SI_REKS_SOLVER</code></a><br><a href="/v2/manual/setup/#spin-manifolds">§9</a> <a href="/v2/manual/setup/#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> · <a href="/v2/manual/setup/#cassette-order">Cassette order</a><br><a href="/v2/manual/properties/#reading-output">§15</a> <a href="/v2/manual/properties/#files">Files</a><br><a href="/v2/manual/properties/#properties">§16</a> <a href="/v2/manual/properties/#si-states">SI states</a><br><a href="/v2/manual/diagnose/#diagnose">§17</a></td>
 </tr>
 <tr>
 <td><span id="row-si_reks_overlap_cutoff"><a href="/v2/manual/setup/#si_reks_overlap_cutoff"><code>SI_REKS_OVERLAP_CUTOFF</code></a></span><br><small>double</small></td>
 <td><code>1e-10</code></td>
 <td>Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped.</td>
-<td><a href="/v2/manual/concepts/#concepts">§2</a> <a href="/v2/manual/concepts/#si-hamiltonian">SI Hamiltonian and overlap</a></td>
+<td><a href="/v2/manual/concepts/#concepts">§2</a> <a href="/v2/manual/concepts/#si-hamiltonian">SI Hamiltonian and overlap</a><br><a href="/v2/manual/diagnose/#diagnose">§17</a></td>
 </tr>
 <tr>
 <td><span id="row-si_reks_solver"><a href="/v2/manual/setup/#si_reks_solver"><code>SI_REKS_SOLVER</code></a></span><br><small><code>AUTO</code>|<code>DIRECT</code>|<code>DAVIDSON</code></small></td>
