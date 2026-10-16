@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest5-nitroxyl/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -107,16 +107,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![nitroxyl, BH\&HLYP (4,4), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/bh_44m_10A.svg)**d** 10A · 0.000000\
 −0.1189
 
-![nitroxyl, BH\&HLYP (4,4), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/bh_44m_9A.svg)**c** 9A · 0.000199\
-−0.3873
-
 ![nitroxyl, BH\&HLYP (4,4), orbital 7A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/bh_44m_7A.svg)**a** 7A · 2.000000\
 −0.5954
+
+(b, c)
+
+![nitroxyl, BH\&HLYP (4,4), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/bh_44m_9A.svg)**c** 9A · 0.000199\
+−0.3873
 
 ![nitroxyl, BH\&HLYP (4,4), orbital 8A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/bh_44m_8A.svg)**b** 8A · 1.999801\
 −0.4225
@@ -135,16 +135,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![nitroxyl, M08-SO (4,4), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/m08_44m_10A.svg)**d** 10A · 0.000000\
 −0.1245
 
-![nitroxyl, M08-SO (4,4), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/m08_44m_9A.svg)**c** 9A · 0.000094\
-−0.3843
-
 ![nitroxyl, M08-SO (4,4), orbital 7A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/m08_44m_7A.svg)**a** 7A · 2.000000\
 −0.6016
+
+(b, c)
+
+![nitroxyl, M08-SO (4,4), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/m08_44m_9A.svg)**c** 9A · 0.000094\
+−0.3843
 
 ![nitroxyl, M08-SO (4,4), orbital 8A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/m08_44m_8A.svg)**b** 8A · 1.999906\
 −0.4266
@@ -163,16 +163,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![nitroxyl, ωB97X (4,4), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/wb_44m_10A.svg)**d** 10A · 0.000000\
 −0.1529
 
-![nitroxyl, ωB97X (4,4), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/wb_44m_9A.svg)**c** 9A · 0.000138\
-−0.4115
-
 ![nitroxyl, ωB97X (4,4), orbital 7A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/wb_44m_7A.svg)**a** 7A · 2.000000\
 −0.6330
+
+(b, c)
+
+![nitroxyl, ωB97X (4,4), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/wb_44m_9A.svg)**c** 9A · 0.000138\
+−0.4115
 
 ![nitroxyl, ωB97X (4,4), orbital 8A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_nitroxyl/wb_44m_8A.svg)**b** 8A · 1.999862\
 −0.4486

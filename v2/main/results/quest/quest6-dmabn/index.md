@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-dmabn/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -69,16 +69,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![DMABN, BH\&HLYP (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_44m_40A.svg)**d** 40A · 0.000120\
 −0.1086
 
-![DMABN, BH\&HLYP (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_44m_41A.svg)**c** 41A · 0.000027\
-−0.0981
-
 ![DMABN, BH\&HLYP (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_44m_38A.svg)**a** 38A · 1.999880\
 −0.3220
+
+(b, c)
+
+![DMABN, BH\&HLYP (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_44m_41A.svg)**c** 41A · 0.000027\
+−0.0981
 
 ![DMABN, BH\&HLYP (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_44m_39A.svg)**b** 39A · 1.999973\
 −0.2655
@@ -87,24 +87,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![DMABN, BH\&HLYP (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_66_41A.svg)**f** 41A · 0.000000\
 −0.0966
-
-![DMABN, BH\&HLYP (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_66_40A.svg)**e** 40A · 0.000095\
-−0.0985
-
-![DMABN, BH\&HLYP (6,6), orbital 44A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_66_44A.svg)**d** 44A · 0.000000\
-0.0039
 
 ![DMABN, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_66_37A.svg)**a** 37A · 2.000000\
 −0.3596
 
+(b, e)
+
+![DMABN, BH\&HLYP (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_66_40A.svg)**e** 40A · 0.000095\
+−0.0985
+
 ![DMABN, BH\&HLYP (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_66_38A.svg)**b** 38A · 1.999905\
 −0.3193
+
+(c, d)
+
+![DMABN, BH\&HLYP (6,6), orbital 44A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_66_44A.svg)**d** 44A · 0.000000\
+0.0039
 
 ![DMABN, BH\&HLYP (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_66_39A.svg)**c** 39A · 2.000000\
 −0.2634
@@ -113,32 +113,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![DMABN, BH\&HLYP (8,8), orbital 44A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_44A.svg)**h** 44A · 0.000000\
 0.0031
-
-![DMABN, BH\&HLYP (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_41A.svg)**g** 41A · 0.000000\
-−0.0965
-
-![DMABN, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_40A.svg)**f** 40A · 0.000094\
-−0.1007
-
-![DMABN, BH\&HLYP (8,8), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_54A.svg)**e** 54A · 0.000000\
-0.0618
 
 ![DMABN, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_35A.svg)**a** 35A · 2.000000\
 −0.4127
 
+(b, g)
+
+![DMABN, BH\&HLYP (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_41A.svg)**g** 41A · 0.000000\
+−0.0965
+
 ![DMABN, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_37A.svg)**b** 37A · 2.000000\
 −0.3609
 
+(c, f)
+
+![DMABN, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_40A.svg)**f** 40A · 0.000094\
+−0.1007
+
 ![DMABN, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_38A.svg)**c** 38A · 1.999906\
 −0.3183
+
+(d, e)
+
+![DMABN, BH\&HLYP (8,8), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_54A.svg)**e** 54A · 0.000000\
+0.0618
 
 ![DMABN, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/bh_88_39A.svg)**d** 39A · 2.000000\
 −0.2637
@@ -157,16 +157,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![DMABN, M08-SO (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_44_40A.svg)**d** 40A · 0.000013\
 −0.1084
 
-![DMABN, M08-SO (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_44_41A.svg)**c** 41A · 0.000015\
-−0.1083
-
 ![DMABN, M08-SO (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_44_38A.svg)**a** 38A · 1.999987\
 −0.3317
+
+(b, c)
+
+![DMABN, M08-SO (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_44_41A.svg)**c** 41A · 0.000015\
+−0.1083
 
 ![DMABN, M08-SO (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_44_39A.svg)**b** 39A · 1.999985\
 −0.2773
@@ -175,24 +175,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![DMABN, M08-SO (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_66_41A.svg)**f** 41A · 0.000000\
 −0.1142
-
-![DMABN, M08-SO (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_66_40A.svg)**e** 40A · 0.000014\
-−0.1191
-
-![DMABN, M08-SO (6,6), orbital 46A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_66_46A.svg)**d** 46A · 0.000000\
-−0.0147
 
 ![DMABN, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_66_37A.svg)**a** 37A · 2.000000\
 −0.3740
 
+(b, e)
+
+![DMABN, M08-SO (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_66_40A.svg)**e** 40A · 0.000014\
+−0.1191
+
 ![DMABN, M08-SO (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_66_38A.svg)**b** 38A · 1.999986\
 −0.3353
+
+(c, d)
+
+![DMABN, M08-SO (6,6), orbital 46A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_66_46A.svg)**d** 46A · 0.000000\
+−0.0147
 
 ![DMABN, M08-SO (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_66_39A.svg)**c** 39A · 2.000000\
 −0.2776
@@ -201,32 +201,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![DMABN, M08-SO (8,8), orbital 44A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_44A.svg)**h** 44A · 0.000000\
 −0.0291
-
-![DMABN, M08-SO (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_41A.svg)**g** 41A · 0.000000\
-−0.1157
-
-![DMABN, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_40A.svg)**f** 40A · 0.000014\
-−0.1224
-
-![DMABN, M08-SO (8,8), orbital 48A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_48A.svg)**e** 48A · 0.000000\
-−0.0078
 
 ![DMABN, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_35A.svg)**a** 35A · 2.000000\
 −0.4276
 
+(b, g)
+
+![DMABN, M08-SO (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_41A.svg)**g** 41A · 0.000000\
+−0.1157
+
 ![DMABN, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_37A.svg)**b** 37A · 2.000000\
 −0.3756
 
+(c, f)
+
+![DMABN, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_40A.svg)**f** 40A · 0.000014\
+−0.1224
+
 ![DMABN, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_38A.svg)**c** 38A · 1.999986\
 −0.3351
+
+(d, e)
+
+![DMABN, M08-SO (8,8), orbital 48A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_48A.svg)**e** 48A · 0.000000\
+−0.0078
 
 ![DMABN, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/m08_88_39A.svg)**d** 39A · 2.000000\
 −0.2793
@@ -245,16 +245,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![DMABN, ωB97X (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_44_40A.svg)**d** 40A · 0.000057\
 −0.1357
 
-![DMABN, ωB97X (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_44_41A.svg)**c** 41A · 0.000040\
-−0.1322
-
 ![DMABN, ωB97X (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_44_38A.svg)**a** 38A · 1.999943\
 −0.3667
+
+(b, c)
+
+![DMABN, ωB97X (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_44_41A.svg)**c** 41A · 0.000040\
+−0.1322
 
 ![DMABN, ωB97X (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_44_39A.svg)**b** 39A · 1.999960\
 −0.3083
@@ -263,24 +263,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![DMABN, ωB97X (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_66_41A.svg)**f** 41A · 0.000000\
 −0.1381
-
-![DMABN, ωB97X (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_66_40A.svg)**e** 40A · 0.000058\
-−0.1432
-
-![DMABN, ωB97X (6,6), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_66_42A.svg)**d** 42A · 0.000000\
-−0.0226
 
 ![DMABN, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_66_37A.svg)**a** 37A · 2.000000\
 −0.4053
 
+(b, e)
+
+![DMABN, ωB97X (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_66_40A.svg)**e** 40A · 0.000058\
+−0.1432
+
 ![DMABN, ωB97X (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_66_38A.svg)**b** 38A · 1.999942\
 −0.3675
+
+(c, d)
+
+![DMABN, ωB97X (6,6), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_66_42A.svg)**d** 42A · 0.000000\
+−0.0226
 
 ![DMABN, ωB97X (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_66_39A.svg)**c** 39A · 2.000000\
 −0.3063
@@ -289,34 +289,34 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![DMABN, ωB97X (8,8), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_42A.svg)**h** 42A · 0.000000\
 −0.0497
-
-![DMABN, ωB97X (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_41A.svg)**g** 41A · 0.000000\
-−0.1424
-
-![DMABN, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_40A.svg)**f** 40A · 0.000057\
-−0.1513
-
-![DMABN, ωB97X (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_43A.svg)**e** 43A · 0.000000\
-−0.0301
 
 ![DMABN, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_35A.svg)**a** 35A · 2.000000\
 −0.4632
 
+(b, g)
+
+![DMABN, ωB97X (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_41A.svg)**g** 41A · 0.000000\
+−0.1424
+
 ![DMABN, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_37A.svg)**b** 37A · 2.000000\
 −0.4098
+
+(c, f)
+
+![DMABN, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_40A.svg)**f** 40A · 0.000057\
+−0.1513
 
 ![DMABN, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_38A.svg)**c** 38A · 1.999943\
 −0.3717
 
+(d, e)
+
+![DMABN, ωB97X (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_43A.svg)**e** 43A · 0.000000\
+−0.0301
+
 ![DMABN, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dmabn/wb_88_39A.svg)**d** 39A · 2.000000\
 −0.3106
 
-[← dimethylaniline](https://reksstudio.github.io/v2/main/results/quest/quest6-dimethylaniline/index.md) · [Back to the gallery](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dmabn) · [N-phenylpyrrole →](https://reksstudio.github.io/v2/main/results/quest/quest6-n-phenylpyrrole/index.md)
+[← dipeptide](https://reksstudio.github.io/v2/main/results/quest/quest6-dipeptide/index.md) · [Back to the gallery](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dmabn) · [N-phenylpyrrole →](https://reksstudio.github.io/v2/main/results/quest/quest6-n-phenylpyrrole/index.md)

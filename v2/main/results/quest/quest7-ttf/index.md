@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest7-ttf/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -116,16 +116,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![TTF, BH\&HLYP (4,4), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_44m_54A.svg)**d** 54A · 0.000000\
 −0.0727
 
-![TTF, BH\&HLYP (4,4), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_44m_53A.svg)**c** 53A · 0.000000\
-−0.0997
-
 ![TTF, BH\&HLYP (4,4), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_44m_51A.svg)**a** 51A · 2.000000\
 −0.2852
+
+(b, c)
+
+![TTF, BH\&HLYP (4,4), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_44m_53A.svg)**c** 53A · 0.000000\
+−0.0997
 
 ![TTF, BH\&HLYP (4,4), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_44m_52A.svg)**b** 52A · 2.000000\
 −0.2145
@@ -134,24 +134,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![TTF, BH\&HLYP (6,6), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_66_55A.svg)**f** 55A · 0.000000\
 −0.0653
-
-![TTF, BH\&HLYP (6,6), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_66_53A.svg)**e** 53A · 0.000000\
-−0.0782
-
-![TTF, BH\&HLYP (6,6), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_66_54A.svg)**d** 54A · 0.000041\
-−0.0717
 
 ![TTF, BH\&HLYP (6,6), orbital 50A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_66_50A.svg)**a** 50A · 2.000000\
 −0.3429
 
+(b, e)
+
+![TTF, BH\&HLYP (6,6), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_66_53A.svg)**e** 53A · 0.000000\
+−0.0782
+
 ![TTF, BH\&HLYP (6,6), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_66_51A.svg)**b** 51A · 2.000000\
 −0.2873
+
+(c, d)
+
+![TTF, BH\&HLYP (6,6), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_66_54A.svg)**d** 54A · 0.000041\
+−0.0717
 
 ![TTF, BH\&HLYP (6,6), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_66_52A.svg)**c** 52A · 1.999959\
 −0.2166
@@ -160,32 +160,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![TTF, BH\&HLYP (8,8), orbital 56A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_56A.svg)**h** 56A · 0.000000\
 −0.0512
-
-![TTF, BH\&HLYP (8,8), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_55A.svg)**g** 55A · 0.000000\
-−0.0702
-
-![TTF, BH\&HLYP (8,8), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_54A.svg)**f** 54A · 0.000000\
-−0.0802
-
-![TTF, BH\&HLYP (8,8), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_53A.svg)**e** 53A · 0.000051\
-−0.0925
 
 ![TTF, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_40A.svg)**a** 40A · 2.000000\
 −0.4935
 
+(b, g)
+
+![TTF, BH\&HLYP (8,8), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_55A.svg)**g** 55A · 0.000000\
+−0.0702
+
 ![TTF, BH\&HLYP (8,8), orbital 50A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_50A.svg)**b** 50A · 2.000000\
 −0.3434
 
+(c, f)
+
+![TTF, BH\&HLYP (8,8), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_54A.svg)**f** 54A · 0.000000\
+−0.0802
+
 ![TTF, BH\&HLYP (8,8), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_51A.svg)**c** 51A · 2.000000\
 −0.2902
+
+(d, e)
+
+![TTF, BH\&HLYP (8,8), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_53A.svg)**e** 53A · 0.000051\
+−0.0925
 
 ![TTF, BH\&HLYP (8,8), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/bh_88_52A.svg)**d** 52A · 1.999949\
 −0.2211
@@ -194,16 +194,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![TTF, M08-SO (4,4), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_44m_54A.svg)**d** 54A · 0.000000\
 −0.0882
 
-![TTF, M08-SO (4,4), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_44m_53A.svg)**c** 53A · 0.000000\
-−0.1141
-
 ![TTF, M08-SO (4,4), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_44m_51A.svg)**a** 51A · 2.000000\
 −0.2985
+
+(b, c)
+
+![TTF, M08-SO (4,4), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_44m_53A.svg)**c** 53A · 0.000000\
+−0.1141
 
 ![TTF, M08-SO (4,4), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_44m_52A.svg)**b** 52A · 2.000000\
 −0.2269
@@ -212,24 +212,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![TTF, M08-SO (6,6), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_66_55A.svg)**f** 55A · 0.000000\
 −0.0781
-
-![TTF, M08-SO (6,6), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_66_53A.svg)**e** 53A · 0.000000\
-−0.0932
-
-![TTF, M08-SO (6,6), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_66_54A.svg)**d** 54A · 0.000014\
-−0.0852
 
 ![TTF, M08-SO (6,6), orbital 50A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_66_50A.svg)**a** 50A · 2.000000\
 −0.3522
 
+(b, e)
+
+![TTF, M08-SO (6,6), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_66_53A.svg)**e** 53A · 0.000000\
+−0.0932
+
 ![TTF, M08-SO (6,6), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_66_51A.svg)**b** 51A · 2.000000\
 −0.3004
+
+(c, d)
+
+![TTF, M08-SO (6,6), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_66_54A.svg)**d** 54A · 0.000014\
+−0.0852
 
 ![TTF, M08-SO (6,6), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_66_52A.svg)**c** 52A · 1.999986\
 −0.2295
@@ -238,32 +238,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![TTF, M08-SO (8,8), orbital 56A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_56A.svg)**h** 56A · 0.000000\
 −0.0648
-
-![TTF, M08-SO (8,8), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_55A.svg)**g** 55A · 0.000000\
-−0.0960
-
-![TTF, M08-SO (8,8), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_54A.svg)**f** 54A · 0.000000\
-−0.1018
-
-![TTF, M08-SO (8,8), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_53A.svg)**e** 53A · 0.000012\
-−0.1319
 
 ![TTF, M08-SO (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_41A.svg)**a** 41A · 2.000000\
 −0.5026
 
+(b, g)
+
+![TTF, M08-SO (8,8), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_55A.svg)**g** 55A · 0.000000\
+−0.0960
+
 ![TTF, M08-SO (8,8), orbital 50A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_50A.svg)**b** 50A · 2.000000\
 −0.3655
 
+(c, f)
+
+![TTF, M08-SO (8,8), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_54A.svg)**f** 54A · 0.000000\
+−0.1018
+
 ![TTF, M08-SO (8,8), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_51A.svg)**c** 51A · 2.000000\
 −0.3135
+
+(d, e)
+
+![TTF, M08-SO (8,8), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_53A.svg)**e** 53A · 0.000012\
+−0.1319
 
 ![TTF, M08-SO (8,8), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/m08_88_52A.svg)**d** 52A · 1.999988\
 −0.2433
@@ -272,16 +272,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![TTF, ωB97X (4,4), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_44m_54A.svg)**d** 54A · 0.000000\
 −0.1006
 
-![TTF, ωB97X (4,4), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_44m_53A.svg)**c** 53A · 0.000000\
-−0.1351
-
 ![TTF, ωB97X (4,4), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_44m_51A.svg)**a** 51A · 2.000000\
 −0.3330
+
+(b, c)
+
+![TTF, ωB97X (4,4), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_44m_53A.svg)**c** 53A · 0.000000\
+−0.1351
 
 ![TTF, ωB97X (4,4), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_44m_52A.svg)**b** 52A · 2.000000\
 −0.2583
@@ -290,24 +290,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![TTF, ωB97X (6,6), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_66_55A.svg)**f** 55A · 0.000000\
 −0.0962
-
-![TTF, ωB97X (6,6), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_66_54A.svg)**e** 54A · 0.000000\
-−0.1100
-
-![TTF, ωB97X (6,6), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_66_53A.svg)**d** 53A · 0.000058\
-−0.1126
 
 ![TTF, ωB97X (6,6), orbital 50A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_66_50A.svg)**a** 50A · 2.000000\
 −0.3901
 
+(b, e)
+
+![TTF, ωB97X (6,6), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_66_54A.svg)**e** 54A · 0.000000\
+−0.1100
+
 ![TTF, ωB97X (6,6), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_66_51A.svg)**b** 51A · 2.000000\
 −0.3356
+
+(c, d)
+
+![TTF, ωB97X (6,6), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_66_53A.svg)**d** 53A · 0.000058\
+−0.1126
 
 ![TTF, ωB97X (6,6), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_66_52A.svg)**c** 52A · 1.999942\
 −0.2616
@@ -316,32 +316,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![TTF, ωB97X (8,8), orbital 64A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_64A.svg)**h** 64A · 0.000000\
 0.0839
-
-![TTF, ωB97X (8,8), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_55A.svg)**g** 55A · 0.000000\
-−0.1083
-
-![TTF, ωB97X (8,8), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_54A.svg)**f** 54A · 0.000000\
-−0.1149
-
-![TTF, ωB97X (8,8), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_53A.svg)**e** 53A · 0.000055\
-−0.1495
 
 ![TTF, ωB97X (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_41A.svg)**a** 41A · 2.000000\
 −0.5371
 
+(b, g)
+
+![TTF, ωB97X (8,8), orbital 55A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_55A.svg)**g** 55A · 0.000000\
+−0.1083
+
 ![TTF, ωB97X (8,8), orbital 50A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_50A.svg)**b** 50A · 2.000000\
 −0.3980
 
+(c, f)
+
+![TTF, ωB97X (8,8), orbital 54A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_54A.svg)**f** 54A · 0.000000\
+−0.1149
+
 ![TTF, ωB97X (8,8), orbital 51A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_51A.svg)**c** 51A · 2.000000\
 −0.3441
+
+(d, e)
+
+![TTF, ωB97X (8,8), orbital 53A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_53A.svg)**e** 53A · 0.000055\
+−0.1495
 
 ![TTF, ωB97X (8,8), orbital 52A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_ttf/wb_88_52A.svg)**d** 52A · 1.999945\
 −0.2718

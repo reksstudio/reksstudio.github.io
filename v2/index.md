@@ -64,9 +64,9 @@ Tested at scale
 
 molecules from QUEST3/5/6/7: 192 S1, S2, T1, T2 excitations against theoretical best estimates
 
-10e,10o
+(10,10)
 
-largest active space computed — previously inaccessible to routine calculation
+largest active space computed, on PAHs of up to 70 atoms (1716 basis functions)
 
 ≈ KS-DFT
 
@@ -84,9 +84,9 @@ C₂ (carbon dimer)
 
 Benchmarked against near-exact (SHCI) energies and experimental spectroscopic constants.
 
-Zethrene series
+Zethrenes and related PAHs
 
-Open-shell diradical character tracked across increasing active-space size.
+7 compounds, 20 geometries, (2,2) to (10,10): spin gaps, SI states, natural occupations and active orbitals of 98 calculations.
 
 Tetra\[3]trianguleno\[3]rhombene
 

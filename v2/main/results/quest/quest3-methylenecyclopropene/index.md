@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-methylenecyclopropene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![methylenecyclopropene, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_44_15A.svg)**d** 15A · 0.000003\
 −0.1198
 
-![methylenecyclopropene, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_44_16A.svg)**c** 16A · 0.000007\
-−0.0752
-
 ![methylenecyclopropene, BH\&HLYP (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_44_12A.svg)**a** 12A · 1.999997\
 −0.4541
+
+(b, c)
+
+![methylenecyclopropene, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_44_16A.svg)**c** 16A · 0.000007\
+−0.0752
 
 ![methylenecyclopropene, BH\&HLYP (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_44_14A.svg)**b** 14A · 1.999993\
 −0.2820
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![methylenecyclopropene, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_66_17A.svg)**f** 17A · 0.000000\
 −0.0870
-
-![methylenecyclopropene, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_66_16A.svg)**e** 16A · 0.000008\
-−0.1143
-
-![methylenecyclopropene, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_66_15A.svg)**d** 15A · 0.000090\
-−0.1171
 
 ![methylenecyclopropene, BH\&HLYP (6,6), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_66_10A.svg)**a** 10A · 2.000000\
 −0.5546
 
+(b, e)
+
+![methylenecyclopropene, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_66_16A.svg)**e** 16A · 0.000008\
+−0.1143
+
 ![methylenecyclopropene, BH\&HLYP (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_66_12A.svg)**b** 12A · 1.999992\
 −0.4699
+
+(c, d)
+
+![methylenecyclopropene, BH\&HLYP (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_66_15A.svg)**d** 15A · 0.000090\
+−0.1171
 
 ![methylenecyclopropene, BH\&HLYP (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_66_14A.svg)**c** 14A · 1.999910\
 −0.3146
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![methylenecyclopropene, BH\&HLYP (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_18A.svg)**h** 18A · 0.000000\
 −0.0850
-
-![methylenecyclopropene, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_17A.svg)**g** 17A · 0.000000\
-−0.0964
-
-![methylenecyclopropene, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_16A.svg)**f** 16A · 0.000009\
-−0.1399
-
-![methylenecyclopropene, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_15A.svg)**e** 15A · 0.000157\
-−0.1749
 
 ![methylenecyclopropene, BH\&HLYP (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_12A.svg)**a** 12A · 2.000000\
 −0.4851
 
+(b, g)
+
+![methylenecyclopropene, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_17A.svg)**g** 17A · 0.000000\
+−0.0964
+
 ![methylenecyclopropene, BH\&HLYP (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_10A.svg)**b** 10A · 2.000000\
 −0.5612
 
+(c, f)
+
+![methylenecyclopropene, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_16A.svg)**f** 16A · 0.000009\
+−0.1399
+
 ![methylenecyclopropene, BH\&HLYP (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_11A.svg)**c** 11A · 1.999991\
 −0.4871
+
+(d, e)
+
+![methylenecyclopropene, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_15A.svg)**e** 15A · 0.000157\
+−0.1749
 
 ![methylenecyclopropene, BH\&HLYP (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/bh_88_14A.svg)**d** 14A · 1.999843\
 −0.3193
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![methylenecyclopropene, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_44_15A.svg)**d** 15A · 0.000000\
 −0.1314
 
-![methylenecyclopropene, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_44_16A.svg)**c** 16A · 0.000006\
-−0.0870
-
 ![methylenecyclopropene, M08-SO (4,4), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_44_11A.svg)**a** 11A · 2.000000\
 −0.4669
+
+(b, c)
+
+![methylenecyclopropene, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_44_16A.svg)**c** 16A · 0.000006\
+−0.0870
 
 ![methylenecyclopropene, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_44_14A.svg)**b** 14A · 1.999994\
 −0.2947
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![methylenecyclopropene, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_66_17A.svg)**f** 17A · 0.000000\
 −0.0962
-
-![methylenecyclopropene, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_66_16A.svg)**e** 16A · 0.000001\
-−0.1251
-
-![methylenecyclopropene, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_66_15A.svg)**d** 15A · 0.000059\
-−0.1303
 
 ![methylenecyclopropene, M08-SO (6,6), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_66_10A.svg)**a** 10A · 2.000000\
 −0.5576
 
+(b, e)
+
+![methylenecyclopropene, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_66_16A.svg)**e** 16A · 0.000001\
+−0.1251
+
 ![methylenecyclopropene, M08-SO (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_66_11A.svg)**b** 11A · 1.999999\
 −0.4834
+
+(c, d)
+
+![methylenecyclopropene, M08-SO (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_66_15A.svg)**d** 15A · 0.000059\
+−0.1303
 
 ![methylenecyclopropene, M08-SO (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_66_14A.svg)**c** 14A · 1.999941\
 −0.3271
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![methylenecyclopropene, M08-SO (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_18A.svg)**h** 18A · 0.000000\
 −0.0954
-
-![methylenecyclopropene, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_17A.svg)**g** 17A · 0.000000\
-−0.1046
-
-![methylenecyclopropene, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_16A.svg)**f** 16A · 0.000002\
-−0.1483
-
-![methylenecyclopropene, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_15A.svg)**e** 15A · 0.000086\
-−0.1871
 
 ![methylenecyclopropene, M08-SO (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_12A.svg)**a** 12A · 2.000000\
 −0.4851
 
+(b, g)
+
+![methylenecyclopropene, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_17A.svg)**g** 17A · 0.000000\
+−0.1046
+
 ![methylenecyclopropene, M08-SO (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_10A.svg)**b** 10A · 2.000000\
 −0.5643
 
+(c, f)
+
+![methylenecyclopropene, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_16A.svg)**f** 16A · 0.000002\
+−0.1483
+
 ![methylenecyclopropene, M08-SO (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_11A.svg)**c** 11A · 1.999998\
 −0.5001
+
+(d, e)
+
+![methylenecyclopropene, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_15A.svg)**e** 15A · 0.000086\
+−0.1871
 
 ![methylenecyclopropene, M08-SO (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/m08_88_14A.svg)**d** 14A · 1.999914\
 −0.3318
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![methylenecyclopropene, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_44_15A.svg)**d** 15A · 0.000001\
 −0.1667
 
-![methylenecyclopropene, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_44_16A.svg)**c** 16A · 0.000013\
-−0.1087
-
 ![methylenecyclopropene, ωB97X (4,4), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_44_11A.svg)**a** 11A · 1.999999\
 −0.5023
+
+(b, c)
+
+![methylenecyclopropene, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_44_16A.svg)**c** 16A · 0.000013\
+−0.1087
 
 ![methylenecyclopropene, ωB97X (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_44_14A.svg)**b** 14A · 1.999987\
 −0.3295
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![methylenecyclopropene, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_66_17A.svg)**f** 17A · 0.000000\
 −0.1098
-
-![methylenecyclopropene, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_66_15A.svg)**e** 15A · 0.000004\
-−0.1597
-
-![methylenecyclopropene, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_66_16A.svg)**d** 16A · 0.000086\
-−0.1583
 
 ![methylenecyclopropene, ωB97X (6,6), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_66_10A.svg)**a** 10A · 2.000000\
 −0.5926
 
+(b, e)
+
+![methylenecyclopropene, ωB97X (6,6), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_66_15A.svg)**e** 15A · 0.000004\
+−0.1597
+
 ![methylenecyclopropene, ωB97X (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_66_11A.svg)**b** 11A · 1.999996\
 −0.5206
+
+(c, d)
+
+![methylenecyclopropene, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_66_16A.svg)**d** 16A · 0.000086\
+−0.1583
 
 ![methylenecyclopropene, ωB97X (6,6), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_66_14A.svg)**c** 14A · 1.999914\
 −0.3642
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![methylenecyclopropene, ωB97X (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_18A.svg)**h** 18A · 0.000000\
 −0.1124
-
-![methylenecyclopropene, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_17A.svg)**g** 17A · 0.000000\
-−0.1244
-
-![methylenecyclopropene, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_16A.svg)**f** 16A · 0.000004\
-−0.1849
-
-![methylenecyclopropene, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_15A.svg)**e** 15A · 0.000120\
-−0.2200
 
 ![methylenecyclopropene, ωB97X (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_12A.svg)**a** 12A · 2.000000\
 −0.5210
 
+(b, g)
+
+![methylenecyclopropene, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_17A.svg)**g** 17A · 0.000000\
+−0.1244
+
 ![methylenecyclopropene, ωB97X (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_10A.svg)**b** 10A · 2.000000\
 −0.6003
 
+(c, f)
+
+![methylenecyclopropene, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_16A.svg)**f** 16A · 0.000004\
+−0.1849
+
 ![methylenecyclopropene, ωB97X (8,8), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_11A.svg)**c** 11A · 1.999996\
 −0.5388
+
+(d, e)
+
+![methylenecyclopropene, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_15A.svg)**e** 15A · 0.000120\
+−0.2200
 
 ![methylenecyclopropene, ωB97X (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_methylenecyclopropene/wb_88_14A.svg)**d** 14A · 1.999880\
 −0.3693

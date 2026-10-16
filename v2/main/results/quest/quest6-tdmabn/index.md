@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-tdmabn/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -88,16 +88,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![twisted DMABN, BH\&HLYP (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_44m_40A.svg)**d** 40A · 0.000073\
 −0.1149
 
-![twisted DMABN, BH\&HLYP (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_44m_41A.svg)**c** 41A · 0.000000\
-−0.0791
-
 ![twisted DMABN, BH\&HLYP (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_44m_38A.svg)**a** 38A · 1.999927\
 −0.3042
+
+(b, c)
+
+![twisted DMABN, BH\&HLYP (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_44m_41A.svg)**c** 41A · 0.000000\
+−0.0791
 
 ![twisted DMABN, BH\&HLYP (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_44m_39A.svg)**b** 39A · 2.000000\
 −0.3034
@@ -106,24 +106,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![twisted DMABN, BH\&HLYP (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_66_41A.svg)**f** 41A · 0.000113\
 −0.1107
-
-![twisted DMABN, BH\&HLYP (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_66_40A.svg)**e** 40A · 0.000083\
-−0.1241
-
-![twisted DMABN, BH\&HLYP (6,6), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_66_42A.svg)**d** 42A · 0.000000\
-−0.0399
 
 ![twisted DMABN, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_66_37A.svg)**a** 37A · 1.999887\
 −0.3177
 
+(b, e)
+
+![twisted DMABN, BH\&HLYP (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_66_40A.svg)**e** 40A · 0.000083\
+−0.1241
+
 ![twisted DMABN, BH\&HLYP (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_66_38A.svg)**b** 38A · 1.999917\
 −0.3100
+
+(c, d)
+
+![twisted DMABN, BH\&HLYP (6,6), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_66_42A.svg)**d** 42A · 0.000000\
+−0.0399
 
 ![twisted DMABN, BH\&HLYP (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_66_39A.svg)**c** 39A · 2.000000\
 −0.3026
@@ -132,32 +132,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![twisted DMABN, BH\&HLYP (8,8), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_42A.svg)**h** 42A · 0.000000\
 −0.0550
-
-![twisted DMABN, BH\&HLYP (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_41A.svg)**g** 41A · 0.000130\
-−0.1283
-
-![twisted DMABN, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_40A.svg)**f** 40A · 0.000008\
-−0.1308
-
-![twisted DMABN, BH\&HLYP (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_43A.svg)**e** 43A · 0.000000\
-−0.0500
 
 ![twisted DMABN, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_35A.svg)**a** 35A · 2.000000\
 −0.4024
 
+(b, g)
+
+![twisted DMABN, BH\&HLYP (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_41A.svg)**g** 41A · 0.000130\
+−0.1283
+
 ![twisted DMABN, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_37A.svg)**b** 37A · 1.999870\
 −0.3289
 
+(c, f)
+
+![twisted DMABN, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_40A.svg)**f** 40A · 0.000008\
+−0.1308
+
 ![twisted DMABN, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_38A.svg)**c** 38A · 1.999992\
 −0.3284
+
+(d, e)
+
+![twisted DMABN, BH\&HLYP (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_43A.svg)**e** 43A · 0.000000\
+−0.0500
 
 ![twisted DMABN, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/bh_88_39A.svg)**d** 39A · 2.000000\
 −0.3061
@@ -176,16 +176,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![twisted DMABN, M08-SO (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_44m_40A.svg)**d** 40A · 0.000018\
 −0.1344
 
-![twisted DMABN, M08-SO (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_44m_41A.svg)**c** 41A · 0.000000\
-−0.0969
-
 ![twisted DMABN, M08-SO (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_44m_38A.svg)**a** 38A · 1.999982\
 −0.3202
+
+(b, c)
+
+![twisted DMABN, M08-SO (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_44m_41A.svg)**c** 41A · 0.000000\
+−0.0969
 
 ![twisted DMABN, M08-SO (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_44m_39A.svg)**b** 39A · 2.000000\
 −0.3128
@@ -194,24 +194,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![twisted DMABN, M08-SO (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_66_41A.svg)**f** 41A · 0.000016\
 −0.1300
-
-![twisted DMABN, M08-SO (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_66_40A.svg)**e** 40A · 0.000018\
-−0.1415
-
-![twisted DMABN, M08-SO (6,6), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_66_42A.svg)**d** 42A · 0.000000\
-−0.0514
 
 ![twisted DMABN, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_66_37A.svg)**a** 37A · 1.999984\
 −0.3339
 
+(b, e)
+
+![twisted DMABN, M08-SO (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_66_40A.svg)**e** 40A · 0.000018\
+−0.1415
+
 ![twisted DMABN, M08-SO (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_66_38A.svg)**b** 38A · 1.999982\
 −0.3254
+
+(c, d)
+
+![twisted DMABN, M08-SO (6,6), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_66_42A.svg)**d** 42A · 0.000000\
+−0.0514
 
 ![twisted DMABN, M08-SO (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_66_39A.svg)**c** 39A · 2.000000\
 −0.3101
@@ -220,32 +220,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![twisted DMABN, M08-SO (8,8), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_42A.svg)**h** 42A · 0.000000\
 −0.0700
-
-![twisted DMABN, M08-SO (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_41A.svg)**g** 41A · 0.000019\
-−0.1399
-
-![twisted DMABN, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_40A.svg)**f** 40A · 0.000001\
-−0.1449
-
-![twisted DMABN, M08-SO (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_43A.svg)**e** 43A · 0.000000\
-−0.0627
 
 ![twisted DMABN, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_35A.svg)**a** 35A · 2.000000\
 −0.4100
 
+(b, g)
+
+![twisted DMABN, M08-SO (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_41A.svg)**g** 41A · 0.000019\
+−0.1399
+
 ![twisted DMABN, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_38A.svg)**b** 38A · 1.999981\
 −0.3440
 
+(c, f)
+
+![twisted DMABN, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_40A.svg)**f** 40A · 0.000001\
+−0.1449
+
 ![twisted DMABN, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_37A.svg)**c** 37A · 1.999999\
 −0.3456
+
+(d, e)
+
+![twisted DMABN, M08-SO (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_43A.svg)**e** 43A · 0.000000\
+−0.0627
 
 ![twisted DMABN, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/m08_88_39A.svg)**d** 39A · 2.000000\
 −0.3157
@@ -264,16 +264,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![twisted DMABN, ωB97X (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_44m_40A.svg)**d** 40A · 0.000062\
 −0.1595
 
-![twisted DMABN, ωB97X (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_44m_41A.svg)**c** 41A · 0.000000\
-−0.1242
-
 ![twisted DMABN, ωB97X (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_44m_38A.svg)**a** 38A · 1.999938\
 −0.3536
+
+(b, c)
+
+![twisted DMABN, ωB97X (4,4), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_44m_41A.svg)**c** 41A · 0.000000\
+−0.1242
 
 ![twisted DMABN, ωB97X (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_44m_39A.svg)**b** 39A · 2.000000\
 −0.3419
@@ -282,24 +282,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![twisted DMABN, ωB97X (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_66_41A.svg)**f** 41A · 0.000069\
 −0.1558
-
-![twisted DMABN, ωB97X (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_66_40A.svg)**e** 40A · 0.000064\
-−0.1664
-
-![twisted DMABN, ωB97X (6,6), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_66_42A.svg)**d** 42A · 0.000000\
-−0.0561
 
 ![twisted DMABN, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_66_37A.svg)**a** 37A · 1.999931\
 −0.3665
 
+(b, e)
+
+![twisted DMABN, ωB97X (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_66_40A.svg)**e** 40A · 0.000064\
+−0.1664
+
 ![twisted DMABN, ωB97X (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_66_38A.svg)**b** 38A · 1.999936\
 −0.3571
+
+(c, d)
+
+![twisted DMABN, ωB97X (6,6), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_66_42A.svg)**d** 42A · 0.000000\
+−0.0561
 
 ![twisted DMABN, ωB97X (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_66_39A.svg)**c** 39A · 2.000000\
 −0.3396
@@ -308,32 +308,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![twisted DMABN, ωB97X (8,8), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_42A.svg)**h** 42A · 0.000000\
 −0.0722
-
-![twisted DMABN, ωB97X (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_41A.svg)**g** 41A · 0.000075\
-−0.1700
-
-![twisted DMABN, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_40A.svg)**f** 40A · 0.000001\
-−0.1704
-
-![twisted DMABN, ωB97X (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_43A.svg)**e** 43A · 0.000000\
-−0.0502
 
 ![twisted DMABN, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_36A.svg)**a** 36A · 2.000000\
 −0.4230
 
+(b, g)
+
+![twisted DMABN, ωB97X (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_41A.svg)**g** 41A · 0.000075\
+−0.1700
+
 ![twisted DMABN, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_38A.svg)**b** 38A · 1.999925\
 −0.3765
 
+(c, f)
+
+![twisted DMABN, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_40A.svg)**f** 40A · 0.000001\
+−0.1704
+
 ![twisted DMABN, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_37A.svg)**c** 37A · 1.999999\
 −0.3939
+
+(d, e)
+
+![twisted DMABN, ωB97X (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_43A.svg)**e** 43A · 0.000000\
+−0.0502
 
 ![twisted DMABN, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_tdmabn/wb_88_39A.svg)**d** 39A · 2.000000\
 −0.3450

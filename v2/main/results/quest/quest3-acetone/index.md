@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-acetone/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -107,16 +107,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![acetone, BH\&HLYP (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/bh_44m_18A.svg)**d** 18A · 0.000000\
 −0.0914
 
-![acetone, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/bh_44m_17A.svg)**c** 17A · 0.000000\
-−0.2271
-
 ![acetone, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/bh_44m_15A.svg)**a** 15A · 2.000000\
 −0.4716
+
+(b, c)
+
+![acetone, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/bh_44m_17A.svg)**c** 17A · 0.000000\
+−0.2271
 
 ![acetone, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/bh_44m_16A.svg)**b** 16A · 2.000000\
 −0.4107
@@ -135,16 +135,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![acetone, M08-SO (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/m08_44m_18A.svg)**d** 18A · 0.000000\
 −0.1004
 
-![acetone, M08-SO (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/m08_44m_17A.svg)**c** 17A · 0.000000\
-−0.2250
-
 ![acetone, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/m08_44m_15A.svg)**a** 15A · 2.000000\
 −0.4744
+
+(b, c)
+
+![acetone, M08-SO (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/m08_44m_17A.svg)**c** 17A · 0.000000\
+−0.2250
 
 ![acetone, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/m08_44m_16A.svg)**b** 16A · 2.000000\
 −0.4099
@@ -163,16 +163,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![acetone, ωB97X (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/wb_44m_18A.svg)**d** 18A · 0.000000\
 −0.1129
 
-![acetone, ωB97X (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/wb_44m_17A.svg)**c** 17A · 0.000000\
-−0.2585
-
 ![acetone, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/wb_44m_15A.svg)**a** 15A · 2.000000\
 −0.5062
+
+(b, c)
+
+![acetone, ωB97X (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/wb_44m_17A.svg)**c** 17A · 0.000000\
+−0.2585
 
 ![acetone, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acetone/wb_44m_16A.svg)**b** 16A · 2.000000\
 −0.4371

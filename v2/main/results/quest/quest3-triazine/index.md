@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-triazine/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -116,16 +116,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![triazine, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/bh_44m_23A.svg)**d** 23A · 0.000000\
 −0.1690
 
-![triazine, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/bh_44m_22A.svg)**c** 22A · 0.000000\
-−0.1713
-
 ![triazine, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/bh_44m_20A.svg)**a** 20A · 2.000000\
 −0.3716
+
+(b, c)
+
+![triazine, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/bh_44m_22A.svg)**c** 22A · 0.000000\
+−0.1713
 
 ![triazine, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/bh_44m_21A.svg)**b** 21A · 2.000000\
 −0.3704
@@ -134,16 +134,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![triazine, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/m08_44m_23A.svg)**d** 23A · 0.000000\
 −0.1806
 
-![triazine, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/m08_44m_22A.svg)**c** 22A · 0.000000\
-−0.1814
-
 ![triazine, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/m08_44m_20A.svg)**a** 20A · 2.000000\
 −0.3751
+
+(b, c)
+
+![triazine, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/m08_44m_22A.svg)**c** 22A · 0.000000\
+−0.1814
 
 ![triazine, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/m08_44m_21A.svg)**b** 21A · 2.000000\
 −0.3740
@@ -152,16 +152,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![triazine, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/wb_44m_23A.svg)**d** 23A · 0.000000\
 −0.2132
 
-![triazine, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/wb_44m_22A.svg)**c** 22A · 0.000000\
-−0.2147
-
 ![triazine, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/wb_44m_20A.svg)**a** 20A · 2.000000\
 −0.4054
+
+(b, c)
+
+![triazine, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/wb_44m_22A.svg)**c** 22A · 0.000000\
+−0.2147
 
 ![triazine, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_triazine/wb_44m_21A.svg)**b** 21A · 2.000000\
 −0.4042

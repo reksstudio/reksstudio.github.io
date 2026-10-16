@@ -109,6 +109,7 @@ Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: br
 - [data/quest5_rows.tsv](/v2/data/quest5_rows.tsv.txt): QUEST5, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.
 - [data/quest6_rows.tsv](/v2/data/quest6_rows.tsv.txt): QUEST6, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.
 - [data/quest7_rows.tsv](/v2/data/quest7_rows.tsv.txt): QUEST7, every SSR active-space row of its molecule pages, tab-separated: quest, molecule, functional, state, active_space, TBE and SSR irrep and eV, delta_eV = SSR - TBE; used = 1 marks the value on the QUEST page.
+- [data/zethrenes_rows.tsv](/v2/data/zethrenes_rows.tsv.txt): Zethrenes and related PAHs (Hu et al. 2016), one row per calculation (98), tab-separated: compound, geometry (R_cs, R_os, R_T), active_space, SI sizes per 2S, E_SA and lowest E of 2S = 0, 2, 4 / Eh, dE_ST = E(T1) - E(S0) and dE_SQ = E(Q1) - E(S0) / kcal/mol (2 decimals), y0, y1 of S0, SA-REKS FONs, source .out; n/a: outside the SI space of the rung.
 
 ## Optional
 - [REKS Studio](/v2/index.md)

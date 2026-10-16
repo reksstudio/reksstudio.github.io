@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-tetrazine/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -116,16 +116,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![tetrazine, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/bh_44m_23A.svg)**d** 23A · 0.000000\
 −0.1710
 
-![tetrazine, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/bh_44m_22A.svg)**c** 22A · 0.000000\
-−0.2474
-
 ![tetrazine, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/bh_44m_19A.svg)**a** 19A · 2.000000\
 −0.4352
+
+(b, c)
+
+![tetrazine, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/bh_44m_22A.svg)**c** 22A · 0.000000\
+−0.2474
 
 ![tetrazine, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/bh_44m_21A.svg)**b** 21A · 2.000000\
 −0.3416
@@ -134,16 +134,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![tetrazine, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/m08_44m_23A.svg)**d** 23A · 0.000000\
 −0.1829
 
-![tetrazine, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/m08_44m_22A.svg)**c** 22A · 0.000000\
-−0.2551
-
 ![tetrazine, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/m08_44m_19A.svg)**a** 19A · 2.000000\
 −0.4340
+
+(b, c)
+
+![tetrazine, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/m08_44m_22A.svg)**c** 22A · 0.000000\
+−0.2551
 
 ![tetrazine, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/m08_44m_21A.svg)**b** 21A · 2.000000\
 −0.3428
@@ -152,16 +152,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![tetrazine, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/wb_44m_23A.svg)**d** 23A · 0.000000\
 −0.2165
 
-![tetrazine, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/wb_44m_22A.svg)**c** 22A · 0.000000\
-−0.2861
-
 ![tetrazine, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/wb_44m_19A.svg)**a** 19A · 2.000000\
 −0.4662
+
+(b, c)
+
+![tetrazine, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/wb_44m_22A.svg)**c** 22A · 0.000000\
+−0.2861
 
 ![tetrazine, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_tetrazine/wb_44m_21A.svg)**b** 21A · 2.000000\
 −0.3734

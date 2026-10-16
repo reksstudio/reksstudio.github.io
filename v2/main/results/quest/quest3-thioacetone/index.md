@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-thioacetone/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -107,16 +107,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![thioacetone, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_44m_22A.svg)**d** 22A · 0.000000\
 −0.0855
 
-![thioacetone, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_44m_21A.svg)**c** 21A · 0.000000\
-−0.2313
-
 ![thioacetone, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_44m_19A.svg)**a** 19A · 2.000000\
 −0.3771
+
+(b, c)
+
+![thioacetone, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_44m_21A.svg)**c** 21A · 0.000000\
+−0.2313
 
 ![thioacetone, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_44m_20A.svg)**b** 20A · 2.000000\
 −0.3444
@@ -125,24 +125,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![thioacetone, BH\&HLYP (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_66_22A.svg)**f** 22A · 0.000000\
 −0.0666
-
-![thioacetone, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_66_23A.svg)**e** 23A · 0.000000\
-−0.0657
-
-![thioacetone, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_66_21A.svg)**d** 21A · 0.001580\
-−0.1890
 
 ![thioacetone, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_66_17A.svg)**a** 17A · 2.000000\
 −0.4811
 
+(b, e)
+
+![thioacetone, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_66_23A.svg)**e** 23A · 0.000000\
+−0.0657
+
 ![thioacetone, BH\&HLYP (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_66_18A.svg)**b** 18A · 2.000000\
 −0.4664
+
+(c, d)
+
+![thioacetone, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_66_21A.svg)**d** 21A · 0.001580\
+−0.1890
 
 ![thioacetone, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/bh_66_19A.svg)**c** 19A · 1.998420\
 −0.3700
@@ -161,16 +161,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![thioacetone, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_44m_22A.svg)**d** 22A · 0.000000\
 −0.0952
 
-![thioacetone, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_44m_21A.svg)**c** 21A · 0.000000\
-−0.2347
-
 ![thioacetone, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_44m_19A.svg)**a** 19A · 2.000000\
 −0.3815
+
+(b, c)
+
+![thioacetone, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_44m_21A.svg)**c** 21A · 0.000000\
+−0.2347
 
 ![thioacetone, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_44m_20A.svg)**b** 20A · 2.000000\
 −0.3514
@@ -179,24 +179,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![thioacetone, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_66_23A.svg)**f** 23A · 0.000000\
 −0.0748
-
-![thioacetone, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_66_22A.svg)**e** 22A · 0.000000\
-−0.0793
-
-![thioacetone, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_66_21A.svg)**d** 21A · 0.000471\
-−0.1947
 
 ![thioacetone, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_66_17A.svg)**a** 17A · 2.000000\
 −0.4824
 
+(b, e)
+
+![thioacetone, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_66_22A.svg)**e** 22A · 0.000000\
+−0.0793
+
 ![thioacetone, M08-SO (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_66_18A.svg)**b** 18A · 2.000000\
 −0.4668
+
+(c, d)
+
+![thioacetone, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_66_21A.svg)**d** 21A · 0.000471\
+−0.1947
 
 ![thioacetone, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/m08_66_19A.svg)**c** 19A · 1.999529\
 −0.3792
@@ -215,16 +215,16 @@ M08-SO, (6,6)
 
 (a, d)
 
-(b, c)
-
 ![thioacetone, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_44m_22A.svg)**d** 22A · 0.000000\
 −0.1071
 
-![thioacetone, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_44m_21A.svg)**c** 21A · 0.000000\
-−0.2722
-
 ![thioacetone, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_44m_19A.svg)**a** 19A · 2.000000\
 −0.4234
+
+(b, c)
+
+![thioacetone, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_44m_21A.svg)**c** 21A · 0.000000\
+−0.2722
 
 ![thioacetone, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_44m_20A.svg)**b** 20A · 2.000000\
 −0.3872
@@ -233,24 +233,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![thioacetone, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_66_23A.svg)**f** 23A · 0.000000\
 −0.0819
-
-![thioacetone, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_66_22A.svg)**e** 22A · 0.000000\
-−0.0995
-
-![thioacetone, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_66_21A.svg)**d** 21A · 0.001014\
-−0.2333
 
 ![thioacetone, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_66_17A.svg)**a** 17A · 2.000000\
 −0.5197
 
+(b, e)
+
+![thioacetone, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_66_22A.svg)**e** 22A · 0.000000\
+−0.0995
+
 ![thioacetone, ωB97X (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_66_18A.svg)**b** 18A · 2.000000\
 −0.5075
+
+(c, d)
+
+![thioacetone, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_66_21A.svg)**d** 21A · 0.001014\
+−0.2333
 
 ![thioacetone, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_thioacetone/wb_66_19A.svg)**c** 19A · 1.998986\
 −0.4189

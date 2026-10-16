@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest7-thienothiophene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![thienothiophene, BH\&HLYP (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_44_38A.svg)**d** 38A · 0.000000\
 −0.0593
 
-![thienothiophene, BH\&HLYP (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_44_37A.svg)**c** 37A · 0.000025\
-−0.1014
-
 ![thienothiophene, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_44_35A.svg)**a** 35A · 2.000000\
 −0.2868
+
+(b, c)
+
+![thienothiophene, BH\&HLYP (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_44_37A.svg)**c** 37A · 0.000025\
+−0.1014
 
 ![thienothiophene, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_44_36A.svg)**b** 36A · 1.999975\
 −0.2733
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![thienothiophene, BH\&HLYP (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_66_38A.svg)**f** 38A · 0.000000\
 −0.0700
-
-![thienothiophene, BH\&HLYP (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_66_39A.svg)**e** 39A · 0.000000\
-−0.0331
-
-![thienothiophene, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_66_37A.svg)**d** 37A · 0.000029\
-−0.1030
 
 ![thienothiophene, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_66_34A.svg)**a** 34A · 2.000000\
 −0.3448
 
+(b, e)
+
+![thienothiophene, BH\&HLYP (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_66_39A.svg)**e** 39A · 0.000000\
+−0.0331
+
 ![thienothiophene, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_66_35A.svg)**b** 35A · 2.000000\
 −0.2896
+
+(c, d)
+
+![thienothiophene, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_66_37A.svg)**d** 37A · 0.000029\
+−0.1030
 
 ![thienothiophene, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_66_36A.svg)**c** 36A · 1.999971\
 −0.2719
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![thienothiophene, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_38A.svg)**h** 38A · 0.000000\
 −0.0810
-
-![thienothiophene, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_39A.svg)**g** 39A · 0.000000\
-−0.0758
-
-![thienothiophene, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_40A.svg)**f** 40A · 0.000000\
-−0.0397
-
-![thienothiophene, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_37A.svg)**e** 37A · 0.000020\
-−0.1070
 
 ![thienothiophene, BH\&HLYP (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_32A.svg)**a** 32A · 2.000000\
 −0.4079
 
+(b, g)
+
+![thienothiophene, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_39A.svg)**g** 39A · 0.000000\
+−0.0758
+
 ![thienothiophene, BH\&HLYP (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_34A.svg)**b** 34A · 2.000000\
 −0.3455
 
+(c, f)
+
+![thienothiophene, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_40A.svg)**f** 40A · 0.000000\
+−0.0397
+
 ![thienothiophene, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_35A.svg)**c** 35A · 2.000000\
 −0.2893
+
+(d, e)
+
+![thienothiophene, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_37A.svg)**e** 37A · 0.000020\
+−0.1070
 
 ![thienothiophene, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/bh_88_36A.svg)**d** 36A · 1.999980\
 −0.2744
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![thienothiophene, M08-SO (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_44_38A.svg)**d** 38A · 0.000000\
 −0.0760
 
-![thienothiophene, M08-SO (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_44_37A.svg)**c** 37A · 0.000008\
-−0.1177
-
 ![thienothiophene, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_44_35A.svg)**a** 35A · 2.000000\
 −0.3002
+
+(b, c)
+
+![thienothiophene, M08-SO (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_44_37A.svg)**c** 37A · 0.000008\
+−0.1177
 
 ![thienothiophene, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_44_36A.svg)**b** 36A · 1.999992\
 −0.2859
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![thienothiophene, M08-SO (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_66_38A.svg)**f** 38A · 0.000000\
 −0.0870
-
-![thienothiophene, M08-SO (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_66_39A.svg)**e** 39A · 0.000000\
-−0.0509
-
-![thienothiophene, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_66_37A.svg)**d** 37A · 0.000006\
-−0.1196
 
 ![thienothiophene, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_66_34A.svg)**a** 34A · 2.000000\
 −0.3567
 
+(b, e)
+
+![thienothiophene, M08-SO (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_66_39A.svg)**e** 39A · 0.000000\
+−0.0509
+
 ![thienothiophene, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_66_35A.svg)**b** 35A · 2.000000\
 −0.3022
+
+(c, d)
+
+![thienothiophene, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_66_37A.svg)**d** 37A · 0.000006\
+−0.1196
 
 ![thienothiophene, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_66_36A.svg)**c** 36A · 1.999994\
 −0.2855
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![thienothiophene, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_39A.svg)**h** 39A · 0.000000\
 −0.0913
-
-![thienothiophene, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_38A.svg)**g** 38A · 0.000000\
-−0.0931
-
-![thienothiophene, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_40A.svg)**f** 40A · 0.000000\
-−0.0575
-
-![thienothiophene, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_37A.svg)**e** 37A · 0.000005\
-−0.1234
 
 ![thienothiophene, M08-SO (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_33A.svg)**a** 33A · 2.000000\
 −0.4148
 
+(b, g)
+
+![thienothiophene, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_38A.svg)**g** 38A · 0.000000\
+−0.0931
+
 ![thienothiophene, M08-SO (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_34A.svg)**b** 34A · 2.000000\
 −0.3583
 
+(c, f)
+
+![thienothiophene, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_40A.svg)**f** 40A · 0.000000\
+−0.0575
+
 ![thienothiophene, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_35A.svg)**c** 35A · 2.000000\
 −0.3027
+
+(d, e)
+
+![thienothiophene, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_37A.svg)**e** 37A · 0.000005\
+−0.1234
 
 ![thienothiophene, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/m08_88_36A.svg)**d** 36A · 1.999995\
 −0.2880
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![thienothiophene, ωB97X (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_44_38A.svg)**d** 38A · 0.000000\
 −0.0955
 
-![thienothiophene, ωB97X (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_44_37A.svg)**c** 37A · 0.000030\
-−0.1437
-
 ![thienothiophene, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_44_35A.svg)**a** 35A · 2.000000\
 −0.3348
+
+(b, c)
+
+![thienothiophene, ωB97X (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_44_37A.svg)**c** 37A · 0.000030\
+−0.1437
 
 ![thienothiophene, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_44_36A.svg)**b** 36A · 1.999970\
 −0.3190
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![thienothiophene, ωB97X (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_66_38A.svg)**f** 38A · 0.000000\
 −0.1052
-
-![thienothiophene, ωB97X (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_66_39A.svg)**e** 39A · 0.000000\
-−0.0686
-
-![thienothiophene, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_66_37A.svg)**d** 37A · 0.000029\
-−0.1449
 
 ![thienothiophene, ωB97X (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_66_34A.svg)**a** 34A · 2.000000\
 −0.3916
 
+(b, e)
+
+![thienothiophene, ωB97X (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_66_39A.svg)**e** 39A · 0.000000\
+−0.0686
+
 ![thienothiophene, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_66_35A.svg)**b** 35A · 2.000000\
 −0.3363
+
+(c, d)
+
+![thienothiophene, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_66_37A.svg)**d** 37A · 0.000029\
+−0.1449
 
 ![thienothiophene, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_66_36A.svg)**c** 36A · 1.999971\
 −0.3167
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![thienothiophene, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_39A.svg)**h** 39A · 0.000000\
 −0.1058
-
-![thienothiophene, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_38A.svg)**g** 38A · 0.000000\
-−0.1105
-
-![thienothiophene, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_40A.svg)**f** 40A · 0.000000\
-−0.0757
-
-![thienothiophene, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_37A.svg)**e** 37A · 0.000025\
-−0.1490
 
 ![thienothiophene, ωB97X (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_33A.svg)**a** 33A · 2.000000\
 −0.4484
 
+(b, g)
+
+![thienothiophene, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_38A.svg)**g** 38A · 0.000000\
+−0.1105
+
 ![thienothiophene, ωB97X (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_34A.svg)**b** 34A · 2.000000\
 −0.3932
 
+(c, f)
+
+![thienothiophene, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_40A.svg)**f** 40A · 0.000000\
+−0.0757
+
 ![thienothiophene, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_35A.svg)**c** 35A · 2.000000\
 −0.3372
+
+(d, e)
+
+![thienothiophene, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_37A.svg)**e** 37A · 0.000025\
+−0.1490
 
 ![thienothiophene, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_thienothiophene/wb_88_36A.svg)**d** 36A · 1.999975\
 −0.3188

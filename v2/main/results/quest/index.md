@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -12,7 +12,7 @@ S1, S2, T1 and T2 vertical excitation energies of 62 molecules from QUEST3/5/6/7
 
 Reference class: model vs benchmark set (TBE)
 
-MAE 0.216 / 0.236 / 0.224 eV (BH\&HLYP / M08-SO / ωB97X); median absolute error 0.131 / 0.169 / 0.159 eV.
+MAE 0.212 / 0.230 / 0.220 eV (BH\&HLYP / M08-SO / ωB97X); median absolute error 0.131 / 0.169 / 0.158 eV.
 
 Per state, the value of the active space (2,2)–(8,8) closest to the TBE.
 
@@ -20,101 +20,104 @@ Per state, the value of the active space (2,2)–(8,8) closest to the TBE.
 
 ## Errors by state
 
-Δ = E<sub>SSR</sub> − E<sub>TBE</sub>. ME: mean signed error; MedAE: median absolute error.
+Δ = E<sub>SSR</sub> − E<sub>TBE</sub>. MSE: mean signed error; SDE: standard deviation of Δ; MedAE: median absolute error.
 
-S1, N = 59: Δ = E(SSR) − E(TBE) per state pair; BH\&HLYP MAE 0.260 eV, ME +0.123 eV; M08-SO MAE 0.251 eV, ME +0.068 eV; ωB97X MAE 0.238 eV, ME +0.140 eV
+S1, N = 59: Δ = E(SSR) − E(TBE) per state pair; BH\&HLYP MAE 0.248 eV, MSE +0.134 eV; M08-SO MAE 0.233 eV, MSE +0.086 eV; ωB97X MAE 0.224 eV, MSE +0.156 eV
 
-S2, N = 41: Δ = E(SSR) − E(TBE) per state pair; BH\&HLYP MAE 0.271 eV, ME +0.113 eV; M08-SO MAE 0.296 eV, ME +0.043 eV; ωB97X MAE 0.289 eV, ME +0.133 eV
+S2, N = 41: Δ = E(SSR) − E(TBE) per state pair; BH\&HLYP MAE 0.271 eV, MSE +0.113 eV; M08-SO MAE 0.296 eV, MSE +0.043 eV; ωB97X MAE 0.289 eV, MSE +0.133 eV
 
-T1, N = 50: Δ = E(SSR) − E(TBE) per state pair; BH\&HLYP MAE 0.140 eV, ME +0.116 eV; M08-SO MAE 0.217 eV, ME +0.200 eV; ωB97X MAE 0.192 eV, ME +0.180 eV
+T1, N = 50: Δ = E(SSR) − E(TBE) per state pair; BH\&HLYP MAE 0.140 eV, MSE +0.116 eV; M08-SO MAE 0.217 eV, MSE +0.200 eV; ωB97X MAE 0.192 eV, MSE +0.180 eV
 
-T2, N = 42: Δ = E(SSR) − E(TBE) per state pair; BH\&HLYP MAE 0.190 eV, ME +0.041 eV; M08-SO MAE 0.180 eV, ME +0.139 eV; ωB97X MAE 0.178 eV, ME +0.121 eV
+T2, N = 42: Δ = E(SSR) − E(TBE) per state pair; BH\&HLYP MAE 0.190 eV, MSE +0.041 eV; M08-SO MAE 0.180 eV, MSE +0.139 eV; ωB97X MAE 0.178 eV, MSE +0.121 eV
 
-Δ / eV, common axis for all panels. One dot per state pair, linked to its molecule page; vertical bar: mean signed error (ME); right: MAE / eV. Blue: singlets, orange: triplets.
+Δ / eV, common axis for all panels. One dot per state pair, linked to its molecule page; vertical bar: mean signed error (MSE); right: MAE / eV. Blue: singlets, orange: triplets.
 
 All sets, per state
 
-| States | Functional | N | MAE / eV | ME / eV | RMSD / eV | MedAE / eV |
+| States | Functional | N | MAE / eV | MSE / eV | SDE / eV | MedAE / eV |
 | - | - | - | - | - | - | - |
-| S1 | BH\&HLYP | 59 | 0.260 | +0.123 | 0.336 | 0.221 |
-| | M08-SO | 59 | 0.251 | +0.068 | 0.347 | 0.202 |
-| | ωB97X | 59 | 0.238 | +0.140 | 0.324 | 0.159 |
-| S2 | BH\&HLYP | 41 | 0.271 | +0.113 | 0.377 | 0.159 |
-| | M08-SO | 41 | 0.296 | +0.043 | 0.419 | 0.202 |
-| | ωB97X | 41 | 0.289 | +0.133 | 0.404 | 0.254 |
-| T1 | BH\&HLYP | 50 | 0.140 | +0.116 | 0.220 | 0.072 |
-| | M08-SO | 50 | 0.217 | +0.200 | 0.267 | 0.195 |
-| | ωB97X | 50 | 0.192 | +0.180 | 0.247 | 0.165 |
+| S1 | BH\&HLYP | 59 | 0.248 | +0.134 | 0.287 | 0.221 |
+| | M08-SO | 59 | 0.233 | +0.086 | 0.289 | 0.202 |
+| | ωB97X | 59 | 0.224 | +0.156 | 0.262 | 0.148 |
+| S2 | BH\&HLYP | 41 | 0.271 | +0.113 | 0.365 | 0.159 |
+| | M08-SO | 41 | 0.296 | +0.043 | 0.422 | 0.202 |
+| | ωB97X | 41 | 0.289 | +0.133 | 0.386 | 0.254 |
+| T1 | BH\&HLYP | 50 | 0.140 | +0.116 | 0.189 | 0.072 |
+| | M08-SO | 50 | 0.217 | +0.200 | 0.178 | 0.195 |
+| | ωB97X | 50 | 0.192 | +0.180 | 0.171 | 0.165 |
 | T2 | BH\&HLYP | 42 | 0.190 | +0.041 | 0.267 | 0.121 |
-| | M08-SO | 42 | 0.180 | +0.139 | 0.272 | 0.094 |
-| | ωB97X | 42 | 0.178 | +0.121 | 0.254 | 0.093 |
-| S1 + S2 | BH\&HLYP | 100 | 0.265 | +0.119 | 0.353 | 0.211 |
-| | M08-SO | 100 | 0.269 | +0.058 | 0.378 | 0.202 |
-| | ωB97X | 100 | 0.259 | +0.137 | 0.359 | 0.162 |
-| T1 + T2 | BH\&HLYP | 92 | 0.163 | +0.082 | 0.243 | 0.109 |
-| | M08-SO | 92 | 0.200 | +0.172 | 0.269 | 0.158 |
-| | ωB97X | 92 | 0.186 | +0.153 | 0.250 | 0.155 |
-| all | BH\&HLYP | 192 | 0.216 | +0.101 | 0.305 | 0.131 |
-| | M08-SO | 192 | 0.236 | +0.113 | 0.330 | 0.169 |
-| | ωB97X | 192 | 0.224 | +0.145 | 0.311 | 0.159 |
+| | M08-SO | 42 | 0.180 | +0.139 | 0.236 | 0.094 |
+| | ωB97X | 42 | 0.178 | +0.121 | 0.226 | 0.093 |
+| S1 + S2 | BH\&HLYP | 100 | 0.258 | +0.126 | 0.319 | 0.211 |
+| | M08-SO | 100 | 0.259 | +0.068 | 0.348 | 0.202 |
+| | ωB97X | 100 | 0.251 | +0.147 | 0.317 | 0.160 |
+| T1 + T2 | BH\&HLYP | 92 | 0.163 | +0.082 | 0.230 | 0.109 |
+| | M08-SO | 92 | 0.200 | +0.172 | 0.208 | 0.158 |
+| | ωB97X | 92 | 0.186 | +0.153 | 0.199 | 0.155 |
+| all | BH\&HLYP | 192 | 0.212 | +0.105 | 0.280 | 0.131 |
+| | M08-SO | 192 | 0.230 | +0.118 | 0.294 | 0.169 |
+| | ωB97X | 192 | 0.220 | +0.149 | 0.267 | 0.158 |
 
 ## By QUEST set
 
 Per QUEST set, all states
 
-| Set | Functional | N | MAE / eV | ME / eV | RMSD / eV | MedAE / eV |
+| Set | Functional | N | MAE / eV | MSE / eV | SDE / eV | MedAE / eV |
 | - | - | - | - | - | - | - |
-| QUEST3 | BH\&HLYP | 97 | 0.224 | +0.094 | 0.308 | 0.144 |
-| | M08-SO | 97 | 0.256 | +0.119 | 0.344 | 0.212 |
-| | ωB97X | 97 | 0.210 | +0.109 | 0.291 | 0.153 |
-| QUEST5 | BH\&HLYP | 43 | 0.199 | +0.092 | 0.272 | 0.121 |
-| | M08-SO | 43 | 0.216 | +0.106 | 0.280 | 0.162 |
-| | ωB97X | 43 | 0.221 | +0.160 | 0.307 | 0.127 |
-| QUEST6 | BH\&HLYP | 32 | 0.263 | +0.122 | 0.386 | 0.133 |
-| | M08-SO | 32 | 0.259 | +0.103 | 0.408 | 0.164 |
-| | ωB97X | 32 | 0.260 | +0.171 | 0.380 | 0.159 |
-| QUEST7 | BH\&HLYP | 20 | 0.139 | +0.118 | 0.193 | 0.104 |
-| | M08-SO | 20 | 0.147 | +0.114 | 0.200 | 0.107 |
-| | ωB97X | 20 | 0.240 | +0.239 | 0.296 | 0.215 |
+| QUEST3 | BH\&HLYP | 97 | 0.224 | +0.094 | 0.295 | 0.144 |
+| | M08-SO | 97 | 0.256 | +0.119 | 0.324 | 0.212 |
+| | ωB97X | 97 | 0.210 | +0.109 | 0.271 | 0.153 |
+| QUEST5 | BH\&HLYP | 43 | 0.199 | +0.092 | 0.259 | 0.121 |
+| | M08-SO | 43 | 0.216 | +0.106 | 0.262 | 0.162 |
+| | ωB97X | 43 | 0.221 | +0.160 | 0.265 | 0.127 |
+| QUEST6 | BH\&HLYP | 32 | 0.241 | +0.144 | 0.325 | 0.133 |
+| | M08-SO | 32 | 0.225 | +0.136 | 0.307 | 0.164 |
+| | ωB97X | 32 | 0.235 | +0.201 | 0.288 | 0.146 |
+| QUEST7 | BH\&HLYP | 20 | 0.139 | +0.118 | 0.157 | 0.104 |
+| | M08-SO | 20 | 0.147 | +0.114 | 0.168 | 0.107 |
+| | ωB97X | 20 | 0.240 | +0.239 | 0.178 | 0.215 |
+| All QUEST | BH\&HLYP | 192 | 0.212 | +0.105 | 0.280 | 0.131 |
+| | M08-SO | 192 | 0.230 | +0.118 | 0.294 | 0.169 |
+| | ωB97X | 192 | 0.220 | +0.149 | 0.267 | 0.158 |
 
 Singlets and triplets per set
 
 Per QUEST set, singlets and triplets
 
-| Set, states | Functional | N | MAE / eV | ME / eV | RMSD / eV | MedAE / eV |
+| Set, states | Functional | N | MAE / eV | MSE / eV | SDE / eV | MedAE / eV |
 | - | - | - | - | - | - | - |
-| QUEST3, S1 + S2 | BH\&HLYP | 46 | 0.297 | +0.119 | 0.373 | 0.265 |
-| | M08-SO | 46 | 0.327 | +0.059 | 0.424 | 0.296 |
-| | ωB97X | 46 | 0.277 | +0.098 | 0.363 | 0.252 |
-| QUEST3, T1 + T2 | BH\&HLYP | 51 | 0.159 | +0.072 | 0.235 | 0.108 |
-| | M08-SO | 51 | 0.192 | +0.172 | 0.250 | 0.159 |
-| | ωB97X | 51 | 0.150 | +0.120 | 0.206 | 0.108 |
-| QUEST5, S1 + S2 | BH\&HLYP | 21 | 0.235 | +0.131 | 0.305 | 0.213 |
-| | M08-SO | 21 | 0.257 | +0.086 | 0.318 | 0.232 |
-| | ωB97X | 21 | 0.238 | +0.186 | 0.343 | 0.109 |
-| QUEST5, T1 + T2 | BH\&HLYP | 22 | 0.165 | +0.054 | 0.237 | 0.097 |
-| | M08-SO | 22 | 0.177 | +0.124 | 0.238 | 0.110 |
-| | ωB97X | 22 | 0.205 | +0.136 | 0.269 | 0.173 |
-| QUEST6, S1 + S2 | BH\&HLYP | 24 | 0.271 | +0.094 | 0.399 | 0.151 |
-| | M08-SO | 24 | 0.227 | +0.031 | 0.391 | 0.089 |
-| | ωB97X | 24 | 0.252 | +0.133 | 0.389 | 0.112 |
-| QUEST6, T1 + T2 | BH\&HLYP | 8 | 0.238 | +0.206 | 0.344 | 0.126 |
-| | M08-SO | 8 | 0.354 | +0.318 | 0.455 | 0.201 |
-| | ωB97X | 8 | 0.286 | +0.286 | 0.354 | 0.182 |
-| QUEST7, S1 + S2 | BH\&HLYP | 9 | 0.155 | +0.152 | 0.192 | 0.114 |
-| | M08-SO | 9 | 0.117 | +0.056 | 0.160 | 0.098 |
-| | ωB97X | 9 | 0.239 | +0.236 | 0.288 | 0.254 |
-| QUEST7, T1 + T2 | BH\&HLYP | 11 | 0.126 | +0.091 | 0.195 | 0.097 |
-| | M08-SO | 11 | 0.171 | +0.162 | 0.227 | 0.156 |
-| | ωB97X | 11 | 0.242 | +0.242 | 0.301 | 0.190 |
+| QUEST3, S1 + S2 | BH\&HLYP | 46 | 0.297 | +0.119 | 0.357 | 0.265 |
+| | M08-SO | 46 | 0.327 | +0.059 | 0.425 | 0.296 |
+| | ωB97X | 46 | 0.277 | +0.098 | 0.353 | 0.252 |
+| QUEST3, T1 + T2 | BH\&HLYP | 51 | 0.159 | +0.072 | 0.226 | 0.108 |
+| | M08-SO | 51 | 0.192 | +0.172 | 0.183 | 0.159 |
+| | ωB97X | 51 | 0.150 | +0.120 | 0.169 | 0.108 |
+| QUEST5, S1 + S2 | BH\&HLYP | 21 | 0.235 | +0.131 | 0.282 | 0.213 |
+| | M08-SO | 21 | 0.257 | +0.086 | 0.313 | 0.232 |
+| | ωB97X | 21 | 0.238 | +0.186 | 0.295 | 0.109 |
+| QUEST5, T1 + T2 | BH\&HLYP | 22 | 0.165 | +0.054 | 0.236 | 0.097 |
+| | M08-SO | 22 | 0.177 | +0.124 | 0.208 | 0.110 |
+| | ωB97X | 22 | 0.205 | +0.136 | 0.238 | 0.173 |
+| QUEST6, S1 + S2 | BH\&HLYP | 24 | 0.242 | +0.123 | 0.338 | 0.151 |
+| | M08-SO | 24 | 0.182 | +0.075 | 0.274 | 0.089 |
+| | ωB97X | 24 | 0.218 | +0.172 | 0.306 | 0.108 |
+| QUEST6, T1 + T2 | BH\&HLYP | 8 | 0.238 | +0.206 | 0.295 | 0.126 |
+| | M08-SO | 8 | 0.354 | +0.318 | 0.348 | 0.201 |
+| | ωB97X | 8 | 0.286 | +0.286 | 0.223 | 0.182 |
+| QUEST7, S1 + S2 | BH\&HLYP | 9 | 0.155 | +0.152 | 0.125 | 0.114 |
+| | M08-SO | 9 | 0.117 | +0.056 | 0.158 | 0.098 |
+| | ωB97X | 9 | 0.239 | +0.236 | 0.176 | 0.254 |
+| QUEST7, T1 + T2 | BH\&HLYP | 11 | 0.126 | +0.091 | 0.181 | 0.097 |
+| | M08-SO | 11 | 0.171 | +0.162 | 0.168 | 0.156 |
+| | ωB97X | 11 | 0.242 | +0.242 | 0.189 | 0.190 |
 
 ## SSR against TBE
 
-BH\&HLYP: SSR against TBE excitation energy, 192 state pairs, TBE 0.88–8.51 eV; MAE 0.216 eV
+BH\&HLYP: SSR against TBE excitation energy, 192 state pairs, TBE 0.88–8.15 eV; MAE 0.212 eV
 
-M08-SO: SSR against TBE excitation energy, 192 state pairs, TBE 0.88–8.51 eV; MAE 0.236 eV
+M08-SO: SSR against TBE excitation energy, 192 state pairs, TBE 0.88–8.15 eV; MAE 0.230 eV
 
-ωB97X: SSR against TBE excitation energy, 192 state pairs, TBE 0.88–8.51 eV; MAE 0.224 eV
+ωB97X: SSR against TBE excitation energy, 192 state pairs, TBE 0.88–8.15 eV; MAE 0.220 eV
 
 * S1 (dot), S2 (ring)
 * T1 (dot), T2 (ring)
@@ -620,17 +623,6 @@ Drawings of the computed geometries: explicit hydrogens, no bond orders, one sca
   | T1 | +0.000 | +0.201 | +0.162 |
   | T2 | −0.130 | +0.042 | +0.026 |
 
-* ![β-dipeptide: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/quest/mol/quest6_beta-dipeptide.svg)
-
-  [β-dipeptide](https://reksstudio.github.io/v2/main/results/quest/quest6-beta-dipeptide/index.md)
-
-  | Δ | BH\&HLYP | M08-SO | ωB97X |
-  | - | - | - | - |
-  | S1 | −0.938 | −1.385 | −0.875 |
-  | S2 | – | – | – |
-  | T1 | – | – | – |
-  | T2 | – | – | – |
-
 * ![dimethylaniline: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/quest/mol/quest6_dimethylaniline.svg)
 
   [dimethylaniline](https://reksstudio.github.io/v2/main/results/quest/quest6-dimethylaniline/index.md)
@@ -639,6 +631,17 @@ Drawings of the computed geometries: explicit hydrogens, no bond orders, one sca
   | - | - | - | - |
   | S1 | +0.321 | +0.209 | +0.372 |
   | S2 | −0.013 | −0.043 | +0.052 |
+  | T1 | – | – | – |
+  | T2 | – | – | – |
+
+* ![dipeptide: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/quest/mol/quest6_dipeptide.svg)
+
+  [dipeptide](https://reksstudio.github.io/v2/main/results/quest/quest6-dipeptide/index.md)
+
+  | Δ | BH\&HLYP | M08-SO | ωB97X |
+  | - | - | - | - |
+  | S1 | −0.237 | −0.319 | +0.059 |
+  | S2 | – | – | – |
   | T1 | – | – | – |
   | T2 | – | – | – |
 
@@ -980,9 +983,9 @@ BH\&HLYP
 | | S2 | 4.371 | 4.536 | +0.165 | (8,8) | A<sub>1</sub> | A<sub>1</sub> |
 | | T1 | 2.820 | 2.820 | +0.000 | (2,2) | B<sub>2</sub> | B<sub>2</sub> |
 | | T2 | 3.485 | 3.355 | −0.130 | (4,4) | A<sub>1</sub> | A<sub>1</sub> |
-| [β-dipeptide](https://reksstudio.github.io/v2/main/results/quest/index.md#m-beta-dipeptide) | S1 | 8.51 | 7.572 | −0.938 | (4,4) | A′ | A′ |
 | [dimethylaniline](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dimethylaniline) | S1 | 4.39 | 4.711 | +0.321 | (6,6) | B<sub>2</sub> | B<sub>2</sub> |
 | | S2 | 5.40 | 5.387 | −0.013 | (6,6) | A<sub>1</sub> | A<sub>1</sub> |
+| [dipeptide](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dipeptide) | S1 | 8.15 | 7.913 | −0.237 | (4,4) | A′′ | A′′ |
 | [DMABN](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dmabn) | S1 | 4.86 | 4.853 | −0.007 | (6,6) | A<sub>1</sub> | A<sub>1</sub> |
 | [N-phenylpyrrole](https://reksstudio.github.io/v2/main/results/quest/index.md#m-n-phenylpyrrole) | S1 | 5.32 | 5.373 | +0.053 | (4,4) | B<sub>2</sub> | B<sub>2</sub> |
 | | S2 | 5.85 | 5.364 | −0.486 | (4,4) | A<sub>1</sub> | A<sub>1</sub> |
@@ -1177,9 +1180,9 @@ M08-SO
 | | S2 | 4.371 | 4.573 | +0.202 | (8,8) | A<sub>1</sub> | A<sub>1</sub> |
 | | T1 | 2.820 | 3.021 | +0.201 | (2,2) | B<sub>2</sub> | B<sub>2</sub> |
 | | T2 | 3.485 | 3.527 | +0.042 | (4,4) | A<sub>1</sub> | A<sub>1</sub> |
-| [β-dipeptide](https://reksstudio.github.io/v2/main/results/quest/index.md#m-beta-dipeptide) | S1 | 8.51 | 7.125 | −1.385 | (2,2) | A′ | A′ |
 | [dimethylaniline](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dimethylaniline) | S1 | 4.39 | 4.599 | +0.209 | (6,6) | B<sub>2</sub> | B<sub>2</sub> |
 | | S2 | 5.40 | 5.356 | −0.043 | (4,4) | A<sub>1</sub> | A<sub>1</sub> |
+| [dipeptide](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dipeptide) | S1 | 8.15 | 7.831 | −0.319 | (4,4) | A′′ | A′′ |
 | [DMABN](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dmabn) | S1 | 4.86 | 4.869 | +0.009 | (4,4) | A<sub>1</sub> | A<sub>1</sub> |
 | [N-phenylpyrrole](https://reksstudio.github.io/v2/main/results/quest/index.md#m-n-phenylpyrrole) | S1 | 5.32 | 5.304 | −0.016 | (4,4) | B<sub>2</sub> | B<sub>2</sub> |
 | | S2 | 5.85 | 5.826 | −0.024 | (4,4) | A<sub>1</sub> | A<sub>1</sub> |
@@ -1374,9 +1377,9 @@ M08-SO
 | | S2 | 4.371 | 4.779 | +0.408 | (8,8) | A<sub>1</sub> | A<sub>1</sub> |
 | | T1 | 2.820 | 2.982 | +0.162 | (2,2) | B<sub>2</sub> | B<sub>2</sub> |
 | | T2 | 3.485 | 3.511 | +0.026 | (4,4) | A<sub>1</sub> | A<sub>1</sub> |
-| [β-dipeptide](https://reksstudio.github.io/v2/main/results/quest/index.md#m-beta-dipeptide) | S1 | 8.51 | 7.635 | −0.875 | (2,2) | A′ | A′ |
 | [dimethylaniline](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dimethylaniline) | S1 | 4.39 | 4.763 | +0.372 | (6,6) | B<sub>2</sub> | B<sub>2</sub> |
 | | S2 | 5.40 | 5.452 | +0.052 | (6,6) | A<sub>1</sub> | A<sub>1</sub> |
+| [dipeptide](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dipeptide) | S1 | 8.15 | 8.209 | +0.059 | (4,4) | A′′ | A′′ |
 | [DMABN](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dmabn) | S1 | 4.86 | 4.970 | +0.110 | (8,8) | A<sub>1</sub> | A<sub>1</sub> |
 | [N-phenylpyrrole](https://reksstudio.github.io/v2/main/results/quest/index.md#m-n-phenylpyrrole) | S1 | 5.32 | 5.504 | +0.184 | (4,4) | B<sub>2</sub> | B<sub>2</sub> |
 | | S2 | 5.85 | 5.787 | −0.063 | (4,4) | A<sub>1</sub> | A<sub>1</sub> |
@@ -1437,19 +1440,15 @@ Pairs: each SSR state paired with one TBE row of the same multiplicity; TBE stat
 
 Code: Psi4 commit ddc2f581c
 
-Geometries: to be added
-
 ### Reference
 
 Theoretical best estimates of QUEST3, 5, 6, 7 as listed in QUESTDB: Véril, M. et al. WIREs Comput. Mol. Sci. 2021, 11, e1517.
 
-**Provenance:** to be added
-
-**Scope:** S1, S2, T1, T2 of each molecule where a pair exists: N = 59 / 41 / 50 / 42 (S1 / S2 / T1 / T2); 35 molecules have all four. Every paired TBE state is of valence or charge-transfer type (kind V or CT in the TBE data); no Rydberg state is among the pairs. QUEST6 benzonitrile and dipeptide have no pair and are not shown.
+**Scope:** S1, S2, T1, T2 of each molecule where a pair exists: N = 59 / 41 / 50 / 42 (S1 / S2 / T1 / T2); 35 molecules have all four. Every paired TBE state is of valence or charge-transfer type (kind V or CT in the TBE data); no Rydberg state is among the pairs. QUEST6 benzonitrile: no pair, not shown.
 
 ## Run, ask, cite
 
-* Input: to be added.
+* Manual: [worked inputs and checks](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-calculation)
 * [Manual: Start](https://reksstudio.github.io/v2/manual/index.md#overview) · [Install](https://reksstudio.github.io/v2/docs/index.md#install) · [Cite](https://reksstudio.github.io/v2/docs/index.md#cite) · [Contact](https://reksstudio.github.io/v2/docs/index.md#contact)
 * [Back to the Results index](https://reksstudio.github.io/v2/main/results/index.md#row-quest)
 

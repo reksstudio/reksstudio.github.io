@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-furan/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![furan, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_44_20A.svg)**d** 20A · 0.000000\
 −0.0378
 
-![furan, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_44_19A.svg)**c** 19A · 0.000115\
-−0.0897
-
 ![furan, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_44_17A.svg)**a** 17A · 2.000000\
 −0.3536
+
+(b, c)
+
+![furan, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_44_19A.svg)**c** 19A · 0.000115\
+−0.0897
 
 ![furan, BH\&HLYP (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_44_18A.svg)**b** 18A · 1.999885\
 −0.2929
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![furan, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_66_21A.svg)**f** 21A · 0.000000\
 −0.0478
-
-![furan, BH\&HLYP (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_66_20A.svg)**e** 20A · 0.000001\
-−0.0712
-
-![furan, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_66_19A.svg)**d** 19A · 0.000198\
-−0.1143
 
 ![furan, BH\&HLYP (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_66_11A.svg)**a** 11A · 2.000000\
 −0.6689
 
+(b, e)
+
+![furan, BH\&HLYP (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_66_20A.svg)**e** 20A · 0.000001\
+−0.0712
+
 ![furan, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_66_17A.svg)**b** 17A · 1.999999\
 −0.3854
+
+(c, d)
+
+![furan, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_66_19A.svg)**d** 19A · 0.000198\
+−0.1143
 
 ![furan, BH\&HLYP (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/bh_66_18A.svg)**c** 18A · 1.999802\
 −0.3186
@@ -180,16 +180,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![furan, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_44_20A.svg)**d** 20A · 0.000000\
 −0.0585
 
-![furan, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_44_19A.svg)**c** 19A · 0.000016\
-−0.1074
-
 ![furan, M08-SO (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_44_17A.svg)**a** 17A · 2.000000\
 −0.3648
+
+(b, c)
+
+![furan, M08-SO (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_44_19A.svg)**c** 19A · 0.000016\
+−0.1074
 
 ![furan, M08-SO (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_44_18A.svg)**b** 18A · 1.999984\
 −0.3073
@@ -198,24 +198,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![furan, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_66_21A.svg)**f** 21A · 0.000000\
 −0.0542
-
-![furan, M08-SO (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_66_20A.svg)**e** 20A · 0.000000\
-−0.0912
-
-![furan, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_66_19A.svg)**d** 19A · 0.000028\
-−0.1307
 
 ![furan, M08-SO (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_66_11A.svg)**a** 11A · 2.000000\
 −0.6713
 
+(b, e)
+
+![furan, M08-SO (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_66_20A.svg)**e** 20A · 0.000000\
+−0.0912
+
 ![furan, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_66_17A.svg)**b** 17A · 2.000000\
 −0.3973
+
+(c, d)
+
+![furan, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_66_19A.svg)**d** 19A · 0.000028\
+−0.1307
 
 ![furan, M08-SO (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/m08_66_18A.svg)**c** 18A · 1.999972\
 −0.3325
@@ -234,16 +234,16 @@ M08-SO, (6,6)
 
 (a, d)
 
-(b, c)
-
 ![furan, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_44_20A.svg)**d** 20A · 0.000000\
 −0.0838
 
-![furan, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_44_19A.svg)**c** 19A · 0.000042\
-−0.1356
-
 ![furan, ωB97X (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_44_17A.svg)**a** 17A · 2.000000\
 −0.3965
+
+(b, c)
+
+![furan, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_44_19A.svg)**c** 19A · 0.000042\
+−0.1356
 
 ![furan, ωB97X (4,4), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_44_18A.svg)**b** 18A · 1.999958\
 −0.3407
@@ -252,24 +252,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![furan, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_66_21A.svg)**f** 21A · 0.000000\
 −0.0582
-
-![furan, ωB97X (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_66_20A.svg)**e** 20A · 0.000000\
-−0.1207
-
-![furan, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_66_19A.svg)**d** 19A · 0.000063\
-−0.1602
 
 ![furan, ωB97X (6,6), orbital 11A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_66_11A.svg)**a** 11A · 2.000000\
 −0.7013
 
+(b, e)
+
+![furan, ωB97X (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_66_20A.svg)**e** 20A · 0.000000\
+−0.1207
+
 ![furan, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_66_17A.svg)**b** 17A · 2.000000\
 −0.4322
+
+(c, d)
+
+![furan, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_66_19A.svg)**d** 19A · 0.000063\
+−0.1602
 
 ![furan, ωB97X (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_furan/wb_66_18A.svg)**c** 18A · 1.999937\
 −0.3685

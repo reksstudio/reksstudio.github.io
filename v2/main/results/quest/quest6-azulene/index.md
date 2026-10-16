@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-azulene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![azulene, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_44_35A.svg)**d** 35A · 0.000365\
 −0.1357
 
-![azulene, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_44_36A.svg)**c** 36A · 0.000337\
-−0.1029
-
 ![azulene, BH\&HLYP (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_44_33A.svg)**a** 33A · 1.999635\
 −0.2811
+
+(b, c)
+
+![azulene, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_44_36A.svg)**c** 36A · 0.000337\
+−0.1029
 
 ![azulene, BH\&HLYP (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_44_34A.svg)**b** 34A · 1.999663\
 −0.2413
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![azulene, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_66_37A.svg)**f** 37A · 0.000000\
 −0.0349
-
-![azulene, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_66_35A.svg)**e** 35A · 0.000378\
-−0.1454
-
-![azulene, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_66_36A.svg)**d** 36A · 0.000474\
-−0.1386
 
 ![azulene, BH\&HLYP (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_66_32A.svg)**a** 32A · 2.000000\
 −0.3641
 
+(b, e)
+
+![azulene, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_66_35A.svg)**e** 35A · 0.000378\
+−0.1454
+
 ![azulene, BH\&HLYP (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_66_33A.svg)**b** 33A · 1.999622\
 −0.2935
+
+(c, d)
+
+![azulene, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_66_36A.svg)**d** 36A · 0.000474\
+−0.1386
 
 ![azulene, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_66_34A.svg)**c** 34A · 1.999526\
 −0.2550
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![azulene, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_38A.svg)**h** 38A · 0.000000\
 −0.0165
-
-![azulene, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_37A.svg)**g** 37A · 0.000000\
-−0.0285
-
-![azulene, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_36A.svg)**f** 36A · 0.000019\
-−0.1489
-
-![azulene, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_35A.svg)**e** 35A · 0.000388\
-−0.1625
 
 ![azulene, BH\&HLYP (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_32A.svg)**a** 32A · 2.000000\
 −0.3539
 
+(b, g)
+
+![azulene, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_37A.svg)**g** 37A · 0.000000\
+−0.0285
+
 ![azulene, BH\&HLYP (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_31A.svg)**b** 31A · 2.000000\
 −0.3644
 
+(c, f)
+
+![azulene, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_36A.svg)**f** 36A · 0.000019\
+−0.1489
+
 ![azulene, BH\&HLYP (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_33A.svg)**c** 33A · 1.999981\
 −0.3372
+
+(d, e)
+
+![azulene, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_35A.svg)**e** 35A · 0.000388\
+−0.1625
 
 ![azulene, BH\&HLYP (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/bh_88_34A.svg)**d** 34A · 1.999612\
 −0.2502
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![azulene, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_44_35A.svg)**d** 35A · 0.000120\
 −0.1534
 
-![azulene, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_44_36A.svg)**c** 36A · 0.000101\
-−0.1217
-
 ![azulene, M08-SO (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_44_33A.svg)**a** 33A · 1.999880\
 −0.2984
+
+(b, c)
+
+![azulene, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_44_36A.svg)**c** 36A · 0.000101\
+−0.1217
 
 ![azulene, M08-SO (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_44_34A.svg)**b** 34A · 1.999899\
 −0.2577
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![azulene, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_66_37A.svg)**f** 37A · 0.000000\
 −0.0558
-
-![azulene, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_66_35A.svg)**e** 35A · 0.000069\
-−0.1625
-
-![azulene, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_66_36A.svg)**d** 36A · 0.000125\
-−0.1579
 
 ![azulene, M08-SO (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_66_32A.svg)**a** 32A · 2.000000\
 −0.3804
 
+(b, e)
+
+![azulene, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_66_35A.svg)**e** 35A · 0.000069\
+−0.1625
+
 ![azulene, M08-SO (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_66_33A.svg)**b** 33A · 1.999931\
 −0.3128
+
+(c, d)
+
+![azulene, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_66_36A.svg)**d** 36A · 0.000125\
+−0.1579
 
 ![azulene, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_66_34A.svg)**c** 34A · 1.999875\
 −0.2737
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![azulene, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_38A.svg)**h** 38A · 0.000000\
 −0.0373
-
-![azulene, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_37A.svg)**g** 37A · 0.000000\
-−0.0471
-
-![azulene, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_36A.svg)**f** 36A · 0.000010\
-−0.1676
-
-![azulene, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_35A.svg)**e** 35A · 0.000113\
-−0.1793
 
 ![azulene, M08-SO (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_32A.svg)**a** 32A · 2.000000\
 −0.3726
 
+(b, g)
+
+![azulene, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_37A.svg)**g** 37A · 0.000000\
+−0.0471
+
 ![azulene, M08-SO (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_31A.svg)**b** 31A · 2.000000\
 −0.3800
 
+(c, f)
+
+![azulene, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_36A.svg)**f** 36A · 0.000010\
+−0.1676
+
 ![azulene, M08-SO (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_33A.svg)**c** 33A · 1.999990\
 −0.3517
+
+(d, e)
+
+![azulene, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_35A.svg)**e** 35A · 0.000113\
+−0.1793
 
 ![azulene, M08-SO (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/m08_88_34A.svg)**d** 34A · 1.999887\
 −0.2672
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![azulene, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_44_35A.svg)**d** 35A · 0.000461\
 −0.1798
 
-![azulene, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_44_36A.svg)**c** 36A · 0.000388\
-−0.1444
-
 ![azulene, ωB97X (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_44_33A.svg)**a** 33A · 1.999539\
 −0.3307
+
+(b, c)
+
+![azulene, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_44_36A.svg)**c** 36A · 0.000388\
+−0.1444
 
 ![azulene, ωB97X (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_44_34A.svg)**b** 34A · 1.999612\
 −0.2891
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![azulene, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_66_37A.svg)**f** 37A · 0.000000\
 −0.0539
-
-![azulene, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_66_35A.svg)**e** 35A · 0.000523\
-−0.1892
-
-![azulene, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_66_36A.svg)**d** 36A · 0.000586\
-−0.1785
 
 ![azulene, ωB97X (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_66_32A.svg)**a** 32A · 2.000000\
 −0.4152
 
+(b, e)
+
+![azulene, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_66_35A.svg)**e** 35A · 0.000523\
+−0.1892
+
 ![azulene, ωB97X (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_66_33A.svg)**b** 33A · 1.999477\
 −0.3408
+
+(c, d)
+
+![azulene, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_66_36A.svg)**d** 36A · 0.000586\
+−0.1785
 
 ![azulene, ωB97X (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_66_34A.svg)**c** 34A · 1.999414\
 −0.2997
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![azulene, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_38A.svg)**h** 38A · 0.000000\
 −0.0431
-
-![azulene, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_37A.svg)**g** 37A · 0.000000\
-−0.0533
-
-![azulene, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_36A.svg)**f** 36A · 0.000089\
-−0.1927
-
-![azulene, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_35A.svg)**e** 35A · 0.000764\
-−0.2035
 
 ![azulene, ωB97X (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_31A.svg)**a** 31A · 2.000000\
 −0.4511
 
+(b, g)
+
+![azulene, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_37A.svg)**g** 37A · 0.000000\
+−0.0533
+
 ![azulene, ωB97X (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_32A.svg)**b** 32A · 2.000000\
 −0.4159
 
+(c, f)
+
+![azulene, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_36A.svg)**f** 36A · 0.000089\
+−0.1927
+
 ![azulene, ωB97X (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_33A.svg)**c** 33A · 1.999911\
 −0.3423
+
+(d, e)
+
+![azulene, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_35A.svg)**e** 35A · 0.000764\
+−0.2035
 
 ![azulene, ωB97X (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_azulene/wb_88_34A.svg)**d** 34A · 1.999236\
 −0.2993

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-quinoxaline/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![quinoxaline, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_44_36A.svg)**d** 36A · 0.000026\
 −0.0889
 
-![quinoxaline, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_44_35A.svg)**c** 35A · 0.000013\
-−0.1319
-
 ![quinoxaline, BH\&HLYP (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_44_33A.svg)**a** 33A · 1.999974\
 −0.3070
+
+(b, c)
+
+![quinoxaline, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_44_35A.svg)**c** 35A · 0.000013\
+−0.1319
 
 ![quinoxaline, BH\&HLYP (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_44_34A.svg)**b** 34A · 1.999987\
 −0.2994
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![quinoxaline, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_66_37A.svg)**f** 37A · 0.000000\
 −0.0827
-
-![quinoxaline, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_66_36A.svg)**e** 36A · 0.000028\
-−0.0949
-
-![quinoxaline, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_66_35A.svg)**d** 35A · 0.000075\
-−0.1413
 
 ![quinoxaline, BH\&HLYP (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_66_31A.svg)**a** 31A · 2.000000\
 −0.3944
 
+(b, e)
+
+![quinoxaline, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_66_36A.svg)**e** 36A · 0.000028\
+−0.0949
+
 ![quinoxaline, BH\&HLYP (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_66_33A.svg)**b** 33A · 1.999972\
 −0.3103
+
+(c, d)
+
+![quinoxaline, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_66_35A.svg)**d** 35A · 0.000075\
+−0.1413
 
 ![quinoxaline, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_66_34A.svg)**c** 34A · 1.999925\
 −0.3044
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![quinoxaline, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_38A.svg)**h** 38A · 0.000000\
 −0.0145
-
-![quinoxaline, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_37A.svg)**g** 37A · 0.000000\
-−0.0931
-
-![quinoxaline, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_36A.svg)**f** 36A · 0.000022\
-−0.1118
-
-![quinoxaline, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_35A.svg)**e** 35A · 0.000059\
-−0.1441
 
 ![quinoxaline, BH\&HLYP (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_29A.svg)**a** 29A · 2.000000\
 −0.4187
 
+(b, g)
+
+![quinoxaline, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_37A.svg)**g** 37A · 0.000000\
+−0.0931
+
 ![quinoxaline, BH\&HLYP (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_31A.svg)**b** 31A · 2.000000\
 −0.3994
 
+(c, f)
+
+![quinoxaline, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_36A.svg)**f** 36A · 0.000022\
+−0.1118
+
 ![quinoxaline, BH\&HLYP (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_33A.svg)**c** 33A · 1.999978\
 −0.3138
+
+(d, e)
+
+![quinoxaline, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_35A.svg)**e** 35A · 0.000059\
+−0.1441
 
 ![quinoxaline, BH\&HLYP (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/bh_88_34A.svg)**d** 34A · 1.999941\
 −0.3033
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![quinoxaline, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_44m_36A.svg)**d** 36A · 0.000003\
 −0.1300
 
-![quinoxaline, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_44m_35A.svg)**c** 35A · 0.000007\
-−0.1509
-
 ![quinoxaline, M08-SO (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_44m_33A.svg)**a** 33A · 1.999997\
 −0.3242
+
+(b, c)
+
+![quinoxaline, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_44m_35A.svg)**c** 35A · 0.000007\
+−0.1509
 
 ![quinoxaline, M08-SO (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_44m_34A.svg)**b** 34A · 1.999993\
 −0.3217
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![quinoxaline, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_66_37A.svg)**f** 37A · 0.000000\
 −0.1032
-
-![quinoxaline, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_66_36A.svg)**e** 36A · 0.000003\
-−0.1143
-
-![quinoxaline, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_66_35A.svg)**d** 35A · 0.000012\
-−0.1596
 
 ![quinoxaline, M08-SO (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_66_30A.svg)**a** 30A · 2.000000\
 −0.4096
 
+(b, e)
+
+![quinoxaline, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_66_36A.svg)**e** 36A · 0.000003\
+−0.1143
+
 ![quinoxaline, M08-SO (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_66_33A.svg)**b** 33A · 1.999997\
 −0.3269
+
+(c, d)
+
+![quinoxaline, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_66_35A.svg)**d** 35A · 0.000012\
+−0.1596
 
 ![quinoxaline, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_66_34A.svg)**c** 34A · 1.999988\
 −0.3211
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![quinoxaline, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_38A.svg)**h** 38A · 0.000000\
 −0.0334
-
-![quinoxaline, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_37A.svg)**g** 37A · 0.000000\
-−0.1129
-
-![quinoxaline, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_36A.svg)**f** 36A · 0.000003\
-−0.1302
-
-![quinoxaline, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_35A.svg)**e** 35A · 0.000011\
-−0.1626
 
 ![quinoxaline, M08-SO (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_29A.svg)**a** 29A · 2.000000\
 −0.4340
 
+(b, g)
+
+![quinoxaline, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_37A.svg)**g** 37A · 0.000000\
+−0.1129
+
 ![quinoxaline, M08-SO (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_30A.svg)**b** 30A · 2.000000\
 −0.4141
 
+(c, f)
+
+![quinoxaline, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_36A.svg)**f** 36A · 0.000003\
+−0.1302
+
 ![quinoxaline, M08-SO (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_33A.svg)**c** 33A · 1.999997\
 −0.3294
+
+(d, e)
+
+![quinoxaline, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_35A.svg)**e** 35A · 0.000011\
+−0.1626
 
 ![quinoxaline, M08-SO (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/m08_88_34A.svg)**d** 34A · 1.999989\
 −0.3198
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![quinoxaline, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_44_36A.svg)**d** 36A · 0.000019\
 −0.1317
 
-![quinoxaline, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_44_35A.svg)**c** 35A · 0.000006\
-−0.1710
-
 ![quinoxaline, ωB97X (4,4), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_44_32A.svg)**a** 32A · 1.999981\
 −0.3565
+
+(b, c)
+
+![quinoxaline, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_44_35A.svg)**c** 35A · 0.000006\
+−0.1710
 
 ![quinoxaline, ωB97X (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_44_34A.svg)**b** 34A · 1.999994\
 −0.3489
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![quinoxaline, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_66_37A.svg)**f** 37A · 0.000000\
 −0.1263
-
-![quinoxaline, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_66_36A.svg)**e** 36A · 0.000020\
-−0.1363
-
-![quinoxaline, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_66_35A.svg)**d** 35A · 0.000045\
-−0.1851
 
 ![quinoxaline, ωB97X (6,6), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_66_30A.svg)**a** 30A · 2.000000\
 −0.4451
 
+(b, e)
+
+![quinoxaline, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_66_36A.svg)**e** 36A · 0.000020\
+−0.1363
+
 ![quinoxaline, ωB97X (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_66_33A.svg)**b** 33A · 1.999980\
 −0.3598
+
+(c, d)
+
+![quinoxaline, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_66_35A.svg)**d** 35A · 0.000045\
+−0.1851
 
 ![quinoxaline, ωB97X (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_66_34A.svg)**c** 34A · 1.999955\
 −0.3516
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![quinoxaline, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_38A.svg)**h** 38A · 0.000000\
 −0.0469
-
-![quinoxaline, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_37A.svg)**g** 37A · 0.000000\
-−0.1344
-
-![quinoxaline, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_36A.svg)**f** 36A · 0.000013\
-−0.1514
-
-![quinoxaline, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_35A.svg)**e** 35A · 0.000035\
-−0.1872
 
 ![quinoxaline, ωB97X (8,8), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_29A.svg)**a** 29A · 2.000000\
 −0.4714
 
+(b, g)
+
+![quinoxaline, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_37A.svg)**g** 37A · 0.000000\
+−0.1344
+
 ![quinoxaline, ωB97X (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_30A.svg)**b** 30A · 2.000000\
 −0.4484
 
+(c, f)
+
+![quinoxaline, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_36A.svg)**f** 36A · 0.000013\
+−0.1514
+
 ![quinoxaline, ωB97X (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_33A.svg)**c** 33A · 1.999987\
 −0.3594
+
+(d, e)
+
+![quinoxaline, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_35A.svg)**e** 35A · 0.000035\
+−0.1872
 
 ![quinoxaline, ωB97X (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_quinoxaline/wb_88_34A.svg)**d** 34A · 1.999965\
 −0.3494

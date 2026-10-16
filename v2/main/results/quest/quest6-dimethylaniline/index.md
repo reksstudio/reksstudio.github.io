@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-dimethylaniline/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -88,16 +88,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![dimethylaniline, BH\&HLYP (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_44_34A.svg)**d** 34A · 0.000090\
 −0.0675
 
-![dimethylaniline, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_44_35A.svg)**c** 35A · 0.000023\
-−0.0540
-
 ![dimethylaniline, BH\&HLYP (4,4), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_44_32A.svg)**a** 32A · 1.999910\
 −0.2877
+
+(b, c)
+
+![dimethylaniline, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_44_35A.svg)**c** 35A · 0.000023\
+−0.0540
 
 ![dimethylaniline, BH\&HLYP (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_44_33A.svg)**b** 33A · 1.999977\
 −0.2410
@@ -106,24 +106,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![dimethylaniline, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_66_35A.svg)**f** 35A · 0.000000\
 −0.0581
-
-![dimethylaniline, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_66_34A.svg)**e** 34A · 0.000086\
-−0.0692
-
-![dimethylaniline, BH\&HLYP (6,6), orbital 46A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_66_46A.svg)**d** 46A · 0.000000\
-0.0683
 
 ![dimethylaniline, BH\&HLYP (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_66_31A.svg)**a** 31A · 2.000000\
 −0.3503
 
+(b, e)
+
+![dimethylaniline, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_66_34A.svg)**e** 34A · 0.000086\
+−0.0692
+
 ![dimethylaniline, BH\&HLYP (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_66_32A.svg)**b** 32A · 1.999914\
 −0.2846
+
+(c, d)
+
+![dimethylaniline, BH\&HLYP (6,6), orbital 46A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_66_46A.svg)**d** 46A · 0.000000\
+0.0683
 
 ![dimethylaniline, BH\&HLYP (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/bh_66_33A.svg)**c** 33A · 2.000000\
 −0.2411
@@ -142,16 +142,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![dimethylaniline, M08-SO (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_44m_34A.svg)**d** 34A · 0.000018\
 −0.1042
 
-![dimethylaniline, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_44m_35A.svg)**c** 35A · 0.000008\
-−0.0731
-
 ![dimethylaniline, M08-SO (4,4), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_44m_32A.svg)**a** 32A · 1.999982\
 −0.3094
+
+(b, c)
+
+![dimethylaniline, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_44m_35A.svg)**c** 35A · 0.000008\
+−0.0731
 
 ![dimethylaniline, M08-SO (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_44m_33A.svg)**b** 33A · 1.999992\
 −0.2580
@@ -160,24 +160,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![dimethylaniline, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_66_35A.svg)**f** 35A · 0.000000\
 −0.0792
-
-![dimethylaniline, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_66_34A.svg)**e** 34A · 0.000012\
-−0.0909
-
-![dimethylaniline, M08-SO (6,6), orbital 48A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_66_48A.svg)**d** 48A · 0.000000\
-0.0406
 
 ![dimethylaniline, M08-SO (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_66_31A.svg)**a** 31A · 2.000000\
 −0.3650
 
+(b, e)
+
+![dimethylaniline, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_66_34A.svg)**e** 34A · 0.000012\
+−0.0909
+
 ![dimethylaniline, M08-SO (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_66_32A.svg)**b** 32A · 1.999988\
 −0.3028
+
+(c, d)
+
+![dimethylaniline, M08-SO (6,6), orbital 48A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_66_48A.svg)**d** 48A · 0.000000\
+0.0406
 
 ![dimethylaniline, M08-SO (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/m08_66_33A.svg)**c** 33A · 2.000000\
 −0.2567
@@ -196,16 +196,16 @@ M08-SO, (6,6)
 
 (a, d)
 
-(b, c)
-
 ![dimethylaniline, ωB97X (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_44_34A.svg)**d** 34A · 0.000060\
 −0.1142
 
-![dimethylaniline, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_44_35A.svg)**c** 35A · 0.000021\
-−0.0970
-
 ![dimethylaniline, ωB97X (4,4), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_44_32A.svg)**a** 32A · 1.999940\
 −0.3381
+
+(b, c)
+
+![dimethylaniline, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_44_35A.svg)**c** 35A · 0.000021\
+−0.0970
 
 ![dimethylaniline, ωB97X (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_44_33A.svg)**b** 33A · 1.999979\
 −0.2869
@@ -214,26 +214,26 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![dimethylaniline, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_66_35A.svg)**f** 35A · 0.000000\
 −0.1045
-
-![dimethylaniline, ωB97X (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_66_34A.svg)**e** 34A · 0.000056\
-−0.1164
-
-![dimethylaniline, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_66_36A.svg)**d** 36A · 0.000000\
-0.0264
 
 ![dimethylaniline, ωB97X (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_66_31A.svg)**a** 31A · 2.000000\
 −0.3970
 
+(b, e)
+
+![dimethylaniline, ωB97X (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_66_34A.svg)**e** 34A · 0.000056\
+−0.1164
+
 ![dimethylaniline, ωB97X (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_66_32A.svg)**b** 32A · 1.999944\
 −0.3352
+
+(c, d)
+
+![dimethylaniline, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_66_36A.svg)**d** 36A · 0.000000\
+0.0264
 
 ![dimethylaniline, ωB97X (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_dimethylaniline/wb_66_33A.svg)**c** 33A · 2.000000\
 −0.2857
 
-[← β-dipeptide](https://reksstudio.github.io/v2/main/results/quest/quest6-beta-dipeptide/index.md) · [Back to the gallery](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dimethylaniline) · [DMABN →](https://reksstudio.github.io/v2/main/results/quest/quest6-dmabn/index.md)
+[← benzothiadiazole](https://reksstudio.github.io/v2/main/results/quest/quest6-benzothiadiazole/index.md) · [Back to the gallery](https://reksstudio.github.io/v2/main/results/quest/index.md#m-dimethylaniline) · [dipeptide →](https://reksstudio.github.io/v2/main/results/quest/quest6-dipeptide/index.md)

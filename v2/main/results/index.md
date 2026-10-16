@@ -36,7 +36,7 @@ Every result shown with REKS Studio, one row per system and question, each one c
 | C<sub>2</sub>H<sub>4</sub> | Bond breaking | (4,4) | TBE (vertical); experiment (R<sub>e</sub>) | B<sup>1</sup>B<sub>1u</sub> 7.85 eV (TBE 7.93); R<sub>e</sub> 1.335 Å (exp. 1.339) | [page](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#c2h4) |
 | N<sub>2</sub> | Bond breaking | (6,6) | TBE (vertical); experiment (R<sub>e</sub>) | vertical 9.49 eV (TBE 9.88); R<sub>e</sub> 1.096 Å (exp. 1.098) | [page](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#n2) |
 | C<sub>2</sub>H<sub>2</sub> | Bond breaking | (6,6) | TBE (vertical); experiment (R<sub>e</sub>) | vertical 6.66 eV (TBE 7.10); R<sub>e</sub> 1.201 Å (exp. 1.203) | [page](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#c2h2) |
-| 62 molecules, QUEST3/5/6/7; S1, S2, T1, T2 | Excited states | (2,2)–(8,8), closest to TBE per state | TBE | MAE 0.216 / 0.236 / 0.224 eV (BH\&HLYP / M08-SO / ωB97X) | [page](https://reksstudio.github.io/v2/main/results/quest/index.md) |
+| 62 molecules, QUEST3/5/6/7; S1, S2, T1, T2 | Excited states | (2,2)–(8,8), closest to TBE per state | TBE | MAE 0.212 / 0.230 / 0.220 eV (BH\&HLYP / M08-SO / ωB97X) | [page](https://reksstudio.github.io/v2/main/results/quest/index.md) |
 
 ### D: model vs experiment
 
@@ -50,7 +50,7 @@ Every result shown with REKS Studio, one row per system and question, each one c
 
 | System | Problem class | Active space | Reference | Number | Evidence |
 | - | - | - | - | - | - |
-| SHZ, SOZ, SNZ | Diradicals and magnetism | (2,2)–(8,8) | none (broken-symmetry DFT qualitative only) | S–T at (8,8): 4.23 / 3.24 / 3.05 kcal/mol | [page](https://reksstudio.github.io/v2/main/results/zethrenes/index.md) |
+| 7 PAHs of Hu et al. (2016), 20 geometries | Diradicals and magnetism | (2,2)–(10,10) | none | 98 calculations, 32–70 atoms, cc-pVTZ, (2,2)–(10,10) | [page](https://reksstudio.github.io/v2/main/results/zethrenes/index.md) |
 
 ### reference on a different object
 

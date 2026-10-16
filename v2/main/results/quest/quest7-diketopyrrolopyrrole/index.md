@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest7-diketopyrrolopyrrole/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![diketopyrrolopyrrole, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_44_36A.svg)**d** 36A · 0.000000\
 −0.1715
 
-![diketopyrrolopyrrole, BH\&HLYP (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_44_37A.svg)**c** 37A · 0.000004\
-−0.0957
-
 ![diketopyrrolopyrrole, BH\&HLYP (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_44_34A.svg)**a** 34A · 2.000000\
 −0.3444
+
+(b, c)
+
+![diketopyrrolopyrrole, BH\&HLYP (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_44_37A.svg)**c** 37A · 0.000004\
+−0.0957
 
 ![diketopyrrolopyrrole, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_44_35A.svg)**b** 35A · 1.999996\
 −0.2702
@@ -144,32 +144,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_41A.svg)**h** 41A · 0.000000\
 0.0157
-
-![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_36A.svg)**g** 36A · 0.000000\
-−0.1670
-
-![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_38A.svg)**f** 38A · 0.000000\
-−0.0154
-
-![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_37A.svg)**e** 37A · 0.000004\
-−0.1249
 
 ![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_30A.svg)**a** 30A · 2.000000\
 −0.4304
 
+(b, g)
+
+![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_36A.svg)**g** 36A · 0.000000\
+−0.1670
+
 ![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_31A.svg)**b** 31A · 2.000000\
 −0.4214
 
+(c, f)
+
+![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_38A.svg)**f** 38A · 0.000000\
+−0.0154
+
 ![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_34A.svg)**c** 34A · 2.000000\
 −0.3418
+
+(d, e)
+
+![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_37A.svg)**e** 37A · 0.000004\
+−0.1249
 
 ![diketopyrrolopyrrole, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/bh_88_35A.svg)**d** 35A · 1.999996\
 −0.2716
@@ -188,16 +188,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![diketopyrrolopyrrole, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_44_36A.svg)**d** 36A · 0.000000\
 −0.1845
 
-![diketopyrrolopyrrole, M08-SO (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_44_37A.svg)**c** 37A · 0.000001\
-−0.1129
-
 ![diketopyrrolopyrrole, M08-SO (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_44_34A.svg)**a** 34A · 2.000000\
 −0.3559
+
+(b, c)
+
+![diketopyrrolopyrrole, M08-SO (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_44_37A.svg)**c** 37A · 0.000001\
+−0.1129
 
 ![diketopyrrolopyrrole, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_44_35A.svg)**b** 35A · 1.999999\
 −0.2843
@@ -206,32 +206,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![diketopyrrolopyrrole, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_37A.svg)**h** 37A · 0.000000\
 −0.1364
-
-![diketopyrrolopyrrole, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_36A.svg)**g** 36A · 0.000000\
-−0.1910
-
-![diketopyrrolopyrrole, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_38A.svg)**f** 38A · 0.000000\
-−0.0719
-
-![diketopyrrolopyrrole, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_39A.svg)**e** 39A · 0.000000\
-−0.0538
 
 ![diketopyrrolopyrrole, M08-SO (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_30A.svg)**a** 30A · 2.000000\
 −0.4559
 
+(b, g)
+
+![diketopyrrolopyrrole, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_36A.svg)**g** 36A · 0.000000\
+−0.1910
+
 ![diketopyrrolopyrrole, M08-SO (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_31A.svg)**b** 31A · 2.000000\
 −0.4470
 
+(c, f)
+
+![diketopyrrolopyrrole, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_38A.svg)**f** 38A · 0.000000\
+−0.0719
+
 ![diketopyrrolopyrrole, M08-SO (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_34A.svg)**c** 34A · 2.000000\
 −0.3654
+
+(d, e)
+
+![diketopyrrolopyrrole, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_39A.svg)**e** 39A · 0.000000\
+−0.0538
 
 ![diketopyrrolopyrrole, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/m08_88_35A.svg)**d** 35A · 2.000000\
 −0.2961
@@ -250,16 +250,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![diketopyrrolopyrrole, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_44_36A.svg)**d** 36A · 0.000000\
 −0.2129
 
-![diketopyrrolopyrrole, ωB97X (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_44_37A.svg)**c** 37A · 0.000001\
-−0.1385
-
 ![diketopyrrolopyrrole, ωB97X (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_44_33A.svg)**a** 33A · 2.000000\
 −0.3887
+
+(b, c)
+
+![diketopyrrolopyrrole, ωB97X (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_44_37A.svg)**c** 37A · 0.000001\
+−0.1385
 
 ![diketopyrrolopyrrole, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_44_35A.svg)**b** 35A · 1.999999\
 −0.3148
@@ -268,32 +268,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![diketopyrrolopyrrole, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_39A.svg)**h** 39A · 0.000000\
 −0.0097
-
-![diketopyrrolopyrrole, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_36A.svg)**g** 36A · 0.000000\
-−0.2112
-
-![diketopyrrolopyrrole, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_38A.svg)**f** 38A · 0.000000\
-−0.0490
-
-![diketopyrrolopyrrole, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_37A.svg)**e** 37A · 0.000001\
-−0.1691
 
 ![diketopyrrolopyrrole, ωB97X (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_30A.svg)**a** 30A · 2.000000\
 −0.4755
 
+(b, g)
+
+![diketopyrrolopyrrole, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_36A.svg)**g** 36A · 0.000000\
+−0.2112
+
 ![diketopyrrolopyrrole, ωB97X (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_31A.svg)**b** 31A · 2.000000\
 −0.4659
 
+(c, f)
+
+![diketopyrrolopyrrole, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_38A.svg)**f** 38A · 0.000000\
+−0.0490
+
 ![diketopyrrolopyrrole, ωB97X (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_34A.svg)**c** 34A · 2.000000\
 −0.3883
+
+(d, e)
+
+![diketopyrrolopyrrole, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_37A.svg)**e** 37A · 0.000001\
+−0.1691
 
 ![diketopyrrolopyrrole, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest7_diketopyrrolopyrrole/wb_88_35A.svg)**d** 35A · 1.999999\
 −0.3169

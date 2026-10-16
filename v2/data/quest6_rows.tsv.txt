@@ -107,12 +107,6 @@ quest	molecule	functional	state	active_space	tbe_irrep	tbe_eV	ssr_irrep	ssr_eV	d
 6	benzothiadiazole	wB97X	T2	(4,4)	A1	3.485	A1	3.511	0.026	1
 6	benzothiadiazole	wB97X	T2	(6,6)	A1	3.485	A1	4.066	0.581	0
 6	benzothiadiazole	wB97X	T2	(8,8)	A1	3.485	A1	3.829	0.344	0
-6	beta-dipeptide	BHHLYP	S1	(2,2)	A'	8.51	A'	7.223	-1.287	0
-6	beta-dipeptide	BHHLYP	S1	(4,4)	A'	8.51	A'	7.572	-0.938	1
-6	beta-dipeptide	M08-SO	S1	(2,2)	A'	8.51	A'	7.125	-1.385	1
-6	beta-dipeptide	M08-SO	S1	(4,4)	A'	8.51	A'	6.714	-1.796	0
-6	beta-dipeptide	wB97X	S1	(2,2)	A'	8.51	A'	7.635	-0.875	1
-6	beta-dipeptide	wB97X	S1	(4,4)	A'	8.51	A'	7.498	-1.012	0
 6	dimethylaniline	BHHLYP	S1	(2,2)	B2	4.39	B2	4.936	0.546	0
 6	dimethylaniline	BHHLYP	S1	(4,4)	B2	4.39	B2	5.061	0.671	0
 6	dimethylaniline	BHHLYP	S1	(6,6)	B2	4.39	B2	4.711	0.321	1
@@ -128,6 +122,9 @@ quest	molecule	functional	state	active_space	tbe_irrep	tbe_eV	ssr_irrep	ssr_eV	d
 6	dimethylaniline	M08-SO	S2	(6,6)	A1	5.40	A1	5.165	-0.235	0
 6	dimethylaniline	wB97X	S2	(4,4)	A1	5.40	A1	5.584	0.184	0
 6	dimethylaniline	wB97X	S2	(6,6)	A1	5.40	A1	5.452	0.052	1
+6	dipeptide	BHHLYP	S1	(4,4)	A''	8.15	A''	7.913	-0.237	1
+6	dipeptide	M08-SO	S1	(4,4)	A''	8.15	A''	7.831	-0.319	1
+6	dipeptide	wB97X	S1	(4,4)	A''	8.15	A''	8.209	0.059	1
 6	dmabn	BHHLYP	S1	(2,2)	A1	4.86	A1	5.123	0.264	0
 6	dmabn	BHHLYP	S1	(4,4)	A1	4.86	A1	4.978	0.118	0
 6	dmabn	BHHLYP	S1	(6,6)	A1	4.86	A1	4.853	-0.007	1

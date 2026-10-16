@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest5-cyclopentadienone/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyclopentadienone, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_44_23A.svg)**d** 23A · 0.000000\
 −0.0470
 
-![cyclopentadienone, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_44_22A.svg)**c** 22A · 0.000047\
-−0.1936
-
 ![cyclopentadienone, BH\&HLYP (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_44_19A.svg)**a** 19A · 2.000000\
 −0.4009
+
+(b, c)
+
+![cyclopentadienone, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_44_22A.svg)**c** 22A · 0.000047\
+−0.1936
 
 ![cyclopentadienone, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_44_21A.svg)**b** 21A · 1.999953\
 −0.3067
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyclopentadienone, BH\&HLYP (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_66_24A.svg)**f** 24A · 0.000000\
 −0.0491
-
-![cyclopentadienone, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_66_23A.svg)**e** 23A · 0.000000\
-−0.0503
-
-![cyclopentadienone, BH\&HLYP (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_66_22A.svg)**d** 22A · 0.000007\
-−0.2025
 
 ![cyclopentadienone, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_66_17A.svg)**a** 17A · 2.000000\
 −0.4988
 
+(b, e)
+
+![cyclopentadienone, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_66_23A.svg)**e** 23A · 0.000000\
+−0.0503
+
 ![cyclopentadienone, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_66_19A.svg)**b** 19A · 2.000000\
 −0.4051
+
+(c, d)
+
+![cyclopentadienone, BH\&HLYP (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_66_22A.svg)**d** 22A · 0.000007\
+−0.2025
 
 ![cyclopentadienone, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/bh_66_21A.svg)**c** 21A · 1.999993\
 −0.3066
@@ -180,16 +180,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![cyclopentadienone, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_44m_22A.svg)**d** 22A · 0.000000\
 −0.2531
 
-![cyclopentadienone, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_44m_23A.svg)**c** 23A · 0.000000\
-−0.0624
-
 ![cyclopentadienone, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_44m_20A.svg)**a** 20A · 2.000000\
 −0.3614
+
+(b, c)
+
+![cyclopentadienone, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_44m_23A.svg)**c** 23A · 0.000000\
+−0.0624
 
 ![cyclopentadienone, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_44m_21A.svg)**b** 21A · 2.000000\
 −0.3264
@@ -198,24 +198,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyclopentadienone, M08-SO (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_66_24A.svg)**f** 24A · 0.000000\
 −0.0654
-
-![cyclopentadienone, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_66_23A.svg)**e** 23A · 0.000000\
-−0.0684
-
-![cyclopentadienone, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_66_22A.svg)**d** 22A · 0.000001\
-−0.2203
 
 ![cyclopentadienone, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_66_17A.svg)**a** 17A · 2.000000\
 −0.5119
 
+(b, e)
+
+![cyclopentadienone, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_66_23A.svg)**e** 23A · 0.000000\
+−0.0684
+
 ![cyclopentadienone, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_66_19A.svg)**b** 19A · 2.000000\
 −0.4169
+
+(c, d)
+
+![cyclopentadienone, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_66_22A.svg)**d** 22A · 0.000001\
+−0.2203
 
 ![cyclopentadienone, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/m08_66_21A.svg)**c** 21A · 1.999999\
 −0.3194
@@ -234,16 +234,16 @@ M08-SO, (6,6)
 
 (a, d)
 
-(b, c)
-
 ![cyclopentadienone, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_44_23A.svg)**d** 23A · 0.000000\
 −0.0944
 
-![cyclopentadienone, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_44_22A.svg)**c** 22A · 0.000015\
-−0.2419
-
 ![cyclopentadienone, ωB97X (4,4), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_44_19A.svg)**a** 19A · 2.000000\
 −0.4488
+
+(b, c)
+
+![cyclopentadienone, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_44_22A.svg)**c** 22A · 0.000015\
+−0.2419
 
 ![cyclopentadienone, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_44_21A.svg)**b** 21A · 1.999985\
 −0.3569
@@ -252,24 +252,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![cyclopentadienone, ωB97X (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_66_24A.svg)**f** 24A · 0.000000\
 −0.0860
-
-![cyclopentadienone, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_66_23A.svg)**e** 23A · 0.000000\
-−0.0928
-
-![cyclopentadienone, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_66_22A.svg)**d** 22A · 0.000001\
-−0.2517
 
 ![cyclopentadienone, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_66_17A.svg)**a** 17A · 2.000000\
 −0.5437
 
+(b, e)
+
+![cyclopentadienone, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_66_23A.svg)**e** 23A · 0.000000\
+−0.0928
+
 ![cyclopentadienone, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_66_19A.svg)**b** 19A · 2.000000\
 −0.4470
+
+(c, d)
+
+![cyclopentadienone, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_66_22A.svg)**d** 22A · 0.000001\
+−0.2517
 
 ![cyclopentadienone, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_cyclopentadienone/wb_66_21A.svg)**c** 21A · 1.999999\
 −0.3534

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-n-phenylpyrrole/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -78,16 +78,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![N-phenylpyrrole, BH\&HLYP (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_44_40A.svg)**d** 40A · 0.000000\
 −0.0653
 
-![N-phenylpyrrole, BH\&HLYP (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_44_39A.svg)**c** 39A · 0.000003\
-−0.0860
-
 ![N-phenylpyrrole, BH\&HLYP (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_44_37A.svg)**a** 37A · 2.000000\
 −0.2875
+
+(b, c)
+
+![N-phenylpyrrole, BH\&HLYP (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_44_39A.svg)**c** 39A · 0.000003\
+−0.0860
 
 ![N-phenylpyrrole, BH\&HLYP (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_44_38A.svg)**b** 38A · 1.999997\
 −0.2679
@@ -96,24 +96,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![N-phenylpyrrole, BH\&HLYP (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_66_40A.svg)**f** 40A · 0.000077\
 −0.0815
-
-![N-phenylpyrrole, BH\&HLYP (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_66_41A.svg)**e** 41A · 0.000000\
-−0.0427
-
-![N-phenylpyrrole, BH\&HLYP (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_66_39A.svg)**d** 39A · 0.000004\
-−0.0865
 
 ![N-phenylpyrrole, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_66_36A.svg)**a** 36A · 1.999923\
 −0.3058
 
+(b, e)
+
+![N-phenylpyrrole, BH\&HLYP (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_66_41A.svg)**e** 41A · 0.000000\
+−0.0427
+
 ![N-phenylpyrrole, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_66_37A.svg)**b** 37A · 2.000000\
 −0.2742
+
+(c, d)
+
+![N-phenylpyrrole, BH\&HLYP (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_66_39A.svg)**d** 39A · 0.000004\
+−0.0865
 
 ![N-phenylpyrrole, BH\&HLYP (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_66_38A.svg)**c** 38A · 1.999996\
 −0.2709
@@ -122,32 +122,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![N-phenylpyrrole, BH\&HLYP (8,8), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_42A.svg)**h** 42A · 0.000000\
 −0.0121
-
-![N-phenylpyrrole, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_40A.svg)**g** 40A · 0.000107\
-−0.0841
-
-![N-phenylpyrrole, BH\&HLYP (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_41A.svg)**f** 41A · 0.000000\
-−0.0470
-
-![N-phenylpyrrole, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_39A.svg)**e** 39A · 0.000002\
-−0.0878
 
 ![N-phenylpyrrole, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_35A.svg)**a** 35A · 2.000000\
 −0.3491
 
+(b, g)
+
+![N-phenylpyrrole, BH\&HLYP (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_40A.svg)**g** 40A · 0.000107\
+−0.0841
+
 ![N-phenylpyrrole, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_36A.svg)**b** 36A · 1.999893\
 −0.3114
 
+(c, f)
+
+![N-phenylpyrrole, BH\&HLYP (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_41A.svg)**f** 41A · 0.000000\
+−0.0470
+
 ![N-phenylpyrrole, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_37A.svg)**c** 37A · 2.000000\
 −0.2731
+
+(d, e)
+
+![N-phenylpyrrole, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_39A.svg)**e** 39A · 0.000002\
+−0.0878
 
 ![N-phenylpyrrole, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/bh_88_38A.svg)**d** 38A · 1.999998\
 −0.2709
@@ -156,16 +156,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![N-phenylpyrrole, M08-SO (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_44m_39A.svg)**d** 39A · 0.000000\
 −0.1052
 
-![N-phenylpyrrole, M08-SO (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_44m_40A.svg)**c** 40A · 0.000000\
-−0.1038
-
 ![N-phenylpyrrole, M08-SO (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_44m_37A.svg)**a** 37A · 2.000000\
 −0.2936
+
+(b, c)
+
+![N-phenylpyrrole, M08-SO (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_44m_40A.svg)**c** 40A · 0.000000\
+−0.1038
 
 ![N-phenylpyrrole, M08-SO (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_44m_38A.svg)**b** 38A · 2.000000\
 −0.2933
@@ -174,24 +174,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![N-phenylpyrrole, M08-SO (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_66_40A.svg)**f** 40A · 0.000011\
 −0.1015
-
-![N-phenylpyrrole, M08-SO (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_66_41A.svg)**e** 41A · 0.000000\
-−0.0588
-
-![N-phenylpyrrole, M08-SO (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_66_39A.svg)**d** 39A · 0.000001\
-−0.1055
 
 ![N-phenylpyrrole, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_66_36A.svg)**a** 36A · 1.999989\
 −0.3219
 
+(b, e)
+
+![N-phenylpyrrole, M08-SO (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_66_41A.svg)**e** 41A · 0.000000\
+−0.0588
+
 ![N-phenylpyrrole, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_66_37A.svg)**b** 37A · 2.000000\
 −0.2884
+
+(c, d)
+
+![N-phenylpyrrole, M08-SO (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_66_39A.svg)**d** 39A · 0.000001\
+−0.1055
 
 ![N-phenylpyrrole, M08-SO (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_66_38A.svg)**c** 38A · 1.999999\
 −0.2867
@@ -200,32 +200,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![N-phenylpyrrole, M08-SO (8,8), orbital 43A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_43A.svg)**h** 43A · 0.000000\
 −0.0311
-
-![N-phenylpyrrole, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_40A.svg)**g** 40A · 0.000015\
-−0.1032
-
-![N-phenylpyrrole, M08-SO (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_41A.svg)**f** 41A · 0.000000\
-−0.0646
-
-![N-phenylpyrrole, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_39A.svg)**e** 39A · 0.000001\
-−0.1068
 
 ![N-phenylpyrrole, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_35A.svg)**a** 35A · 2.000000\
 −0.3647
 
+(b, g)
+
+![N-phenylpyrrole, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_40A.svg)**g** 40A · 0.000015\
+−0.1032
+
 ![N-phenylpyrrole, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_36A.svg)**b** 36A · 1.999985\
 −0.3278
 
+(c, f)
+
+![N-phenylpyrrole, M08-SO (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_41A.svg)**f** 41A · 0.000000\
+−0.0646
+
 ![N-phenylpyrrole, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_37A.svg)**c** 37A · 2.000000\
 −0.2884
+
+(d, e)
+
+![N-phenylpyrrole, M08-SO (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_39A.svg)**e** 39A · 0.000001\
+−0.1068
 
 ![N-phenylpyrrole, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/m08_88_38A.svg)**d** 38A · 1.999999\
 −0.2866
@@ -234,16 +234,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![N-phenylpyrrole, ωB97X (4,4), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_44m_39A.svg)**d** 39A · 0.000000\
 −0.1295
 
-![N-phenylpyrrole, ωB97X (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_44m_40A.svg)**c** 40A · 0.000000\
-−0.1278
-
 ![N-phenylpyrrole, ωB97X (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_44m_37A.svg)**a** 37A · 2.000000\
 −0.3283
+
+(b, c)
+
+![N-phenylpyrrole, ωB97X (4,4), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_44m_40A.svg)**c** 40A · 0.000000\
+−0.1278
 
 ![N-phenylpyrrole, ωB97X (4,4), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_44m_38A.svg)**b** 38A · 2.000000\
 −0.3276
@@ -252,24 +252,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![N-phenylpyrrole, ωB97X (6,6), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_66_39A.svg)**f** 39A · 0.000054\
 −0.1262
-
-![N-phenylpyrrole, ωB97X (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_66_41A.svg)**e** 41A · 0.000000\
-−0.0732
-
-![N-phenylpyrrole, ωB97X (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_66_40A.svg)**d** 40A · 0.000005\
-−0.1250
 
 ![N-phenylpyrrole, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_66_36A.svg)**a** 36A · 1.999946\
 −0.3556
 
+(b, e)
+
+![N-phenylpyrrole, ωB97X (6,6), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_66_41A.svg)**e** 41A · 0.000000\
+−0.0732
+
 ![N-phenylpyrrole, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_66_37A.svg)**b** 37A · 2.000000\
 −0.3239
+
+(c, d)
+
+![N-phenylpyrrole, ωB97X (6,6), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_66_40A.svg)**d** 40A · 0.000005\
+−0.1250
 
 ![N-phenylpyrrole, ωB97X (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_66_38A.svg)**c** 38A · 1.999995\
 −0.3176
@@ -278,32 +278,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![N-phenylpyrrole, ωB97X (8,8), orbital 42A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_42A.svg)**h** 42A · 0.000000\
 −0.0474
-
-![N-phenylpyrrole, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_39A.svg)**g** 39A · 0.000065\
-−0.1293
-
-![N-phenylpyrrole, ωB97X (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_41A.svg)**f** 41A · 0.000000\
-−0.0773
-
-![N-phenylpyrrole, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_40A.svg)**e** 40A · 0.000002\
-−0.1263
 
 ![N-phenylpyrrole, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_35A.svg)**a** 35A · 2.000000\
 −0.3978
 
+(b, g)
+
+![N-phenylpyrrole, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_39A.svg)**g** 39A · 0.000065\
+−0.1293
+
 ![N-phenylpyrrole, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_36A.svg)**b** 36A · 1.999935\
 −0.3621
 
+(c, f)
+
+![N-phenylpyrrole, ωB97X (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_41A.svg)**f** 41A · 0.000000\
+−0.0773
+
 ![N-phenylpyrrole, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_37A.svg)**c** 37A · 2.000000\
 −0.3210
+
+(d, e)
+
+![N-phenylpyrrole, ωB97X (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_40A.svg)**e** 40A · 0.000002\
+−0.1263
 
 ![N-phenylpyrrole, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_n-phenylpyrrole/wb_88_38A.svg)**d** 38A · 1.999998\
 −0.3154

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-acrolein/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![acrolein, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_44m_17A.svg)**d** 17A · 0.000209\
 −0.1102
 
-![acrolein, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_44m_16A.svg)**c** 16A · 0.000000\
-−0.2063
-
 ![acrolein, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_44m_15A.svg)**a** 15A · 1.999791\
 −0.3634
+
+(b, c)
+
+![acrolein, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_44m_16A.svg)**c** 16A · 0.000000\
+−0.2063
 
 ![acrolein, BH\&HLYP (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_44m_14A.svg)**b** 14A · 2.000000\
 −0.3721
@@ -144,32 +144,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![acrolein, BH\&HLYP (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_19A.svg)**h** 19A · 0.000000\
 −0.0839
-
-![acrolein, BH\&HLYP (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_18A.svg)**g** 18A · 0.000000\
-−0.0853
-
-![acrolein, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_17A.svg)**f** 17A · 0.000000\
-−0.1323
-
-![acrolein, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_16A.svg)**e** 16A · 0.000589\
-−0.2086
 
 ![acrolein, BH\&HLYP (8,8), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_9A.svg)**a** 9A · 2.000000\
 −0.6176
 
+(b, g)
+
+![acrolein, BH\&HLYP (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_18A.svg)**g** 18A · 0.000000\
+−0.0853
+
 ![acrolein, BH\&HLYP (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_10A.svg)**b** 10A · 2.000000\
 −0.6109
 
+(c, f)
+
+![acrolein, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_17A.svg)**f** 17A · 0.000000\
+−0.1323
+
 ![acrolein, BH\&HLYP (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_13A.svg)**c** 13A · 2.000000\
 −0.5100
+
+(d, e)
+
+![acrolein, BH\&HLYP (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_16A.svg)**e** 16A · 0.000589\
+−0.2086
 
 ![acrolein, BH\&HLYP (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/bh_88_14A.svg)**d** 14A · 1.999411\
 −0.4125
@@ -188,16 +188,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![acrolein, M08-SO (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_44m_17A.svg)**d** 17A · 0.000080\
 −0.1304
 
-![acrolein, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_44m_16A.svg)**c** 16A · 0.000000\
-−0.2107
-
 ![acrolein, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_44m_14A.svg)**a** 14A · 1.999920\
 −0.3768
+
+(b, c)
+
+![acrolein, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_44m_16A.svg)**c** 16A · 0.000000\
+−0.2107
 
 ![acrolein, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_44m_15A.svg)**b** 15A · 2.000000\
 −0.3758
@@ -206,32 +206,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![acrolein, M08-SO (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_19A.svg)**h** 19A · 0.000000\
 −0.0931
-
-![acrolein, M08-SO (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_18A.svg)**g** 18A · 0.000000\
-−0.0952
-
-![acrolein, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_17A.svg)**f** 17A · 0.000000\
-−0.1532
-
-![acrolein, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_16A.svg)**e** 16A · 0.000209\
-−0.2206
 
 ![acrolein, M08-SO (8,8), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_10A.svg)**a** 10A · 2.000000\
 −0.6102
 
+(b, g)
+
+![acrolein, M08-SO (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_18A.svg)**g** 18A · 0.000000\
+−0.0952
+
 ![acrolein, M08-SO (8,8), orbital 9A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_9A.svg)**b** 9A · 2.000000\
 −0.6103
 
+(c, f)
+
+![acrolein, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_17A.svg)**f** 17A · 0.000000\
+−0.1532
+
 ![acrolein, M08-SO (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_13A.svg)**c** 13A · 2.000000\
 −0.5222
+
+(d, e)
+
+![acrolein, M08-SO (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_16A.svg)**e** 16A · 0.000209\
+−0.2206
 
 ![acrolein, M08-SO (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/m08_88_14A.svg)**d** 14A · 1.999791\
 −0.4202
@@ -250,16 +250,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![acrolein, ωB97X (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_44_17A.svg)**d** 17A · 0.000000\
 −0.1210
 
-![acrolein, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_44_16A.svg)**c** 16A · 0.000124\
-−0.2202
-
 ![acrolein, ωB97X (4,4), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_44_12A.svg)**a** 12A · 2.000000\
 −0.5135
+
+(b, c)
+
+![acrolein, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_44_16A.svg)**c** 16A · 0.000124\
+−0.2202
 
 ![acrolein, ωB97X (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_44_14A.svg)**b** 14A · 1.999876\
 −0.4272
@@ -268,32 +268,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![acrolein, ωB97X (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_19A.svg)**h** 19A · 0.000000\
 −0.1108
-
-![acrolein, ωB97X (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_18A.svg)**g** 18A · 0.000000\
-−0.1162
-
-![acrolein, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_17A.svg)**f** 17A · 0.000000\
-−0.1800
-
-![acrolein, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_16A.svg)**e** 16A · 0.000322\
-−0.2497
 
 ![acrolein, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_15A.svg)**a** 15A · 2.000000\
 −0.4488
 
+(b, g)
+
+![acrolein, ωB97X (8,8), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_18A.svg)**g** 18A · 0.000000\
+−0.1162
+
 ![acrolein, ωB97X (8,8), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_13A.svg)**b** 13A · 2.000000\
 −0.5253
 
+(c, f)
+
+![acrolein, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_17A.svg)**f** 17A · 0.000000\
+−0.1800
+
 ![acrolein, ωB97X (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_12A.svg)**c** 12A · 2.000000\
 −0.5566
+
+(d, e)
+
+![acrolein, ωB97X (8,8), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_16A.svg)**e** 16A · 0.000322\
+−0.2497
 
 ![acrolein, ωB97X (8,8), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_acrolein/wb_88_14A.svg)**d** 14A · 1.999678\
 −0.4521

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-glyoxal/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -97,16 +97,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![glyoxal, BH\&HLYP (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_44m_16A.svg)**d** 16A · 0.000000\
-−0.2172
-
-![glyoxal, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_44m_17A.svg)**c** 17A · 0.000000\
 −0.2172
 
 ![glyoxal, BH\&HLYP (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_44m_14A.svg)**a** 14A · 2.000000\
 −0.4025
+
+(b, c)
+
+![glyoxal, BH\&HLYP (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_44m_17A.svg)**c** 17A · 0.000000\
+−0.2172
 
 ![glyoxal, BH\&HLYP (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_44m_15A.svg)**b** 15A · 2.000000\
 −0.4025
@@ -115,24 +115,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![glyoxal, BH\&HLYP (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_66_18A.svg)**f** 18A · 0.000000\
 −0.0653
-
-![glyoxal, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_66_17A.svg)**e** 17A · 0.000000\
-−0.1329
-
-![glyoxal, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_66_16A.svg)**d** 16A · 0.000235\
-−0.2501
 
 ![glyoxal, BH\&HLYP (6,6), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_66_10A.svg)**a** 10A · 2.000000\
 −0.6323
 
+(b, e)
+
+![glyoxal, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_66_17A.svg)**e** 17A · 0.000000\
+−0.1329
+
 ![glyoxal, BH\&HLYP (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_66_12A.svg)**b** 12A · 2.000000\
 −0.5578
+
+(c, d)
+
+![glyoxal, BH\&HLYP (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_66_16A.svg)**d** 16A · 0.000235\
+−0.2501
 
 ![glyoxal, BH\&HLYP (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/bh_66_13A.svg)**c** 13A · 1.999765\
 −0.5034
@@ -141,16 +141,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![glyoxal, M08-SO (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_44m_17A.svg)**d** 17A · 0.000000\
-−0.2226
-
-![glyoxal, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_44m_16A.svg)**c** 16A · 0.000000\
 −0.2226
 
 ![glyoxal, M08-SO (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_44m_14A.svg)**a** 14A · 2.000000\
 −0.4075
+
+(b, c)
+
+![glyoxal, M08-SO (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_44m_16A.svg)**c** 16A · 0.000000\
+−0.2226
 
 ![glyoxal, M08-SO (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_44m_15A.svg)**b** 15A · 2.000000\
 −0.4075
@@ -159,24 +159,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![glyoxal, M08-SO (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_66_18A.svg)**f** 18A · 0.000000\
 −0.0750
-
-![glyoxal, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_66_17A.svg)**e** 17A · 0.000000\
-−0.1513
-
-![glyoxal, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_66_16A.svg)**d** 16A · 0.000048\
-−0.2634
 
 ![glyoxal, M08-SO (6,6), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_66_10A.svg)**a** 10A · 2.000000\
 −0.6339
 
+(b, e)
+
+![glyoxal, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_66_17A.svg)**e** 17A · 0.000000\
+−0.1513
+
 ![glyoxal, M08-SO (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_66_12A.svg)**b** 12A · 2.000000\
 −0.5702
+
+(c, d)
+
+![glyoxal, M08-SO (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_66_16A.svg)**d** 16A · 0.000048\
+−0.2634
 
 ![glyoxal, M08-SO (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/m08_66_13A.svg)**c** 13A · 1.999952\
 −0.5141
@@ -185,16 +185,16 @@ M08-SO, (6,6)
 
 (a, d)
 
-(b, c)
-
 ![glyoxal, ωB97X (4,4), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_44m_17A.svg)**d** 17A · 0.000000\
-−0.2524
-
-![glyoxal, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_44m_16A.svg)**c** 16A · 0.000000\
 −0.2524
 
 ![glyoxal, ωB97X (4,4), orbital 14A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_44m_14A.svg)**a** 14A · 2.000000\
 −0.4306
+
+(b, c)
+
+![glyoxal, ωB97X (4,4), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_44m_16A.svg)**c** 16A · 0.000000\
+−0.2524
 
 ![glyoxal, ωB97X (4,4), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_44m_15A.svg)**b** 15A · 2.000000\
 −0.4305
@@ -203,24 +203,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![glyoxal, ωB97X (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_66_18A.svg)**f** 18A · 0.000000\
 −0.0852
-
-![glyoxal, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_66_17A.svg)**e** 17A · 0.000000\
-−0.1851
-
-![glyoxal, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_66_16A.svg)**d** 16A · 0.000063\
-−0.3004
 
 ![glyoxal, ωB97X (6,6), orbital 10A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_66_10A.svg)**a** 10A · 2.000000\
 −0.6577
 
+(b, e)
+
+![glyoxal, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_66_17A.svg)**e** 17A · 0.000000\
+−0.1851
+
 ![glyoxal, ωB97X (6,6), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_66_12A.svg)**b** 12A · 2.000000\
 −0.6036
+
+(c, d)
+
+![glyoxal, ωB97X (6,6), orbital 16A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_66_16A.svg)**d** 16A · 0.000063\
+−0.3004
 
 ![glyoxal, ωB97X (6,6), orbital 13A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_glyoxal/wb_66_13A.svg)**c** 13A · 1.999937\
 −0.5445

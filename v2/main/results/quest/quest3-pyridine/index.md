@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-pyridine/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![pyridine, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_44m_22A.svg)**d** 22A · 0.000000\
 −0.1504
 
-![pyridine, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_44m_23A.svg)**c** 23A · 0.000014\
-−0.1094
-
 ![pyridine, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_44m_20A.svg)**a** 20A · 2.000000\
 −0.3465
+
+(b, c)
+
+![pyridine, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_44m_23A.svg)**c** 23A · 0.000014\
+−0.1094
 
 ![pyridine, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_44m_21A.svg)**b** 21A · 1.999986\
 −0.3282
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![pyridine, BH\&HLYP (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_66_24A.svg)**f** 24A · 0.000000\
 −0.0199
-
-![pyridine, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_66_23A.svg)**e** 23A · 0.000091\
-−0.1274
-
-![pyridine, BH\&HLYP (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_66_22A.svg)**d** 22A · 0.000230\
-−0.1601
 
 ![pyridine, BH\&HLYP (6,6), orbital 18A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_66_18A.svg)**a** 18A · 2.000000\
 −0.4716
 
+(b, e)
+
+![pyridine, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_66_23A.svg)**e** 23A · 0.000091\
+−0.1274
+
 ![pyridine, BH\&HLYP (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_66_19A.svg)**b** 19A · 1.999909\
 −0.3907
+
+(c, d)
+
+![pyridine, BH\&HLYP (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_66_22A.svg)**d** 22A · 0.000230\
+−0.1601
 
 ![pyridine, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_66_21A.svg)**c** 21A · 1.999770\
 −0.3449
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![pyridine, BH\&HLYP (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_24A.svg)**h** 24A · 0.000000\
 −0.0700
-
-![pyridine, BH\&HLYP (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_25A.svg)**g** 25A · 0.000000\
-−0.0222
-
-![pyridine, BH\&HLYP (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_23A.svg)**f** 23A · 0.000113\
-−0.1375
-
-![pyridine, BH\&HLYP (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_22A.svg)**e** 22A · 0.000277\
-−0.2062
 
 ![pyridine, BH\&HLYP (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_15A.svg)**a** 15A · 2.000000\
 −0.5439
 
+(b, g)
+
+![pyridine, BH\&HLYP (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_25A.svg)**g** 25A · 0.000000\
+−0.0222
+
 ![pyridine, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_17A.svg)**b** 17A · 2.000000\
 −0.4862
 
+(c, f)
+
+![pyridine, BH\&HLYP (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_23A.svg)**f** 23A · 0.000113\
+−0.1375
+
 ![pyridine, BH\&HLYP (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_19A.svg)**c** 19A · 1.999887\
 −0.3859
+
+(d, e)
+
+![pyridine, BH\&HLYP (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_22A.svg)**e** 22A · 0.000277\
+−0.2062
 
 ![pyridine, BH\&HLYP (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/bh_88_21A.svg)**d** 21A · 1.999723\
 −0.3497
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![pyridine, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_44m_22A.svg)**d** 22A · 0.000000\
 −0.1606
 
-![pyridine, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_44m_23A.svg)**c** 23A · 0.000002\
-−0.1274
-
 ![pyridine, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_44m_20A.svg)**a** 20A · 2.000000\
 −0.3506
+
+(b, c)
+
+![pyridine, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_44m_23A.svg)**c** 23A · 0.000002\
+−0.1274
 
 ![pyridine, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_44m_21A.svg)**b** 21A · 1.999998\
 −0.3408
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![pyridine, M08-SO (6,6), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_66_25A.svg)**f** 25A · 0.000000\
 −0.0344
-
-![pyridine, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_66_23A.svg)**e** 23A · 0.000022\
-−0.1465
-
-![pyridine, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_66_22A.svg)**d** 22A · 0.000032\
-−0.1765
 
 ![pyridine, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_66_17A.svg)**a** 17A · 2.000000\
 −0.4918
 
+(b, e)
+
+![pyridine, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_66_23A.svg)**e** 23A · 0.000022\
+−0.1465
+
 ![pyridine, M08-SO (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_66_19A.svg)**b** 19A · 1.999978\
 −0.3967
+
+(c, d)
+
+![pyridine, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_66_22A.svg)**d** 22A · 0.000032\
+−0.1765
 
 ![pyridine, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_66_21A.svg)**c** 21A · 1.999968\
 −0.3581
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![pyridine, M08-SO (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_24A.svg)**h** 24A · 0.000000\
 −0.0772
-
-![pyridine, M08-SO (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_25A.svg)**g** 25A · 0.000000\
-−0.0415
-
-![pyridine, M08-SO (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_23A.svg)**f** 23A · 0.000023\
-−0.1550
-
-![pyridine, M08-SO (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_22A.svg)**e** 22A · 0.000039\
-−0.2226
 
 ![pyridine, M08-SO (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_15A.svg)**a** 15A · 2.000000\
 −0.5422
 
+(b, g)
+
+![pyridine, M08-SO (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_25A.svg)**g** 25A · 0.000000\
+−0.0415
+
 ![pyridine, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_17A.svg)**b** 17A · 2.000000\
 −0.5039
 
+(c, f)
+
+![pyridine, M08-SO (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_23A.svg)**f** 23A · 0.000023\
+−0.1550
+
 ![pyridine, M08-SO (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_19A.svg)**c** 19A · 1.999977\
 −0.3965
+
+(d, e)
+
+![pyridine, M08-SO (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_22A.svg)**e** 22A · 0.000039\
+−0.2226
 
 ![pyridine, M08-SO (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/m08_88_21A.svg)**d** 21A · 1.999961\
 −0.3640
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![pyridine, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_44m_22A.svg)**d** 22A · 0.000000\
 −0.1915
 
-![pyridine, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_44m_23A.svg)**c** 23A · 0.000007\
-−0.1574
-
 ![pyridine, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_44m_20A.svg)**a** 20A · 2.000000\
 −0.3837
+
+(b, c)
+
+![pyridine, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_44m_23A.svg)**c** 23A · 0.000007\
+−0.1574
 
 ![pyridine, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_44m_21A.svg)**b** 21A · 1.999993\
 −0.3751
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![pyridine, ωB97X (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_66_24A.svg)**f** 24A · 0.000000\
 −0.0337
-
-![pyridine, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_66_23A.svg)**e** 23A · 0.000053\
-−0.1749
-
-![pyridine, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_66_22A.svg)**d** 22A · 0.000117\
-−0.1988
 
 ![pyridine, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_66_17A.svg)**a** 17A · 2.000000\
 −0.5235
 
+(b, e)
+
+![pyridine, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_66_23A.svg)**e** 23A · 0.000053\
+−0.1749
+
 ![pyridine, ωB97X (6,6), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_66_19A.svg)**b** 19A · 1.999947\
 −0.4222
+
+(c, d)
+
+![pyridine, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_66_22A.svg)**d** 22A · 0.000117\
+−0.1988
 
 ![pyridine, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_66_21A.svg)**c** 21A · 1.999883\
 −0.3856
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![pyridine, ωB97X (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_24A.svg)**h** 24A · 0.000000\
 −0.0816
-
-![pyridine, ωB97X (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_25A.svg)**g** 25A · 0.000000\
-−0.0540
-
-![pyridine, ωB97X (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_23A.svg)**f** 23A · 0.000059\
-−0.1848
-
-![pyridine, ωB97X (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_22A.svg)**e** 22A · 0.000136\
-−0.2481
 
 ![pyridine, ωB97X (8,8), orbital 15A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_15A.svg)**a** 15A · 2.000000\
 −0.5730
 
+(b, g)
+
+![pyridine, ωB97X (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_25A.svg)**g** 25A · 0.000000\
+−0.0540
+
 ![pyridine, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_17A.svg)**b** 17A · 2.000000\
 −0.5409
 
+(c, f)
+
+![pyridine, ωB97X (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_23A.svg)**f** 23A · 0.000059\
+−0.1848
+
 ![pyridine, ωB97X (8,8), orbital 19A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_19A.svg)**c** 19A · 1.999941\
 −0.4254
+
+(d, e)
+
+![pyridine, ωB97X (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_22A.svg)**e** 22A · 0.000136\
+−0.2481
 
 ![pyridine, ωB97X (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_pyridine/wb_88_21A.svg)**d** 21A · 1.999864\
 −0.3958

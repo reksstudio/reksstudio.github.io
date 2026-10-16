@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest3-benzene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -116,16 +116,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![benzene, BH\&HLYP (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_44m_23A.svg)**d** 23A · 0.000002\
 −0.0978
 
-![benzene, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_44m_22A.svg)**c** 22A · 0.000001\
-−0.0985
-
 ![benzene, BH\&HLYP (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_44m_21A.svg)**a** 21A · 1.999998\
 −0.3074
+
+(b, c)
+
+![benzene, BH\&HLYP (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_44m_22A.svg)**c** 22A · 0.000001\
+−0.0985
 
 ![benzene, BH\&HLYP (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_44m_20A.svg)**b** 20A · 1.999999\
 −0.3082
@@ -134,24 +134,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![benzene, BH\&HLYP (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_66_29A.svg)**f** 29A · 0.000000\
 0.0350
-
-![benzene, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_66_23A.svg)**e** 23A · 0.000128\
-−0.0956
-
-![benzene, BH\&HLYP (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_66_22A.svg)**d** 22A · 0.000191\
-−0.1304
 
 ![benzene, BH\&HLYP (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_66_17A.svg)**a** 17A · 2.000000\
 −0.4412
 
+(b, e)
+
+![benzene, BH\&HLYP (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_66_23A.svg)**e** 23A · 0.000128\
+−0.0956
+
 ![benzene, BH\&HLYP (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_66_21A.svg)**b** 21A · 1.999872\
 −0.3118
+
+(c, d)
+
+![benzene, BH\&HLYP (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_66_22A.svg)**d** 22A · 0.000191\
+−0.1304
 
 ![benzene, BH\&HLYP (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_66_20A.svg)**c** 20A · 1.999809\
 −0.3141
@@ -160,32 +160,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![benzene, BH\&HLYP (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_24A.svg)**h** 24A · 0.000000\
 −0.0826
-
-![benzene, BH\&HLYP (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_27A.svg)**g** 27A · 0.000000\
-0.0164
-
-![benzene, BH\&HLYP (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_23A.svg)**f** 23A · 0.000146\
-−0.1074
-
-![benzene, BH\&HLYP (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_22A.svg)**e** 22A · 0.000232\
-−0.1729
 
 ![benzene, BH\&HLYP (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_12A.svg)**a** 12A · 2.000000\
 −0.6309
 
+(b, g)
+
+![benzene, BH\&HLYP (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_27A.svg)**g** 27A · 0.000000\
+0.0164
+
 ![benzene, BH\&HLYP (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_17A.svg)**b** 17A · 2.000000\
 −0.4553
 
+(c, f)
+
+![benzene, BH\&HLYP (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_23A.svg)**f** 23A · 0.000146\
+−0.1074
+
 ![benzene, BH\&HLYP (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_21A.svg)**c** 21A · 1.999854\
 −0.3230
+
+(d, e)
+
+![benzene, BH\&HLYP (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_22A.svg)**e** 22A · 0.000232\
+−0.1729
 
 ![benzene, BH\&HLYP (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/bh_88_20A.svg)**d** 20A · 1.999768\
 −0.3257
@@ -194,16 +194,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![benzene, M08-SO (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_44_23A.svg)**d** 23A · 0.000020\
 −0.1039
 
-![benzene, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_44_22A.svg)**c** 22A · 0.000021\
-−0.1169
-
 ![benzene, M08-SO (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_44_21A.svg)**a** 21A · 1.999980\
 −0.3219
+
+(b, c)
+
+![benzene, M08-SO (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_44_22A.svg)**c** 22A · 0.000021\
+−0.1169
 
 ![benzene, M08-SO (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_44_20A.svg)**b** 20A · 1.999979\
 −0.3224
@@ -212,24 +212,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![benzene, M08-SO (6,6), orbital 29A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_66_29A.svg)**f** 29A · 0.000000\
 0.0136
-
-![benzene, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_66_23A.svg)**e** 23A · 0.000024\
-−0.1156
-
-![benzene, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_66_22A.svg)**d** 22A · 0.000027\
-−0.1480
 
 ![benzene, M08-SO (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_66_17A.svg)**a** 17A · 2.000000\
 −0.4548
 
+(b, e)
+
+![benzene, M08-SO (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_66_23A.svg)**e** 23A · 0.000024\
+−0.1156
+
 ![benzene, M08-SO (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_66_21A.svg)**b** 21A · 1.999976\
 −0.3263
+
+(c, d)
+
+![benzene, M08-SO (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_66_22A.svg)**d** 22A · 0.000027\
+−0.1480
 
 ![benzene, M08-SO (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_66_20A.svg)**c** 20A · 1.999973\
 −0.3287
@@ -238,32 +238,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![benzene, M08-SO (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_24A.svg)**h** 24A · 0.000000\
 −0.0911
-
-![benzene, M08-SO (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_27A.svg)**g** 27A · 0.000000\
-−0.0066
-
-![benzene, M08-SO (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_23A.svg)**f** 23A · 0.000028\
-−0.1259
-
-![benzene, M08-SO (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_22A.svg)**e** 22A · 0.000033\
-−0.1905
 
 ![benzene, M08-SO (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_12A.svg)**a** 12A · 2.000000\
 −0.6334
 
+(b, g)
+
+![benzene, M08-SO (8,8), orbital 27A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_27A.svg)**g** 27A · 0.000000\
+−0.0066
+
 ![benzene, M08-SO (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_17A.svg)**b** 17A · 2.000000\
 −0.4693
 
+(c, f)
+
+![benzene, M08-SO (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_23A.svg)**f** 23A · 0.000028\
+−0.1259
+
 ![benzene, M08-SO (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_21A.svg)**c** 21A · 1.999972\
 −0.3382
+
+(d, e)
+
+![benzene, M08-SO (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_22A.svg)**e** 22A · 0.000033\
+−0.1905
 
 ![benzene, M08-SO (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/m08_88_20A.svg)**d** 20A · 1.999967\
 −0.3407
@@ -272,16 +272,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![benzene, ωB97X (4,4), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_44_23A.svg)**d** 23A · 0.000059\
 −0.1301
 
-![benzene, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_44_22A.svg)**c** 22A · 0.000088\
-−0.1438
-
 ![benzene, ωB97X (4,4), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_44_21A.svg)**a** 21A · 1.999941\
 −0.3566
+
+(b, c)
+
+![benzene, ωB97X (4,4), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_44_22A.svg)**c** 22A · 0.000088\
+−0.1438
 
 ![benzene, ωB97X (4,4), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_44_20A.svg)**b** 20A · 1.999912\
 −0.3569
@@ -290,24 +290,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![benzene, ωB97X (6,6), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_66_24A.svg)**f** 24A · 0.000000\
 −0.0009
-
-![benzene, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_66_23A.svg)**e** 23A · 0.000071\
-−0.1429
-
-![benzene, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_66_22A.svg)**d** 22A · 0.000100\
-−0.1728
 
 ![benzene, ωB97X (6,6), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_66_17A.svg)**a** 17A · 2.000000\
 −0.4903
 
+(b, e)
+
+![benzene, ωB97X (6,6), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_66_23A.svg)**e** 23A · 0.000071\
+−0.1429
+
 ![benzene, ωB97X (6,6), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_66_21A.svg)**b** 21A · 1.999929\
 −0.3574
+
+(c, d)
+
+![benzene, ωB97X (6,6), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_66_22A.svg)**d** 22A · 0.000100\
+−0.1728
 
 ![benzene, ωB97X (6,6), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_66_20A.svg)**c** 20A · 1.999900\
 −0.3597
@@ -316,32 +316,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![benzene, ωB97X (8,8), orbital 24A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_24A.svg)**h** 24A · 0.000000\
 −0.0975
-
-![benzene, ωB97X (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_25A.svg)**g** 25A · 0.000000\
-−0.0269
-
-![benzene, ωB97X (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_23A.svg)**f** 23A · 0.000079\
-−0.1551
-
-![benzene, ωB97X (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_22A.svg)**e** 22A · 0.000116\
-−0.2191
 
 ![benzene, ωB97X (8,8), orbital 12A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_12A.svg)**a** 12A · 2.000000\
 −0.6667
 
+(b, g)
+
+![benzene, ωB97X (8,8), orbital 25A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_25A.svg)**g** 25A · 0.000000\
+−0.0269
+
 ![benzene, ωB97X (8,8), orbital 17A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_17A.svg)**b** 17A · 2.000000\
 −0.5081
 
+(c, f)
+
+![benzene, ωB97X (8,8), orbital 23A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_23A.svg)**f** 23A · 0.000079\
+−0.1551
+
 ![benzene, ωB97X (8,8), orbital 21A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_21A.svg)**c** 21A · 1.999921\
 −0.3724
+
+(d, e)
+
+![benzene, ωB97X (8,8), orbital 22A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_22A.svg)**e** 22A · 0.000116\
+−0.2191
 
 ![benzene, ωB97X (8,8), orbital 20A](https://reksstudio.github.io/v2/figures/quest/orb/quest3_benzene/wb_88_20A.svg)**d** 20A · 1.999884\
 −0.3750

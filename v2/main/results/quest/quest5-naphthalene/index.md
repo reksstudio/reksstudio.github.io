@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest5-naphthalene/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![naphthalene, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_44m_36A.svg)**d** 36A · 0.000021\
 −0.0858
 
-![naphthalene, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_44m_35A.svg)**c** 35A · 0.000046\
-−0.1096
-
 ![naphthalene, BH\&HLYP (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_44m_33A.svg)**a** 33A · 1.999979\
 −0.2931
+
+(b, c)
+
+![naphthalene, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_44m_35A.svg)**c** 35A · 0.000046\
+−0.1096
 
 ![naphthalene, BH\&HLYP (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_44m_34A.svg)**b** 34A · 1.999954\
 −0.2642
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![naphthalene, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_66_37A.svg)**f** 37A · 0.000000\
 −0.0631
-
-![naphthalene, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_66_36A.svg)**e** 36A · 0.000022\
-−0.0808
-
-![naphthalene, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_66_35A.svg)**d** 35A · 0.000072\
-−0.1075
 
 ![naphthalene, BH\&HLYP (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_66_32A.svg)**a** 32A · 2.000000\
 −0.3410
 
+(b, e)
+
+![naphthalene, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_66_36A.svg)**e** 36A · 0.000022\
+−0.0808
+
 ![naphthalene, BH\&HLYP (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_66_33A.svg)**b** 33A · 1.999978\
 −0.2953
+
+(c, d)
+
+![naphthalene, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_66_35A.svg)**d** 35A · 0.000072\
+−0.1075
 
 ![naphthalene, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_66_34A.svg)**c** 34A · 1.999928\
 −0.2631
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![naphthalene, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_39A.svg)**h** 39A · 0.000000\
 0.0054
-
-![naphthalene, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_37A.svg)**g** 37A · 0.000000\
-−0.0708
-
-![naphthalene, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_36A.svg)**f** 36A · 0.000020\
-−0.0972
-
-![naphthalene, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_35A.svg)**e** 35A · 0.000072\
-−0.1104
 
 ![naphthalene, BH\&HLYP (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_31A.svg)**a** 31A · 2.000000\
 −0.3918
 
+(b, g)
+
+![naphthalene, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_37A.svg)**g** 37A · 0.000000\
+−0.0708
+
 ![naphthalene, BH\&HLYP (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_32A.svg)**b** 32A · 2.000000\
 −0.3429
 
+(c, f)
+
+![naphthalene, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_36A.svg)**f** 36A · 0.000020\
+−0.0972
+
 ![naphthalene, BH\&HLYP (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_33A.svg)**c** 33A · 1.999980\
 −0.2962
+
+(d, e)
+
+![naphthalene, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_35A.svg)**e** 35A · 0.000072\
+−0.1104
 
 ![naphthalene, BH\&HLYP (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/bh_88_34A.svg)**d** 34A · 1.999928\
 −0.2641
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![naphthalene, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_44m_36A.svg)**d** 36A · 0.000003\
 −0.1067
 
-![naphthalene, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_44m_35A.svg)**c** 35A · 0.000007\
-−0.1292
-
 ![naphthalene, M08-SO (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_44m_33A.svg)**a** 33A · 1.999997\
 −0.3103
+
+(b, c)
+
+![naphthalene, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_44m_35A.svg)**c** 35A · 0.000007\
+−0.1292
 
 ![naphthalene, M08-SO (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_44m_34A.svg)**b** 34A · 1.999993\
 −0.2813
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![naphthalene, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_66_37A.svg)**f** 37A · 0.000000\
 −0.0829
-
-![naphthalene, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_66_36A.svg)**e** 36A · 0.000003\
-−0.0998
-
-![naphthalene, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_66_35A.svg)**d** 35A · 0.000011\
-−0.1275
 
 ![naphthalene, M08-SO (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_66_32A.svg)**a** 32A · 2.000000\
 −0.3570
 
+(b, e)
+
+![naphthalene, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_66_36A.svg)**e** 36A · 0.000003\
+−0.0998
+
 ![naphthalene, M08-SO (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_66_33A.svg)**b** 33A · 1.999997\
 −0.3118
+
+(c, d)
+
+![naphthalene, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_66_35A.svg)**d** 35A · 0.000011\
+−0.1275
 
 ![naphthalene, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_66_34A.svg)**c** 34A · 1.999989\
 −0.2798
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![naphthalene, M08-SO (8,8), orbital 41A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_41A.svg)**h** 41A · 0.000000\
 −0.0149
-
-![naphthalene, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_37A.svg)**g** 37A · 0.000000\
-−0.0904
-
-![naphthalene, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_36A.svg)**f** 36A · 0.000002\
-−0.1155
-
-![naphthalene, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_35A.svg)**e** 35A · 0.000011\
-−0.1307
 
 ![naphthalene, M08-SO (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_30A.svg)**a** 30A · 2.000000\
 −0.4072
 
+(b, g)
+
+![naphthalene, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_37A.svg)**g** 37A · 0.000000\
+−0.0904
+
 ![naphthalene, M08-SO (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_32A.svg)**b** 32A · 2.000000\
 −0.3586
 
+(c, f)
+
+![naphthalene, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_36A.svg)**f** 36A · 0.000002\
+−0.1155
+
 ![naphthalene, M08-SO (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_33A.svg)**c** 33A · 1.999998\
 −0.3125
+
+(d, e)
+
+![naphthalene, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_35A.svg)**e** 35A · 0.000011\
+−0.1307
 
 ![naphthalene, M08-SO (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/m08_88_34A.svg)**d** 34A · 1.999989\
 −0.2807
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![naphthalene, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_44m_36A.svg)**d** 36A · 0.000015\
 −0.1305
 
-![naphthalene, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_44m_35A.svg)**c** 35A · 0.000030\
-−0.1513
-
 ![naphthalene, ωB97X (4,4), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_44m_33A.svg)**a** 33A · 1.999985\
 −0.3432
+
+(b, c)
+
+![naphthalene, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_44m_35A.svg)**c** 35A · 0.000030\
+−0.1513
 
 ![naphthalene, ωB97X (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_44m_34A.svg)**b** 34A · 1.999970\
 −0.3137
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![naphthalene, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_66_37A.svg)**f** 37A · 0.000000\
 −0.1007
-
-![naphthalene, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_66_36A.svg)**e** 36A · 0.000015\
-−0.1202
-
-![naphthalene, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_66_35A.svg)**d** 35A · 0.000056\
-−0.1501
 
 ![naphthalene, ωB97X (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_66_32A.svg)**a** 32A · 2.000000\
 −0.3920
 
+(b, e)
+
+![naphthalene, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_66_36A.svg)**e** 36A · 0.000015\
+−0.1202
+
 ![naphthalene, ωB97X (6,6), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_66_33A.svg)**b** 33A · 1.999985\
 −0.3440
+
+(c, d)
+
+![naphthalene, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_66_35A.svg)**d** 35A · 0.000056\
+−0.1501
 
 ![naphthalene, ωB97X (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_66_34A.svg)**c** 34A · 1.999944\
 −0.3101
@@ -346,32 +346,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![naphthalene, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_38A.svg)**h** 38A · 0.000000\
 −0.0233
-
-![naphthalene, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_37A.svg)**g** 37A · 0.000000\
-−0.1067
-
-![naphthalene, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_36A.svg)**f** 36A · 0.000012\
-−0.1368
-
-![naphthalene, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_35A.svg)**e** 35A · 0.000055\
-−0.1527
 
 ![naphthalene, ωB97X (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_30A.svg)**a** 30A · 2.000000\
 −0.4429
 
+(b, g)
+
+![naphthalene, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_37A.svg)**g** 37A · 0.000000\
+−0.1067
+
 ![naphthalene, ωB97X (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_32A.svg)**b** 32A · 2.000000\
 −0.3926
 
+(c, f)
+
+![naphthalene, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_36A.svg)**f** 36A · 0.000012\
+−0.1368
+
 ![naphthalene, ωB97X (8,8), orbital 33A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_33A.svg)**c** 33A · 1.999988\
 −0.3424
+
+(d, e)
+
+![naphthalene, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_35A.svg)**e** 35A · 0.000055\
+−0.1527
 
 ![naphthalene, ωB97X (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest5_naphthalene/wb_88_34A.svg)**d** 34A · 1.999945\
 −0.3099

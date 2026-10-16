@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/quest/quest6-benzothiadiazole/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 commit of these outputs: ddc2f581c (kk/reks.v42). Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -126,16 +126,16 @@ BH\&HLYP, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![benzothiadiazole, BH\&HLYP (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_44m_37A.svg)**d** 37A · 0.000001\
 −0.0967
 
-![benzothiadiazole, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_44m_36A.svg)**c** 36A · 0.000228\
-−0.1622
-
 ![benzothiadiazole, BH\&HLYP (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_44m_34A.svg)**a** 34A · 1.999999\
 −0.3188
+
+(b, c)
+
+![benzothiadiazole, BH\&HLYP (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_44m_36A.svg)**c** 36A · 0.000228\
+−0.1622
 
 ![benzothiadiazole, BH\&HLYP (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_44m_35A.svg)**b** 35A · 1.999772\
 −0.2954
@@ -144,24 +144,24 @@ BH\&HLYP, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![benzothiadiazole, BH\&HLYP (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_66_37A.svg)**f** 37A · 0.000000\
 −0.0863
-
-![benzothiadiazole, BH\&HLYP (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_66_38A.svg)**e** 38A · 0.000002\
-−0.0675
-
-![benzothiadiazole, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_66_36A.svg)**d** 36A · 0.000288\
-−0.1591
 
 ![benzothiadiazole, BH\&HLYP (6,6), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_66_32A.svg)**a** 32A · 2.000000\
 −0.3917
 
+(b, e)
+
+![benzothiadiazole, BH\&HLYP (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_66_38A.svg)**e** 38A · 0.000002\
+−0.0675
+
 ![benzothiadiazole, BH\&HLYP (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_66_34A.svg)**b** 34A · 1.999998\
 −0.3161
+
+(c, d)
+
+![benzothiadiazole, BH\&HLYP (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_66_36A.svg)**d** 36A · 0.000288\
+−0.1591
 
 ![benzothiadiazole, BH\&HLYP (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_66_35A.svg)**c** 35A · 1.999712\
 −0.2978
@@ -170,32 +170,32 @@ BH\&HLYP, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![benzothiadiazole, BH\&HLYP (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_39A.svg)**h** 39A · 0.000000\
 −0.0143
-
-![benzothiadiazole, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_37A.svg)**g** 37A · 0.000000\
-−0.1103
-
-![benzothiadiazole, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_38A.svg)**f** 38A · 0.000003\
-−0.0946
-
-![benzothiadiazole, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_36A.svg)**e** 36A · 0.000247\
-−0.1670
 
 ![benzothiadiazole, BH\&HLYP (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_30A.svg)**a** 30A · 2.000000\
 −0.4282
 
+(b, g)
+
+![benzothiadiazole, BH\&HLYP (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_37A.svg)**g** 37A · 0.000000\
+−0.1103
+
 ![benzothiadiazole, BH\&HLYP (8,8), orbital 32A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_32A.svg)**b** 32A · 2.000000\
 −0.4051
 
+(c, f)
+
+![benzothiadiazole, BH\&HLYP (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_38A.svg)**f** 38A · 0.000003\
+−0.0946
+
 ![benzothiadiazole, BH\&HLYP (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_34A.svg)**c** 34A · 1.999997\
 −0.3338
+
+(d, e)
+
+![benzothiadiazole, BH\&HLYP (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_36A.svg)**e** 36A · 0.000247\
+−0.1670
 
 ![benzothiadiazole, BH\&HLYP (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/bh_88_35A.svg)**d** 35A · 1.999753\
 −0.3071
@@ -214,16 +214,16 @@ M08-SO, (4,4)
 
 (a, d)
 
-(b, c)
-
 ![benzothiadiazole, M08-SO (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_44m_37A.svg)**d** 37A · 0.000000\
 −0.1142
 
-![benzothiadiazole, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_44m_36A.svg)**c** 36A · 0.000043\
-−0.1766
-
 ![benzothiadiazole, M08-SO (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_44m_34A.svg)**a** 34A · 2.000000\
 −0.3320
+
+(b, c)
+
+![benzothiadiazole, M08-SO (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_44m_36A.svg)**c** 36A · 0.000043\
+−0.1766
 
 ![benzothiadiazole, M08-SO (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_44m_35A.svg)**b** 35A · 1.999957\
 −0.3102
@@ -232,24 +232,24 @@ M08-SO, (6,6)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![benzothiadiazole, M08-SO (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_66_37A.svg)**f** 37A · 0.000000\
 −0.1055
-
-![benzothiadiazole, M08-SO (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_66_38A.svg)**e** 38A · 0.000000\
-−0.0857
-
-![benzothiadiazole, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_66_36A.svg)**d** 36A · 0.000051\
-−0.1748
 
 ![benzothiadiazole, M08-SO (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_66_31A.svg)**a** 31A · 2.000000\
 −0.4052
 
+(b, e)
+
+![benzothiadiazole, M08-SO (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_66_38A.svg)**e** 38A · 0.000000\
+−0.0857
+
 ![benzothiadiazole, M08-SO (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_66_34A.svg)**b** 34A · 2.000000\
 −0.3299
+
+(c, d)
+
+![benzothiadiazole, M08-SO (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_66_36A.svg)**d** 36A · 0.000051\
+−0.1748
 
 ![benzothiadiazole, M08-SO (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_66_35A.svg)**c** 35A · 1.999949\
 −0.3124
@@ -258,32 +258,32 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![benzothiadiazole, M08-SO (8,8), orbital 40A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_40A.svg)**h** 40A · 0.000000\
 −0.0275
-
-![benzothiadiazole, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_37A.svg)**g** 37A · 0.000000\
-−0.1291
-
-![benzothiadiazole, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_38A.svg)**f** 38A · 0.000000\
-−0.1127
-
-![benzothiadiazole, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_36A.svg)**e** 36A · 0.000047\
-−0.1829
 
 ![benzothiadiazole, M08-SO (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_30A.svg)**a** 30A · 2.000000\
 −0.4409
 
+(b, g)
+
+![benzothiadiazole, M08-SO (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_37A.svg)**g** 37A · 0.000000\
+−0.1291
+
 ![benzothiadiazole, M08-SO (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_31A.svg)**b** 31A · 2.000000\
 −0.4187
 
+(c, f)
+
+![benzothiadiazole, M08-SO (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_38A.svg)**f** 38A · 0.000000\
+−0.1127
+
 ![benzothiadiazole, M08-SO (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_34A.svg)**c** 34A · 2.000000\
 −0.3476
+
+(d, e)
+
+![benzothiadiazole, M08-SO (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_36A.svg)**e** 36A · 0.000047\
+−0.1829
 
 ![benzothiadiazole, M08-SO (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/m08_88_35A.svg)**d** 35A · 1.999953\
 −0.3213
@@ -302,16 +302,16 @@ M08-SO, (8,8)
 
 (a, d)
 
-(b, c)
-
 ![benzothiadiazole, ωB97X (4,4), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_44m_37A.svg)**d** 37A · 0.000000\
 −0.1423
 
-![benzothiadiazole, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_44m_36A.svg)**c** 36A · 0.000150\
-−0.2055
-
 ![benzothiadiazole, ωB97X (4,4), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_44m_34A.svg)**a** 34A · 2.000000\
 −0.3676
+
+(b, c)
+
+![benzothiadiazole, ωB97X (4,4), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_44m_36A.svg)**c** 36A · 0.000150\
+−0.2055
 
 ![benzothiadiazole, ωB97X (4,4), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_44m_35A.svg)**b** 35A · 1.999850\
 −0.3426
@@ -320,24 +320,24 @@ M08-SO, (8,8)
 
 (a, f)
 
-(b, e)
-
-(c, d)
-
 ![benzothiadiazole, ωB97X (6,6), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_66_37A.svg)**f** 37A · 0.000000\
 −0.1299
-
-![benzothiadiazole, ωB97X (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_66_38A.svg)**e** 38A · 0.000001\
-−0.1113
-
-![benzothiadiazole, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_66_36A.svg)**d** 36A · 0.000153\
-−0.2017
 
 ![benzothiadiazole, ωB97X (6,6), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_66_31A.svg)**a** 31A · 2.000000\
 −0.4414
 
+(b, e)
+
+![benzothiadiazole, ωB97X (6,6), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_66_38A.svg)**e** 38A · 0.000001\
+−0.1113
+
 ![benzothiadiazole, ωB97X (6,6), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_66_34A.svg)**b** 34A · 1.999999\
 −0.3638
+
+(c, d)
+
+![benzothiadiazole, ωB97X (6,6), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_66_36A.svg)**d** 36A · 0.000153\
+−0.2017
 
 ![benzothiadiazole, ωB97X (6,6), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_66_35A.svg)**c** 35A · 1.999847\
 −0.3443
@@ -346,34 +346,34 @@ M08-SO, (8,8)
 
 (a, h)
 
-(b, g)
-
-(c, f)
-
-(d, e)
-
 ![benzothiadiazole, ωB97X (8,8), orbital 39A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_39A.svg)**h** 39A · 0.000000\
 −0.0301
-
-![benzothiadiazole, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_37A.svg)**g** 37A · 0.000000\
-−0.1543
-
-![benzothiadiazole, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_38A.svg)**f** 38A · 0.000001\
-−0.1385
-
-![benzothiadiazole, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_36A.svg)**e** 36A · 0.000136\
-−0.2090
 
 ![benzothiadiazole, ωB97X (8,8), orbital 30A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_30A.svg)**a** 30A · 2.000000\
 −0.4770
 
+(b, g)
+
+![benzothiadiazole, ωB97X (8,8), orbital 37A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_37A.svg)**g** 37A · 0.000000\
+−0.1543
+
 ![benzothiadiazole, ωB97X (8,8), orbital 31A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_31A.svg)**b** 31A · 2.000000\
 −0.4539
+
+(c, f)
+
+![benzothiadiazole, ωB97X (8,8), orbital 38A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_38A.svg)**f** 38A · 0.000001\
+−0.1385
 
 ![benzothiadiazole, ωB97X (8,8), orbital 34A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_34A.svg)**c** 34A · 1.999999\
 −0.3826
 
+(d, e)
+
+![benzothiadiazole, ωB97X (8,8), orbital 36A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_36A.svg)**e** 36A · 0.000136\
+−0.2090
+
 ![benzothiadiazole, ωB97X (8,8), orbital 35A](https://reksstudio.github.io/v2/figures/quest/orb/quest6_benzothiadiazole/wb_88_35A.svg)**d** 35A · 1.999864\
 −0.3532
 
-[← azulene](https://reksstudio.github.io/v2/main/results/quest/quest6-azulene/index.md) · [Back to the gallery](https://reksstudio.github.io/v2/main/results/quest/index.md#m-benzothiadiazole) · [β-dipeptide →](https://reksstudio.github.io/v2/main/results/quest/quest6-beta-dipeptide/index.md)
+[← azulene](https://reksstudio.github.io/v2/main/results/quest/quest6-azulene/index.md) · [Back to the gallery](https://reksstudio.github.io/v2/main/results/quest/index.md#m-benzothiadiazole) · [dimethylaniline →](https://reksstudio.github.io/v2/main/results/quest/quest6-dimethylaniline/index.md)
