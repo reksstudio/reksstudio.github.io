@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/diagnose/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -91,13 +91,13 @@ Compare `Independent states` (on the Davidson path r of `Computed states k of r`
 
 In large active spaces the SI configurations can be nearly linearly dependent. An overlap direction just above the cutoff σ = c · s<sub>max</sub> (c = [`SI_REKS_OVERLAP_CUTOFF`](https://reksstudio.github.io/v2/options/SI_REKS_OVERLAP_CUTOFF.md)) may then give a spurious lowest root, most often with several FONs at the bound (n ≈ 2 / 0). Signs, all in the output:
 
-1. The lowest root lies tens to thousands of E<sub>h</sub> below E<sub>SA</sub> (`@REKS Final Energy`); in the runs of this manual it lies 0.03–0.51 E<sub>h</sub> below.
+1. The lowest root lies tens to thousands of E<sub>h</sub> below E<sub>SA</sub> (`@REKS Final Energy`); in the runs of this manual it lies at most 0.51 E<sub>h</sub> below.
 2. A `Ghost states` line next to the lowest root, and `Computed states k of r` with k below the count requested by [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) / [`SI_REKS_PRINT_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_PRINT_STATES.md): the physical roots lie more than 100 E<sub>h</sub> above the spurious one and are removed as ghost roots.
-3. The lowest root is led by one or two configurations, or by pairs with overlap 1.00 in the table below it.
+3. The lowest root is led by one or two configurations, or by pairs with overlap 1.00 in the table below it (printed from `REKS_REPORT_LEVEL` 3).
 
 Sign 1 can occur alone: the physical roots then follow above the spurious one.
 
-Remedy: raise the cutoff, e.g. `"si_reks_overlap_cutoff": 1e-4`. Check: the lowest physical roots with and without the raised cutoff agree within a few 10<sup>−4</sup> E<sub>h</sub>. The rank r in `span r dimensions` drops and caps the number of roots. In the hexatriene REKS(6,6) cassettes of this manual 1e-4 removes no further mode and changes no root (≤ 10<sup>−12</sup> E<sub>h</sub>). The cutoff is relative to s<sub>max</sub>; no single value is shown to suit every active space.
+Remedy: raise the cutoff, e.g. `"si_reks_overlap_cutoff": 1e-4`. Check: the lowest physical roots with and without the raised cutoff agree within a few 10<sup>−4</sup> E<sub>h</sub>. The rank r in `span r dimensions` drops and caps the number of roots. In the hexatriene REKS(6,6) cassettes of this manual 1e-4 removes no further mode and changes no root (≤ 2 × 10<sup>−12</sup> E<sub>h</sub>, the last printed decimals). The cutoff is relative to s<sub>max</sub>; no single value is shown to suit every active space.
 
 #### Quasi-degenerate roots {#diag-quasi-degenerate}
 

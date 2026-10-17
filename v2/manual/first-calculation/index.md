@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/first-calculation/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -14,7 +14,7 @@ Chapter 3 of the REKS Studio user manual
 
 ## 3. First Calculation {#first-calculation}
 
-Without a seed, the active slots are the MOs (N<sub>core</sub>+1)A … (N<sub>core</sub>+M)A (1-based labels) of the guess Fock matrix in energy order. A cold start of 90° C₂H₄ converges to n = 2/0, of s-trans-butadiene to a pair with a σ orbital ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)). Procedure: choose the pairs → seed → inspect → start REKS → check.
+Without a seed, the active slots are the MOs (N<sub>core</sub>+1)A … (N<sub>core</sub>+M)A (1-based labels) of the guess Fock matrix in energy order. A cold start of 90° C₂H₄ converges to n = 2/0, of s-trans-butadiene to a pair with a σ orbital ([Check the solution](#check-solution)). Procedure: choose the pairs → seed → inspect → start REKS → check.
 
 ### Which active space? {#which-active-space}
 
@@ -59,7 +59,7 @@ q = C[:, i] * (S @ C[:, i])
 print([q[[mu for mu in range(bs.nbf()) if bs.function_to_center(mu) == A]].sum() for A in (0, 1)])
 ```
 
-90° C₂H₄, BH\&HLYP/6-31G(d), the geometry of `first_c2h4_90.py` ([Worked inputs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-inputs)), HOMO population on each carbon:
+90° C₂H₄, BH\&HLYP/6-31G(d), the geometry of `first_c2h4_90.py` ([Worked inputs](#first-inputs)), HOMO population on each carbon:
 
 | RKS run | E(RKS) / E<sub>h</sub> | HOMO on C1 / C2 | REKS(2,2) from it: n<sub>a</sub> / n<sub>b</sub> |
 | - | - | - | - |
@@ -67,7 +67,7 @@ print([q[[mu for mu in range(bs.nbf()) if bs.function_to_center(mu) == A]].sum()
 | `scf_type df`, read from the `pk` solution | −78.36265006 | 0.440 / 0.440 | 1.000000 / 1.000000 |
 | `scf_type pk`, SAD start | −78.36264503 | 0.440 / 0.440 | 1.000000 / 1.000000 |
 
-The seeds on this page use `scf_type pk`. A localized seed is replaced by an RKS run with `scf_type pk` or by a seed from a smaller torsion, carried to the target geometry ([Scans](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-scans)). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n 2.000000 / 0.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).
+The seeds on this page use `scf_type pk`. A localized seed is replaced by an RKS run with `scf_type pk` or by a seed from a smaller torsion, carried to the target geometry ([Scans](#first-scans)). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n 2.000000 / 0.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).
 
 ### Inspect the orbitals {#inspect-orbitals}
 
@@ -100,11 +100,11 @@ psi4.set_options({"basis": "6-31g(d)", "scf_type": "pk",      # as in the seed r
 e_sa, wfn = psi4.energy("bhhlyp", return_wfn=True, restart_file="first_butadiene_rks.wfn.npy")
 ```
 
-The seed run above, for butadiene, writes `first_butadiene_rks.wfn` ([Worked inputs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-inputs)).
+The seed run above, for butadiene, writes `first_butadiene_rks.wfn` ([Worked inputs](#first-inputs)).
 
 Seed: `restart_file` sets `GUESS READ` ([Restart mechanism](https://reksstudio.github.io/v2/manual/run-control/index.md#restart)); an RKS source is reported as `SCF Guess: REKS orbitals restored from previous computation (REKS::guess override).`
 
-Slots: token k = 0 … M−1 fills active column N<sub>core</sub> + k (0-based columns, [Inspect the orbitals](https://reksstudio.github.io/v2/manual/first-calculation/index.md#inspect-orbitals)); token order sets the pairs ([Choose the pairs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#choose-pairs)). Without a window, the slots are the read columns N<sub>core</sub> … N<sub>core</sub>+M−1 (C₂H₄ above: HOMO, LUMO).
+Slots: token k = 0 … M−1 fills active column N<sub>core</sub> + k (0-based columns, [Inspect the orbitals](#inspect-orbitals)); token order sets the pairs ([Choose the pairs](#choose-pairs)). Without a window, the slots are the read columns N<sub>core</sub> … N<sub>core</sub>+M−1 (C₂H₄ above: HOMO, LUMO).
 
 Report: `MO columns` lists the active columns; `swaps [(c, j)]`: MO j moved into active column c ([`GUESS_ACTIVE_WINDOW`](https://reksstudio.github.io/v2/options/GUESS_ACTIVE_WINDOW.md)).
 
@@ -135,7 +135,7 @@ GUESS READ: active window ['HOMO-2', 'HOMO', 'LUMO', 'LUMO+1'] -> MO columns [13
       16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812
       17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000
 [...]
-@REKS Final Energy:  -155.67155759813005
+@REKS Final Energy:  -155.67155759813008
 ```
 
 ### Check the solution {#check-solution}
@@ -195,7 +195,7 @@ A state of spin S > 0 needs no SCF of its own: it is a root of an SI cassette on
 "si_reks_2spin": [0, 2, 4, 6],
 ```
 
-All-trans-hexatriene, REKS(6,6) over the π system ([Choose the pairs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#choose-pairs)). In the RKS seed 25A (LUMO+2, ε 0.148 E<sub>h</sub>) is σ\*, π₆\* is 26A (LUMO+3, ε 0.162 E<sub>h</sub>); the window names LUMO+3 and the report prints the swap:
+All-trans-hexatriene, REKS(6,6) over the π system ([Choose the pairs](#choose-pairs)). In the RKS seed 25A (LUMO+2, ε 0.148 E<sub>h</sub>) is σ\*, π₆\* is 26A (LUMO+3, ε 0.162 E<sub>h</sub>); the window names LUMO+3 and the report prints the swap:
 
 ```log
 GUESS READ: active window ['HOMO-2', 'HOMO-1', 'HOMO', 'LUMO', 'LUMO+1', 'LUMO+3'] -> MO columns [19, 20, 21, 22, 23, 24] (swaps [(24, 25)])
@@ -251,34 +251,34 @@ SA pool: the default `[PPS1, OSS1, OSS2, OSS3]` ([`SA_REKS_CONFIGS`](https://rek
 The state summary lists the printed roots of all manifolds by energy (labels: [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)):
 
 ```log
-==> State summary <==
+==> State summary [SUMMARY] <==
 
     State             E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)
-    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    S0     -233.257191838391         0.000                0.00            -        -     PPS1(16.0)
-    T1     -233.156651584658         2.736               63.09            -        -     T_PPS3(42.0) 22A(c)->23A(d); T_PPS9(41.9) 22A(c)->23A(d)
-    T2     -233.108425331554         4.048               93.35            -        -     T_PPS5(26.2) 21A(b)->23A(d); T_PPS11(26.2) 21A(b)->23A(d)
-    T3     -233.064202576971         5.252              121.10            -        -     T_PPS16(18.9) 20A(a)->23A(d)
-    S1     -233.060446497939         5.354              123.46        231.6  1.54293     OSS3(47.8) 22A(c)->23A(d); OSS9(47.8) 22A(c)->23A(d)
-    S2     -233.051642956940         5.593              128.98        221.7  0.00000     DES3(17.5) 22A(c),22A(c)->23A(d),23A(d)
-    T4     -232.986261652404         7.372              170.01            -        -     T_PPS6(24.8) 22A(c)->24A(e)
-    S3     -232.972245916928         7.754              178.81        159.9  0.00000     OSS6(24.6) 22A(c)->24A(e)
-    Q1     -232.966755681972         7.903              182.25            -        -     TT_PPS1(43.6) 21A(b)->24A(e), 22A(c)->23A(d); TT_PPS4(43.6) 21A(b)->23A(d), 22A(c)->24A(e)
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    S0     -233.257191838391         0.000                0.00            -        -     PPS1(16.0); PPS3(16.0); PPS2(15.9)
+    T1     -233.156651584658         2.736               63.09            -        -     T_PPS3(42.0) 22A(c)->23A(d); T_PPS9(41.9) 22A(c)->23A(d); T_PPS2(4.7) 21A(b)->24A(e)
+    T2     -233.108425331554         4.048               93.35            -        -     T_PPS5(26.2) 21A(b)->23A(d); T_PPS11(26.2) 21A(b)->23A(d); T_PPS6(20.6) 22A(c)->24A(e); T_PPS15(20.6) 22A(c)->24A(e)
+    T3     -233.064202576971         5.252              121.10            -        -     T_PPS16(18.9) 20A(a)->23A(d); T_PPS13(18.9) 20A(a)->23A(d); T_PPS12(16.5) 22A(c)->25A(f)
+    S1     -233.060446497939         5.354              123.46        231.6  1.54293     OSS3(47.8) 22A(c)->23A(d); OSS9(47.8) 22A(c)->23A(d); OSS12(1.0) 22A(c)->25A(f)
+    S2     -233.051642956940         5.593              128.98        221.7  0.00000     DES3(17.5) 22A(c),22A(c)->23A(d),23A(d); DES9(17.5) 22A(c),22A(c)->23A(d),23A(d); OSS11(12.5) 21A(b)->23A(d)
+    T4     -232.986261652404         7.372              170.01            -        -     T_PPS6(24.8) 22A(c)->24A(e); T_PPS15(24.8) 22A(c)->24A(e); T_PPS5(19.9) 21A(b)->23A(d)
+    S3     -232.972245916928         7.754              178.81        159.9  0.00000     OSS6(24.6) 22A(c)->24A(e); OSS15(24.5) 22A(c)->24A(e); OSS5(23.1) 21A(b)->23A(d); OSS11(23.0) 21A(b)->23A(d)
+    Q1     -232.966755681972         7.903              182.25            -        -     TT_PPS1(43.6) 21A(b)->24A(e), 22A(c)->23A(d); TT_PPS4(43.6) 21A(b)->23A(d), 22A(c)->24A(e); TT_PPS12(3.5) 20A(a)->24A(e), 21A(b)->23A(d)
 [...]
     Sp1    -232.680857311443        15.683              361.66            -        -     TTT_SPS_0(100.0) 20A(a)->25A(f), 21A(b)->24A(e), 22A(c)->23A(d)
-    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     Printed states of the first cassette of each spin multiplicity, ordered by energy.
     lambda, f_len: - for a spin multiplicity other than S0's (no spin-orbit coupling).
-    Main configurations: the largest |w_j| (>= 0.1 %), then every further |w_j| >= 25 %.
+    Main configurations: the three largest |w_j| >= 1 %, then every further |w_j| > 20 %.
 ```
 
-| State | Main configurations | Content | ΔE / eV | QUEST TBE / eV |
+| State | Leading configurations | Content | ΔE / eV | QUEST TBE / eV |
 | - | - | - | - | - |
 | T1 | `T_PPS3`, `T_PPS9`: c→d | one triplet geminal on (c,d) ([Spin manifold and run sector](https://reksstudio.github.io/v2/manual/concepts/index.md#run-sector)) | 2.736 | 2.73 (³B<sub>u</sub>) |
-| T2 | `T_PPS5`, `T_PPS11`: b→d | one triplet geminal on (b,d) | 4.048 | 4.36 (³A<sub>g</sub>) |
+| T2 | `T_PPS5`, `T_PPS11`: b→d; `T_PPS6`, `T_PPS15`: c→e | one triplet geminal: on (b,d) 52 %, on (c,e) 41 % | 4.048 | 4.36 (³A<sub>g</sub>) |
 | S1 | `OSS3`, `OSS9`: c→d | open-shell singlet on (c,d); f<sub>len</sub> 1.54 | 5.354 | 5.37 (¹B<sub>u</sub>) |
-| S2 | `DES3`: c,c→d,d | both electrons of c in d; f<sub>len</sub> 0 | 5.593 | 5.62 (¹A<sub>g</sub>, not safe) |
-| Q1 | `TT_PPS1`, `TT_PPS4`: b→e, c→d | two triplet geminals coupled to S = 2 | 7.903 | – |
+| S2 | `DES3`, `DES9`: c,c→d,d; `OSS11`: b→d | both electrons of c in d (35 %), open-shell b→d (12.5 %); f<sub>len</sub> 0 | 5.593 | 5.62 (¹A<sub>g</sub>, not safe) |
+| Q1 | `TT_PPS1`: b→e, c→d; `TT_PPS4`: b→d, c→e | two triplet geminals coupled to S = 2 | 7.903 | – |
 | Sp1 | `TTT_SPS_0`: a→f, b→e, c→d | the single 2S = 6 configuration, all three pairs triplet | 15.683 | – |
 
 λ and f<sub>len</sub> are printed only for the multiplicity of S0. QUEST TBE: aug-cc-pVTZ, QUESTDB Table 2 ([Véril et al., WIREs Comput. Mol. Sci. 2021, 11, e1517](https://reksstudio.github.io/v2/manual/reference/index.md#veril2021-questdb)); QUEST lists excited states only: its ¹A<sub>g</sub> is the lowest excited ¹A<sub>g</sub> (2¹A<sub>g</sub> counting S0). Irreps from the inversion parity of the REKS active orbitals: a, c a<sub>u</sub>; b, d b<sub>g</sub>; c→d B<sub>u</sub>, b→d A<sub>g</sub>, c,c→d,d A<sub>g</sub>.
@@ -303,7 +303,7 @@ The state summary lists the printed roots of all manifolds by energy (labels: [�
     Q = quintet (not quartet), Sp = septet.
 ```
 
-J is a coupling constant only for two states with the same open-shell orbitals; T1 (c,d) and Q1 (b,e)(c,d) differ.
+J is a coupling constant only for two states with the same open-shell orbitals; T1 (c,d) and Q1 (b,e)(c,d) + (b,d)(c,e) differ.
 
 A configuration added to the SA ensemble enters the orbital optimization. `T_PPS3`, the main configuration of T1, on 2S = 2, the rest of the input unchanged:
 
@@ -326,13 +326,13 @@ Each file runs in two stages: `python file.py rks`, then `python file.py reks`.
 
 ### Scans {#first-scans}
 
-Anchor: converge and check one point ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)); every further point reads the REKS wavefunction of the previous one ([Restart mechanism](https://reksstudio.github.io/v2/manual/run-control/index.md#restart)). 90° C₂H₄ seeded by RKS at 60°, then 60° → 75° → 90°: n<sub>a</sub> 1.942502, 1.637928, 1.000000. Optimizations and trajectories chain the points in the same way ([§5](https://reksstudio.github.io/v2/manual/dynamics/index.md#opt-dynamics)).
+Anchor: converge and check one point ([Check the solution](#check-solution)); every further point reads the REKS wavefunction of the previous one ([Restart mechanism](https://reksstudio.github.io/v2/manual/run-control/index.md#restart)). 90° C₂H₄ seeded by RKS at 60°, then 60° → 75° → 90°: n<sub>a</sub> 1.942502, 1.637928, 1.000000. Optimizations and trajectories chain the points in the same way ([§5](https://reksstudio.github.io/v2/manual/dynamics/index.md#opt-dynamics)).
 
 Basis: converge in the small basis, then read into the large one. `BASIS_GUESS` stops a REKS run: `BASIS_GUESS is not available with REKS. Converge REKS in the smaller basis and read its orbitals (GUESS READ / restart_file): they are projected onto the target basis pair by pair.` 90° C₂H₄, 6-31G(d) REKS file read into cc-pVTZ: `Computing basis projection from 6-31G(D) to CC-PVTZ`, n 1.000000 / 1.000000, E<sub>SA</sub> = −78.402409150180 E<sub>h</sub>.
 
 ### If the SCF does not converge {#no-convergence}
 
-Inspect the window first ([Inspect the orbitals](https://reksstudio.github.io/v2/manual/first-calculation/index.md#inspect-orbitals)), then [The three engines](https://reksstudio.github.io/v2/manual/run-control/index.md#engines), [SCF hits MAXITER or continues unconverged](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-maxiter), [SCF oscillates or cycles](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-oscillation).
+Inspect the window first ([Inspect the orbitals](#inspect-orbitals)), then [The three engines](https://reksstudio.github.io/v2/manual/run-control/index.md#engines), [SCF hits MAXITER or continues unconverged](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-maxiter), [SCF oscillates or cycles](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-oscillation).
 
 ## Linked files
 

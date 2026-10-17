@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/wide-geminals/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -14,7 +14,7 @@ Chapter 4 of the REKS Studio user manual
 
 ## 4. Wide Geminals {#wide-geminals}
 
-A geminal of width w holds two electrons in w orbitals ([`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md)). Example: BH. The boron lone pair correlates with both π orbitals, REKS(2,3); the B–H bond pair is added in REKS(4,5) and REKS(4,6). Procedure as in [§3](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-calculation): seed → slots → start → check. The orbital part of this page runs HF with `reks_fon_interp_delta` 10<sup>10</sup>: then f(x) = √x ([Coupling Δ and factor f](https://reksstudio.github.io/v2/manual/concepts/index.md#coupling)) and E(PPS1) is the energy of a product of geminals, which is checked exactly ([Check the solution](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-check)).
+A geminal of width w holds two electrons in w orbitals ([`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md)). Example: BH. The boron lone pair correlates with both π orbitals, REKS(2,3); the B–H bond pair is added in REKS(4,5) and REKS(4,6). Procedure as in [§3](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-calculation): seed → slots → start → check. The orbital part of this page runs HF with `reks_fon_interp_delta` 10<sup>10</sup>: then f(x) = √x ([Coupling Δ and factor f](https://reksstudio.github.io/v2/manual/concepts/index.md#coupling)) and E(PPS1) is the energy of a product of geminals, which is checked exactly ([Check the solution](#wide-check)).
 
 ### Geminal of width w {#wide-pps}
 
@@ -37,7 +37,7 @@ Token k of [`GUESS_ACTIVE_WINDOW`](https://reksstudio.github.io/v2/options/GUESS
 
 ### Lone pair: REKS(2,3) {#wide-lone-pair}
 
-BH, r = 1.2324 Å, cc-pVDZ. RHF seed (`wide_bh_23.py rhf`, [Worked inputs](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-inputs)): 1A B 1s, 2A σ (−0.6469), 3A σ, HOMO (−0.3449), 4A and 5A π, LUMO and LUMO+1 (0.0587), 6A σ\*, LUMO+2 (0.2563). The core holds 1A and 2A; the default window (HOMO, LUMO, LUMO+1) is the lone pair and both π.
+BH, r = 1.2324 Å, cc-pVDZ. RHF seed (`wide_bh_23.py rhf`, [Worked inputs](#wide-inputs)): 1A B 1s, 2A σ (−0.6469), 3A σ, HOMO (−0.3449), 4A and 5A π, LUMO and LUMO+1 (0.0587), 6A σ\*, LUMO+2 (0.2563). The core holds 1A and 2A; the default window (HOMO, LUMO, LUMO+1) is the lone pair and both π.
 
 ```python
 psi4.set_options({"basis": "cc-pvdz", "scf_type": "pk",
@@ -213,7 +213,7 @@ BH REKS(4,6) \[3,3], HF/cc-pVDZ, δ = 10<sup>10</sup>, converged active orbitals
 
 ### Check the solution {#wide-check}
 
-Exact energy: with HF and δ = 10<sup>10</sup>, E(PPS1) equals ⟨Ψ|H|Ψ⟩ of the product Ψ of the geminals Φ<sub>0</sub> ([Geminal of width w](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-pps)) in the converged orbitals, with n<sub>p</sub> from `Post-Iterations`; H is the Hamiltonian of the active space with the core frozen. Minimizing ⟨Ψ|H|Ψ⟩ over the coefficients at fixed orbitals lowers nothing:
+Exact energy: with HF and δ = 10<sup>10</sup>, E(PPS1) equals ⟨Ψ|H|Ψ⟩ of the product Ψ of the geminals Φ<sub>0</sub> ([Geminal of width w](#wide-pps)) in the converged orbitals, with n<sub>p</sub> from `Post-Iterations`; H is the Hamiltonian of the active space with the core frozen. Minimizing ⟨Ψ|H|Ψ⟩ over the coefficients at fixed orbitals lowers nothing:
 
 ```log
 wide_bh_23_reks23    (a,b,c)            E(PPS1) -25.1640880605  E(product) - E(PPS1) -5.7e-12  min over coefficients -5.8e-12  CASCI -25.1640880605
@@ -223,7 +223,7 @@ wide_bh_45_reks46    (a,d,f) & (b,c,e)  E(PPS1) -25.1828261871  E(product) - E(P
 ```
 
 * **CASCI** in the same orbitals is lower for two geminals (0.31 mE<sub>h</sub> for REKS(4,4), 1.2 for REKS(4,5), 1.8 for REKS(4,6)): a product of geminals has no correlation between the geminals. For one geminal CASCI = E(PPS1).
-* **Equal FONs** of the two π are the cylindrical symmetry of BH. With one π in the geminal (REKS(2,2), LUMO+2 in the window) the other π stays empty ([Lone pair: REKS(2,3)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-lone-pair)).
+* **Equal FONs** of the two π are the cylindrical symmetry of BH. With one π in the geminal (REKS(2,2), LUMO+2 in the window) the other π stays empty ([Lone pair: REKS(2,3)](#wide-lone-pair)).
 
 ### Gradients {#wide-gradients}
 
@@ -251,7 +251,7 @@ REKS(4, 6) [3, 3], SI ['single-scheme:0']: S0-S56, 342 components, max|an - FD5|
 
 ### States: SI-SA-REKS(2,3) {#wide-states}
 
-BH\&HLYP/cc-pVDZ, RKS seed, the lone-pair geminal of [Lone pair: REKS(2,3)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-lone-pair), default `reks_fon_interp_delta`; the lone pair is nearly closed (n<sub>a</sub> 1.998932). SA: the default pool `[PPS1, OSSc1, OSSb1, OSSa1]` and the three all-α determinants of the geminal ([`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md)); SI on 2S = 0 and 2S = 2 ([`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md)); TRAH ([§13](https://reksstudio.github.io/v2/manual/run-control/index.md#scf-engines)) to `d_convergence` 10<sup>−8</sup>:
+BH\&HLYP/cc-pVDZ, RKS seed, the lone-pair geminal of [Lone pair: REKS(2,3)](#wide-lone-pair), default `reks_fon_interp_delta`; the lone pair is nearly closed (n<sub>a</sub> 1.998932). SA: the default pool `[PPS1, OSSc1, OSSb1, OSSa1]` and the three all-α determinants of the geminal ([`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md)); SI on 2S = 0 and 2S = 2 ([`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md)); TRAH ([§13](https://reksstudio.github.io/v2/manual/run-control/index.md#scf-engines)) to `d_convergence` 10<sup>−8</sup>:
 
 ```python
 "sa_reks_extra": [[1, 1, 0, 0, 0, 0], [1, 0, 1, 0, 0, 0], [0, 1, 1, 0, 0, 0]],   # |ab|, |ac|, |bc|
@@ -261,7 +261,7 @@ BH\&HLYP/cc-pVDZ, RKS seed, the lone-pair geminal of [Lone pair: REKS(2,3)](http
 ```
 
 ```log
-==> State summary <==
+==> State summary [SUMMARY] <==
 
     State            E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)
     ------------------------------------------------------------------------------------------------------------------
@@ -273,6 +273,10 @@ BH\&HLYP/cc-pVDZ, RKS seed, the lone-pair geminal of [Lone pair: REKS(2,3)](http
     T3     -25.102149516894         4.656              107.37            -        -     Tc1(100.0)
     S3     -25.080575672772         5.243              120.91        236.5  0.00000     OSSc1(100.0)
     S4     -25.066507826428         5.626              129.74        220.4  0.00000     DESb1(50.0); DESa1(50.0)
+    ------------------------------------------------------------------------------------------------------------------
+    Printed states of the first cassette of each spin multiplicity, ordered by energy.
+    lambda, f_len: - for a spin multiplicity other than S0's (no spin-orbit coupling).
+    Main configurations: the three largest |w_j| >= 1 %, then every further |w_j| > 20 %.
 ```
 
 S1/S2 (¹Π) and T1/T2 (³Π) are degenerate pairs, each split by 1.6·10<sup>−7</sup> E<sub>h</sub>. With `|ab|` alone the SA ensemble favours one π: S1/S2 2.360 / 2.391 eV, T1/T2 1.131 / 1.151 eV.
@@ -285,7 +289,7 @@ Each file runs in stages: `python file.py <stage>`, the stages in the order list
 | - | - | - |
 | [`wide_bh_23.py`](https://reksstudio.github.io/v2/inputs/wide_bh_23.py.txt) | BH lone pair, HF/cc-pVDZ, δ = 10<sup>10</sup>: RHF seed; REKS(2,2); REKS(2,3); REKS(2,3) with σ\* in the window; CASSCF(2,3) | E(PPS1) = −25.1640880605 E<sub>h</sub>; CASSCF −25.1640880604 E<sub>h</sub> |
 | [`wide_bh_45.py`](https://reksstudio.github.io/v2/inputs/wide_bh_45.py.txt) | BH bond + lone pair, HF/cc-pVDZ, δ = 10<sup>10</sup>: REKS(4,4); REKS(4,5) from RHF; seed chain REKS(2,3) → REKS(4,5) → REKS(4,6) | E(PPS1) = −25.1775062082 (4,5), −25.1828261871 (4,6) E<sub>h</sub> |
-| [`wide_bh_states.py`](https://reksstudio.github.io/v2/inputs/wide_bh_states.py.txt) | SI-SA-REKS(2,3), BH\&HLYP/cc-pVDZ, RKS seed; SA default pool + all-α \|ab\|, \|ac\|, \|bc\|; SI on 2S = 0, 2; TRAH | E<sub>SA</sub> = −25.184519244590 E<sub>h</sub>; S0 −25.273256917916, T1 −25.232772136476, S1 −25.185054403019 E<sub>h</sub> |
+| [`wide_bh_states.py`](https://reksstudio.github.io/v2/inputs/wide_bh_states.py.txt) | SI-SA-REKS(2,3), BH\&HLYP/cc-pVDZ, RKS seed; SA default pool + all-α \|ab\|, \|ac\|, \|bc\|; SI on 2S = 0, 2; TRAH | E<sub>SA</sub> = −25.184519244590 E<sub>h</sub>; S0 −25.273256917916, T1 −25.232772182224, S1 −25.185054284422 E<sub>h</sub> |
 
 ## Linked files
 

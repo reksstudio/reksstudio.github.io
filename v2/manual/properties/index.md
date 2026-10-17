@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/properties/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -20,57 +20,58 @@ Blocks of a `gradient()` run with every block on, at `REKS_REPORT_LEVEL` 2; an `
 
 | Block | Entry |
 | - | - |
-| `REKS Studio` | [Run report](https://reksstudio.github.io/v2/manual/properties/index.md#run-report) |
-| `==> REKS Studio setup <==` | [Run report](https://reksstudio.github.io/v2/manual/properties/index.md#run-report) |
+| `REKS Studio` | [Run report](#run-report) |
+| `==> REKS Studio setup <==` | [Run report](#run-report) |
 | `=> Pairing schemes (geminal orbitals) <=` | [Pairing schemes](https://reksstudio.github.io/v2/manual/setup/index.md#pairing-schemes) |
 | `=> SA pool <=` | [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md) |
 | `=> SI pools <=` | [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) |
-| `=> State analysis <=` | [`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md) |
+| `=> State analysis [PROPERTIES] <=` | [`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md) |
 | `=> Gradient request <=` | [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md) |
 | `==> Pre-Iterations <==` | [Restart mechanism](https://reksstudio.github.io/v2/manual/run-control/index.md#restart) |
 | `==> Iterations <==` | [The three engines](https://reksstudio.github.io/v2/manual/run-control/index.md#engines) |
 | `==> REKS Geminal Delocalization <==` | [`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md) |
-| `==> Post-Iterations <==` | [Fractional occupation numbers of the SA-REKS ensemble](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons) |
-| `=> Energetics <=` | [SA-REKS ensemble energy and configuration energies](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy) |
-| `=> SA-REKS energy decomposition <=` | [SA-REKS ensemble energy and configuration energies](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy) |
+| `==> Post-Iterations <==` | [Fractional occupation numbers of the SA-REKS ensemble](#sa-fons) |
+| `=> Energetics <=` | [SA-REKS ensemble energy and configuration energies](#sa-energy) |
+| `=> SA-REKS energy decomposition <=` | [SA-REKS ensemble energy and configuration energies](#sa-energy) |
 | `==> State interaction: setup over the union of the SI cassettes <==` | [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) |
-| `=> FON optimization after the SCF <=` | [FONs of the SI-only geminals](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons) |
-| `==> SI Davidson solver (cassette 0) <==` | [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson) |
+| `=> FON optimization after the SCF <=` | [FONs of the SI-only geminals](#si-fons) |
+| `==> SI Davidson solver (cassette 0) <==` | [SI Davidson solver](#si-davidson) |
 | `==> State interaction: cassette 0, 18SI-3SA-REKS(4,4), 2S=0 (singlet) <==` | [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) |
-| `=> Hamiltonian, cassette 0 <=` | [SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices) |
-| `=> Adiabatic states, cassette 0 <=` | [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies) |
-| `=> Transitions, cassette 0 <=` | [Transition dipole moments and length-form oscillator strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-dipole) |
-| `=> Velocity and magnetic transition moments, cassette 0 <=` | [Velocity-form transition moments and oscillator strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-velocity) |
-| `=> Natural orbitals of the active space, cassette 0 <=` | [Natural orbitals and occupations of the active space](https://reksstudio.github.io/v2/manual/properties/index.md#natural-orbitals) |
-| `=> Radical character, cassette 0 <=` | [Radical character](https://reksstudio.github.io/v2/manual/properties/index.md#radical-character) |
-| `=> Dipole moment (unrelaxed state density matrix), cassette 0 <=` | [Permanent and difference dipole moments (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#permanent-dipole) |
-| `=> Quadrupole moment (unrelaxed state density matrix), cassette 0 <=` | [Quadrupole moments of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#quadrupole) |
-| `=> Transition second moments, cassette 0 <=` | [Transition second moments](https://reksstudio.github.io/v2/manual/properties/index.md#transition-second-moments) |
-| `=> Multipole moments of order 3 (unrelaxed state density matrix), cassette 0 <=` | [Cartesian multipole moments of order l ≥ 3](https://reksstudio.github.io/v2/manual/properties/index.md#multipoles) |
-| `=> Atomic charges (unrelaxed state density matrix), cassette 0 <=` | [Atomic charges of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges) |
-| `=> Transition charges, cassette 0 <=` | [Transition charges](https://reksstudio.github.io/v2/manual/properties/index.md#transition-charges) |
-| `=> Bond indices (unrelaxed state density matrix), cassette 0 <=` | [Bond indices of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#bond-indices) |
-| `=> Natural transition orbitals (NTO), cassette 0 <=` | [Natural transition orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#nto) |
-| `=> Exciton descriptors, cassette 0 <=` | [Exciton descriptors, hole and electron populations, natural difference orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#exciton) |
-| `=> Hole and electron populations, cassette 0 <=` | [Exciton descriptors, hole and electron populations, natural difference orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#exciton) |
-| `=> Fragments: charge-transfer descriptors, cassette 0 <=` | [Fragment charge-transfer descriptors](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct) |
-| `=> Fragments: hole and electron populations, cassette 0 <=` | [Fragment charge-transfer descriptors](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct) |
-| `=> Fragment couplings F1 - F2, cassette 0 <=` | [Fragment couplings (FCD, FED, FSD)](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-couplings) |
-| `==> State summary <==` | [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies) |
+| `=> SI Hamiltonian: dimension, matrix elements and eigenproblem, cassette 0 <=` | [SI Hamiltonian and overlap](#si-matrices) |
+| `=> Adiabatic states, cassette 0 <=` | [SSR state energies](#ssr-energies) |
+| `=> Natural occupation numbers and natural orbitals of the active space [NO_OCCUPATIONS], cassette 0 <=` | [Natural orbitals and occupations of the active space](#natural-orbitals) |
+| `=> Transition dipole moments and oscillator strengths [TRANSITION_DIPOLE], cassette 0 <=` | [Transition dipole moments and length-form oscillator strengths](#transition-dipole) |
+| `=> Velocity-form and magnetic transition moments, rotatory strengths [E_TDM_VEL, M_TDM], cassette 0 <=` | [Velocity-form transition moments and oscillator strengths](#transition-velocity) |
+| `=> Radical character [RADICAL], cassette 0 <=` | [Radical character](#radical-character) |
+| `=> Dipole moment (unrelaxed state density matrix) [DIPOLE], cassette 0 <=` | [Permanent and difference dipole moments (unrelaxed)](#permanent-dipole) |
+| `=> Quadrupole moment (unrelaxed state density matrix) [QUADRUPOLE], cassette 0 <=` | [Quadrupole moments of the states (unrelaxed)](#quadrupole) |
+| `=> Transition second moments [TRANSITION_QUADRUPOLE], cassette 0 <=` | [Transition second moments](#transition-second-moments) |
+| `=> State and transition multipole moments of order 3 (unrelaxed state density matrix) [MULTIPOLE(3)], cassette 0 <=` | [Cartesian multipole moments of order l ≥ 3](#multipoles) |
+| `=> Atomic charges (unrelaxed state density matrix) [MULLIKEN_CHARGES, LOWDIN_CHARGES], cassette 0 <=` | [Atomic charges of the states (unrelaxed)](#atomic-charges) |
+| `=> Atomic spin populations (unrelaxed state spin density, M_S = S) [MULLIKEN_SPINS, LOWDIN_SPINS], cassette 1 <=` | [Atomic spin populations of the states (2S > 0)](#atomic-spins) |
+| `=> Transition charges [TRANSITION_CHARGES], cassette 0 <=` | [Transition charges](#transition-charges) |
+| `=> Bond indices (unrelaxed state density matrix) [MAYER_INDICES, WIBERG_LOWDIN_INDICES], cassette 0 <=` | [Bond indices of the states (unrelaxed)](#bond-indices) |
+| `=> Natural transition orbitals (NTO): weights and participation ratios [NTO], cassette 0 <=` | [Natural transition orbitals](#nto) |
+| `=> Exciton descriptors [EXCITON], cassette 0 <=` | [Exciton descriptors, hole and electron populations, natural difference orbitals](#exciton) |
+| `=> Hole and electron populations [EXCITON], cassette 0 <=` | [Exciton descriptors, hole and electron populations, natural difference orbitals](#exciton) |
+| `=> Fragments: charge-transfer descriptors [EXCITON], cassette 0 <=` | [Fragment charge-transfer descriptors](#fragment-ct) |
+| `=> Fragments: hole and electron populations [EXCITON], cassette 0 <=` | [Fragment charge-transfer descriptors](#fragment-ct) |
+| `=> Fragment diabatic couplings F1 - F2 [FRAGMENT_COUPLINGS], cassette 0 <=` | [Fragment couplings (FCD, FED, FSD)](#fragment-couplings) |
+| `==> State summary [SUMMARY] <==` | [SSR state energies](#ssr-energies) |
 | `=> Alternative configuration lists <=` | [`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md) |
-| `==> Spin-state energetics <==` | [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics) |
+| `==> Spin-state energetics <==` | [Spin-state gaps and Heisenberg J](#spin-state-energetics) |
 | `==> Coupled-perturbed REKS (CP-REKS, Z-vector) solver <==` | [`REKS_CPREKS_CONV`](https://reksstudio.github.io/v2/options/REKS_CPREKS_CONV.md) |
-| `==> Relaxed properties, cassette 0 <==` | [Relaxed dipole, quadrupole and atomic charges](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties) |
-| `=> Dipole moment (relaxed density matrix P^r), cassette 0 <=` | [Relaxed dipole, quadrupole and atomic charges](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties) |
-| `=> Quadrupole moment (relaxed density matrix P^r), cassette 0 <=` | [Relaxed dipole, quadrupole and atomic charges](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties) |
-| `=> Atomic charges (relaxed density matrix P^r), cassette 0 <=` | [Relaxed dipole, quadrupole and atomic charges](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties) |
-| `==> Ionization energies (EKT) and Dyson orbitals, cassette 0 <==` | [EKT ionization energies, pole strengths and Dyson orbitals of SI states](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-states) |
-| `==> Summary of the energy phase <==` | [Files](https://reksstudio.github.io/v2/manual/properties/index.md#files) |
-| `==> SI-SA-REKS analytic gradient: targets <==` | [Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient) |
-| `==> Gradient of S1, cassette 0 <==` | [Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient) |
-| `==> NAC S1/S2, cassette 0 <==` | [Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac) |
-| `==> Conical-intersection (CI) topography S1/S2 (cassette 0), E(S2) - E(S1) = 4.756e-03 Eh <==` | [Conical-intersection topography](https://reksstudio.github.io/v2/manual/properties/index.md#ci-topography) |
-| `==> Returned gradient <==` | [Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient) |
+| `==> Relaxed properties [SI_REKS_PROPERTY_FOR], cassette 0 <==` | [Relaxed dipole, quadrupole and atomic charges](#relaxed-properties) |
+| `=> Dipole moment (relaxed density matrix P^r), cassette 0 <=` | [Relaxed dipole, quadrupole and atomic charges](#relaxed-properties) |
+| `=> Quadrupole moment (relaxed density matrix P^r), cassette 0 <=` | [Relaxed dipole, quadrupole and atomic charges](#relaxed-properties) |
+| `=> Atomic charges (relaxed density matrix P^r), cassette 0 <=` | [Relaxed dipole, quadrupole and atomic charges](#relaxed-properties) |
+| `==> Ionization energies (EKT) and Dyson orbitals [REKS_EKT], cassette 0 <==` | [EKT ionization energies, pole strengths and Dyson orbitals of SI states](#ekt-states) |
+| `==> Summary of the energy phase <==` | [Files](#files) |
+| `==> SI-SA-REKS analytic gradient: targets <==` | [Nuclear gradients of SSR states](#state-gradient) |
+| `==> Gradient of S1, cassette 0 <==` | [Nuclear gradients of SSR states](#state-gradient) |
+| `==> NAC S1/S2, cassette 0 <==` | [Nonadiabatic coupling vectors](#nac) |
+| `==> Conical-intersection (CI) topography S1/S2 (cassette 0), E(S2) - E(S1) = 4.092e-03 Eh <==` | [Conical-intersection topography](#ci-topography) |
+| `==> Returned gradient <==` | [Nuclear gradients of SSR states](#state-gradient) |
 
 ### Run report {#run-report}
 
@@ -103,7 +104,7 @@ At the default `REKS_REPORT_LEVEL` 2 ([`REKS_REPORT_LEVEL`](https://reksstudio.g
     XC evaluation         exchange {GGA_X_B88 x 0.5}, correlation {GGA_C_LYP x 1.0}, exact exchange x 0.50
 ```
 
-Check the core count and `Active MO indices` ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)). The blocks that follow: [Print order](https://reksstudio.github.io/v2/manual/properties/index.md#print-order). Output fragments are verbatim from runs of this build: C₂H₄ REKS(4,4), BH\&HLYP/6-31G(d), cassettes 2S = 0 and 2, for most blocks; linear H₄ REKS(4,4) for the narrower tables.
+Check the core count and `Active MO indices` ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)). The blocks that follow: [Print order](#print-order). Output fragments are verbatim from runs of this build: C₂H₄ REKS(4,4), BH\&HLYP/6-31G(d), cassettes 2S = 0 and 2, for most blocks; linear H₄ REKS(4,4) for the narrower tables.
 
 ### Report level {#report-level}
 
@@ -126,9 +127,9 @@ Blocks added at each level; each level prints everything of the levels below. Ou
 | Level | Adds | Lines |
 | - | - | - |
 | 1 | `Pre-Iterations` with the `REKS orbitals` line; `Iterations` and the convergence line; `Post-Iterations` (grid electrons, final energy); `Energetics`; `Summary` / `Summary of the energy phase` (`MOLDEN_WRITE`); `Returned gradient` with Psi4's `-Total Gradient` | 670 |
-| 2 (default) | Banner; `REKS Studio setup` with `Pairing schemes`, `SA pool`, `SI pools`, `State analysis`, `Gradient request`; `REKS Geminal Delocalization` ([`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md)); orbital energies with the FONs in `Post-Iterations`; `SA-REKS energy decomposition`; SI setup, `FON optimization after the SCF`, `SI Davidson solver` (Davidson cassettes, [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)), per cassette `Hamiltonian`, `Adiabatic states` and the property blocks; `State summary`; `Spin-state energetics`; CP-REKS solver (Psi4 `PRINT` ≥ 1); `Relaxed properties`; EKT; gradient targets, `Gradient of …`, `NAC …`, CI topography | 2148 |
-| 3 | `XC evaluation … per string … per key` in the setup; Hamiltonian counters (`coupled`/`zero`, `Terms`, `Reuse`, overlap terms) and the `Off-diagonal channel` table; EKT `dropped eigenvalues` and the Dyson MO matrix; `[REKS-GRAD]` `C_eff` per microstate and Psi4 per-channel gradient terms; `==> References <==` | 2549 |
-| 4–5 | 4: `REKS Memory Footprint`, `Run diagnostics`, per-iteration solver traces (`[GVB-FON]`, `[ORB-DIIS]`, `[TRAH]`, `[LEVEL_SHIFT]`, …), `CP-REKS Z-Vector Profile`; per cassette `Microstate energies (sorted by energy)`, `Fractional Occupation Numbers (active orbitals)`, `Lagrangian eps_pq and ERI (pq\|st)`, `Pre-diagonalization SI Hamiltonian` and `SI Overlap S` in blocks of 18 columns (up to 8 active orbitals); the Davidson trace ([SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)). 5: per SCF iteration the active orbitals, Fock asymmetry, orbital update, coupling Fock matrix, SA energy, weighting factors C<sub>L</sub> and the microstate energies | 4125; 8183 |
+| 2 (default) | Banner; `REKS Studio setup` with `Pairing schemes`, `SA pool`, `SI pools`, `State analysis`, `Gradient request`; `REKS Geminal Delocalization` ([`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md)); orbital energies with the FONs in `Post-Iterations`; `SA-REKS energy decomposition`; SI setup, `FON optimization after the SCF`, `SI Davidson solver` (Davidson cassettes, [SI Davidson solver](#si-davidson)), per cassette `SI Hamiltonian`, `Adiabatic states` and the property blocks; `State summary`; `Spin-state energetics`; CP-REKS solver (Psi4 `PRINT` ≥ 1); `Relaxed properties`; EKT; gradient targets, `Gradient of …`, `NAC …`, CI topography | 2144 |
+| 3 | `XC evaluation … per string … per key` in the setup; Hamiltonian counters (`coupled`/`zero`, `Terms`, `Reuse`, overlap terms) and the `Off-diagonal channel` table; under `Adiabatic states` the overlap S_ij / sqrt(S_ii S_jj) of configuration pairs listed in one row; EKT `dropped eigenvalues` and the Dyson MO matrix; `[REKS-GRAD]` `C_eff` per microstate and Psi4 per-channel gradient terms; `==> References <==` | 2549 |
+| 4–5 | 4: `REKS Memory Footprint`, `Run diagnostics`, per-iteration solver traces (`[GVB-FON]`, `[ORB-DIIS]`, `[TRAH]`, `[LEVEL_SHIFT]`, …), `CP-REKS Z-Vector Profile`; per cassette `Microstate energies (sorted by energy)`, `Fractional Occupation Numbers (active orbitals)`, `Lagrangian eps_pq and ERI (pq\|st)`, `Pre-diagonalization SI Hamiltonian` and `SI Overlap S` in blocks of 18 columns (up to 8 active orbitals); the Davidson trace ([SI Davidson solver](#si-davidson)). 5: per SCF iteration the active orbitals, Fock asymmetry, orbital update, coupling Fock matrix, SA energy, weighting factors C<sub>L</sub> and the microstate energies | 4125; 8183 |
 
 From level 3 the configuration-axis arrays `SSR COEFFICIENTS K=e`, `SSR HAMILTONIAN K=e`, `SSR OVERLAP SPARSE K=e` and `SSR 1-RDM DIABATIC SPARSE K=e` are stored (the Hamiltonian and overlap up to 8 active orbitals); level 4 prints the Hamiltonian and overlap. Levels 4–5 grow with the active space and the cassette dimension.
 
@@ -180,49 +181,50 @@ Unrelaxed properties (`SI_REKS_ANALYSIS`) use the densities ρ<sup>(IJ)</sup> = 
 * A switch named as an `SI_REKS_ANALYSIS` block is on by default ([`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md)). "SI present" = at least one SI cassette with configurations, the default when `SI_REKS_CONFIGS` is absent; an all-empty `SI_REKS_CONFIGS` turns it off.
 * Transition quantities are computed for pairs I \< J within one cassette and printed when at least 2 states are printed; per-state and pair tables are bounded by `SI_REKS_PRINT_STATES`.
 * The per-state and per-pair `SSR … K=e` arrays exist only for the states stored by `SI_REKS_STORE_STATES`; `SSR ENERGIES K=e` holds every physical root (on the Davidson path the computed roots, [SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)), and the `SSR ROOT r … CASSETTE e`, `SSR NAC …`, `SSR CI …` and EKT arrays are stored whenever their block runs.
-* The `=>` sub-block headers of a cassette carry `, cassette e`; with a single SI cassette that suffix is absent. The `==>` headers (`State interaction: cassette e`, `Relaxed properties`, EKT, `Gradient of`, `NAC`, CI topography) always name the cassette.
+* The `=>` sub-block headers of a cassette carry `, cassette e`; with a single SI cassette that suffix is absent. The `==>` headers (`State interaction: cassette e`, `Relaxed properties`, EKT of the states, `Gradient of`, `NAC`, CI topography) always name the cassette.
+* A property header names in brackets the switches of its block: the `SI_REKS_ANALYSIS` names of the block that are on, all of them when none is on (`[MULLIKEN_CHARGES, LOWDIN_CHARGES]`), or the option (`[SI_REKS_PROPERTY_FOR]`, `[REKS_EKT]`).
 * The sign of a phase-odd quantity (transition dipole, velocity and magnetic moments, transition multipoles and charges, NAC vectors and their sum over atoms, g̃ and h̃ of the CI topography, FCD/FED couplings, NTO particles) is arbitrary between runs, also of the same input (H₄: S0→S1 `mu_z` = −2.943014 in one run, 2.943014 in another). Moduli, f, |d|, R<sub>len</sub> and R<sub>vel</sub> agree. Within one run all quantities share one phase, so their relations hold (Σ<sub>A</sub> d<sub>A</sub> = −p<sub>IJ</sub>; φ and s<sub>y</sub> of the CI topography from the same d).
 
 ### Summary {#summary}
 
 | Property | Switch | Default | Printed |
 | - | - | - | - |
-| [SA-REKS ensemble energy and configuration energies](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy) | every REKS run | | yes |
-| [Fractional occupation numbers of the SA-REKS ensemble](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons) | every REKS run | | yes |
-| [GVB-DIIS convergence quality](https://reksstudio.github.io/v2/manual/properties/index.md#convergence-quality) | `REKS_GVB_DIIS` true | on | yes |
-| [FONs of the SI-only geminals](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons) | SI present | | yes |
-| [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson) | a cassette solved by Davidson (`SI_REKS_SOLVER`) | | yes |
-| [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies) | SI present | | yes |
-| [SSR eigenvectors and Chirgwin–Coulson weights](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-composition) | SI present | | yes |
-| [SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices) | SI present | | yes |
-| [Orbitals of the SI step](https://reksstudio.github.io/v2/manual/properties/index.md#si-orbitals) | SI present | | no |
-| [Transition dipole moments and length-form oscillator strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-dipole) | `SI_REKS_ANALYSIS` `TRANSITION_DIPOLE` | always | yes |
-| [Velocity-form transition moments and oscillator strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-velocity) | `SI_REKS_ANALYSIS` `E_TDM_VEL` | on | yes |
-| [Magnetic transition moments and rotatory strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-magnetic) | `SI_REKS_ANALYSIS` `M_TDM` | on | yes |
-| [Natural orbitals and occupations of the active space](https://reksstudio.github.io/v2/manual/properties/index.md#natural-orbitals) | `SI_REKS_ANALYSIS` `NO_OCCUPATIONS` | always | yes |
-| [Radical character](https://reksstudio.github.io/v2/manual/properties/index.md#radical-character) | `SI_REKS_ANALYSIS` `RADICAL` | on | yes |
-| [Permanent and difference dipole moments (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#permanent-dipole) | `SI_REKS_ANALYSIS` `DIPOLE` (or `MULTIPOLE(n)`) | on | yes |
-| [Quadrupole moments of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#quadrupole) | `SI_REKS_ANALYSIS` `QUADRUPOLE` (or `MULTIPOLE(n)`, n ≥ 2) | on | yes |
-| [Transition second moments](https://reksstudio.github.io/v2/manual/properties/index.md#transition-second-moments) | `SI_REKS_ANALYSIS` `TRANSITION_QUADRUPOLE` (or `MULTIPOLE(n)`, n ≥ 2) | on | yes |
-| [Cartesian multipole moments of order l ≥ 3](https://reksstudio.github.io/v2/manual/properties/index.md#multipoles) | `SI_REKS_ANALYSIS` `MULTIPOLE(n)`, n ≥ 3 | off | yes |
-| [Atomic charges of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges) | `SI_REKS_ANALYSIS` `MULLIKEN_CHARGES` / `LOWDIN_CHARGES` | on | yes |
-| [Atomic spin populations of the states (2S > 0)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-spins) | `SI_REKS_ANALYSIS` `MULLIKEN_SPINS` / `LOWDIN_SPINS` | on | yes |
-| [Transition charges](https://reksstudio.github.io/v2/manual/properties/index.md#transition-charges) | `SI_REKS_ANALYSIS` `TRANSITION_CHARGES` | on | yes |
-| [Bond indices of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#bond-indices) | `SI_REKS_ANALYSIS` `MAYER_INDICES` / `WIBERG_LOWDIN_INDICES` | on | yes |
-| [Natural transition orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#nto) | `SI_REKS_ANALYSIS` `NTO` | on | yes |
-| [Exciton descriptors, hole and electron populations, natural difference orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#exciton) | `SI_REKS_ANALYSIS` `EXCITON` | on | yes |
-| [Fragment charge-transfer descriptors](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct) | `SI_REKS_ANALYSIS` `EXCITON` | on | yes |
-| [Fragment couplings (FCD, FED, FSD)](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-couplings) | `SI_REKS_ANALYSIS` `FRAGMENT_COUPLINGS` | on | yes |
-| [Active one-particle density matrices](https://reksstudio.github.io/v2/manual/properties/index.md#active-rdm) | `SI_REKS_ANALYSIS` `DENSITIES`; diabatic: `REKS_REPORT_LEVEL` ≥ 3 | on | no |
-| [Relaxed dipole, quadrupole and atomic charges](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties) | `SI_REKS_PROPERTY_FOR` lists the state | off | yes |
-| [Bond indices of the relaxed density](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-bond-indices) | `SI_REKS_PROPERTY_FOR` lists the state | off | no |
-| [EKT ionization energies, pole strengths and Dyson orbitals of SI states](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-states) | `REKS_EKT` true and `SI_REKS_PROPERTY_FOR` lists the state | off | yes |
-| [EKT ionization energies of the SA-REKS ensemble](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-ensemble) | `REKS_EKT` true and no state listed in `SI_REKS_PROPERTY_FOR` | off | yes |
-| [Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient) | `SI_REKS_GRAD` names the root | off | yes |
-| [Nuclear gradient of the SA-REKS ensemble](https://reksstudio.github.io/v2/manual/properties/index.md#sa-gradient) | `gradient()` with `SI_REKS_GRAD` and `SI_REKS_NAC` not set | | yes |
-| [Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac) | `SI_REKS_NAC` lists the pair or `ALL` | off | yes |
-| [Conical-intersection topography](https://reksstudio.github.io/v2/manual/properties/index.md#ci-topography) | `SI_REKS_NAC` lists the pair | off | yes |
-| [Spin-state gaps and Heisenberg J](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics) | SI cassettes on at least 2 spin manifolds | | yes |
+| [SA-REKS ensemble energy and configuration energies](#sa-energy) | every REKS run | | yes |
+| [Fractional occupation numbers of the SA-REKS ensemble](#sa-fons) | every REKS run | | yes |
+| [GVB-DIIS convergence quality](#convergence-quality) | `REKS_GVB_DIIS` true | on | yes |
+| [FONs of the SI-only geminals](#si-fons) | SI present | | yes |
+| [SI Davidson solver](#si-davidson) | a cassette solved by Davidson (`SI_REKS_SOLVER`) | | yes |
+| [SSR state energies](#ssr-energies) | SI present | | yes |
+| [SSR eigenvectors and Chirgwin–Coulson weights](#ssr-composition) | SI present | | yes |
+| [SI Hamiltonian and overlap](#si-matrices) | SI present | | yes |
+| [Orbitals of the SI step](#si-orbitals) | SI present | | no |
+| [Transition dipole moments and length-form oscillator strengths](#transition-dipole) | `SI_REKS_ANALYSIS` `TRANSITION_DIPOLE` | always | yes |
+| [Velocity-form transition moments and oscillator strengths](#transition-velocity) | `SI_REKS_ANALYSIS` `E_TDM_VEL` | on | yes |
+| [Magnetic transition moments and rotatory strengths](#transition-magnetic) | `SI_REKS_ANALYSIS` `M_TDM` | on | yes |
+| [Natural orbitals and occupations of the active space](#natural-orbitals) | `SI_REKS_ANALYSIS` `NO_OCCUPATIONS` | always | yes |
+| [Radical character](#radical-character) | `SI_REKS_ANALYSIS` `RADICAL` | on | yes |
+| [Permanent and difference dipole moments (unrelaxed)](#permanent-dipole) | `SI_REKS_ANALYSIS` `DIPOLE` (or `MULTIPOLE(n)`) | on | yes |
+| [Quadrupole moments of the states (unrelaxed)](#quadrupole) | `SI_REKS_ANALYSIS` `QUADRUPOLE` (or `MULTIPOLE(n)`, n ≥ 2) | on | yes |
+| [Transition second moments](#transition-second-moments) | `SI_REKS_ANALYSIS` `TRANSITION_QUADRUPOLE` (or `MULTIPOLE(n)`, n ≥ 2) | on | yes |
+| [Cartesian multipole moments of order l ≥ 3](#multipoles) | `SI_REKS_ANALYSIS` `MULTIPOLE(n)`, n ≥ 3 | off | yes |
+| [Atomic charges of the states (unrelaxed)](#atomic-charges) | `SI_REKS_ANALYSIS` `MULLIKEN_CHARGES` / `LOWDIN_CHARGES` | on | yes |
+| [Atomic spin populations of the states (2S > 0)](#atomic-spins) | `SI_REKS_ANALYSIS` `MULLIKEN_SPINS` / `LOWDIN_SPINS` | on | yes |
+| [Transition charges](#transition-charges) | `SI_REKS_ANALYSIS` `TRANSITION_CHARGES` | on | yes |
+| [Bond indices of the states (unrelaxed)](#bond-indices) | `SI_REKS_ANALYSIS` `MAYER_INDICES` / `WIBERG_LOWDIN_INDICES` | on | yes |
+| [Natural transition orbitals](#nto) | `SI_REKS_ANALYSIS` `NTO` | on | yes |
+| [Exciton descriptors, hole and electron populations, natural difference orbitals](#exciton) | `SI_REKS_ANALYSIS` `EXCITON` | on | yes |
+| [Fragment charge-transfer descriptors](#fragment-ct) | `SI_REKS_ANALYSIS` `EXCITON` | on | yes |
+| [Fragment couplings (FCD, FED, FSD)](#fragment-couplings) | `SI_REKS_ANALYSIS` `FRAGMENT_COUPLINGS` | on | yes |
+| [Active one-particle density matrices](#active-rdm) | `SI_REKS_ANALYSIS` `DENSITIES`; diabatic: `REKS_REPORT_LEVEL` ≥ 3 | on | no |
+| [Relaxed dipole, quadrupole and atomic charges](#relaxed-properties) | `SI_REKS_PROPERTY_FOR` lists the state | off | yes |
+| [Bond indices of the relaxed density](#relaxed-bond-indices) | `SI_REKS_PROPERTY_FOR` lists the state | off | no |
+| [EKT ionization energies, pole strengths and Dyson orbitals of SI states](#ekt-states) | `REKS_EKT` true and `SI_REKS_PROPERTY_FOR` lists the state | off | yes |
+| [EKT ionization energies of the SA-REKS ensemble](#ekt-ensemble) | `REKS_EKT` true and no state listed in `SI_REKS_PROPERTY_FOR` | off | yes |
+| [Nuclear gradients of SSR states](#state-gradient) | `SI_REKS_GRAD` names the root | off | yes |
+| [Nuclear gradient of the SA-REKS ensemble](#sa-gradient) | `gradient()` with `SI_REKS_GRAD` and `SI_REKS_NAC` not set | | yes |
+| [Nonadiabatic coupling vectors](#nac) | `SI_REKS_NAC` lists the pair or `ALL` | off | yes |
+| [Conical-intersection topography](#ci-topography) | `SI_REKS_NAC` lists the pair | off | yes |
+| [Spin-state gaps and Heisenberg J](#spin-state-energetics) | SI cassettes on at least 2 spin manifolds | | yes |
 
 ### SCF {#scf}
 
@@ -244,7 +246,7 @@ $$
  Nuclear Repulsion Energy =             25.1844817236300855
  One-Electron Energy =                -153.5867652831177281
  Two-Electron Energy =                  56.4995948627347033
- DFT Exchange-Correlation Energy =      -6.2238541886040739
+ DFT Exchange-Correlation Energy =      -6.2238541886040730
  Empirical Dispersion Energy =           0.0000000000000000
  VV10 Nonlocal Energy =                  0.0000000000000000
  Total Energy =                        -78.1265428853570114
@@ -330,7 +332,7 @@ Units: electrons
    Set     Geminals  Iterations   Last change      Residual
    --------------------------------------------------------
    n              2           2       0.0e+00       1.1e-10
-   m              2           2       0.0e+00       1.1e-14
+   m              2           2       0.0e+00       3.6e-15
    mt1            4           2       0.0e+00       4.4e-14
    --------------------------------------------------------
 
@@ -363,23 +365,23 @@ Units: E<sub>h</sub> (residuals); s (time)
 ```log
 ==> SI Davidson solver (cassette 0) <==
 
-    Roots                 14 (10 requested + 4 margin) of 115
+    Roots                 7 (3 requested + 4 margin) of 115
     Convergence           1.000e-12
 
     Iter      Mean |R|       Max |R|   Remain   Applications   Time [s]
     -------------------------------------------------------------------
-       1     8.987e-16     1.513e-15        0            116       0.01
+       1     7.465e-16     1.074e-15        0              8       0.00
     -------------------------------------------------------------------
-    14 roots converged in 1 iterations, 144 operator applications.
+    7 roots converged in 1 iterations, 22 operator applications.
 [...]
-    Computed states       14 of 115 (lowest roots, Davidson)
+    Computed states       7 of 115 (lowest roots, Davidson)
 ```
 
-* One block per Davidson cassette, after `FON optimization after the SCF` and before the cassette blocks. Fragment: hexatriene REKS(6,6) with `si_reks_solver` `davidson`, 10 requested roots (stored states) + 4 margin; the cassette's `Hamiltonian` block ends with `Computed states`.
-* `Roots`: k (requested + margin) of r, or `k (whole space, n requested)` when the search space reaches r. Mean |R| and Max |R|: residual norms of the roots still above `Convergence`, or of all roots once none remains; `Remain`: their number; `Applications`: cumulative products A·x, one per vector (start columns, corrections, two per root at each verification).
+* One block per Davidson cassette, after `FON optimization after the SCF` and before the cassette blocks. Fragment: hexatriene REKS(6,6) with `si_reks_solver` `davidson`, 3 stored and printed states, 3 requested roots + 4 margin; the cassette's `SI Hamiltonian` block ends with `Computed states`.
+* `Roots`: k (requested + margin) of r, or `k (whole space, n requested)` when the search space reaches r. Mean |R| and Max |R|: residual norms of the roots still above `Convergence`, or of all roots once none remains; `Remain`: their number; `Applications`: cumulative products A·x up to that row, one per vector (start vectors, corrections; r for the whole space); a verification adds two per root, counted from the next row and in the closing line.
 * A root stalled at its rounding level adds the line `n root(s) closed at the roundoff floor (max |R| = …, max phi = …)`.
-* In the fragment one iteration converges all 14 roots of the 115-dimensional space.
-* `REKS_REPORT_LEVEL` ≥ 4 adds a line per subspace collapse, `SI Davidson: n collapses, shift … Eh`, per root E, |r| and φ, the `apply calls` counts and the CSR passes.
+* In the fragment P is the whole space, the 7 start vectors are exact, and one iteration converges (8 start + 2 × 7 verification products). With the default 10 stored states the input gives `Roots 115 (whole space, 10 requested)`.
+* `REKS_REPORT_LEVEL` ≥ 4 adds a line per subspace collapse, `SI Davidson: n collapses, shift … Eh`, `P space: m = … columns; rows read: … configurations` (the p of [SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver); not for the whole space), per root E, |r| and φ, the `apply calls` counts and the CSR passes.
 
 #### SSR state energies {#ssr-energies}
 
@@ -400,30 +402,28 @@ Units: E<sub>h</sub> (stored); E<sub>h</sub> and eV relative to the lowest state
    S1     -78.181411797824         3.239   OSS4(92.2) OSS_DES4(5.1) OSS3(2.5)
    S2     -78.172150374308         3.491   DES2(50.6) DOSS_SPS_0(21.0) DES4(11.3) PPS2(7.0)
 [...]
+   S15    -77.485673275779        22.171   DDES1(40.3) DOSS_SPS_0(36.1) DDES2(17.9)
    ----------------------------------------------------------------------------------------------------
    w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;
    listed: the three largest |w_j| >= 0.1 %, then every further |w_j| > 5 %.
-
-   Overlap S_ij / sqrt(S_ii S_jj) of configuration pairs listed in the same row above 0.5 in magnitude:
-   PPS1  / PPS2    0.83    PPS2  / DES2    0.55    DES1  / DDES2  -0.55    DDES1 / DDES2   0.83
 ```
 
 ```log
-==> State summary <==
+==> State summary [SUMMARY] <==
 
     State            E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)
-    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    S0     -78.300443969671         0.000                0.00            -        -     PPS1(61.3); PPS2(36.8)
-    T1     -78.279831019196         0.561               12.93            -        -     T_PPS2(97.4) 8A(b)->9A(c)
-    T2     -78.224960817446         2.054               47.37            -        -     T_PPS4(88.1) 8A(b)->10A(d)
-    S1     -78.181411797824         3.239               74.69        382.8  0.00000     OSS4(92.2) 8A(b)->10A(d)
-    S2     -78.172150374308         3.491               80.51        355.1  0.00021     DES2(50.6) 8A(b),8A(b)->9A(c),9A(c)
-    S3     -78.170584976114         3.534               81.49        350.9  0.01195 *   OSS2(68.7) 8A(b)->9A(c)
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    S0     -78.300443969671         0.000                0.00            -        -     PPS1(61.3); PPS2(36.8); DOSS_SPS_1(1.8) 7A(a)->9A(c), 8A(b)->10A(d)
+    T1     -78.279831019196         0.561               12.93            -        -     T_PPS2(97.4) 8A(b)->9A(c); T_PPS1(2.2) 7A(a)->10A(d)
+    T2     -78.224960817446         2.054               47.37            -        -     T_PPS4(88.1) 8A(b)->10A(d); T_DES4(7.0) 7A(a)->9A(c), 8A(b),8A(b)->10A(d),10A(d); T_PPS3(4.5) 7A(a)->9A(c)
+    S1     -78.181411797824         3.239               74.69        382.8  0.00000     OSS4(92.2) 8A(b)->10A(d); OSS_DES4(5.1) 7A(a)->9A(c), 8A(b),8A(b)->10A(d),10A(d); OSS3(2.5) 7A(a)->9A(c)
+    S2     -78.172150374308         3.491               80.51        355.1  0.00021     DES2(50.6) 8A(b),8A(b)->9A(c),9A(c); DOSS_SPS_0(21.0) 7A(a)->10A(d), 8A(b)->9A(c); DES4(11.3) 8A(b),8A(b)->10A(d),10A(d)
+    S3     -78.170584976114         3.534               81.49        350.9  0.01195 *   OSS2(68.7) 8A(b)->9A(c); OSS_DES2(21.1) 7A(a)->10A(d), 8A(b),8A(b)->9A(c),9A(c); OSS1(5.5) 7A(a)->10A(d)
 [...]
-    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     Printed states of the first cassette of each spin multiplicity, ordered by energy.
     lambda, f_len: - for a spin multiplicity other than S0's (no spin-orbit coupling).
-    Main configurations: the largest |w_j| (>= 0.1 %), then every further |w_j| >= 25 %.
+    Main configurations: the three largest |w_j| >= 1 %, then every further |w_j| > 20 %.
     * = length and velocity forms differ by more than a factor of 3 (tested when f_len or f_vel > 1e-3):
     the hypervirial relation |p| = dE |mu| does not hold for these approximate states; f is qualitative only.
 ```
@@ -433,11 +433,11 @@ Stored: `SSR ENERGIES K=<e>`; bookkeeping `SSR SI LIST`, `SSR CASSETTE 2S K=<e>`
 * The four bookkeeping scalars never take the sector prefix.
 * `Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats the lowest state of the first cassette in the order of [Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order) (H₂ with `si_reks_2spin` `[2, 0]`: `ref … T1 of cassette 1`).
 * `State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.
-* Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.03–0.51 E<sub>h</sub> below E<sub>SA</sub>; an E(S0) far below this range marks ghost roots ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)).
+* Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies at most 0.51 E<sub>h</sub> below E<sub>SA</sub>; an E(S0) far below that marks ghost roots ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)).
 
 #### SSR eigenvectors and Chirgwin–Coulson weights {#ssr-composition}
 
-Eigenvector c of each state over the configurations of its cassette, and the Chirgwin–Coulson weights ω<sub>j</sub> ([Chirgwin–Coulson weights](https://reksstudio.github.io/v2/manual/concepts/index.md#cc-weights)), printed in `Adiabatic states` ([SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)).
+Eigenvector c of each state over the configurations of its cassette, and the Chirgwin–Coulson weights ω<sub>j</sub> ([Chirgwin–Coulson weights](https://reksstudio.github.io/v2/manual/concepts/index.md#cc-weights)), printed in `Adiabatic states` ([SSR state energies](#ssr-energies)).
 
 * **On:** SI present
 
@@ -461,7 +461,7 @@ V_{ij} = \tilde H_{ij} - \tilde S_{ij}\,\frac{\tilde H_{ii} + \tilde H_{jj}}{2},
 $$
 
 ```log
-=> Hamiltonian, cassette 0 <=
+=> SI Hamiltonian: dimension, matrix elements and eigenproblem, cassette 0 <=
 
    Configurations        18
    Microstates           37       entering the matrix elements of this cassette
@@ -480,7 +480,7 @@ Consistency           max |V| = 2.5706 mEh over pairs with |S_ij|/sqrt(S_ii S_jj
 Stored: `SSR HAMILTONIAN K=<e>`, `SSR OVERLAP SPARSE K=<e>` (rows \[i n<sub>cfg</sub> + j, S<sub>ij</sub>]), stored at `REKS_REPORT_LEVEL` ≥ 3, up to 8 active orbitals
 
 * Matrices printed only at `REKS_REPORT_LEVEL` ≥ 4, up to 8 active orbitals. No bare (cassette 0) alias.
-* `Independent states` = `Configurations` − overlap null modes − ghost roots. A `Regularization` line appears when null modes are removed, a `Ghost states` line when ghost roots ([Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states)) are removed. On the Davidson path the last line reads `Computed states k of r (lowest roots, Davidson)` ([SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)).
+* `Independent states` = `Configurations` − overlap null modes − ghost roots. A `Regularization` line appears when null modes are removed, a `Ghost states` line when ghost roots ([Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states)) are removed. On the Davidson path the last line reads `Computed states k of r (lowest roots, Davidson)` ([SI Davidson solver](#si-davidson)).
 * Two configurations with |S̃<sub>ij</sub>| close to 1 are nearly the same function; their coupling then follows from the overlap, and V<sub>ij</sub> vanishes for two identical functions.
 * The `Consistency` line (second fragment, H<sub>4</sub> REKS(4,4)) gives the largest |V<sub>ij</sub>| in mE<sub>h</sub> over the pairs with |S̃<sub>ij</sub>| > 0.99 (a fixed bound, not an option) and the pair where it occurs; without such a pair the line is absent. The code sets no bound on |V<sub>ij</sub>|.
 
@@ -523,12 +523,12 @@ f_{\mathrm{len}} = \tfrac{2}{3}\,\Delta E\,|\boldsymbol\mu_{IJ}|^2 \quad (\Delta
 $$
 
 ```log
-=> Transitions, cassette 0 <=
+=> Transition dipole moments and oscillator strengths [TRANSITION_DIPOLE], cassette 0 <=
 
    Transition   dE [eV]  lambda [nm]  mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]   |mu| [D]      f_len
    -------------------------------------------------------------------------------------------------------------
    S0->S1         3.239        382.8     0.000000     0.000656     0.000000     0.000656   0.001667    0.00000
-   S0->S2         3.491        355.1     0.000000     0.000000     0.048983     0.048983   0.124503    0.00021
+   S0->S2         3.491        355.1     0.000000     0.000000    -0.048983     0.048983   0.124503    0.00021
    S0->S3         3.534        350.9     0.000000     0.000000    -0.371471     0.371471   0.944186    0.01195 *
 [...]
    * = length and velocity forms differ by more than a factor of 3 (tested when f_len or f_vel > 1e-3):
@@ -542,7 +542,7 @@ Stored: `SSR TRANSITION DIPOLES K=<e>`, `SSR OSCILLATOR STRENGTHS K=<e>`
 
 #### Velocity-form transition moments and oscillator strengths {#transition-velocity}
 
-Velocity-form transition moments and oscillator strengths, printed with the magnetic moments ([Magnetic transition moments and rotatory strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-magnetic)).
+Velocity-form transition moments and oscillator strengths, printed with the magnetic moments ([Magnetic transition moments and rotatory strengths](#transition-magnetic)).
 
 On: `SI_REKS_ANALYSIS` `E_TDM_VEL` (default: on)
 
@@ -555,23 +555,23 @@ $$
 $$
 
 ```log
-=> Velocity and magnetic transition moments, cassette 0 <=
+=> Velocity-form and magnetic transition moments, rotatory strengths [E_TDM_VEL, M_TDM], cassette 0 <=
 
    Transition         p_x         p_y         p_z         m_x         m_y         m_z       f_vel         R_vel
    ------------------------------------------------------------------------------------------------------------
    S0->S1        0.000000    0.000175    0.000000    0.378467    0.000000    0.000000    0.000000      0.000000
-   S0->S2        0.000000    0.000000   -0.002048    0.000000    0.000000    0.000000    0.000022      0.000000
+   S0->S2        0.000000    0.000000    0.002048    0.000000    0.000000    0.000000    0.000022      0.000000
    S0->S3        0.000000    0.000000    0.014465    0.000000    0.000000    0.000000    0.001074 *    0.000000
 ```
 
 Stored: `SSR VELOCITY TRANSITION DIPOLES K=<e>`, `SSR OSCILLATOR STRENGTHS VELOCITY K=<e>`
 
-* `*` after f<sub>vel</sub>: same test as after f<sub>len</sub> ([Transition dipole moments and length-form oscillator strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-dipole)).
-* The NAC sum-rule check against −p ([Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac)) is printed only when these moments exist.
+* `*` after f<sub>vel</sub>: same test as after f<sub>len</sub> ([Transition dipole moments and length-form oscillator strengths](#transition-dipole)).
+* The NAC sum-rule check against −p ([Nonadiabatic coupling vectors](#nac)) is printed only when these moments exist.
 
 #### Magnetic transition moments and rotatory strengths {#transition-magnetic}
 
-Magnetic transition moments and velocity-form rotatory strengths, printed in the velocity table ([Velocity-form transition moments and oscillator strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-velocity)).
+Magnetic transition moments and velocity-form rotatory strengths, printed in the velocity table ([Velocity-form transition moments and oscillator strengths](#transition-velocity)).
 
 On: `SI_REKS_ANALYSIS` `M_TDM` (default: on)
 
@@ -597,7 +597,7 @@ On: `SI_REKS_ANALYSIS` `NO_OCCUPATIONS` (default: always)
 Units: electrons (occupations)
 
 ```log
-=> Natural orbitals of the active space, cassette 0 <=
+=> Natural occupation numbers and natural orbitals of the active space [NO_OCCUPATIONS], cassette 0 <=
 
    S0
      occ         1.933337    1.521446    0.478239    0.066978
@@ -634,21 +634,26 @@ N_D = \sum_a n_a(2-n_a), \qquad N_U = \sum_a \min(n_a,\, 2-n_a), \qquad N_{U,\ma
 $$
 
 ```log
-=> Radical character, cassette 0 <=
+=> Radical character [RADICAL], cassette 0 <=
 
    State             y0          y1         N_D         N_U      N_U,nl
    --------------------------------------------------------------------
    S0          0.478239    0.066978    1.714212    1.090434    1.093137
    S1          0.971846    0.080285    2.306662    2.104262    2.044339
 [...]
+   --------------------------------------------------------------------
    Radical character of each state. y0, y1 = diradical/tetraradical indices
    from the LUNO/LUNO+1 occupations (0 = closed shell, 1 = pure radical).
+   N_D, N_U, N_U,nl = effective number of unpaired electrons, sums over the
+   active natural orbitals: N_D = sum occ(2-occ) (Takatsuka-Fueno-Yamaguchi),
+   N_U = sum min(occ, 2-occ) (Head-Gordon, linear), N_U,nl = sum occ^2 (2-occ)^2
+   (Head-Gordon, nonlinear).
 ```
 
 Stored: `SSR RADICAL INDICES K=<e>` (columns \[y0, y1, N_D, N_U, N_U,nl]), `SSR UNPAIRED ATOMIC POPULATIONS K=<e>`
 
 * Unpaired atomic populations are stored, not printed.
-* y<sub>0</sub>, y<sub>1</sub> equal the corresponding occupations in `Natural orbitals` ([Natural orbitals and occupations of the active space](https://reksstudio.github.io/v2/manual/properties/index.md#natural-orbitals)); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1.
+* y<sub>0</sub>, y<sub>1</sub> equal the corresponding occupations in `Natural occupation numbers and natural orbitals` ([Natural orbitals and occupations of the active space](#natural-orbitals)); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1.
 * 2S > 0: the spin-unpaired electrons are counted as well, N<sub>D</sub> ≥ N<sub>U</sub> ≥ 2S; a LUNO opened by the spin gives y ≈ 1.
 
 Ref: N<sub>D</sub>: [Takatsuka et al., Theor. Chim. Acta 1978, 48, 175](https://reksstudio.github.io/v2/manual/reference/index.md#takatsuka1978-odd-electrons); N<sub>U</sub> (linear) and N<sub>U,nl</sub> (nonlinear): [Head-Gordon, Chem. Phys. Lett. 2003, 372, 508](https://reksstudio.github.io/v2/manual/reference/index.md#head-gordon2003-unpaired).
@@ -672,7 +677,7 @@ $$
 $$
 
 ```log
-=> Dipole moment (unrelaxed state density matrix), cassette 0 <=
+=> Dipole moment (unrelaxed state density matrix) [DIPOLE], cassette 0 <=
 
    State       mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]     |mu| [D]
    ---------------------------------------------------------------------------
@@ -695,7 +700,7 @@ Q_{\mathrm{tl},ij} = Q_{ij} - \tfrac13\,\mathrm{tr}(Q)\,\delta_{ij}
 $$
 
 ```log
-=> Quadrupole moment (unrelaxed state density matrix), cassette 0 <=
+=> Quadrupole moment (unrelaxed state density matrix) [QUADRUPOLE], cassette 0 <=
 
    State                         xx          xy          xz          yy          yz          zz
    --------------------------------------------------------------------------------------------
@@ -722,12 +727,12 @@ $$
 $$
 
 ```log
-=> Transition second moments, cassette 0 <=
+=> Transition second moments [TRANSITION_QUADRUPOLE], cassette 0 <=
 
    Transition          xx          xy          xz          yy          yz          zz
    ----------------------------------------------------------------------------------
    S0->S1        0.000000    0.000000    0.000000    0.000000   -0.389350    0.000000
-   S0->S2        0.056698    0.000000    0.000000    0.138333    0.000000   -0.457178
+   S0->S2       -0.056698    0.000000    0.000000   -0.138333    0.000000    0.457178
 [...]
    Its traceless part governs electric-quadrupole transitions, not contained in f_len.
 ```
@@ -753,7 +758,7 @@ M_{IJ} = \langle I|\textstyle -\sum_i x_i^a y_i^b z_i^c|J\rangle
 $$
 
 ```log
-=> Multipole moments of order 3 (unrelaxed state density matrix), cassette 0 <=
+=> State and transition multipole moments of order 3 (unrelaxed state density matrix) [MULTIPOLE(3)], cassette 0 <=
 
    State              xxx         xxy         xxz         xyy         xyz         xzz         yyy         yyz         yzz         zzz
    ----------------------------------------------------------------------------------------------------------------------------------
@@ -776,7 +781,7 @@ q^{\mathrm M}_A = Z_A - \sum_{\mu\in A}(\mathbf P^{(I)}\mathbf S)_{\mu\mu}, \qqu
 $$
 
 ```log
-=> Atomic charges (unrelaxed state density matrix), cassette 0 <=
+=> Atomic charges (unrelaxed state density matrix) [MULLIKEN_CHARGES, LOWDIN_CHARGES], cassette 0 <=
 
    Mulliken
    Atom                S0          S1          S2          S3          S4
@@ -821,7 +826,7 @@ $$
 $$
 
 ```log
-=> Atomic spin populations (unrelaxed state spin density, M_S = S), cassette 1 <=
+=> Atomic spin populations (unrelaxed state spin density, M_S = S) [MULLIKEN_SPINS, LOWDIN_SPINS], cassette 1 <=
 
    Mulliken
    Atom                T1          T2          T3          T4          T5
@@ -838,14 +843,14 @@ $$
    sum_A s_A = 2 M_S; another M_S scales s_A by M_S/S.
 ```
 
-Stored: `SSR MULLIKEN SPINS K=<e>`, `SSR LOWDIN SPINS K=<e>` (with the sector prefix, [Variable names](https://reksstudio.github.io/v2/manual/properties/index.md#variable-names))
+Stored: `SSR MULLIKEN SPINS K=<e>`, `SSR LOWDIN SPINS K=<e>` (with the sector prefix, [Variable names](#variable-names))
 
 * Another M<sub>S</sub> component scales s<sub>A</sub> by M<sub>S</sub>/S.
-* Change tables as for the charges ([Atomic charges of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges)).
+* Change tables as for the charges ([Atomic charges of the states (unrelaxed)](#atomic-charges)).
 
 #### Transition charges {#transition-charges}
 
-Mulliken and Löwdin atomic charges of the transition density ρ<sup>(IJ)</sup> of each pair I → J: the formulas of [Atomic charges of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges) with P<sup>(I)</sup> replaced by C<sub>a</sub> ρ<sup>(IJ)</sup> C<sub>a</sub><sup>T</sup>, without Z<sub>A</sub>; the charges of a pair sum to 0.
+Mulliken and Löwdin atomic charges of the transition density ρ<sup>(IJ)</sup> of each pair I → J: the formulas of [Atomic charges of the states (unrelaxed)](#atomic-charges) with P<sup>(I)</sup> replaced by C<sub>a</sub> ρ<sup>(IJ)</sup> C<sub>a</sub><sup>T</sup>, without Z<sub>A</sub>; the charges of a pair sum to 0.
 
 On: `SI_REKS_ANALYSIS` `TRANSITION_CHARGES` (default: on)
 
@@ -854,7 +859,7 @@ For: pairs I \< J
 Units: e
 
 ```log
-=> Transition charges, cassette 0 <=
+=> Transition charges [TRANSITION_CHARGES], cassette 0 <=
 
    Mulliken
    Atom            S0->S1      S0->S2      S0->S3      S0->S4      S1->S2      S1->S3      S1->S4      S2->S3      S2->S4      S3->S4
@@ -872,11 +877,11 @@ Stored: `SSR TRANSITION MULLIKEN CHARGES K=<e>`, `SSR TRANSITION LOWDIN CHARGES 
 
 #### Bond indices of the states (unrelaxed) {#bond-indices}
 
-Mayer and Wiberg–Löwdin bond indices of each atom pair A ≠ B from the spin-summed unrelaxed state density P<sup>(I)</sup> ([Atomic charges of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges)); in a 2S > 0 cassette also from the spin density Q ([Atomic spin populations of the states (2S > 0)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-spins)).
+Mayer and Wiberg–Löwdin bond indices of each atom pair A ≠ B from the spin-summed unrelaxed state density P<sup>(I)</sup> ([Atomic charges of the states (unrelaxed)](#atomic-charges)); in a 2S > 0 cassette also from the spin density Q ([Atomic spin populations of the states (2S > 0)](#atomic-spins)).
 
 On: `SI_REKS_ANALYSIS` `MAYER_INDICES` / `WIBERG_LOWDIN_INDICES` (default: on)
 
-For: printed rows: pairs with index ≥ 0.10 in any state; change tables as for the charges ([Atomic charges of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges))
+For: printed rows: pairs with index ≥ 0.10 in any state; change tables as for the charges ([Atomic charges of the states (unrelaxed)](#atomic-charges))
 
 Units: dimensionless
 
@@ -889,7 +894,7 @@ $$
 $$
 
 ```log
-=> Bond indices (unrelaxed state density matrix), cassette 0 <=
+=> Bond indices (unrelaxed state density matrix) [MAYER_INDICES, WIBERG_LOWDIN_INDICES], cassette 0 <=
 
    Mayer
    Bond                S0          S1          S2          S3          S4
@@ -931,7 +936,7 @@ $$
 $$
 
 ```log
-=> Natural transition orbitals (NTO), cassette 0 <=
+=> Natural transition orbitals (NTO): weights and participation ratios [NTO], cassette 0 <=
 
    Transition        w_1        w_2        w_3         PR      Omega
    -----------------------------------------------------------------
@@ -988,7 +993,7 @@ $$
 $$
 
 ```log
-=> Exciton descriptors, cassette 0 <=
+=> Exciton descriptors [EXCITON], cassette 0 <=
 
    Transition    d_h->e   sigma_h   sigma_e     d_exc      R_eh    p_prom
    ----------------------------------------------------------------------
@@ -1007,7 +1012,7 @@ $$
 ```
 
 ```log
-=> Hole and electron populations, cassette 0 <=
+=> Hole and electron populations [EXCITON], cassette 0 <=
 
    Hole h_A
    Atom            S0->S1      S0->S2      S0->S3      S0->S4      S1->S2      S1->S3      S1->S4      S2->S3      S2->S4      S3->S4
@@ -1034,7 +1039,7 @@ Ref: [Plasser et al., J. Chem. Phys. 2014, 141, 024106](https://reksstudio.githu
 
 #### Fragment charge-transfer descriptors {#fragment-ct}
 
-Charge moved between fragments, TheoDORE CT number (h/e split), participation ratios PR<sub>i</sub>, PR<sub>f</sub>, PR<sub>F</sub>, DEL, localization POS, and Löwdin hole and electron populations per fragment.
+Charge moved between fragments, TheoDORE CT number, participation ratios PR<sub>h</sub>, PR<sub>e</sub>, PR, DEL, localization POS, and Löwdin hole and electron populations per fragment.
 
 On: `SI_REKS_ANALYSIS` `EXCITON` (default: on)
 
@@ -1047,7 +1052,7 @@ $$
 $$
 
 $$
-\mathrm{PR}_i = \Big(\sum_F r_F^2\Big)^{-1}, \qquad \mathrm{PR}_f = \Big(\sum_F c_F^2\Big)^{-1}, \qquad \mathrm{PR} = \tfrac12(\mathrm{PR}_i + \mathrm{PR}_f)
+\mathrm{PR}_h = \Big(\sum_F r_F^2\Big)^{-1}, \qquad \mathrm{PR}_e = \Big(\sum_F c_F^2\Big)^{-1}, \qquad \mathrm{PR} = \tfrac12(\mathrm{PR}_h + \mathrm{PR}_e)
 $$
 
 $$
@@ -1059,9 +1064,9 @@ $$
 $$
 
 ```log
-=> Fragments: charge-transfer descriptors, cassette 0 <=
+=> Fragments: charge-transfer descriptors [EXCITON], cassette 0 <=
 
-   Transition   q_moved [e]       h/e split      PR_i      PR_f      PR_F       DEL       POS
+   Transition   q_moved [e]              CT      PR_h      PR_e        PR       DEL       POS
    ------------------------------------------------------------------------------------------
    S0->S1          0.001242        0.546581  1.999999  1.999991  1.999995  1.999999  1.500369
    S0->S2          0.086897        0.990373  1.827131  1.829917  1.828524  1.999996  1.500680
@@ -1069,15 +1074,15 @@ $$
    S0->S4          0.000887        0.557573  1.999991  1.999999  1.999995  1.999996  1.500740
    S0->S5          0.000645               -         -         -         -         -         -
 [...]
-   dN_F = Lowdin population of F in (J - I). h/e split = TheoDORE CT number: fraction of
+   dN_F = Lowdin population of F in (J - I). CT = TheoDORE CT number: fraction of
    the excitation with hole and electron on different fragments (both directions summed).
-   PR_i, PR_f, PR_F, DEL = participation ratios for hole, electron, both, and exciton delocalization.
+   PR_h, PR_e, PR, DEL = participation ratios for hole, electron, both, and exciton delocalization.
    POS = fragment where the excitation is localized (1 = F1, 2 = F2, ...).
    F1 = atoms 1-3, F2 = atoms 4-6.
 ```
 
 ```log
-=> Fragments: hole and electron populations, cassette 0 <=
+=> Fragments: hole and electron populations [EXCITON], cassette 0 <=
 
    Hole h_F
    Fragment        S0->S1      S0->S2      S0->S3      S0->S4      S1->S2      S1->S3      S1->S4      S2->S3      S2->S4      S3->S4
@@ -1089,10 +1094,10 @@ $$
    h_F, e_F = hole and electron populations of the transition density (Lowdin).
 ```
 
-Stored: `SSR CT FRAGMENT DESCRIPTORS K=<e>` (columns \[CT, PRi, PRf, PR, DEL, POS]), `SSR CT FRAGMENT HOLE POPULATIONS K=<e>`, `SSR CT FRAGMENT PARTICLE POPULATIONS K=<e>`
+Stored: `SSR CT FRAGMENT DESCRIPTORS K=<e>` (columns \[CT, PR_h, PR_e, PR, DEL, POS]), `SSR CT FRAGMENT HOLE POPULATIONS K=<e>`, `SSR CT FRAGMENT PARTICLE POPULATIONS K=<e>`
 
-* q<sub>moved</sub> and Net ΔN<sub>F</sub> are printed, not stored; stored column CT is the printed h/e split. The fragment populations have no bare (cassette 0) alias.
-* Ω<sub>FG</sub> sums the atom-pair Ω<sub>AB</sub> of [Exciton descriptors, hole and electron populations, natural difference orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#exciton) over the fragments; F in POS is 1-based; N<sup>L</sup><sub>F</sub> is the Löwdin active population of fragment F. Printed headers: `h/e split` for CT, `PR_F` for PR. CT to POS print `-` when Ω \< 0.05; q<sub>moved</sub> is always printed.
+* q<sub>moved</sub> and Net ΔN<sub>F</sub> are printed, not stored. The fragment populations have no bare (cassette 0) alias.
+* Ω<sub>FG</sub> sums the atom-pair Ω<sub>AB</sub> of [Exciton descriptors, hole and electron populations, natural difference orbitals](#exciton) over the fragments; F in POS is 1-based; N<sup>L</sup><sub>F</sub> is the Löwdin active population of fragment F. CT to POS print `-` when Ω \< 0.05; q<sub>moved</sub> is always printed.
 * The fragment line (`F1 = atoms 1-3, F2 = atoms 4-6`) shows the partition used.
 
 Ref: [Plasser and Lischka, J. Chem. Theory Comput. 2012, 8, 2777](https://reksstudio.github.io/v2/manual/reference/index.md#plasser2012-charge-transfer); [Plasser, J. Chem. Phys. 2020, 152, 084108](https://reksstudio.github.io/v2/manual/reference/index.md#plasser2020-theodore) (TheoDORE).
@@ -1124,12 +1129,12 @@ $$
 $$
 
 ```log
-=> Fragment couplings F1 - F2, cassette 0 <=
+=> Fragment diabatic couplings F1 - F2 [FRAGMENT_COUPLINGS], cassette 0 <=
 
    FCD (fragment charge difference), all pairs of states
    Coupling     V_F Lowdin [Eh]    V_F Lowdin [meV]   V_F Mulliken [Eh]  V_F Mulliken [meV]
    ----------------------------------------------------------------------------------------
-   S0/S2               0.013292             361.700            0.010127             275.583
+   S0/S2              -0.013292            -361.700           -0.010127            -275.583
    S0/S3              -0.055030           -1497.452           -0.049473           -1346.228
 [...]
    ----------------------------------------------------------------------------------------
@@ -1168,7 +1173,7 @@ Larger |V_F| = stronger inter-fragment coupling. Printed: pairs with |D_I - D_J|
 
 Stored: `SSR FCD LOWDIN COUPLINGS <F> <G> K=<e>`, `SSR FCD MULLIKEN COUPLINGS <F> <G> K=<e>`, `SSR FED COUPLINGS <F> <G> K=<e>`, `SSR FSD COUPLINGS <F> <G> K=<e>` (with the sector prefix)
 
-* States m \< n of one cassette, fragments F \< G; q<sub>A</sub> are the state and transition charges ([Atomic charges of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges), [Transition charges](https://reksstudio.github.io/v2/manual/properties/index.md#transition-charges)), G<sup>F</sup> the Löwdin projector on the atoms of F. V carries the sign of D<sub>mn</sub>, which follows the state phases; compare |V| with literature values. `*` marks a row where the Löwdin and Mulliken FCD values differ in sign or by more than a factor of 2.
+* States m \< n of one cassette, fragments F \< G; q<sub>A</sub> are the state and transition charges ([Atomic charges of the states (unrelaxed)](#atomic-charges), [Transition charges](#transition-charges)), G<sup>F</sup> the Löwdin projector on the atoms of F. V carries the sign of D<sub>mn</sub>, which follows the state phases; compare |V| with literature values. `*` marks a row where the Löwdin and Mulliken FCD values differ in sign or by more than a factor of 2.
 * Computes the state and transition charges, and in a 2S > 0 cassette the Löwdin spins, without printing or storing them when those blocks are not listed. No bare alias.
 * FSD: V is invariant to the scale of D, so the M<sub>S</sub> of s cancels. FED is not computed in a 2S > 0 cassette.
 
@@ -1224,6 +1229,9 @@ $$
     S/T    S0 (cassette 0)  T1 (cassette 1)    -78.300443969671    -78.279831019196       0.561     -0.010306    -2262.01              0.406              0.106
     -----------------------------------------------------------------------------------------------------------------------------------------------------------
     Spins = the two spin multiplicities compared (S/T = singlet/triplet). Low-/high-spin state = lowest state of each multiplicity over all cassettes.
+    Gap = E(high spin) - E(low spin). Lowering(lo/hi) = SI lowering of that state, min_i H_ii - E.
+    J = -Gap/(2 S_high), for H = -2J S_A.S_B. J is a spin-coupling constant only if
+    the two states have the same open-shell orbitals and similar SI lowering.
 ```
 
 Stored: `REKS HEISENBERG J`, `REKS HEISENBERG J SPINS` (rows \[2S_lo, 2S_hi])
@@ -1244,7 +1252,7 @@ For: `energy()` and `gradient()`; one CP-REKS solve shared with the gradient and
 Units: e a<sub>0</sub> (dipole; printed also D); e a<sub>0</sub><sup>2</sup> (quadrupole); e (charges)
 
 ```log
-==> Relaxed properties, cassette 0 <==
+==> Relaxed properties [SI_REKS_PROPERTY_FOR], cassette 0 <==
 
  => Dipole moment (relaxed density matrix P^r), cassette 0 <=
 
@@ -1290,7 +1298,7 @@ Stored: `SSR ROOT <r> RELAXED DIPOLE CASSETTE <e>`, `SSR ROOT <r> RELAXED QUADRU
 Files: cube `CUBEPROP_TASKS` `SSR_DENSITIES`: `SSR_D_<label>_relaxed_cassette<e>.cube`
 
 * The charges of each state sum to the molecular charge.
-* The EKT block prints the count of the negative natural occupations of P<sup>r</sup> ([Unrelaxed and relaxed densities](https://reksstudio.github.io/v2/manual/concepts/index.md#densities), [EKT ionization energies, pole strengths and Dyson orbitals of SI states](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-states)).
+* The EKT block prints the count of the negative natural occupations of P<sup>r</sup> ([Unrelaxed and relaxed densities](https://reksstudio.github.io/v2/manual/concepts/index.md#densities), [EKT ionization energies, pole strengths and Dyson orbitals of SI states](#ekt-states)).
 
 #### Bond indices of the relaxed density {#relaxed-bond-indices}
 
@@ -1327,7 +1335,7 @@ E_{\mathrm{cation}} - E_{\mathrm{ref}} = \mathrm{IP} + E_{\mathrm{state}} - E_{\
 $$
 
 ```log
-==> Ionization energies (EKT) and Dyson orbitals, cassette 0 <==
+==> Ionization energies (EKT) and Dyson orbitals [REKS_EKT], cassette 0 <==
 
     S1
     Peak    IP [eV]  E(cation)-E(S0) [eV]     eps [Eh]  Strength  occ(MO)   Dyson orbital (MO share [%])   Flag
@@ -1363,7 +1371,7 @@ Ref: [Filatov et al., J. Chem. Theory Comput. 2020, 16, 4489](https://reksstudio
 
 #### EKT ionization energies of the SA-REKS ensemble {#ekt-ensemble}
 
-Extended Koopmans' theorem on the generalized Fock matrix W and the fractional-occupation density D of the SA-REKS ensemble, in the block `==> Ionization energies (EKT) and Dyson orbitals, SA-REKS ensemble <==`.
+Extended Koopmans' theorem on the generalized Fock matrix W and the fractional-occupation density D of the SA-REKS ensemble, in the block `==> Ionization energies (EKT) and Dyson orbitals [REKS_EKT], SA-REKS ensemble <==`.
 
 * **On:** `REKS_EKT` true and no state listed in `SI_REKS_PROPERTY_FOR` (default: off)
 
@@ -1375,7 +1383,7 @@ Extended Koopmans' theorem on the generalized Fock matrix W and the fractional-o
 
 * **Files:** `<prefix>.dyson.sa.molden` (`sector<s>_sa` for s above 0) (`MOLDEN_WRITE`)
 
-- The equations of [EKT ionization energies, pole strengths and Dyson orbitals of SI states](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-states) with W the symmetrized generalized Fock matrix and P = diag(2f), f = 1 (core), n/2 (active), 0 (virtual).
+- The equations of [EKT ionization energies, pole strengths and Dyson orbitals of SI states](#ekt-states) with W the symmetrized generalized Fock matrix and P = diag(2f), f = 1 (core), n/2 (active), 0 (virtual).
 - The `State analysis` line of `REKS_EKT` then names the SA-REKS ensemble.
 
 ### Gradients, NAC, conical intersections {#gradients-nac-conical-intersections}
@@ -1416,12 +1424,12 @@ $$
     -------------------------------------------------------------
     C1       0.000000000000     0.000000000000    -0.075254969374
     H2       0.004012538035     0.000000000000     0.019099258469
-    H3      -0.004012538035     0.000000000000     0.019099258469
+    H3      -0.004012538035     0.000000000000     0.019099258468
     C4      -0.000000000001     0.000000000000     0.057911423692
     H5       0.015107910717     0.000000000000    -0.010427485628
     H6      -0.015107910716     0.000000000000    -0.010427485627
     -------------------------------------------------------------
-    max |g| = 7.525e-02 Eh/a0   rms |g| = 2.410e-02 Eh/a0   |sum over atoms| = 1.3e-14 Eh/a0
+    max |g| = 7.525e-02 Eh/a0   rms |g| = 2.410e-02 Eh/a0   |sum over atoms| = 2.5e-15 Eh/a0
 ```
 
 ```log
@@ -1430,9 +1438,9 @@ $$
 -Total Gradient:
    Atom            X                  Y                   Z
   ------   -----------------  -----------------  -----------------
-     1       -0.000000000000     0.000000000000    -0.044084341933
-     2        0.007401694804    -0.000000000000    -0.001232538601
-     3       -0.007401694804    -0.000000000000    -0.001232538601
+     1       -0.000000000000    -0.000000000000    -0.044084341933
+     2        0.007401694804     0.000000000000    -0.001232538601
+     3       -0.007401694804     0.000000000000    -0.001232538601
 [...]
     Returned gradient of S1 (cassette 0).
 ```
@@ -1490,17 +1498,17 @@ $$
     Nonadiabatic coupling d_12 = <S1|d/dR S2> [1/a0]
     Atom                  X                  Y                  Z
     -------------------------------------------------------------
-    C1       0.000000000000    -5.207065892973    -0.000000000003
-    H2       0.000000000000     1.584259370901     0.000000000002
-    H3       0.000000000000     1.584259370902     0.000000000002
-    C4       0.000000000000     6.162643638607    -0.000000000008
-    H5       0.000000000000    -2.059102095012     0.000000000003
-    H6       0.000000000000    -2.059102095013     0.000000000003
+    C1       0.000000000000     5.207065892990     0.000000000003
+    H2      -0.000000000001    -1.584259370910    -0.000000000001
+    H3       0.000000000001    -1.584259370911    -0.000000000001
+    C4       0.000000000000    -6.162643638590    -0.000000000001
+    H5       0.000000000000     2.059102095004     0.000000000000
+    H6       0.000000000000     2.059102095005     0.000000000000
     -------------------------------------------------------------
     |d_12| = 8.865e+00 1/a0   |E(S2) - E(S1)| |d_12| = 8.210e-02 Eh/a0
     |d_model| = 5.711e+00, |d_residual| = 3.169e+00 (1/a0)
-    sum over atoms of d_12       = ( 1.919e-15,  5.892e-03, -2.726e-13) 1/a0
-    -p from the velocity moments = ( 2.675e-15,  5.892e-03, -2.756e-13) 1/a0   consistent (deviation 4.2e-14)
+    sum over atoms of d_12       = ( 7.509e-16, -5.892e-03,  2.406e-13) 1/a0
+    -p from the velocity moments = (-2.675e-15, -5.892e-03,  2.400e-13) 1/a0   consistent (deviation 1.4e-13)
 ```
 
 Stored: `SSR NAC <I> <J> CASSETTE <e>`, `SSR NAC MODEL <I> <J> CASSETTE <e>`, `SSR NAC RESIDUAL <I> <J> CASSETTE <e>`; the root gradients `SSR ROOT <I> GRADIENT CASSETTE <e>`, `SSR ROOT <J> GRADIENT CASSETTE <e>`

@@ -37,5 +37,18 @@
    "§si_reks_grad, §si_reks_nac, §si_reks_property_for and §si_reks_store_states take one entry per SI cassette in the spin order of §si_reks_2spin (spin groups as listed there, cassettes of a group in their §si_reks_configs order); the printed K stays in ascending 2S (§cassette-order).",
    "The SI-only FONs stay in [m, 2 − m], m set by the SI FON bound margin (§si-only-fons, §fon-micro)."
   ]
+ },
+ {
+  "rev": "72ce4d58bab1151711b169d51bff24d1646e5b7d",
+  "date": "2026-10-17",
+  "reachable": false,
+  "added": [],
+  "removed": [],
+  "defaults": [],
+  "notes": [
+   "Property headers name their switches in brackets, e.g. `[DIPOLE]`, `[SUMMARY]`; several blocks are renamed, natural orbitals print before the transitions, `State analysis` is alphabetical (§print-order, §si_reks_analysis); the CT columns are `CT`, `PR_h`, `PR_e`, `PR` (§fragment-ct).",
+   "`State summary` lists the three largest weights ≥ 1 % per state, then every further one > 20 %; the overlap pairs under `Adiabatic states` print from level 3 (§ssr-energies, §reks_report_level).",
+   "Davidson: search space min(r, max(40, 16k)), start vectors and preconditioner from the P space, Jacobi–Davidson corrections; with the default counts the shipped catalogs solve the whole space (§si-solver, §si-davidson)."
+  ]
  }
 ]

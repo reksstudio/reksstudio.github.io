@@ -281,7 +281,9 @@ export default function aiLayer() {
             return [{ type: 'paragraph', children: [link] }, { type: 'code', lang, value }];
           });
           const tail = files.length ? [{ type: 'heading', depth: 2, children: [{ type: 'text', value: 'Linked files' }] }, ...files] : [];
-          generated.set(p.name.replace(/\.html$/, '.md'), header(p.title, p.url.href, [], revOf(p.name)) + markdown([...p.mdast.children, ...tail]));
+          // links to an anchor of this page -> "#id"
+          const body = markdown([...p.mdast.children, ...tail]).replaceAll(`](${twinOf(p.url)}#`, '](#');
+          generated.set(p.name.replace(/\.html$/, '.md'), header(p.title, p.url.href, [], revOf(p.name)) + body);
         }
 
         const pageOf = (slug) => pages.find((p) => p.name === `${pagePath(slug)}index.html`);

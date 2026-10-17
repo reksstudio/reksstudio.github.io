@@ -10,7 +10,7 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 QUEST3: SSR vertical excitation energies of every active space against the TBE; BH\&HLYP / M08-SO / ωB97X; aug-cc-pVTZ.
 
-[S1](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenethione/index.md#s1) · [S2](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenethione/index.md#s2) · [T1](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenethione/index.md#t1) · [T2](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenethione/index.md#t2) · [Orbitals](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenethione/index.md#orbitals)
+[S1](#s1) · [S2](#s2) · [T1](#t1) · [T2](#t2) · [Orbitals](#orbitals)
 
 ![cyclopropenethione: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/quest/mol/quest3_cyclopropenethione.svg)
 

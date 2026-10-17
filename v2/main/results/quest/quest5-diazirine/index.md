@@ -10,7 +10,7 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 QUEST5: SSR vertical excitation energies of every active space against the TBE; BH\&HLYP / M08-SO / ωB97X; aug-cc-pVTZ.
 
-[S1](https://reksstudio.github.io/v2/main/results/quest/quest5-diazirine/index.md#s1) · [T1](https://reksstudio.github.io/v2/main/results/quest/quest5-diazirine/index.md#t1) · [Orbitals](https://reksstudio.github.io/v2/main/results/quest/quest5-diazirine/index.md#orbitals)
+[S1](#s1) · [T1](#t1) · [Orbitals](#orbitals)
 
 ![diazirine: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/quest/mol/quest5_diazirine.svg)
 

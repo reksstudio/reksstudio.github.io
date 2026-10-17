@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/run-control/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -120,7 +120,7 @@ Default: `-1.0` each
 [REKS] WARNING: REKS_M_FON=2.50000000 exceeds maximum valid floor 1.99999999; clamped (FON frozen at upper boundary).
 ```
 
-* One option per FON generation ([FON sets](https://reksstudio.github.io/v2/manual/setup/index.md#fon-sets)). A non-negative value ℓ is the lower end of the box of the free FON n<sub>p</sub> of every geminal of that generation ([§12](https://reksstudio.github.io/v2/manual/run-control/index.md#fons)): n<sub>p</sub> stays variable in \[ℓ, 2 − m], m = `REKS_FON_MICRO_BOUND_MARGIN`.
+* One option per FON generation ([FON sets](https://reksstudio.github.io/v2/manual/setup/index.md#fon-sets)). A non-negative value ℓ is the lower end of the box of the free FON n<sub>p</sub> of every geminal of that generation ([§12](#fons)): n<sub>p</sub> stays variable in \[ℓ, 2 − m], m = `REKS_FON_MICRO_BOUND_MARGIN`.
 * The call above restricts n<sub>p</sub> of every generation-1 geminal to \[1, 2 − m]: it excludes n<sub>p</sub> \< n<sub>q</sub>, and n<sub>p</sub> may still reach the closed-shell limit 2 ([FONs of a geminal invert](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-fon-inverted)). At `REKS_REPORT_LEVEL` ≥ 4 an active floor prints the first line above.
 * A value above 2 − m is clamped to 2 − m and the FON is frozen there, with the warning above (`REKS_M_FON` 2.5). Negative (the default) disables the bound; the lower end is then m.
 
@@ -169,7 +169,7 @@ with $\mathbf g_{\mathrm{orb}}$, $\mathbf g_{\mathrm{FON}}$ the orbital and FON 
  @DF-REKS iter   2:    -1.85615375141313   -1.84239e-01   6.35543e-03 SHIFT
  @DF-REKS iter   3:    -1.85801940076408   -1.86565e-03   6.51017e-03 ORB-GVB-DIIS
 [...]
- @DF-REKS iter  11:    -1.85941446727766    2.22045e-16   8.71143e-11 ORB-GVB-DIIS
+ @DF-REKS iter  11:    -1.85941446727766    0.00000e+00   8.68986e-11 ORB-GVB-DIIS
 
 Energy and wave function converged.
 ```
@@ -188,8 +188,8 @@ Default: `false`
 
 * Trust-region Newton solver (trace tag `TRAH/SHIFT`) for the stationary point of the SA energy in the active–active orbital rotations and the FONs: a box-constrained damped Newton step from the eigendecomposition of the analytic active–active Hessian, a bisection on the damping until the step norm matches the trust radius, and eigenvector following along the inter-pair modes ([Nocedal and Wright, Numerical Optimization 2006](https://reksstudio.github.io/v2/manual/reference/index.md#nocedal2006-numerical-optimization), Ch. 4 and 11; [Baker, J. Comput. Chem. 1986, 7, 385](https://reksstudio.github.io/v2/manual/reference/index.md#baker1986-eigenvector-following); [Cerjan and Miller, J. Chem. Phys. 1981, 75, 2800](https://reksstudio.github.io/v2/manual/reference/index.md#cerjan1981-transition-states); [Helmich-Paris, J. Chem. Phys. 2021, 154, 164104](https://reksstudio.github.io/v2/manual/reference/index.md#helmich-paris2021-trah-scf)).
 * The intra-geminal rotations and the FONs are minimized; their Hessian block enters the step with |λ| of its eigenvalues. When that block has a negative eigenvalue λ (eigenvector v) and ½ |λ| Δ<sup>2</sup> > `E_CONVERGENCE` (Δ the trust radius), the step s is extended along v to the trust radius, s → s + σ τ v with τ = (Δ<sup>2</sup> − ‖s‖<sup>2</sup>)<sup>½</sup> cut back to the variable bounds and σ = −sign(g · v); such a point is left, not reported as converged. After this step the trust radius follows the energy ratio ρ = ΔE / ΔE<sub>model</sub>.
-* TRAH steps move the FONs without reordering the orbitals of a geminal ([§12](https://reksstudio.github.io/v2/manual/run-control/index.md#fons)).
-* Warm-up or whole SCF: [The three engines](https://reksstudio.github.io/v2/manual/run-control/index.md#engines).
+* TRAH steps move the FONs without reordering the orbitals of a geminal ([§12](#fons)).
+* Warm-up or whole SCF: [The three engines](#engines).
 
 #### `REKS_GVB_DIIS` {#reks_gvb_diis}
 
@@ -232,7 +232,7 @@ Default: `3`
 "reks_gvb_diis_start": 5,
 ```
 
-* SCF iteration at which GVB-DIIS takes over from the burn-in or from TRAH ([The three engines](https://reksstudio.github.io/v2/manual/run-control/index.md#engines)).
+* SCF iteration at which GVB-DIIS takes over from the burn-in or from TRAH ([The three engines](#engines)).
 
 #### `REKS_DIIS_ACTIVATION` {#reks_diis_activation}
 
@@ -363,8 +363,8 @@ Default: `false`
 ```log
 ==> REKS Geminal Delocalization <==
 
-  E_SA before rotation       -77.884884825216
-  E_SA after rotation        -77.884884825216
+  E_SA before rotation       -77.884884825217
+  E_SA after rotation        -77.884884825217
   Rotated solution rejected; SCF restarts from the orbitals before the rotation.
 ```
 

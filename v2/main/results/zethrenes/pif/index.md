@@ -10,9 +10,9 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 C<sub>42</sub>H<sub>22</sub>, 64 atoms, 1568 basis functions (cc-pVTZ); compound 1d of Hu et al. (2016). Geometries: R<sub>cs</sub>, R<sub>os</sub>, R<sub>T</sub>.
 
-[R<sub>cs</sub> (10,10) details](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#cs-1010) · [R<sub>os</sub> (10,10) details](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#os-1010) · [R<sub>T</sub> (8,8) details](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#t-88)
+[R<sub>cs</sub> (10,10) details](#cs-1010) · [R<sub>os</sub> (10,10) details](#os-1010) · [R<sub>T</sub> (8,8) details](#t-88)
 
-[Spin gaps](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#gaps) · [Energies across geometries](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#geometries) · [SI states](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#states) · [Natural occupations](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#occupations) · [Calculations](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#calculations)
+[Spin gaps](#gaps) · [Energies across geometries](#geometries) · [SI states](#states) · [Natural occupations](#occupations) · [Calculations](#calculations)
 
 ![PIF: drawing of the R_cs geometry](https://reksstudio.github.io/v2/figures/zeth/mol/PIF.svg)
 
@@ -164,7 +164,7 @@ PIF R_T, T1: natural occupations per active space in the order printed, 0 to 2
 
 PIF R_T, Q1: natural occupations per active space in the order printed, 0 to 2
 
-Natural occupations n<sub>i</sub> of the SI state (0 to 2, the cell is 2), the "occ" line of the output block "Natural orbitals of the active space" in the order printed, centred on the HOMO | LUMO divide (dashed), so an orbital keeps its column along the ladder; y<sub>0</sub> = n<sub>LUNO</sub>, y<sub>1</sub> = n<sub>LUNO+1</sub>, as the code prints them; y<sub>0</sub>, y<sub>1</sub> for S0 only (n/a for T1, Q1); otherwise n/a: no such state or orbital in the SI space of this active space.
+Natural occupations n<sub>i</sub> of the SI state (0 to 2, the cell is 2), the "occ" line of the output block "Natural occupation numbers and natural orbitals of the active space" in the order printed, centred on the HOMO | LUMO divide (dashed), so an orbital keeps its column along the ladder; y<sub>0</sub> = n<sub>LUNO</sub>, y<sub>1</sub> = n<sub>LUNO+1</sub>, as the code prints them; y<sub>0</sub>, y<sub>1</sub> for S0 only (n/a for T1, Q1); otherwise n/a: no such state or orbital in the SI space of this active space.
 
 ## Calculations
 

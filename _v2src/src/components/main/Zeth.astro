@@ -17,7 +17,7 @@ const ROWS = `One row per compound and geometry, the carbon skeleton under the c
 const gapCaption = () =>
   `ΔE<sub>ST</sub> = E(T1) − E(S0), ΔE<sub>SQ</sub> = E(Q1) − E(S0) / kcal mol⁻¹; positive: T1 (Q1) above S0. ${ROWS}; one dot per active space, coloured and set from the top to the bottom of the row from ${first} to ${last}; the larger dot is the largest computed active space. Right column: the value at ${last}; † at the largest computed active space instead: ${shortTop().join(', ')}. ΔE<sub>SQ</sub> at ${first}: n/a (no 2S = 4 state in the SI space).`;
 const occCaption = ([range]) =>
-  `n<sub>i</sub>: natural occupations of the S0 SI state (eigenvalues of its active one-particle density), as the output prints them under "Natural orbitals of the active space"; they sum to the number of active electrons. ${ROWS}; one dot per natural orbital at each active space, coloured and set from the top to the bottom of the row from ${first} to ${last}; axis ${range}. The table gives n<sub>i</sub> in the printed order.`;
+  `n<sub>i</sub>: natural occupations of the S0 SI state (eigenvalues of its active one-particle density), as the output prints them under "Natural occupation numbers and natural orbitals of the active space"; they sum to the number of active electrons. ${ROWS}; one dot per natural orbital at each active space, coloured and set from the top to the bottom of the row from ${first} to ${last}; axis ${range}. The table gives n<sub>i</sub> in the printed order.`;
 ---
 {parts.map((p) => {
   if (p === 'defs') return <ZethDefs glossary />;

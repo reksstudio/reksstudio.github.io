@@ -173,13 +173,13 @@ The state summary lists the printed roots of all manifolds by energy (labels: §
 
 @@fragment first-hx-summary@@
 
-| State | Main configurations | Content | ΔE / eV | QUEST TBE / eV |
+| State | Leading configurations | Content | ΔE / eV | QUEST TBE / eV |
 | --- | --- | --- | --- | --- |
 | T1 | `T_PPS3`, `T_PPS9`: c→d | one triplet geminal on (c,d) (§run-sector) | 2.736 | 2.73 (³B<sub>u</sub>) |
-| T2 | `T_PPS5`, `T_PPS11`: b→d | one triplet geminal on (b,d) | 4.048 | 4.36 (³A<sub>g</sub>) |
+| T2 | `T_PPS5`, `T_PPS11`: b→d; `T_PPS6`, `T_PPS15`: c→e | one triplet geminal: on (b,d) 52 %, on (c,e) 41 % | 4.048 | 4.36 (³A<sub>g</sub>) |
 | S1 | `OSS3`, `OSS9`: c→d | open-shell singlet on (c,d); f<sub>len</sub> 1.54 | 5.354 | 5.37 (¹B<sub>u</sub>) |
-| S2 | `DES3`: c,c→d,d | both electrons of c in d; f<sub>len</sub> 0 | 5.593 | 5.62 (¹A<sub>g</sub>, not safe) |
-| Q1 | `TT_PPS1`, `TT_PPS4`: b→e, c→d | two triplet geminals coupled to S = 2 | 7.903 | – |
+| S2 | `DES3`, `DES9`: c,c→d,d; `OSS11`: b→d | both electrons of c in d (35 %), open-shell b→d (12.5 %); f<sub>len</sub> 0 | 5.593 | 5.62 (¹A<sub>g</sub>, not safe) |
+| Q1 | `TT_PPS1`: b→e, c→d; `TT_PPS4`: b→d, c→e | two triplet geminals coupled to S = 2 | 7.903 | – |
 | Sp1 | `TTT_SPS_0`: a→f, b→e, c→d | the single 2S = 6 configuration, all three pairs triplet | 15.683 | – |
 
 λ and f<sub>len</sub> are printed only for the multiplicity of S0. QUEST TBE: aug-cc-pVTZ, QUESTDB Table 2 (§veril2021-questdb); QUEST lists excited states only: its ¹A<sub>g</sub> is the lowest excited ¹A<sub>g</sub> (2¹A<sub>g</sub> counting S0). Irreps from the inversion parity of the REKS active orbitals: a, c a<sub>u</sub>; b, d b<sub>g</sub>; c→d B<sub>u</sub>, b→d A<sub>g</sub>, c,c→d,d A<sub>g</sub>.
@@ -188,7 +188,7 @@ The state summary lists the printed roots of all manifolds by energy (labels: §
 
 @@fragment first-hx-spin@@
 
-J is a coupling constant only for two states with the same open-shell orbitals; T1 (c,d) and Q1 (b,e)(c,d) differ.
+J is a coupling constant only for two states with the same open-shell orbitals; T1 (c,d) and Q1 (b,e)(c,d) + (b,d)(c,e) differ.
 
 A configuration added to the SA ensemble enters the orbital optimization. `T_PPS3`, the main configuration of T1, on 2S = 2, the rest of the input unchanged:
 

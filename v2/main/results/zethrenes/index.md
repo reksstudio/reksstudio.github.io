@@ -14,7 +14,7 @@ Reference class: trend without reference
 
 7 compounds · 20 geometries · 98 calculations · up to 70 atoms, 1716 basis functions · SI up to 29 082 configurations (2S = 0)
 
-[Definitions](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#definitions) · [Compounds](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#compounds) · [Spin gaps along the active-space ladder](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#ladder) · [Natural occupations of S0 along the ladder](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#occupations) · [vs experiment](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#experiment) · [Setup and reference](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#setup)
+[Definitions](#definitions) · [Compounds](#compounds) · [Spin gaps along the active-space ladder](#ladder) · [Natural occupations of S0 along the ladder](#occupations) · [vs experiment](#experiment) · [Setup and reference](#setup)
 
 ## Definitions
 
@@ -167,7 +167,7 @@ n_i of S0 of HZ, HZD, FP, PIF, every geometry, (2,2) to (10,10); values in the t
 
 n_i of S0 of IFD, PF, IF, every geometry, (2,2) to (10,10); values in the table below
 
-n<sub>i</sub>: natural occupations of the S0 SI state (eigenvalues of its active one-particle density), as the output prints them under "Natural orbitals of the active space"; they sum to the number of active electrons. One row per compound and geometry, the carbon skeleton under the compound name (one scale for all seven); one dot per natural orbital at each active space, coloured and set from the top to the bottom of the row from (2,2) to (10,10); axis 0.0 to 2.0. The table gives n<sub>i</sub> in the printed order.
+n<sub>i</sub>: natural occupations of the S0 SI state (eigenvalues of its active one-particle density), as the output prints them under "Natural occupation numbers and natural orbitals of the active space"; they sum to the number of active electrons. One row per compound and geometry, the carbon skeleton under the compound name (one scale for all seven); one dot per natural orbital at each active space, coloured and set from the top to the bottom of the row from (2,2) to (10,10); axis 0.0 to 2.0. The table gives n<sub>i</sub> in the printed order.
 
 Table: natural occupations of S0 per active space
 

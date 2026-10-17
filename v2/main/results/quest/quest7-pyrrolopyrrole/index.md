@@ -10,7 +10,7 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 QUEST7: SSR vertical excitation energies of every active space against the TBE; BH\&HLYP / M08-SO / ωB97X; aug-cc-pVTZ.
 
-[T1](https://reksstudio.github.io/v2/main/results/quest/quest7-pyrrolopyrrole/index.md#t1) · [Orbitals](https://reksstudio.github.io/v2/main/results/quest/quest7-pyrrolopyrrole/index.md#orbitals)
+[T1](#t1) · [Orbitals](#orbitals)
 
 ![pyrrolopyrrole: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/quest/mol/quest7_pyrrolopyrrole.svg)
 

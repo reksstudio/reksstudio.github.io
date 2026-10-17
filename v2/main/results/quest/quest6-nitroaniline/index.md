@@ -10,7 +10,7 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 QUEST6: SSR vertical excitation energies of every active space against the TBE; BH\&HLYP / M08-SO / ωB97X; aug-cc-pVTZ.
 
-[S1](https://reksstudio.github.io/v2/main/results/quest/quest6-nitroaniline/index.md#s1) · [Orbitals](https://reksstudio.github.io/v2/main/results/quest/quest6-nitroaniline/index.md#orbitals)
+[S1](#s1) · [Orbitals](#orbitals)
 
 ![nitroaniline: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/quest/mol/quest6_nitroaniline.svg)
 

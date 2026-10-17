@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/concepts/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -88,7 +88,7 @@ $$
 E^X = \sum_L C_L^X(\{n\})\,E_L, \qquad \sum_L C_L^X = S_{XX},
 $$
 
-the FON normalizes the configuration to 1 for two-orbital geminals, and possibly below 1 for a configuration with wider geminals ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)).
+the FON normalizes the configuration to 1 for two-orbital geminals, and possibly below 1 for a configuration with wider geminals ([SI Hamiltonian and overlap](#si-hamiltonian)).
 
 ### Coupling Δ and factor f {#coupling}
 
@@ -156,7 +156,7 @@ $$
 
 ### SI cassette {#si-cassette}
 
-A cassette is a set of configurations of one manifold over which the SI Hamiltonian and overlap are built and diagonalized after the SCF, in the converged SA orbitals. It is chosen independently of the SA pool. A run may hold several cassettes, each its own eigenproblem ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)). The label `kSI-lSA-REKS(N,M)` denotes $k$ SI configurations in the orbitals of an SA ensemble of $l$ configurations ([`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)).
+A cassette is a set of configurations of one manifold over which the SI Hamiltonian and overlap are built and diagonalized after the SCF, in the converged SA orbitals. It is chosen independently of the SA pool. A run may hold several cassettes, each its own eigenproblem ([SI eigensolver](#si-solver)). The label `kSI-lSA-REKS(N,M)` denotes $k$ SI configurations in the orbitals of an SA ensemble of $l$ configurations ([`SI_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)).
 
 ### SI-only FONs {#si-only-fons}
 
@@ -213,7 +213,7 @@ In the basis left after the null modes (dimension $r$), each cassette solves the
 | Solver | Roots | Memory |
 | - | - | - |
 | `DIRECT` | every root, LAPACK on the dense matrix | $n^2$ |
-| `DAVIDSON` | the lowest $k$ roots, block Davidson on the sparse $\mathbf H$ | no dense $\mathbf H$; up to $\max(200, 8k)$ vectors of length $r$ ($r^2$ when the whole space is solved) |
+| `DAVIDSON` | the lowest $k$ roots, block Davidson on the sparse $\mathbf H$ | no dense $\mathbf H$; $\mathcal O\big((m + k)\,r\big)$ for the basis, its products and the work vectors, plus dense matrices of order $p$ ($m$, $p$ below); several $r \times r$ arrays when the whole space is solved |
 | `AUTO` (default) | `DIRECT` for $n \le 4000$, `DAVIDSON` above | |
 
 The catalogs shipped with Psi4 end at REKS(6,6) (161 singlet configurations), so `AUTO` runs `DIRECT` on them; a cassette above 4000 configurations, from a catalog in `PSI4_REKS_CATALOG` ([§6](https://reksstudio.github.io/v2/manual/setup/index.md#catalog)), runs `DAVIDSON`. Davidson computes
@@ -222,13 +222,26 @@ $$
 k = \min\big(r,\ n_{\mathrm{req}} + \max(4, \lceil n_{\mathrm{req}}/4 \rceil)\big), \qquad n_{\mathrm{req}} = \min\big(r,\ \max(1,\ n_{\mathrm{store}},\ n_{\mathrm{print}},\ 1 + r_{\max})\big),
 $$
 
-$n_{\mathrm{store}}$, $n_{\mathrm{print}}$ the counts of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`, $r_{\max}$ the highest root named in `SI_REKS_GRAD`, `SI_REKS_NAC` or `SI_REKS_PROPERTY_FOR`; a count of `-1` stands for the 50 lowest roots. The search space holds up to $\min\big(r, \max(40, 6k)\big)$ vectors; when that reaches $r$, the whole space is solved and every root returned. Each root converges to
+$n_{\mathrm{store}}$, $n_{\mathrm{print}}$ the counts of `SI_REKS_STORE_STATES` and `SI_REKS_PRINT_STATES`, $r_{\max}$ the highest root named in `SI_REKS_GRAD`, `SI_REKS_NAC` or `SI_REKS_PROPERTY_FOR`; a count of `-1` stands for the 50 lowest roots. The search space holds up to
+
+$$
+m = \min\big(r,\ \max(40,\ 16k)\big)
+$$
+
+vectors; when $m = r$, the whole space is solved and every root returned. Otherwise, with $\mathbf A = \boldsymbol\Lambda + \mathbf X'^{\mathsf T}\mathbf H_{\times}\mathbf X'$ ($\boldsymbol\Lambda$ the eigenvalues of the diagonal blocks of $\mathbf A$, one per block of $\mathbf S$; $\mathbf H_\times$ the couplings between blocks), the $p = \min\big(r, \max(8k, 1000)\big)$ columns of lowest $\Lambda$ form the P space:
+
+* start: the $k$ lowest eigenvectors of $\mathbf A_{PP}$ (more to complete a cluster within `REKS_GRAD_DEGEN_TOL`) and one random vector;
+* preconditioner: $(\theta - \mathbf A_{PP})^{-1}$ on P, $(\theta - \Lambda_q)^{-1}$ outside it;
+* correction: up to two GMRES steps of the Jacobi–Davidson equation on an operator that keeps at most 2 % of the cross-block couplings (the largest $|H_{ij}|$), its P block equal to $\mathbf A_{PP}$; without kept couplings, the preconditioned residual;
+* collapse: about $\max(k, \lfloor 2m/5 \rfloor)$ Ritz vectors plus the previous Ritz vectors of the unconverged roots.
+
+Residuals, θ and the final check use the exact $\mathbf A$. Each root converges to
 
 $$
 \lVert(\mathbf A - \theta)\,\mathbf x\rVert_2 \le \tau, \qquad \tau = \texttt{SI\_REKS\_DAVIDSON\_R\_CONVERGENCE} = 10^{-12}\ E_{\mathrm h};
 $$
 
-a root whose residual stalls at the rounding level of its product is accepted there, and that level is printed. When the last computed root lies within `REKS_GRAD_DEGEN_TOL` of the last requested one, $k$ grows by the margin and the iteration continues. Roots above $k$ are not computed: `SSR ENERGIES K=e` holds the $k$ roots ($r$ when the whole space is solved). Hexatriene REKS(6,6), singlet and triplet cassettes: the printed roots of `DAVIDSON` differ from those of `DIRECT` by at most $1\times10^{-12}\ E_{\mathrm h}$. Output: [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson).
+a root whose residual stalls at the rounding level of its product is accepted there, and that level is printed. When the last computed root lies within `REKS_GRAD_DEGEN_TOL` of the last requested one, $k$ grows by the margin and the iteration continues. Roots above $k$ are not computed: `SSR ENERGIES K=e` holds the $k$ roots ($r$ when the whole space is solved). Hexatriene REKS(6,6), singlet and triplet cassettes (r = 115, 117): with the default counts $m = r$; with 3 stored and printed states $k = 7$, $m = 112$, $p = r$, and one iteration converges. In both cases the printed roots of `DAVIDSON` differ from those of `DIRECT` by at most one unit of the twelfth decimal. Output: [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson).
 
 ### Coupling damping below 100 % exact exchange {#coupling-damping}
 
@@ -248,7 +261,7 @@ $$
 \mathbf{H}\mathbf{c}_k = E_k\,\mathbf{S}\mathbf{c}_k.
 $$
 
-Roots are 0-based and sorted by energy; they are labeled `S0`, `S1`, … for $2S$ zero and `T1`, `Q1`, … (counted from 1) for positive $2S$ ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Physical roots exclude the overlap null modes and ghost roots more than 100 $E_{\mathrm{h}}$ above the lowest root ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)); `SSR ENERGIES K=e` holds every physical root of cassette e, on the Davidson path its computed roots ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver), [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)).
+Roots are 0-based and sorted by energy; they are labeled `S0`, `S1`, … for $2S$ zero and `T1`, `Q1`, … (counted from 1) for positive $2S$ ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Physical roots exclude the overlap null modes and ghost roots more than 100 $E_{\mathrm{h}}$ above the lowest root ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)); `SSR ENERGIES K=e` holds every physical root of cassette e, on the Davidson path its computed roots ([SI eigensolver](#si-solver), [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)).
 
 ### Chirgwin–Coulson weights {#cc-weights}
 

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/reference/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -249,13 +249,13 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 
 ## Index {#index}
 
-[A](https://reksstudio.github.io/v2/manual/reference/index.md#index-a)[B](https://reksstudio.github.io/v2/manual/reference/index.md#index-b)[C](https://reksstudio.github.io/v2/manual/reference/index.md#index-c)[D](https://reksstudio.github.io/v2/manual/reference/index.md#index-d)[E](https://reksstudio.github.io/v2/manual/reference/index.md#index-e)[F](https://reksstudio.github.io/v2/manual/reference/index.md#index-f)[G](https://reksstudio.github.io/v2/manual/reference/index.md#index-g)[H](https://reksstudio.github.io/v2/manual/reference/index.md#index-h)[I](https://reksstudio.github.io/v2/manual/reference/index.md#index-i)[L](https://reksstudio.github.io/v2/manual/reference/index.md#index-l)[M](https://reksstudio.github.io/v2/manual/reference/index.md#index-m)[N](https://reksstudio.github.io/v2/manual/reference/index.md#index-n)[O](https://reksstudio.github.io/v2/manual/reference/index.md#index-o)[P](https://reksstudio.github.io/v2/manual/reference/index.md#index-p)[Q](https://reksstudio.github.io/v2/manual/reference/index.md#index-q)[R](https://reksstudio.github.io/v2/manual/reference/index.md#index-r)[S](https://reksstudio.github.io/v2/manual/reference/index.md#index-s)[T](https://reksstudio.github.io/v2/manual/reference/index.md#index-t)[U](https://reksstudio.github.io/v2/manual/reference/index.md#index-u)[V](https://reksstudio.github.io/v2/manual/reference/index.md#index-v)[W](https://reksstudio.github.io/v2/manual/reference/index.md#index-w)
+[A](#index-a)[B](#index-b)[C](#index-c)[D](#index-d)[E](#index-e)[F](#index-f)[G](#index-g)[H](#index-h)[I](#index-i)[L](#index-l)[M](#index-m)[N](#index-n)[O](#index-o)[P](#index-p)[Q](#index-q)[R](#index-r)[S](#index-s)[T](#index-t)[U](#index-u)[V](#index-v)[W](#index-w)
 
 ### A {#index-a}
 
 * [Active one-particle density matrices](https://reksstudio.github.io/v2/manual/properties/index.md#active-rdm)
 * [Active orbitals localize on one fragment](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-localized)
-* Active space [Input](https://reksstudio.github.io/v2/manual/setup/index.md#active-space)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#active-space)
+* Active space [Input](https://reksstudio.github.io/v2/manual/setup/index.md#active-space)[Reference](#active-space)
 * [Active Space and Catalog](https://reksstudio.github.io/v2/manual/setup/index.md#catalog)
 * [Active space fails to load](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-catalog)
 * [Active space, core, virtual](https://reksstudio.github.io/v2/manual/concepts/index.md#active-core-virtual)
@@ -263,14 +263,15 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`Adiabatic states`](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)
 * [`Alternative configuration lists`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)
 * [`Atomic charges (relaxed density matrix P^r)`](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties)
-* [`Atomic charges (unrelaxed state density matrix)`](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges)
+* [`Atomic charges (unrelaxed state density matrix) [MULLIKEN_CHARGES, LOWDIN_CHARGES]`](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges)
 * [Atomic charges of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-charges)
+* [`Atomic spin populations (unrelaxed state spin density, M_S = S) [MULLIKEN_SPINS, LOWDIN_SPINS]`](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-spins)
 * [Atomic spin populations of the states (2S > 0)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-spins)
 
 ### B {#index-b}
 
 * [Bond and lone pair: REKS(4,5), REKS(4,6)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-two-pairs)
-* [`Bond indices (unrelaxed state density matrix)`](https://reksstudio.github.io/v2/manual/properties/index.md#bond-indices)
+* [`Bond indices (unrelaxed state density matrix) [MAYER_INDICES, WIBERG_LOWDIN_INDICES]`](https://reksstudio.github.io/v2/manual/properties/index.md#bond-indices)
 * [Bond indices of the relaxed density](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-bond-indices)
 * [Bond indices of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#bond-indices)
 * [Bulk Tokens and Pattern Syntax](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)
@@ -279,7 +280,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 
 * [Cartesian multipole moments of order l ≥ 3](https://reksstudio.github.io/v2/manual/properties/index.md#multipoles)
 * [Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)
-* [Catalog](https://reksstudio.github.io/v2/manual/reference/index.md#catalog)
+* [Catalog](#catalog)
 * [Check the optimization](https://reksstudio.github.io/v2/manual/dynamics/index.md#check-optimization)
 * Check the solution [First Calculation](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)[Wide Geminals](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-check)
 * [Check the trajectory](https://reksstudio.github.io/v2/manual/dynamics/index.md#check-trajectory)
@@ -289,7 +290,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [Configuration and its energy](https://reksstudio.github.io/v2/manual/concepts/index.md#configuration-energy)
 * [`Conical-intersection (CI) topography S1/S2`](https://reksstudio.github.io/v2/manual/properties/index.md#ci-topography)
 * [Conical-intersection topography](https://reksstudio.github.io/v2/manual/properties/index.md#ci-topography)
-* [Convergence engines](https://reksstudio.github.io/v2/manual/reference/index.md#convergence-engines)
+* [Convergence engines](#convergence-engines)
 * [`Coupled-perturbed REKS (CP-REKS, Z-vector) solver`](https://reksstudio.github.io/v2/options/REKS_CPREKS_CONV.md)
 * [Coupling damping below 100 % exact exchange](https://reksstudio.github.io/v2/manual/concepts/index.md#coupling-damping)
 * [Coupling Δ and factor f](https://reksstudio.github.io/v2/manual/concepts/index.md#coupling)
@@ -303,7 +304,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`DFT XC ENERGY`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy)
 * [Diagnose](https://reksstudio.github.io/v2/manual/diagnose/index.md#diagnose)
 * [`Dipole moment (relaxed density matrix P^r)`](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties)
-* [`Dipole moment (unrelaxed state density matrix)`](https://reksstudio.github.io/v2/manual/properties/index.md#permanent-dipole)
+* [`Dipole moment (unrelaxed state density matrix) [DIPOLE]`](https://reksstudio.github.io/v2/manual/properties/index.md#permanent-dipole)
 
 ### E {#index-e}
 
@@ -311,7 +312,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [EKT ionization energies, pole strengths and Dyson orbitals of SI states](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-states)
 * [`Energetics`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy)
 * [Ensemble Kohn–Sham reference and FONs](https://reksstudio.github.io/v2/manual/concepts/index.md#ensemble-fons)
-* [`Exciton descriptors`](https://reksstudio.github.io/v2/manual/properties/index.md#exciton)
+* [`Exciton descriptors [EXCITON]`](https://reksstudio.github.io/v2/manual/properties/index.md#exciton)
 * [Exciton descriptors, hole and electron populations, natural difference orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#exciton)
 * [Expert stabilizers](https://reksstudio.github.io/v2/manual/run-control/index.md#expert-stabilizers)
 * [Explicit SA pool and SI cassettes](https://reksstudio.github.io/v2/manual/index.md#explicit-input)
@@ -320,25 +321,25 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 
 * [Files](https://reksstudio.github.io/v2/manual/properties/index.md#files)
 * [First Calculation](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-calculation)
-* FON micro-solver [Run control](https://reksstudio.github.io/v2/manual/run-control/index.md#fon-micro)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#fon-micro-solver)
+* FON micro-solver [Run control](https://reksstudio.github.io/v2/manual/run-control/index.md#fon-micro)[Reference](#fon-micro-solver)
 * [`FON optimization after the SCF`](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)
 * [FON pinned at a bound, symmetry-broken charges](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-fon-pinned)
 * [FON set and generation](https://reksstudio.github.io/v2/manual/concepts/index.md#fon-generation)
 * [FON sets](https://reksstudio.github.io/v2/manual/setup/index.md#fon-sets)
-* [FONs](https://reksstudio.github.io/v2/manual/reference/index.md#fons)
+* [FONs](#fons)
 * [FONs of a geminal invert](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-fon-inverted)
 * [FONs of the SI-only geminals](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)
 * [Fractional Occupation Numbers (FONs)](https://reksstudio.github.io/v2/manual/run-control/index.md#fons)
 * [Fractional occupation numbers of the SA-REKS ensemble](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons)
 * [Fragment charge-transfer descriptors](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct)
 * [Fragment couplings (FCD, FED, FSD)](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-couplings)
-* [`Fragment couplings F1 - F2`](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-couplings)
-* [`Fragments: charge-transfer descriptors`](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct)
-* [`Fragments: hole and electron populations`](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct)
+* [`Fragment diabatic couplings F1 - F2 [FRAGMENT_COUPLINGS]`](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-couplings)
+* [`Fragments: charge-transfer descriptors [EXCITON]`](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct)
+* [`Fragments: hole and electron populations [EXCITON]`](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct)
 
 ### G {#index-g}
 
-* Geminal Delocalization [Run control](https://reksstudio.github.io/v2/manual/run-control/index.md#geminal-deloc)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#geminal-delocalization)
+* Geminal Delocalization [Run control](https://reksstudio.github.io/v2/manual/run-control/index.md#geminal-deloc)[Reference](#geminal-delocalization)
 * [Geminal of width w](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-pps)
 * [Geminals](https://reksstudio.github.io/v2/manual/concepts/index.md#geminals)
 * [Geometry optimization](https://reksstudio.github.io/v2/manual/dynamics/index.md#geometry-optimization)
@@ -346,33 +347,32 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`Gradient of S1`](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient)
 * [`Gradient request`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md)
 * [Gradients](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-gradients)
-* Gradients and couplings [Input](https://reksstudio.github.io/v2/manual/setup/index.md#gradients-couplings)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#gradients-and-couplings)
+* Gradients and couplings [Input](https://reksstudio.github.io/v2/manual/setup/index.md#gradients-couplings)[Reference](#gradients-and-couplings)
 * [Gradients and couplings against finite differences](https://reksstudio.github.io/v2/manual/dynamics/index.md#grad-fd)
 * [Gradients, NAC, conical intersections](https://reksstudio.github.io/v2/manual/properties/index.md#gradients-nac-conical-intersections)
-* [Guess](https://reksstudio.github.io/v2/manual/reference/index.md#guess)
+* [Guess](#guess)
 * [`GUESS_ACTIVE_WINDOW`](https://reksstudio.github.io/v2/options/GUESS_ACTIVE_WINDOW.md)
 * [Guesses and Restarts](https://reksstudio.github.io/v2/manual/run-control/index.md#guesses)
-* [GVB-DIIS conditioning chain (expert)](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
+* [GVB-DIIS conditioning chain (expert)](#gvb-diis-conditioning-chain-expert)
 * [GVB-DIIS convergence quality](https://reksstudio.github.io/v2/manual/properties/index.md#convergence-quality)
-* [GVB-DIIS monitors / verdicts (expert)](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
+* [GVB-DIIS monitors / verdicts (expert)](#gvb-diis-monitors-verdicts-expert)
 
 ### H {#index-h}
 
-* [`Hamiltonian`](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices)
 * [Higher spin states](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-spin)
-* [`Hole and electron populations`](https://reksstudio.github.io/v2/manual/properties/index.md#exciton)
+* [`Hole and electron populations [EXCITON]`](https://reksstudio.github.io/v2/manual/properties/index.md#exciton)
 
 ### I {#index-i}
 
 * [If the SCF does not converge](https://reksstudio.github.io/v2/manual/first-calculation/index.md#no-convergence)
 * [Input patterns](https://reksstudio.github.io/v2/manual/setup/index.md#input-patterns)
 * [Inspect the orbitals](https://reksstudio.github.io/v2/manual/first-calculation/index.md#inspect-orbitals)
-* [`Ionization energies (EKT) and Dyson orbitals`](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-states)
+* [`Ionization energies (EKT) and Dyson orbitals [REKS_EKT]`](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-states)
 * [`Iterations`](https://reksstudio.github.io/v2/manual/run-control/index.md#engines)
 
 ### L {#index-l}
 
-* Level shift [Run control](https://reksstudio.github.io/v2/manual/run-control/index.md#level-shift)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#level-shift)
+* Level shift [Run control](https://reksstudio.github.io/v2/manual/run-control/index.md#level-shift)[Reference](#level-shift)
 * [`LEVEL_SHIFT_ADAPT`](https://reksstudio.github.io/v2/options/LEVEL_SHIFT_ADAPT.md)
 * [Lone pair: REKS(2,3)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-lone-pair)
 
@@ -381,16 +381,15 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [Magnetic transition moments and rotatory strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-magnetic)
 * [Microstate](https://reksstudio.github.io/v2/manual/concepts/index.md#microstate)
 * [Minimal input](https://reksstudio.github.io/v2/manual/index.md#minimal-input)
-* [`Multipole moments of order 3 (unrelaxed state density matrix)`](https://reksstudio.github.io/v2/manual/properties/index.md#multipoles)
 
 ### N {#index-n}
 
 * [`NAC S1/S2`](https://reksstudio.github.io/v2/manual/properties/index.md#nac)
 * [Naming convention](https://reksstudio.github.io/v2/manual/setup/index.md#naming-convention)
+* [`Natural occupation numbers and natural orbitals of the active space [NO_OCCUPATIONS]`](https://reksstudio.github.io/v2/manual/properties/index.md#natural-orbitals)
 * [Natural orbitals and occupations of the active space](https://reksstudio.github.io/v2/manual/properties/index.md#natural-orbitals)
-* [`Natural orbitals of the active space`](https://reksstudio.github.io/v2/manual/properties/index.md#natural-orbitals)
 * [Natural transition orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#nto)
-* [`Natural transition orbitals (NTO)`](https://reksstudio.github.io/v2/manual/properties/index.md#nto)
+* [`Natural transition orbitals (NTO): weights and participation ratios [NTO]`](https://reksstudio.github.io/v2/manual/properties/index.md#nto)
 * [Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac)
 * [Nuclear gradient of the SA-REKS ensemble](https://reksstudio.github.io/v2/manual/properties/index.md#sa-gradient)
 * [Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient)
@@ -401,7 +400,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [One gradient() call](https://reksstudio.github.io/v2/manual/dynamics/index.md#one-gradient)
 * [`ONE-ELECTRON ENERGY`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy)
 * [Optimization and Dynamics](https://reksstudio.github.io/v2/manual/dynamics/index.md#opt-dynamics)
-* [Option Table](https://reksstudio.github.io/v2/manual/reference/index.md#option-table)
+* [Option Table](#option-table)
 * [Orbitals of the SI step](https://reksstudio.github.io/v2/manual/properties/index.md#si-orbitals)
 * [Orbitals, orbital energies, SCF convergence](https://reksstudio.github.io/v2/manual/concepts/index.md#orbitals-scf)
 * [Output](https://reksstudio.github.io/v2/manual/setup/index.md#output)
@@ -421,15 +420,16 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 ### Q {#index-q}
 
 * [`Quadrupole moment (relaxed density matrix P^r)`](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties)
-* [`Quadrupole moment (unrelaxed state density matrix)`](https://reksstudio.github.io/v2/manual/properties/index.md#quadrupole)
+* [`Quadrupole moment (unrelaxed state density matrix) [QUADRUPOLE]`](https://reksstudio.github.io/v2/manual/properties/index.md#quadrupole)
 * [Quadrupole moments of the states (unrelaxed)](https://reksstudio.github.io/v2/manual/properties/index.md#quadrupole)
 * [Quasi-degenerate roots](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-quasi-degenerate)
 
 ### R {#index-r}
 
-* [`Radical character`](https://reksstudio.github.io/v2/manual/properties/index.md#radical-character)
+* [Radical character](https://reksstudio.github.io/v2/manual/properties/index.md#radical-character)
+* [`Radical character [RADICAL]`](https://reksstudio.github.io/v2/manual/properties/index.md#radical-character)
 * [Reading the Output](https://reksstudio.github.io/v2/manual/properties/index.md#reading-output)
-* [References](https://reksstudio.github.io/v2/manual/reference/index.md#references)
+* [References](#references)
 * [`REKS`](https://reksstudio.github.io/v2/options/REKS.md)
 * [`REKS <L>_FON`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons)
 * [`REKS <L>_FON K=<e>`](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)
@@ -475,28 +475,28 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`REKS_CPREKS_MAXITER`](https://reksstudio.github.io/v2/options/REKS_CPREKS_MAXITER.md)
 * [`REKS_DIIS_ACTIVATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_ACTIVATION.md)
 * [`REKS_DIIS_CFM_ACTIVATION_GORB`](https://reksstudio.github.io/v2/options/REKS_DIIS_CFM_ACTIVATION_GORB.md)
-* [`REKS_DIIS_COND_ANGLE_CUTOFF`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
-* [`REKS_DIIS_COND_ANGLE_FILTER`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
-* [`REKS_DIIS_COND_COEFF_NORM_MAX`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
-* [`REKS_DIIS_COND_KAPPA_BYPASS`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
-* [`REKS_DIIS_COND_STALE_DELTA`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
-* [`REKS_DIIS_COND_SVD_RCOND`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
-* [`REKS_DIIS_COND_TIKHONOV`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
-* [`REKS_DIIS_COND_TIKHONOV_SCALE`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-conditioning-chain-expert)
-* [`REKS_DIIS_FON_BRANCH_CUTOFF`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_COND_ANGLE_CUTOFF`](#gvb-diis-conditioning-chain-expert)
+* [`REKS_DIIS_COND_ANGLE_FILTER`](#gvb-diis-conditioning-chain-expert)
+* [`REKS_DIIS_COND_COEFF_NORM_MAX`](#gvb-diis-conditioning-chain-expert)
+* [`REKS_DIIS_COND_KAPPA_BYPASS`](#gvb-diis-conditioning-chain-expert)
+* [`REKS_DIIS_COND_STALE_DELTA`](#gvb-diis-conditioning-chain-expert)
+* [`REKS_DIIS_COND_SVD_RCOND`](#gvb-diis-conditioning-chain-expert)
+* [`REKS_DIIS_COND_TIKHONOV`](#gvb-diis-conditioning-chain-expert)
+* [`REKS_DIIS_COND_TIKHONOV_SCALE`](#gvb-diis-conditioning-chain-expert)
+* [`REKS_DIIS_FON_BRANCH_CUTOFF`](#gvb-diis-monitors-verdicts-expert)
 * [`REKS_DIIS_FORMULATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_FORMULATION.md)
-* [`REKS_DIIS_GUARD_LANDING_TOLERANCE`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_GUARD_LATCH_GRACE`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_MON_CYCLE`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_MON_CYCLE_CAP_STREAK`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_MON_CYCLE_WINDOW`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_MON_NONMONOTONE_M`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_MON_PROGRESS_EPS`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_MON_SUPPRESS_WINDOW`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_MON_VERDICT_RHO`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_MON_VERDICT_STREAK`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_ORB_BASE_MAP_DAMP`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
-* [`REKS_DIIS_RESTART_BUDGET`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_GUARD_LANDING_TOLERANCE`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_GUARD_LATCH_GRACE`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_MON_CYCLE`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_MON_CYCLE_CAP_STREAK`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_MON_CYCLE_WINDOW`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_MON_NONMONOTONE_M`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_MON_PROGRESS_EPS`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_MON_SUPPRESS_WINDOW`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_MON_VERDICT_RHO`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_MON_VERDICT_STREAK`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_ORB_BASE_MAP_DAMP`](#gvb-diis-monitors-verdicts-expert)
+* [`REKS_DIIS_RESTART_BUDGET`](#gvb-diis-monitors-verdicts-expert)
 * [`REKS_EKT`](https://reksstudio.github.io/v2/options/REKS_EKT.md)
 * [`REKS_EKT_OCC_TOL`](https://reksstudio.github.io/v2/options/REKS_EKT_OCC_TOL.md)
 * [`REKS_FON_INTERP_DELTA`](https://reksstudio.github.io/v2/options/REKS_FON_INTERP_DELTA.md)
@@ -511,7 +511,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`REKS_GRAD_DEGEN_TOL`](https://reksstudio.github.io/v2/options/REKS_GRAD_DEGEN_TOL.md)
 * [`REKS_GVB_DIIS`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS.md)
 * [`REKS_GVB_DIIS_START`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS_START.md)
-* [`REKS_GVB_GATE_STREAK`](https://reksstudio.github.io/v2/manual/reference/index.md#gvb-diis-monitors-verdicts-expert)
+* [`REKS_GVB_GATE_STREAK`](#gvb-diis-monitors-verdicts-expert)
 * [`REKS_GVB_LEVEL_SHIFT`](https://reksstudio.github.io/v2/options/REKS_GVB_LEVEL_SHIFT.md)
 * [`REKS_GVB_ROBUST_VERDICT`](https://reksstudio.github.io/v2/options/REKS_GVB_ROBUST_VERDICT.md)
 * [`REKS_N_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md)
@@ -525,10 +525,10 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`REKS_SI_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md)
 * [`REKS_USE_TRAH`](https://reksstudio.github.io/v2/options/REKS_USE_TRAH.md)
 * [Relaxed dipole, quadrupole and atomic charges](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties)
-* [`Relaxed properties`](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties)
+* [`Relaxed properties [SI_REKS_PROPERTY_FOR]`](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties)
 * [Relaxed properties and EKT](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties-and-ekt)
 * [Report level](https://reksstudio.github.io/v2/manual/properties/index.md#report-level)
-* [Reporting](https://reksstudio.github.io/v2/manual/reference/index.md#reporting)
+* [Reporting](#reporting)
 * [Required and rejected settings](https://reksstudio.github.io/v2/manual/index.md#required-and-rejected-settings)
 * [Requirements](https://reksstudio.github.io/v2/manual/dynamics/index.md#dyn-requirements)
 * [Restart mechanism](https://reksstudio.github.io/v2/manual/run-control/index.md#restart)
@@ -538,7 +538,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 
 ### S {#index-s}
 
-* `SA pool` [Input: SA_REKS_CONFIGS](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md)[Input: SA pool](https://reksstudio.github.io/v2/manual/setup/index.md#sa-pool)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#sa-pool)
+* `SA pool` [Input: SA_REKS_CONFIGS](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md)[Input: SA pool](https://reksstudio.github.io/v2/manual/setup/index.md#sa-pool)[Reference](#sa-pool)
 * [SA Pool and SI Cassettes](https://reksstudio.github.io/v2/manual/setup/index.md#selecting)
 * [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md)
 * [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md)
@@ -558,10 +558,11 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * `SCF TOTAL GRADIENT` [Output and properties: Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient)[Output and properties: Nuclear gradient of the SA-REKS ensemble](https://reksstudio.github.io/v2/manual/properties/index.md#sa-gradient)
 * [Seed orbitals](https://reksstudio.github.io/v2/manual/first-calculation/index.md#seed-orbitals)
 * [SI cassette](https://reksstudio.github.io/v2/manual/concepts/index.md#si-cassette)
-* SI cassettes [Input](https://reksstudio.github.io/v2/manual/setup/index.md#si-cassettes)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#si-cassettes)
+* SI cassettes [Input](https://reksstudio.github.io/v2/manual/setup/index.md#si-cassettes)[Reference](#si-cassettes)
 * [`SI Davidson solver`](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)
 * [SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)
 * SI Hamiltonian and overlap [Output and properties](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices)[Concepts](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)
+* [`SI Hamiltonian: dimension, matrix elements and eigenproblem`](https://reksstudio.github.io/v2/manual/properties/index.md#si-matrices)
 * [`SI pools`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)
 * [SI states](https://reksstudio.github.io/v2/manual/properties/index.md#si-states)
 * [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md)
@@ -581,7 +582,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`SI-SA-REKS analytic gradient: targets`](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient)
 * [Spin energetics](https://reksstudio.github.io/v2/manual/properties/index.md#spin-energetics)
 * [Spin manifold and run sector](https://reksstudio.github.io/v2/manual/concepts/index.md#run-sector)
-* [Spin manifolds](https://reksstudio.github.io/v2/manual/reference/index.md#spin-manifolds)
+* [Spin manifolds](#spin-manifolds)
 * [Spin Manifolds (2S) and Multi-Sector Runs](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)
 * [Spin-polarized configurations](https://reksstudio.github.io/v2/manual/concepts/index.md#sps-configurations)
 * [`Spin-state energetics`](https://reksstudio.github.io/v2/manual/properties/index.md#spin-state-energetics)
@@ -666,12 +667,13 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`SSR WIBERG LOWDIN INDICES K=<e>`](https://reksstudio.github.io/v2/manual/properties/index.md#bond-indices)
 * [Start](https://reksstudio.github.io/v2/manual/index.md#overview)
 * [Start REKS](https://reksstudio.github.io/v2/manual/first-calculation/index.md#start-reks)
-* [`State analysis`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md)
+* [`State analysis [PROPERTIES]`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md)
+* [`State and transition multipole moments of order 3 (unrelaxed state density matrix) [MULTIPOLE(3)]`](https://reksstudio.github.io/v2/manual/properties/index.md#multipoles)
 * [`State interaction`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)
 * [`State interaction: setup over the union of the SI cassettes`](https://reksstudio.github.io/v2/options/SI_REKS_CONFIGS.md)
 * [State labels](https://reksstudio.github.io/v2/manual/setup/index.md#state-labels)
-* State properties [Input](https://reksstudio.github.io/v2/manual/setup/index.md#state-properties)[Reference](https://reksstudio.github.io/v2/manual/reference/index.md#state-properties)
-* [`State summary`](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)
+* State properties [Input](https://reksstudio.github.io/v2/manual/setup/index.md#state-properties)[Reference](#state-properties)
+* [`State summary [SUMMARY]`](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)
 * [States: SI-SA-REKS(2,3)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-states)
 * [Summary](https://reksstudio.github.io/v2/manual/properties/index.md#summary)
 * [`Summary of the energy phase`](https://reksstudio.github.io/v2/manual/properties/index.md#files)
@@ -681,10 +683,12 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 
 * [Tasks](https://reksstudio.github.io/v2/manual/index.md#tasks)
 * [The three engines](https://reksstudio.github.io/v2/manual/run-control/index.md#engines)
-* [`Transition charges`](https://reksstudio.github.io/v2/manual/properties/index.md#transition-charges)
+* [Transition charges](https://reksstudio.github.io/v2/manual/properties/index.md#transition-charges)
+* [`Transition charges [TRANSITION_CHARGES]`](https://reksstudio.github.io/v2/manual/properties/index.md#transition-charges)
 * [Transition dipole moments and length-form oscillator strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-dipole)
-* [`Transition second moments`](https://reksstudio.github.io/v2/manual/properties/index.md#transition-second-moments)
-* [`Transitions`](https://reksstudio.github.io/v2/manual/properties/index.md#transition-dipole)
+* [`Transition dipole moments and oscillator strengths [TRANSITION_DIPOLE]`](https://reksstudio.github.io/v2/manual/properties/index.md#transition-dipole)
+* [Transition second moments](https://reksstudio.github.io/v2/manual/properties/index.md#transition-second-moments)
+* [`Transition second moments [TRANSITION_QUADRUPOLE]`](https://reksstudio.github.io/v2/manual/properties/index.md#transition-second-moments)
 * [`TWO-ELECTRON ENERGY`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy)
 
 ### U {#index-u}
@@ -696,7 +700,7 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 ### V {#index-v}
 
 * [Variable names](https://reksstudio.github.io/v2/manual/properties/index.md#variable-names)
-* [`Velocity and magnetic transition moments`](https://reksstudio.github.io/v2/manual/properties/index.md#transition-velocity)
+* [`Velocity-form and magnetic transition moments, rotatory strengths [E_TDM_VEL, M_TDM]`](https://reksstudio.github.io/v2/manual/properties/index.md#transition-velocity)
 * [Velocity-form transition moments and oscillator strengths](https://reksstudio.github.io/v2/manual/properties/index.md#transition-velocity)
 
 ### W {#index-w}

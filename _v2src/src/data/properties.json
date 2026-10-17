@@ -63,11 +63,11 @@
    "units": "E_{h} (residuals); s (time)",
    "fragments": ["si-davidson"],
    "bullets": [
-    "One block per Davidson cassette, after `FON optimization after the SCF` and before the cassette blocks. Fragment: hexatriene REKS(6,6) with `si_reks_solver` `davidson`, 10 requested roots (stored states) + 4 margin; the cassette's `Hamiltonian` block ends with `Computed states`.",
-    "`Roots`: k (requested + margin) of r, or `k (whole space, n requested)` when the search space reaches r. Mean |R| and Max |R|: residual norms of the roots still above `Convergence`, or of all roots once none remains; `Remain`: their number; `Applications`: cumulative products A·x, one per vector (start columns, corrections, two per root at each verification).",
+    "One block per Davidson cassette, after `FON optimization after the SCF` and before the cassette blocks. Fragment: hexatriene REKS(6,6) with `si_reks_solver` `davidson`, 3 stored and printed states, 3 requested roots + 4 margin; the cassette's `SI Hamiltonian` block ends with `Computed states`.",
+    "`Roots`: k (requested + margin) of r, or `k (whole space, n requested)` when the search space reaches r. Mean |R| and Max |R|: residual norms of the roots still above `Convergence`, or of all roots once none remains; `Remain`: their number; `Applications`: cumulative products A·x up to that row, one per vector (start vectors, corrections; r for the whole space); a verification adds two per root, counted from the next row and in the closing line.",
     "A root stalled at its rounding level adds the line `n root(s) closed at the roundoff floor (max |R| = …, max phi = …)`.",
-    "In the fragment one iteration converges all 14 roots of the 115-dimensional space.",
-    "`REKS_REPORT_LEVEL` ≥ 4 adds a line per subspace collapse, `SI Davidson: n collapses, shift … Eh`, per root E, |r| and φ, the `apply calls` counts and the CSR passes."
+    "In the fragment P is the whole space, the 7 start vectors are exact, and one iteration converges (8 start + 2 × 7 verification products). With the default 10 stored states the input gives `Roots 115 (whole space, 10 requested)`.",
+    "`REKS_REPORT_LEVEL` ≥ 4 adds a line per subspace collapse, `SI Davidson: n collapses, shift … Eh`, `P space: m = … columns; rows read: … configurations` (the p of §si-solver; not for the whole space), per root E, |r| and φ, the `apply calls` counts and the CSR passes."
    ]
   },
   {
@@ -83,7 +83,7 @@
     "The four bookkeeping scalars never take the sector prefix.",
     "`Adiabatic states` lists `SI_REKS_PRINT_STATES` rows; in later cassettes a `ref` row repeats the lowest state of the first cassette in the order of §cassette-order (H₂ with `si_reks_2spin` `[2, 0]`: `ref … T1 of cassette 1`).",
     "`State summary`, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.",
-    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.03–0.51 E_{h} below E_{SA}; an E(S0) far below this range marks ghost roots (§diag-ghost-states)."
+    "Check E(S0) against `@REKS Final Energy` (`E[SA-REKS]`) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies at most 0.51 E_{h} below E_{SA}; an E(S0) far below that marks ghost roots (§diag-ghost-states)."
    ]
   },
   {
@@ -200,7 +200,7 @@
    "variables": "`SSR RADICAL INDICES K=<e>` (columns [y0, y1, N_D, N_U, N_U,nl]), `SSR UNPAIRED ATOMIC POPULATIONS K=<e>`",
    "bullets": [
     "Unpaired atomic populations are stored, not printed.",
-    "y_{0}, y_{1} equal the corresponding occupations in `Natural orbitals` (§natural-orbitals); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1.",
+    "y_{0}, y_{1} equal the corresponding occupations in `Natural occupation numbers and natural orbitals` (§natural-orbitals); they are not Yamaguchi's spin-projected index. `-` is printed when the active space has no LUNO or LUNO+1.",
     "2S > 0: the spin-unpaired electrons are counted as well, N_{D} ≥ N_{U} ≥ 2S; a LUNO opened by the spin gives y ≈ 1."
    ],
    "ref": "N_{D}: §takatsuka1978-odd-electrons; N_{U} (linear) and N_{U,nl} (nonlinear): §head-gordon2003-unpaired."
@@ -358,21 +358,21 @@
   {
    "id": "fragment-ct", "stage": "unrelaxed",
    "name": "Fragment charge-transfer descriptors",
-   "brief": "Charge moved between fragments, TheoDORE CT number (h/e split), participation ratios PR_{i}, PR_{f}, PR_{F}, DEL, localization POS, and Löwdin hole and electron populations per fragment.",
+   "brief": "Charge moved between fragments, TheoDORE CT number, participation ratios PR_{h}, PR_{e}, PR, DEL, localization POS, and Löwdin hole and electron populations per fragment.",
    "on": "`SI_REKS_ANALYSIS` `EXCITON`", "default": "on",
    "for": "a molecule of at least 2 fragments (`--` separators), no ghost fragments or atoms; pairs I < J",
    "units": "q_{moved}, ΔN_{F} in e; other columns dimensionless",
    "formulas": [
     "\\tilde\\Omega_{FG} = \\Omega_{FG}/\\Omega, \\qquad r_F = \\sum_G \\tilde\\Omega_{FG}, \\qquad c_F = \\sum_G \\tilde\\Omega_{GF}, \\qquad \\mathrm{CT} = \\sum_{F\\ne G}\\tilde\\Omega_{FG}",
-    "\\mathrm{PR}_i = \\Big(\\sum_F r_F^2\\Big)^{-1}, \\qquad \\mathrm{PR}_f = \\Big(\\sum_F c_F^2\\Big)^{-1}, \\qquad \\mathrm{PR} = \\tfrac12(\\mathrm{PR}_i + \\mathrm{PR}_f)",
+    "\\mathrm{PR}_h = \\Big(\\sum_F r_F^2\\Big)^{-1}, \\qquad \\mathrm{PR}_e = \\Big(\\sum_F c_F^2\\Big)^{-1}, \\qquad \\mathrm{PR} = \\tfrac12(\\mathrm{PR}_h + \\mathrm{PR}_e)",
     "\\mathrm{DEL} = \\Big(\\sum_F \\big[\\tfrac12(r_F + c_F)\\big]^2\\Big)^{-1}, \\qquad \\mathrm{POS} = \\sum_F F\\,\\tfrac12(r_F + c_F)",
     "\\Delta N_F = N^{\\mathrm L}_F(J) - N^{\\mathrm L}_F(I), \\qquad q_{\\mathrm{moved}} = \\sum_F \\max(0, \\Delta N_F)"
    ],
    "fragments": ["fragment-ct", "fragment-hole-electron"],
-   "variables": "`SSR CT FRAGMENT DESCRIPTORS K=<e>` (columns [CT, PRi, PRf, PR, DEL, POS]), `SSR CT FRAGMENT HOLE POPULATIONS K=<e>`, `SSR CT FRAGMENT PARTICLE POPULATIONS K=<e>`",
+   "variables": "`SSR CT FRAGMENT DESCRIPTORS K=<e>` (columns [CT, PR_h, PR_e, PR, DEL, POS]), `SSR CT FRAGMENT HOLE POPULATIONS K=<e>`, `SSR CT FRAGMENT PARTICLE POPULATIONS K=<e>`",
    "bullets": [
-    "q_{moved} and Net ΔN_{F} are printed, not stored; stored column CT is the printed h/e split. The fragment populations have no bare (cassette 0) alias.",
-    "Ω_{FG} sums the atom-pair Ω_{AB} of §exciton over the fragments; F in POS is 1-based; N^{L}_{F} is the Löwdin active population of fragment F. Printed headers: `h/e split` for CT, `PR_F` for PR. CT to POS print `-` when Ω < 0.05; q_{moved} is always printed.",
+    "q_{moved} and Net ΔN_{F} are printed, not stored. The fragment populations have no bare (cassette 0) alias.",
+    "Ω_{FG} sums the atom-pair Ω_{AB} of §exciton over the fragments; F in POS is 1-based; N^{L}_{F} is the Löwdin active population of fragment F. CT to POS print `-` when Ω < 0.05; q_{moved} is always printed.",
     "The fragment line (`F1 = atoms 1-3, F2 = atoms 4-6`) shows the partition used."
    ],
    "ref": "§plasser2012-charge-transfer; §plasser2020-theodore (TheoDORE)."
@@ -462,7 +462,7 @@
   {
    "id": "ekt-ensemble", "stage": "relaxed",
    "name": "EKT ionization energies of the SA-REKS ensemble",
-   "brief": "Extended Koopmans' theorem on the generalized Fock matrix W and the fractional-occupation density D of the SA-REKS ensemble, in the block `==> Ionization energies (EKT) and Dyson orbitals, SA-REKS ensemble <==`.",
+   "brief": "Extended Koopmans' theorem on the generalized Fock matrix W and the fractional-occupation density D of the SA-REKS ensemble, in the block `==> Ionization energies (EKT) and Dyson orbitals [REKS_EKT], SA-REKS ensemble <==`.",
    "on": "`REKS_EKT` true and no state listed in `SI_REKS_PROPERTY_FOR`", "default": "off",
    "for": "the SCF finalize of `energy()` and `gradient()`",
    "units": "E_{h} (stored); eV (printed IP), E_{h} (printed ε)",

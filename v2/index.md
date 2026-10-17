@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -12,7 +12,7 @@ Ensemble DFT, generated not derived
 
 REKS Studio automatically derives and compiles the working equations of ensemble density functional theory for any active space - turning a twenty-year manual bottleneck into a binary catalogue.
 
-[Explore the method](https://reksstudio.github.io/v2/index.md#architecture) [Source ↗](https://github.com/ConstLike/psi4/tree/kk/reks.studio)
+[Explore the method](#architecture) [Source ↗](https://github.com/ConstLike/psi4/tree/kk/reks.studio)
 
 The bottleneck
 

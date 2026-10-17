@@ -73,7 +73,7 @@
     "Names: `DIPOLE`, `QUADRUPOLE`, `MULTIPOLE(n)`, `TRANSITION_DIPOLE`, `TRANSITION_QUADRUPOLE`, `E_TDM_VEL`, `M_TDM`, `MULLIKEN_CHARGES`, `LOWDIN_CHARGES`, `MULLIKEN_SPINS`, `LOWDIN_SPINS`, `TRANSITION_CHARGES`, `MAYER_INDICES`, `WIBERG_LOWDIN_INDICES`, `NO_OCCUPATIONS`, `DENSITIES`, `RADICAL`, `NTO`, `EXCITON`, `FRAGMENT_COUPLINGS`, `ALL`, case-insensitive; each property entry names its switch (§properties). `MULLIKEN_SPINS`, `LOWDIN_SPINS` act on 2S > 0 cassettes (§atomic-spins).",
     "A block another listed block needs is computed without being printed or stored: `RADICAL` needs `NO_OCCUPATIONS`, `FRAGMENT_COUPLINGS` the state and transition charges and, in a 2S > 0 cassette, the Löwdin spins.",
     "`MULTIPOLE(n)` adds `DIPOLE` and `TRANSITION_DIPOLE`, for n ≥ 2 `QUADRUPOLE` and `TRANSITION_QUADRUPOLE`, for n ≥ 3 the multipoles of order 3..n. `ALL` switches on every name except `MULTIPOLE(n)`: `[\"ALL\", \"MULTIPOLE(4)\"]` adds both.",
-    "`State analysis` lists every name with a description, names not run struck through; with `SI_REKS_PROPERTY_FOR` it adds the states of each cassette that receive relaxed properties (and EKT when `REKS_EKT` is true)."
+    "`State analysis [PROPERTIES]` lists every name, `SI_REKS_PROPERTY_FOR` and `REKS_EKT` in alphabetical order (`_` read as a space) with a description, names not run struck through; with `SI_REKS_PROPERTY_FOR` it adds the states of each cassette that receive relaxed properties (and EKT when `REKS_EKT` is true)."
    ],
    "brief": "State-property blocks of the SI states to compute, print and store (moments, charges, bond indices, NTO, exciton, …)."},
   "SI_REKS_ANALYSIS_CHANGE_MIN": {"option": true, "type": "double", "default": "`0.1`", "call": "0.05",
