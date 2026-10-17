@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -12,13 +12,13 @@ H2 dissociation energy against H–H distance, 0.5 to 3.5 Å: ordinary DFT (RKS)
 
 [H<sub>2</sub> dissociation: SSR(2,2) and RKS, BH\&HLYP; FCI; all aug-cc-pVTZ →](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h2)
 
-[See the evidence ↓](https://reksstudio.github.io/v2/main/index.md#evidence) [Install, free](https://reksstudio.github.io/v2/docs/index.md#install)
+[See the evidence ↓](#evidence) [Install, free](https://reksstudio.github.io/v2/docs/index.md#install)
 
 Ensemble DFT (REKS/SSR) in Psi4 for breaking bonds, diradicals, magnetic molecules and excited states. Its equations are generated, not derived by hand; (2,2)–(6,6) run from the install.
 
 [Free and open source](https://reksstudio.github.io/v2/docs/index.md#licence) · [ChemRxiv 2026](https://doi.org/10.26434/chemrxiv.15008475/v1) · UNIST · IBS
 
-[Not only H<sub>2</sub>. How close is it to experiment? ↓](https://reksstudio.github.io/v2/main/index.md#evidence)
+[Not only H<sub>2</sub>. How close is it to experiment? ↓](#evidence)
 
 ## Checked against experiment and exact references
 
@@ -46,7 +46,7 @@ Beyond available references: [S<sub>1</sub>/S<sub>0</sub> crossing of ethylene f
 
 [All comparisons →](https://reksstudio.github.io/v2/main/results/index.md)
 
-[Multireference accuracy is usually expensive. What does it cost here? ↓](https://reksstudio.github.io/v2/main/index.md#cost)
+[Multireference accuracy is usually expensive. What does it cost here? ↓](#cost)
 
 ## Close to ordinary DFT: 0.86–3.3× a DFT run for (2,2)–(6,6). {#cost}
 
@@ -165,4 +165,4 @@ Counts: (2,2)–(8,8) equal generator runs; larger spaces from exact counting ru
 
 Gradients, couplings, MECI and dynamics in one code.
 
-Preprint: [ChemRxiv v1, 8 Sep 2026, preprint, doi:10.26434/chemrxiv.15008475/v1](https://doi.org/10.26434/chemrxiv.15008475/v1) · [Komarov, Filatov, Min](https://reksstudio.github.io/v2/team/index.md); UNIST; IBS Center for Multidimensional Carbon Materials · [Licence](https://reksstudio.github.io/v2/docs/index.md#licence) · Psi4 [`bd0fb43ef`](https://reksstudio.github.io/v2/docs/index.md#changes), 2026-10-15
+Preprint: [ChemRxiv v1, 8 Sep 2026, preprint, doi:10.26434/chemrxiv.15008475/v1](https://doi.org/10.26434/chemrxiv.15008475/v1) · [Komarov, Filatov, Min](https://reksstudio.github.io/v2/team/index.md); UNIST; IBS Center for Multidimensional Carbon Materials · [Licence](https://reksstudio.github.io/v2/docs/index.md#licence) · Psi4 [`72ce4d58b`](https://reksstudio.github.io/v2/docs/index.md#changes), 2026-10-17

@@ -271,7 +271,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span style="color:#E7A98A">"<a href="/v2/manual/reference/#row-si_reks_configs">si_reks_configs</a>"</span><span style="color:#E7E6E2">: [[[</span><span style="color:#E7A98A">"full"</span><span style="color:#E7E6E2">]], [[</span><span style="color:#E7A98A">"full"</span><span style="color:#E7E6E2">]]],</span></span>
 <span class="line"><span style="color:#E7A98A">"<a href="/v2/manual/reference/#row-si_reks_2spin">si_reks_2spin</a>"</span><span style="color:#E7E6E2">: [0, 2],</span></span>
 <span class="line"><span style="color:#E7A98A">"<a href="/v2/manual/reference/#row-reks_use_trah">reks_use_trah</a>"</span><span style="color:#E7E6E2">: </span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"<a href="/v2/manual/reference/#row-reks_gvb_diis">reks_gvb_diis</a>"</span><span style="color:#E7E6E2">: </span><span style="color:#7FA0DE">False</span><span style="color:#E7E6E2">,</span></span></code></pre>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; State summary &lt;==</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; State summary [SUMMARY] &lt;==</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>    State            E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)</span></span>
 <span class="line"><span>    ------------------------------------------------------------------------------------------------------------------</span></span>
@@ -282,7 +282,11 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    S2     -25.185054120077         2.400               55.35        516.6  0.05168     OSSa1(50.0); OSSb1(50.0)</span></span>
 <span class="line"><span>    T3     -25.102149516894         4.656              107.37            -        -     Tc1(100.0)</span></span>
 <span class="line"><span>    S3     -25.080575672772         5.243              120.91        236.5  0.00000     OSSc1(100.0)</span></span>
-<span class="line"><span>    S4     -25.066507826428         5.626              129.74        220.4  0.00000     DESb1(50.0); DESa1(50.0)</span></span></code></pre>
+<span class="line"><span>    S4     -25.066507826428         5.626              129.74        220.4  0.00000     DESb1(50.0); DESa1(50.0)</span></span>
+<span class="line"><span>    ------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>    Printed states of the first cassette of each spin multiplicity, ordered by energy.</span></span>
+<span class="line"><span>    lambda, f_len: - for a spin multiplicity other than S0's (no spin-orbit coupling).</span></span>
+<span class="line"><span>    Main configurations: the three largest |w_j| &gt;= 1 %, then every further |w_j| &gt; 20 %.</span></span></code></pre>
 <p>S1/S2 (¹Π) and T1/T2 (³Π) are degenerate pairs, each split by 1.6·10<sup>−7</sup> E<sub>h</sub>. With <code>|ab|</code> alone the SA ensemble favours one π: S1/S2 2.360 / 2.391 eV, T1/T2 1.131 / 1.151 eV.</p>
 <h3 id="wide-inputs">Worked inputs</h3>
 <p>Each file runs in stages: <code>python file.py &lt;stage&gt;</code>, the stages in the order listed in the file.</p>
@@ -308,7 +312,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <tr>
 <td><a href="../../inputs/wide_bh_states.py"><code>wide_bh_states.py</code></a></td>
 <td>SI-SA-REKS(2,3), BH&amp;HLYP/cc-pVDZ, RKS seed; SA default pool + all-α |ab|, |ac|, |bc|; SI on 2S = 0, 2; TRAH</td>
-<td>E<sub>SA</sub> = −25.184519244590 E<sub>h</sub>; S0 −25.273256917916, T1 −25.232772136476, S1 −25.185054403019 E<sub>h</sub></td>
+<td>E<sub>SA</sub> = −25.184519244590 E<sub>h</sub>; S0 −25.273256917916, T1 −25.232772182224, S1 −25.185054284422 E<sub>h</sub></td>
 </tr>
 </tbody>
 </table></div></div></section>

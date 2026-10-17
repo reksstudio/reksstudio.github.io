@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/h-chains/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -14,7 +14,7 @@ Reference class: model vs near-exact theory (FCI/SHCI)
 
 Deviation from FCI along R: to be added.
 
-[H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h2) · [H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h4) · [H<sub>6</sub>](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h6) · [H<sub>8</sub>](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h8)
+[H<sub>2</sub>](#h2) · [H<sub>4</sub>](#h4) · [H<sub>6</sub>](#h6) · [H<sub>8</sub>](#h8)
 
 ## H<sub>2</sub>
 

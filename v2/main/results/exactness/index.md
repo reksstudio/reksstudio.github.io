@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/exactness/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -14,7 +14,7 @@ Reference class: implementation vs exact oracle
 
 Model identities to ≤ 10<sup>−10</sup> E<sub>h</sub>; analytic gradients vs FD5 within 7.8·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup> (worst case, BH wide geminals).
 
-[Model identities and size consistency](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities) · [Derivatives and dynamics](https://reksstudio.github.io/v2/main/results/exactness/index.md#derivatives)
+[Model identities and size consistency](#identities) · [Derivatives and dynamics](#derivatives)
 
 Figure to be added: overview figure, max deviation per check against its criterion
 

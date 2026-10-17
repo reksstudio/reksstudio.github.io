@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/docs/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -38,9 +38,15 @@ Then run `psi4 reks22_h2.dat` (download from [Worked inputs](https://reksstudio.
 
 ## Version
 
-Psi4 `bd0fb43ef`, 2026-10-15: the commit of every output in the manual. Option names and defaults may change on this branch.
+Psi4 `72ce4d58b`, 2026-10-17: the commit of every output in the manual. Option names and defaults may change on this branch.
 
 ## Changes
+
+### Psi4 `72ce4d58b`, 2026-10-17
+
+* Property headers name their switches in brackets, e.g. `[DIPOLE]`, `[SUMMARY]`; several blocks are renamed, natural orbitals print before the transitions, `State analysis` is alphabetical ([Print order](https://reksstudio.github.io/v2/manual/properties/index.md#print-order), [`SI_REKS_ANALYSIS`](https://reksstudio.github.io/v2/options/SI_REKS_ANALYSIS.md)); the CT columns are `CT`, `PR_h`, `PR_e`, `PR` ([Fragment charge-transfer descriptors](https://reksstudio.github.io/v2/manual/properties/index.md#fragment-ct)).
+* `State summary` lists the three largest weights ≥ 1 % per state, then every further one > 20 %; the overlap pairs under `Adiabatic states` print from level 3 ([SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies), [`REKS_REPORT_LEVEL`](https://reksstudio.github.io/v2/options/REKS_REPORT_LEVEL.md)).
+* Davidson: search space min(r, max(40, 16k)), start vectors and preconditioner from the P space, Jacobi–Davidson corrections; with the default counts the shipped catalogs solve the whole space ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver), [SI Davidson solver](https://reksstudio.github.io/v2/manual/properties/index.md#si-davidson)).
 
 ### Psi4 `bd0fb43ef`, 2026-10-15
 
@@ -99,7 +105,7 @@ Cite the papers of each feature used. All entries: [reks-studio.bib](https://rek
 
 ### Method name and computational details
 
-Name the method SSR (SI-SA-REKS, [§1](https://reksstudio.github.io/v2/manual/index.md#overview)); in a paper give the printed label `kSI-lSA-REKS(N,M)` ([SI cassette](https://reksstudio.github.io/v2/manual/concepts/index.md#si-cassette)), the functional as printed in the `XC evaluation` line, and the basis. The label carries only counts: name the SA-pool configurations with their weights and the cassette configurations as printed; defaults may change between revisions ([Changes](https://reksstudio.github.io/v2/docs/index.md#changes)).
+Name the method SSR (SI-SA-REKS, [§1](https://reksstudio.github.io/v2/manual/index.md#overview)); in a paper give the printed label `kSI-lSA-REKS(N,M)` ([SI cassette](https://reksstudio.github.io/v2/manual/concepts/index.md#si-cassette)), the functional as printed in the `XC evaluation` line, and the basis. The label carries only counts: name the SA-pool configurations with their weights and the cassette configurations as printed; defaults may change between revisions ([Changes](#changes)).
 
 Report:
 

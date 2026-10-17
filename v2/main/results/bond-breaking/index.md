@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/bond-breaking/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -14,7 +14,7 @@ Reference class: model vs benchmark set (TBE); secondary: model vs experiment
 
 Lowest vertical excitation vs TBE: 7.85 / 7.93, 9.49 / 9.88, 6.66 / 7.10 eV; R<sub>e</sub> within 0.004 Å of experiment.
 
-[C<sub>2</sub>H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#c2h4) · [N<sub>2</sub>](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#n2) · [C<sub>2</sub>H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#c2h2)
+[C<sub>2</sub>H<sub>4</sub>](#c2h4) · [N<sub>2</sub>](#n2) · [C<sub>2</sub>H<sub>2</sub>](#c2h2)
 
 ## C<sub>2</sub>H<sub>4</sub>
 

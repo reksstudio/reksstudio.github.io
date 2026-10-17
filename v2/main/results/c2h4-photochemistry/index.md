@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -14,7 +14,7 @@ Reference class: workflow demonstration
 
 MECI gap 1.49·10<sup>−4</sup> E<sub>h</sub>; S0 torsion barrier 0.1068793 E<sub>h</sub> = 2.908 eV.
 
-[S0/S1 MECI](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md#meci) · [S0 torsion transition state](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md#ts) · [FSSH trajectory](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md#trajectory)
+[S0/S1 MECI](#meci) · [S0 torsion transition state](#ts) · [FSSH trajectory](#trajectory)
 
 ## S0/S1 MECI
 

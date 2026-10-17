@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/dynamics/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -262,7 +262,7 @@ python md_c2h4.py
 
 States: `nstates` lowest roots of cassette 0 ([Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states)); the default SSR(2,2) cassette (PPS, OSS, DES) has three singlet roots, S0, S1, S2.
 
-One call per step: `REKS` sets `si_reks_grad` to the running state of PyUNIxMD alone (the target root) and `si_reks_nac` to all state pairs; the pairs make every state a CP-REKS target ([One gradient() call](https://reksstudio.github.io/v2/manual/dynamics/index.md#one-gradient)), so one `gradient()` returns the energies and gradients of all states and the NAC vectors of all pairs. Step 0 in `md_c2h4.out`:
+One call per step: `REKS` sets `si_reks_grad` to the running state of PyUNIxMD alone (the target root) and `si_reks_nac` to all state pairs; the pairs make every state a CP-REKS target ([One gradient() call](#one-gradient)), so one `gradient()` returns the energies and gradients of all states and the NAC vectors of all pairs. Step 0 in `md_c2h4.out`:
 
 ```log
 gradient: seeding orbital guess from .../opt_c2h4_reks.wfn.npy (GUESS set to READ).
@@ -346,7 +346,7 @@ Scripts in run order, in one directory with `reks_dlfind.py` and `reks_unixmd.py
 | - | - | - |
 | [`reks_dlfind.py`](https://reksstudio.github.io/v2/inputs/reks_dlfind.py.txt) | `optimize(method, molecule, restart_file, tolerance=4.5e-4, maxcycle=100)`: DL-FIND L-BFGS in delocalized internal coordinates on the target root; `tolerance`: largest gradient component in those coordinates, atomic units | — |
 | [`reks_unixmd.py`](https://reksstudio.github.io/v2/inputs/reks_unixmd.py.txt) | `molecule(xyz_file, nstates, temperature, charge=0, seed=1)`, `REKS(molecule, method, restart_file)`: PyUNIxMD QM interface, roots of cassette 0 | — |
-| [`first_c2h4_90.py`](https://reksstudio.github.io/v2/inputs/first_c2h4_90.py.txt) | [Worked inputs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-inputs); `python first_c2h4_90.py rks` writes `first_c2h4_90_rks.wfn.npy`, read by [One gradient() call](https://reksstudio.github.io/v2/manual/dynamics/index.md#one-gradient) | — |
+| [`first_c2h4_90.py`](https://reksstudio.github.io/v2/inputs/first_c2h4_90.py.txt) | [Worked inputs](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-inputs); `python first_c2h4_90.py rks` writes `first_c2h4_90_rks.wfn.npy`, read by [One gradient() call](#one-gradient) | — |
 | [`opt_c2h4.py`](https://reksstudio.github.io/v2/inputs/opt_c2h4.py.txt) | S0 of C₂H₄, SSR(2,2) BH\&HLYP/6-31G(d), DF, RKS seed, DL-FIND | E(S0) = −78.52863042 E<sub>h</sub>, 8 gradients |
 | [`md_c2h4.py`](https://reksstudio.github.io/v2/inputs/md_c2h4.py.txt) | surface hopping on S1 from the `opt_c2h4.py` geometry, 3 states, 400 × 0.25 fs | hops S1 → S2 at 37.75 and 80.25 fs, back at 39.25 and 87.25 fs; E<sub>tot</sub> drift −0.13 kcal mol⁻¹, range 0.18 kcal mol⁻¹ |
 | [`opt_hexatriene.py`](https://reksstudio.github.io/v2/inputs/opt_hexatriene.py.txt) | T1 of all-trans-hexatriene, SI-SA-REKS(6,6) BH\&HLYP/6-31G(d), DF, π window, DL-FIND | E(T1) = −233.17880483 E<sub>h</sub>, 10 gradients, 5.5 min on 8 threads |

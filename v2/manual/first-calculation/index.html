@@ -127,7 +127,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>      16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812</span></span>
 <span class="line"><span>      17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>@REKS Final Energy:  -155.67155759813005</span></span></code></pre>
+<span class="line"><span>@REKS Final Energy:  -155.67155759813008</span></span></code></pre>
 <h3 id="check-solution">Check the solution</h3>
 <dl class="fields"><dt>Convergence</dt><dd><code>Energy and wave function converged.</code> is necessary only: every wrong solution on this page converged. Otherwise <a href="/v2/manual/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>Active set</dt><dd>every index of <code>Pairing scheme 0</code> in <code>Post-Iterations</code> (<a href="/v2/manual/properties/#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a>) belongs to the inspected set, compared as a set: setup <code>8A(a), 9A(b)</code>, pair printed <code>(9A,8A)</code> (generation-0 reordering, <a href="/v2/manual/run-control/#fons">§12</a>). Otherwise <a href="/v2/manual/diagnose/#diag-wrong-window">SCF converges instantly to a wrong energy after a restart</a>.</dd><dt>Symmetry</dt><dd>S0 has equal charges on symmetry-equivalent atoms (<a href="/v2/manual/properties/#atomic-charges">Atomic charges of the states (unrelaxed)</a>) and a dipole allowed by the point group (<a href="/v2/manual/properties/#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a>). Otherwise <a href="/v2/manual/diagnose/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>.</dd><dt>FONs</dt><dd>a pair at n ≈ 2/0 is not by itself an error: the outer π pair of butadiene has n<sub>a</sub> = 1.999999.</dd></dl>
 <p>E<sub>SA</sub> of different starts is not a criterion:</p>
@@ -218,30 +218,30 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   kSI-lSA-REKS = SSR over k configurations in the orbitals of the l-configuration SA ensemble;</span></span>
 <span class="line"><span>   Wfn storage = states stored on the wavefunction, written to *.npy by wfn.to_file (<a href="/v2/manual/reference/#row-si_reks_store_states">SI_REKS_STORE_STATES</a>).</span></span></code></pre>
 <p>The state summary lists the printed roots of all manifolds by energy (labels: <a href="/v2/manual/setup/#spin-manifolds">§9</a>):</p>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; State summary &lt;==</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; State summary [SUMMARY] &lt;==</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>    State             E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)</span></span>
-<span class="line"><span>    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>    S0     -233.257191838391         0.000                0.00            -        -     PPS1(16.0)</span></span>
-<span class="line"><span>    T1     -233.156651584658         2.736               63.09            -        -     T_PPS3(42.0) 22A(c)-&gt;23A(d); T_PPS9(41.9) 22A(c)-&gt;23A(d)</span></span>
-<span class="line"><span>    T2     -233.108425331554         4.048               93.35            -        -     T_PPS5(26.2) 21A(b)-&gt;23A(d); T_PPS11(26.2) 21A(b)-&gt;23A(d)</span></span>
-<span class="line"><span>    T3     -233.064202576971         5.252              121.10            -        -     T_PPS16(18.9) 20A(a)-&gt;23A(d)</span></span>
-<span class="line"><span>    S1     -233.060446497939         5.354              123.46        231.6  1.54293     OSS3(47.8) 22A(c)-&gt;23A(d); OSS9(47.8) 22A(c)-&gt;23A(d)</span></span>
-<span class="line"><span>    S2     -233.051642956940         5.593              128.98        221.7  0.00000     DES3(17.5) 22A(c),22A(c)-&gt;23A(d),23A(d)</span></span>
-<span class="line"><span>    T4     -232.986261652404         7.372              170.01            -        -     T_PPS6(24.8) 22A(c)-&gt;24A(e)</span></span>
-<span class="line"><span>    S3     -232.972245916928         7.754              178.81        159.9  0.00000     OSS6(24.6) 22A(c)-&gt;24A(e)</span></span>
-<span class="line"><span>    Q1     -232.966755681972         7.903              182.25            -        -     TT_PPS1(43.6) 21A(b)-&gt;24A(e), 22A(c)-&gt;23A(d); TT_PPS4(43.6) 21A(b)-&gt;23A(d), 22A(c)-&gt;24A(e)</span></span>
+<span class="line"><span>    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>    S0     -233.257191838391         0.000                0.00            -        -     PPS1(16.0); PPS3(16.0); PPS2(15.9)</span></span>
+<span class="line"><span>    T1     -233.156651584658         2.736               63.09            -        -     T_PPS3(42.0) 22A(c)-&gt;23A(d); T_PPS9(41.9) 22A(c)-&gt;23A(d); T_PPS2(4.7) 21A(b)-&gt;24A(e)</span></span>
+<span class="line"><span>    T2     -233.108425331554         4.048               93.35            -        -     T_PPS5(26.2) 21A(b)-&gt;23A(d); T_PPS11(26.2) 21A(b)-&gt;23A(d); T_PPS6(20.6) 22A(c)-&gt;24A(e); T_PPS15(20.6) 22A(c)-&gt;24A(e)</span></span>
+<span class="line"><span>    T3     -233.064202576971         5.252              121.10            -        -     T_PPS16(18.9) 20A(a)-&gt;23A(d); T_PPS13(18.9) 20A(a)-&gt;23A(d); T_PPS12(16.5) 22A(c)-&gt;25A(f)</span></span>
+<span class="line"><span>    S1     -233.060446497939         5.354              123.46        231.6  1.54293     OSS3(47.8) 22A(c)-&gt;23A(d); OSS9(47.8) 22A(c)-&gt;23A(d); OSS12(1.0) 22A(c)-&gt;25A(f)</span></span>
+<span class="line"><span>    S2     -233.051642956940         5.593              128.98        221.7  0.00000     DES3(17.5) 22A(c),22A(c)-&gt;23A(d),23A(d); DES9(17.5) 22A(c),22A(c)-&gt;23A(d),23A(d); OSS11(12.5) 21A(b)-&gt;23A(d)</span></span>
+<span class="line"><span>    T4     -232.986261652404         7.372              170.01            -        -     T_PPS6(24.8) 22A(c)-&gt;24A(e); T_PPS15(24.8) 22A(c)-&gt;24A(e); T_PPS5(19.9) 21A(b)-&gt;23A(d)</span></span>
+<span class="line"><span>    S3     -232.972245916928         7.754              178.81        159.9  0.00000     OSS6(24.6) 22A(c)-&gt;24A(e); OSS15(24.5) 22A(c)-&gt;24A(e); OSS5(23.1) 21A(b)-&gt;23A(d); OSS11(23.0) 21A(b)-&gt;23A(d)</span></span>
+<span class="line"><span>    Q1     -232.966755681972         7.903              182.25            -        -     TT_PPS1(43.6) 21A(b)-&gt;24A(e), 22A(c)-&gt;23A(d); TT_PPS4(43.6) 21A(b)-&gt;23A(d), 22A(c)-&gt;24A(e); TT_PPS12(3.5) 20A(a)-&gt;24A(e), 21A(b)-&gt;23A(d)</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>    Sp1    -232.680857311443        15.683              361.66            -        -     TTT_SPS_0(100.0) 20A(a)-&gt;25A(f), 21A(b)-&gt;24A(e), 22A(c)-&gt;23A(d)</span></span>
-<span class="line"><span>    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>    Printed states of the first cassette of each spin multiplicity, ordered by energy.</span></span>
 <span class="line"><span>    lambda, f_len: - for a spin multiplicity other than S0's (no spin-orbit coupling).</span></span>
-<span class="line"><span>    Main configurations: the largest |w_j| (&gt;= 0.1 %), then every further |w_j| &gt;= 25 %.</span></span></code></pre>
+<span class="line"><span>    Main configurations: the three largest |w_j| &gt;= 1 %, then every further |w_j| &gt; 20 %.</span></span></code></pre>
 <div class="reftable-wrap"><table>
 <thead>
 <tr>
 <th>State</th>
-<th>Main configurations</th>
+<th>Leading configurations</th>
 <th>Content</th>
 <th>ΔE / eV</th>
 <th>QUEST TBE / eV</th>
@@ -257,8 +257,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </tr>
 <tr>
 <td>T2</td>
-<td><code>T_PPS5</code>, <code>T_PPS11</code>: b→d</td>
-<td>one triplet geminal on (b,d)</td>
+<td><code>T_PPS5</code>, <code>T_PPS11</code>: b→d; <code>T_PPS6</code>, <code>T_PPS15</code>: c→e</td>
+<td>one triplet geminal: on (b,d) 52 %, on (c,e) 41 %</td>
 <td>4.048</td>
 <td>4.36 (³A<sub>g</sub>)</td>
 </tr>
@@ -271,14 +271,14 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </tr>
 <tr>
 <td>S2</td>
-<td><code>DES3</code>: c,c→d,d</td>
-<td>both electrons of c in d; f<sub>len</sub> 0</td>
+<td><code>DES3</code>, <code>DES9</code>: c,c→d,d; <code>OSS11</code>: b→d</td>
+<td>both electrons of c in d (35 %), open-shell b→d (12.5 %); f<sub>len</sub> 0</td>
 <td>5.593</td>
 <td>5.62 (¹A<sub>g</sub>, not safe)</td>
 </tr>
 <tr>
 <td>Q1</td>
-<td><code>TT_PPS1</code>, <code>TT_PPS4</code>: b→e, c→d</td>
+<td><code>TT_PPS1</code>: b→e, c→d; <code>TT_PPS4</code>: b→d, c→e</td>
 <td>two triplet geminals coupled to S = 2</td>
 <td>7.903</td>
 <td>–</td>
@@ -309,7 +309,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    J = -Gap/(2 S_high), for H = -2J S_A.S_B. J is a spin-coupling constant only if</span></span>
 <span class="line"><span>    the two states have the same open-shell orbitals and similar SI lowering.</span></span>
 <span class="line"><span>    Q = quintet (not quartet), Sp = septet.</span></span></code></pre>
-<p>J is a coupling constant only for two states with the same open-shell orbitals; T1 (c,d) and Q1 (b,e)(c,d) differ.</p>
+<p>J is a coupling constant only for two states with the same open-shell orbitals; T1 (c,d) and Q1 (b,e)(c,d) + (b,d)(c,e) differ.</p>
 <p>A configuration added to the SA ensemble enters the orbital optimization. <code>T_PPS3</code>, the main configuration of T1, on 2S = 2, the rest of the input unchanged:</p>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/v2/manual/reference/#row-sa_reks_configs">sa_reks_configs</a>"</span><span style="color:#E7E6E2">: [[</span><span style="color:#E7A98A">"PPS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS2"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS3"</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">"T_PPS3"</span><span style="color:#E7E6E2">]],</span></span>
 <span class="line"><span style="color:#E7A98A">"<a href="/v2/manual/reference/#row-sa_reks_2spin">sa_reks_2spin</a>"</span><span style="color:#E7E6E2">: [0, 2],</span></span></code></pre>

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/setup/>
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -46,8 +46,8 @@ Default: — (required)
 REKS requires the canonical symmetric-Ms reference: N=2 implies molecule multiplicity 1 (even N -> 1, odd N -> 2), but the molecule multiplicity is 3. Do not set the multiplicity to 2S+1; keep the canonical value and pick spin manifolds via SA_REKS_2SPIN / SI_REKS_2SPIN.
 ```
 
-* N active electrons in M active orbitals, exactly two integers; a third element is an input error. Only installed catalogs run ([§6](https://reksstudio.github.io/v2/manual/setup/index.md#catalog)).
-* Molecule multiplicity: 1 for even N, 2 for odd N (no installed catalog has odd N); any other value is the error above. The spin manifolds are chosen by [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) / [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) or the ladder ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)).
+* N active electrons in M active orbitals, exactly two integers; a third element is an input error. Only installed catalogs run ([§6](#catalog)).
+* Molecule multiplicity: 1 for even N, 2 for odd N (no installed catalog has odd N); any other value is the error above. The spin manifolds are chosen by [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) / [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) or the ladder ([§9](#spin-manifolds)).
 
 #### `REKS_GEMINAL_WIDTHS` {#reks_geminal_widths}
 
@@ -80,7 +80,7 @@ Every configuration has a name of the form `<TYPE><index>`, e.g. `PPS1`, `OSS2`,
 | `SPS` (as in `DOSS_SPS_0`) | A **spin-polarized** configuration; member `k` of the set is orthogonalized to members 0 … k − 1. |
 | Lettered types (`OSSa`, `DESb`, `Ta`, `DESa_OSSb`, `TaTb_SPS`) | Generalized-geminal catalogs (`REKS_GEMINAL_WIDTHS`). |
 
-Bulk tokens ([§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)) select configurations without listing names; an unknown token lists every valid type and name of the block's manifold ([Unknown configuration name or type](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-unknown-token)).
+Bulk tokens ([§7](#bulk-tokens)) select configurations without listing names; an unknown token lists every valid type and name of the block's manifold ([Unknown configuration name or type](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-unknown-token)).
 
 ### FON sets {#fon-sets}
 
@@ -97,7 +97,7 @@ The label is the set letter, the pairing-scheme digit (`n0`, `n1`), and `tK` for
 
 ### Pairing schemes {#pairing-schemes}
 
-No option selects a pairing scheme ([Pairing scheme](https://reksstudio.github.io/v2/manual/concepts/index.md#pairing-scheme)); the configurations of the SA pool do (`single-scheme:N`, `mixed-scheme:N`, [§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)). The setup report prints the schemes:
+No option selects a pairing scheme ([Pairing scheme](https://reksstudio.github.io/v2/manual/concepts/index.md#pairing-scheme)); the configurations of the SA pool do (`single-scheme:N`, `mixed-scheme:N`, [§7](#bulk-tokens)). The setup report prints the schemes:
 
 ```log
 => Pairing schemes (geminal orbitals) <=
@@ -168,9 +168,9 @@ Alias: `REKS_SA_CONFIGS`
    of the geminals (pairing schemes above) and the doubly occupied core orbitals (core).
 ```
 
-* Flat list = one block on one spin manifold, e.g. `["PPS1", "OSS1", "OSS2"]` or by local index `[0, 1, 2]`. Elements: configuration names, local integer indices, or bulk tokens ([§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)).
-* A configuration may not repeat within a block: an SA block is a weighted list ([§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)).
-* Nested list = one block per spin manifold, e.g. `[["PPS1", "OSS1"], ["T_PPS1"]]`, mapped to manifolds by ladder position or by `SA_REKS_2SPIN` ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)).
+* Flat list = one block on one spin manifold, e.g. `["PPS1", "OSS1", "OSS2"]` or by local index `[0, 1, 2]`. Elements: configuration names, local integer indices, or bulk tokens ([§7](#bulk-tokens)).
+* A configuration may not repeat within a block: an SA block is a weighted list ([§7](#bulk-tokens)).
+* Nested list = one block per spin manifold, e.g. `[["PPS1", "OSS1"], ["T_PPS1"]]`, mapped to manifolds by ladder position or by `SA_REKS_2SPIN` ([§9](#spin-manifolds)).
 * Absent: the catalog's `sa_default` pool on 2S = 0. Defaults: `REKS(2,2)` `[PPS1, OSS1]`, `REKS(4,4)` `[PPS1, OSS1, OSS2]`, `REKS(6,6)` `[PPS1, OSS1, OSS2, OSS3]`.
 * Check `sum = 1.000000` and that every `SA_REKS_EXTRA` determinant of the input is listed (`Extra1`, …).
 
@@ -277,28 +277,28 @@ Alias: `REKS_SI_CONFIGS`
 => Alternative configuration lists <=
 
    State           E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  E-E(own lowest) [eV]  Closest in cassette 0  dE_exc - closest [eV]   Main configurations (w_j in %)
-   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    S0[1]  -2.140622335856        -0.418               -9.63                 0.000  S0 (99 %)                              0.000   PPS1(98.9)
    S1[1]  -1.578546559161        14.877              343.08                15.295  S1 (100 %)                             0.326   OSS2(99.5) 2A(b)->3A(c)
-   S2[1]  -1.311136456214        22.154              510.88                22.571  -                                          -   DES2(94.3) 2A(b),2A(b)->3A(c),3A(c)
+   S2[1]  -1.311136456214        22.154              510.88                22.571  -                                          -   DES2(94.3) 2A(b),2A(b)->3A(c),3A(c); DOSS_SPS_1(5.0) 1A(a)->3A(c), 2A(b)->4A(d)
    S3[1]  -0.759700282426        37.159              856.91                37.577  S2 (99 %)                              0.269   OSS1(99.0) 1A(a)->4A(d)
-   S4[1]  -0.316996802406        49.206             1134.71                49.623  -                                          -   DOSS_SPS_0(68.2) 1A(a)->4A(d), 2A(b)->3A(c); DOSS_SPS_1(27.9) 1A(a)->3A(c), 2A(b)->4A(d)
+   S4[1]  -0.316996802406        49.206             1134.71                49.623  -                                          -   DOSS_SPS_0(68.2) 1A(a)->4A(d), 2A(b)->3A(c); DOSS_SPS_1(27.9) 1A(a)->3A(c), 2A(b)->4A(d); DES1(2.1) 1A(a),1A(a)->4A(d),4A(d)
    S0[2]  -2.143592670888        -0.499              -11.50                 0.000  S0 (98 %)                              0.000   PPS1(98.5)
    S1[2]  -1.575184105930        14.969              345.19                15.467  S1 (100 %)                             0.499   OSS2(99.7) 2A(b)->3A(c)
-   S2[2]  -1.475834553802        17.672              407.53                18.171  -                                          -   OSS3(53.3) 1A(a)->3A(c); DES2(39.0) 2A(b),2A(b)->3A(c),3A(c)
-   S3[2]  -1.222179421667        24.574              566.70                25.073  -                                          -   DES2(50.3) 2A(b),2A(b)->3A(c),3A(c); OSS3(43.3) 1A(a)->3A(c)
-   S4[2]  -0.949704282395        31.989              737.68                32.487  -                                          -   OSS4(89.2) 2A(b)->4A(d)
-   S0[3]  -2.157804217606        -0.885              -20.41                 0.000  S0 (97 %)                              0.000   PPS1(49.1); PPS2(48.3)
+   S2[2]  -1.475834553802        17.672              407.53                18.171  -                                          -   OSS3(53.3) 1A(a)->3A(c); DES2(39.0) 2A(b),2A(b)->3A(c),3A(c); OSS4(5.3) 2A(b)->4A(d)
+   S3[2]  -1.222179421667        24.574              566.70                25.073  -                                          -   DES2(50.3) 2A(b),2A(b)->3A(c),3A(c); OSS3(43.3) 1A(a)->3A(c); DOSS_SPS_1(3.7) 1A(a)->3A(c), 2A(b)->4A(d)
+   S4[2]  -0.949704282395        31.989              737.68                32.487  -                                          -   OSS4(89.2) 2A(b)->4A(d); DES2(4.9) 2A(b),2A(b)->3A(c),3A(c); DOSS_SPS_0(2.7) 1A(a)->4A(d), 2A(b)->3A(c)
+   S0[3]  -2.157804217606        -0.885              -20.41                 0.000  S0 (97 %)                              0.000   PPS1(49.1); PPS2(48.3); DOSS_SPS_1(1.1) 1A(a)->3A(c), 2A(b)->4A(d)
    S1[3]  -1.578546559161        14.877              343.08                15.762  S1 (100 %)                             0.794   OSS2(99.5) 2A(b)->3A(c)
-   S2[3]  -1.556892128760        15.466              356.66                16.352  -                                          -   OSS3(46.2) 1A(a)->3A(c); DES2(35.6) 2A(b),2A(b)->3A(c),3A(c)
-   S3[3]  -1.243261461583        24.001              553.47                24.886  -                                          -   OSS3(45.4) 1A(a)->3A(c); DES2(44.7) 2A(b),2A(b)->3A(c),3A(c)
-   S4[3]  -0.994944258185        30.758              709.29                31.643  -                                          -   OSS4(77.0) 2A(b)->4A(d)
-   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   S2[3]  -1.556892128760        15.466              356.66                16.352  -                                          -   OSS3(46.2) 1A(a)->3A(c); DES2(35.6) 2A(b),2A(b)->3A(c),3A(c); DES3(7.7) 1A(a),1A(a)->3A(c),3A(c)
+   S3[3]  -1.243261461583        24.001              553.47                24.886  -                                          -   OSS3(45.4) 1A(a)->3A(c); DES2(44.7) 2A(b),2A(b)->3A(c),3A(c); OSS4(4.7) 2A(b)->4A(d)
+   S4[3]  -0.994944258185        30.758              709.29                31.643  -                                          -   OSS4(77.0) 2A(b)->4A(d); DES2(10.4) 2A(b),2A(b)->3A(c),3A(c); DOSS_SPS_0(4.9) 1A(a)->4A(d), 2A(b)->3A(c)
+   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    Closest = state of the first list of largest weight overlap sum_j min(w_j(A), w_j(B)) >= 50 %
    (configurations of |S| >= 0.95 merged); dE_exc = E-E(own lowest).
 ```
 
-* 3-level `[[[...], ...], [[...], ...], ...]`: one group of cassettes per outer entry, each group mapped to a spin manifold like the SA blocks (ladder position or `SI_REKS_2SPIN`). The call above is one group of four cassettes, each with its own states (third fragment; energies: [Explicit SA pool and SI cassettes](https://reksstudio.github.io/v2/manual/index.md#explicit-input)). A cassette is a set of names, indices or bulk tokens ([§7](https://reksstudio.github.io/v2/manual/setup/index.md#bulk-tokens)); a repeated selection is kept at its first position. First two fragments: `[[["full"]], [["full"]]]` with `SI_REKS_2SPIN` `[0, 2]`.
+* 3-level `[[[...], ...], [[...], ...], ...]`: one group of cassettes per outer entry, each group mapped to a spin manifold like the SA blocks (ladder position or `SI_REKS_2SPIN`). The call above is one group of four cassettes, each with its own states (third fragment; energies: [Explicit SA pool and SI cassettes](https://reksstudio.github.io/v2/manual/index.md#explicit-input)). A cassette is a set of names, indices or bulk tokens ([§7](#bulk-tokens)); a repeated selection is kept at its first position. First two fragments: `[[["full"]], [["full"]]]` with `SI_REKS_2SPIN` `[0, 2]`.
 * 2-level `[[...], [...], ...]`: the cassettes of a single group on the run's lowest manifold (or the one `SI_REKS_2SPIN` names); legal only when `SI_REKS_2SPIN` is absent or has length 1. The 3-level form without `SI_REKS_2SPIN` maps group 0 to ladder position 0, the catalog's first spin sector; the two forms coincide when that is the run's lowest manifold, as in the call above.
 * Absent: one cassette spanning the whole configuration block of the run's lowest (or `SI_REKS_2SPIN`-chosen) manifold. `[[]]` runs no SI step and sets no `SSR` arrays.
 * A flat list of names (`["PPS1", "OSS1"]`) is an input error: `SI_REKS_CONFIGS: scalar elements are not a cassette form; use a list of cassettes [[...], ...] (2-level) or cassette groups [[[...]], ...] (3-level).`
@@ -337,7 +337,7 @@ Alias: `REKS_SI_STORE_STATES`
 "si_reks_store_states": [-1, 0],
 ```
 
-* One integer per cassette, entry t = the t-th cassette in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)): states whose properties are stored on the wavefunction (array variables, Molden and cube files); `0` = none, `-1` = all, on a Davidson cassette the 50 lowest ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)).
+* One integer per cassette, entry t = the t-th cassette in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](#cassette-order)): states whose properties are stored on the wavefunction (array variables, Molden and cube files); `0` = none, `-1` = all, on a Davidson cassette the 50 lowest ([SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver)).
 * Roots requested in `SI_REKS_GRAD`, `SI_REKS_NAC`, `SI_REKS_PROPERTY_FOR` keep their eigenvectors regardless.
 
 #### `SI_REKS_OVERLAP_CUTOFF` {#si_reks_overlap_cutoff}
@@ -372,16 +372,16 @@ Default: `AUTO`
 ```log
 ==> SI Davidson solver (cassette 0) <==
 
-    Roots                 14 (10 requested + 4 margin) of 115
+    Roots                 7 (3 requested + 4 margin) of 115
     Convergence           1.000e-12
 
     Iter      Mean |R|       Max |R|   Remain   Applications   Time [s]
     -------------------------------------------------------------------
-       1     8.987e-16     1.513e-15        0            116       0.01
+       1     7.465e-16     1.074e-15        0              8       0.00
     -------------------------------------------------------------------
-    14 roots converged in 1 iterations, 144 operator applications.
+    7 roots converged in 1 iterations, 22 operator applications.
 [...]
-    Computed states       14 of 115 (lowest roots, Davidson)
+    Computed states       7 of 115 (lowest roots, Davidson)
 ```
 
 * `DIRECT`: every root, LAPACK on the dense Hamiltonian of the cassette. `DAVIDSON`: the lowest roots, block Davidson on the sparse Hamiltonian; how many: [SI eigensolver](https://reksstudio.github.io/v2/manual/concepts/index.md#si-solver). `AUTO`: per cassette, `DIRECT` up to 4000 configurations, `DAVIDSON` above; the catalogs shipped with Psi4 stay below.
@@ -425,7 +425,7 @@ Alias: `REKS_SA_2SPIN`
 "sa_reks_2spin": [0, 2],
 ```
 
-* One integer 2S per SA block (explicit mode, [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Entries are pairwise distinct, in any order (re-sorted ascending).
+* One integer 2S per SA block (explicit mode, [§9](#spin-manifolds)). Entries are pairwise distinct, in any order (re-sorted ascending).
 * Without `SA_REKS_CONFIGS` only `[0]` is accepted; any other value is an input error. States of 2S > 0 on the default ensemble: [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md).
 
 #### `SI_REKS_2SPIN` {#si_reks_2spin}
@@ -442,9 +442,9 @@ Alias: `REKS_SI_2SPIN`
 "si_reks_2spin": [0, 2],
 ```
 
-* One integer 2S per SI group (explicit mode, [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)), pairwise distinct, in any order; more than one entry requires the 3-level `si_reks_configs` form. The 2-level form is one group of cassettes on one manifold. Two entries with a 2-level `si_reks_configs` stop the run: `REKS input error: SI_REKS_2SPIN has 2 labels (one per SI group), which requires the 3-level SI_REKS_CONFIGS form [[[...]], ...] (one group of cassettes per label); got a 2-level list of cassettes.`
-* `[x]` alone: the default SA ensemble on 2S = 0 and the default SI cassette on 2S = x ([Input patterns](https://reksstudio.github.io/v2/manual/setup/index.md#input-patterns)).
-* Sets the order of the SI cassettes: the spin groups follow this list, the cassettes of a group the order of its `SI_REKS_CONFIGS` block. The per-cassette lists [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md), [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md), [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md) and [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) take their entries in this order: with `[2, 0]` entry 0 is the triplet cassette. The printed index K and the `K=e`, `CASSETTE e` names run in ascending 2S (the triplet is K = 1). Without the option (ladder) both orders are ascending 2S ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)).
+* One integer 2S per SI group (explicit mode, [§9](#spin-manifolds)), pairwise distinct, in any order; more than one entry requires the 3-level `si_reks_configs` form. The 2-level form is one group of cassettes on one manifold. Two entries with a 2-level `si_reks_configs` stop the run: `REKS input error: SI_REKS_2SPIN has 2 labels (one per SI group), which requires the 3-level SI_REKS_CONFIGS form [[[...]], ...] (one group of cassettes per label); got a 2-level list of cassettes.`
+* `[x]` alone: the default SA ensemble on 2S = 0 and the default SI cassette on 2S = x ([Input patterns](#input-patterns)).
+* Sets the order of the SI cassettes: the spin groups follow this list, the cassettes of a group the order of its `SI_REKS_CONFIGS` block. The per-cassette lists [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md), [`SI_REKS_NAC`](https://reksstudio.github.io/v2/options/SI_REKS_NAC.md), [`SI_REKS_PROPERTY_FOR`](https://reksstudio.github.io/v2/options/SI_REKS_PROPERTY_FOR.md) and [`SI_REKS_STORE_STATES`](https://reksstudio.github.io/v2/options/SI_REKS_STORE_STATES.md) take their entries in this order: with `[2, 0]` entry 0 is the triplet cassette. The printed index K and the `K=e`, `CASSETTE e` names run in ascending 2S (the triplet is K = 1). Without the option (ladder) both orders are ascending 2S ([Cassette order](#cassette-order)).
 
 ### Input patterns {#input-patterns}
 
@@ -470,7 +470,7 @@ Linear H₄ (R = 1.6 Å), BH\&HLYP/6-31G. In all three the SA ensemble is the de
 "si_reks_configs": [[["full"]], [["full"]]],   # 2S = 0, 2S = 2
 ```
 
-Two SI groups without `SI_REKS_2SPIN` take the ladder: group 0 → 2S = 0, group 1 → 2S = 2. Cassette 0: 18 singlet configurations, 16 roots (2 overlap null modes); cassette 1: the 11 triplet configurations, the same 11 roots as above. Adding `"si_reks_2spin": [0, 2]` gives the identical run; `SI_REKS_2SPIN` is needed only to skip a manifold or to change the cassette order ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)).
+Two SI groups without `SI_REKS_2SPIN` take the ladder: group 0 → 2S = 0, group 1 → 2S = 2. Cassette 0: 18 singlet configurations, 16 roots (2 overlap null modes); cassette 1: the 11 triplet configurations, the same 11 roots as above. Adding `"si_reks_2spin": [0, 2]` gives the identical run; `SI_REKS_2SPIN` is needed only to skip a manifold or to change the cassette order ([Cassette order](#cassette-order)).
 
 **Singlet, triplet and quintet states**
 
@@ -509,7 +509,7 @@ H₂ REKS(2,2): with `[2, 0]` the gradient and the stored state go to the triple
 
 ## 10. Properties, Gradients, Couplings {#response}
 
-Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `t` refers to the t-th cassette in the order of [Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order); roots as in [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states).
+Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror `SI_REKS_CONFIGS`: inner list `t` refers to the t-th cassette in the order of [Cassette order](#cassette-order); roots as in [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states).
 
 ### State properties {#state-properties}
 
@@ -538,18 +538,30 @@ Default: all blocks except multipoles > 2
 ```
 
 ```log
-=> State analysis <=
+=> State analysis [PROPERTIES] <=
 
+   DENSITIES               active 1-RDMs of the states and the adiabatic 1-RDM (stored)
    DIPOLE                  permanent and difference dipoles of the states
-   QUADRUPOLE              quadrupoles of the states, raw and traceless
-   TRANSITION_DIPOLE       transition dipoles, oscillator strengths f_len
-   TRANSITION_QUADRUPOLE   transition quadrupoles
    E_TDM_VEL               velocity transition moments, oscillator strengths f_vel
+   EXCITON                 exciton and CT descriptors, hole/electron populations; NDOs (stored)
+   FRAGMENT_COUPLINGS      FCD and FED (FSD for 2S > 0) fragment couplings
+   LOWDIN_CHARGES          Lowdin charges of the states
+   LOWDIN_SPINS            Lowdin spin populations of the 2S > 0 states
    M_TDM                   magnetic transition moments, rotatory strengths
-[...]
+   MAYER_INDICES           Mayer bond indices of the states
+   MULLIKEN_CHARGES        Mulliken charges of the states
+   MULLIKEN_SPINS          Mulliken spin populations of the 2S > 0 states
    M̶U̶L̶T̶I̶P̶O̶L̶E̶(̶n̶)̶            multipoles of order 3..n of the states and transitions
-   SI_REKS_PROPERTY_FOR    relaxed dipole, quadrupole and atomic charges (density P^r) of the states below
+   NO_OCCUPATIONS          natural occupation numbers and natural orbitals of the states
+   NTO                     NTO weights and participation ratios; natural transition orbitals (stored)
+   QUADRUPOLE              quadrupoles of the states, full Cartesian and traceless
+   RADICAL                 radical indices; unpaired atomic populations (stored)
    REKS_EKT                ionization energies and Dyson orbitals (EKT) of the states below
+   SI_REKS_PROPERTY_FOR    relaxed dipole, quadrupole and atomic charges (density P^r) of the states below
+   TRANSITION_CHARGES      Mulliken and Lowdin transition charges
+   TRANSITION_DIPOLE       transition dipoles, oscillator strengths f_len
+   TRANSITION_QUADRUPOLE   transition second moments, trace included
+   WIBERG_LOWDIN_INDICES   Wiberg-Lowdin bond indices of the states
 
    Cassette  States
    ----------------
@@ -561,7 +573,7 @@ Default: all blocks except multipoles > 2
 * Names: `DIPOLE`, `QUADRUPOLE`, `MULTIPOLE(n)`, `TRANSITION_DIPOLE`, `TRANSITION_QUADRUPOLE`, `E_TDM_VEL`, `M_TDM`, `MULLIKEN_CHARGES`, `LOWDIN_CHARGES`, `MULLIKEN_SPINS`, `LOWDIN_SPINS`, `TRANSITION_CHARGES`, `MAYER_INDICES`, `WIBERG_LOWDIN_INDICES`, `NO_OCCUPATIONS`, `DENSITIES`, `RADICAL`, `NTO`, `EXCITON`, `FRAGMENT_COUPLINGS`, `ALL`, case-insensitive; each property entry names its switch ([§16](https://reksstudio.github.io/v2/manual/properties/index.md#properties)). `MULLIKEN_SPINS`, `LOWDIN_SPINS` act on 2S > 0 cassettes ([Atomic spin populations of the states (2S > 0)](https://reksstudio.github.io/v2/manual/properties/index.md#atomic-spins)).
 * A block another listed block needs is computed without being printed or stored: `RADICAL` needs `NO_OCCUPATIONS`, `FRAGMENT_COUPLINGS` the state and transition charges and, in a 2S > 0 cassette, the Löwdin spins.
 * `MULTIPOLE(n)` adds `DIPOLE` and `TRANSITION_DIPOLE`, for n ≥ 2 `QUADRUPOLE` and `TRANSITION_QUADRUPOLE`, for n ≥ 3 the multipoles of order 3..n. `ALL` switches on every name except `MULTIPOLE(n)`: `["ALL", "MULTIPOLE(4)"]` adds both.
-* `State analysis` lists every name with a description, names not run struck through; with `SI_REKS_PROPERTY_FOR` it adds the states of each cassette that receive relaxed properties (and EKT when `REKS_EKT` is true).
+* `State analysis [PROPERTIES]` lists every name, `SI_REKS_PROPERTY_FOR` and `REKS_EKT` in alphabetical order (`_` read as a space) with a description, names not run struck through; with `SI_REKS_PROPERTY_FOR` it adds the states of each cassette that receive relaxed properties (and EKT when `REKS_EKT` is true).
 
 #### `SI_REKS_ANALYSIS_CHANGE_MIN` {#si_reks_analysis_change_min}
 
@@ -590,7 +602,7 @@ Default: `[]`
 ```
 
 * States evaluated with the relaxed density: dipole, quadrupole, Mulliken/Löwdin charges, Mayer/Wiberg indices ([Relaxed dipole, quadrupole and atomic charges](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-properties), [Bond indices of the relaxed density](https://reksstudio.github.io/v2/manual/properties/index.md#relaxed-bond-indices)).
-* Entries: indices or labels, ranges, lists (`"S0..5"`, `"T1"`), inside the per-cassette inner lists (`[["S0..1"]]`), in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)); a flat list is rejected.
+* Entries: indices or labels, ranges, lists (`"S0..5"`, `"T1"`), inside the per-cassette inner lists (`[["S0..1"]]`), in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](#cassette-order)); a flat list is rejected.
 
 #### `REKS_EKT` {#reks_ekt}
 
@@ -646,7 +658,7 @@ Default: `[]` (SA ensemble)
    States = SI states whose nuclear gradient is computed. * = followed state, returned by gradient().
 ```
 
-* Roots whose gradients are computed, one inner list per cassette; inner list t = the t-th cassette in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order); with `si_reks_2spin` `[2, 0]` list 0 is the triplet cassette); roots as in [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states). Inner list `[-1]` = all roots of that cassette (`[[-1]]`), on a Davidson cassette the 50 lowest; a flat `[-1]` is an input error. More inner lists than SI cassettes stop the run before the SCF: `REKS input error: SI_REKS_GRAD: 2 order list(s) for 1 SI cassette(s).`
+* Roots whose gradients are computed, one inner list per cassette; inner list t = the t-th cassette in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](#cassette-order); with `si_reks_2spin` `[2, 0]` list 0 is the triplet cassette); roots as in [Adiabatic (SSR) states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states). Inner list `[-1]` = all roots of that cassette (`[[-1]]`), on a Davidson cassette the 50 lowest; a flat `[-1]` is an input error. More inner lists than SI cassettes stop the run before the SCF: `REKS input error: SI_REKS_GRAD: 2 order list(s) for 1 SI cassette(s).`
 * The followed root, marked `*` in `Gradient request`, is the first entry of the first non-empty inner list (`-1` → root 0). Without `SI_REKS_GRAD` it is the lowest root index in the pairs of the first non-empty `SI_REKS_NAC` list.
 * With a followed root, `CURRENT ENERGY` is its energy, also stored as `REKS TARGET STATE ENERGY`, in `energy()` and `gradient()`; `gradient()` returns its gradient ([Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient)). Without a followed root: [Explicit SA pool and SI cassettes](https://reksstudio.github.io/v2/manual/index.md#explicit-input).
 * `CURRENT DIPOLE` is the relaxed dipole of the followed root when `SI_REKS_PROPERTY_FOR` lists that root, and is unset otherwise.
@@ -664,7 +676,7 @@ Default: `[]`
 "si_reks_nac": [[[1, 2]]],
 ```
 
-* Pairs `[I, J]` per SI cassette, in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](https://reksstudio.github.io/v2/manual/setup/index.md#cassette-order)), `[[[I, J], ...], ...]`, or `ALL`; the call above couples S1 and S2 of cassette 0. Computed in `gradient()`; the roots of each pair join the gradient targets.
+* Pairs `[I, J]` per SI cassette, in the spin order of [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) ([Cassette order](#cassette-order)), `[[[I, J], ...], ...]`, or `ALL`; the call above couples S1 and S2 of cassette 0. Computed in `gradient()`; the roots of each pair join the gradient targets.
 * Publishes `SSR NAC I J CASSETTE e` (1/bohr, [Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac)) and the conical-intersection topography `SSR CI TOPOGRAPHY I J CASSETTE e` ([Conical-intersection topography](https://reksstudio.github.io/v2/manual/properties/index.md#ci-topography)); e is the printed cassette index K (ascending 2S).
 * Without `SI_REKS_GRAD` the followed root: [`SI_REKS_GRAD`](https://reksstudio.github.io/v2/options/SI_REKS_GRAD.md).
 
@@ -693,11 +705,11 @@ Default: `1e-9`
 
     Iter      Mean |R|       Max |R|   Remain   Time [s]
     ----------------------------------------------------
-       1     2.988e-01     9.691e-01        4       0.03
-       2     1.648e-01     5.702e-01        4       0.05
+       1     2.988e-01     9.691e-01        4       0.02
+       2     1.648e-01     5.702e-01        4       0.03
 [...]
-      12     1.091e-08     1.091e-08        1       0.28
-      13     5.914e-10     5.914e-10        0       0.30
+      12     1.091e-08     1.091e-08        1       0.13
+      13     5.914e-10     5.914e-10        0       0.14
     ----------------------------------------------------
     Z-vectors converged in 13 iterations.
 ```

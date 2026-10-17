@@ -2,7 +2,7 @@
 
 > REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.
 
-Psi4 bd0fb43ef, 2026-10-15: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 ## Manual
 - [Start](/v2/manual/index.md): Tasks; Minimal input; Explicit SA pool and SI cassettes; Required and rejected settings; Worked inputs; Contents

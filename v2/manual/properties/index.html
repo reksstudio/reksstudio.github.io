@@ -33,7 +33,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
 </tr>
 <tr>
-<td><code>=&gt; State analysis &lt;=</code></td>
+<td><code>=&gt; State analysis [PROPERTIES] &lt;=</code></td>
 <td><a href="/v2/manual/setup/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a></td>
 </tr>
 <tr>
@@ -81,7 +81,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><a href="/v2/manual/setup/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></td>
 </tr>
 <tr>
-<td><code>=&gt; Hamiltonian, cassette 0 &lt;=</code></td>
+<td><code>=&gt; SI Hamiltonian: dimension, matrix elements and eigenproblem, cassette 0 &lt;=</code></td>
 <td><a href="#si-matrices">SI Hamiltonian and overlap</a></td>
 </tr>
 <tr>
@@ -89,75 +89,79 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><a href="#ssr-energies">SSR state energies</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Transitions, cassette 0 &lt;=</code></td>
-<td><a href="#transition-dipole">Transition dipole moments and length-form oscillator strengths</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Velocity and magnetic transition moments, cassette 0 &lt;=</code></td>
-<td><a href="#transition-velocity">Velocity-form transition moments and oscillator strengths</a></td>
-</tr>
-<tr>
-<td><code>=&gt; Natural orbitals of the active space, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Natural occupation numbers and natural orbitals of the active space [NO_OCCUPATIONS], cassette 0 &lt;=</code></td>
 <td><a href="#natural-orbitals">Natural orbitals and occupations of the active space</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Radical character, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Transition dipole moments and oscillator strengths [TRANSITION_DIPOLE], cassette 0 &lt;=</code></td>
+<td><a href="#transition-dipole">Transition dipole moments and length-form oscillator strengths</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Velocity-form and magnetic transition moments, rotatory strengths [E_TDM_VEL, M_TDM], cassette 0 &lt;=</code></td>
+<td><a href="#transition-velocity">Velocity-form transition moments and oscillator strengths</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Radical character [RADICAL], cassette 0 &lt;=</code></td>
 <td><a href="#radical-character">Radical character</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Dipole moment (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><code>=&gt; Dipole moment (unrelaxed state density matrix) [DIPOLE], cassette 0 &lt;=</code></td>
 <td><a href="#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Quadrupole moment (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><code>=&gt; Quadrupole moment (unrelaxed state density matrix) [QUADRUPOLE], cassette 0 &lt;=</code></td>
 <td><a href="#quadrupole">Quadrupole moments of the states (unrelaxed)</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Transition second moments, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Transition second moments [TRANSITION_QUADRUPOLE], cassette 0 &lt;=</code></td>
 <td><a href="#transition-second-moments">Transition second moments</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Multipole moments of order 3 (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><code>=&gt; State and transition multipole moments of order 3 (unrelaxed state density matrix) [MULTIPOLE(3)], cassette 0 &lt;=</code></td>
 <td><a href="#multipoles">Cartesian multipole moments of order l ≥ 3</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Atomic charges (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><code>=&gt; Atomic charges (unrelaxed state density matrix) [MULLIKEN_CHARGES, LOWDIN_CHARGES], cassette 0 &lt;=</code></td>
 <td><a href="#atomic-charges">Atomic charges of the states (unrelaxed)</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Transition charges, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Atomic spin populations (unrelaxed state spin density, M_S = S) [MULLIKEN_SPINS, LOWDIN_SPINS], cassette 1 &lt;=</code></td>
+<td><a href="#atomic-spins">Atomic spin populations of the states (2S &gt; 0)</a></td>
+</tr>
+<tr>
+<td><code>=&gt; Transition charges [TRANSITION_CHARGES], cassette 0 &lt;=</code></td>
 <td><a href="#transition-charges">Transition charges</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Bond indices (unrelaxed state density matrix), cassette 0 &lt;=</code></td>
+<td><code>=&gt; Bond indices (unrelaxed state density matrix) [MAYER_INDICES, WIBERG_LOWDIN_INDICES], cassette 0 &lt;=</code></td>
 <td><a href="#bond-indices">Bond indices of the states (unrelaxed)</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Natural transition orbitals (NTO), cassette 0 &lt;=</code></td>
+<td><code>=&gt; Natural transition orbitals (NTO): weights and participation ratios [NTO], cassette 0 &lt;=</code></td>
 <td><a href="#nto">Natural transition orbitals</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Exciton descriptors, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Exciton descriptors [EXCITON], cassette 0 &lt;=</code></td>
 <td><a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Hole and electron populations, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Hole and electron populations [EXCITON], cassette 0 &lt;=</code></td>
 <td><a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Fragments: charge-transfer descriptors, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Fragments: charge-transfer descriptors [EXCITON], cassette 0 &lt;=</code></td>
 <td><a href="#fragment-ct">Fragment charge-transfer descriptors</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Fragments: hole and electron populations, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Fragments: hole and electron populations [EXCITON], cassette 0 &lt;=</code></td>
 <td><a href="#fragment-ct">Fragment charge-transfer descriptors</a></td>
 </tr>
 <tr>
-<td><code>=&gt; Fragment couplings F1 - F2, cassette 0 &lt;=</code></td>
+<td><code>=&gt; Fragment diabatic couplings F1 - F2 [FRAGMENT_COUPLINGS], cassette 0 &lt;=</code></td>
 <td><a href="#fragment-couplings">Fragment couplings (FCD, FED, FSD)</a></td>
 </tr>
 <tr>
-<td><code>==&gt; State summary &lt;==</code></td>
+<td><code>==&gt; State summary [SUMMARY] &lt;==</code></td>
 <td><a href="#ssr-energies">SSR state energies</a></td>
 </tr>
 <tr>
@@ -173,7 +177,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><a href="/v2/manual/setup/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a></td>
 </tr>
 <tr>
-<td><code>==&gt; Relaxed properties, cassette 0 &lt;==</code></td>
+<td><a href="/v2/manual/reference/#row-si_reks_property_for"><code>==&gt; Relaxed properties [SI_REKS_PROPERTY_FOR], cassette 0 &lt;==</code></a></td>
 <td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
 </tr>
 <tr>
@@ -189,7 +193,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><a href="#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a></td>
 </tr>
 <tr>
-<td><code>==&gt; Ionization energies (EKT) and Dyson orbitals, cassette 0 &lt;==</code></td>
+<td><a href="/v2/manual/reference/#row-reks_ekt"><code>==&gt; Ionization energies (EKT) and Dyson orbitals [REKS_EKT], cassette 0 &lt;==</code></a></td>
 <td><a href="#ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</a></td>
 </tr>
 <tr>
@@ -209,7 +213,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <td><a href="#nac">Nonadiabatic coupling vectors</a></td>
 </tr>
 <tr>
-<td><code>==&gt; Conical-intersection (CI) topography S1/S2 (cassette 0), E(S2) - E(S1) = 4.756e-03 Eh &lt;==</code></td>
+<td><code>==&gt; Conical-intersection (CI) topography S1/S2 (cassette 0), E(S2) - E(S1) = 4.092e-03 Eh &lt;==</code></td>
 <td><a href="#ci-topography">Conical-intersection topography</a></td>
 </tr>
 <tr>
@@ -267,12 +271,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </tr>
 <tr>
 <td>2 (default)</td>
-<td>Banner; <code>REKS Studio setup</code> with <code>Pairing schemes</code>, <code>SA pool</code>, <code>SI pools</code>, <code>State analysis</code>, <code>Gradient request</code>; <code>REKS Geminal Delocalization</code> (<a href="/v2/manual/run-control/#reks_geminal_deloc"><code>REKS_GEMINAL_DELOC</code></a>); orbital energies with the FONs in <code>Post-Iterations</code>; <code>SA-REKS energy decomposition</code>; SI setup, <code>FON optimization after the SCF</code>, <code>SI Davidson solver</code> (Davidson cassettes, <a href="#si-davidson">SI Davidson solver</a>), per cassette <code>Hamiltonian</code>, <code>Adiabatic states</code> and the property blocks; <code>State summary</code>; <code>Spin-state energetics</code>; CP-REKS solver (Psi4 <code>PRINT</code> ≥ 1); <code>Relaxed properties</code>; EKT; gradient targets, <code>Gradient of …</code>, <code>NAC …</code>, CI topography</td>
-<td>2148</td>
+<td>Banner; <code>REKS Studio setup</code> with <code>Pairing schemes</code>, <code>SA pool</code>, <code>SI pools</code>, <code>State analysis</code>, <code>Gradient request</code>; <code>REKS Geminal Delocalization</code> (<a href="/v2/manual/run-control/#reks_geminal_deloc"><code>REKS_GEMINAL_DELOC</code></a>); orbital energies with the FONs in <code>Post-Iterations</code>; <code>SA-REKS energy decomposition</code>; SI setup, <code>FON optimization after the SCF</code>, <code>SI Davidson solver</code> (Davidson cassettes, <a href="#si-davidson">SI Davidson solver</a>), per cassette <code>SI Hamiltonian</code>, <code>Adiabatic states</code> and the property blocks; <code>State summary</code>; <code>Spin-state energetics</code>; CP-REKS solver (Psi4 <code>PRINT</code> ≥ 1); <code>Relaxed properties</code>; EKT; gradient targets, <code>Gradient of …</code>, <code>NAC …</code>, CI topography</td>
+<td>2144</td>
 </tr>
 <tr>
 <td>3</td>
-<td><code>XC evaluation … per string … per key</code> in the setup; Hamiltonian counters (<code>coupled</code>/<code>zero</code>, <code>Terms</code>, <code>Reuse</code>, overlap terms) and the <code>Off-diagonal channel</code> table; EKT <code>dropped eigenvalues</code> and the Dyson MO matrix; <code>[REKS-GRAD]</code> <code>C_eff</code> per microstate and Psi4 per-channel gradient terms; <code>==&gt; References &lt;==</code></td>
+<td><code>XC evaluation … per string … per key</code> in the setup; Hamiltonian counters (<code>coupled</code>/<code>zero</code>, <code>Terms</code>, <code>Reuse</code>, overlap terms) and the <code>Off-diagonal channel</code> table; under <code>Adiabatic states</code> the overlap S_ij / sqrt(S_ii S_jj) of configuration pairs listed in one row; EKT <code>dropped eigenvalues</code> and the Dyson MO matrix; <code>[REKS-GRAD]</code> <code>C_eff</code> per microstate and Psi4 per-channel gradient terms; <code>==&gt; References &lt;==</code></td>
 <td>2549</td>
 </tr>
 <tr>
@@ -369,7 +373,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>A switch named as an <a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> block is on by default (<a href="/v2/manual/setup/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a>). "SI present" = at least one SI cassette with configurations, the default when <a href="/v2/manual/reference/#row-si_reks_configs"><code>SI_REKS_CONFIGS</code></a> is absent; an all-empty <a href="/v2/manual/reference/#row-si_reks_configs"><code>SI_REKS_CONFIGS</code></a> turns it off.</li>
 <li>Transition quantities are computed for pairs I &lt; J within one cassette and printed when at least 2 states are printed; per-state and pair tables are bounded by <a href="/v2/manual/reference/#row-si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a>.</li>
 <li>The per-state and per-pair <code>SSR … K=e</code> arrays exist only for the states stored by <a href="/v2/manual/reference/#row-si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a>; <code>SSR ENERGIES K=e</code> holds every physical root (on the Davidson path the computed roots, <a href="/v2/manual/concepts/#si-solver">SI eigensolver</a>), and the <code>SSR ROOT r … CASSETTE e</code>, <code>SSR NAC …</code>, <code>SSR CI …</code> and EKT arrays are stored whenever their block runs.</li>
-<li>The <code>=&gt;</code> sub-block headers of a cassette carry <code>, cassette e</code>; with a single SI cassette that suffix is absent. The <code>==&gt;</code> headers (<code>State interaction: cassette e</code>, <code>Relaxed properties</code>, EKT, <code>Gradient of</code>, <code>NAC</code>, CI topography) always name the cassette.</li>
+<li>The <code>=&gt;</code> sub-block headers of a cassette carry <code>, cassette e</code>; with a single SI cassette that suffix is absent. The <code>==&gt;</code> headers (<code>State interaction: cassette e</code>, <code>Relaxed properties</code>, EKT of the states, <code>Gradient of</code>, <code>NAC</code>, CI topography) always name the cassette.</li>
+<li>A property header names in brackets the switches of its block: the <a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> names of the block that are on, all of them when none is on (<code>[MULLIKEN_CHARGES, LOWDIN_CHARGES]</code>), or the option (<a href="/v2/manual/reference/#row-si_reks_property_for"><code>[SI_REKS_PROPERTY_FOR]</code></a>, <a href="/v2/manual/reference/#row-reks_ekt"><code>[REKS_EKT]</code></a>).</li>
 <li>The sign of a phase-odd quantity (transition dipole, velocity and magnetic moments, transition multipoles and charges, NAC vectors and their sum over atoms, g̃ and h̃ of the CI topography, FCD/FED couplings, NTO particles) is arbitrary between runs, also of the same input (H₄: S0→S1 <code>mu_z</code> = −2.943014 in one run, 2.943014 in another). Moduli, f, |d|, R<sub>len</sub> and R<sub>vel</sub> agree. Within one run all quantities share one phase, so their relations hold (Σ<sub>A</sub> d<sub>A</sub> = −p<sub>IJ</sub>; φ and s<sub>y</sub> of the CI topography from the same d).</li>
 </ul>
 <h3 id="summary">Summary</h3>
@@ -611,7 +616,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span> Nuclear Repulsion Energy =             25.1844817236300855</span></span>
 <span class="line"><span> One-Electron Energy =                -153.5867652831177281</span></span>
 <span class="line"><span> Two-Electron Energy =                  56.4995948627347033</span></span>
-<span class="line"><span> DFT Exchange-Correlation Energy =      -6.2238541886040739</span></span>
+<span class="line"><span> DFT Exchange-Correlation Energy =      -6.2238541886040730</span></span>
 <span class="line"><span> Empirical Dispersion Energy =           0.0000000000000000</span></span>
 <span class="line"><span> VV10 Nonlocal Energy =                  0.0000000000000000</span></span>
 <span class="line"><span> Total Energy =                        -78.1265428853570114</span></span></code></pre>
@@ -675,7 +680,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   Set     Geminals  Iterations   Last change      Residual</span></span>
 <span class="line"><span>   --------------------------------------------------------</span></span>
 <span class="line"><span>   n              2           2       0.0e+00       1.1e-10</span></span>
-<span class="line"><span>   m              2           2       0.0e+00       1.1e-14</span></span>
+<span class="line"><span>   m              2           2       0.0e+00       3.6e-15</span></span>
 <span class="line"><span>   mt1            4           2       0.0e+00       4.4e-14</span></span>
 <span class="line"><span>   --------------------------------------------------------</span></span>
 <span class="line"><span></span></span>
@@ -700,22 +705,22 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>On</dt><dd>a cassette solved by Davidson (<a href="/v2/manual/reference/#row-si_reks_solver"><code>SI_REKS_SOLVER</code></a>)</dd><dt>Units</dt><dd>E<sub>h</sub> (residuals); s (time)</dd></dl>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; SI Davidson solver (cassette 0) &lt;==</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>    Roots                 14 (10 requested + 4 margin) of 115</span></span>
+<span class="line"><span>    Roots                 7 (3 requested + 4 margin) of 115</span></span>
 <span class="line"><span>    Convergence           1.000e-12</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>    Iter      Mean |R|       Max |R|   Remain   Applications   Time [s]</span></span>
 <span class="line"><span>    -------------------------------------------------------------------</span></span>
-<span class="line"><span>       1     8.987e-16     1.513e-15        0            116       0.01</span></span>
+<span class="line"><span>       1     7.465e-16     1.074e-15        0              8       0.00</span></span>
 <span class="line"><span>    -------------------------------------------------------------------</span></span>
-<span class="line"><span>    14 roots converged in 1 iterations, 144 operator applications.</span></span>
+<span class="line"><span>    7 roots converged in 1 iterations, 22 operator applications.</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>    Computed states       14 of 115 (lowest roots, Davidson)</span></span></code></pre>
+<span class="line"><span>    Computed states       7 of 115 (lowest roots, Davidson)</span></span></code></pre>
 <ul>
-<li>One block per Davidson cassette, after <code>FON optimization after the SCF</code> and before the cassette blocks. Fragment: hexatriene REKS(6,6) with <a href="/v2/manual/reference/#row-si_reks_solver"><code>si_reks_solver</code></a> <code>davidson</code>, 10 requested roots (stored states) + 4 margin; the cassette's <code>Hamiltonian</code> block ends with <code>Computed states</code>.</li>
-<li><code>Roots</code>: k (requested + margin) of r, or <code>k (whole space, n requested)</code> when the search space reaches r. Mean |R| and Max |R|: residual norms of the roots still above <code>Convergence</code>, or of all roots once none remains; <code>Remain</code>: their number; <code>Applications</code>: cumulative products A·x, one per vector (start columns, corrections, two per root at each verification).</li>
+<li>One block per Davidson cassette, after <code>FON optimization after the SCF</code> and before the cassette blocks. Fragment: hexatriene REKS(6,6) with <a href="/v2/manual/reference/#row-si_reks_solver"><code>si_reks_solver</code></a> <code>davidson</code>, 3 stored and printed states, 3 requested roots + 4 margin; the cassette's <code>SI Hamiltonian</code> block ends with <code>Computed states</code>.</li>
+<li><code>Roots</code>: k (requested + margin) of r, or <code>k (whole space, n requested)</code> when the search space reaches r. Mean |R| and Max |R|: residual norms of the roots still above <code>Convergence</code>, or of all roots once none remains; <code>Remain</code>: their number; <code>Applications</code>: cumulative products A·x up to that row, one per vector (start vectors, corrections; r for the whole space); a verification adds two per root, counted from the next row and in the closing line.</li>
 <li>A root stalled at its rounding level adds the line <code>n root(s) closed at the roundoff floor (max |R| = …, max phi = …)</code>.</li>
-<li>In the fragment one iteration converges all 14 roots of the 115-dimensional space.</li>
-<li><a href="/v2/manual/reference/#row-reks_report_level"><code>REKS_REPORT_LEVEL</code></a> ≥ 4 adds a line per subspace collapse, <code>SI Davidson: n collapses, shift … Eh</code>, per root E, |r| and φ, the <code>apply calls</code> counts and the CSR passes.</li>
+<li>In the fragment P is the whole space, the 7 start vectors are exact, and one iteration converges (8 start + 2 × 7 verification products). With the default 10 stored states the input gives <code>Roots 115 (whole space, 10 requested)</code>.</li>
+<li><a href="/v2/manual/reference/#row-reks_report_level"><code>REKS_REPORT_LEVEL</code></a> ≥ 4 adds a line per subspace collapse, <code>SI Davidson: n collapses, shift … Eh</code>, <code>P space: m = … columns; rows read: … configurations</code> (the p of <a href="/v2/manual/concepts/#si-solver">SI eigensolver</a>; not for the whole space), per root E, |r| and φ, the <code>apply calls</code> counts and the CSR passes.</li>
 </ul>
 <h4 id="ssr-energies">SSR state energies</h4>
 <p>Eigenvalues of the SI eigenproblem of each cassette after removal of the overlap null modes (<a href="/v2/manual/concepts/#si-hamiltonian">SI Hamiltonian and overlap</a>); states ordered by energy, root index 0-based.</p>
@@ -728,27 +733,25 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   S1     -78.181411797824         3.239   OSS4(92.2) OSS_DES4(5.1) OSS3(2.5)</span></span>
 <span class="line"><span>   S2     -78.172150374308         3.491   DES2(50.6) DOSS_SPS_0(21.0) DES4(11.3) PPS2(7.0)</span></span>
 <span class="line"><span>[...]</span></span>
+<span class="line"><span>   S15    -77.485673275779        22.171   DDES1(40.3) DOSS_SPS_0(36.1) DDES2(17.9)</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>   w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;</span></span>
-<span class="line"><span>   listed: the three largest |w_j| &gt;= 0.1 %, then every further |w_j| &gt; 5 %.</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>   Overlap S_ij / sqrt(S_ii S_jj) of configuration pairs listed in the same row above 0.5 in magnitude:</span></span>
-<span class="line"><span>   PPS1  / PPS2    0.83    PPS2  / DES2    0.55    DES1  / DDES2  -0.55    DDES1 / DDES2   0.83</span></span></code></pre>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; State summary &lt;==</span></span>
+<span class="line"><span>   listed: the three largest |w_j| &gt;= 0.1 %, then every further |w_j| &gt; 5 %.</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; State summary [SUMMARY] &lt;==</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>    State            E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  lambda [nm]    f_len     Main configurations (w_j in %)</span></span>
-<span class="line"><span>    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>    S0     -78.300443969671         0.000                0.00            -        -     PPS1(61.3); PPS2(36.8)</span></span>
-<span class="line"><span>    T1     -78.279831019196         0.561               12.93            -        -     T_PPS2(97.4) 8A(b)-&gt;9A(c)</span></span>
-<span class="line"><span>    T2     -78.224960817446         2.054               47.37            -        -     T_PPS4(88.1) 8A(b)-&gt;10A(d)</span></span>
-<span class="line"><span>    S1     -78.181411797824         3.239               74.69        382.8  0.00000     OSS4(92.2) 8A(b)-&gt;10A(d)</span></span>
-<span class="line"><span>    S2     -78.172150374308         3.491               80.51        355.1  0.00021     DES2(50.6) 8A(b),8A(b)-&gt;9A(c),9A(c)</span></span>
-<span class="line"><span>    S3     -78.170584976114         3.534               81.49        350.9  0.01195 *   OSS2(68.7) 8A(b)-&gt;9A(c)</span></span>
+<span class="line"><span>    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>    S0     -78.300443969671         0.000                0.00            -        -     PPS1(61.3); PPS2(36.8); DOSS_SPS_1(1.8) 7A(a)-&gt;9A(c), 8A(b)-&gt;10A(d)</span></span>
+<span class="line"><span>    T1     -78.279831019196         0.561               12.93            -        -     T_PPS2(97.4) 8A(b)-&gt;9A(c); T_PPS1(2.2) 7A(a)-&gt;10A(d)</span></span>
+<span class="line"><span>    T2     -78.224960817446         2.054               47.37            -        -     T_PPS4(88.1) 8A(b)-&gt;10A(d); T_DES4(7.0) 7A(a)-&gt;9A(c), 8A(b),8A(b)-&gt;10A(d),10A(d); T_PPS3(4.5) 7A(a)-&gt;9A(c)</span></span>
+<span class="line"><span>    S1     -78.181411797824         3.239               74.69        382.8  0.00000     OSS4(92.2) 8A(b)-&gt;10A(d); OSS_DES4(5.1) 7A(a)-&gt;9A(c), 8A(b),8A(b)-&gt;10A(d),10A(d); OSS3(2.5) 7A(a)-&gt;9A(c)</span></span>
+<span class="line"><span>    S2     -78.172150374308         3.491               80.51        355.1  0.00021     DES2(50.6) 8A(b),8A(b)-&gt;9A(c),9A(c); DOSS_SPS_0(21.0) 7A(a)-&gt;10A(d), 8A(b)-&gt;9A(c); DES4(11.3) 8A(b),8A(b)-&gt;10A(d),10A(d)</span></span>
+<span class="line"><span>    S3     -78.170584976114         3.534               81.49        350.9  0.01195 *   OSS2(68.7) 8A(b)-&gt;9A(c); OSS_DES2(21.1) 7A(a)-&gt;10A(d), 8A(b),8A(b)-&gt;9A(c),9A(c); OSS1(5.5) 7A(a)-&gt;10A(d)</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>    Printed states of the first cassette of each spin multiplicity, ordered by energy.</span></span>
 <span class="line"><span>    lambda, f_len: - for a spin multiplicity other than S0's (no spin-orbit coupling).</span></span>
-<span class="line"><span>    Main configurations: the largest |w_j| (&gt;= 0.1 %), then every further |w_j| &gt;= 25 %.</span></span>
+<span class="line"><span>    Main configurations: the three largest |w_j| &gt;= 1 %, then every further |w_j| &gt; 20 %.</span></span>
 <span class="line"><span>    * = length and velocity forms differ by more than a factor of 3 (tested when f_len or f_vel &gt; 1e-3):</span></span>
 <span class="line"><span>    the hypervirial relation |p| = dE |mu| does not hold for these approximate states; f is qualitative only.</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR ENERGIES K=&lt;e&gt;</code>; bookkeeping <code>SSR SI LIST</code>, <code>SSR CASSETTE 2S K=&lt;e&gt;</code>, <code>SSR STORED STATES K=&lt;e&gt;</code>, <code>SSR ACTIVE ORBITALS K=&lt;e&gt;</code>, <code>SSR CASSETTE SECTOR K=&lt;e&gt;</code></dd></dl>
@@ -756,7 +759,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <li>The four bookkeeping scalars never take the sector prefix.</li>
 <li><code>Adiabatic states</code> lists <a href="/v2/manual/reference/#row-si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a> rows; in later cassettes a <code>ref</code> row repeats the lowest state of the first cassette in the order of <a href="/v2/manual/setup/#cassette-order">Cassette order</a> (H₂ with <a href="/v2/manual/reference/#row-si_reks_2spin"><code>si_reks_2spin</code></a> <code>[2, 0]</code>: <code>ref … T1 of cassette 1</code>).</li>
 <li><code>State summary</code>, printed with two or more SI cassettes, merges the printed states of the first cassette of each multiplicity by energy.</li>
-<li>Check E(S0) against <code>@REKS Final Energy</code> (<code>E[SA-REKS]</code>) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies 0.03–0.51 E<sub>h</sub> below E<sub>SA</sub>; an E(S0) far below this range marks ghost roots (<a href="/v2/manual/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a>).</li>
+<li>Check E(S0) against <code>@REKS Final Energy</code> (<code>E[SA-REKS]</code>) and the gaps between neighbouring roots: in the runs of this manual E(S0) lies at most 0.51 E<sub>h</sub> below E<sub>SA</sub>; an E(S0) far below that marks ghost roots (<a href="/v2/manual/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a>).</li>
 </ul>
 <h4 id="ssr-composition">SSR eigenvectors and Chirgwin–Coulson weights</h4>
 <p>Eigenvector c of each state over the configurations of its cassette, and the Chirgwin–Coulson weights ω<sub>j</sub> (<a href="/v2/manual/concepts/#cc-weights">Chirgwin–Coulson weights</a>), printed in <code>Adiabatic states</code> (<a href="#ssr-energies">SSR state energies</a>).</p>
@@ -779,7 +782,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <p>Hamiltonian H and overlap S of the cassette over its configurations, before diagonalization; the printed block gives dimensions, the number of overlapping pairs and the rank after Löwdin regularization.</p>
 <dl class="fields"><dt>On</dt><dd>SI present</dd><dt>Units</dt><dd>E<sub>h</sub> (H); dimensionless (S)</dd></dl>
 <math display="block"><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><msub><mover><mi>H</mi><mo stretchy="false" class="chr-sml wbk-sml" style="math-depth:0;">~</mo></mover><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>−</mo><msub><mover><mi>S</mi><mo stretchy="false" class="chr-med wbk-med" style="math-depth:0;">~</mo></mover><mrow><mi>i</mi><mi>j</mi></mrow></msub><mspace width="0.1667em"></mspace><mfrac><mrow><msub><mover><mi>H</mi><mo stretchy="false" class="chr-sml wbk-sml" style="math-depth:0;">~</mo></mover><mrow><mi>i</mi><mi>i</mi></mrow></msub><mo>+</mo><msub><mover><mi>H</mi><mo stretchy="false" class="chr-sml wbk-sml" style="math-depth:0;">~</mo></mover><mrow><mi>j</mi><mi>j</mi></mrow></msub></mrow><mn>2</mn></mfrac><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mover><mi>S</mi><mo stretchy="false" class="chr-med wbk-med" style="math-depth:0;">~</mo></mover><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>S</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msqrt><mrow><msub><mi>S</mi><mrow><mi>i</mi><mi>i</mi></mrow></msub><msub><mi>S</mi><mrow><mi>j</mi><mi>j</mi></mrow></msub></mrow></msqrt></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><msub><mover><mi>H</mi><mo stretchy="false" class="chr-sml wbk-sml" style="math-depth:0;">~</mo></mover><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>H</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msqrt><mrow><msub><mi>S</mi><mrow><mi>i</mi><mi>i</mi></mrow></msub><msub><mi>S</mi><mrow><mi>j</mi><mi>j</mi></mrow></msub></mrow></msqrt></mfrac></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Hamiltonian, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; SI Hamiltonian: dimension, matrix elements and eigenproblem, cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Configurations        18</span></span>
 <span class="line"><span>   Microstates           37       entering the matrix elements of this cassette</span></span>
@@ -823,12 +826,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <math display="block"><mrow><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>E</mi><mo>=</mo><msub><mi>E</mi><mi>J</mi></msub><mo>−</mo><msub><mi>E</mi><mi>I</mi></msub><mo separator="true">,</mo><mspace width="2em"></mspace><mi>λ</mi><mo>=</mo><mi>h</mi><mi>c</mi><mi>/</mi><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>E</mi></mrow></math>
 <math display="block"><mrow><msub><mi>𝝁</mi><mrow><mi>I</mi><mi>J</mi></mrow></msub><mo>=</mo><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>I</mi><mi>|</mi><mover><mi>𝝁</mi><mo stretchy="false" class="wbk-acc" style="math-depth:0;">ˆ</mo></mover><mi>|</mi><mi>J</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><mover><mi>𝝁</mi><mo stretchy="false" class="wbk-acc" style="math-depth:0;">ˆ</mo></mover><mo>=</mo><mo form="prefix" stretchy="false">−</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>i</mi></munder></mrow><msub><mi>𝐫</mi><mi>i</mi></msub></mrow></math>
 <math display="block"><mrow><msub><mi>f</mi><mpadded lspace="0"><mi>len</mi></mpadded></msub><mo>=</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>2</mn><mn>3</mn></mfrac></mstyle><mspace width="0.1667em"></mspace><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>E</mi><mspace width="0.1667em"></mspace><mi>|</mi><msub><mi>𝝁</mi><mrow><mi>I</mi><mi>J</mi></mrow></msub><msup><mi>|</mi><mn>2</mn></msup><mspace width="1em"></mspace><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>E</mi><mtext> in </mtext><msub><mi>E</mi><mrow><mi mathvariant="normal">h</mi><mspace></mspace></mrow></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Transitions, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Transition dipole moments and oscillator strengths [TRANSITION_DIPOLE], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Transition   dE [eV]  lambda [nm]  mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]   |mu| [D]      f_len</span></span>
 <span class="line"><span>   -------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>   S0-&gt;S1         3.239        382.8     0.000000     0.000656     0.000000     0.000656   0.001667    0.00000</span></span>
-<span class="line"><span>   S0-&gt;S2         3.491        355.1     0.000000     0.000000     0.048983     0.048983   0.124503    0.00021</span></span>
+<span class="line"><span>   S0-&gt;S2         3.491        355.1     0.000000     0.000000    -0.048983     0.048983   0.124503    0.00021</span></span>
 <span class="line"><span>   S0-&gt;S3         3.534        350.9     0.000000     0.000000    -0.371471     0.371471   0.944186    0.01195 *</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>   * = length and velocity forms differ by more than a factor of 3 (tested when f_len or f_vel &gt; 1e-3):</span></span>
@@ -842,12 +845,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <p>Velocity-form transition moments and oscillator strengths, printed with the magnetic moments (<a href="#transition-magnetic">Magnetic transition moments and rotatory strengths</a>).</p>
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>E_TDM_VEL</code> (default: on)</dd><dt>For</dt><dd>pairs I &lt; J</dd><dt>Units</dt><dd>a.u.; f dimensionless</dd></dl>
 <math display="block"><mrow><msub><mi>𝐩</mi><mrow><mi>I</mi><mi>J</mi></mrow></msub><mo>=</mo><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>I</mi><mi>|</mi><mo form="prefix" stretchy="false">∇</mo><mi>|</mi><mi>J</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>f</mi><mpadded lspace="0"><mi>vel</mi></mpadded></msub><mo>=</mo><mfrac><mn>2</mn><mrow><mn>3</mn><mspace width="0.1667em"></mspace><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>E</mi></mrow></mfrac><mspace width="0.1667em"></mspace><mi>|</mi><msub><mi>𝐩</mi><mrow><mi>I</mi><mi>J</mi></mrow></msub><msup><mi>|</mi><mn>2</mn></msup></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Velocity and magnetic transition moments, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Velocity-form and magnetic transition moments, rotatory strengths [E_TDM_VEL, M_TDM], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Transition         p_x         p_y         p_z         m_x         m_y         m_z       f_vel         R_vel</span></span>
 <span class="line"><span>   ------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>   S0-&gt;S1        0.000000    0.000175    0.000000    0.378467    0.000000    0.000000    0.000000      0.000000</span></span>
-<span class="line"><span>   S0-&gt;S2        0.000000    0.000000   -0.002048    0.000000    0.000000    0.000000    0.000022      0.000000</span></span>
+<span class="line"><span>   S0-&gt;S2        0.000000    0.000000    0.002048    0.000000    0.000000    0.000000    0.000022      0.000000</span></span>
 <span class="line"><span>   S0-&gt;S3        0.000000    0.000000    0.014465    0.000000    0.000000    0.000000    0.001074 *    0.000000</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR VELOCITY TRANSITION DIPOLES K=&lt;e&gt;</code>, <code>SSR OSCILLATOR STRENGTHS VELOCITY K=&lt;e&gt;</code></dd></dl>
 <ul>
@@ -866,7 +869,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <h4 id="natural-orbitals">Natural orbitals and occupations of the active space</h4>
 <p>Eigenvectors and eigenvalues of the active 1-RDM of each state; orbitals expanded over the active MOs.</p>
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>NO_OCCUPATIONS</code> (default: always)</dd><dt>Units</dt><dd>electrons (occupations)</dd></dl>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Natural orbitals of the active space, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Natural occupation numbers and natural orbitals of the active space [NO_OCCUPATIONS], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   S0</span></span>
 <span class="line"><span>     occ         1.933337    1.521446    0.478239    0.066978</span></span>
@@ -887,19 +890,24 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>RADICAL</code> (default: on)</dd><dt>Units</dt><dd>y dimensionless; N electrons</dd></dl>
 <math display="block"><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><msub><mi>n</mi><mrow><mpadded lspace="0"><mi>LUNO</mi></mpadded><mo>+</mo><mi>i</mi></mrow></msub><mo separator="true">,</mo><mspace width="2em"></mspace><mpadded lspace="0"><mi>LUNO</mi></mpadded><mo>=</mo><msub><mi>N</mi><mpadded lspace="0"><mi>act</mi></mpadded></msub><mi>/</mi><mn>2</mn><mtext> </mtext><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mtext>0-based</mtext><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><mi>i</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow></math>
 <math display="block"><mrow><msub><mi>N</mi><mi>D</mi></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>a</mi></munder></mrow><msub><mi>n</mi><mi>a</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>2</mn><mo>−</mo><msub><mi>n</mi><mi>a</mi></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>N</mi><mi>U</mi></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>a</mi></munder></mrow><mrow><mi>min</mi><mo>⁡</mo></mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msub><mi>n</mi><mi>a</mi></msub><mo separator="true">,</mo><mspace width="0.1667em"></mspace><mn>2</mn><mo>−</mo><msub><mi>n</mi><mi>a</mi></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>N</mi><mrow><mi>U</mi><mo separator="true">,</mo><mpadded lspace="0"><mi>nl</mi></mpadded></mrow></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>a</mi></munder></mrow><msubsup><mi>n</mi><mi>a</mi><mn>2</mn></msubsup><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>2</mn><mo>−</mo><msub><mi>n</mi><mi>a</mi></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Radical character, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Radical character [RADICAL], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   State             y0          y1         N_D         N_U      N_U,nl</span></span>
 <span class="line"><span>   --------------------------------------------------------------------</span></span>
 <span class="line"><span>   S0          0.478239    0.066978    1.714212    1.090434    1.093137</span></span>
 <span class="line"><span>   S1          0.971846    0.080285    2.306662    2.104262    2.044339</span></span>
 <span class="line"><span>[...]</span></span>
+<span class="line"><span>   --------------------------------------------------------------------</span></span>
 <span class="line"><span>   Radical character of each state. y0, y1 = diradical/tetraradical indices</span></span>
-<span class="line"><span>   from the LUNO/LUNO+1 occupations (0 = closed shell, 1 = pure radical).</span></span></code></pre>
+<span class="line"><span>   from the LUNO/LUNO+1 occupations (0 = closed shell, 1 = pure radical).</span></span>
+<span class="line"><span>   N_D, N_U, N_U,nl = effective number of unpaired electrons, sums over the</span></span>
+<span class="line"><span>   active natural orbitals: N_D = sum occ(2-occ) (Takatsuka-Fueno-Yamaguchi),</span></span>
+<span class="line"><span>   N_U = sum min(occ, 2-occ) (Head-Gordon, linear), N_U,nl = sum occ^2 (2-occ)^2</span></span>
+<span class="line"><span>   (Head-Gordon, nonlinear).</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR RADICAL INDICES K=&lt;e&gt;</code> (columns [y0, y1, N_D, N_U, N_U,nl]), <code>SSR UNPAIRED ATOMIC POPULATIONS K=&lt;e&gt;</code></dd></dl>
 <ul>
 <li>Unpaired atomic populations are stored, not printed.</li>
-<li>y<sub>0</sub>, y<sub>1</sub> equal the corresponding occupations in <code>Natural orbitals</code> (<a href="#natural-orbitals">Natural orbitals and occupations of the active space</a>); they are not Yamaguchi's spin-projected index. <code>-</code> is printed when the active space has no LUNO or LUNO+1.</li>
+<li>y<sub>0</sub>, y<sub>1</sub> equal the corresponding occupations in <code>Natural occupation numbers and natural orbitals</code> (<a href="#natural-orbitals">Natural orbitals and occupations of the active space</a>); they are not Yamaguchi's spin-projected index. <code>-</code> is printed when the active space has no LUNO or LUNO+1.</li>
 <li>2S &gt; 0: the spin-unpaired electrons are counted as well, N<sub>D</sub> ≥ N<sub>U</sub> ≥ 2S; a LUNO opened by the spin gives y ≈ 1.</li>
 </ul>
 <dl class="fields"><dt>Ref</dt><dd>N<sub>D</sub>: <a href="/v2/manual/reference/#takatsuka1978-odd-electrons">Takatsuka et al., Theor. Chim. Acta 1978, 48, 175</a>; N<sub>U</sub> (linear) and N<sub>U,nl</sub> (nonlinear): <a href="/v2/manual/reference/#head-gordon2003-unpaired">Head-Gordon, Chem. Phys. Lett. 2003, 372, 508</a>.</dd></dl>
@@ -908,7 +916,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>DIPOLE</code> (or <code>MULTIPOLE(n)</code>) (default: on)</dd><dt>For</dt><dd>difference dipoles: two or more states</dd><dt>Units</dt><dd>e a<sub>0</sub> (stored); e a<sub>0</sub> and D (printed)</dd></dl>
 <math display="block"><mrow><msub><mi>𝝁</mi><mi>I</mi></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>A</mi></munder></mrow><msub><mi>Z</mi><mi>A</mi></msub><msub><mi>𝐑</mi><mi>A</mi></msub><mo>−</mo><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>I</mi><mi>|</mi><mstyle scriptlevel="0" displaystyle="false"><msub><mo movablelimits="false">∑</mo><mi>i</mi></msub><msub><mi>𝐫</mi><mi>i</mi></msub><mi>|</mi><mi>I</mi></mstyle><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow></mrow></math>
 <math display="block"><mrow><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><msub><mi>𝝁</mi><mi>I</mi></msub><mo>=</mo><msub><mi>𝝁</mi><mi>I</mi></msub><mo>−</mo><msub><mi>𝝁</mi><msub><mi>S</mi><mn>0</mn></msub></msub></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Dipole moment (unrelaxed state density matrix), cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Dipole moment (unrelaxed state density matrix) [DIPOLE], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   State       mu_x [e a0]  mu_y [e a0]  mu_z [e a0]  |mu| [e a0]     |mu| [D]</span></span>
 <span class="line"><span>   ---------------------------------------------------------------------------</span></span>
@@ -919,7 +927,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <p>Full Cartesian quadrupole of each state (nuclei and electrons, origin 0) from the unrelaxed state density, and its traceless part.</p>
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>QUADRUPOLE</code> (or <code>MULTIPOLE(n)</code>, n ≥ 2) (default: on)</dd><dt>Units</dt><dd>e a<sub>0</sub><sup>2</sup></dd></dl>
 <math display="block"><mrow><msub><mi>Q</mi><mrow><mpadded lspace="0"><mi>tl</mi></mpadded><mo separator="true">,</mo><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><msub><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>−</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>3</mn></mfrac></mstyle><mspace width="0.1667em"></mspace><mpadded lspace="0"><mi>tr</mi></mpadded><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>Q</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mspace width="0.1667em"></mspace><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Quadrupole moment (unrelaxed state density matrix), cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Quadrupole moment (unrelaxed state density matrix) [QUADRUPOLE], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   State                         xx          xy          xz          yy          yz          zz</span></span>
 <span class="line"><span>   --------------------------------------------------------------------------------------------</span></span>
@@ -933,12 +941,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <p>Cartesian second moments of the transition density of each pair, trace included.</p>
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>TRANSITION_QUADRUPOLE</code> (or <code>MULTIPOLE(n)</code>, n ≥ 2) (default: on)</dd><dt>For</dt><dd>pairs I &lt; J</dd><dt>Units</dt><dd>e a<sub>0</sub><sup>2</sup></dd></dl>
 <math display="block"><mrow><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>I</mi><mi>|</mi><mstyle scriptlevel="0" displaystyle="false"><mo form="prefix" stretchy="false">−</mo><mo movablelimits="false">∑</mo><msub><mi>r</mi><mi>i</mi></msub><msub><mi>r</mi><mi>j</mi></msub><mi>|</mi><mi>J</mi></mstyle><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>=</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Transition second moments, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Transition second moments [TRANSITION_QUADRUPOLE], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Transition          xx          xy          xz          yy          yz          zz</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------------------</span></span>
 <span class="line"><span>   S0-&gt;S1        0.000000    0.000000    0.000000    0.000000   -0.389350    0.000000</span></span>
-<span class="line"><span>   S0-&gt;S2        0.056698    0.000000    0.000000    0.138333    0.000000   -0.457178</span></span>
+<span class="line"><span>   S0-&gt;S2       -0.056698    0.000000    0.000000   -0.138333    0.000000    0.457178</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>   Its traceless part governs electric-quadrupole transitions, not contained in f_len.</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR TRANSITION QUADRUPOLES K=&lt;e&gt;</code></dd></dl>
@@ -947,7 +955,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>MULTIPOLE(n)</code>, n ≥ 3 (default: off)</dd><dt>For</dt><dd>one table per order l = 3..n</dd><dt>Units</dt><dd>e a<sub>0</sub><sup>l</sup></dd></dl>
 <math display="block"><mrow><msub><mi>M</mi><mi>I</mi></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>A</mi></munder></mrow><msub><mi>Z</mi><mi>A</mi></msub><mspace width="0.1667em"></mspace><msubsup><mi>x</mi><mi>A</mi><mi class="tml-sml-pad">a</mi></msubsup><msubsup><mi>y</mi><mi>A</mi><mi class="tml-sml-pad">b</mi></msubsup><msubsup><mi>z</mi><mi>A</mi><mi class="tml-sml-pad">c</mi></msubsup><mo>−</mo><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>I</mi><mi>|</mi><mstyle scriptlevel="0" displaystyle="false"><msub><mo movablelimits="false">∑</mo><mi>i</mi></msub><msubsup><mi>x</mi><mi>i</mi><mi class="tml-sml-pad">a</mi></msubsup><msubsup><mi>y</mi><mi>i</mi><mi class="tml-sml-pad">b</mi></msubsup><msubsup><mi>z</mi><mi>i</mi><mi class="tml-sml-pad">c</mi></msubsup><mi>|</mi><mi>I</mi></mstyle><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow></mrow></math>
 <math display="block"><mrow><msub><mi>M</mi><mrow><mi>I</mi><mi>J</mi></mrow></msub><mo>=</mo><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>I</mi><mi>|</mi><mstyle scriptlevel="0" displaystyle="false"><mo form="prefix" stretchy="false">−</mo><msub><mo movablelimits="false">∑</mo><mi>i</mi></msub><msubsup><mi>x</mi><mi>i</mi><mi class="tml-sml-pad">a</mi></msubsup><msubsup><mi>y</mi><mi>i</mi><mi class="tml-sml-pad">b</mi></msubsup><msubsup><mi>z</mi><mi>i</mi><mi class="tml-sml-pad">c</mi></msubsup><mi>|</mi><mi>J</mi></mstyle><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Multipole moments of order 3 (unrelaxed state density matrix), cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; State and transition multipole moments of order 3 (unrelaxed state density matrix) [MULTIPOLE(3)], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   State              xxx         xxy         xxz         xyy         xyz         xzz         yyy         yyz         yzz         zzz</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------------------------------------------------------------------</span></span>
@@ -958,7 +966,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <p>Mulliken and Löwdin charges of each state from the spin-summed unrelaxed state density P<sup>(I)</sup> = D<sup>c</sup> + C<sub>a</sub> ρ<sup>(II)</sup> C<sub>a</sub><sup>T</sup> (core D<sup>c</sup> included).</p>
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>MULLIKEN_CHARGES</code> / <code>LOWDIN_CHARGES</code> (default: on)</dd><dt>Units</dt><dd>e</dd></dl>
 <math display="block"><mrow><msubsup><mi>q</mi><mi>A</mi><mrow class="tml-med-pad"><mi mathvariant="normal">M</mi><mspace></mspace></mrow></msubsup><mo>=</mo><msub><mi>Z</mi><mi>A</mi></msub><mo>−</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>μ</mi><mo>∈</mo><mi>A</mi></mrow></munder></mrow><msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msup><mi>𝐏</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>I</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></msup><mi>𝐒</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>μ</mi><mi>μ</mi></mrow></msub><mo separator="true">,</mo><mspace width="2em"></mspace><msubsup><mi>q</mi><mi>A</mi><mrow class="tml-med-pad"><mi mathvariant="normal">L</mi><mspace></mspace></mrow></msubsup><mo>=</mo><msub><mi>Z</mi><mi>A</mi></msub><mo>−</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>μ</mi><mo>∈</mo><mi>A</mi></mrow></munder></mrow><msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msup><mi>𝐒</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>𝐏</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>I</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></msup><msup><mi>𝐒</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>μ</mi><mi>μ</mi></mrow></msub></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Atomic charges (unrelaxed state density matrix), cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Atomic charges (unrelaxed state density matrix) [MULLIKEN_CHARGES, LOWDIN_CHARGES], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Mulliken</span></span>
 <span class="line"><span>   Atom                S0          S1          S2          S3          S4</span></span>
@@ -987,7 +995,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>MULLIKEN_SPINS</code> / <code>LOWDIN_SPINS</code> (default: on)</dd><dt>For</dt><dd>cassettes with 2S &gt; 0</dd><dt>Units</dt><dd>electrons</dd></dl>
 <math display="block"><mrow><msubsup><mi>s</mi><mi>A</mi><mrow class="tml-sml-pad"><mi mathvariant="normal">M</mi><mspace></mspace></mrow></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>μ</mi><mo>∈</mo><mi>A</mi></mrow></munder></mrow><msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>𝐐</mi><mi>𝐒</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>μ</mi><mi>μ</mi></mrow></msub><mo separator="true">,</mo><mspace width="2em"></mspace><msubsup><mi>s</mi><mi>A</mi><mrow class="tml-sml-pad"><mi mathvariant="normal">L</mi><mspace></mspace></mrow></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>μ</mi><mo>∈</mo><mi>A</mi></mrow></munder></mrow><msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msup><mi>𝐒</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mi>𝐐</mi><msup><mi>𝐒</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>μ</mi><mi>μ</mi></mrow></msub><mo separator="true">,</mo><mspace width="2em"></mspace><mi>𝐐</mi><mo>=</mo><msup><mi>𝐃</mi><mi>α</mi></msup><mo>−</mo><msup><mi>𝐃</mi><mi>β</mi></msup><mtext> </mtext><mtext> </mtext><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>S</mi></msub><mo>=</mo><mi>S</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>
 <math display="block"><mrow><mrow><munder><mo movablelimits="false">∑</mo><mi>A</mi></munder></mrow><msub><mi>s</mi><mi>A</mi></msub><mo>=</mo><mn>2</mn><msub><mi>M</mi><mi>S</mi></msub></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Atomic spin populations (unrelaxed state spin density, M_S = S), cassette 1 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Atomic spin populations (unrelaxed state spin density, M_S = S) [MULLIKEN_SPINS, LOWDIN_SPINS], cassette 1 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Mulliken</span></span>
 <span class="line"><span>   Atom                T1          T2          T3          T4          T5</span></span>
@@ -1010,7 +1018,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <h4 id="transition-charges">Transition charges</h4>
 <p>Mulliken and Löwdin atomic charges of the transition density ρ<sup>(IJ)</sup> of each pair I → J: the formulas of <a href="#atomic-charges">Atomic charges of the states (unrelaxed)</a> with P<sup>(I)</sup> replaced by C<sub>a</sub> ρ<sup>(IJ)</sup> C<sub>a</sub><sup>T</sup>, without Z<sub>A</sub>; the charges of a pair sum to 0.</p>
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>TRANSITION_CHARGES</code> (default: on)</dd><dt>For</dt><dd>pairs I &lt; J</dd><dt>Units</dt><dd>e</dd></dl>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Transition charges, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Transition charges [TRANSITION_CHARGES], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Mulliken</span></span>
 <span class="line"><span>   Atom            S0-&gt;S1      S0-&gt;S2      S0-&gt;S3      S0-&gt;S4      S1-&gt;S2      S1-&gt;S3      S1-&gt;S4      S2-&gt;S3      S2-&gt;S4      S3-&gt;S4</span></span>
@@ -1028,7 +1036,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>MAYER_INDICES</code> / <code>WIBERG_LOWDIN_INDICES</code> (default: on)</dd><dt>For</dt><dd>printed rows: pairs with index ≥ 0.10 in any state; change tables as for the charges (<a href="#atomic-charges">Atomic charges of the states (unrelaxed)</a>)</dd><dt>Units</dt><dd>dimensionless</dd></dl>
 <math display="block"><mrow><msubsup><mi>B</mi><mrow><mi>A</mi><mi>B</mi></mrow><mpadded lspace="0" class="tml-med-pad"><mi>Mayer</mi></mpadded></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>μ</mi><mo>∈</mo><mi>A</mi></mrow></munder></mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>ν</mi><mo>∈</mo><mi>B</mi></mrow></munder></mrow><mo form="prefix" stretchy="false">(</mo><mi>𝐏</mi><mi>𝐒</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>𝐏</mi><mi>𝐒</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>ν</mi><mi>μ</mi></mrow></msub><mo separator="true">,</mo><mspace width="2em"></mspace><msubsup><mi>B</mi><mrow><mi>A</mi><mi>B</mi></mrow><mpadded lspace="0" class="tml-med-pad"><mi>WL</mi></mpadded></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>μ</mi><mo>∈</mo><mi>A</mi></mrow></munder></mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>ν</mi><mo>∈</mo><mi>B</mi></mrow></munder></mrow><mo fence="false" symmetric="true" minsize="1.2em" maxsize="1.2em">[</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>𝐒</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mi>𝐏</mi><msup><mi>𝐒</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><msup><mrow><mo fence="false" symmetric="true" minsize="1.2em" maxsize="1.2em">]</mo><mrow></mrow></mrow><mn>2</mn></msup></mrow></math>
 <math display="block"><mrow><mn>2</mn><mi>S</mi><mo>&gt;</mo><mn>0</mn><mo lspace="0.2222em" rspace="0.2222em">:</mo><mtext> </mtext><mtext> </mtext><msubsup><mi>B</mi><mrow><mi>A</mi><mi>B</mi></mrow><mpadded lspace="0" class="tml-med-pad"><mi>Mayer</mi></mpadded></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>μ</mi><mo>∈</mo><mi>A</mi></mrow></munder></mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>ν</mi><mo>∈</mo><mi>B</mi></mrow></munder></mrow><mo fence="false" symmetric="true" minsize="1.2em" maxsize="1.2em">[</mo><mo form="prefix" stretchy="false">(</mo><mi>𝐃</mi><mi>𝐒</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>𝐃</mi><mi>𝐒</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>ν</mi><mi>μ</mi></mrow></msub><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mi>𝐐</mi><mi>𝐒</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>𝐐</mi><mi>𝐒</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>ν</mi><mi>μ</mi></mrow></msub><mo fence="false" symmetric="true" minsize="1.2em" maxsize="1.2em">]</mo><mo separator="true">,</mo><mspace width="2em"></mspace><mi>𝐃</mi><mo>=</mo><msup><mi>𝐃</mi><mi>α</mi></msup><mo>+</mo><msup><mi>𝐃</mi><mi>β</mi></msup><mo separator="true">,</mo><mtext> </mtext><mtext> </mtext><mi>𝐐</mi><mo>=</mo><msup><mi>𝐃</mi><mi>α</mi></msup><mo>−</mo><msup><mi>𝐃</mi><mi>β</mi></msup><mtext> </mtext><mtext> </mtext><mo form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>S</mi></msub><mo>=</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Bond indices (unrelaxed state density matrix), cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Bond indices (unrelaxed state density matrix) [MAYER_INDICES, WIBERG_LOWDIN_INDICES], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Mayer</span></span>
 <span class="line"><span>   Bond                S0          S1          S2          S3          S4</span></span>
@@ -1053,7 +1061,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>NTO</code> (default: on)</dd><dt>For</dt><dd>pairs I &lt; J</dd><dt>Units</dt><dd>dimensionless (weights); AO coefficients (orbitals)</dd></dl>
 <math display="block"><mrow><mi>𝐓</mi><mo>=</mo><msup><mi>𝝆</mi><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">(</mo><mi>I</mi><mi>J</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></msup><mo>=</mo><mi>𝐔</mi><mspace width="0.1667em"></mspace><mpadded lspace="0"><mi>diag</mi></mpadded><mo form="prefix" stretchy="false">(</mo><msub><mi>s</mi><mi>k</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="0.1667em"></mspace><msup><mi>𝐕</mi><mi>𝖳</mi></msup><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>w</mi><mi>k</mi></msub><mo>=</mo><mfrac><msubsup><mi>s</mi><mi>k</mi><mn class="tml-sml-pad">2</mn></msubsup><mrow><msub><mo movablelimits="false">∑</mo><mi>l</mi></msub><msubsup><mi>s</mi><mi>l</mi><mn class="tml-sml-pad">2</mn></msubsup></mrow></mfrac><mo separator="true">,</mo><mspace width="2em"></mspace><mpadded lspace="0"><mi>PR</mi></mpadded><mo>=</mo><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">(</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>k</mi></munder></mrow><msubsup><mi>w</mi><mi>k</mi><mn class="tml-med-pad">2</mn></msubsup><msup><mrow><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">)</mo><mrow></mrow></mrow><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>1</mn></mrow></msup></mrow></math>
 <math display="block"><mrow><mrow><mi mathvariant="normal">Ω</mi><mspace></mspace></mrow><mo>=</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>p</mi><mi>q</mi></mrow></munder></mrow><msubsup><mi>T</mi><mrow><mi>p</mi><mi>q</mi></mrow><mn class="tml-med-pad">2</mn></msubsup><mo>=</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mrow><munder><mo movablelimits="false">∑</mo><mi>k</mi></munder></mrow><msubsup><mi>s</mi><mi>k</mi><mn class="tml-sml-pad">2</mn></msubsup></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Natural transition orbitals (NTO), cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Natural transition orbitals (NTO): weights and participation ratios [NTO], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Transition        w_1        w_2        w_3         PR      Omega</span></span>
 <span class="line"><span>   -----------------------------------------------------------------</span></span>
@@ -1082,7 +1090,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <math display="block"><mrow><msub><mi>d</mi><mrow><mi>h</mi><mo>→</mo><mi>e</mi></mrow></msub><mo>=</mo><mi>|</mi><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>𝐫</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>e</mi></msub><mo>−</mo><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>𝐫</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>h</mi></msub><mi>|</mi><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>σ</mi><mi>h</mi></msub><mo>=</mo><msqrt><mrow><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><msup><mi>r</mi><mn class="tml-sml-pad">2</mn></msup><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>h</mi></msub><mo>−</mo><mi>|</mi><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>𝐫</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>h</mi></msub><msup><mi>|</mi><mn>2</mn></msup></mrow></msqrt><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>σ</mi><mi>e</mi></msub><mo>=</mo><msqrt><mrow><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><msup><mi>r</mi><mn class="tml-sml-pad">2</mn></msup><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>e</mi></msub><mo>−</mo><mi>|</mi><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>𝐫</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>e</mi></msub><msup><mi>|</mi><mn>2</mn></msup></mrow></msqrt></mrow></math>
 <math display="block"><mrow><msub><mi>d</mi><mpadded lspace="0"><mi>exc</mi></mpadded></msub><mo>=</mo><msqrt><mrow><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><msup><mi>r</mi><mn class="tml-sml-pad">2</mn></msup><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>h</mi></msub><mo>+</mo><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><msup><mi>r</mi><mn class="tml-sml-pad">2</mn></msup><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>e</mi></msub><mo>−</mo><mn>2</mn><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><msub><mi>𝐫</mi><mi>h</mi></msub><mo>⋅</mo><msub><mi>𝐫</mi><mi>e</mi></msub><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow></mrow></msqrt><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>R</mi><mrow><mi>e</mi><mi>h</mi></mrow></msub><mo>=</mo><mfrac><mrow><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><msub><mi>𝐫</mi><mi>h</mi></msub><mo>⋅</mo><msub><mi>𝐫</mi><mi>e</mi></msub><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mo>−</mo><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>𝐫</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>h</mi></msub><mo>⋅</mo><msub><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>𝐫</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mi>e</mi></msub></mrow><mrow><msub><mi>σ</mi><mi>h</mi></msub><msub><mi>σ</mi><mi>e</mi></msub></mrow></mfrac></mrow></math>
 <math display="block"><mrow><msup><mi>𝝆</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>J</mi><mi>J</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></msup><mo>−</mo><msup><mi>𝝆</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>I</mi><mi>I</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></msup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>k</mi></munder></mrow><msub><mi>λ</mi><mi>k</mi></msub><msub><mi>𝐯</mi><mi>k</mi></msub><msubsup><mi>𝐯</mi><mi>k</mi><mi>𝖳</mi></msubsup><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>p</mi><mpadded lspace="0"><mi>prom</mi></mpadded></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><msub><mi>λ</mi><mi>k</mi></msub><mo>&gt;</mo><mn>0</mn></mrow></munder></mrow><msub><mi>λ</mi><mi>k</mi></msub></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Exciton descriptors, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Exciton descriptors [EXCITON], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Transition    d_h-&gt;e   sigma_h   sigma_e     d_exc      R_eh    p_prom</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------</span></span>
@@ -1098,7 +1106,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   d_exc = rms electron-hole separation; R_eh = hole-electron correlation (-1..1);</span></span>
 <span class="line"><span>   p_prom = number of electrons promoted I -&gt; J.</span></span>
 <span class="line"><span>   - = Omega &lt; 0.05, descriptors not meaningful.</span></span></code></pre>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Hole and electron populations, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Hole and electron populations [EXCITON], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Hole h_A</span></span>
 <span class="line"><span>   Atom            S0-&gt;S1      S0-&gt;S2      S0-&gt;S3      S0-&gt;S4      S1-&gt;S2      S1-&gt;S3      S1-&gt;S4      S2-&gt;S3      S2-&gt;S4      S3-&gt;S4</span></span>
@@ -1119,15 +1127,15 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </ul>
 <dl class="fields"><dt>Ref</dt><dd><a href="/v2/manual/reference/#plasser2014-exciton-formalism">Plasser et al., J. Chem. Phys. 2014, 141, 024106</a>; <a href="/v2/manual/reference/#bappler2014-exciton">Bäppler et al., Phys. Rev. A 2014, 90, 052521</a>.</dd></dl>
 <h4 id="fragment-ct">Fragment charge-transfer descriptors</h4>
-<p>Charge moved between fragments, TheoDORE CT number (h/e split), participation ratios PR<sub>i</sub>, PR<sub>f</sub>, PR<sub>F</sub>, DEL, localization POS, and Löwdin hole and electron populations per fragment.</p>
+<p>Charge moved between fragments, TheoDORE CT number, participation ratios PR<sub>h</sub>, PR<sub>e</sub>, PR, DEL, localization POS, and Löwdin hole and electron populations per fragment.</p>
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> <code>EXCITON</code> (default: on)</dd><dt>For</dt><dd>a molecule of at least 2 fragments (<code>--</code> separators), no ghost fragments or atoms; pairs I &lt; J</dd><dt>Units</dt><dd>q<sub>moved</sub>, ΔN<sub>F</sub> in e; other columns dimensionless</dd></dl>
 <math display="block"><mrow><msub><mover><mrow><mi mathvariant="normal">Ω</mi><mspace></mspace></mrow><mo stretchy="false" style="math-depth:0;">~</mo></mover><mrow><mi>F</mi><mi>G</mi></mrow></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">Ω</mi><mspace></mspace></mrow><mrow><mi>F</mi><mi>G</mi></mrow></msub><mi>/</mi><mrow><mi mathvariant="normal">Ω</mi><mspace></mspace></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>r</mi><mi>F</mi></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>G</mi></munder></mrow><msub><mover><mrow><mi mathvariant="normal">Ω</mi><mspace></mspace></mrow><mo stretchy="false" style="math-depth:0;">~</mo></mover><mrow><mi>F</mi><mi>G</mi></mrow></msub><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>c</mi><mi>F</mi></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>G</mi></munder></mrow><msub><mover><mrow><mi mathvariant="normal">Ω</mi><mspace></mspace></mrow><mo stretchy="false" style="math-depth:0;">~</mo></mover><mrow><mi>G</mi><mi>F</mi></mrow></msub><mo separator="true">,</mo><mspace width="2em"></mspace><mpadded lspace="0"><mi>CT</mi></mpadded><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>F</mi><mo>≠</mo><mi>G</mi></mrow></munder></mrow><msub><mover><mrow><mi mathvariant="normal">Ω</mi><mspace></mspace></mrow><mo stretchy="false" style="math-depth:0;">~</mo></mover><mrow><mi>F</mi><mi>G</mi></mrow></msub></mrow></math>
-<math display="block"><mrow><msub><mpadded lspace="0"><mi>PR</mi></mpadded><mi>i</mi></msub><mo>=</mo><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">(</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>F</mi></munder></mrow><msubsup><mi>r</mi><mi>F</mi><mn class="tml-sml-pad">2</mn></msubsup><msup><mrow><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">)</mo><mrow></mrow></mrow><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mpadded lspace="0"><mi>PR</mi></mpadded><mi>f</mi></msub><mo>=</mo><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">(</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>F</mi></munder></mrow><msubsup><mi>c</mi><mi>F</mi><mn class="tml-sml-pad">2</mn></msubsup><msup><mrow><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">)</mo><mrow></mrow></mrow><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><mspace width="2em"></mspace><mpadded lspace="0"><mi>PR</mi></mpadded><mo>=</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo form="prefix" stretchy="false">(</mo><msub><mpadded lspace="0"><mi>PR</mi></mpadded><mi>i</mi></msub><mo>+</mo><msub><mpadded lspace="0"><mi>PR</mi></mpadded><mi>f</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></math>
+<math display="block"><mrow><msub><mpadded lspace="0"><mi>PR</mi></mpadded><mi>h</mi></msub><mo>=</mo><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">(</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>F</mi></munder></mrow><msubsup><mi>r</mi><mi>F</mi><mn class="tml-sml-pad">2</mn></msubsup><msup><mrow><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">)</mo><mrow></mrow></mrow><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mpadded lspace="0"><mi>PR</mi></mpadded><mi>e</mi></msub><mo>=</mo><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">(</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>F</mi></munder></mrow><msubsup><mi>c</mi><mi>F</mi><mn class="tml-sml-pad">2</mn></msubsup><msup><mrow><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">)</mo><mrow></mrow></mrow><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><mspace width="2em"></mspace><mpadded lspace="0"><mi>PR</mi></mpadded><mo>=</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo form="prefix" stretchy="false">(</mo><msub><mpadded lspace="0"><mi>PR</mi></mpadded><mi>h</mi></msub><mo>+</mo><msub><mpadded lspace="0"><mi>PR</mi></mpadded><mi>e</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></math>
 <math display="block"><mrow><mpadded lspace="0"><mi>DEL</mi></mpadded><mo>=</mo><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">(</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>F</mi></munder></mrow><mo fence="false" symmetric="true" minsize="1.2em" maxsize="1.2em">[</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo form="prefix" stretchy="false">(</mo><msub><mi>r</mi><mi>F</mi></msub><mo>+</mo><msub><mi>c</mi><mi>F</mi></msub><mo form="postfix" stretchy="false">)</mo><msup><mrow><mo fence="false" symmetric="true" minsize="1.2em" maxsize="1.2em">]</mo><mrow></mrow></mrow><mn>2</mn></msup><msup><mrow><mo fence="false" symmetric="true" minsize="1.8em" maxsize="1.8em">)</mo><mrow></mrow></mrow><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><mspace width="2em"></mspace><mpadded lspace="0"><mi>POS</mi></mpadded><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>F</mi></munder></mrow><mi>F</mi><mspace width="0.1667em"></mspace><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo form="prefix" stretchy="false">(</mo><msub><mi>r</mi><mi>F</mi></msub><mo>+</mo><msub><mi>c</mi><mi>F</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></math>
 <math display="block"><mrow><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><msub><mi>N</mi><mi>F</mi></msub><mo>=</mo><msubsup><mi>N</mi><mi>F</mi><mrow class="tml-med-pad"><mi mathvariant="normal">L</mi><mspace></mspace></mrow></msubsup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>J</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>−</mo><msubsup><mi>N</mi><mi>F</mi><mrow class="tml-med-pad"><mi mathvariant="normal">L</mi><mspace></mspace></mrow></msubsup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>I</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>q</mi><mpadded lspace="0"><mi>moved</mi></mpadded></msub><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>F</mi></munder></mrow><mrow><mi>max</mi><mo>⁡</mo></mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><msub><mi>N</mi><mi>F</mi></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Fragments: charge-transfer descriptors, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Fragments: charge-transfer descriptors [EXCITON], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>   Transition   q_moved [e]       h/e split      PR_i      PR_f      PR_F       DEL       POS</span></span>
+<span class="line"><span>   Transition   q_moved [e]              CT      PR_h      PR_e        PR       DEL       POS</span></span>
 <span class="line"><span>   ------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>   S0-&gt;S1          0.001242        0.546581  1.999999  1.999991  1.999995  1.999999  1.500369</span></span>
 <span class="line"><span>   S0-&gt;S2          0.086897        0.990373  1.827131  1.829917  1.828524  1.999996  1.500680</span></span>
@@ -1135,12 +1143,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   S0-&gt;S4          0.000887        0.557573  1.999991  1.999999  1.999995  1.999996  1.500740</span></span>
 <span class="line"><span>   S0-&gt;S5          0.000645               -         -         -         -         -         -</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>   dN_F = Lowdin population of F in (J - I). h/e split = TheoDORE CT number: fraction of</span></span>
+<span class="line"><span>   dN_F = Lowdin population of F in (J - I). CT = TheoDORE CT number: fraction of</span></span>
 <span class="line"><span>   the excitation with hole and electron on different fragments (both directions summed).</span></span>
-<span class="line"><span>   PR_i, PR_f, PR_F, DEL = participation ratios for hole, electron, both, and exciton delocalization.</span></span>
+<span class="line"><span>   PR_h, PR_e, PR, DEL = participation ratios for hole, electron, both, and exciton delocalization.</span></span>
 <span class="line"><span>   POS = fragment where the excitation is localized (1 = F1, 2 = F2, ...).</span></span>
 <span class="line"><span>   F1 = atoms 1-3, F2 = atoms 4-6.</span></span></code></pre>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Fragments: hole and electron populations, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Fragments: hole and electron populations [EXCITON], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   Hole h_F</span></span>
 <span class="line"><span>   Fragment        S0-&gt;S1      S0-&gt;S2      S0-&gt;S3      S0-&gt;S4      S1-&gt;S2      S1-&gt;S3      S1-&gt;S4      S2-&gt;S3      S2-&gt;S4      S3-&gt;S4</span></span>
@@ -1150,10 +1158,10 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>   ----------------------------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>   h_F, e_F = hole and electron populations of the transition density (Lowdin).</span></span></code></pre>
-<dl class="fields"><dt>Stored</dt><dd><code>SSR CT FRAGMENT DESCRIPTORS K=&lt;e&gt;</code> (columns [CT, PRi, PRf, PR, DEL, POS]), <code>SSR CT FRAGMENT HOLE POPULATIONS K=&lt;e&gt;</code>, <code>SSR CT FRAGMENT PARTICLE POPULATIONS K=&lt;e&gt;</code></dd></dl>
+<dl class="fields"><dt>Stored</dt><dd><code>SSR CT FRAGMENT DESCRIPTORS K=&lt;e&gt;</code> (columns [CT, PR_h, PR_e, PR, DEL, POS]), <code>SSR CT FRAGMENT HOLE POPULATIONS K=&lt;e&gt;</code>, <code>SSR CT FRAGMENT PARTICLE POPULATIONS K=&lt;e&gt;</code></dd></dl>
 <ul>
-<li>q<sub>moved</sub> and Net ΔN<sub>F</sub> are printed, not stored; stored column CT is the printed h/e split. The fragment populations have no bare (cassette 0) alias.</li>
-<li>Ω<sub>FG</sub> sums the atom-pair Ω<sub>AB</sub> of <a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a> over the fragments; F in POS is 1-based; N<sup>L</sup><sub>F</sub> is the Löwdin active population of fragment F. Printed headers: <code>h/e split</code> for CT, <code>PR_F</code> for PR. CT to POS print <code>-</code> when Ω &lt; 0.05; q<sub>moved</sub> is always printed.</li>
+<li>q<sub>moved</sub> and Net ΔN<sub>F</sub> are printed, not stored. The fragment populations have no bare (cassette 0) alias.</li>
+<li>Ω<sub>FG</sub> sums the atom-pair Ω<sub>AB</sub> of <a href="#exciton">Exciton descriptors, hole and electron populations, natural difference orbitals</a> over the fragments; F in POS is 1-based; N<sup>L</sup><sub>F</sub> is the Löwdin active population of fragment F. CT to POS print <code>-</code> when Ω &lt; 0.05; q<sub>moved</sub> is always printed.</li>
 <li>The fragment line (<code>F1 = atoms 1-3, F2 = atoms 4-6</code>) shows the partition used.</li>
 </ul>
 <dl class="fields"><dt>Ref</dt><dd><a href="/v2/manual/reference/#plasser2012-charge-transfer">Plasser and Lischka, J. Chem. Theory Comput. 2012, 8, 2777</a>; <a href="/v2/manual/reference/#plasser2020-theodore">Plasser, J. Chem. Phys. 2020, 152, 084108</a> (TheoDORE).</dd></dl>
@@ -1164,12 +1172,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <math display="block"><mrow><mtext>FCD:</mtext><mtext> </mtext><msub><mi>D</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><mo>=</mo><msubsup><mi>q</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-med-pad">F</mi></msubsup><mo>−</mo><msubsup><mi>q</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-med-pad">G</mi></msubsup><mo separator="true">,</mo><mspace width="1em"></mspace><msubsup><mi>q</mi><mrow><mi>m</mi><mi>m</mi></mrow><mi class="tml-med-pad">F</mi></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>A</mi><mo>∈</mo><mi>F</mi></mrow></munder></mrow><msub><mi>q</mi><mi>A</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>m</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo separator="true">,</mo><mspace width="1em"></mspace><msubsup><mi>q</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-med-pad">F</mi></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>A</mi><mo>∈</mo><mi>F</mi></mrow></munder></mrow><msub><mi>q</mi><mi>A</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>m</mi><mo>→</mo><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>
 <math display="block"><mrow><mtext>FED:</mtext><mtext> </mtext><msub><mi>D</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><mo>=</mo><msubsup><mi>x</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-sml-pad">F</mi></msubsup><mo>−</mo><msubsup><mi>x</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-sml-pad">G</mi></msubsup><mo separator="true">,</mo><mspace width="1em"></mspace><msubsup><mi>x</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-sml-pad">F</mi></msubsup><mo>=</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mspace width="0.1667em"></mspace><mpadded lspace="0"><mi>tr</mi></mpadded><mo fence="false" symmetric="true" minsize="1.2em" maxsize="1.2em">[</mo><msubsup><mi>𝐓</mi><mi>m</mi><mi>𝖳</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msup><mi>𝐆</mi><mi>F</mi></msup><msub><mi>𝐓</mi><mi>n</mi></msub><mo>+</mo><msub><mi>𝐓</mi><mi>n</mi></msub><msup><mi>𝐆</mi><mi>F</mi></msup><mo form="postfix" stretchy="false">)</mo><mo fence="false" symmetric="true" minsize="1.2em" maxsize="1.2em">]</mo><mo separator="true">,</mo><mspace width="1em"></mspace><msub><mi>𝐓</mi><mi>m</mi></msub><mo>=</mo><msup><mi>𝝆</mi><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">(</mo><mn>0</mn><mi>m</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></msup><mo separator="true">,</mo><mspace width="1em"></mspace><mi>m</mi><mo separator="true">,</mo><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>
 <math display="block"><mrow><mtext>FSD:</mtext><mtext> </mtext><msub><mi>D</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><mo>=</mo><msubsup><mi>s</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-sml-pad">F</mi></msubsup><mo>−</mo><msubsup><mi>s</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-sml-pad">G</mi></msubsup><mo separator="true">,</mo><mspace width="1em"></mspace><msubsup><mi>s</mi><mrow><mi>m</mi><mi>m</mi></mrow><mi class="tml-sml-pad">F</mi></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>A</mi><mo>∈</mo><mi>F</mi></mrow></munder></mrow><msubsup><mi>s</mi><mi>A</mi><mrow class="tml-sml-pad"><mi mathvariant="normal">L</mi><mspace></mspace></mrow></msubsup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>m</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo separator="true">,</mo><mspace width="1em"></mspace><msubsup><mi>s</mi><mrow><mi>m</mi><mi>n</mi></mrow><mi class="tml-sml-pad">F</mi></msubsup><mo>=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>A</mi><mo>∈</mo><mi>F</mi></mrow></munder></mrow><mrow><mo fence="true" form="prefix" stretchy="false">⟨</mo><mi>m</mi><mi>|</mi><msubsup><mi>s</mi><mi>A</mi><mrow class="tml-sml-pad"><mi mathvariant="normal">L</mi><mspace></mspace></mrow></msubsup><mi>|</mi><mi>n</mi><mo fence="true" form="postfix" stretchy="false">⟩</mo></mrow><mo separator="true">,</mo><mspace width="1em"></mspace><mi>m</mi><mo separator="true">,</mo><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Fragment couplings F1 - F2, cassette 0 &lt;=</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Fragment diabatic couplings F1 - F2 [FRAGMENT_COUPLINGS], cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>   FCD (fragment charge difference), all pairs of states</span></span>
 <span class="line"><span>   Coupling     V_F Lowdin [Eh]    V_F Lowdin [meV]   V_F Mulliken [Eh]  V_F Mulliken [meV]</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>   S0/S2               0.013292             361.700            0.010127             275.583</span></span>
+<span class="line"><span>   S0/S2              -0.013292            -361.700           -0.010127            -275.583</span></span>
 <span class="line"><span>   S0/S3              -0.055030           -1497.452           -0.049473           -1346.228</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>   ----------------------------------------------------------------------------------------</span></span>
@@ -1228,7 +1236,10 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    -----------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
 <span class="line"><span>    S/T    S0 (cassette 0)  T1 (cassette 1)    -78.300443969671    -78.279831019196       0.561     -0.010306    -2262.01              0.406              0.106</span></span>
 <span class="line"><span>    -----------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
-<span class="line"><span>    Spins = the two spin multiplicities compared (S/T = singlet/triplet). Low-/high-spin state = lowest state of each multiplicity over all cassettes.</span></span></code></pre>
+<span class="line"><span>    Spins = the two spin multiplicities compared (S/T = singlet/triplet). Low-/high-spin state = lowest state of each multiplicity over all cassettes.</span></span>
+<span class="line"><span>    Gap = E(high spin) - E(low spin). Lowering(lo/hi) = SI lowering of that state, min_i H_ii - E.</span></span>
+<span class="line"><span>    J = -Gap/(2 S_high), for H = -2J S_A.S_B. J is a spin-coupling constant only if</span></span>
+<span class="line"><span>    the two states have the same open-shell orbitals and similar SI lowering.</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>REKS HEISENBERG J</code>, <code>REKS HEISENBERG J SPINS</code> (rows [2S_lo, 2S_hi])</dd></dl>
 <ul>
 <li>With three or more manifolds the block prints the ratio J(T/Q)/J(S/T); ratio 1 = one J for all spin pairs (Landé interval rule).</li>
@@ -1238,7 +1249,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <h4 id="relaxed-properties">Relaxed dipole, quadrupole and atomic charges</h4>
 <p>Dipole, quadrupole (full Cartesian tensor and traceless part) and Mulliken and Löwdin charges of the relaxed density P<sup>r</sup> of the CP-REKS (Z-vector) response of a state (<a href="/v2/manual/concepts/#densities">Unrelaxed and relaxed densities</a>).</p>
 <dl class="fields"><dt>On</dt><dd><a href="/v2/manual/reference/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> lists the state (default: off)</dd><dt>For</dt><dd><code>energy()</code> and <code>gradient()</code>; one CP-REKS solve shared with the gradient and NAC targets</dd><dt>Units</dt><dd>e a<sub>0</sub> (dipole; printed also D); e a<sub>0</sub><sup>2</sup> (quadrupole); e (charges)</dd></dl>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; Relaxed properties, cassette 0 &lt;==</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; Relaxed properties [<a href="/v2/manual/reference/#row-si_reks_property_for">SI_REKS_PROPERTY_FOR</a>], cassette 0 &lt;==</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span> =&gt; Dipole moment (relaxed density matrix P^r), cassette 0 &lt;=</span></span>
 <span class="line"><span></span></span>
@@ -1298,7 +1309,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <math display="block"><mrow><mi>𝐖</mi><msub><mi>𝐜</mi><mi>k</mi></msub><mo>=</mo><msub><mi>ε</mi><mi>k</mi></msub><mspace width="0.1667em"></mspace><mi>𝐏</mi><msub><mi>𝐜</mi><mi>k</mi></msub><mo separator="true">,</mo><mspace width="2em"></mspace><msubsup><mi>𝐜</mi><mi>k</mi><mi>𝖳</mi></msubsup><mi>𝐏</mi><msub><mi>𝐜</mi><mi>k</mi></msub><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mpadded lspace="0"><mi>IP</mi></mpadded><mi>k</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">−</mo><msub><mi>ε</mi><mi>k</mi></msub></mrow></math>
 <math display="block"><mrow><msub><mi>𝐝</mi><mi>k</mi></msub><mo>=</mo><mi>𝐏</mi><msub><mi>𝐜</mi><mi>k</mi></msub><mo separator="true">,</mo><mspace width="2em"></mspace><msubsup><mi>ϕ</mi><mi>k</mi><mpadded lspace="0"><mi>Dyson</mi></mpadded></msubsup><mo>=</mo><msub><mi>𝐝</mi><mi>k</mi></msub><mi>/</mi><msqrt><mn>2</mn></msqrt><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mpadded lspace="0"><mi>pole</mi></mpadded><mi>k</mi></msub><mo>=</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>|</mi><msub><mi>𝐝</mi><mi>k</mi></msub><msup><mi>|</mi><mn>2</mn></msup><mo separator="true">,</mo><mspace width="2em"></mspace><mrow><munder><mo movablelimits="false">∑</mo><mi>k</mi></munder></mrow><msub><mpadded lspace="0"><mi>pole</mi></mpadded><mi>k</mi></msub><mo>=</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>a</mi><mspace width="0.1667em"></mspace><mpadded lspace="0"><mi>kept</mi></mpadded></mrow></munder></mrow><msub><mi>p</mi><mi>a</mi></msub></mrow></math>
 <math display="block"><mrow><msub><mi>E</mi><mpadded lspace="0"><mi>cation</mi></mpadded></msub><mo>−</mo><msub><mi>E</mi><mpadded lspace="0"><mi>ref</mi></mpadded></msub><mo>=</mo><mpadded lspace="0"><mi>IP</mi></mpadded><mo>+</mo><msub><mi>E</mi><mpadded lspace="0"><mi>state</mi></mpadded></msub><mo>−</mo><msub><mi>E</mi><mpadded lspace="0"><mi>ref</mi></mpadded></msub></mrow></math>
-<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; Ionization energies (EKT) and Dyson orbitals, cassette 0 &lt;==</span></span>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; Ionization energies (EKT) and Dyson orbitals [<a href="/v2/manual/reference/#row-reks_ekt">REKS_EKT</a>], cassette 0 &lt;==</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>    S1</span></span>
 <span class="line"><span>    Peak    IP [eV]  E(cation)-E(S0) [eV]     eps [Eh]  Strength  occ(MO)   Dyson orbital (MO share [%])   Flag</span></span>
@@ -1328,7 +1339,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </ul>
 <dl class="fields"><dt>Ref</dt><dd><a href="/v2/manual/reference/#filatov2020-ekt">Filatov et al., J. Chem. Theory Comput. 2020, 16, 4489</a>.</dd></dl>
 <h4 id="ekt-ensemble">EKT ionization energies of the SA-REKS ensemble</h4>
-<p>Extended Koopmans' theorem on the generalized Fock matrix W and the fractional-occupation density D of the SA-REKS ensemble, in the block <code>==&gt; Ionization energies (EKT) and Dyson orbitals, SA-REKS ensemble &lt;==</code>.</p>
+<p>Extended Koopmans' theorem on the generalized Fock matrix W and the fractional-occupation density D of the SA-REKS ensemble, in the block <a href="/v2/manual/reference/#row-reks_ekt"><code>==&gt; Ionization energies (EKT) and Dyson orbitals [REKS_EKT], SA-REKS ensemble &lt;==</code></a>.</p>
 <ul>
 <li>
 <p><strong>On:</strong> <a href="/v2/manual/reference/#row-reks_ekt"><code>REKS_EKT</code></a> true and no state listed in <a href="/v2/manual/reference/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> (default: off)</p>
@@ -1373,20 +1384,20 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    -------------------------------------------------------------</span></span>
 <span class="line"><span>    C1       0.000000000000     0.000000000000    -0.075254969374</span></span>
 <span class="line"><span>    H2       0.004012538035     0.000000000000     0.019099258469</span></span>
-<span class="line"><span>    H3      -0.004012538035     0.000000000000     0.019099258469</span></span>
+<span class="line"><span>    H3      -0.004012538035     0.000000000000     0.019099258468</span></span>
 <span class="line"><span>    C4      -0.000000000001     0.000000000000     0.057911423692</span></span>
 <span class="line"><span>    H5       0.015107910717     0.000000000000    -0.010427485628</span></span>
 <span class="line"><span>    H6      -0.015107910716     0.000000000000    -0.010427485627</span></span>
 <span class="line"><span>    -------------------------------------------------------------</span></span>
-<span class="line"><span>    max |g| = 7.525e-02 Eh/a0   rms |g| = 2.410e-02 Eh/a0   |sum over atoms| = 1.3e-14 Eh/a0</span></span></code></pre>
+<span class="line"><span>    max |g| = 7.525e-02 Eh/a0   rms |g| = 2.410e-02 Eh/a0   |sum over atoms| = 2.5e-15 Eh/a0</span></span></code></pre>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; Returned gradient &lt;==</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>-Total Gradient:</span></span>
 <span class="line"><span>   Atom            X                  Y                   Z</span></span>
 <span class="line"><span>  ------   -----------------  -----------------  -----------------</span></span>
-<span class="line"><span>     1       -0.000000000000     0.000000000000    -0.044084341933</span></span>
-<span class="line"><span>     2        0.007401694804    -0.000000000000    -0.001232538601</span></span>
-<span class="line"><span>     3       -0.007401694804    -0.000000000000    -0.001232538601</span></span>
+<span class="line"><span>     1       -0.000000000000    -0.000000000000    -0.044084341933</span></span>
+<span class="line"><span>     2        0.007401694804     0.000000000000    -0.001232538601</span></span>
+<span class="line"><span>     3       -0.007401694804     0.000000000000    -0.001232538601</span></span>
 <span class="line"><span>[...]</span></span>
 <span class="line"><span>    Returned gradient of S1 (cassette 0).</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR ROOT &lt;r&gt; GRADIENT CASSETTE &lt;e&gt;</code>; <code>CURRENT ENERGY</code> and <code>REKS TARGET STATE ENERGY</code> (followed root, set in <code>energy()</code> too); <code>CURRENT GRADIENT</code>, <code>SCF TOTAL GRADIENT</code> (followed root)</dd></dl>
@@ -1417,17 +1428,17 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>    Nonadiabatic coupling d_12 = &lt;S1|d/dR S2&gt; [1/a0]</span></span>
 <span class="line"><span>    Atom                  X                  Y                  Z</span></span>
 <span class="line"><span>    -------------------------------------------------------------</span></span>
-<span class="line"><span>    C1       0.000000000000    -5.207065892973    -0.000000000003</span></span>
-<span class="line"><span>    H2       0.000000000000     1.584259370901     0.000000000002</span></span>
-<span class="line"><span>    H3       0.000000000000     1.584259370902     0.000000000002</span></span>
-<span class="line"><span>    C4       0.000000000000     6.162643638607    -0.000000000008</span></span>
-<span class="line"><span>    H5       0.000000000000    -2.059102095012     0.000000000003</span></span>
-<span class="line"><span>    H6       0.000000000000    -2.059102095013     0.000000000003</span></span>
+<span class="line"><span>    C1       0.000000000000     5.207065892990     0.000000000003</span></span>
+<span class="line"><span>    H2      -0.000000000001    -1.584259370910    -0.000000000001</span></span>
+<span class="line"><span>    H3       0.000000000001    -1.584259370911    -0.000000000001</span></span>
+<span class="line"><span>    C4       0.000000000000    -6.162643638590    -0.000000000001</span></span>
+<span class="line"><span>    H5       0.000000000000     2.059102095004     0.000000000000</span></span>
+<span class="line"><span>    H6       0.000000000000     2.059102095005     0.000000000000</span></span>
 <span class="line"><span>    -------------------------------------------------------------</span></span>
 <span class="line"><span>    |d_12| = 8.865e+00 1/a0   |E(S2) - E(S1)| |d_12| = 8.210e-02 Eh/a0</span></span>
 <span class="line"><span>    |d_model| = 5.711e+00, |d_residual| = 3.169e+00 (1/a0)</span></span>
-<span class="line"><span>    sum over atoms of d_12       = ( 1.919e-15,  5.892e-03, -2.726e-13) 1/a0</span></span>
-<span class="line"><span>    -p from the velocity moments = ( 2.675e-15,  5.892e-03, -2.756e-13) 1/a0   consistent (deviation 4.2e-14)</span></span></code></pre>
+<span class="line"><span>    sum over atoms of d_12       = ( 7.509e-16, -5.892e-03,  2.406e-13) 1/a0</span></span>
+<span class="line"><span>    -p from the velocity moments = (-2.675e-15, -5.892e-03,  2.400e-13) 1/a0   consistent (deviation 1.4e-13)</span></span></code></pre>
 <dl class="fields"><dt>Stored</dt><dd><code>SSR NAC &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>, <code>SSR NAC MODEL &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>, <code>SSR NAC RESIDUAL &lt;I&gt; &lt;J&gt; CASSETTE &lt;e&gt;</code>; the root gradients <code>SSR ROOT &lt;I&gt; GRADIENT CASSETTE &lt;e&gt;</code>, <code>SSR ROOT &lt;J&gt; GRADIENT CASSETTE &lt;e&gt;</code></dd></dl>
 <ul>
 <li>The sum rule is checked against −p from the velocity moments only when <a href="/v2/manual/reference/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> computes them (<code>E_TDM_VEL</code> or <code>M_TDM</code>); the line ends with <code>consistent</code> when the deviation is ≤ 10<sup>-6</sup>, otherwise it reads <code>deviation …</code> without <code>consistent</code>. Without the moments the legend prints <a href="/v2/manual/reference/#row-si_reks_analysis"><code>-p_12 requires SI_REKS_ANALYSIS E_TDM_VEL</code></a>.</li>
