@@ -4,7 +4,7 @@ HTML: <https://reksstudio.github.io/v2/manual/run-control/#reks_geminal_deloc>
 
 Chapter: [14. Geminal Delocalization](https://reksstudio.github.io/v2/manual/run-control/index.md#geminal-deloc)
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -22,7 +22,7 @@ Default: `false`
 ==> REKS Geminal Delocalization <==
 
   Geminal  MO a  MO b          x  angle (deg)
-        0     8     9   1.000000     -45.0000
+        0     8     9   1.000000      45.0000
 
   x: position of the pair's Loewdin frame between the minimum (0) and the maximum (1) of
      IPR_ab = sum_A [p_a(A)^2 + p_b(A)^2] over rotations of the pair; rotated to the minimum
@@ -40,8 +40,8 @@ Default: `false`
 ```log
 ==> REKS Geminal Delocalization <==
 
-  E_SA before rotation       -77.884884825217
-  E_SA after rotation        -77.884884825217
+  E_SA before rotation       -77.884884825216
+  E_SA after rotation        -77.884884825216
   Rotated solution rejected; SCF restarts from the orbitals before the rotation.
 ```
 

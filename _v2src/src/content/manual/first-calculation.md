@@ -63,7 +63,7 @@ print([q[[mu for mu in range(bs.nbf()) if bs.function_to_center(mu) == A]].sum()
 | `scf_type df`, read from the `pk` solution | −78.36265006 | 0.440 / 0.440 | 1.000000 / 1.000000 |
 | `scf_type pk`, SAD start | −78.36264503 | 0.440 / 0.440 | 1.000000 / 1.000000 |
 
-The seeds on this page use `scf_type pk`. A localized seed is replaced by an RKS run with `scf_type pk` or by a seed from a smaller torsion, carried to the target geometry (§first-scans). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n 2.000000 / 0.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).
+The seeds on this page use `scf_type pk`. A localized seed is replaced by an RKS run with `scf_type pk` or by a seed from a smaller torsion, carried to the target geometry (§first-scans). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n<sub>a</sub> 0.000000, n<sub>b</sub> 2.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).
 
 ### Inspect the orbitals {#inspect-orbitals}
 

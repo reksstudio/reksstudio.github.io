@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/setup/>
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -377,7 +377,7 @@ Default: `AUTO`
 
     Iter      Mean |R|       Max |R|   Remain   Applications   Time [s]
     -------------------------------------------------------------------
-       1     7.465e-16     1.074e-15        0              8       0.00
+       1     7.779e-16     1.021e-15        0              8       0.00
     -------------------------------------------------------------------
     7 roots converged in 1 iterations, 22 operator applications.
 [...]
@@ -705,7 +705,7 @@ Default: `1e-9`
 
     Iter      Mean |R|       Max |R|   Remain   Time [s]
     ----------------------------------------------------
-       1     2.988e-01     9.691e-01        4       0.02
+       1     2.988e-01     9.691e-01        4       0.01
        2     1.648e-01     5.702e-01        4       0.03
 [...]
       12     1.091e-08     1.091e-08        1       0.13

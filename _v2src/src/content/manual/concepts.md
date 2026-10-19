@@ -98,7 +98,7 @@ $$
 f(x) = x^{\,1-\frac{x+\delta}{2(1+\delta)}}, \qquad x = n_a n_b.
 $$
 
-For REKS(2,2), with $f = f(n_a n_b)$ and $n_a \ge 1$, the configuration energies are
+For REKS(2,2), with $f = f(n_a n_b)$, the configuration energies are
 
 $$
 \begin{aligned}

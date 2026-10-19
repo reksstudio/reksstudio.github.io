@@ -46,7 +46,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </div></section><section class="docsec"><h2 id="fons">12. Fractional Occupation Numbers (FONs)</h2><div class="prose">
 <p>Each geminal pair carries FONs with <math><mrow><msub><mi>n</mi><mi>p</mi></msub><mo>+</mo><msub><mi>n</mi><mi>q</mi></msub><mo>=</mo><mn>2</mn></mrow></math> (<a href="/v2/manual/concepts/#geminals">Geminals</a>); the free FON <math><msub><mi>n</mi><mi>p</mi></msub></math> (first orbital of the pair) lies in a box, kept by the FON micro-solver and the TRAH step (FONs restored from a REKS restart file are clamped to <math><mrow><mo fence="true" form="prefix" stretchy="false">[</mo><mi>m</mi><mo separator="true">,</mo><mn>2</mn><mo>−</mo><mi>m</mi><mo fence="true" form="postfix" stretchy="false">]</mo></mrow></math>):</p>
 <math display="block"><mrow><msub><mi>n</mi><mi>p</mi></msub><mo>∈</mo><mrow><mo fence="true" form="prefix" stretchy="false">[</mo><mspace width="0.1667em"></mspace><mi>ℓ</mi><mo separator="true">,</mo><mspace width="0.2778em"></mspace><mn>2</mn><mo>−</mo><mi>m</mi><mspace width="0.1667em"></mspace><mo fence="true" form="postfix" stretchy="false">]</mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><mi>ℓ</mi><mo>=</mo><mrow><mo fence="true" form="prefix" stretchy="true">{</mo><mtable><mtr><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mtext>𝚁𝙴𝙺𝚂_&lt;𝙻&gt;_𝙵𝙾𝙽</mtext></mtd><mtd class="tml-left" style="padding-left:1em;padding-right:0em;"><mrow><mtext>if</mtext><mo>≥</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mi>m</mi></mtd><mtd class="tml-left" style="padding-left:1em;padding-right:0em;"><mtext>otherwise</mtext></mtd></mtr></mtable><mo fence="true" form="postfix" stretchy="true"></mo></mrow><mo separator="true">,</mo><mspace width="2em"></mspace><mi>m</mi><mo>=</mo><mtext>𝚁𝙴𝙺𝚂_𝙵𝙾𝙽_𝙼𝙸𝙲𝚁𝙾_𝙱𝙾𝚄𝙽𝙳_𝙼𝙰𝚁𝙶𝙸𝙽</mtext><mi>.</mi></mrow></math>
-<p>A FON pushed past an end of the box stops on it, and the SCF counts it converged there. Generation-0 geminals are kept in descending occupation by reordering their orbitals, columns and FONs of every set together (the energy is unchanged): the first FON step orders each geminal, later a two-orbital pair whose FON crosses 1 swaps its orbitals and a wider geminal is reordered when its order changes. Without <a href="/v2/manual/reference/#row-reks_use_trah"><code>REKS_USE_TRAH</code></a> the printed generation-0 FONs therefore have <math><mrow><msub><mi>n</mi><mi>p</mi></msub><mo>≥</mo><msub><mi>n</mi><mi>q</mi></msub></mrow></math>, with one exception: in an SA ensemble over several spin sectors a pair swaps when its FON crosses 1 in any sector, which can leave the printed FON below 1. TRAH steps move the FONs without reordering. FONs of higher generations are never reordered and can have <math><mrow><msub><mi>n</mi><mi>p</mi></msub><mo>&lt;</mo><msub><mi>n</mi><mi>q</mi></msub></mrow></math>. Outside TRAH steps FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set; each generation has its own lower-bound option (<a href="#reks_l_fon"><code>REKS_&lt;L&gt;_FON</code></a>).</p>
+<p>A FON pushed past an end of the box stops on it, and the SCF counts it converged there. A two-orbital pair keeps its orbitals in their slots, also when its FON crosses 1: the printed <math><msub><mi>n</mi><mi>a</mi></msub></math> can be below 1, <math><mrow><msub><mi>n</mi><mi>a</mi></msub><mo>&lt;</mo><msub><mi>n</mi><mi>b</mi></msub></mrow></math>. A generation-0 geminal wider than two is kept in descending occupation of the SA spin sector: after every FON step its orbitals are reordered when the order changes, columns and FONs of every set together (the energy is unchanged). TRAH steps move the FONs without reordering. FONs of higher generations are never reordered. Outside TRAH steps FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set; each generation has its own lower-bound option (<a href="#reks_l_fon"><code>REKS_&lt;L&gt;_FON</code></a>).</p>
 <h4 id="reks_fon_interp_delta"><a href="/v2/manual/reference/#row-reks_fon_interp_delta"><code>REKS_FON_INTERP_DELTA</code></a></h4>
 <p>Parameter δ of the factor f(n_p n_q) that multiplies the coupling term of each geminal in the REKS energy.</p>
 <dl class="fields"><dt>Type</dt><dd>double</dd><dt>Default</dt><dd><code>0.4</code></dd></dl>
@@ -154,12 +154,12 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span></span></span>
 <span class="line"><span>                         Total Energy        Delta E     RMS |[F,D]|</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span> @DF-REKS iter SAD:    -1.87313880489001   -1.87314e+00   0.00000e+00</span></span>
+<span class="line"><span> @DF-REKS iter SAD:    -1.87313880489000   -1.87314e+00   0.00000e+00</span></span>
 <span class="line"><span> @DF-REKS iter   1:    -1.67191477831402    2.01224e-01   4.25060e-03 SHIFT</span></span>
 <span class="line"><span> @DF-REKS iter   2:    -1.85615375141313   -1.84239e-01   6.35543e-03 SHIFT</span></span>
 <span class="line"><span> @DF-REKS iter   3:    -1.85801940076408   -1.86565e-03   6.51017e-03 ORB-GVB-DIIS</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span> @DF-REKS iter  11:    -1.85941446727766    0.00000e+00   8.68986e-11 ORB-GVB-DIIS</span></span>
+<span class="line"><span> @DF-REKS iter  11:    -1.85941446727766   -1.99840e-15   8.68908e-11 ORB-GVB-DIIS</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>Energy and wave function converged.</span></span></code></pre>
 <h4 id="reks_use_trah"><a href="/v2/manual/reference/#row-reks_use_trah"><code>REKS_USE_TRAH</code></a></h4>
@@ -247,7 +247,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; REKS Geminal Delocalization &lt;==</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>  Geminal  MO a  MO b          x  angle (deg)</span></span>
-<span class="line"><span>        0     8     9   1.000000     -45.0000</span></span>
+<span class="line"><span>        0     8     9   1.000000      45.0000</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>  x: position of the pair's Loewdin frame between the minimum (0) and the maximum (1) of</span></span>
 <span class="line"><span>     IPR_ab = sum_A [p_a(A)^2 + p_b(A)^2] over rotations of the pair; rotated to the minimum</span></span>
@@ -259,8 +259,8 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>  Rotated solution kept (lower E_SA).</span></span></code></pre>
 <pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; REKS Geminal Delocalization &lt;==</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>  E_SA before rotation       -77.884884825217</span></span>
-<span class="line"><span>  E_SA after rotation        -77.884884825217</span></span>
+<span class="line"><span>  E_SA before rotation       -77.884884825216</span></span>
+<span class="line"><span>  E_SA after rotation        -77.884884825216</span></span>
 <span class="line"><span>  Rotated solution rejected; SCF restarts from the orbitals before the rotation.</span></span></code></pre>
 <ul>
 <li>After the SCF converges, every orbital pair (a, b) of every generation-0 geminal is tested: IPR<sub>ab</sub>, the Löwdin inverse participation ratio of the pair, runs over [IPR<sub>ab</sub>(0) + α − r, IPR<sub>ab</sub>(0) + α + r] under the rotation θ, and x is the position of the current orbitals in that range (0 = minimum, 1 = maximum). A pair with x &gt; 1/2 is rotated by θ<sup>*</sup> to the minimum; a pair with r ≤ 64 ε IPR<sub>ab</sub>(0) (ε the machine epsilon) is left alone. Sweeps over all pairs repeat until one rotates nothing; the FONs are not changed.</li>

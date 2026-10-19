@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/dynamics/>
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -165,7 +165,7 @@ DL-FIND prints its cycles to the terminal; the last one:
 
 ```log
 Testing convergence  in cycle    8
-    Energy  2.6938E-07 Target: 1.0000E-06 converged?  yes
+    Energy  2.6942E-07 Target: 1.0000E-06 converged?  yes
   Max step  1.2441E-03 Target: 1.8000E-03 converged?  yes component     7
   RMS step  4.8905E-04 Target: 1.2000E-03 converged?  yes
   Max grad  9.0958E-06 Target: 4.5000E-04 converged?  yes component    12
@@ -174,9 +174,9 @@ Convergence reached
 
  Optimisation converged
  ----------------------
- Final converged energy:     -78.528630422651
+ Final converged energy:     -78.528630422602
 [...]
-E(S0) = -78.5286304227
+E(S0) = -78.5286304226
 ```
 
 `opt_c2h4.out`, last point:

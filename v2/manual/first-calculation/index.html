@@ -85,7 +85,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 </tr>
 </tbody>
 </table></div>
-<p>The seeds on this page use <code>scf_type pk</code>. A localized seed is replaced by an RKS run with <code>scf_type pk</code> or by a seed from a smaller torsion, carried to the target geometry (<a href="#first-scans">Scans</a>). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n 2.000000 / 0.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).</p>
+<p>The seeds on this page use <code>scf_type pk</code>. A localized seed is replaced by an RKS run with <code>scf_type pk</code> or by a seed from a smaller torsion, carried to the target geometry (<a href="#first-scans">Scans</a>). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n<sub>a</sub> 0.000000, n<sub>b</sub> 2.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).</p>
 <h3 id="inspect-orbitals">Inspect the orbitals</h3>
 <p>Open the RKS Molden file in a viewer, name the M orbitals by character and note their 0-based columns: MO <code>kA</code> is column k − 1. Without a viewer, the population snippet above with the sum over the AO functions of one type (e.g. the p functions normal to a molecular plane for π) separates σ from π.</p>
 <figure class="mo">
@@ -127,7 +127,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>      16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812</span></span>
 <span class="line"><span>      17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>@REKS Final Energy:  -155.67155759813008</span></span></code></pre>
+<span class="line"><span>@REKS Final Energy:  -155.67155759813028</span></span></code></pre>
 <h3 id="check-solution">Check the solution</h3>
 <dl class="fields"><dt>Convergence</dt><dd><code>Energy and wave function converged.</code> is necessary only: every wrong solution on this page converged. Otherwise <a href="/v2/manual/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a>.</dd><dt>Active set</dt><dd>every index of <code>Pairing scheme 0</code> in <code>Post-Iterations</code> (<a href="/v2/manual/properties/#sa-fons">Fractional occupation numbers of the SA-REKS ensemble</a>) belongs to the inspected set, compared as a set: setup <code>8A(a), 9A(b)</code>, pair printed <code>(9A,8A)</code> (generation-0 reordering, <a href="/v2/manual/run-control/#fons">§12</a>). Otherwise <a href="/v2/manual/diagnose/#diag-wrong-window">SCF converges instantly to a wrong energy after a restart</a>.</dd><dt>Symmetry</dt><dd>S0 has equal charges on symmetry-equivalent atoms (<a href="/v2/manual/properties/#atomic-charges">Atomic charges of the states (unrelaxed)</a>) and a dipole allowed by the point group (<a href="/v2/manual/properties/#permanent-dipole">Permanent and difference dipole moments (unrelaxed)</a>). Otherwise <a href="/v2/manual/diagnose/#diag-fon-pinned">FON pinned at a bound, symmetry-broken charges</a>.</dd><dt>FONs</dt><dd>a pair at n ≈ 2/0 is not by itself an error: the outer π pair of butadiene has n<sub>a</sub> = 1.999999.</dd></dl>
 <p>E<sub>SA</sub> of different starts is not a criterion:</p>
@@ -165,7 +165,7 @@ header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft)
 <span class="line"><span>       9A     -0.202302  (a)    n_a =  1.000000</span></span>
 <span class="line"><span>       8A     -0.202302  (b)    n_b =  1.000000</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>@REKS Final Energy:   -78.36439426526262</span></span></code></pre>
+<span class="line"><span>@REKS Final Energy:   -78.36439426527214</span></span></code></pre>
 <p>S0 of this solution: C1 = C2 = −0.358359 (Mulliken), |μ| = 0.000000 e a<sub>0</sub>. Cold SAD start: C1 = −0.148907, C2 = −0.561394, |μ| = 0.263525 e a<sub>0</sub>.</p>
 <figure class="mo">
 <div class="g n2">
