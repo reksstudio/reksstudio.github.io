@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import ChangeList from '../../components/ChangeList.astro';
+import '../../styles/docs.css';
+
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Changes — REKS Studio">
+<Nav variant="light" />
+<main>
+
+<header class="docshero">
+  <div class="wrap">
+    <div class="kicker"><a href={`${base}docs/`}>Documentation</a></div>
+    <h1>Changes</h1>
+  </div>
+</header>
+
+<div class="wrap docs-single">
+  <section class="docsec">
+    <div class="prose">
+      <ChangeList />
+    </div>
+  </section>
+</div>
+</main>
+
+<Footer />
+</Base>

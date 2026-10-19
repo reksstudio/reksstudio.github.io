@@ -3,12 +3,13 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Code from '../components/Code.astro';
+import ChangeList from '../components/ChangeList.astro';
 import { buildFromSource, buildJobsMac } from '../data/snippets';
 import changes from '../data/changes.json' with { type: 'json' };
 import checklist from '../data/docs-checklist.json' with { type: 'json' };
 import { escape, toHtml } from '../lib/inline.mjs';
-import { SECTION_REF, entryLink, entryMap } from '../lib/manual-pages.mjs';
-import { fragmentText, optionGroup, optionId } from '../lib/reference.mjs';
+import { docsRefs } from '../lib/docs-refs.mjs';
+import { fragmentText } from '../lib/reference.mjs';
 import { citeRows } from '../lib/literature.mjs';
 import { BRANCH, EMAIL, PSI4_MANUAL, REPO_URL, shortRev, siteRev } from '../lib/site.mjs';
 import '../styles/docs.css';
@@ -18,25 +19,9 @@ const base = import.meta.env.BASE_URL;
 const rev = siteRev();
 const last = changes.at(-1);
 const build = last.build;
-const records = [...changes].reverse();
-
-// "§<id>" -> manual link (entryLink); a numeric "§N" or an unknown id throws
-const link = (id) => {
-  if (/^\d+$/.test(id) || !entryMap().has(id)) throw new Error(`docs: unresolved "§${id}"`);
-  const l = entryLink(id, null, base);
-  const label = l.code ? '<code>' + escape(l.text) + '</code>' : escape(l.text);
-  return `<a href="${l.href}">${label}</a>`;
-};
-// inline markup -> HTML with every "§<id>" linked
-const refs = (text) => toHtml(text).replace(SECTION_REF, (m, id) => link(id));
+const { link, refs, option } = docsRefs(base);
 // headers of the checklist blocks as printed: first line of each fragment, each once
 const blockHeaders = [...new Set(checklist.fragments.map((id) => fragmentText(id).split('\n')[0].trim()))];
-// option of a compact group (no entry of its own) -> the group table
-const option = (key) => {
-  const g = optionGroup(key);
-  if (!g.compact) return link(optionId(key));
-  return `<a href="${entryLink(g.id, null, base).href}"><code>${escape(key)}</code></a>`;
-};
 const toc = [
   ['install', 'Install'],
   ['check', 'Check the build'],
@@ -98,20 +83,8 @@ const toc = [
       <section id="changes" class="docsec">
         <h2>Changes</h2>
         <div class="prose">
-          {records.map((r) => (
-            <div class="change">
-              <h3>Psi4 <code>{shortRev(r.rev)}</code>, {r.date}</h3>
-              {(r.notes.length + r.added.length + r.removed.length + r.defaults.length > 0) && (
-                <ul>
-                  {r.notes.map((n) => <li set:html={refs(n)} />)}
-                  {r.added.map((n) => <li>Added: <Fragment set:html={option(n)} /></li>)}
-                  {r.removed.map((n) => <li>Removed: <code>{n}</code></li>)}
-                  {r.defaults.map((d) => <li>Default of <Fragment set:html={option(d.name)} />: <code>{d.old}</code> → <code>{d.new}</code></li>)}
-                </ul>
-              )}
-            </div>
-          ))}
-          {last.reachable && <p>Between two revisions: <code>git log &lt;your Git: Rev&gt;..{rev.short}</code> in the clone.</p>}
+          <ChangeList count={3} />
+          <p>Full history: <a href={`${base}docs/changes/`}>Changes</a>.</p>
         </div>
       </section>
 

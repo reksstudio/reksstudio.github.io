@@ -62,13 +62,7 @@ Psi4 `e95c2d234`, 2026-10-19: the commit of every output in the manual. Option n
 * Added: [`SI_REKS_FON_BOUND_MARGIN`](https://reksstudio.github.io/v2/manual/run-control/index.md#fon-micro)
 * Added: [`SI_REKS_SOLVER`](https://reksstudio.github.io/v2/options/SI_REKS_SOLVER.md)
 
-### Psi4 `d40267fc2`, 2026-10-13
-
-* One-electron SI couplings are Slater–Condon elements over the Fock matrices of the microstates, the bra/ket mean for an excitation ([SI Hamiltonian and overlap](https://reksstudio.github.io/v2/manual/concepts/index.md#si-hamiltonian)); SSR energies and state properties follow from them.
-* SI gradients and NAC are analytic with meta-GGA functionals ([Nuclear gradients of SSR states](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient), [Nonadiabatic coupling vectors](https://reksstudio.github.io/v2/manual/properties/index.md#nac)); Laplacian-dependent meta-GGAs are rejected with an input error.
-* NTO holes, NDOs, state natural orbitals and EKT eigenvectors are in a canonical basis of each degenerate span ([Natural transition orbitals](https://reksstudio.github.io/v2/manual/properties/index.md#nto), [Natural orbitals and occupations of the active space](https://reksstudio.github.io/v2/manual/properties/index.md#natural-orbitals)).
-
-### Psi4 `b275f4294`, 2026-10-11
+Full history: [Changes](https://reksstudio.github.io/v2/docs/changes/index.md).
 
 ## Cite
 

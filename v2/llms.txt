@@ -115,3 +115,4 @@ Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: br
 - [REKS Studio](/v2/index.md)
 - [Documentation](/v2/docs/index.md)
 - [Team](/v2/team/index.md)
+- [Changes](/v2/docs/changes/index.md)

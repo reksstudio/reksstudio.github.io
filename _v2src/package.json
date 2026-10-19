@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/budget.mjs",
+    "build": "astro build && node scripts/budget.mjs && cp ../v2/index.html ../index.html",
     "preview": "astro preview"
   },
   "dependencies": {

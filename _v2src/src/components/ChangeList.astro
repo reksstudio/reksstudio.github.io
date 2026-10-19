@@ -1,0 +1,30 @@
+---
+import changes from '../data/changes.json' with { type: 'json' };
+import { docsRefs } from '../lib/docs-refs.mjs';
+import { shortRev, siteRev } from '../lib/site.mjs';
+
+interface Props {
+  count?: number;
+}
+
+const { count = changes.length } = Astro.props;
+const { refs, option } = docsRefs(import.meta.env.BASE_URL);
+const rev = siteRev();
+const last = changes.at(-1);
+// newest first
+const records = changes.slice(-count).reverse();
+---
+{records.map((r) => (
+  <div class="change">
+    <h3>Psi4 <code>{shortRev(r.rev)}</code>, {r.date}</h3>
+    {(r.notes.length + r.added.length + r.removed.length + r.defaults.length > 0) && (
+      <ul>
+        {r.notes.map((n) => <li set:html={refs(n)} />)}
+        {r.added.map((n) => <li>Added: <Fragment set:html={option(n)} /></li>)}
+        {r.removed.map((n) => <li>Removed: <code>{n}</code></li>)}
+        {r.defaults.map((d) => <li>Default of <Fragment set:html={option(d.name)} />: <code>{d.old}</code> → <code>{d.new}</code></li>)}
+      </ul>
+    )}
+  </div>
+))}
+{last.reachable && <p>Between two revisions: <code>git log &lt;your Git: Rev&gt;..{rev.short}</code> in the clone.</p>}

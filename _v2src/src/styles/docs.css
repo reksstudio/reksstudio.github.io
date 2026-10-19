@@ -6,6 +6,8 @@ header.docshero h1 + p{ margin-top: 16px; color: var(--ink-soft); max-width: 56c
 /* content track minmax(0, 1fr): wide code blocks and tables scroll inside the column instead of widening the page */
 .docs-layout{ display: grid; grid-template-columns: var(--toc-width, 200px) minmax(0, 1fr); gap: 56px; padding: 56px 0 96px; align-items: start; }
 @media (max-width: 860px){ .docs-layout{ grid-template-columns: minmax(0, 1fr); } }
+/* single column, no table of contents */
+.docs-single{ padding: 56px 0 96px; }
 
 /* table of contents: <details> always open and sticky on desktop, collapsed under "Contents" on narrow screens */
 .toc{ position: sticky; top: var(--nav-offset); }
