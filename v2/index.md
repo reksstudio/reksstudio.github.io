@@ -72,17 +72,17 @@ largest active space computed, on PAHs of up to 70 atoms (1716 basis functions)
 
 computational cost, by sharing integrals and grids across all microstates
 
-H₂ · H₄ · H₆ · H₈
+[H<sub>2</sub> · H<sub>4</sub> · H<sub>6</sub> · H<sub>8</sub> · H<sub>10</sub>](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h-chains)
 
-Sequential bond dissociation benchmarked directly against full configuration interaction.
+Bond dissociation against FCI in the same basis; H<sub>10</sub>: FCI out of reach at this size.
 
-C₂H₄ · N₂ · C₂H₂
+[C<sub>2</sub>H<sub>4</sub> · N<sub>2</sub> · C<sub>2</sub>H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/index.md#molecules)
 
-Single, double, and triple bond breaking along full potential energy curves.
+Bonds broken along the full curve; R<sub>e</sub> against experiment: C<sub>2</sub>H<sub>4</sub>, N<sub>2</sub>.
 
-C₂ (carbon dimer)
+[C<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/index.md#c2)
 
-Benchmarked against near-exact (SHCI) energies and experimental spectroscopic constants.
+Curves against near-exact reference points; natural occupations and spectroscopic constants against experiment.
 
 Zethrenes and related PAHs
 
