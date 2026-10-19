@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/first-calculation/>
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -67,7 +67,7 @@ print([q[[mu for mu in range(bs.nbf()) if bs.function_to_center(mu) == A]].sum()
 | `scf_type df`, read from the `pk` solution | −78.36265006 | 0.440 / 0.440 | 1.000000 / 1.000000 |
 | `scf_type pk`, SAD start | −78.36264503 | 0.440 / 0.440 | 1.000000 / 1.000000 |
 
-The seeds on this page use `scf_type pk`. A localized seed is replaced by an RKS run with `scf_type pk` or by a seed from a smaller torsion, carried to the target geometry ([Scans](#first-scans)). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n 2.000000 / 0.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).
+The seeds on this page use `scf_type pk`. A localized seed is replaced by an RKS run with `scf_type pk` or by a seed from a smaller torsion, carried to the target geometry ([Scans](#first-scans)). An ROHF triplet seed of 90° C₂H₄ gives the cold-start solution (n<sub>a</sub> 0.000000, n<sub>b</sub> 2.000000, E<sub>SA</sub> −78.353499 E<sub>h</sub>).
 
 ### Inspect the orbitals {#inspect-orbitals}
 
@@ -135,7 +135,7 @@ GUESS READ: active window ['HOMO-2', 'HOMO', 'LUMO', 'LUMO+1'] -> MO columns [13
       16A     -0.049148  (c)    n_c =  0.001139    m_c =  0.001812
       17A     -0.006608  (d)    n_d =  0.000000    m_d =  0.000000
 [...]
-@REKS Final Energy:  -155.67155759813008
+@REKS Final Energy:  -155.67155759813028
 ```
 
 ### Check the solution {#check-solution}
@@ -167,7 +167,7 @@ Energy and wave function converged.
        9A     -0.202302  (a)    n_a =  1.000000
        8A     -0.202302  (b)    n_b =  1.000000
 [...]
-@REKS Final Energy:   -78.36439426526262
+@REKS Final Energy:   -78.36439426527214
 ```
 
 S0 of this solution: C1 = C2 = −0.358359 (Mulliken), |μ| = 0.000000 e a<sub>0</sub>. Cold SAD start: C1 = −0.148907, C2 = −0.561394, |μ| = 0.263525 e a<sub>0</sub>.

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/>
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -12,7 +12,7 @@ User Manual
 
 A guide to the REKS(N,M) / SA-REKS / SI-REKS implementation in Psi4
 
-[Psi4 revision `72ce4d58b`, 2026-10-17](https://reksstudio.github.io/v2/docs/index.md#version)
+[Psi4 revision `e95c2d234`, 2026-10-19](https://reksstudio.github.io/v2/docs/index.md#version)
 
 Spin-Restricted Ensemble-referenced Kohn-Sham DFT\
 State-Averaged (SA-REKS) and State-Interaction (SI-SA-REKS = SSR)\

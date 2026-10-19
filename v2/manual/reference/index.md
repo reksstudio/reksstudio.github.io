@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/reference/>
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -106,7 +106,7 @@ Chapters 18–19 of the REKS Studio user manual
 
 | Option | Default | Meaning | Used in |
 | - | - | - | - |
-| [`REKS_USE_TRAH`](https://reksstudio.github.io/v2/options/REKS_USE_TRAH.md) bool | `false` | Trust-region Newton (TRAH) step on the active–active rotations and FONs: warm-up before GVB-DIIS, or the whole SCF without it. | §4 States: SI-SA-REKS(2,3) §12 §13 The three engines · `REKS_DIIS_ACTIVATION` · `REKS_DIIS_CFM_ACTIVATION_GORB` §14 `REKS_GEMINAL_DELOC` §17 |
+| [`REKS_USE_TRAH`](https://reksstudio.github.io/v2/options/REKS_USE_TRAH.md) bool | `false` | Trust-region Newton (TRAH) step on the active–active rotations and FONs: warm-up before GVB-DIIS, or the whole SCF without it. | §4 States: SI-SA-REKS(2,3) §13 The three engines · `REKS_DIIS_ACTIVATION` · `REKS_DIIS_CFM_ACTIVATION_GORB` §14 `REKS_GEMINAL_DELOC` §17 |
 | [`REKS_GVB_DIIS`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS.md) bool | `true` | GVB-DIIS accelerator of the orbital optimization, in the formulation set by `reks_diis_formulation`. | §4 States: SI-SA-REKS(2,3) §13 The three engines §14 `REKS_GEMINAL_DELOC` §16 SCF |
 | [`REKS_DIIS_FORMULATION`](https://reksstudio.github.io/v2/options/REKS_DIIS_FORMULATION.md) `CFM`\|`ORBITAL` | `ORBITAL` | GVB-DIIS formulation: extrapolation of the orbital-rotation generators κ, or of the composite multishell Fock matrix (`CFM`). | §13 `REKS_GVB_DIIS` · `REKS_GVB_LEVEL_SHIFT` §17 |
 | [`REKS_GVB_DIIS_START`](https://reksstudio.github.io/v2/options/REKS_GVB_DIIS_START.md) int | `3` | First SCF iteration of GVB-DIIS; earlier iterations run the level-shifted burn-in or TRAH. | §13 The three engines · `REKS_DIIS_ACTIVATION` · `REKS_DIIS_CFM_ACTIVATION_GORB` |

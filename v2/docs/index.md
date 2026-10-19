@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/docs/>
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -38,9 +38,14 @@ Then run `psi4 reks22_h2.dat` (download from [Worked inputs](https://reksstudio.
 
 ## Version
 
-Psi4 `72ce4d58b`, 2026-10-17: the commit of every output in the manual. Option names and defaults may change on this branch.
+Psi4 `e95c2d234`, 2026-10-19: the commit of every output in the manual. Option names and defaults may change on this branch.
 
 ## Changes
+
+### Psi4 `e95c2d234`, 2026-10-19
+
+* A two-orbital pair keeps its orbitals in their slots when its FON crosses 1, so the printed n_a can be below 1; only generation-0 geminals wider than two are reordered to descending occupation ([§12](https://reksstudio.github.io/v2/manual/run-control/index.md#fons)).
+* Performance optimization of SI: catalog reading, FON relaxation, overlap blocks, Davidson multiply; memory optimization of SI.
 
 ### Psi4 `72ce4d58b`, 2026-10-17
 

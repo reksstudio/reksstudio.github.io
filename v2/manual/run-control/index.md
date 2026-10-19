@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/run-control/>
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -84,7 +84,7 @@ $$
 n_p \in [\,\ell,\; 2 - m\,], \qquad \ell = \begin{cases} \texttt{REKS\_<L>\_FON} & \text{if} \ge 0 \\ m & \text{otherwise} \end{cases}, \qquad m = \texttt{REKS\_FON\_MICRO\_BOUND\_MARGIN}.
 $$
 
-A FON pushed past an end of the box stops on it, and the SCF counts it converged there. Generation-0 geminals are kept in descending occupation by reordering their orbitals, columns and FONs of every set together (the energy is unchanged): the first FON step orders each geminal, later a two-orbital pair whose FON crosses 1 swaps its orbitals and a wider geminal is reordered when its order changes. Without `REKS_USE_TRAH` the printed generation-0 FONs therefore have $n_p \ge n_q$, with one exception: in an SA ensemble over several spin sectors a pair swaps when its FON crosses 1 in any sector, which can leave the printed FON below 1. TRAH steps move the FONs without reordering. FONs of higher generations are never reordered and can have $n_p < n_q$. Outside TRAH steps FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set; each generation has its own lower-bound option ([`REKS_<L>_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md)).
+A FON pushed past an end of the box stops on it, and the SCF counts it converged there. A two-orbital pair keeps its orbitals in their slots, also when its FON crosses 1: the printed $n_a$ can be below 1, $n_a < n_b$. A generation-0 geminal wider than two is kept in descending occupation of the SA spin sector: after every FON step its orbitals are reordered when the order changes, columns and FONs of every set together (the energy is unchanged). TRAH steps move the FONs without reordering. FONs of higher generations are never reordered. Outside TRAH steps FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set; each generation has its own lower-bound option ([`REKS_<L>_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md)).
 
 #### `REKS_FON_INTERP_DELTA` {#reks_fon_interp_delta}
 
@@ -164,12 +164,12 @@ with $\mathbf g_{\mathrm{orb}}$, $\mathbf g_{\mathrm{FON}}$ the orbital and FON 
 
                          Total Energy        Delta E     RMS |[F,D]|
 
- @DF-REKS iter SAD:    -1.87313880489001   -1.87314e+00   0.00000e+00
+ @DF-REKS iter SAD:    -1.87313880489000   -1.87314e+00   0.00000e+00
  @DF-REKS iter   1:    -1.67191477831402    2.01224e-01   4.25060e-03 SHIFT
  @DF-REKS iter   2:    -1.85615375141313   -1.84239e-01   6.35543e-03 SHIFT
  @DF-REKS iter   3:    -1.85801940076408   -1.86565e-03   6.51017e-03 ORB-GVB-DIIS
 [...]
- @DF-REKS iter  11:    -1.85941446727766    0.00000e+00   8.68986e-11 ORB-GVB-DIIS
+ @DF-REKS iter  11:    -1.85941446727766   -1.99840e-15   8.68908e-11 ORB-GVB-DIIS
 
 Energy and wave function converged.
 ```
@@ -345,7 +345,7 @@ Default: `false`
 ==> REKS Geminal Delocalization <==
 
   Geminal  MO a  MO b          x  angle (deg)
-        0     8     9   1.000000     -45.0000
+        0     8     9   1.000000      45.0000
 
   x: position of the pair's Loewdin frame between the minimum (0) and the maximum (1) of
      IPR_ab = sum_A [p_a(A)^2 + p_b(A)^2] over rotations of the pair; rotated to the minimum
@@ -363,8 +363,8 @@ Default: `false`
 ```log
 ==> REKS Geminal Delocalization <==
 
-  E_SA before rotation       -77.884884825217
-  E_SA after rotation        -77.884884825217
+  E_SA before rotation       -77.884884825216
+  E_SA after rotation        -77.884884825216
   Rotated solution rejected; SCF restarts from the orbitals before the rotation.
 ```
 

@@ -2,7 +2,7 @@
 
 HTML: <https://reksstudio.github.io/v2/manual/concepts/>
 
-Psi4 72ce4d58b, 2026-10-17: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
@@ -102,7 +102,7 @@ $$
 f(x) = x^{\,1-\frac{x+\delta}{2(1+\delta)}}, \qquad x = n_a n_b.
 $$
 
-For REKS(2,2), with $f = f(n_a n_b)$ and $n_a \ge 1$, the configuration energies are
+For REKS(2,2), with $f = f(n_a n_b)$, the configuration energies are
 
 $$
 \begin{aligned} E_{\mathrm{PPS}} &= \tfrac{n_a}{2}E(a\bar a) + \tfrac{n_b}{2}E(b\bar b) - f\,\Delta_{ab}\\ E_{\mathrm{DES}} &= \tfrac{n_b}{2}E(a\bar a) + \tfrac{n_a}{2}E(b\bar b) + f\,\Delta_{ab}\\ E_{\mathrm{OSS}} &= E(a\bar b) + E(b\bar a) - \tfrac12\big[E(ab) + E(\bar a\bar b)\big]\\ E_{\mathrm{T}} &= \tfrac12\big[E(ab) + E(\bar a\bar b)\big] \end{aligned}
