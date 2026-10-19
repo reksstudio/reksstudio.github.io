@@ -12,7 +12,7 @@ Ensemble DFT, generated not derived
 
 REKS Studio automatically derives and compiles the working equations of ensemble density functional theory for any active space - turning a twenty-year manual bottleneck into a binary catalogue.
 
-[Explore the method](#architecture) [Source ↗](https://github.com/ConstLike/psi4/tree/kk/reks.studio)
+[Explore the method](https://reksstudio.github.io/v2/main/index.md) [Source ↗](https://github.com/ConstLike/psi4/tree/kk/reks.studio)
 
 The bottleneck
 

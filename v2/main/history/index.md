@@ -48,4 +48,4 @@ Reported per paper; 2026: (10,10) applied to one system, (12,12) generated.
 | 2021 | Analytic gradients implemented on GPUs; sudden polarization | F. Liu, M. Filatov, T. J. Martínez, S. Lee, C. H. Choi | [Liu et al., J. Chem. Phys. 2021, 154, 104108](https://doi.org/10.1063/5.0041389); [Filatov et al., J. Chem. Theory Comput. 2021, 17, 5123](https://doi.org/10.1021/acs.jctc.1c00479) | to be added |
 | 2026 | REKS Studio: equations generated symbolically for an arbitrary active space; (10,10) applied; (12,12) generated; in Psi4 | K. Komarov, M. Filatov, S. K. Min | [Komarov et al., ChemRxiv 2026](https://doi.org/10.26434/chemrxiv.15008475/v1); [Smith et al., J. Chem. Phys. 2020, 152, 184108](https://doi.org/10.1063/5.0006002) | |
 
-Version history of the code: [Documentation, Changes](https://reksstudio.github.io/v2/docs/index.md#changes).
+Version history of the code: [Changes](https://reksstudio.github.io/v2/docs/changes/index.md).
