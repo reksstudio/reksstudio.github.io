@@ -280,6 +280,94 @@
   doi = {10.1103/PhysRevB.37.785}
 }
 
+@book{huber1979-diatomic,
+  author = {Huber, K. P. and Herzberg, G.},
+  title = {{Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules}},
+  publisher = {Springer: Boston, MA},
+  year = {1979},
+  doi = {10.1007/978-1-4757-0961-2},
+  isbn = {978-1-4757-0963-6}
+}
+
+@article{martin1992-c2,
+  author = {Martin, M.},
+  title = {{C₂ spectroscopy and kinetics}},
+  journal = {J. Photochem. Photobiol. A},
+  year = {1992},
+  volume = {66},
+  pages = {263–289},
+  doi = {10.1016/1010-6030(92)80001-C}
+}
+
+@article{craig2006-ethylene,
+  author = {Craig, N. C. and Groner, P. and McKean, D. C.},
+  title = {{Equilibrium structures for butadiene and ethylene: Compelling evidence for π-electron delocalization in butadiene}},
+  journal = {J. Phys. Chem. A},
+  year = {2006},
+  volume = {110},
+  pages = {7461–7469},
+  doi = {10.1021/jp060695b}
+}
+
+@book{kuchitsu1998-structures,
+  author = {Kuchitsu, K.},
+  title = {{Structure of Free Polyatomic Molecules: Basic Data}},
+  publisher = {Springer: Berlin, Heidelberg},
+  year = {1998},
+  doi = {10.1007/978-3-642-45748-7},
+  isbn = {978-3-540-60766-3}
+}
+
+@article{siegbahn1981-acetylene,
+  author = {Siegbahn, P. E. M.},
+  title = {{Large scale contracted MC–CI calculations on acetylene and its dissociation into two CH(²Π) radicals}},
+  journal = {J. Chem. Phys.},
+  year = {1981},
+  volume = {75},
+  pages = {2314–2320},
+  doi = {10.1063/1.442294}
+}
+
+@article{goerigk2011-benchmark,
+  author = {Goerigk, L. and Grimme, S.},
+  title = {{A thorough benchmark of density functional methods for general main group thermochemistry, kinetics, and noncovalent interactions}},
+  journal = {Phys. Chem. Chem. Phys.},
+  year = {2011},
+  volume = {13},
+  pages = {6670–6688},
+  doi = {10.1039/c0cp02984j}
+}
+
+@article{bursch2022-protocols,
+  author = {Bursch, M. and Mewes, J.-M. and Hansen, A. and Grimme, S.},
+  title = {{Best-practice DFT protocols for basic molecular computational chemistry}},
+  journal = {Angew. Chem. Int. Ed.},
+  year = {2022},
+  volume = {61},
+  pages = {e202205735},
+  doi = {10.1002/anie.202205735}
+}
+
+@article{shaik2013-c2,
+  author = {Shaik, S. and Rzepa, H. S. and Hoffmann, R.},
+  title = {{One molecule, two atoms, three views, four bonds?}},
+  journal = {Angew. Chem. Int. Ed.},
+  year = {2013},
+  volume = {52},
+  pages = {3020–3033},
+  doi = {10.1002/anie.201208206}
+}
+
+@article{holmes2017-shci,
+  author = {Holmes, A. A. and Umrigar, C. J. and Sharma, S.},
+  title = {{Excited states using semistochastic heat-bath configuration interaction}},
+  journal = {J. Chem. Phys.},
+  year = {2017},
+  volume = {147},
+  pages = {164111},
+  doi = {10.1063/1.4998614}
+}
+
 @article{mayer1983-bond-order,
   author = {Mayer, I.},
   title = {{Charge, bond order and valence in the ab initio SCF theory}},

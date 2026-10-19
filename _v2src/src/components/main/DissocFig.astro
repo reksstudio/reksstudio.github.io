@@ -1,0 +1,88 @@
+---
+import { figure, sub, uni } from '../../lib/dissoc.mjs';
+
+interface Props {
+  s: any;
+  size?: 'index' | 'big';
+  page?: boolean;
+}
+
+// energy panel over the natural-occupation panel, shared R axis; line paths at x10 inside g.x10
+const { s, size = 'index', page } = Astro.props;
+const f = figure(s, size);
+const G = f.G;
+const id = `dc-${s.slug}-${size}`;
+const f1 = (v) => Math.round(v * 10) / 10;
+const LX = G.LX;
+const aria = `${uni(s.id)} SSR${s.as}: S0 energy along ${s.coord} from ${s.R[0]} to ${s.R.at(-1)} Å${s.ref ? (s.kind === 'chain' ? ' with FCI in the same basis' : ' with near-exact reference points') : ''}${s.named.length ? `, states ${s.named.map((n) => uni(n.label)).join(', ')}` : ''}; natural occupations below${page ? '' : '; numbers in the setup line and on the system page'}`;
+// marker glyphs centred at (x, y): circle r, triangle, diamond
+const tri = (x, y, r) => `M${f1(x)} ${f1(y - r)}l${f1(0.866 * r * 1.15)} ${f1(1.5 * r)}h${f1(-1.732 * r * 1.15)}z`;
+const dia = (x, y, r) => `M${f1(x)} ${f1(y - r)}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`;
+---
+<svg class={`zc dc${size === 'big' ? ' big' : ''}`} viewBox={`0 0 ${G.W} ${G.H}`} role="img" aria-label={aria}>
+  <defs>
+    <clipPath id={`${id}-p`}><rect x={f.L} y={G.PT} width={G.R - f.L} height={G.PB - G.PT} /></clipPath>
+    <clipPath id={`${id}-o`}><rect x={f.L} y={G.OT - 2} width={G.R - f.L} height={G.OB - G.OT + 4} /></clipPath>
+  </defs>
+  <text x="4" y={G.TTL} class="ttl" set:html={sub(f.ttl)} />
+  <text x="4" y={G.AX} class="lab" set:html={sub(f.axis)} />
+  {f.yTicks.map((t) => (
+    <g>
+      <line x1={f.L} x2={G.R} y1={f1(t.y)} y2={f1(t.y)} class="grid" />
+      <text x={f.L - 4} y={f1(t.y + 4)} text-anchor="end" class="tick">{t.t}</text>
+    </g>
+  ))}
+  {f.reX != null && [[G.PT, G.PB], [G.OT, G.OB]].map(([a, b]) => <line x1={f1(f.reX)} x2={f1(f.reX)} y1={a} y2={b} class="re" />)}
+  {f.hair.flatMap((hx) => [[G.PT, G.PB], [G.OT, G.OB]].map(([a, b]) => <line x1={f1(hx)} x2={f1(hx)} y1={a} y2={b} class="r0" />))}
+  {f.ticksS1.map((hx) => <line x1={f1(hx)} x2={f1(hx)} y1={G.OT - 6} y2={G.OT + 6} class="r0 r1" />)}
+  <g clip-path={`url(#${id}-p)`}>
+    {f.rootPaths.length > 0 && <path class="rt" d={f.rootPaths.join('')} />}
+    {f.rksPath && <path class="rks1" d={f.rksPath.d}><title>{f.rksPath.title}</title></path>}
+    <g class="x10" transform="scale(.1)">
+      {f.paths.map((p) => (p.title ? <path class={p.cls} d={p.d}><title>{p.title}</title></path> : <path class={p.cls} d={p.d} />))}
+    </g>
+  </g>
+  {f.segs.map((g) => (
+    <>
+      <line x1={f1(g.x1)} x2={f1(g.x2)} y1={f1(g.y)} y2={f1(g.y)} class="lim"><title>{g.title}</title></line>
+      {g.rows.map((r) => <text x={f1(g.tx)} y={f1(r.ty)} text-anchor="end" class="lab l-lim" set:html={sub(r.t)} />)}
+    </>
+  ))}
+  {f.arrow && (
+    <g class="va">
+      <line x1={f1(f.arrow.x)} x2={f1(f.arrow.x)} y1={f1(f.arrow.y0)} y2={f1(f.arrow.y1 + 4)} />
+      <path d={`M${f1(f.arrow.x)} ${f1(f.arrow.y1)}l-3 6h6z`} />
+      {f.arrow.lines.map((t, k) => <text x={f1(f.arrow.tx)} y={f1(f.arrow.ty + k * G.SEP)} text-anchor={f.arrow.anchor} class="lab">{t}</text>)}
+      <title>{f.arrow.title}</title>
+    </g>
+  )}
+  {f.marks.map((m) => (
+    m.shape === 'circle'
+      ? <circle cx={f1(m.cx)} cy={f1(m.cy)} r={m.r} class={m.cls}><title>{m.title}</title></circle>
+      : <path d={m.shape === 'diamond' ? dia(m.cx, m.cy, m.r) : tri(m.cx, m.cy, m.r)} class={m.cls}><title>{m.title}</title></path>
+  ))}
+  {f.extraKey && <text x={f1(f.extraKey.x)} y={f1(f.extraKey.y)} class="lab l-ref">{f.extraKey.text}</text>}
+  {f.labels.map((l) => (
+    <text x={LX} y={f1(l.y + 3.8)} class={`lab ${l.cls}`} set:html={sub(l.text)} />
+  ))}
+  {f.r0lab.map((l) => (
+    <>
+      <text x={f1(l.x)} y={G.R0} text-anchor="middle" class="lab halo" aria-hidden="true" set:html={sub(l.text)} />
+      <text x={f1(l.x)} y={G.R0} text-anchor="middle" class="lab" set:html={sub(l.text)} />
+    </>
+  ))}
+  <text x="4" y={G.OTT} class="lab" set:html={sub(f.occTitle)} />
+  {[0, 1, 2].map((n) => (
+    <g>
+      <line x1={f.L} x2={G.R} y1={f1(f.yo(n))} y2={f1(f.yo(n))} class={n === 1 ? 'half' : 'grid'} />
+      <text x={f.L - 4} y={f1(f.yo(n) + 4)} text-anchor="end" class="tick">{n}</text>
+    </g>
+  ))}
+  <g clip-path={`url(#${id}-o)`}>
+    <g class="x10" transform="scale(.1)">{f.occPaths.map((p) => <path class={p.cls} d={p.d} />)}</g>
+  </g>
+  {f.levels.flatMap((v) => v.lines.map((t, k) => <text x={f1(v.x)} y={f1(v.y + k * G.SEP)} class="lab lv">{t}</text>))}
+  {f.occLabels.map((l) => <text x={LX} y={f1(l.y + 3.8)} class={`lab ${l.cls}`} set:html={sub(l.text)} />)}
+  {f.xticks.map((r) => <text x={f1(f.x(r))} y={G.XT} text-anchor="middle" class="tick">{r}</text>)}
+  <text x={G.R} y={G.XTT} text-anchor="end" class="lab" set:html={sub(f.xTitle)} />
+</svg>

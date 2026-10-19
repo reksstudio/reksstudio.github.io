@@ -10,6 +10,7 @@ import { entryLink } from '../lib/manual-pages.mjs';
 import { SOURCE_URL } from '../lib/site.mjs';
 import { vars as quest } from '../lib/quest.mjs';
 import { vars as zeth } from '../lib/zeth.mjs';
+import { rootRows } from '../lib/dissoc.mjs';
 import figure from '../assets/figures/BFN_energies.svg?url';
 import '../styles/landing.css';
 
@@ -140,9 +141,7 @@ const chart = [
       </div>
     </div>
     <div class="syslist reveal">
-      <div class="sysrow"><div class="sysname">H₂ · H₄ · H₆ · H₈</div><p>Sequential bond dissociation benchmarked directly against full configuration interaction.</p></div>
-      <div class="sysrow"><div class="sysname">C₂H₄ · N₂ · C₂H₂</div><p>Single, double, and triple bond breaking along full potential energy curves.</p></div>
-      <div class="sysrow"><div class="sysname">C₂ (carbon dimer)</div><p>Benchmarked against near-exact (SHCI) energies and experimental spectroscopic constants.</p></div>
+      {rootRows.map(([id, name, text]) => <div class="sysrow"><div class="sysname"><a href={`${base}main/results/dissociation/#${id}`} set:html={toHtml(name)} /></div><p set:html={toHtml(text)} /></div>)}
       <div class="sysrow"><div class="sysname">Zethrenes and related PAHs</div><p>{zeth.compounds} compounds, {zeth.geometries} geometries, (2,2) to (10,10): spin gaps, SI states, natural occupations and active orbitals of {zeth.calculations} calculations.</p></div>
       <div class="sysrow"><div class="sysname">Tetra[3]trianguleno[3]rhombene</div><p>A synthesized magnetic quantum material — see below.</p></div>
     </div>

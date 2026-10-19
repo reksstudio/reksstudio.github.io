@@ -20,29 +20,28 @@ Every result shown with REKS Studio, one row per system and question, each one c
 | two H<sub>2</sub> at 50 Å | Implementation | (2,2) | 2 × E(H<sub>2</sub>) | 9.3·10<sup>−11</sup> E<sub>h</sub> (size consistency) | [page](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities) |
 | C<sub>2</sub>H<sub>4</sub>, butadiene, BH | Implementation | (2,2)–(4,6) | five-point finite differences | ≤ 7.8·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup> (gradients) | [page](https://reksstudio.github.io/v2/main/results/exactness/index.md#derivatives) |
 
-### B: model vs near-exact theory (FCI/SHCI)
+### B: model vs near-exact theory (FCI)
 
 | System | Problem class | Active space | Reference | Number | Evidence |
 | - | - | - | - | - | - |
-| H<sub>2</sub> | Bond breaking | (2,2) | FCI, same basis | to be added | [page](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h2) |
-| H<sub>4</sub> | Bond breaking | (4,4) | FCI, same basis | to be added | [page](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h4) |
-| H<sub>6</sub> | Bond breaking | (6,6) | FCI, same basis | to be added | [page](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h6) |
-| H<sub>8</sub> | Bond breaking | (8,8) | FCI, same basis | to be added | [page](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h8) |
+| H<sub>2</sub> | Bond breaking | (2,2) | FCI, aug-cc-pVTZ | vs FCI, same basis | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h2) |
+| H<sub>4</sub> | Bond breaking | (4,4) | FCI, aug-cc-pVTZ | vs FCI, same basis | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h4) |
+| H<sub>6</sub> | Bond breaking | (6,6) | FCI, 6-31G(d) | vs FCI, same basis | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h6) |
+| H<sub>8</sub> | Bond breaking | (8,8) | FCI, 6-31G(d) | vs FCI, same basis | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h8) |
 
 ### C: model vs benchmark set (TBE)
 
 | System | Problem class | Active space | Reference | Number | Evidence |
 | - | - | - | - | - | - |
-| C<sub>2</sub>H<sub>4</sub> | Bond breaking | (4,4) | TBE (vertical); experiment (R<sub>e</sub>) | B<sup>1</sup>B<sub>1u</sub> 7.85 eV (TBE 7.93); R<sub>e</sub> 1.335 Å (exp. 1.339) | [page](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#c2h4) |
-| N<sub>2</sub> | Bond breaking | (6,6) | TBE (vertical); experiment (R<sub>e</sub>) | vertical 9.49 eV (TBE 9.88); R<sub>e</sub> 1.096 Å (exp. 1.098) | [page](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#n2) |
-| C<sub>2</sub>H<sub>2</sub> | Bond breaking | (6,6) | TBE (vertical); experiment (R<sub>e</sub>) | vertical 6.66 eV (TBE 7.10); R<sub>e</sub> 1.201 Å (exp. 1.203) | [page](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md#c2h2) |
 | 62 molecules, QUEST3/5/6/7; S1, S2, T1, T2 | Excited states | (2,2)–(8,8), closest to TBE per state | TBE | MAE 0.212 / 0.230 / 0.220 eV (BH\&HLYP / M08-SO / ωB97X) | [page](https://reksstudio.github.io/v2/main/results/quest/index.md) |
 
 ### D: model vs experiment
 
 | System | Problem class | Active space | Reference | Number | Evidence |
 | - | - | - | - | - | - |
-| C<sub>2</sub> | Bond breaking | (6,6) | experiment (SHCI comparison to be added) | D<sub>e</sub> 6.28 vs 6.32 ± 0.2 eV; R<sub>e</sub> 1.268 vs 1.243 Å | [page](https://reksstudio.github.io/v2/main/results/c2/index.md) |
+| C<sub>2</sub>H<sub>4</sub> | Bond breaking | (4,4) | experiment | R<sub>e</sub> 1.333 · exp. 1.3305 Å (rigid R<sub>CC</sub> scan) | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#c2h4) |
+| N<sub>2</sub> | Bond breaking | (6,6) | experiment | R<sub>e</sub> 1.096 · exp. 1.0977 Å | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#n2) |
+| C<sub>2</sub> | Bond breaking | (6,6) | experiment; near-exact reference points | D<sub>e</sub> 6.29 · exp. 6.32 ± 0.2 eV; R<sub>e</sub> 1.268 · exp. 1.2425 Å | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#c2) |
 
 ## Part 2: beyond available references: trends and demonstrations
 
@@ -50,7 +49,14 @@ Every result shown with REKS Studio, one row per system and question, each one c
 
 | System | Problem class | Active space | Reference | Number | Evidence |
 | - | - | - | - | - | - |
+| C<sub>2</sub>H<sub>2</sub> | Bond breaking | (6,6) | none | R<sub>e</sub> 1.205 Å (rigid R<sub>CC</sub> scan) | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#c2h2) |
 | 7 PAHs of Hu et al. (2016), 20 geometries | Diradicals and magnetism | (2,2)–(10,10) | none | 98 calculations, 32–70 atoms, cc-pVTZ, (2,2)–(10,10) | [page](https://reksstudio.github.io/v2/main/results/zethrenes/index.md) |
+
+### model, FCI out of reach at this size
+
+| System | Problem class | Active space | Reference | Number | Evidence |
+| - | - | - | - | - | - |
+| H<sub>10</sub> | Bond breaking | (10,10) | FCI out of reach at this size | 83 points | [page](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h10) |
 
 ### reference on a different object
 

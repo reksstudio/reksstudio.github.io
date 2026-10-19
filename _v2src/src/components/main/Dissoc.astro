@@ -1,0 +1,99 @@
+---
+import DissocCards from './DissocCards.astro';
+import DissocFig from './DissocFig.astro';
+import DissocHorb from './DissocHorb.astro';
+import DissocKey from './DissocKey.astro';
+import Table from './Table.astro';
+import { html, manualHref } from '../../lib/overview.mjs';
+import { chains, changesText, cite, constTable, expHtml, far, limitsLine, molecules, numberLine, paper, pointMols, refPointsHtml, setupHtml, subLink, sysHref, vertHtml } from '../../lib/dissoc.mjs';
+
+interface Props {
+  parts: string[];
+}
+
+const base = import.meta.env.BASE_URL;
+const { parts } = Astro.props;
+const plainMols = molecules.filter((s) => !s.ref);
+// fallback: states taken at the lowest grid point; EQS: definition equations
+const fallback = molecules.flatMap((s) => (s.values.fallback ?? []).map((k) => `${s.named.find((n) => n.key === k).label} of ${s.id}`));
+const deSys = pointMols.find((s) => s.values.De != null);
+const deLimit = deSys && deSys.limits.find((l) => l.text);
+const EQS = [
+  'T_{e} = E_{min}(state) − E_{min}(S0)',
+  ...(deSys ? [`D_{e}(${deSys.id}) = ${deLimit.label[0].replace('E(C)', 'E(C ^{3}P)')} − E_{min}(S0)`] : []),
+];
+const sysFig = (s) => ({ s, setup: setupHtml(s, base), link: subLink(s), number: s.kind === 'molecule' && !s.ref ? numberLine(s) : null, limits: limitsLine(s) });
+---
+{parts.map((p) => {
+  if (p === 'intro') return paper.intro(base).map((t) => <p set:html={t} />);
+  if (p === 'defs') return (
+    <div class="zdefs">
+      <h3>Definitions</h3>
+      <p>R<sub>e</sub>, E<sub>min</sub>: minimum of the quartic through the 5 grid points around the lowest one{fallback.length > 0 && <>; <Fragment set:html={html(fallback.join(', '))} />: the lowest grid point</>}.</p>
+      {EQS.map((e) => <p class="zf" set:html={html(e)} />)}
+      {deSys && <p>E(C <sup>3</sup>P): <Fragment set:html={html(`${deLimit.label[1]}/${deSys.functional}/${deSys.basis}`)} />, 2 E(C) = {deLimit.text.replace('-', '−')} E<sub>h</sub> [<Fragment set:html={cite('komarov2026-reks-studio', base)} />, SI].</p>}
+      <p>Separated fragments n E(H): the high-spin ROKS chain at R<sub>max</sub>; molecules: fragments at each segment; methods in the setup line.</p>
+      <p>n<sub>i</sub>: natural occupations of the SSR state (eigenvalues of its active one-particle density, unrelaxed; <a href={manualHref(base, 'natural-orbitals')}>Manual, natural orbitals</a>), summing to the number of active electrons. FON: fractional occupation of an SA-REKS orbital; n<sub>i</sub> above is a property of the SSR state. Energies in E<sub>h</sub>, T<sub>e</sub> and D<sub>e</sub> in eV, R in Å.</p>
+    </div>
+  );
+  if (p === 'cards') return <DissocCards />;
+  if (p === 'horb') return <DissocHorb />;
+  if (p === 'chains' || p === 'far') {
+    const list = p === 'chains' ? chains : far;
+    return (
+      <>
+        <div class="zgrid">
+          {list.map(sysFig).map((f) => (
+            <figure class="dfig" id={f.s.slug}>
+              <a class="dlink" href={sysHref(f.s)}><DissocFig s={f.s} /></a>
+              <p class="zf" set:html={f.setup} />
+              <p class="qcap"><a href={sysHref(f.s)} set:html={html(f.link)} /></p>
+            </figure>
+          ))}
+        </div>
+        {p === 'chains' && <p class="qcap" set:html={paper.chains(base)} />}
+      </>
+    );
+  }
+  if (p === 'molecules') return (
+    <>
+      <div class="zgrid">
+        {plainMols.map(sysFig).map((f) => (
+          <figure class="dfig" id={f.s.slug}>
+            <a class="dlink" href={sysHref(f.s)}><DissocFig s={f.s} /></a>
+            <p class="zf" set:html={html(f.number)} />
+            <p class="zf" set:html={f.setup} />
+            {f.limits && <p class="zf" set:html={html(f.limits)} />}
+            <p class="qcap"><Fragment set:html={paper.molecule(f.s, base)} />{changesText(f.s)}</p>
+            <p class="qcap"><a href={sysHref(f.s)} set:html={html(f.link)} /></p>
+          </figure>
+        ))}
+      </div>
+      {pointMols.map(sysFig).map((f) => (
+        <section class="dfig" id={f.s.slug}>
+          <h3 set:html={html(f.s.title)} />
+          <div class="dmol">
+            <div>
+              <DissocKey s={f.s} />
+              <a class="dlink" href={sysHref(f.s)}><DissocFig s={f.s} /></a>
+            </div>
+            <div>
+              <Table table={constTable(f.s)} numeric />
+              <p class="zf" set:html={f.setup} />
+              <p class="qcap"><a href={sysHref(f.s)} set:html={html(f.link)} /></p>
+            </div>
+          </div>
+          <p class="qcap"><Fragment set:html={paper.molecule(f.s, base)} />{changesText(f.s)}</p>
+        </section>
+      ))}
+    </>
+  );
+  if (p === 'refs') return (
+    <>
+      {pointMols.map((s) => <p><Fragment set:html={html(s.id)} />: <Fragment set:html={refPointsHtml(s, base)} /></p>)}
+      {expHtml(base) && <p set:html={expHtml(base)} />}
+      {vertHtml(base) && <p set:html={vertHtml(base)} />}
+    </>
+  );
+  throw new Error(`overview.json: unknown dissoc part ${p}`);
+})}

@@ -103,9 +103,14 @@ header.hero{ padding: 28px 0 24px; }
 .pviz .ref, .zx .ref{ fill: var(--bg-raised); stroke: var(--ref); stroke-width: 1.5; }
 .pviz .ours{ fill: var(--ours); }
 .pviz .tick{ font: 11px var(--mono); fill: var(--ink-soft); }
-.pviz polyline{ fill: none; stroke-linejoin: round; }
-.pviz .fci{ stroke: var(--ink); stroke-width: 1.2; }
-.pviz .ssr{ stroke: var(--ours); stroke-width: 2.5; }
+.pviz .x10 path{ fill: none; stroke-linejoin: round; }
+.pviz .fci{ stroke: var(--ink); stroke-width: 12; }
+.pviz .ssr{ stroke: var(--ours); stroke-width: 25; }
+.pviz .mn{ font-size: 14px; }
+.ptab{ border-collapse: collapse; margin: 6px 0; font: 0.86rem var(--mono); font-variant-numeric: tabular-nums; }
+.ptab th, .ptab td{ padding: 1px 12px 1px 0; text-align: right; font-weight: 400; }
+.ptab th:first-child{ text-align: left; }
+.ptab thead th{ color: var(--ink-soft); font-size: 0.76rem; }
 .pbig{ font: 1.9rem/1.1 var(--serif); font-variant-numeric: tabular-nums; }
 .pref{ font-size: 0.86rem; color: var(--ink-soft); }
 .psub{ font-size: 0.8rem; color: var(--ink-faint); }
@@ -118,10 +123,15 @@ header.hero{ padding: 28px 0 24px; }
 @media (max-width: 600px){
   .pcard{ display: grid; grid-template-columns: minmax(0, 1fr) 46%; grid-template-areas: "q v" "n v" "r r" "s s"; gap: 0 12px; padding: 10px 12px; }
   .pq{ grid-area: q; font-size: 0.88rem; }
-  .pviz{ grid-area: v; margin: 0; align-self: center; }
+  .pviz, .ptab{ grid-area: v; margin: 0; align-self: center; }
   .pbig{ grid-area: n; font-size: 1.5rem; }
   .pref{ grid-area: r; font-size: 0.8rem; }
   .psub{ grid-area: s; font-size: 0.76rem; }
+  /* a table card: the table takes the full width under the question; card chart text renders at >= 9 px */
+  .pcard:has(.ptab){ grid-template-areas: "q q" "v v" "n n" "r r" "s s"; }
+  .ptab td{ white-space: nowrap; }
+  .pviz .tick{ font-size: 17px; }
+  .pviz .mn{ font-size: 15px; }
 }
 
 /* cost band: bar width = v / max of the track (3.8rem left for the value); 1x rule at 1 / max */
@@ -359,7 +369,7 @@ header.hero{ padding: 28px 0 24px; }
 .zc .val{ font-size: 12.5px; fill: var(--ink); font-variant-numeric: tabular-nums; }
 .zc .ttl{ font: 600 14px var(--sans); fill: var(--ink); }
 .zc .cmp{ font: 600 13px var(--sans); fill: var(--ink); }
-.zc .sb{ font-size: 0.8em; }
+.zc .sb, .pviz .sb{ font-size: 0.8em; }
 .zc .grid{ stroke: var(--line); stroke-width: 1; }
 /* label over grid lines: a halo in the page colour */
 .zc .nc{ paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round; }
@@ -394,6 +404,90 @@ svg.zx{ display: block; width: 100%; height: auto; max-width: 480px; margin: 6px
 .zd .bar{ fill: var(--spin); }
 .zd .div{ stroke: var(--ink-faint); stroke-width: 1; stroke-dasharray: 2 2; }
 .zd .sl{ font-size: 9px; fill: var(--ink-soft); }
+/* dissociation charts: PEC over S0 natural occupations; line paths at x10 in g.x10, stroke widths x10 there */
+/* state colours of the owner's figures (blue 1Ag/X, magenta a3Pi_u, red, green), light and dark */
+:root{ --st-blue: #2a78d6; --st-magenta: #c2389e; --st-red: #c8382c; --st-green: #2e8b3e; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --st-blue: #5b9bea; --st-magenta: #df6cc0; --st-red: #e56b5f; --st-green: #5cb86a; } }
+:root[data-theme="dark"]{ --st-blue: #5b9bea; --st-magenta: #df6cc0; --st-red: #e56b5f; --st-green: #5cb86a; }
+.c-blue{ --st: var(--st-blue); } .c-magenta{ --st: var(--st-magenta); } .c-red{ --st: var(--st-red); } .c-green{ --st: var(--st-green); }
+.dc .lab{ font-size: 11px; fill: var(--ink-soft); }
+.dc.big .lab{ font-size: 13px; } .dc.big .tick{ font-size: 14px; } .dc.big .ttl{ font-size: 16px; }
+.dc .l-s0{ fill: var(--ours); font-weight: 600; }
+.dc .l-nm{ fill: var(--st); }
+.dc .l-ref{ fill: var(--ref); }
+.dc .lv{ fill: var(--ink-faint); }
+.dc .halo{ fill: none; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round; }
+.dc .x10 path{ fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.dc .x10 .ssr{ stroke: var(--ours); stroke-width: 26; }
+.dc .rks1{ fill: none; stroke: var(--ink-faint); stroke-width: 1; stroke-dasharray: 5 4; stroke-linejoin: round; }
+.dc .x10 .nm{ stroke: var(--st); stroke-width: 15; }
+.dc .rt{ fill: none; stroke: var(--line); stroke-width: 0.6; stroke-linejoin: round; }
+.dc .rf{ fill: none; stroke: var(--ref); stroke-width: 1.2; }
+.dc .rf[class*="c-"]{ stroke: var(--st); }
+.dc .fx{ fill: var(--bg); stroke: var(--ref); stroke-width: 1.4; }
+.dc .xp{ fill: none; stroke: var(--ink); stroke-width: 1.2; }
+.dc .va line{ stroke: var(--ink-faint); stroke-width: 1; }
+.dc .va path{ fill: var(--ink-faint); }
+.dc .re{ stroke: var(--ink-faint); stroke-width: 0.8; stroke-dasharray: 1 3; }
+.dc .r0{ stroke: var(--line); stroke-width: 0.8; }
+.dc .r1{ stroke: var(--ink-faint); stroke-dasharray: 2 2; }
+.dc .lim{ stroke: var(--ink-soft); stroke-width: 0.8; stroke-dasharray: 2 3; }
+.dc .half{ stroke: var(--ink-faint); stroke-width: 0.8; stroke-dasharray: 3 3; }
+.dc .o0{ --sh: var(--ours); } .dc .o1{ --sh: color-mix(in srgb, var(--ours) 72%, var(--bg)); }
+.dc .o2{ --sh: color-mix(in srgb, var(--ours) 52%, var(--bg)); } .dc .o3{ --sh: color-mix(in srgb, var(--ours) 38%, var(--bg)); }
+.dc .o4{ --sh: color-mix(in srgb, var(--ours) 28%, var(--bg)); }
+.dc .x10 path.o0{ stroke: var(--sh); stroke-width: 18; }
+.dc .x10 path.o1, .dc .x10 path.o2, .dc .x10 path.o3, .dc .x10 path.o4{ stroke: var(--sh); stroke-width: 12; }
+.dc text.o0, .dc text.o1, .dc text.o2, .dc text.o3, .dc text.o4{ fill: var(--sh); }
+.dc .x10 path.od{ stroke-dasharray: 40 30; }
+/* orbital animations (horb): plane frames cross-fade by CSS, line paths morph by SMIL; reduced motion: static frame */
+.horb{ display: block; width: 100%; max-width: 680px; height: auto; }
+.horb .pos{ fill: color-mix(in srgb, var(--blue) 16%, var(--bg)); stroke: var(--blue); stroke-width: 1.3; stroke-linejoin: round; }
+.horb .neg{ fill: color-mix(in srgb, var(--copper) 16%, var(--bg)); stroke: var(--copper); stroke-width: 1.3; stroke-linejoin: round; }
+.horb .ax path{ stroke: var(--line); stroke-width: 1.4; }
+.horb .ax .sep{ stroke: var(--ink-faint); stroke-width: 0.8; stroke-dasharray: 2 3; }
+.horb .at circle{ fill: var(--ink); }
+.horb text{ font: 11px var(--mono); fill: var(--ink-soft); }
+.horb .sl{ font: 600 14px var(--serif); fill: var(--ink); text-anchor: middle; }
+.horb .fn{ text-anchor: end; fill: var(--ink); }
+.horb .hd{ fill: var(--ink-faint); }
+.horb .rr{ font: 600 14px var(--sans); fill: var(--ink); }
+.horb .tk{ text-anchor: middle; fill: var(--ink-faint); }
+.horb .tm{ stroke: var(--ink-faint); }
+.horb .tr{ stroke: var(--line); stroke-width: 2; }
+.horb .rd{ fill: var(--copper); }
+.horb .fb{ fill: var(--blue); }
+.horb .ft{ fill: none; stroke: var(--line); }
+.horb .sb{ fill: var(--ink); }
+.hp{ --lp: var(--blue); --lm: var(--copper); --fp: color-mix(in srgb, var(--blue) 16%, var(--bg)); --fm: color-mix(in srgb, var(--copper) 16%, var(--bg)); }
+.sw{ --lp: var(--copper); --lm: var(--blue); --fp: color-mix(in srgb, var(--copper) 16%, var(--bg)); --fm: color-mix(in srgb, var(--blue) 16%, var(--bg)); }
+.fp{ fill: var(--fp); fill-rule: evenodd; }
+.fm{ fill: var(--fm); fill-rule: evenodd; }
+.lp{ fill: none; stroke: var(--lp); stroke-width: 0.8; stroke-linejoin: round; }
+.lm{ fill: none; stroke: var(--lm); stroke-width: 0.8; stroke-linejoin: round; }
+.hp .ad{ fill: var(--ink); }
+.hp .fr{ opacity: 0; }
+.horb .st{ display: none; }
+@media (prefers-reduced-motion: reduce){ .hp.hp .fr{ animation: none; } .hp .fr.still{ opacity: 1; } .horb .mv{ display: none; } .horb .st{ display: inline; } }
+.dhorb{ margin-top: 16px; }
+.dcard .qimg{ position: relative; z-index: 1; }
+.dmini{ margin: 2px 0 0; }
+.dcard .dmk{ margin: 0; font: 0.7rem var(--mono); color: var(--ink-soft); }
+.dkey{ list-style: none; display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 0; margin: 4px 0; font: 0.8rem var(--mono); color: var(--ink-soft); }
+.dkey li{ display: flex; align-items: center; gap: 5px; }
+.dkey .sw{ width: 14px; height: 3px; background: var(--st); }
+.dkey .s0k{ --st: var(--ours); }
+.dlink{ display: block; color: inherit; }
+.dlink:focus-visible{ outline: 2px solid var(--ours); outline-offset: 2px; }
+.dbig svg, .dsmall svg{ display: block; width: 100%; height: auto; max-width: 760px; }
+/* system page: the large chart from 600 px, the index-size chart below (text keeps its rendered size) */
+.dsmall{ display: none; }
+@media (max-width: 600px){ .dbig{ display: none; } .dsmall{ display: block; } .dsmall svg{ max-width: 440px; } }
+.dfig{ break-inside: avoid; margin: 0; }
+.dfig .zf, .dfig .qcap{ margin: 4px 0; }
+.dmol{ display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px 32px; }
+.dmol svg{ display: block; width: 100%; height: auto; max-width: 440px; }
+@media (min-width: 900px){ .dmol{ grid-template-columns: minmax(0, 440px) minmax(0, 1fr); } }
 .zsub{ font-weight: 600; margin: 16px 0 4px; }
 .zdefs{ margin-bottom: 8px; }
 .mblock .zf{ font: 0.92rem var(--mono); margin: 8px 0; }

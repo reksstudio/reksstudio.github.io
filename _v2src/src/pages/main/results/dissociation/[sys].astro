@@ -1,0 +1,127 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Nav from '../../../../components/Nav.astro';
+import Footer from '../../../../components/Footer.astro';
+import DissocFig from '../../../../components/main/DissocFig.astro';
+import DissocHorb from '../../../../components/main/DissocHorb.astro';
+import DissocKey from '../../../../components/main/DissocKey.astro';
+import OrbBlock from '../../../../components/main/OrbBlock.astro';
+import QuestElements from '../../../../components/main/QuestElements.astro';
+import Table from '../../../../components/main/Table.astro';
+import { html, manualHref } from '../../../../lib/overview.mjs';
+import { FIG_DECIMALS, STATE_LABEL, changesText, constSources, constTable, elementsOf, figCite, figColumnsHtml, geometryHtml, limitsLine, numberLine, paper, poolName, scfText, setupHtml, siSectors, systems, uni } from '../../../../lib/dissoc.mjs';
+import '../../../../styles/main.css';
+
+export function getStaticPaths() {
+  return systems.map((s, i) => ({ params: { sys: s.slug }, props: { s, prev: systems[i - 1], next: systems[i + 1] } }));
+}
+
+const base = import.meta.env.BASE_URL;
+const { s, prev, next } = Astro.props;
+const name = uni(s.id);
+// per-R table: E(S0), named states, reference E where tabulated, occupations n_i
+const refBy = (s.ref ?? []).map((r) => new Map(r.R.map((R, i) => [R.toFixed(3), r.E[i]])));
+const occHead = s.occ.labels ? s.occ.labels.map((l) => `n(${l})`) : s.occ.n.map((_, j) => `n_{${j + 1}}`);
+const cell = (v, nd) => (v == null ? '' : v.toFixed(nd));
+// a value taken from the paper figure: FIG_DECIMALS (1 pt of the figure = 1.39 mEh)
+const s0nd = s.source === 'figure' ? FIG_DECIMALS : 8;
+const table = {
+  head: [
+    'R / Å', 'E(S0) / E_{h}', ...s.named.map((n) => `E(${n.label}) / E_{h}`),
+    ...(s.ref ?? []).map((r) => (s.kind === 'chain' ? 'E(FCI) / E_{h}' : `E_{ref}(${STATE_LABEL[r.label]}) / E_{h}`)),
+    ...occHead,
+  ],
+  rows: s.R.map((R, i) => {
+    const r3 = R.toFixed(3);
+    return [
+      r3, s.S0[i].toFixed(s0nd), ...s.named.map((n) => cell(n.E[i], n.figure ? FIG_DECIMALS : 8)),
+      ...refBy.map((m) => (m.has(r3) ? m.get(r3).toFixed(s.kind === 'chain' ? 8 : 5) : '')),
+      ...s.occ.n.map((line) => cell(line[i], 5)),
+    ];
+  }),
+};
+const figCols = figColumnsHtml(s, base);
+const sa = s.sa.split(' ').map((t) => t.split(':')).map(([n, w]) => `${poolName(n)} ${w}`).join(', ');
+// [label, HTML]
+const fields = [
+  ['Method', html(`SI-SA-REKS${s.as} = SSR${s.as}; ${s.cassette}`)],
+  ['SA pool', html(sa)],
+  ['SI', html(`catalogue configuration set full; ${siSectors(s)}`)],
+  ['Functional, basis', html(`${s.functional}/${s.basis}`)],
+  ['SCF', html(scfText(s))],
+  ...(s.solver ? [['Orbital solver', html(s.solver.replace(/\s*\(.*\)$/, ''))]] : []),
+  ['Coordinate', geometryHtml(s, base)],
+  ['R window', html(`R ${s.R[0].toFixed(3)}–${s.R.at(-1).toFixed(3)} Å, ${s.counts.points} points`)],
+  ...(s.figure_note ? [['Curves', `${figCite(base)}, ${html(s.basis)}`]] : []),
+  ...(s.commit ? [['Psi4', html(s.commit)]] : []),
+];
+const [lede, ...more] = paper.prose(s, base);
+const orbCap = paper.orbitals(s, base);
+---
+<Base title={`${name}: SSR${s.as} dissociation — REKS Studio`}>
+<Nav variant="light" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href={`${base}main/`}>Overview</a> › <a href={`${base}main/results/`}>Results</a> › <a href="../">Dissociation</a> › <span set:html={html(s.id)} /></nav>
+    <h1><Fragment set:html={html(s.id)} />: SSR{s.as} dissociation</h1>
+    {lede && <p class="ident" set:html={lede} />}
+    <p class="keyline zf" set:html={setupHtml(s, base)} />
+    <p class="sections"><a href="#curves">Curves</a> · <a href="#numbers">Numbers</a>{s.orbitals.length > 0 && <> · <a href="#orbitals">Active orbitals</a></>} · <a href="#calculations">Calculations</a></p>
+  </div>
+</header>
+
+<div class="wrap mbody">
+  <section class="mblock">
+    <figure class="qmol">
+      <img src={`${base}${s.svg}`} width={s.w * 2} height={s.h * 2} alt={`${name}: drawing at R_e of S0`} />
+      <figcaption>Geometry at R<sub>e</sub> of S0.</figcaption>
+    </figure>
+    <QuestElements elements={elementsOf(s)} />
+  </section>
+
+  <section class="mblock" id="curves">
+    <h2>Curves</h2>
+    {s.kind === 'molecule' && s.ref && <DissocKey s={s} />}
+    <div class="dbig"><DissocFig s={s} size="big" page /></div>
+    <div class="dsmall"><DissocFig s={s} page /></div>
+    {limitsLine(s) && <p class="zf" set:html={html(limitsLine(s))} />}
+    <p class="qcap"><Fragment set:html={paper.caption(s, base)} />{changesText(s)}</p>
+    {more.map((t) => <p set:html={t} />)}
+    {s.kind === 'chain' && <DissocHorb sys={s} variant="line" />}
+  </section>
+
+  <section class="mblock" id="numbers">
+    <h2>Numbers</h2>
+    {s.kind === 'molecule' && s.ref && <><Table table={constTable(s)} numeric /><p class="qcap" set:html={constSources(s, base)} /></>}
+    {s.kind === 'molecule' && !s.ref && <p class="zf" set:html={html(numberLine(s))} />}
+    <details class="qmore">
+      <summary>Table: S0{s.named.length > 0 && ', named states'}{s.ref && ', reference'} and n<sub>i</sub> of S0 at every R</summary>
+      <Table table={table} numeric />
+      {figCols && <p class="qcap" set:html={figCols} />}
+    </details>
+  </section>
+
+  {s.orbitals.length > 0 && (
+    <section class="mblock" id="orbitals">
+      <h2>Active orbitals</h2>
+      {orbCap && <p class="qcap" set:html={orbCap} />}
+      <p class="qcap">One column per GVB pair, weakly occupied above strongly occupied; under each orbital its SA-REKS FON and orbital energy / E<sub>h</sub>. Contours ±0.03, ±0.06, ±0.12 a.u.{s.orbitals[0].plane === 'axis' ? ' in a plane through the bond axis' : ' in a plane 0.6 Å above the molecular plane'}; blue +, copper −.</p>
+      {s.orbitals.map((o) => <OrbBlock pairs={o.pairs} alt={`${name} R ${o.R.toFixed(3)} Å`} caption={`R = ${o.R.toFixed(3)} Å`} auto fonDigits={4} epsDigits={6} />)}
+    </section>
+  )}
+
+  <section class="mblock" id="calculations">
+    <h2>Calculations</h2>
+    <p set:html={paper.methods(s, base)} />
+    <dl class="fields">{fields.map(([k, v]) => <><dt>{k}</dt><dd set:html={v} /></>)}</dl>
+  </section>
+
+  <p class="siblings">{prev && <><a href={`../${prev.slug}/`}>← <Fragment set:html={html(prev.id)} /></a> · </>}<a href={`../#${s.slug}`}>Back to the curves</a>{next && <> · <a href={`../${next.slug}/`}><Fragment set:html={html(next.id)} /> →</a></>}</p>
+  <p class="siblings"><a href={`${base}docs/#install`}>Install</a> · <a href={manualHref(base, 'first-calculation')}>Manual: first calculation</a> · <a href={`${base}docs/#contact`}>Contact</a></p>
+</div>
+</main>
+
+<Footer />
+</Base>

@@ -1,4 +1,6 @@
 ---
+import { html } from '../../lib/overview.mjs';
+
 interface Orb { slot: string; mo: string; fon: number; eps: number; svg: string; w: number; h: number }
 interface Props {
   pairs: { bond: Orb; anti: Orb }[];
@@ -11,7 +13,7 @@ interface Props {
 }
 
 // one column per pair: header (bond slot, anti slot), antibonding orbital above bonding;
-// each orbital captioned slot, MO · FON, eps / Eh; auto: columns fill the width, else one fixed column per pair
+// each orbital captioned slot, MO (markup; may be empty) · FON, eps / Eh; auto: columns fill the width, else one fixed column per pair
 const base = import.meta.env.BASE_URL;
 const { pairs, alt, caption, legend, auto, fonDigits = 6, epsDigits = 4 } = Astro.props;
 const eps = (v) => `${v < 0 ? '−' : ''}${Math.abs(v).toFixed(epsDigits)}`;
@@ -23,7 +25,7 @@ const eps = (v) => `${v < 0 ? '−' : ''}${Math.abs(v).toFixed(epsDigits)}`;
       <div class="p">
         <div class="h">({p.bond.slot}, {p.anti.slot})</div>
         {[p.anti, p.bond].map((o) => (
-          <div><img src={`${base}${o.svg}`} width={o.w} height={o.h} alt={`${alt}, orbital ${o.mo}`} loading="lazy" decoding="async" /><span><b>{o.slot}</b> {o.mo} · {o.fon.toFixed(fonDigits)}<br />{eps(o.eps)}</span></div>
+          <div><img src={`${base}${o.svg}`} width={o.w} height={o.h} alt={`${alt}, orbital ${o.mo ? o.mo.replace(/[_^]\{([^}]*)\}/g, '$1') : o.slot}`} loading="lazy" decoding="async" /><span><b>{o.slot}</b> {o.mo ? <><Fragment set:html={html(o.mo)} /> · </> : '· '}{o.fon.toFixed(fonDigits)}<br />{eps(o.eps)}</span></div>
         ))}
       </div>
     ))}

@@ -13,8 +13,8 @@ export function getStaticPaths() {
 
 const base = import.meta.env.BASE_URL;
 const { r } = Astro.props;
-// blocks with "hidden": true in overview.json are not built
-const blocks = r.blocks.filter((b) => !b.hidden);
+// blocks with "hidden": true in overview.json, or a title that resolves to '', are not built
+const blocks = r.blocks.filter((b) => !b.hidden && b.title !== '');
 const sections = blocks.filter((b) => b.id && b.title);
 ---
 <Base title={`${plain(r.title)} — REKS Studio`}>

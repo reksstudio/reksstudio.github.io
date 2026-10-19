@@ -1,4 +1,5 @@
 ---
+import Dissoc from './Dissoc.astro';
 import Figure from './Figure.astro';
 import Quest from './Quest.astro';
 import Table from './Table.astro';
@@ -15,7 +16,7 @@ const { block: b } = Astro.props;
 <section class="mblock" id={b.id}>
   {b.title && <h2 set:html={html(b.title)} />}
   {b.title && b.key && <p class="keyline" set:html={html(b.key)} />}
-  {b.quest && <Quest parts={b.quest} />}{b.zeth && <Zeth parts={b.zeth} />}
+  {b.quest && <Quest parts={b.quest} />}{b.zeth && <Zeth parts={b.zeth} />}{b.dissoc && <Dissoc parts={b.dissoc} />}
   {b.figure && <Figure fig={b.figure} />}
   {b.structure && <Figure fig={b.structure} />}
   {b.tables?.map((t) => <Table table={t} />)}
@@ -30,7 +31,8 @@ const { block: b } = Astro.props;
   {b.reference && (
     <>
       <h3>Reference</h3>
-      {b.reference.map((line) => <p set:html={html(line)} />)}
+      {b.reference.filter(Boolean).map((line) => <p set:html={html(line)} />)}
+      {b.dissocRef && <Dissoc parts={b.dissocRef} />}
     </>
   )}
   {b.scope && <p class="scope"><strong>Scope:</strong> <Fragment set:html={html(b.scope)} /></p>}

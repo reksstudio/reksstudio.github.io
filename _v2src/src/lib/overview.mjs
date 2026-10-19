@@ -4,17 +4,21 @@ import { entryHref } from './manual-pages.mjs';
 import { doiUrl, reference, shortRef } from './literature.mjs';
 import { vars as quest } from './quest.mjs';
 import { vars as zeth } from './zeth.mjs';
+import { rows as dissocRows, vars as dissoc } from './dissoc.mjs';
 
-const VARS = { quest, zeth };
-// {quest:name}, {zeth:name} in any text -> the value computed from quest.json, zeth.json
+const VARS = { quest, zeth, dissoc };
+const TOKEN = new RegExp(`\\{(${Object.keys(VARS).join('|')}):(\\w+)\\}`, 'g');
+// {lib:name} in any text -> the value computed from that lib's data, escaped for the JSON text it splices into
 const data = JSON.parse(
-  JSON.stringify(raw).replace(/\{(quest|zeth):(\w+)\}/g, (_, lib, k) => {
+  JSON.stringify(raw).replace(TOKEN, (_, lib, k) => {
     if (!(k in VARS[lib])) throw new Error(`overview.json: unknown token {${lib}:${k}}`);
-    return VARS[lib][k];
+    return JSON.stringify(String(VARS[lib][k])).slice(1, -1);
   }),
 );
+// index rows of a result built from its data module
+const ROWS = { dissociation: dissocRows };
 
-export const { classes, parts, results, manualRows, landing, cost, history } = data;
+export const { classes, parts, results, manualRows, landing, cost, history, moved } = data;
 
 const PLACEHOLDER = /^(to be added|not stated in v1)/;
 
@@ -33,6 +37,7 @@ export function cellHtml(c, base) {
 
 // index rows of a result: its own rows, else one row per block with an id (family page)
 export const rowsOf = (r) =>
+  ROWS[r.slug] ??
   r.rows ??
   r.blocks.filter((b) => b.id && !b.hidden).map((b) => ({ system: b.system, as: b.as, reference: r.rowRef, number: b.number ?? 'to be added', anchor: b.id }));
 
@@ -41,8 +46,10 @@ export function indexRows(part, base) {
   return part.groups.map((g) => ({
     group: g,
     rows: [
-      ...results.filter((r) => r.cls === g).flatMap((r) =>
-        rowsOf(r).map((row) => ({ ...row, slug: r.slug, problem: r.problem, href: resultHref(base, r.slug, row.anchor) })),
+      ...results.flatMap((r) =>
+        rowsOf(r)
+          .filter((row) => (row.cls ?? r.cls) === g)
+          .map((row) => ({ ...row, slug: r.slug, problem: r.problem, href: resultHref(base, r.slug, row.anchor) })),
       ),
       ...manualRows.filter((m) => m.cls === g).map((m) => ({ ...m, href: manualHref(base, m.manual), manualRow: true })),
     ],

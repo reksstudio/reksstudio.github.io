@@ -1,0 +1,37 @@
+---
+import { html } from '../../lib/overview.mjs';
+import { chains } from '../../lib/dissoc.mjs';
+
+interface Props {
+  sys?: any;
+  variant?: 'plane' | 'line';
+}
+
+// Active-orbital animations along R: CSS frame cross-fade (plane) or SMIL path morph (line);
+// prefers-reduced-motion shows one static frame
+const svgs = import.meta.glob('../../data/horb/*.svg', { query: '?raw', import: 'default', eager: true });
+const svgOf = (name) => {
+  const src = svgs[`../../data/horb/${name}.svg`];
+  if (!src) throw new Error(`dissoc: no animation ${name}.svg (run _LAB/calc/dissociation/horb)`);
+  return src;
+};
+const { sys, variant = 'plane' } = Astro.props;
+// file stem of a system: "H_{8}" -> "H8"
+const stem = (s) => s.id.replace(/_\{(\d+)\}/g, '$1');
+// index strip: H2 (both active orbitals) and the frontier pair (d, e) of H8
+const STRIP = [['H2', 'H2_plane', 'both active orbitals'], ['H8', 'H8_plane_de', 'frontier pair (d, e)']];
+const strip = STRIP.filter(([id]) => chains.some((s) => stem(s) === id)).map(([id, file, what]) => [chains.find((s) => stem(s) === id).id, file, what]);
+---
+{variant === 'plane'
+  ? (
+    <div class="dhorb">
+      <div>{strip.map(([name, file, what]) => <figure class="dfig"><Fragment set:html={svgOf(file)} /><figcaption class="qcap"><Fragment set:html={html(name)} />: {what}</figcaption></figure>)}</div>
+      <p class="qcap">Active SA-REKS orbitals along the bond coordinate, R = 1.0–4.5 Å: contour slices through the chain axis (±0.03, ±0.06, ±0.12 a.u.; blue +, copper −); right: n of S0 of the natural orbital each orbital dominates.</p>
+    </div>
+  )
+  : (
+    <div class="dhorb">
+      <Fragment set:html={svgOf(`${stem(sys)}_line`)} />
+      <p class="qcap">Active SA-REKS orbitals φ(z) on the chain axis along the bond coordinate (z in units of R); bars: n of S0 of the natural orbital each orbital dominates.</p>
+    </div>
+  )}

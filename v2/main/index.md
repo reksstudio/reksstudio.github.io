@@ -8,9 +8,9 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 # Where ordinary DFT breaks, REKS Studio gets it right.
 
-H2 dissociation energy against H–H distance, 0.5 to 3.5 Å: ordinary DFT (RKS) rises to -0.8829 Eh at 3.5 Å, exact FCI and REKS Studio (SSR) level off near -1 and -0.9923 Eh. H2 dissociation: SSR(2,2) and RKS, BH\&HLYP; FCI; all aug-cc-pVTZ.
+H2 dissociation energy against H–H distance, 0.5 to 3.5 Å: ordinary DFT (RKS) rises to -0.8828 Eh at 3.5 Å, exact FCI and REKS Studio (SSR) level off near -1.0000 and -0.9923 Eh. H2 dissociation: SSR(2,2) and RKS, BH\&HLYP; FCI; all aug-cc-pVTZ.
 
-[H<sub>2</sub> dissociation: SSR(2,2) and RKS, BH\&HLYP; FCI; all aug-cc-pVTZ →](https://reksstudio.github.io/v2/main/results/h-chains/index.md#h2)
+[H<sub>2</sub> dissociation: SSR(2,2) and RKS, BH\&HLYP; FCI; all aug-cc-pVTZ →](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h2)
 
 [See the evidence ↓](#evidence) [Install, free](https://reksstudio.github.io/v2/docs/index.md#install)
 
@@ -22,23 +22,27 @@ Ensemble DFT (REKS/SSR) in Psi4 for breaking bonds, diradicals, magnetic molecul
 
 ## Checked against experiment and exact references
 
-[Strength of the C<sub>2</sub> bond](https://reksstudio.github.io/v2/main/results/c2/index.md)
+[Strength of the C<sub>2</sub> bond](https://reksstudio.github.io/v2/main/results/dissociation/index.md#c2)
 
-REKS Studio 6.28 eV, experiment, De 6.32 ± 0.2 eV: within experimental error
+REKS Studio 6.29 eV, experiment, De 6.32 ± 0.2 eV
 
-0.04 eV vs experiment, D<sub>e</sub> 6.32 ± 0.2 eV: within experimental error SSR(6,6), M08-SO/cc-pV5Z
+6.29 eV vs experiment, D<sub>e</sub> 6.32 ± 0.2 eV SSR(6,6), M08-SO/cc-pV5Z; D<sub>e</sub> to 2 C(<sup>3</sup>P), SSR(4,4)
 
-[Single, double, triple bonds: lowest excitation](https://reksstudio.github.io/v2/main/results/bond-breaking/index.md)
+[C<sub>2</sub>H<sub>4</sub>, N<sub>2</sub>, C<sub>2</sub>: bond lengths](https://reksstudio.github.io/v2/main/results/dissociation/index.md#molecules)
 
-REKS Studio against theoretical best estimates (TBE): C2H4 7.85 vs 7.93 eV, N2 9.49 vs 9.88 eV, C2H2 6.66 vs 7.1 eV
+| | SSR / Å | exp. / Å |
+| - | - | - |
+| C<sub>2</sub>H<sub>4</sub> (rigid R<sub>CC</sub> scan) | 1.333 | 1.3305 |
+| N<sub>2</sub> | 1.096 | 1.0977 |
+| C<sub>2</sub> | 1.268 | 1.2425 |
 
-0.08–0.44 eV vs theoretical best estimates (TBE) SSR(4,4) and (6,6), BH\&HLYP/aug-cc-pVTZ
+vs experiment C<sub>2</sub>H<sub>4</sub>: SSR(4,4), BH\&HLYP/aug-cc-pVTZ; N<sub>2</sub>: SSR(6,6), BH\&HLYP/aug-cc-pVTZ; C<sub>2</sub>: SSR(6,6), M08-SO/cc-pV5Z
 
-[Hydrogen chains H<sub>2</sub>–H<sub>8</sub> pulled apart](https://reksstudio.github.io/v2/main/results/h-chains/index.md)
+[Hydrogen chains H<sub>2</sub>–H<sub>8</sub> pulled apart](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h-chains)
 
 Potential energy curves of H2, H4, H6, H8: REKS Studio and exact in the same basis (FCI)
 
-vs exact in the same basis (FCI) SSR(2,2)–(8,8), BH\&HLYP; aug-cc-pVTZ, cc-pVTZ, 6-31G(d)
+vs exact in the same basis (FCI) SSR(2,2)–(8,8), BH\&HLYP; aug-cc-pVTZ (H<sub>2</sub>, H<sub>4</sub>), 6-31G(d) (H<sub>6</sub>, H<sub>8</sub>)
 
 [Exact limits (GVB = CASSCF) reproduced to 10<sup>−10</sup> E<sub>h</sub>: H<sub>2</sub> and BH, (2,2)–(4,6) →](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
 

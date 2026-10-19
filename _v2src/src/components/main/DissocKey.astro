@@ -1,0 +1,16 @@
+---
+import { html } from '../../lib/overview.mjs';
+import { STATE_LABEL } from '../../lib/dissoc.mjs';
+
+interface Props {
+  s: any;
+}
+
+// state key of a molecule with reference points: S0, the named states, the mark shapes
+const { s } = Astro.props;
+---
+<ul class="dkey">
+  <li class="s0k"><span class="sw"></span><span set:html={html(`S0 (${STATE_LABEL.X} at R_{e})`)} /></li>
+  {s.named.map((n) => <li class={`c-${n.colour}`}><span class="sw"></span><span set:html={html(n.label)} /></li>)}
+  <li>○ △ reference points</li><li>◇ experiment</li>
+</ul>
