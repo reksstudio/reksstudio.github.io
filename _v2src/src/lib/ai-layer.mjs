@@ -18,12 +18,13 @@ import { BRANCH, REPO_URL, siteRev } from './site.mjs';
 import { DATA as questData, PREFIX as questPrefix, revLine as questRev } from './quest.mjs';
 import { DATA as zethData, PREFIX as zethPrefix, revLine as zethRev } from './zeth.mjs';
 import { DATA as dissocData, PREFIX as dissocPrefix, revLine as dissocRev } from './dissoc.mjs';
+import { DATA as costData, PREFIX as costPrefix, revLine as costRev } from './cost.mjs';
 import { DATA as zethLitData, LIT_HIDDEN } from './zethlit.mjs';
 
 const SUMMARY = 'REKS(N,M) / SA-REKS / SI-REKS ensemble DFT in Psi4: user manual, option reference, example inputs.';
 const LANG = { '.py': 'python', '.dat': 'text', '.bib': 'bibtex' };
 // public/data/<file>.txt: tables for agents, listed in llms.txt only, linked from no page
-const DATA = { ...questData, ...zethData, ...dissocData, ...(LIT_HIDDEN ? {} : zethLitData) };
+const DATA = { ...questData, ...zethData, ...dissocData, ...costData, ...(LIT_HIDDEN ? {} : zethLitData) };
 const DRAFT = 'main/';
 const IMAGE = new Set(['.avif', '.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg']);
 // Claude Code WebFetch truncates longer text
@@ -211,7 +212,7 @@ export default function aiLayer() {
         // the wording of the Documentation page: the measured commit, not claimed to be on the branch
         const revLine = `Psi4 ${rev.short}, ${rev.date}: the commit of every output on this site. Install: branch ${BRANCH} of <${REPO_URL}>.`;
         // pages whose outputs come from other builds: path prefix -> their line
-        const ownRev = { [zethPrefix]: zethRev, [questPrefix]: questRev, [dissocPrefix]: dissocRev };
+        const ownRev = { [zethPrefix]: zethRev, [questPrefix]: questRev, [dissocPrefix]: dissocRev, [costPrefix]: costRev };
         const revOf = (name) => ownRev[Object.keys(ownRev).find((prefix) => name.startsWith(prefix))] ?? revLine;
         // absolute URL patterns, so that a summary of any generated file still carries usable addresses
         const convention = [

@@ -18,7 +18,7 @@ const data = JSON.parse(
 // index rows of a result built from its data module
 const ROWS = { dissociation: dissocRows };
 
-export const { classes, parts, results, manualRows, landing, cost, history, moved } = data;
+export const { classes, parts, results, manualRows, landing, history, moved } = data;
 
 const PLACEHOLDER = /^(to be added|not stated in v1)/;
 
@@ -58,13 +58,6 @@ export function indexRows(part, base) {
 
 // inline markup -> plain text (aria labels): _{x} -> x, ^{x} -> ^x
 export const plain = (s) => s.replace(/_\{([^}]+)\}/g, '$1').replace(/\^\{([^}]+)\}/g, '^$1');
-
-// {head, values} of the BH&HLYP row of cost[table]; values as numbers
-export function costRow(table) {
-  const row = cost[table].rows.find((r) => r[0].startsWith('BH&HLYP'));
-  if (!row) throw new Error(`overview.json: no BH&HLYP row in cost.${table}`);
-  return { head: cost[table].head.slice(1), values: row.slice(1).map(Number) };
-}
 
 // literature.json key -> {text, href, authors}
 export const cite = (key) => {

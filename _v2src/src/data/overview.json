@@ -384,28 +384,6 @@
     "institutions": "UNIST; IBS Center for Multidimensional Carbon Materials",
     "paper": "ChemRxiv v1, 8 Sep 2026, preprint"
   },
-  "cost": {
-    "flow": [
-      ["Integrals and grid", "Two-electron integrals and the DFT quadrature grid, evaluated once."],
-      ["Shared by configurations", "Every configuration of the ensemble reads the same integrals and grid."],
-      ["Weighted Fock assembly", "The Fock matrices of the configurations combine by weighted addition."],
-      ["Ensemble energy", "Energy and gradient of the ensemble from the assembled matrices."]
-    ],
-    "scf": {
-      "head": ["Functional", "(2,2)", "(4,4)", "(6,6)", "(8,8)"],
-      "rows": [["BH&HLYP, SA-REKS / RKS", "0.86", "1.53", "3.33", "10.47"], ["HF, SA-REKS / RHF", "0.80", "1.03", "2.14", "2.25"], ["Iterations, BH&HLYP (reference 20.5)", "12.5", "17.5", "25", "40.5"]]
-    },
-    "fock": {
-      "head": ["Functional", "(2,2)", "(4,4)", "(6,6)", "(8,8)"],
-      "rows": [["HF", "1.30", "1.65", "1.95", "2.29"], ["BH&HLYP", "1.57", "2.06", "2.96", "5.59"]]
-    },
-    "excited": {
-      "head": ["Functional", "(2,2)", "(4,4)", "(6,6)", "(8,8)"],
-      "rows": [["HF, SSR / CIS", "0.13", "0.18", "0.38", "0.81"], ["BH&HLYP, SSR / TDDFT-TDA", "0.14", "0.24", "0.57", "2.65"]]
-    },
-    "catalogue": [["(2,2)", "1.7 KB", "to be added"], ["(4,4)", "27.5 KB", "to be added"], ["(6,6)", "1.99 MB", "to be added"], ["(8,8), mixed-scheme", "11.9 MB", "to be added"], ["(8,8), full", "284 MB", "62.4 s, 804 MB"]],
-    "step": [["one-state gradient", "1.74"], ["three states", "1.87"], ["gradient + 3 NACs", "2.78"]]
-  },
   "history": {
     "lead": [
       "Molecules with near-degenerate electronic configurations (breaking bonds, diradicals, excited-state crossings) are described poorly by single-determinant Kohn–Sham DFT.",

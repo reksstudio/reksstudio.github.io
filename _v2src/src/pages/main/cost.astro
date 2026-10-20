@@ -6,13 +6,166 @@ import SubNav from '../../components/main/SubNav.astro';
 import Figure from '../../components/main/Figure.astro';
 import Table from '../../components/main/Table.astro';
 import CountChart from '../../components/main/CountChart.astro';
-import { cost, landing, resultHref } from '../../lib/overview.mjs';
+import CostDots from '../../components/main/CostDots.astro';
+import { landing, resultHref } from '../../lib/overview.mjs';
+import { toHtml } from '../../lib/inline.mjs';
+import {
+  CODE, bases, buildLine, claimsMore, claimsText, codeVersion, cost, fgib, figRows, fs, installed, iterA, iterB, leadText,
+  looseCases, looseMark, offLabel, panelOf, panels, reksBuild, short, spaces, sysName, tightMark,
+} from '../../lib/cost.mjs';
 import '../../styles/main.css';
+import '../../styles/cost.css';
 
 const base = import.meta.env.BASE_URL;
-// keyline: first and last active-space columns of the BH&HLYP (rows[0]) and HF (rows[1]) whole-SCF ratios
-const [bh, hf] = cost.scf.rows;
-const [first, last] = [1, cost.scf.head.length - 1];
+const { md, psi4, step, catalogue } = cost;
+const setting = (key, code = '') => md.settings.find((s) => s.key === key && s.code === code).value;
+const proto = md.protocol;
+const mol = md.setup[0];
+const formula = (f) => f.replace(/(\d+)/g, '_{$1}');
+const nbfs = bases.map((b) => panels.find((p) => p.basis === b).nbf);
+const reks22 = md.order[0];
+const signed = (v, d) => (v === 0 ? '0' : v.toFixed(d).replace('-', '−'));
+
+// geometries: DR and SA-REKS(2,2) occupations per basis, open shell first
+const shells = [...new Set(panels.map((p) => p.shell))].map((shell) => {
+  const gs = md.geometry.filter((g) => panelOf(g.system).shell === shell);
+  const n = (g) => `${g.n_a.toFixed(2)} / ${g.n_b.toFixed(2)}`;
+  const occ = new Set(gs.map(n)).size === 1 ? n(gs[0]) : gs.map((g) => `${n(g)} in ${panelOf(g.system).basis}`).join(', ');
+  return `${gs[0].system.split('_')[0]}, ${shell} shell: DR ${signed(gs[0].dr_a, 2)} Å, ${reks22.scf} occupations ${occ}`;
+});
+
+// one-line protocol above Fig. 1
+const geomNames = [...new Map(panels.map((p) => [p.system.split('_')[0], p.shell])).entries()].map(([s, sh]) => `${s} ${sh} shell`);
+const protocolLine = `Tetracene dimer ${formula(mol.formula)}, two geometries (${geomNames.join(', ')}); ${bases.map((b, i) => `${b} (${nbfs[i]} basis functions)`).join(' and ')}; BH&HLYP, SG-1 grid (ORCA DefGrid2), density fitting in all codes; ${setting('cores')} cores; hot start from the orbitals of the neighbouring point; SCF and SCF + states as separate jobs.`;
+
+// settings table: one column per code, keyword values as configured
+const CODES = ['Psi4-REKS', 'ORCA', 'Q-Chem'];
+const SETUP_CODE = { 'Psi4-REKS': 'Psi4' };
+const fitting = (code) => {
+  const ss = bases.map((b) => md.setup.find((s) => s.code === (SETUP_CODE[code] ?? code) && s.basis === b));
+  const names = [...new Set(ss.map((s) => `${s.aux_name} ${s.aux_nbf}`))];
+  return `${names.join(' / ')}, ${ss[0].aux_jk}`;
+};
+// SI-SA-REKS: exact diagonalization up to the last direct space, Davidson (printed residual threshold) beyond
+const siSpaces = (solver) => spaces.filter((s) => md.rows.some((r) => r.code === 'Psi4-REKS' && r.resp_solver === solver && r.space === s));
+const siConv = `direct diagonalization up to ${siSpaces('direct').at(-1)}; ${siSpaces('davidson').join(', ')} Davidson, residual ${proto.si_davidson_conv}`;
+const ROWS = [
+  ['Functional', (c) => setting('functional', c).split(' / ')[0]],
+  [bases[0], (c) => setting('basis_to_tc', c)],
+  [`Integrals, ${bases[0]}`, (c) => setting('integrals_to_tc', c)],
+  [`${bases[1]}, integrals`, (c) => setting('basis_integrals_to_tz_tc_tz', c)],
+  ['Fitting set, size', fitting],
+  ['Grid', (c) => setting('grid', c)],
+  ['SCF convergence', (c) => setting('scf_threshold', c)],
+  ['Response convergence', (c) => (c === 'Psi4-REKS' ? siConv : setting('davidson', c))],
+  ['Response', (c) => (c === 'Psi4-REKS' ? `${setting('response', c)}; ${reks22.resp}: ${setting('states_22')}` : setting('response', c))],
+  ['Parallel', (c) => setting('parallel', c)],
+  ['Memory', (c) => setting('memory', c)],
+];
+const settingsTable = {
+  head: ['', 'REKS Studio (Psi4)', 'ORCA', 'Q-Chem'],
+  rows: [
+    ['Version', `Psi4 ${reksBuild}`, `ORCA ${codeVersion('ORCA')}`, `Q-Chem ${codeVersion('Q-Chem')}`],
+    ...ROWS.map(([label, f]) => [label, ...CODES.map(f)]),
+  ],
+};
+
+// per-job rows of one system in figure order: SCF job, then its SCF + states job
+const jobs = (system) => figRows(system).flatMap((f) => [f.scf, f.resp].filter(Boolean));
+const job = (r) => `${CODE[r.code]} ${r.method}${r.loose ? ' †' : ''}`;
+const dash = '–';
+// a text value ("≈0", as RESULTS.md prints it) is shown as is
+const f2 = (v) => (v == null ? dash : typeof v === 'string' ? v : v.toFixed(2));
+const resp = (r) =>
+  r.kind === 'scf' ? dash : r.status !== 'ok' ? (r.stop_h ? 'stopped' : 'not run') : r.resp_solver === 'direct' ? `${r.resp_iter} (direct)` : String(r.resp_iter);
+const cores = (r) => (r.cpu_load_cores == null ? (r.status === 'ok' && r.code === 'ORCA' ? 'n/p' : dash) : r.cpu_load_cores.toFixed(1));
+// iteration blocks: SCF-only jobs and SCF + response jobs; per test one table, a sub-header per code
+const jobName = (r) => `${r.code === 'Psi4-REKS' ? r.space : short(r.method)}${r.loose ? ' †' : ''}`;
+// REKS sub-header names the method, its rows the active space
+const groupName = (code, rs) => (code === 'Psi4-REKS' ? `${CODE[code]}, ${rs[0].method.replace(rs[0].space, '')}` : CODE[code]);
+const it = (v) => (v == null ? dash : String(v));
+const wall = (r) => (r.status === 'ok' ? fs(r.wall_s) : dash);
+const respS = f2;
+const BLOCKS = [
+  {
+    kind: 'scf', title: 'SCF', defs: ['time_split', 's_per_scf_iter'],
+    head: ['Job', 'Wall / s', 'SCF it.', 's / SCF it.', 'Cores'],
+    cells: (r) => [jobName(r), wall(r), it(r.scf_iter), f2(r.s_per_scf_iter), cores(r)],
+  },
+  {
+    kind: 'response', title: 'SCF + response', defs: ['time_split', 's_per_scf_iter', 'resp_iter', 's_per_resp_iter'],
+    head: ['Job', 'Wall / s', 'SCF / s', 'SCF it.', 's / SCF it.', 'Response / s', 'Resp. it.', 's / resp. it.', 'Cores'],
+    cells: (r) => [jobName(r), r.status === 'ok' ? respS(r.wall_s) : dash, respS(r.scf_s), it(r.scf_iter), f2(r.s_per_scf_iter), respS(r.resp_s), resp(r), f2(r.s_per_resp_iter), cores(r)],
+  },
+].map((b) => ({
+  ...b,
+  tables: panels.map((p) => ({
+    caption: `${p.system.split('_')[0]}, ${p.shell} shell, ${p.basis}`,
+    groups: Object.entries(Object.groupBy(jobs(p.system).filter((r) => r.kind === b.kind), (r) => r.code)).map(([code, rs]) => ({
+      code: groupName(code, rs),
+      rows: rs.map(b.cells),
+    })),
+  })),
+}));
+const dataTable = (system) => ({
+  head: ['Job', 'Wall / s', 'Repeats, min–max / s', 'Peak / GiB', 'Build'],
+  rows: jobs(system).map((r) =>
+    r.status === 'ok'
+      ? [job(r), fs(r.wall_s), r.n_repeats > 1 ? `${r.n_repeats}: ${fs(r.wall_min)}–${fs(r.wall_max)}` : `${r.n_repeats}`, fgib(r.peak_gib), r.version]
+      : [job(r), offLabel(r), dash, dash, dash],
+  ),
+});
+
+const dfRange = bases.map((b) => {
+  const v = md.setup.filter((s) => s.basis === b && s.df_tensor_gib != null).map((s) => s.df_tensor_gib);
+  return `${Math.min(...v).toFixed(2)}–${Math.max(...v).toFixed(2)} GiB in ${b}`;
+});
+const offRows = md.rows.filter((r) => r.status !== 'ok');
+// stopped or not-run job: its reason, prefixed by the job unless the reason names it
+const offNote = (r) => {
+  const t = r.reason.endsWith('.') ? r.reason : `${r.reason}.`;
+  return t.startsWith(CODE[r.code]) ? `${sysName(r.system)}: ${t}` : `${sysName(r.system)}, ${CODE[r.code]} ${short(r.method)}: ${t}`;
+};
+const spread = Math.ceil(md.rks_spread_meh * 10) / 10;
+
+const ts = psi4.test_set;
+const BASIS = { augccpvtz: 'aug-cc-pVTZ', ccpvtz: 'cc-pVTZ' };
+const st = psi4.stats;
+const FN = [['hf', 'HF'], ['bhhlyp', 'BH&HLYP']];
+const ends = (row) => `${row[1]}–${row[row.length - 1]}`;
+const fockBH = psi4.fock.rows.find((r) => r[0].startsWith('BH&HLYP'));
+const fockHF = psi4.fock.rows.find((r) => r[0].startsWith('HF'));
+const iterTableB = {
+  head: ['SCF iterations, median', 'Reference', ...psi4.spaces],
+  rows: FN.map(([k, name]) => [name, `${st.iterations_reference[k].ref.median}`, ...psi4.spaces.map((s) => `${st.iterations_reks[k][s].median}`)]),
+};
+const expo = (k) => [`reference ${st.fock_exponent[k].ref.median.toFixed(2)}`, ...psi4.spaces.map((s) => `${s} ${st.fock_exponent[k][s].median.toFixed(2)}`)].join(', ');
+const [bhScf, hfScf] = psi4.scf.rows;
+const last = psi4.scf.head.length - 1;
+const big = psi4.spaces.at(-1);
+const above = st.ssr_tda_ratio.bhhlyp[big];
+const siStep = FN.map(([k, name]) => `${name} ${psi4.spaces.map((s) => st.si_response_ratio[k][s].extra).join(', ')}`).join('; ');
+const memScf = st.memory_scf_ratio_six_largest.pooled.pooled;
+const memExc = st.memory_excited_ratio_six_largest.pooled.pooled;
+const mps = psi4.memory_per_space;
+const tda = psi4.facts.b_tda_states;
+
+const shown = catalogue.rows.filter((r) => r.shown);
+const SUB = { ms: 'mixed-scheme', ss: 'single-spin', full: 'full' };
+const catLabel = (r) => (shown.filter((q) => q.space === r.space).length > 1 ? `${r.space}, ${SUB[r.subspace]}` : r.space);
+const catTable = {
+  head: ['Active space', 'Configurations', 'Catalogue size', 'Emission time, peak memory'],
+  rows: shown.map((r) => [catLabel(r), String(r.configs), r.size, `${r.emission_time}, ${r.peak_memory}`]),
+};
+
+const sys = step.system;
+const DEG = String.fromCodePoint(0xb0);
+const FUNCTIONAL = { bhhlyp: 'BH&HLYP' };
+const stepLine = `One gradient() call at ${sys.geometry.replace(/^(\d+)-degree /, `$1${DEG} `).replace(/(\d+)/g, (m, d, i) => (i ? `_{${d}}` : d))} from RKS orbitals: SSR(${sys.reks.replace(' ', '')})/${sys.basis.replace('g', 'G')}, ${FUNCTIONAL[sys.functional] ?? sys.functional}, ${sys.scf_type.toUpperCase()}, ${step.note}.`;
+const stepTable = { head: ['Call', 'Wall / s'], rows: step.cases.map((c) => [c.label, c.wall_s.toFixed(2)]) };
+
+const install = `${base}docs/#install`;
+const h = toHtml;
 ---
 <Base title="Cost — REKS Studio">
 <Nav variant="light" />
@@ -21,60 +174,172 @@ const [first, last] = [1, cost.scf.head.length - 1];
 
 <header class="mhead">
   <div class="wrap">
-    <h1>Cost and scale</h1>
-    <p class="ident">Measured time and memory of SA-REKS and SSR against single-determinant references on the same molecules, per active space and functional.</p>
-    <p class="keyline">Whole SCF, SA-REKS / RKS, median: {bh[first]} at {cost.scf.head[first]} to {bh[last]} at {cost.scf.head[last]} with BH&amp;HLYP; {hf[first]} to {hf[last]} with HF.</p>
+    <h1>Cost and speed</h1>
+    <p class="ident">Wall time, iterations and peak memory of REKS Studio. A: against ORCA and Q-Chem, one hot-start step of a {mol.n_atoms}-atom molecule. B: against DFT inside Psi4, {ts.n_molecules} molecules.</p>
+    <p class="keyline">{leadText}</p>
+    <p>{claimsText}</p>
+    <p class="cfoot">† REKS run at {looseMark}.</p>
+    <ul class="cfacts">
+      <li>Tetracene dimer <Fragment set:html={h(formula(mol.formula))} />, {mol.n_atoms} atoms</li>
+      <li>{nbfs.join(' / ')} basis functions</li>
+      <li>BH&amp;HLYP</li>
+      <li>SG-1 grid (ORCA DefGrid2)</li>
+      <li>{setting('cores')} cores</li>
+      <li>hot start</li>
+      <li>open source</li>
+    </ul>
+    <p class="cta"><a class="btn install" href={install}>Install, free</a> <span class="cinst">From the install: up to <a href="#catalogue">{installed}</a>.</span></p>
   </div>
 </header>
 
 <div class="wrap mbody">
-  <section class="mblock" id="mechanism">
-    <h2>Mechanism</h2>
-    <div class="flow">
-      {cost.flow.map(([h, p], i) => (
+  <section class="mblock" id="md">
+    <h2>A. Against ORCA and Q-Chem</h2>
+    <p class="keyline">One hot-start step; it imitates a dynamics step: orbitals of the previous geometry {md.seed_step_a} Å away; energies and states, no gradients.</p>
+    <p><Fragment set:html={h(protocolLine)} /> <a href="#md-setup">Full setup</a>.</p>
+
+    <div class="csub" id="md-time">
+      <h3>Wall time: SCF</h3>
+      <figure class="cfig">
+        <CostDots mode="scf" />
+        <figcaption class="cnote">Fig. 1a. Wall time of the SCF jobs of one hot-start step, log axis shared with Fig. 1b. Dotted line: ORCA RKS (closed shell) or UKS (T) (open shell). Fastest converged repeat; min–max in the tooltips. † REKS run at {looseMark}.</figcaption>
+      </figure>
+    </div>
+
+    <div class="csub" id="md-time-resp">
+      <h3>Wall time: SCF + response</h3>
+      <p>SI-SA-REKS against ORCA TDA and SF-TDA, larger spaces — {claimsMore} † REKS run at {looseMark} ({looseCases}).</p>
+      <figure class="cfig">
+        <CostDots mode="resp" />
+        <figcaption class="cnote">Fig. 1b. Wall time of the SCF + response jobs (SCF and states in one run), log axis shared with Fig. 1a. Dotted line: ORCA TDA (closed shell) or SF-TDA (open shell). Arrow: run stopped at the time shown; not run: job not started. Fastest converged repeat; min–max in the tooltips. {buildLine}</figcaption>
+      </figure>
+    </div>
+
+    <div class="csub" id="md-iter">
+      <h3>Iterations and CPU load</h3>
+      <p class="keyline">{iterA}</p>
+      <p class="cnote">Cores: CPU / wall of the whole run; n/p: ORCA prints wall times only and the benchmark recorded wall and peak memory only. Stopped and not-run jobs: measurement notes below. Per Fock build inside Psi4: <a href="#fock">B</a>.</p>
+      {BLOCKS.map((b) => (
         <>
-          {i > 0 && <div class="flow-arrow" aria-hidden="true">→</div>}
-          <div class="flow-node"><h3>{h}</h3><p>{p}</p></div>
+          <h4>{b.title}</h4>
+          <p class="cnote">{b.defs.map((d) => md.definitions[d]).join('; ')}.</p>
+          <div class="citer">
+            {b.tables.map((t) => (
+              <div class="tbl">
+                <p class="tbl-title">{t.caption}</p>
+                <table>
+                  <thead><tr>{b.head.map((c) => <th scope="col">{c}</th>)}</tr></thead>
+                  {t.groups.map((g) => (
+                    <tbody>
+                      <tr><th colspan={b.head.length} scope="rowgroup">{g.code}</th></tr>
+                      {g.rows.map((row) => <tr>{row.map((c) => <td>{c}</td>)}</tr>)}
+                    </tbody>
+                  ))}
+                </table>
+              </div>
+            ))}
+          </div>
         </>
       ))}
     </div>
+
+    <div class="csub" id="md-memory">
+      <h3>Peak memory</h3>
+      <figure class="cfig">
+        <CostDots mode="memory" />
+        <figcaption class="cnote">Fig. 2. Peak memory per job, GiB, linear axis. Bar: SCF + states job (rows with SCF only: SCF job); tick: SCF job. Psi4 keeps the 3-index DF tensor in core: {dfRange.join(', ')}.</figcaption>
+      </figure>
+    </div>
+
+    <div class="csub" id="md-setup">
+      <h3>Setup</h3>
+      <dl class="fields">
+        <dt>System</dt><dd>Tetracene dimer (TTRCN2), <Fragment set:html={h(formula(mol.formula))} />, {mol.n_atoms} atoms; DR = interplanar displacement of the monomers. {shells.join('; ')}.</dd>
+        <dt>Bases</dt><dd>{bases.map((b, i) => `${b}, ${nbfs[i]}`).join('; ')} basis functions, spherical, the same count in all three codes.</dd>
+        <dt>Protocol</dt><dd>Zeroth calculation at the seed geometry, DR {md.seed_step_a} Å away, untimed; the timed run reads its orbitals. SCF and SCF + states are separate jobs. Wall = whole program run, start-up included.</dd>
+        <dt>Settings</dt><dd>Default settings of each code except what was set for all: basis, BH&amp;HLYP, SG-1 grid (ORCA DefGrid2, it has no SG-1), density-fitted integrals (Psi4 DF, ORCA RIJCOSX, Q-Chem RI-J/RI-K), SCF convergence energy {proto.e_conv} / density (error) {proto.d_conv}, at most {proto.max_scf_cycles} SCF cycles, response convergence {proto.resp_conv}, {setting('roots')} roots, {setting('cores')} cores, {setting('memory')}. REKS rows marked † ran at {looseMark} ({looseCases}).</dd>
+        <dt>Hardware</dt><dd>{setting('cpu')}, {setting('cores')} cores; {setting('threads')} threads or MPI ranks and {setting('memory')} for every code.</dd>
+        <dt>Repeats</dt><dd>{setting('repeats')} Shown: the fastest converged repeat.</dd>
+        <dt>Too slow</dt><dd>{setting('too_slow')}</dd>
+        <dt>Memory</dt><dd>Peak PSS summed over the process tree, sampled every {setting('pss_sampling')}; GiB.</dd>
+        <dt>Energies</dt><dd>RKS energies of the three codes agree within {spread} mEh.</dd>
+        <dt>Builds</dt><dd>{buildLine}</dd>
+      </dl>
+      <Table table={settingsTable} />
+      <p class="tbl-title">Inputs, {sysName(md.inputs[0].system)} (open shell, {bases[0]}); seeds not shipped</p>
+      <ul class="cinputs">
+        {md.inputs.map((i) => <li><a href={`${base}${i.file}`}><code>{i.file.split('/').pop()}</code></a>: <Fragment set:html={h(i.caption)} /></li>)}
+      </ul>
+    </div>
+
+    <div class="csub" id="md-notes">
+      <h3>Measurement notes</h3>
+      <ul class="cnotes">
+        {md.notes.map((n) => <li set:html={h(n.text)} />)}
+        {offRows.map((r) => <li>{offNote(r)}</li>)}
+        <li>† {looseCases}: {looseMark}; every other row {tightMark}.</li>
+      </ul>
+    </div>
+
+    <div class="csub" id="md-data">
+      <h3>All jobs</h3>
+      {panels.map((p) => (
+        <details class="cdata">
+          <summary>{p.system.split('_')[0]}, {p.shell} shell, {p.basis}, {p.nbf} basis functions</summary>
+          <Table table={dataTable(p.system)} numeric />
+        </details>
+      ))}
+    </div>
+    <p class="cta"><a class="btn install" href={install}>Install, free</a> <span class="cinst">From the install: up to <a href="#catalogue">{installed}</a>.</span></p>
   </section>
 
-  <section class="mblock" id="scf">
-    <h2>Ground state: whole SCF</h2>
-    <p class="keyline">Median ratio of the complete SCF wall time, SA-REKS over the single-determinant reference (RKS for BH&amp;HLYP, RHF for HF), with the median iteration counts behind it.</p>
-    <Table table={{ head: cost.scf.head, rows: cost.scf.rows }} />
-    <p>Guess of the timed runs: <span class="ph">not stated in v1</span>. Iteration medians are stated for BH&amp;HLYP only.</p>
-    <Figure fig={{ todo: 'whole-SCF and Fock-build ratios redrawn from the SI Fig. 6 data' }} />
-    <p class="prov"><strong>Provenance:</strong> paper v1, SI S59–S62, SI Fig. 6.</p>
-  </section>
+  <section class="mblock" id="psi4">
+    <h2>B. Inside Psi4</h2>
+    <p class="ident">Paper v1: {ts.n_molecules} molecules, {ts.nbf_min}–{ts.nbf_max} basis functions ({Object.entries(ts.bases).map(([b, n]) => `${n} ${BASIS[b]}`).join(', ')}); single points; RKS / RHF references and {tda}-state TDA from SAD, SA-REKS and SSR from the converged reference orbitals (untimed); {psi4.facts.b_cpu}, {psi4.facts.b_threads} threads.</p>
 
-  <section class="mblock" id="fock">
-    <h2>One Fock build</h2>
-    <p class="keyline">Median ratio per Fock build over the six largest molecules.</p>
-    <Table table={{ head: cost.fock.head, rows: cost.fock.rows }} />
-    <p>Fitted exponents of the Fock build: <span class="ph">to be added, with v1's sentence that the drop reflects the cache, not an improvement in scaling</span>.</p>
-  </section>
+    <div class="csub" id="fock">
+      <h3>One Fock build</h3>
+      <p class="keyline">Per Fock build, SA-REKS over the reference, median over the six largest molecules: BH&amp;HLYP {ends(fockBH)}, HF {ends(fockHF)}.</p>
+      <Table table={psi4.fock} />
+      <Table table={iterTableB} />
+      <p class="keyline">{iterB}</p>
+      <p>The per-build ratio stays far below the whole-SCF ratio; the whole-SCF ratio follows the iteration counts.</p>
+      <p>Fitted exponent of the Fock-build time in the number of basis functions (log–log, all {ts.n_molecules}): HF {expo('hf')}; BH&amp;HLYP {expo('bhhlyp')}. The drop reflects the cache, not an improvement in scaling.</p>
+    </div>
 
-  <section class="mblock" id="excited">
-    <h2>Excited states</h2>
-    <p class="keyline">Complete SSR calculation over the complete 20-state TDA calculation, median ratio; (8,8)/BH&amp;HLYP lies above parity on 14 of 16 molecules.</p>
-    <Table table={{ head: cost.excited.head, rows: cost.excited.rows }} />
-    <p>Secondary, SI step alone vs TDA (v1: not the same kind of object): <span class="ph">to be added</span>.</p>
-    <Figure fig={{ src: 'figures/main/cost_excited.webp', w: 1046, h: 1300, alt: 'SSR against 20-state TDA: step and complete-calculation time ratios and peak memory against the number of basis functions', caption: 'SSR against the 20-state TDA reference (CIS for HF, TDDFT-TDA for BH&HLYP), and peak memory, against the number of basis functions.' }} source="paper v1, SI Fig. 7." />
-  </section>
+    <div class="csub" id="scf">
+      <h3>Ground state: whole SCF</h3>
+      <p class="keyline">Whole SCF, SA-REKS / RKS, median: {bhScf[1]} at {psi4.scf.head[1]} to {bhScf[last]} at {psi4.scf.head[last]} with BH&amp;HLYP; {hfScf[1]} to {hfScf[last]} with HF (SA-REKS / RHF).</p>
+      <Table table={psi4.scf} />
+    </div>
 
-  <section class="mblock" id="memory">
-    <h2>Memory</h2>
-    <p>Peak SCF memory, SA-REKS over the reference: median 1.01 × over the six largest molecules (0.93–1.02).</p>
-  </section>
+    <div class="csub" id="excited">
+      <h3>Excited states</h3>
+      <p class="keyline">Complete SSR over the complete {tda}-state TDA calculation, median; {big}/BH&amp;HLYP lies above parity on {above.n_above_1} of {above.n} molecules.</p>
+      <Table table={psi4.excited} />
+      <p>SI step alone over the TDA response (TDA wall minus its SCF), median, {psi4.spaces.join(', ')}: {siStep}.</p>
+      <Figure fig={{ src: 'figures/main/cost_excited.webp', w: 1046, h: 1300, alt: 'SSR against TDA: step and complete-calculation time ratios and peak memory against the number of basis functions', caption: 'SSR against the TDA reference (CIS for HF, TDDFT-TDA for BH&HLYP), and peak memory, against the number of basis functions.' }} source="paper v1, SI Fig. 7." />
+    </div>
 
-  <section class="mblock" id="hardware">
-    <h2>Hardware and test set</h2>
-    <dl class="fields">
-      <dt>Hardware</dt><dd>Intel Xeon E5-2697 v3, one exclusive node, 28 threads</dd>
-      <dt>Test set</dt><dd>16 molecules, 322–1868 basis functions (nine aug-cc-pVTZ, seven cc-pVTZ)</dd>
-    </dl>
+    <div class="csub" id="memory">
+      <h3>Memory</h3>
+      <p>Peak memory, SA-REKS over the reference, six largest molecules, median over spaces and functionals: SCF {memScf.median.toFixed(2)}× ({memScf.min.toFixed(2)}–{memScf.max.toFixed(2)}), per space {mps.min.toFixed(2)}–{mps.max.toFixed(2)}; SSR over TDA {memExc.median.toFixed(2)}× ({memExc.min.toFixed(2)}–{memExc.max.toFixed(2)}).</p>
+    </div>
+
+    <div class="csub" id="hardware">
+      <h3>Hardware and test set</h3>
+      <dl class="fields">
+        <dt>Hardware</dt><dd>{psi4.facts.b_cpu}, one exclusive node, {psi4.facts.b_threads} threads</dd>
+        <dt>Test set</dt><dd>{ts.n_molecules} molecules, {ts.nbf_min}–{ts.nbf_max} basis functions</dd>
+        <dt>Guess</dt><dd>References from SAD; SA-REKS and SSR from the converged reference orbitals, untimed</dd>
+        <dt>Build</dt><dd>Psi4 revision not recorded in the outputs</dd>
+      </dl>
+    </div>
+
+    <div class="csub" id="mechanism">
+      <h3>Mechanism</h3>
+      <p>Integrals and the DFT quadrature grid are evaluated once; every configuration of the ensemble reads them. The Fock matrices of the configurations combine by weighted addition; energy and gradient of the ensemble follow from the assembled matrices.</p>
+    </div>
   </section>
 
   <section class="mblock" id="count">
@@ -84,13 +349,12 @@ const [first, last] = [1, cost.scf.head.length - 1];
     <CountChart />
     <h3 id="equations">Equations, determinants and SCF configurations</h3>
     <Table table={landing.equations} numeric grouped />
-    <p>Enumeration check of the formula to (8,8): <span class="ph">to be added</span>.</p>
   </section>
 
   <section class="mblock" id="catalogue">
     <h2>Catalogue</h2>
-    <Table table={{ head: ['Active space', 'Catalogue size', 'Emission time, memory'], rows: cost.catalogue }} />
-    <p>Symbolic contraction of the full (12,12) ensemble: 40.47 h, 83 GB.</p>
+    <Table table={catTable} />
+    <p>Symbolic contraction of the full (12,12) ensemble: {catalogue.contraction_1212.wall}, {catalogue.contraction_1212.peak}.</p>
     <p class="prov"><strong>Provenance:</strong> paper v1, SI Tables 3 and 6.</p>
   </section>
 
@@ -101,9 +365,15 @@ const [first, last] = [1, cost.scf.head.length - 1];
 
   <section class="mblock" id="dynamics-step">
     <h2>One dynamics step</h2>
-    <p class="keyline">C<sub>2</sub>H<sub>4</sub> twisted 90°, SSR(2,2)/6-31G(d), 4 threads; wall time per step in seconds.</p>
-    <Table table={{ head: ['Step', 'Time / s'], rows: cost.step }} />
-    <p class="prov"><strong>Provenance:</strong> site run, Psi4 43c226c04; <span class="ph">to be added: rerun at a recorded version</span>.</p>
+    <p class="keyline" set:html={h(stepLine)} />
+    <Table table={stepTable} numeric />
+    <p class="prov"><strong>Provenance:</strong> site run, Psi4 {step.rev}.</p>
+  </section>
+
+  <section class="mblock" id="get">
+    <h2>Get it</h2>
+    <p>Free and open source.</p>
+    <p class="cta"><a class="btn install" href={install}>Install, free</a> <span class="cinst">From the install: up to <a href="#catalogue">{installed}</a>.</span></p>
   </section>
 </div>
 </main>

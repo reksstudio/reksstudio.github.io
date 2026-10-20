@@ -275,12 +275,6 @@ header.hero{ padding: 28px 0 24px; }
 .step-chart .gen{ fill: var(--bg); stroke: var(--copper); stroke-width: 2; }
 
 /* mechanism flow */
-.flow{ display: flex; align-items: stretch; gap: 6px; flex-wrap: wrap; }
-.flow-node{ flex: 1; min-width: 150px; border: 1px solid var(--line); background: var(--bg-raised); border-radius: 4px; padding: 14px; }
-.flow-node h3{ margin: 0 0 6px; font-size: 0.95rem; }
-.flow-node p{ margin: 0; font-size: 0.86rem; color: var(--ink-soft); }
-.flow-arrow{ align-self: center; color: var(--ink-faint); }
-@media (max-width: 780px){ .flow{ flex-direction: column; } .flow-arrow{ transform: rotate(90deg); } }
 
 /* QUEST: error strips 2 x 2, parity panels 3 x 1, molecule cards, functional switch of the full table */
 .mhead p.rule{ margin-top: 4px; font-size: 0.92rem; color: var(--ink-soft); }

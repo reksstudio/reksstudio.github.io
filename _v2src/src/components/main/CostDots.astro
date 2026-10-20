@@ -1,0 +1,158 @@
+---
+import { CODE, figRows, fgib, fs, looseMark, offLabel, panels, short } from '../../lib/cost.mjs';
+
+interface Props {
+  mode: 'scf' | 'resp' | 'memory';
+}
+
+// One panel per system, rows in md.order with a header per code. scf / resp: log time axis, one mark per job (SCF
+// jobs / SCF + response jobs). Memory: linear bar = SCF + states peak (SCF-only rows: SCF peak), tick = SCF peak.
+// Value label right of its mark, left of it beyond FLIP of the plot width.
+const { mode } = Astro.props;
+const time = mode !== 'memory';
+const respMode = mode === 'resp';
+const W = 400;
+const L = 150;
+const R = 20;
+const T = 42;
+const RH = 18;
+const GH = 19;
+const SUB = 13;
+const B = 26;
+const FLIP = 4 / 5;
+const PW = W - L - R;
+const [T0, T1] = [10, 50000];
+const MAXG = 125;
+const TIME_TICKS = [10, 60, 600, 3600, 36000];
+const MEM_TICKS = [0, 25, 50, 75, 100, 125];
+const r1 = (v) => Math.round(v * 10) / 10;
+const x = time ? (v) => r1(L + (Math.log10(v / T0) / Math.log10(T1 / T0)) * PW) : (v) => r1(L + (v / MAXG) * PW);
+const dur = (s) => (s < 60 ? `${s} s` : s < 3600 ? `${s / 60} min` : `${s / 3600} h`);
+const ticks = time ? TIME_TICKS.map((v) => ({ v, t: dur(v) })) : MEM_TICKS.map((v) => ({ v, t: `${v}` }));
+const SHAPE = { 'Psi4-REKS': 'circle', ORCA: 'circle', 'Q-Chem': 'square', Psi4: 'diamond' };
+const tag = (r) => (r?.loose ? ' †' : '');
+const reps = (r) => (r.n_repeats > 1 ? ` (${fs(r.wall_min)}–${fs(r.wall_max)} s, ${r.n_repeats} repeats)` : ' (one run)');
+const tip = (r) =>
+  time ? `${CODE[r.code]} ${r.method}: ${fs(r.wall_s)} s${reps(r)}${tag(r)}` : `${CODE[r.code]} ${r.method}: ${fgib(r.peak_gib)} GiB${tag(r)}`;
+// value labels: monospace advance CW per character, gap D from the mark; flipped labels get a background box
+const CW = 36 / 5;
+const D = 9;
+const flip = (px, text = '') => px - L > FLIP * PW || px + D + text.length * CW > W;
+const lab = (px, y, text) =>
+  flip(px, text)
+    ? { x: r1(px - D - 4), y: y + 4, a: 'end', text, bg: { x: r1(px - D - 4 - text.length * CW - 2), y: y - 7, w: r1(text.length * CW + 4) } }
+    : { x: r1(px + D), y: y + 4, a: 'start', text };
+// time: the full stop label; memory: the status word only
+const end = (r) => (time ? offLabel(r) : r.stop_h ? 'stopped' : 'not run');
+
+const charts = panels.map((p) => {
+  // ORCA reference per panel: the physics partner (TDA closed shell, SF-TDA open shell) or its SCF job
+  const partner = figRows(p.system).find((f) => f.code === 'ORCA' && f.resp?.method === p.ref_method);
+  const ref = time ? (respMode ? partner.resp : partner.scf) : null;
+  const rows = respMode ? figRows(p.system).filter((f) => f.resp) : figRows(p.system);
+  let y = T;
+  const items = [];
+  let prev = null;
+  for (const f of rows) {
+    if (f.code !== prev) {
+      const reks = respMode ? f.resp.method.replace(f.resp.space, '') : f.scf.method.replace(f.scf.space, '');
+      items.push({ head: f.code === 'Psi4-REKS' ? `${CODE[f.code]}, ${reks}` : CODE[f.code], y: y + 14 });
+      y += GH;
+      prev = f.code;
+    }
+    const yc = y + RH / 2;
+    const cls = f.code === 'Psi4-REKS' ? 'ours' : 'ref';
+    const { scf, resp } = f;
+    const job = respMode ? resp : scf;
+    const name = !time ? f.label : f.code === 'Psi4-REKS' ? job.space : short(job.method);
+    const row = { f, name, yc, cls, shape: SHAPE[f.code] };
+    const off = time ? job.status !== 'ok' : resp && resp.status !== 'ok';
+    // stopped run: dashed line from the axis start, its label on a line of its own under the row
+    const sub = time && off && job.stop_h;
+    if (time && off) {
+      const t = end(job);
+      const at = sub ? { x: r1(Math.min(L, W - R / 2 - t.length * CW)), y: yc + 17, a: 'start', text: t } : { x: L + 2, y: yc + 4, a: 'start', text: t };
+      row.label = { ...at, tip: `${CODE[job.code]} ${job.method}: ${job.reason}` };
+      if (sub) row.stop = { x1: L, x2: x(job.stop_h * 3600) };
+    } else if (time) {
+      const xj = x(job.wall_s);
+      row.mark = { x: xj, tip: tip(job) };
+      row.label = lab(xj, yc, `${fs(job.wall_s)} s${tag(job)}`);
+    } else if (off) {
+      const xs = x(scf.peak_gib);
+      row.label = { ...lab(xs, yc, end(resp)), tip: `${CODE[resp.code]} ${resp.method}: ${resp.reason}` };
+      row.tick = { x: xs, tip: tip(scf) };
+    } else {
+      const xs = x(scf.peak_gib);
+      const bar = resp ?? scf;
+      if (resp) row.tick = { x: xs, tip: tip(scf) };
+      row.bar = { w: r1(x(bar.peak_gib) - L), tip: tip(bar) };
+      row.label = lab(x(bar.peak_gib), yc, `${fgib(bar.peak_gib)} GiB${tag(bar)}`);
+    }
+    items.push(row);
+    y += sub ? RH + SUB : RH;
+  }
+  const H = y + B;
+  const title = `${p.system.split('_')[0]}, ${p.shell} shell, ${p.basis}, ${p.nbf} bf`;
+  const what = time ? `Wall time per ${respMode ? 'SCF + response' : 'SCF'} job, log scale` : 'Peak memory per job, GiB';
+  const aria = `${what}: ${title}. ${items
+    .filter((i) => i.f)
+    .map((i) => `${CODE[i.f.code]} ${i.name} ${i.label.text}`)
+    .join('; ')}.`;
+  return { p, ref, items, H, y, title, aria };
+});
+// mark path centred at (cx, cy): circle r 4, square side 8, diamond half-diagonal 5
+const mark = (s, cx, cy) =>
+  s === 'square'
+    ? `M${r1(cx - 4)} ${cy - 4}l8 0 0 8-8 0z`
+    : s === 'diamond'
+      ? `M${cx} ${cy - 5}l5 5-5 5-5-5z`
+      : `M${r1(cx - 4)} ${cy}a4 4 0 1 0 8 0a4 4 0 1 0-8 0z`;
+const LEGEND = [['Psi4-REKS', 'ours'], ['ORCA', 'ref'], ['Q-Chem', 'ref'], ['Psi4', 'ref']];
+---
+<ul class="cd-legend">
+  {LEGEND.map(([c, cls]) => <li><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d={mark(SHAPE[c], 6, 6)} class={cls} /></svg>{CODE[c]}</li>)}
+  {respMode && <li><svg width="26" height="12" viewBox="0 0 26 12" aria-hidden="true"><line x1="2" x2="22" y1="6" y2="6" class="cd-s" /><path d="M17 2l5 4-5 4" class="cd-a" /></svg>stopped</li>}
+  {!time && <li><svg width="26" height="12" viewBox="0 0 26 12" aria-hidden="true"><rect x="0" y="2" width="20" height="8" class="ref" /><line x1="12" x2="12" y1="0" y2="12" class="cd-t ref" /></svg>SCF + states, SCF</li>}
+  <li>† {looseMark}</li>
+</ul>
+<div class="cd-grid">
+  {charts.map(({ p, ref, items, H, y, title, aria }) => (
+    <svg class="step-chart cost-dots" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={aria}>
+      <text x="0" y="16" class="cd-h">{title}</text>
+      {ticks.map((t) => (
+        <g>
+          <line x1={x(t.v)} x2={x(t.v)} y1={T - 4} y2={y} class="grid" />
+          <text x={x(t.v)} y={y + 18} text-anchor="middle" class="tick">{t.t}</text>
+        </g>
+      ))}
+      {ref && (
+        <g>
+          <line x1={x(ref.wall_s)} x2={x(ref.wall_s)} y1={T - 12} y2={y} class="cd-r" />
+          <text x={x(ref.wall_s) + (flip(x(ref.wall_s)) ? -4 : 4)} y={T - 14} text-anchor={flip(x(ref.wall_s)) ? 'end' : 'start'} class="cd-rl">ORCA {short(ref.method)}</text>
+        </g>
+      )}
+      {items.map((i) =>
+        i.head ? (
+          <text x="0" y={i.y} class="cd-g">{i.head}</text>
+        ) : (
+          <g>
+            <text x={L - 6} y={i.yc + 4} text-anchor="end" class="cd-l">{i.name}</text>
+            {i.bar && <rect x={L} y={i.yc - 4} width={i.bar.w} height="8" class={i.cls}><title>{i.bar.tip}</title></rect>}
+            {i.join && <line x1={i.join.x1} x2={i.join.x2} y1={i.yc} y2={i.yc} class={`cd-j ${i.cls}`} />}
+            {i.stop && (
+              <g>
+                <line x1={i.stop.x1} x2={i.stop.x2} y1={i.yc} y2={i.yc} class="cd-s" />
+                <path d={`M${r1(i.stop.x2 - 5)} ${i.yc - 4}l5 4-5 4`} class="cd-a" />
+              </g>
+            )}
+            {i.tick && <line x1={i.tick.x} x2={i.tick.x} y1={i.yc - 5} y2={i.yc + 5} class={`cd-t ${i.cls}`}><title>{i.tick.tip}</title></line>}
+            {i.mark && <path d={mark(i.shape, i.mark.x, i.yc)} class={i.cls}><title>{i.mark.tip}</title></path>}
+            {i.label.bg && <rect x={i.label.bg.x} y={i.label.bg.y} width={i.label.bg.w} height="14" class="cd-bg" />}
+            <text x={i.label.x} y={i.label.y} text-anchor={i.label.a} class="val cd-v">{i.label.text}{i.label.tip && <title>{i.label.tip}</title>}</text>
+          </g>
+        ),
+      )}
+    </svg>
+  ))}
+</div>
