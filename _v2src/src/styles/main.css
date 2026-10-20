@@ -134,29 +134,34 @@ header.hero{ padding: 28px 0 24px; }
   .pviz .mn{ font-size: 15px; }
 }
 
-/* cost band: bar width = v / max of the track (3.8rem left for the value); 1x rule at 1 / max */
+/* cost band: linear seconds axis, track = bar width minus 5.8rem for the value column; bar = v / max of the track;
+   white line at the ORCA partner time (--ref); time beyond --max drawn into an overflow zone past the axis end */
 .band{ background: var(--band-bg); color: var(--band-ink); padding: 24px 0; }
 .band .mblock{ border-bottom: 0; }
 .band h2, .band h3, .band a{ color: var(--band-ink); }
 .band a:hover{ color: var(--copper-bright); }
 .band h2{ font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.2; }
-.bsub, .bscope, .lsrc, .rk, .rt, .blinks, .price{ color: var(--band-soft); }
+.bsub, .bscope, .lsub, .lcode, .lscale, .blinks, .price{ color: var(--band-soft); }
 .ladders{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
-.ladder{ display: block; border: 1px solid var(--navy-700); border-radius: 4px; padding: 14px 16px; text-decoration: none; }
-.lt{ display: block; font-weight: 600; margin-bottom: 6px; }
-.lscale{ display: block; position: relative; height: 1.4em; margin-left: calc(4.5rem + 12px); font-size: 0.84rem; }
-.lscale span{ position: absolute; left: calc((100% - 3.8rem) / var(--max)); transform: translateX(-50%); font-weight: 700; white-space: nowrap; }
-.rung{ display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 12px; padding: 4px 0; font-variant-numeric: tabular-nums; }
-.ladder .bar{ position: relative; display: flex; align-items: center; gap: 6px; height: 16px; }
-.ladder .bar::before{ content: ""; flex: none; height: 100%; width: calc(var(--v) / var(--max) * (100% - 3.8rem)); background: var(--ours-band); }
-.ladder .bar::after{ content: ""; position: absolute; top: -4px; bottom: -4px; left: calc((100% - 3.8rem) / var(--max)); border-left: 2px solid #fff; }
-.ladder .bar b{ position: relative; z-index: 1; background: var(--band-bg); padding: 0 3px; font-weight: 600; font-size: 0.84rem; }
-.lsrc{ display: block; font-size: 0.8rem; margin-top: 10px; }
+.ladder{ --track: calc(100% - 5.8rem); display: block; border: 1px solid var(--navy-700); border-radius: 4px; padding: 14px 16px; text-decoration: none; }
+.lt{ display: block; font-weight: 600; }
+.lsub{ display: block; font-size: 0.8rem; margin-bottom: 8px; }
+.lscale{ display: block; position: relative; height: 1.4em; margin-left: calc(5.4rem + 12px); font-size: 0.76rem; }
+.lscale span{ position: absolute; left: calc(var(--t) / var(--max) * var(--track)); transform: translateX(-50%); white-space: nowrap; }
+.lcode{ display: block; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 8px; border-top: 1px solid var(--navy-700); padding-top: 6px; }
+.rung{ display: grid; grid-template-columns: 5.4rem minmax(0, 1fr); align-items: center; gap: 12px; padding: 3px 0; font-variant-numeric: tabular-nums; }
+.rung .sz{ font-size: 0.9rem; white-space: nowrap; }
+.rung.cut{ border-bottom: 1px dashed var(--navy-700); padding-bottom: 6px; margin-bottom: 3px; }
+.ladder .bar{ position: relative; display: flex; align-items: center; gap: 6px; height: 14px; }
+.ladder .bar::before{ content: ""; flex: none; height: 100%; width: calc(var(--v) / var(--max) * var(--track)); background: var(--ours-band); }
+.ladder .orca .bar::before{ background: var(--band-ink); }
+.ladder .qchem .bar::before{ box-sizing: border-box; background: transparent; border: 1.5px solid var(--band-ink); }
+.ladder .over .bar::before{ width: calc(var(--track) + 0.6rem); border-right: 0; }
+.ladder .over i{ position: absolute; left: calc(var(--track) - 0.15rem); padding: 0 1px; background: var(--band-bg); font: italic 700 0.78rem/14px var(--sans); color: var(--band-ink); }
+.ladder .ours .bar::after{ content: ""; position: absolute; top: -4px; bottom: -4px; left: calc(var(--ref) / var(--max) * var(--track)); border-left: 2px solid #fff; }
+.ladder .bar b{ position: absolute; right: 0; font-weight: 600; font-size: 0.84rem; }
 .bscope{ font-size: 0.88rem; margin-top: 12px; }
-.band .reach{ display: grid; gap: 4px; margin-top: 24px; border-top: 1px solid var(--navy-700); padding-top: 20px; text-decoration: none; }
-.rk{ font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; }
-.rv{ font: 1.3rem/1.3 var(--serif); }
-.rt{ font-size: 0.86rem; }
+@media (max-width: 480px){ .lscale .odd{ display: none; } }
 .band .cta{ margin-top: 28px !important; }
 .band .btn:not(.install){ background: transparent; border-color: var(--band-soft); color: var(--band-ink); }
 .band .btn.install{ color: var(--navy-900); }

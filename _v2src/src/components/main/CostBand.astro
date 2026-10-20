@@ -1,46 +1,78 @@
 ---
-import { costRow } from '../../lib/cost.mjs';
-import { landing, resultHref } from '../../lib/overview.mjs';
+import { CODE, bandClaim, bandPanel, bandRef, bandSiNote, codeHead, cost, figRows, fs, installed, jobShort, setting, short } from '../../lib/cost.mjs';
+import { landing } from '../../lib/overview.mjs';
 import { doiUrl, reference } from '../../lib/literature.mjs';
+import { formulaMarkup, toHtml } from '../../lib/inline.mjs';
 import { EMAIL } from '../../lib/site.mjs';
 
 const base = import.meta.env.BASE_URL;
 const paper = reference('komarov2026-reks-studio');
-const { band, reach, installed } = landing;
-// ratio as printed: two decimals below 1, one decimal from 1 on
-const fx = (v) => (v < 1 ? v.toFixed(2) : v.toFixed(1));
-const ladder = (table, ref, title) => {
-  const { head, values } = costRow(table);
-  const n = head.indexOf(installed) + 1;
-  return { title, ref, max: Math.max(...values), rungs: head.map((as, i) => ({ as, v: values[i] })), lo: values[0], hi: values[n - 1], tail: head.slice(n).map((as, i) => `${as}: ${fx(values[n + i])}×`) };
-};
-const g = ladder('scf', 'DFT', 'Ground state, × DFT');
-const x = ladder('excited', 'TDA', 'Excited states, × TDA');
-const span = `(2,2)–${installed}`;
-const aria = (l) => `${l.title}: ${l.rungs.map((r) => `${r.as} ${r.v.toFixed(2)}×`).join(', ')}`;
+const { md } = cost;
+const mol = md.setup[0];
+const p = bandPanel;
+// rows of the band system without Psi4 DFT
+const fr = figRows(p.system).filter((f) => f.code !== 'Psi4');
+const CARDS = [
+  { kind: 'scf', title: 'Ground state, wall time', sub: 'SCF of one hot-start step', href: 'md-time', rows: fr.map((f) => ({ f, job: f.scf })) },
+  { kind: 'resp', title: 'Excited states, wall time', sub: 'SCF + states in one run', href: 'md-time-resp', rows: fr.filter((f) => f.resp).map((f) => ({ f, job: f.resp })) },
+];
+const ROW_CLASS = { 'Psi4-REKS': 'ours', ORCA: 'orca', 'Q-Chem': 'qchem' };
+const shown = CARDS.flatMap((c) => c.rows.map((r) => r.job));
+const off = shown.find((j) => j.status !== 'ok');
+if (off) throw new Error(`CostBand: ${CODE[off.code]} ${off.method} on ${p.system} not measured; the band draws measured jobs only`);
+// axis end: next 100 s step at or above 1.1 x the largest REKS or ORCA time; Q-Chem beyond it goes to the overflow zone
+const STEP = 100;
+const max = Math.ceil((1.1 * Math.max(...shown.filter((j) => j.code !== 'Q-Chem').map((j) => j.wall_s))) / STEP) * STEP;
+const ticks = Array.from({ length: max / STEP + 1 }, (_, i) => i * STEP);
+const cards = CARDS.map((c) => {
+  const ref = c.kind === 'scf' ? bandRef.scf : bandRef.resp;
+  const groups = Object.entries(Object.groupBy(c.rows, (r) => r.f.code)).map(([code, rs]) => ({
+    code,
+    head: code === 'Psi4-REKS' ? null : CODE[code],
+    rows: rs.map(({ job }) => ({
+      name: jobShort(job),
+      v: Math.min(job.wall_s, max),
+      over: job.wall_s > max,
+      t: `${fs(job.wall_s)} s`,
+      cut: job.space === installed,
+    })),
+  }));
+  const aria = `${c.title}, ${p.system.split('_')[0]} ${p.shell} shell, ${p.basis}: ${groups
+    .map((g) => `${g.head ?? codeHead(c.rows[0].job).replace(',', '')} ${g.rows.map((r) => `${r.name} ${r.t}`).join(', ')}`)
+    .join('; ')}`;
+  return { ...c, ref, refName: short(ref.method), groups, aria };
+});
+// repeat count per code; codes with fewer than the maximum are listed in parentheses
+const nRep = Object.entries(Object.groupBy(shown, (j) => j.code)).map(([code, js]) => ({ code, n: Math.max(...js.map((j) => j.n_repeats)) }));
+const most = Math.max(...nRep.map((r) => r.n));
+const fewer = nRep.filter((r) => r.n < most).map((r) => `${CODE[r.code]}: ${r.n === 1 ? 'one run' : `${r.n} repeats`}`);
+const repLine = `Fastest converged of ${most} repeats${fewer.length ? ` (${fewer.join('; ')})` : ''}.`;
+const formula = toHtml(formulaMarkup(mol.formula));
 ---
-<h2 id="cost">Close to ordinary DFT: {fx(g.lo)}–{fx(g.hi)}× a DFT run for {span}.</h2>
-<p class="bsub">{g.tail.join(', ')}.</p>
+<h2 id="cost">{bandClaim}</h2>
+<p class="bsub">Tetracene dimer <Fragment set:html={formula} />, {mol.n_atoms} atoms, BH&amp;HLYP, {setting('cores')} cores, one hot-start step; {bandSiNote}. Shown: {p.shell} shell, {p.basis}, {p.nbf} basis functions.</p>
 <div class="ladders">
-  {[g, x].map((l, k) => (
-    <a class="ladder" href={`${base}main/cost/#${k ? 'excited' : 'scf'}`} style={`--max:${l.max}`} aria-label={aria(l)}>
-      <span class="lt">{l.title}</span>
-      <span class="lscale" aria-hidden="true"><span>1× {l.ref}</span></span>
-      {l.rungs.map((r) => (
-        <span class="rung"><span class="sz">{r.as}</span><span class="bar" style={`--v:${r.v}`}><b>{r.v.toFixed(2)}×</b></span></span>
+  {cards.map((c) => (
+    <a class="ladder" href={`${base}main/cost/#${c.href}`} style={`--max:${max};--ref:${c.ref.wall_s}`} aria-label={c.aria}>
+      <span class="lt">{c.title}</span>
+      <span class="lsub">{c.sub}; white line: ORCA {c.refName}</span>
+      <span class="lscale" aria-hidden="true">{ticks.map((t, i) => <span class:list={[{ odd: i % 2 }]} style={`--t:${t}`}>{t === max ? `${t} s` : t}</span>)}</span>
+      {c.groups.map((g) => (
+        <>
+          {g.head && <span class="lcode">{g.head}</span>}
+          {g.rows.map((r) => (
+            <span class:list={['rung', ROW_CLASS[g.code], { cut: r.cut, over: r.over }]}>
+              <span class="sz">{r.name}</span>
+              <span class="bar" style={`--v:${r.v}`}>{r.over && <i aria-hidden="true">//</i>}<b>{r.t}</b></span>
+            </span>
+          ))}
+        </>
       ))}
-      <span class="lsrc">{k ? band.excitedFrame : band.groundFrame}</span>
     </a>
   ))}
 </div>
-<p class="bscope">{band.scope}</p>
-
-<a class="reach" href={resultHref(base, 'ttr', 'run')}>
-  <span class="rk">Largest run</span>
-  <span class="rv">{reach.atoms} atoms · {reach.nbf} basis functions · {reach.as} · {reach.wall}</span>
-  <span class="rt">{band.ttrLine} →</span>
-</a>
+<p class="bscope">From the install: up to {installed}. (T): triplet reference. {repLine}</p>
 
 <p class="cta"><a class="btn install" href={`${base}docs/#install`}>Install, free</a> <a class="btn" href={`mailto:${EMAIL}`}>Talk to the team about your molecule</a></p>
-<p class="blinks"><a href={`${base}main/cost/`}>Full cost data</a> · <a href={doiUrl(paper)}>Read the paper</a></p>
-<p class="price">{band.price}</p>
+<p class="blinks"><a href={`${base}main/cost/#md`}>Full cost data</a> · <a href={`${base}main/cost/#md-notes`}>Measurement notes</a> · <a href={doiUrl(paper)}>Read the paper</a></p>
+<p class="price">{landing.band.price}</p>

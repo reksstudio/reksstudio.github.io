@@ -1,5 +1,6 @@
 ---
 import { dotTitle, funcs, molecules, molHref, n3, signed, stat, states } from '../../lib/quest.mjs';
+import { r1 as f1 } from '../../lib/svgmarks.mjs';
 
 // one panel per state: x = Delta / eV on a common range, one sub-row per functional, dots dodged off the row
 // centre, tick at MSE, MAE as text at the right end; each dot links to its molecule page
@@ -10,7 +11,6 @@ const TOP = 26;
 const D = 5.2;
 const [x0, x1] = [-1.4, 1.4];
 const x = (d) => L + ((d - x0) / (x1 - x0)) * (W - L - R);
-const f1 = (v) => Math.round(v * 10) / 10;
 
 // beeswarm offsets: each dot (in ascending x) at the first of 0, -D, +D, -2D, ... clear of the placed dots
 function swarm(items) {

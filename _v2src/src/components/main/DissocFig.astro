@@ -1,5 +1,6 @@
 ---
 import { figure, sub, uni } from '../../lib/dissoc.mjs';
+import { r1 as f1 } from '../../lib/svgmarks.mjs';
 
 interface Props {
   s: any;
@@ -12,7 +13,6 @@ const { s, size = 'index', page } = Astro.props;
 const f = figure(s, size);
 const G = f.G;
 const id = `dc-${s.slug}-${size}`;
-const f1 = (v) => Math.round(v * 10) / 10;
 const LX = G.LX;
 const aria = `${uni(s.id)} SSR${s.as}: S0 energy along ${s.coord} from ${s.R[0]} to ${s.R.at(-1)} Å${s.ref ? (s.kind === 'chain' ? ' with FCI in the same basis' : ' with near-exact reference points') : ''}${s.named.length ? `, states ${s.named.map((n) => uni(n.label)).join(', ')}` : ''}; natural occupations below${page ? '' : '; numbers in the setup line and on the system page'}`;
 // marker glyphs centred at (x, y): circle r, triangle, diamond

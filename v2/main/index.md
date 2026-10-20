@@ -52,19 +52,17 @@ Beyond available references: [S<sub>1</sub>/S<sub>0</sub> crossing of ethylene f
 
 [Multireference accuracy is usually expensive. What does it cost here? ↓](#cost)
 
-## Close to ordinary DFT: 0.86–3.3× a DFT run for (2,2)–(6,6). {#cost}
+## Excited states (2,2)–(6,6) in less wall time than ORCA TDA, on all four tests. {#cost}
 
-(8,8): 10.5×.
+Tetracene dimer C<sub>36</sub>H<sub>24</sub>, 60 atoms, BH\&HLYP, 36 cores, one hot-start step; SI‑SA‑REKS(2,2): 3 states. Shown: open shell, 6-31G(d), 552 basis functions.
 
-[Ground state, × DFT (2,2)**0.86×**(4,4)**1.53×**(6,6)**3.33×**(8,8)**10.47×** Time per whole SCF run, SA-REKS against RKS, same 16 molecules, same functional and basis (BH\&HLYP); median. ](https://reksstudio.github.io/v2/main/cost/index.md#scf)[Excited states, × TDA (2,2)**0.14×**(4,4)**0.24×**(6,6)**0.57×**(8,8)**2.65×** Time per complete run, SSR against TDA, same 16 molecules, same functional and basis (BH\&HLYP); median. TDA solves 20 states; the SSR states per active space are listed in SI Fig. 7.](https://reksstudio.github.io/v2/main/cost/index.md#excited)
+[Ground state, wall time SCF of one hot-start step; white line: ORCA RKS (2,2) **42.51 s** (4,4) **46.48 s** (6,6) **57.53 s** (8,8) **77.45 s** (10,10) **143.17 s** ORCA RKS **50.12 s** UKS (T) **43.38 s** ROKS (T) **43.05 s** Q-Chem RKS **76.44 s** UKS (T) **119.47 s** ROKS (T) **299.80 s** ](https://reksstudio.github.io/v2/main/cost/index.md#md-time)[Excited states, wall time SCF + states in one run; white line: ORCA TDA (2,2) **42.98 s** (4,4) **45.48 s** (6,6) **58.14 s** (8,8) **87.74 s** (10,10) **345.95 s** ORCA TDA **88.12 s** SF-TDA **75.44 s** Q-Chem TDA **1545.28 s** SF-TDA **1476.85 s** MRSF-TDA **5681.09 s**](https://reksstudio.github.io/v2/main/cost/index.md#md-time-resp)
 
-From the install: up to (6,6). (10,10): one reported system.
-
-[Largest run 152 atoms · 4016 basis functions · (10,10) · about 4 h on one 64-core node S–T gap 0.31–0.99 vs 0.21 kcal/mol measured on a surface, different environment →](https://reksstudio.github.io/v2/main/results/ttr/index.md#run)
+From the install: up to (6,6). (T): triplet reference. Fastest converged of 3 repeats (Q-Chem: one run).
 
 [Install, free](https://reksstudio.github.io/v2/docs/index.md#install) [Talk to the team about your molecule](mailto:reks.studio1@gmail.com)
 
-[Full cost data](https://reksstudio.github.io/v2/main/cost/index.md) · [Read the paper](https://doi.org/10.26434/chemrxiv.15008475/v1)
+[Full cost data](https://reksstudio.github.io/v2/main/cost/index.md#md) · [Measurement notes](https://reksstudio.github.io/v2/main/cost/index.md#md-notes) · [Read the paper](https://doi.org/10.26434/chemrxiv.15008475/v1)
 
 Free and open source. No licence fee, no seat count, runs on your cluster.
 

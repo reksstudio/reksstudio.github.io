@@ -1,0 +1,97 @@
+---
+import { f2, fnLabel, fsec, functionals, molHref, nStates, perMolecule, refLabel, spaces, stat, tdaLabel, testSet } from '../../lib/costpsi4.mjs';
+import { SHAPES, logScale, markPath, r1 } from '../../lib/svgmarks.mjs';
+
+interface Props {
+  fig: 'scf' | 'fock' | 'excited';
+}
+
+// One panel per functional: per-molecule ratio (log y) against basis functions (log x); one series per active
+// space (shade of --ours + shape), dashed parity line at 1
+const FIGS = {
+  scf: { q: 'scf_ratio', num: 'SA-REKS', den: refLabel, what: 'whole SCF run' },
+  fock: { q: 'fock_ratio', num: 'SA-REKS', den: refLabel, what: 'one Fock build' },
+  excited: { q: 'ssr_tda_ratio', num: 'SSR', den: tdaLabel, what: 'whole run' },
+};
+const { q, num, den, what } = FIGS[Astro.props.fig];
+if (spaces.length > SHAPES.length) throw new Error(`CostScatter: ${spaces.length} active spaces, ${SHAPES.length} shapes`);
+const W = 420;
+const H = 280;
+const L = 38;
+const R = 18;
+const T = 20;
+const B = 34;
+const [PW, PH] = [W - L - R, H - T - B];
+const MARK = 3.6;
+
+// log-axis ticks m 10^e for m in ms, from the largest tick <= lo to the smallest tick >= hi
+const ladder = (ms, lo, hi) => {
+  const t = [];
+  for (let e = Math.floor(Math.log10(lo)) - 1; e <= Math.ceil(Math.log10(hi)); e += 1) for (const m of ms) t.push(Number((m * 10 ** e).toPrecision(2)));
+  const a = t.findLast((v) => v <= lo);
+  const b = t.find((v) => v >= hi);
+  return t.filter((v) => v >= a && v <= b);
+};
+const xt = ladder([1, 1.5, 2, 3, 5, 7], testSet.nbf_min, testSet.nbf_max);
+const x = logScale(xt[0], xt.at(-1), L, PW);
+const data = functionals.map((fn) => spaces.map((sp) => perMolecule(q, fn, sp)));
+const vals = data.flat(2).map((p) => p.v);
+// parity line kept off the frame edge: the lower bound reaches below 1
+const yt = ladder([1, 2, 5], Math.min(0.9, ...vals), Math.max(1, ...vals));
+const yUp = logScale(yt[0], yt.at(-1), 0, PH);
+const y = (v) => r1(T + PH - yUp(v));
+// basis divider between consecutive basis sets, at the geometric mean of the neighbouring nbf
+const dividers = testSet.bases.slice(1).map((b, i) => x(Math.sqrt(testSet.bases[i].mols.at(-1).nbf * b.mols[0].nbf)));
+const edges = [L, ...dividers, L + PW];
+const basisLabels = testSet.bases.map((b, i) => ({ t: b.basis, x: r1((edges[i] + edges[i + 1]) / 2) }));
+
+const n = testSet.n;
+const panels = functionals.map((fn, k) => {
+  const head = `${fnLabel(fn)}: ${num} / ${den(fn)}`;
+  const medians = spaces.map((sp) => `${sp} ${f2(stat(q, fn, sp).median)}`);
+  const series = data[k].map((pts, i) => ({
+    cls: `s${i}`,
+    pts: pts.map((p) => ({
+      href: molHref(p.m),
+      d: markPath(SHAPES[i], x(p.m.nbf), y(p.v), MARK),
+      title: `${p.m.name} · ${p.m.nbf} bf · ${num}${spaces[i]}: ${f2(p.v)} (${fsec(p.a)} s / ${fsec(p.b)} s)`,
+    })),
+  }));
+  const aria = `${head}, ${what}, per molecule against basis functions, log–log; median over ${n} molecules: ${medians.join(', ')}`;
+  return { head, medians, series, aria };
+});
+const legend = spaces.map((sp, i) => ({ shape: SHAPES[i], t: `${num}${sp}${Astro.props.fig === 'excited' ? `, ${nStates(sp)} states` : ''}` }));
+---
+<ul class="cd-legend cs-legend">
+  {legend.map((l, i) => <li><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d={markPath(l.shape, 6, 6, MARK * 1.2)} class={`s${i}`} /></svg>{l.t}</li>)}
+  {Astro.props.fig === 'excited' && <li>{functionals.map((fn) => tdaLabel(fn)).join(' | ')}: {nStates()} states</li>}
+  <li><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><line x1="1" x2="21" y1="6" y2="6" class="cs-par" /></svg>parity</li>
+</ul>
+<div class="cs-grid">
+  {panels.map((p) => (
+    <div class="cs-panel">
+      <p class="cs-h">{p.head}</p>
+      <p class="cs-m">median, {n} molecules: {p.medians.join(' · ')}</p>
+      <svg class="step-chart cscatter" viewBox={`0 0 ${W} ${H}`} role="group" aria-label={p.aria}>
+        {yt.map((v) => (
+          <g>
+            <line x1={L} x2={L + PW} y1={y(v)} y2={y(v)} class={v === 1 ? 'cs-par' : 'grid'} />
+            <text x={L - 5} y={y(v) + 4} text-anchor="end" class="tick">{v}</text>
+          </g>
+        ))}
+        {xt.map((v) => (
+          <g>
+            <line x1={x(v)} x2={x(v)} y1={T} y2={T + PH} class="grid" />
+            <text x={x(v)} y={T + PH + 15} text-anchor="middle" class="tick">{v}</text>
+          </g>
+        ))}
+        {dividers.map((d) => <line x1={d} x2={d} y1={T - 14} y2={T + PH} class="cs-div" />)}
+        {basisLabels.map((b) => <text x={b.x} y={T - 6} text-anchor="middle" class="cs-b">{b.t}</text>)}
+        <text x={L + PW} y={H - 2} text-anchor="end" class="cs-ax">basis functions</text>
+        {p.series.map((s) => (
+          <g class={s.cls}>{s.pts.map((pt) => <a href={pt.href}><title>{pt.title}</title><path d={pt.d} /></a>)}</g>
+        ))}
+      </svg>
+    </div>
+  ))}
+</div>

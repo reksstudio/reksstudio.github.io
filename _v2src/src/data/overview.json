@@ -292,10 +292,6 @@
       "bridge": "Multireference accuracy is usually expensive. What does it cost here?"
     },
     "band": {
-      "groundFrame": "Time per whole SCF run, SA-REKS against RKS, same 16 molecules, same functional and basis (BH&HLYP); median.",
-      "excitedFrame": "Time per complete run, SSR against TDA, same 16 molecules, same functional and basis (BH&HLYP); median. TDA solves 20 states; the SSR states per active space are listed in SI Fig. 7.",
-      "scope": "From the install: up to (6,6). (10,10): one reported system.",
-      "ttrLine": "S–T gap 0.31–0.99 vs 0.21 kcal/mol measured on a surface, different environment",
       "price": "Free and open source. No licence fee, no seat count, runs on your cluster."
     },
     "tryit": {

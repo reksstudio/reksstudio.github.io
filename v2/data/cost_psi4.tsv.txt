@@ -1,0 +1,321 @@
+molecule	name	formula	charge	atoms	basis	nbf	functional	method	space	states	n_repeats	n_ok	rep_time	niter	wall_s	wall_min	wall_max	scf_wall_s	fock_wall_s	fock_calls	si_wall_s	rep_peak	peak_mb
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	rks			4	4	4	14	6.38	6.38	6.77	5.50	1.377	14		2	1588.4
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	reks22	(2,2)		4	4	4	15	7.19	7.19	7.39	6.38	3.615	15		1	1593.2
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	reks44	(4,4)		4	4	1	22	12.39	12.39	12.73	11.39	8.568	22		1	1547.3
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	reks66	(6,6)		4	4	1	26	25.47	25.47	25.74	24.66	21.664	26		1	1562.4
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	reks88	(8,8)		4	4	3	35	151.31	151.31	155.51	150.36	80.184	35		3	1732.5
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	tda020		20	4	4	3	14	28.98	28.98	29.67	5.24	1.349	14		2	2012.7
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	ssr22	(2,2)	3	4	4	4	15	7.31	7.31	7.68	6.24	3.519	15	0.029	2	1534.4
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	ssr44	(4,4)	16	4	4	4	22	12.22	12.22	12.84	11.43	8.353	22	0.198	1	1541.3
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	ssr66	(6,6)	115	4	4	3	26	26.29	26.29	26.92	25.48	21.708	26	0.758	2	1566.6
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	bhhlyp	ssr88	(8,8)	996	4	4	2	35	157.87	157.87	163.62	156.92	78.606	35	8.086	2	2036.8
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	rks			4	4	4	14	5.85	5.85	7.15	4.59	0.613	14		4	1404.0
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	reks22	(2,2)		4	4	4	16	4.88	4.88	5.10	4.08	1.508	16		3	1421.4
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	reks44	(4,4)		4	4	1	19	6.05	6.05	6.22	5.23	2.585	19		1	1422.6
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	reks66	(6,6)		4	4	3	30	9.24	9.24	9.73	8.42	5.565	30		2	1422.0
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	reks88	(8,8)		4	4	4	73	22.33	22.33	22.62	21.51	17.774	73		1	1478.7
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	tda020		20	4	4	3	14	22.36	22.36	23.23	4.43	0.588	14		3	1473.2
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	ssr22	(2,2)	3	4	4	4	16	5.29	5.29	5.71	4.16	1.542	16	0.026	2	1477.3
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	ssr44	(4,4)	16	4	4	2	19	6.25	6.25	6.31	5.34	2.591	19	0.139	2	1421.0
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	ssr66	(6,6)	115	4	4	3	30	9.63	9.63	10.14	8.82	5.611	30	0.402	1	1476.9
+acetone	acetone	C3H6O	0	10	aug-cc-pVTZ	322	hf	ssr88	(8,8)	996	4	4	3	73	24.64	24.64	27.94	23.83	17.928	73	1.743	4	1628.0
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	rks			4	4	1	13	6.77	6.77	8.17	6.01	1.785	13		3	1906.9
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	reks22	(2,2)		4	4	1	14	8.02	8.02	9.52	7.20	4.175	14		2	1980.4
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	reks44	(4,4)		4	4	1	16	11.97	11.97	13.37	11.32	8.329	16		1	1978.8
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	reks66	(6,6)		4	4	1	18	23.31	23.31	26.33	22.66	19.635	18		3	1977.9
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	reks88	(8,8)		4	4	1	40	110.21	110.21	123.20	109.57	105.972	40		4	2160.4
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	tda020		20	4	4	1	13	39.44	39.44	42.37	5.71	1.844	13		2	2492.8
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	ssr22	(2,2)	3	4	4	1	14	8.19	8.19	9.41	7.40	4.441	14	0.035	4	1977.8
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	ssr44	(4,4)	16	4	4	1	16	12.38	12.38	13.64	11.74	8.403	16	0.281	2	1975.9
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	ssr66	(6,6)	115	4	4	1	18	24.56	24.56	27.77	23.91	19.95	18	0.953	1	1980.0
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	bhhlyp	ssr88	(8,8)	996	4	4	1	40	120.17	120.17	126.67	119.53	107.681	40	7.938	3	2415.7
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	rks			4	4	1	13	6.24	6.24	8.67	5.01	0.853	13		4	1894.7
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	reks22	(2,2)		4	4	1	16	6.05	6.05	6.62	4.93	2.006	16		2	1848.9
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	reks44	(4,4)		4	4	1	17	7.01	7.01	7.95	6.37	3.462	17		2	1845.0
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	reks66	(6,6)		4	4	1	40	15.26	15.26	16.49	14.61	11.317	40		4	1847.4
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	reks88	(8,8)		4	4	2	41	17.99	17.99	20.13	17.08	13.151	41		3	1901.8
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	tda020		20	4	4	1	13	27.18	27.18	31.12	4.65	0.853	13		3	1892.0
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	ssr22	(2,2)	3	4	4	1	16	5.97	5.97	7.23	4.89	2.114	16	0.036	2	1848.5
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	ssr44	(4,4)	16	4	4	1	17	6.84	6.84	8.14	6.19	3.154	17	0.175	1	1847.0
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	ssr66	(6,6)	115	4	4	1	40	15.71	15.71	17.60	15.06	11.105	40	0.537	1	1851.0
+cyclopentadiene	cyclopentadiene	C5H6	0	11	aug-cc-pVTZ	368	hf	ssr88	(8,8)	996	4	4	1	41	21.26	21.26	22.94	20.60	14.728	41	2.075	4	2064.2
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	rks			4	4	3	14	15.57	15.57	19.55	14.52	4.67	14		4	4112.1
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	reks22	(2,2)		4	4	4	11	16.60	16.60	17.72	15.78	8.21	11		4	4223.7
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	reks44	(4,4)		4	4	3	24	33.83	33.83	37.14	33.18	26.569	24		3	4275.7
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	reks66	(6,6)		4	4	1	35	92.13	92.13	95.51	91.17	82.709	35		2	4224.6
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	reks88	(8,8)		4	4	1	51	314.06	314.06	467.12	312.69	303.579	51		4	4219.5
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	tda020		20	4	4	3	14	99.15	99.15	104.91	14.92	4.517	14		3	4618.3
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	ssr22	(2,2)	3	4	4	3	11	15.59	15.59	16.95	14.58	8.338	11	0.096	3	4222.4
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	ssr44	(4,4)	16	4	4	3	24	34.40	34.40	38.16	33.76	26.365	24	0.549	3	4221.5
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	ssr66	(6,6)	115	4	4	1	35	93.99	93.99	102.27	93.16	82.816	35	1.858	2	4222.9
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	bhhlyp	ssr88	(8,8)	996	4	4	2	51	317.94	317.94	346.53	316.69	294.007	51	13.088	4	4381.6
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	rks			4	4	3	14	13.77	13.77	16.22	12.90	2.483	14		1	4035.6
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	reks22	(2,2)		4	4	3	12	11.47	11.47	12.87	10.80	4.741	12		2	4071.9
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	reks44	(4,4)		4	4	3	20	17.13	17.13	20.24	16.38	10.084	20		2	4065.9
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	reks66	(6,6)		4	4	2	38	35.83	35.83	37.03	35.02	26.788	38		1	4071.8
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	reks88	(8,8)		4	4	3	26	29.73	29.73	35.24	28.73	22.157	26		3	4090.1
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	tda020		20	4	4	1	14	88.62	88.62	93.78	13.49	2.341	14		4	4037.4
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	ssr22	(2,2)	3	4	4	3	12	12.08	12.08	12.96	11.43	4.522	12	0.586	1	4066.1
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	ssr44	(4,4)	16	4	4	3	20	18.86	18.86	20.42	18.20	11.25	20	0.554	4	4071.6
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	ssr66	(6,6)	115	4	4	4	38	35.76	35.76	37.77	34.77	25.282	38	1.227	3	4122.0
+strepto-c5	strepto-c5	C5H9N2	1	16	aug-cc-pVTZ	529	hf	ssr88	(8,8)	996	4	4	3	26	35.85	35.85	42.12	35.02	23.904	26	4.093	2	4251.0
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	rks			4	4	4	15	21.92	21.92	22.62	20.83	6.088	15		1	4920.6
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	reks22	(2,2)		4	4	4	11	19.37	19.37	19.99	18.42	9.597	11		3	5005.7
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	reks44	(4,4)		4	4	3	18	33.01	33.01	35.13	32.20	23.193	18		2	5045.4
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	reks66	(6,6)		4	4	3	24	73.11	73.11	75.80	72.16	62.844	24		4	5006.3
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	reks88	(8,8)		4	4	1	34	223.27	223.27	242.58	221.97	211.998	34		4	5060.1
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	tda020		20	4	4	4	15	137.77	137.77	145.35	19.73	6.036	15		1	5326.9
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	ssr22	(2,2)	3	4	4	4	11	19.28	19.28	21.15	18.10	9.507	11	0.102	2	5002.0
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	ssr44	(4,4)	16	4	4	4	18	32.36	32.36	35.43	31.56	21.897	18	0.692	1	5051.8
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	ssr66	(6,6)	115	4	4	4	24	70.89	70.89	75.28	70.10	58.562	24	2.034	2	5052.4
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	bhhlyp	ssr88	(8,8)	996	4	4	2	34	233.19	233.19	255.14	231.84	207.685	34	13.853	1	5189.2
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	rks			4	4	4	17	21.16	21.16	21.53	19.61	4.624	17		3	4847.8
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	reks22	(2,2)		4	4	4	15	16.32	16.32	17.45	15.53	6.871	15		1	4887.3
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	reks44	(4,4)		4	4	4	19	21.62	21.62	23.90	20.81	12.338	19		2	4882.4
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	reks66	(6,6)		4	4	4	23	28.16	28.16	32.61	27.31	18.519	23		2	4888.6
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	reks88	(8,8)		4	4	4	27	39.02	39.02	41.97	38.07	28.858	27		1	4992.5
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	tda020		20	4	4	4	17	111.96	111.96	125.63	18.85	4.543	17		4	4898.8
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	ssr22	(2,2)	3	4	4	4	15	16.41	16.41	17.57	15.06	6.647	15	0.093	4	4883.3
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	ssr44	(4,4)	16	4	4	1	19	23.85	23.85	25.40	23.03	13.638	19	0.535	1	4880.8
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	ssr66	(6,6)	115	4	4	1	23	31.45	31.45	33.11	30.66	20.185	23	1.454	2	4886.6
+diketopyrrolopyrrole	diketopyrrolopyrrole	C6H4N2O2	0	14	aug-cc-pVTZ	552	hf	ssr88	(8,8)	996	4	4	4	27	44.61	44.61	47.53	43.67	29.818	27	4.139	2	5104.3
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	rks			4	4	2	16	26.54	26.54	32.59	25.37	8.674	16		1	7363.5
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	reks22	(2,2)		4	4	4	11	26.29	26.29	28.30	25.63	15.184	11		3	7520.3
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	reks44	(4,4)		4	4	4	17	44.71	44.71	47.61	44.06	33.807	17		2	7519.9
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	reks66	(6,6)		4	4	2	19	88.24	88.24	95.97	87.45	76.883	19		4	7487.7
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	reks88	(8,8)		4	4	3	19	200.82	200.82	220.31	199.49	186.642	19		4	7560.0
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	tda020		20	4	4	2	16	189.87	189.87	201.26	25.39	9.034	16		4	7653.3
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	ssr22	(2,2)	3	4	4	4	11	25.98	25.98	29.03	24.94	14.529	11	0.157	1	7572.1
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	ssr44	(4,4)	16	4	4	2	17	45.55	45.55	52.11	44.90	33.271	17	0.954	1	7521.3
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	ssr66	(6,6)	115	4	4	2	19	90.75	90.75	94.29	89.95	76.209	19	2.850	2	7486.3
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	bhhlyp	ssr88	(8,8)	996	4	4	2	20	219.32	219.32	242.75	218.51	191.798	20	15.195	1	7765.0
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	rks			4	4	4	14	22.31	22.31	26.83	20.93	4.851	14		3	7296.9
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	reks22	(2,2)		4	4	4	14	21.09	21.09	24.68	20.44	10.305	14		2	7345.6
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	reks44	(4,4)		4	4	4	16	27.45	27.45	31.19	26.80	16.458	16		2	7350.4
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	reks66	(6,6)		4	4	4	17	32.24	32.24	39.20	31.50	21.491	17		1	7352.9
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	reks88	(8,8)		4	4	2	21	48.14	48.14	52.70	47.49	36.894	21		4	7378.8
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	tda020		20	4	4	4	14	159.56	159.56	175.91	20.28	5.024	14		3	7299.9
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	ssr22	(2,2)	3	4	4	2	14	21.18	21.18	23.88	19.99	9.917	14	0.163	2	7356.3
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	ssr44	(4,4)	16	4	4	4	16	28.33	28.33	30.65	27.69	16.869	16	0.883	3	7349.0
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	ssr66	(6,6)	115	4	4	4	17	36.92	36.92	37.89	36.28	23.45	17	2.445	3	7350.3
+naphthalene	naphthalene	C10H8	0	18	aug-cc-pVTZ	644	hf	ssr88	(8,8)	996	4	4	4	21	52.47	52.47	56.42	51.67	35.745	21	4.903	3	7539.1
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	rks			4	4	3	19	33.10	33.10	39.72	31.62	11.308	19		3	7959.8
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	reks22	(2,2)		4	4	3	19	38.24	38.24	42.11	37.60	26.257	19		1	8141.6
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	reks44	(4,4)		4	4	3	20	56.98	56.98	60.72	56.20	45.159	20		3	8138.6
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	reks66	(6,6)		4	4	3	39	184.53	184.53	204.31	183.90	171.648	39		4	8085.2
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	reks88	(8,8)		4	4	4	50	572.16	572.16	638.63	570.86	555.484	50		2	8144.9
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	tda020		20	4	4	2	19	212.22	212.22	223.89	36.05	11.878	19		4	8215.1
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	ssr22	(2,2)	3	4	4	3	19	38.11	38.11	42.82	37.03	25.947	19	0.174	1	8138.2
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	ssr44	(4,4)	16	4	4	3	20	55.77	55.77	63.67	55.13	43.532	20	1.126	4	8137.9
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	ssr66	(6,6)	115	4	4	3	39	197.65	197.65	206.83	196.80	181.468	39	3.370	4	8147.2
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	bhhlyp	ssr88	(8,8)	996	4	4	2	50	578.39	578.39	621.87	577.13	543.917	50	17.198	2	8304.6
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	rks			4	4	3	17	27.19	27.19	31.84	25.59	6.911	17		1	7927.5
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	reks22	(2,2)		4	4	3	18	25.53	25.53	29.04	24.90	13.68	18		4	7967.1
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	reks44	(4,4)		4	4	3	20	33.27	33.27	37.34	32.62	21.697	20		2	7941.0
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	reks66	(6,6)		4	4	3	34	60.46	60.46	68.52	59.65	47.916	34		2	7971.6
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	reks88	(8,8)		4	4	3	56	235.17	235.17	259.96	234.15	99.438	56		1	8060.6
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	tda020		20	4	4	3	17	178.70	178.70	192.12	24.06	6.196	17		1	7980.7
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	ssr22	(2,2)	3	4	4	3	18	25.74	25.74	30.33	24.56	13.308	18	0.180	4	7965.2
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	ssr44	(4,4)	16	4	4	3	20	33.33	33.33	38.61	32.65	20.908	20	1.102	1	7936.6
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	ssr66	(6,6)	115	4	4	4	34	67.02	67.02	71.62	66.07	49.676	34	2.403	2	8017.8
+dimethylaniline	dimethylaniline	C8H11N	0	20	aug-cc-pVTZ	667	hf	ssr88	(8,8)	996	4	4	3	56	232.09	232.09	250.18	231.07	99.772	56	5.614	2	8165.0
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	rks			4	4	2	31	64.60	64.60	65.65	62.65	23.096	31		3	9487.2
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	reks22	(2,2)		4	4	2	23	54.41	54.41	58.96	53.36	36.832	23		2	9667.8
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	reks44	(4,4)		4	4	4	39	222.39	222.39	254.71	221.57	94.877	39		2	9664.3
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	reks66	(6,6)		4	4	3	38	589.67	589.67	753.66	571.96	192.845	38		3	9670.1
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	reks88	(8,8)		4	4	1	75	1364.20	1364.20	1917.69	1362.82	911.129	75		1	9636.7
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	tda020		20	4	4	2	31	286.86	286.86	296.14	61.28	22.732	31		2	9537.3
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	ssr22	(2,2)	3	4	4	4	23	55.05	55.05	56.87	53.83	37.982	23	0.190	1	9672.1
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	ssr44	(4,4)	16	4	4	1	39	231.85	231.85	244.84	231.03	98.919	39	1.138	2	9669.0
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	ssr66	(6,6)	115	4	4	3	41	221.89	221.89	239.29	220.18	198.488	41	3.751	2	9749.5
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	bhhlyp	ssr88	(8,8)	996	4	4	2	89	1551.09	1551.09	2059.18	1549.76	1060.48	89	21.207	3	9831.5
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	rks			4	4	2	17	37.98	37.98	39.08	36.10	8.217	17		3	9428.3
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	reks22	(2,2)		4	4	2	22	57.72	57.72	62.88	56.89	20.367	22		3	9542.8
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	reks44	(4,4)		4	4	2	40	123.63	123.63	128.72	122.53	51.031	40		4	9491.2
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	reks66	(6,6)		4	4	2	81	272.01	272.01	296.07	270.66	145.435	81		3	9494.7
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	reks88	(8,8)		4	4	2	44	314.40	314.40	369.48	312.99	100.673	44		1	9509.5
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	tda020		20	4	4	4	17	225.66	225.66	236.90	34.94	8.013	17		2	9430.8
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	ssr22	(2,2)	3	4	4	3	22	55.61	55.61	60.27	54.33	18.535	22	0.181	1	9490.6
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	ssr44	(4,4)	16	4	4	3	40	126.60	126.60	133.92	125.69	52.901	40	1.122	1	9488.0
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	ssr66	(6,6)	115	4	4	4	81	275.96	275.96	295.75	274.60	146.191	81	2.993	4	9491.0
+twisted-n-phenylpyrrole	twisted-n-phenylpyrrole	C10H9N	0	20	aug-cc-pVTZ	713	hf	ssr88	(8,8)	996	4	3	1	44	302.10	302.10	360.14	300.77	92.028	44	5.325	4	9658.6
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	rks			4	4	4	21	45.85	45.85	53.02	44.46	16.006	21		2	10282.4
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	reks22	(2,2)		4	4	2	15	42.18	42.18	45.65	41.54	26.866	15		1	10414.2
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	reks44	(4,4)		4	4	2	21	73.55	73.55	77.39	72.75	57.945	21		3	10468.8
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	reks66	(6,6)		4	4	2	21	128.90	128.90	138.06	127.91	113.876	21		2	10429.9
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	reks88	(8,8)		4	4	3	39	513.72	513.72	529.73	511.89	493.404	39		3	10418.3
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	tda020		20	4	4	3	21	295.37	295.37	303.40	48.39	16.766	21		2	10237.6
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	ssr22	(2,2)	3	4	4	2	15	41.83	41.83	47.54	40.79	26.282	15	0.196	3	10420.9
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	ssr44	(4,4)	16	4	4	2	21	75.21	75.21	83.29	74.57	58.019	21	1.490	3	10422.4
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	ssr66	(6,6)	115	4	4	4	21	134.47	134.47	146.96	133.65	114.633	21	3.773	4	10426.8
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	bhhlyp	ssr88	(8,8)	996	4	4	1	39	513.42	513.42	565.02	511.96	473.3	39	18.707	3	10634.8
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	rks			4	4	4	17	33.96	33.96	42.29	32.27	8.821	17		2	10228.3
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	reks22	(2,2)		4	4	2	26	41.85	41.85	44.73	41.14	25.648	26		2	10237.1
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	reks44	(4,4)		4	4	2	20	44.41	44.41	50.14	43.49	28.594	20		1	10246.4
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	reks66	(6,6)		4	4	2	34	82.80	82.80	86.82	81.92	66.501	34		3	10287.1
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	reks88	(8,8)		4	4	2	36	104.89	104.89	117.39	103.44	87.422	36		1	10285.9
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	tda020		20	4	4	2	17	262.98	262.98	275.54	31.73	9.021	17		1	10179.9
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	ssr22	(2,2)	3	4	4	2	26	41.43	41.43	48.22	40.31	25.425	26	0.226	4	10254.6
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	ssr44	(4,4)	16	4	4	3	20	47.92	47.92	49.81	47.10	28.632	20	1.128	3	10244.3
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	ssr66	(6,6)	115	4	4	3	34	87.18	87.18	90.25	85.90	64.348	34	3.573	3	10284.4
+tdmabn	tdmabn	C9H10N2	0	21	aug-cc-pVTZ	736	hf	ssr88	(8,8)	996	4	4	4	36	113.48	113.48	117.17	112.47	88.788	36	7.077	1	10445.6
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	rks			4	4	2	20	59.59	59.59	61.86	57.77	20.02	20		3	11828.3
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	reks22	(2,2)		4	4	4	14	52.58	52.58	53.29	51.51	30.956	14		2	12028.2
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	reks44	(4,4)		4	4	1	23	92.81	92.81	96.62	91.95	70.747	23		3	12077.3
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	reks66	(6,6)		4	4	2	37	250.85	250.85	267.44	249.74	227.322	37		3	12077.4
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	reks88	(8,8)		4	4	4	43	640.36	640.36	684.07	638.62	615.542	43		2	12124.3
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	tda020		20	4	4	2	20	350.81	350.81	357.11	56.37	19.403	20		4	11878.1
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	ssr22	(2,2)	3	4	4	2	14	52.43	52.43	53.97	51.17	30.516	14	0.245	2	12077.0
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	ssr44	(4,4)	16	4	4	1	23	97.01	97.01	99.12	96.04	73.466	23	1.591	3	12080.6
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	ssr66	(6,6)	115	4	4	4	37	248.42	248.42	263.34	247.10	220.52	37	4.210	2	12082.5
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	bhhlyp	ssr88	(8,8)	996	4	4	4	62	938.51	938.51	1016.60	937.18	889.248	62	22.337	4	12198.3
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	rks			4	4	3	17	48.36	48.36	50.33	46.09	11.405	17		2	11824.7
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	reks22	(2,2)		4	4	3	19	45.44	45.44	47.25	44.04	23.352	19		2	11851.5
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	reks44	(4,4)		4	4	1	24	62.68	62.68	64.81	61.71	41.49	24		2	11847.5
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	reks66	(6,6)		4	4	1	26	193.50	193.50	205.93	192.49	62.862	26		2	11851.1
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	reks88	(8,8)		4	4	1	39	131.45	131.45	144.38	129.81	107.823	39		3	11905.1
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	tda020		20	4	4	3	17	314.53	314.53	324.39	45.11	11.591	17		4	11781.1
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	ssr22	(2,2)	3	4	4	3	19	44.63	44.63	46.07	43.37	23.206	19	0.232	1	11903.4
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	ssr44	(4,4)	16	4	4	4	24	63.79	63.79	69.65	62.98	40.861	24	1.320	3	11844.8
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	ssr66	(6,6)	115	4	4	4	26	189.84	189.84	209.15	188.86	59.378	26	3.516	3	11851.2
+nitrodimethylaniline	nitrodimethylaniline	C8H10N2O2	0	22	aug-cc-pVTZ	782	hf	ssr88	(8,8)	996	4	4	3	90	306.65	306.65	330.68	305.26	254.281	90	7.421	3	12008.9
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	rks			4	4	1	20	85.41	85.41	99.75	83.06	33.609	20		1	15907.7
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	reks22	(2,2)		4	4	1	12	71.82	71.82	78.12	70.95	40.859	12		4	16081.4
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	reks44	(4,4)		4	4	1	18	116.31	116.31	128.80	115.26	85.608	18		3	16123.7
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	reks66	(6,6)		4	4	1	49	438.45	438.45	460.30	436.96	404.078	49		3	16245.7
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	reks88	(8,8)		4	3	1	35	2715.75	2715.75	3999.70	2714.22	662.389	35		2	16248.7
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	tda020		20	4	4	1	20	558.92	558.92	582.02	83.00	35.691	20		2	16365.0
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	ssr22	(2,2)	3	4	4	1	12	71.99	71.99	77.34	70.88	40.612	12	0.413	1	16122.0
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	ssr44	(4,4)	16	4	4	1	18	120.35	120.35	125.06	119.22	86.667	18	2.449	3	16123.9
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	ssr66	(6,6)	115	4	4	2	49	445.51	445.51	483.42	443.63	397.689	49	6.508	3	16245.2
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	bhhlyp	ssr88	(8,8)	996	4	4	1	141	2972.20	2972.20	3185.40	2971.10	2503.428	141	27.740	1	16283.7
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	rks			4	4	1	20	80.38	80.38	92.98	78.44	29.931	20		2	15867.0
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	reks22	(2,2)		4	4	1	12	56.51	56.51	64.88	55.68	26.665	12		4	15973.3
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	reks44	(4,4)		4	4	1	16	76.32	76.32	84.22	75.64	46.867	16		2	15977.0
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	reks66	(6,6)		4	3	1	63	258.58	258.58	456.05	257.14	223.165	63		3	15978.6
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	reks88	(8,8)		4	4	3	91	463.07	463.07	704.47	461.44	417.094	91		4	15970.9
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	tda020		20	4	4	1	20	546.30	546.30	562.03	77.57	31.021	20		4	15858.7
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	ssr22	(2,2)	3	4	4	1	12	55.27	55.27	62.51	54.13	26.072	12	0.377	1	15968.1
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	ssr44	(4,4)	16	4	4	1	16	78.01	78.01	87.55	77.35	46.573	16	1.979	4	15968.2
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	ssr66	(6,6)	115	4	4	4	79	331.90	331.90	583.73	330.94	282.892	79	4.776	3	15957.2
+zethrene	zethrene	C24H14	0	38	cc-pVTZ	916	hf	ssr88	(8,8)	996	4	4	3	88	460.25	460.25	756.15	458.95	402.402	88	11.782	2	16129.9
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	rks			4	4	3	22	159.99	159.99	163.24	157.65	62.647	22		1	21785.1
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	reks22	(2,2)		4	4	2	11	108.36	108.36	109.14	107.03	56.634	11		1	22078.6
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	reks44	(4,4)		4	4	4	15	157.42	157.42	162.07	156.18	104.284	15		1	22017.5
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	reks66	(6,6)		4	4	4	33	422.03	422.03	514.05	419.35	364.351	33		1	22210.0
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	reks88	(8,8)		4	4	4	47	1204.51	1204.51	3119.17	1202.38	1145.125	47		4	22205.5
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	tda020		20	4	4	4	22	881.82	881.82	922.63	156.11	64.013	22		1	22997.3
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	ssr22	(2,2)	3	4	4	2	11	108.40	108.40	109.92	107.11	56.803	11	0.515	1	22017.5
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	ssr44	(4,4)	16	4	4	3	15	157.97	157.97	160.13	156.72	102.444	15	3.102	1	22067.2
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	ssr66	(6,6)	115	4	4	3	33	446.17	446.17	517.90	444.25	380.761	33	8.198	3	22215.6
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	bhhlyp	ssr88	(8,8)	996	4	4	3	62	2629.61	2629.61	2779.90	2627.67	1455.274	62	34.552	1	22363.0
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	rks			4	4	2	23	155.64	155.64	157.68	153.12	58.221	23		3	21686.9
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	reks22	(2,2)		4	4	3	13	97.98	97.98	98.92	96.43	45.819	13		1	21857.3
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	reks44	(4,4)		4	4	4	14	115.85	115.85	121.25	114.50	65.104	14		4	21848.6
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	reks66	(6,6)		4	4	3	52	351.45	351.45	479.27	349.49	293.334	52		1	21940.3
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	reks88	(8,8)		4	4	2	46	362.89	362.89	393.54	361.02	305.052	46		2	21947.6
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	tda020		20	4	4	1	23	901.57	901.57	924.08	151.51	58.394	23		3	21868.2
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	ssr22	(2,2)	3	4	4	2	13	98.53	98.53	99.20	97.30	45.677	13	0.482	2	21859.8
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	ssr44	(4,4)	16	4	4	2	14	117.37	117.37	119.96	116.34	63.23	14	2.832	3	21858.8
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	ssr66	(6,6)	115	4	4	4	142	941.74	941.74	1021.94	940.32	802.516	142	6.934	3	21853.2
+heptazethrene	heptazethrene	C28H16	0	44	cc-pVTZ	1064	hf	ssr88	(8,8)	996	4	4	4	102	993.92	993.92	1156.11	992.57	725.887	102	16.098	4	22018.8
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	rks			4	4	3	29	280.40	280.40	285.45	277.92	121.224	29		4	28367.3
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	reks22	(2,2)		4	4	4	12	158.98	158.98	162.99	157.60	83.278	12		1	28619.2
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	reks44	(4,4)		4	4	3	14	204.67	204.67	208.29	203.32	127.672	14		2	28671.8
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	reks66	(6,6)		4	4	2	18	341.66	341.66	355.87	340.48	263.5	18		3	28667.7
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	reks88	(8,8)		4	4	1	41	1256.03	1256.03	1512.77	1253.96	1170.496	41		1	28851.2
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	tda020		20	4	4	1	29	1367.50	1367.50	1379.14	275.67	121.935	29		1	30366.3
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	ssr22	(2,2)	3	4	4	1	12	160.92	160.92	162.39	159.70	81.828	12	0.616	3	28677.9
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	ssr44	(4,4)	16	4	4	1	14	208.92	208.92	212.28	207.61	127.823	14	4.021	2	28669.2
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	ssr66	(6,6)	115	4	4	4	18	348.42	348.42	357.75	347.05	260.959	18	9.491	1	28667.3
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	bhhlyp	ssr88	(8,8)	996	4	4	1	97	3590.36	3590.36	3658.37	3589.18	2873.947	97	43.667	2	28787.5
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	rks			4	4	3	25	242.44	242.44	243.67	239.32	95.518	25		1	28310.8
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	reks22	(2,2)		4	4	2	13	141.78	141.78	144.08	140.34	65.493	13		4	28469.9
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	reks44	(4,4)		4	4	4	14	165.60	165.60	171.01	164.21	90.438	14		1	28520.1
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	reks66	(6,6)		4	4	3	25	270.93	270.93	283.97	269.37	192.162	25		2	28535.7
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	reks88	(8,8)		4	4	1	48	525.36	525.36	544.67	523.97	441.376	48		4	28522.3
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	tda020		20	4	4	3	25	1375.25	1375.25	1381.67	234.27	94.025	25		4	29069.9
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	ssr22	(2,2)	3	4	4	4	13	141.74	141.74	146.64	140.58	65.526	13	0.641	3	28483.4
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	ssr44	(4,4)	16	4	4	3	14	169.36	169.36	173.91	167.93	89.025	14	3.660	3	28477.8
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	ssr66	(6,6)	115	4	4	4	25	274.07	274.07	288.83	272.77	186.236	25	8.414	1	28488.5
+octazethrene	octazethrene	C32H18	0	50	cc-pVTZ	1212	hf	ssr88	(8,8)	996	4	4	1	48	543.09	543.09	568.99	541.74	439.078	48	18.999	4	28654.0
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	rks			4	4	2	26	428.91	428.91	441.67	425.69	191.842	26		3	48862.2
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	reks22	(2,2)		4	4	2	12	259.29	259.29	270.22	257.91	140.609	12		3	49262.7
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	reks44	(4,4)		4	4	3	14	333.89	333.89	349.59	332.70	215.337	14		1	49323.7
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	reks66	(6,6)		4	4	2	40	1020.13	1020.13	1098.04	1017.89	892.945	40		4	49479.8
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	reks88	(8,8)		4	4	2	50	2328.45	2328.45	5133.86	2327.10	2197.173	50		2	49326.9
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	tda020		20	4	4	3	26	2399.24	2399.24	2508.89	416.37	189.412	26		4	51037.7
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	ssr22	(2,2)	3	4	4	3	12	262.50	262.50	268.81	261.05	141.831	12	1.019	1	49319.8
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	ssr44	(4,4)	16	4	4	3	14	339.09	339.09	357.85	337.66	213.284	14	6.509	4	49261.7
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	ssr66	(6,6)	115	4	4	3	81	2140.38	2140.38	2286.00	2139.21	1848.842	81	15.811	4	49265.2
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	bhhlyp	ssr88	(8,8)	996	4	4	2	56	2554.92	2554.92	4440.17	2553.50	2361.464	56	56.474	4	49428.3
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	rks			4	4	3	29	441.68	441.68	450.70	438.40	191.58	29		2	48759.5
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	reks22	(2,2)		4	4	1	14	240.84	240.84	252.39	239.49	124.469	14		1	49044.6
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	reks44	(4,4)		4	4	1	14	274.30	274.30	281.94	272.97	158.29	14		3	49045.3
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	reks66	(6,6)		4	4	2	58	904.14	904.14	935.34	902.81	773.704	58		3	49083.2
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	reks88	(8,8)		4	4	3	51	932.91	932.91	958.52	929.49	797.999	51		1	49211.1
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	tda020		20	4	4	1	29	2482.45	2482.45	2589.18	433.42	192.742	29		1	49094.5
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	ssr22	(2,2)	3	4	4	1	14	243.52	243.52	251.54	242.07	124.294	14	1.093	2	49042.8
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	ssr44	(4,4)	16	4	4	2	14	282.99	282.99	293.60	281.63	156.552	14	6.601	3	49088.9
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	ssr66	(6,6)	115	4	4	1	58	945.72	945.72	981.59	944.37	799.63	58	14.588	3	49039.4
+super-heptazethrene	super-heptazethrene	C40H18	0	58	cc-pVTZ	1452	hf	ssr88	(8,8)	996	4	1	4	103	2296.03	2296.03	2296.03	2294.65	1680.875	103	30.678	3	49201.3
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	rks			4	4	4	25	628.37	628.37	640.56	624.61	286.967	25		3	59807.7
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	reks22	(2,2)		4	4	1	13	397.78	397.78	412.64	396.52	226.581	13		2	58217.5
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	reks44	(4,4)		4	4	3	14	476.27	476.27	488.34	475.10	303.097	14		2	58264.0
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	reks66	(6,6)		4	4	3	21	836.39	836.39	878.12	835.05	658.94	21		3	58323.6
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	reks88	(8,8)		4	4	3	23	1437.49	1437.49	1632.29	1435.20	1257.764	23		2	58434.3
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	tda020		20	4	4	3	25	3679.85	3679.85	3841.88	617.19	287.917	25		2	68727.3
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	ssr22	(2,2)	3	4	4	3	13	403.77	403.77	416.06	402.66	227.217	13	1.519	4	58273.0
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	ssr44	(4,4)	16	4	4	3	14	487.27	487.27	512.05	485.95	302.864	14	9.022	2	58268.0
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	ssr66	(6,6)	115	4	4	2	21	869.98	869.98	890.13	868.52	666.057	21	21.232	2	58370.4
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	bhhlyp	ssr88	(8,8)	996	4	4	4	103	6022.58	6022.58	10063.10	6021.26	5730.502	103	73.894	2	58446.6
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	rks			4	4	4	28	656.11	656.11	671.25	652.32	297.617	28		1	59106.4
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	reks22	(2,2)		4	4	4	15	377.85	377.85	393.02	376.46	205.581	15		4	59412.2
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	reks44	(4,4)		4	4	1	15	421.56	421.56	444.24	420.42	249.85	15		1	59409.5
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	reks66	(6,6)		4	4	2	19	551.74	551.74	560.38	550.35	374.8	19		1	59448.0
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	reks88	(8,8)		4	4	3	38	1051.12	1051.12	1097.18	1048.78	868.477	38		3	59625.4
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	tda020		20	4	4	4	28	3843.32	3843.32	3927.22	646.63	298.994	28		1	66757.0
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	ssr22	(2,2)	3	4	4	1	15	382.07	382.07	391.96	380.81	205.545	15	1.352	1	59456.1
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	ssr44	(4,4)	16	4	4	4	15	429.63	429.63	445.91	428.24	249.231	15	7.822	2	59405.2
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	ssr66	(6,6)	115	4	4	1	19	582.23	582.23	595.22	580.87	383.775	19	20.664	2	59444.3
+super-octazethrene	super-octazethrene	C46H20	0	66	cc-pVTZ	1660	hf	ssr88	(8,8)	996	4	4	3	78	2414.92	2414.92	2868.71	2413.56	1801.14	78	43.031	1	59577.5
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	rks			4	4	4	32	839.30	839.30	976.28	835.45	421.907	32		4	72535.2
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	reks22	(2,2)		4	4	4	10	402.69	402.69	475.14	401.29	203.887	10		1	68480.4
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	reks44	(4,4)		4	4	4	12	515.00	515.00	600.06	513.55	322.173	12		1	68596.1
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	reks66	(6,6)		4	4	4	13	688.48	688.48	833.05	687.14	496.241	13		4	68956.7
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	reks88	(8,8)		4	4	4	15	1226.34	1226.34	1357.25	1225.05	1031.657	15		4	69693.6
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	tda020		20	4	4	4	32	6263.93	6263.93	6730.89	829.59	422.574	32		3	79904.5
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	ssr22	(2,2)	3	4	4	4	10	399.43	399.43	479.47	398.00	204.539	10	1.652	4	68270.2
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	ssr44	(4,4)	16	4	4	2	12	531.41	531.41	597.49	530.19	328.831	12	11.142	4	68545.0
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	ssr66	(6,6)	115	4	4	4	13	722.36	722.36	815.42	721.17	497.525	13	32.154	2	69059.0
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	bhhlyp	ssr88	(8,8)	996	4	4	4	15	1354.31	1354.31	1474.31	1352.85	1073.95	15	83.273	2	69844.6
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	rks			4	4	4	19	558.31	558.31	635.02	554.06	239.37	19		1	69583.9
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	reks22	(2,2)		4	4	4	12	389.43	389.43	420.91	388.01	194.248	12		1	65455.2
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	reks44	(4,4)		4	4	4	12	434.81	434.81	497.44	433.30	244.46	12		1	65457.4
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	reks66	(6,6)		4	4	4	13	496.63	496.63	577.27	495.41	308.715	13		2	65458.9
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	reks88	(8,8)		4	4	4	14	581.90	581.90	673.83	580.52	390.655	14		4	65466.7
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	tda020		20	4	4	4	19	4619.61	4619.61	4904.98	541.81	235.001	19		4	79242.4
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	ssr22	(2,2)	3	4	4	4	12	380.62	380.62	452.50	379.33	187.121	12	1.643	1	65461.1
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	ssr44	(4,4)	16	4	4	2	12	452.57	452.57	512.29	451.31	245.823	12	10.817	2	65507.3
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	ssr66	(6,6)	115	4	4	4	13	537.19	537.19	580.63	535.81	316.674	13	28.753	4	65450.5
+pentacene-dimer	pentacene-dimer	C44H28	0	72	cc-pVTZ	1712	hf	ssr88	(8,8)	996	4	4	4	14	629.21	629.21	747.10	627.88	388.329	14	47.163	3	65689.2
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	rks			4	4	2	86	2453.67	2453.67	2642.63	2449.49	1389.357	86		2	73184.5
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	reks22	(2,2)		4	4	2	13	552.41	552.41	573.71	551.06	310.198	13		4	72464.1
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	reks44	(4,4)		4	4	2	16	723.45	723.45	788.57	722.30	478.695	16		2	72682.6
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	reks66	(6,6)		4	4	2	18	978.35	978.35	1043.75	977.08	732.479	18		4	73052.0
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	reks88	(8,8)		4	4	2	48	3536.30	3536.30	7693.58	3531.43	3268.984	48		4	74088.6
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	tda020		20	4	4	1	87	9014.54	9014.54	9410.19	2430.54	1373.996	87		4	81141.7
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	ssr22	(2,2)	3	4	4	1	13	550.78	550.78	623.06	549.50	305.0	13	1.892	4	72506.0
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	ssr44	(4,4)	16	4	4	1	16	722.19	722.19	777.84	720.79	464.821	16	10.955	1	72678.0
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	ssr66	(6,6)	115	4	4	1	18	1005.87	1005.87	1047.98	1004.48	730.789	18	26.413	1	73058.6
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	bhhlyp	ssr88	(8,8)	996	4	1	1	47	3634.71	3634.71	3634.71	3632.09	3292.502	47	79.358	3	74208.9
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	rks			4	4	1	32	1023.90	1023.90	1111.08	1019.50	486.308	32		4	73951.0
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	reks22	(2,2)		4	4	1	16	547.50	547.50	568.93	546.20	301.072	16		2	69133.6
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	reks44	(4,4)		4	4	1	18	662.33	662.33	684.05	660.90	415.729	18		1	69356.1
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	reks66	(6,6)		4	4	1	21	820.92	820.92	843.65	819.71	576.877	21		1	69555.5
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	reks88	(8,8)		4	4	1	36	1345.67	1345.67	1516.33	1342.93	1085.502	36		2	70072.3
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	tda020		20	4	4	1	32	5667.05	5667.05	5813.36	1010.63	488.246	32		4	82504.5
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	ssr22	(2,2)	3	4	4	1	16	547.17	547.17	634.90	545.78	301.793	16	1.899	2	69132.2
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	ssr44	(4,4)	16	4	4	2	18	669.02	669.02	701.04	667.89	416.224	18	10.618	2	69330.3
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	ssr66	(6,6)	115	4	4	2	21	833.18	833.18	898.49	831.85	561.021	21	23.801	4	69554.6
+super-nonazethrene	super-nonazethrene	C52H22	0	74	cc-pVTZ	1868	hf	ssr88	(8,8)	996	4	2	2	145	5724.19	5724.19	5843.96	5723.08	4492.612	145	49.430	3	70300.6

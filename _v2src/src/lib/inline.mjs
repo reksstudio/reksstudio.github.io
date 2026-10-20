@@ -51,6 +51,9 @@ function noMath(s) {
 const NNBSP = String.fromCodePoint(0x202f);
 export const fmtCount = (n, sep = NNBSP) => n.toLocaleString('en-US').replaceAll(',', sep);
 
+// "C28H16" -> "C_{28}H_{16}"
+export const formulaMarkup = (f) => f.replace(/(\d+)/g, '_{$1}');
+
 // Markup -> HTML; quotes stay literal
 export function toHtml(s) {
   noMath(s);

@@ -441,54 +441,453 @@ TC, closed shell, def2-TZVP, 1260 basis functions
 
 Paper v1: 16 molecules, 322–1868 basis functions (9 aug-cc-pVTZ, 7 cc-pVTZ); single points; RKS / RHF references and 20-state TDA from SAD, SA-REKS and SSR from the converged reference orbitals (untimed); Intel Xeon E5-2697 v3 (Haswell), 28 threads.
 
+### Ground state: whole SCF run
+
+Whole run of the SCF job, SA-REKS over the reference, median over 16 molecules, (2,2) to (8,8): BH\&HLYP 0.86–10.47; HF 0.80–2.25. Below parity at (2,2): 12 of 16 with BH\&HLYP, 14 with HF; at (8,8): 0 of 16 with BH\&HLYP, 0 with HF.
+
+* SA-REKS(2,2)
+* SA-REKS(4,4)
+* SA-REKS(6,6)
+* SA-REKS(8,8)
+* parity
+
+BH\&HLYP: SA-REKS / RKS
+
+median, 16 molecules: (2,2) 0.86 · (4,4) 1.53 · (6,6) 3.33 · (8,8) 10.47
+
+BH\&HLYP: SA-REKS / RKS, whole SCF run, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 0.86, (4,4) 1.53, (6,6) 3.33, (8,8) 10.47
+
+HF: SA-REKS / RHF
+
+median, 16 molecules: (2,2) 0.80 · (4,4) 1.03 · (6,6) 2.14 · (8,8) 2.25
+
+HF: SA-REKS / RHF, whole SCF run, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 0.80, (4,4) 1.03, (6,6) 2.14, (8,8) 2.25
+
+Fig. B1. Whole run of the SCF job, SA-REKS over the reference (RKS for BH\&HLYP, RHF for HF), per molecule; log–log; dashed: parity. SA-REKS reads the converged reference orbitals (seed run not timed); reference from SAD. Fastest converged repeat. Each point opens its molecule card.
+
 ### One Fock build
 
-Per Fock build, SA-REKS over the reference, median over the six largest molecules: BH\&HLYP 1.57–5.59, HF 1.30–2.29.
+Per Fock build, SA-REKS over the reference, median over the 6 largest molecules (1064–1868 basis functions), (2,2) to (8,8): BH\&HLYP 1.57–5.59; HF 1.30–2.29.
 
-| Functional | (2,2) | (4,4) | (6,6) | (8,8) |
-| - | - | - | - | - |
-| HF | 1.30 | 1.65 | 1.95 | 2.29 |
-| BH\&HLYP | 1.57 | 2.06 | 2.96 | 5.59 |
+* SA-REKS(2,2)
+* SA-REKS(4,4)
+* SA-REKS(6,6)
+* SA-REKS(8,8)
+* parity
 
-| SCF iterations, median | Reference | (2,2) | (4,4) | (6,6) | (8,8) |
+BH\&HLYP: SA-REKS / RKS
+
+median, 16 molecules: (2,2) 2.15 · (4,4) 3.12 · (6,6) 6.29 · (8,8) 14.83
+
+BH\&HLYP: SA-REKS / RKS, one Fock build, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 2.15, (4,4) 3.12, (6,6) 6.29, (8,8) 14.83
+
+HF: SA-REKS / RHF
+
+median, 16 molecules: (2,2) 1.76 · (4,4) 2.48 · (6,6) 3.21 · (8,8) 4.03
+
+HF: SA-REKS / RHF, one Fock build, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 1.76, (4,4) 2.48, (6,6) 3.21, (8,8) 4.03
+
+Fig. B2. Time of one Fock build, SA-REKS over the reference (RKS for BH\&HLYP, RHF for HF), per molecule; log–log; dashed: parity. Panel median over all 16 molecules. Each point opens its molecule card.
+
+| SCF iterations, median (range) | Reference | (2,2) | (4,4) | (6,6) | (8,8) |
 | - | - | - | - | - | - |
-| HF | 17 | 15 | 17.5 | 32 | 40 |
-| BH\&HLYP | 20.5 | 12.5 | 17.5 | 25 | 40.5 |
+| BH\&HLYP, RKS | 20.5 (13–86) | 12.5 (10–23) | 17.5 (12–39) | 25 (13–49) | 40.5 (15–75) |
+| HF, RHF | 17 (13–32) | 15 (12–26) | 17.5 (12–40) | 32 (13–81) | 40 (14–91) |
 
-SA-REKS(8,8) from RKS orbitals: median 40.5 SCF iterations; RKS from SAD: 20.5.
+BH\&HLYP, SA-REKS(8,8) from RKS orbitals: median 40.5 SCF iterations; RKS from SAD: 20.5.
 
-The per-build ratio stays far below the whole-SCF ratio; the whole-SCF ratio follows the iteration counts.
-
-Fitted exponent of the Fock-build time in the number of basis functions (log–log, all 16): HF reference 3.44, (2,2) 3.09, (4,4) 2.97, (6,6) 2.87, (8,8) 2.80; BH\&HLYP reference 2.99, (2,2) 2.68, (4,4) 2.52, (6,6) 2.22, (8,8) 1.97. The drop reflects the cache, not an improvement in scaling.
-
-### Ground state: whole SCF
-
-Whole SCF, SA-REKS / RKS, median: 0.86 at (2,2) to 10.47 at (8,8) with BH\&HLYP; 0.80 to 2.25 with HF (SA-REKS / RHF).
-
-| Functional | (2,2) | (4,4) | (6,6) | (8,8) |
-| - | - | - | - | - |
-| BH\&HLYP, SA-REKS / RKS | 0.86 | 1.53 | 3.33 | 10.47 |
-| HF, SA-REKS / RHF | 0.80 | 1.03 | 2.14 | 2.25 |
-| Iterations, BH\&HLYP (reference 20.5) | 12.5 | 17.5 | 25 | 40.5 |
+Fitted exponent k of the Fock-build time t ∝ N<sup>k</sup>, N basis functions (log–log least squares, all 16 molecules): BH\&HLYP RKS N<sup>2.99</sup>, (2,2) N<sup>2.68</sup>, (4,4) N<sup>2.52</sup>, (6,6) N<sup>2.22</sup>, (8,8) N<sup>1.97</sup>; HF RHF N<sup>3.44</sup>, (2,2) N<sup>3.09</sup>, (4,4) N<sup>2.97</sup>, (6,6) N<sup>2.87</sup>, (8,8) N<sup>2.80</sup>.
 
 ### Excited states
 
-Complete SSR over the complete 20-state TDA calculation, median; (8,8)/BH\&HLYP lies above parity on 14 of 16 molecules.
+Whole SSR run over the whole 20-state TDA run, median over 16 molecules, (2,2) to (8,8): BH\&HLYP 0.14–2.65 (TDDFT-TDA); HF 0.13–0.81 (CIS). Above parity at (8,8): 14 of 16 with BH\&HLYP, 5 with HF.
 
-| Functional | (2,2) | (4,4) | (6,6) | (8,8) |
-| - | - | - | - | - |
-| HF, SSR / CIS | 0.13 | 0.18 | 0.38 | 0.81 |
-| BH\&HLYP, SSR / TDDFT-TDA | 0.14 | 0.24 | 0.57 | 2.65 |
+* SSR(2,2), 3 states
+* SSR(4,4), 16 states
+* SSR(6,6), 115 states
+* SSR(8,8), 996 states
+* TDDFT-TDA | CIS: 20 states
+* parity
 
-SI step alone over the TDA response (TDA wall minus its SCF), median, (2,2), (4,4), (6,6), (8,8): HF 1/1105, 1/205, 1/70, 1/36; BH\&HLYP 1/1194, 1/190, 1/68, 1/13.
+BH\&HLYP: SSR / TDDFT-TDA
 
-![SSR against TDA: step and complete-calculation time ratios and peak memory against the number of basis functions](https://reksstudio.github.io/v2/figures/main/cost_excited.webp)
+median, 16 molecules: (2,2) 0.14 · (4,4) 0.24 · (6,6) 0.57 · (8,8) 2.65
 
-SSR against the TDA reference (CIS for HF, TDDFT-TDA for BH\&HLYP), and peak memory, against the number of basis functions. Source: paper v1, SI Fig. 7.
+BH\&HLYP: SSR / TDDFT-TDA, whole run, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 0.14, (4,4) 0.24, (6,6) 0.57, (8,8) 2.65
+
+HF: SSR / CIS
+
+median, 16 molecules: (2,2) 0.13 · (4,4) 0.18 · (6,6) 0.38 · (8,8) 0.81
+
+HF: SSR / CIS, whole run, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 0.13, (4,4) 0.18, (6,6) 0.38, (8,8) 0.81
+
+Fig. B3. Whole SSR run over the whole 20-state TDA run (TDDFT-TDA for BH\&HLYP, CIS for HF), per molecule; log–log; dashed: parity. SSR reads the converged reference orbitals (seed run not timed); TDA from SAD. Fastest converged repeat. Each point opens its molecule card.
+
+SI step alone over the TDA response (TDA wall minus its SCF wall), median, (2,2), (4,4), (6,6), (8,8): BH\&HLYP 1/1194, 1/190, 1/68, 1/13; HF 1/1105, 1/205, 1/70, 1/36.
 
 ### Memory
 
-Peak memory, SA-REKS over the reference, six largest molecules, median over spaces and functionals: SCF 1.01× (0.93–1.02), per space 1.00–1.01; SSR over TDA 0.93× (0.83–1.01).
+Peak memory, median over the 6 largest molecules, all active spaces and functionals: SA-REKS over the reference 1.01 (0.93–1.02), per space and functional 1.00–1.01; SSR over TDA 0.93 (0.83–1.01).
+
+### Molecules
+
+Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of that repeat; peak memory: lowest of the 4 repeats, GiB. Reference and TDA from SAD, SA-REKS and SSR from the converged reference orbitals (not timed).
+
+#### aug-cc-pVTZ: 9 molecules
+
+* ![acetone: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/acetone.svg)
+
+  acetone
+
+  C<sub>3</sub>H<sub>6</sub>O · 10 atoms · aug-cc-pVTZ · 322 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 6.38 | 14 | 1.6 | 5.85 | 14 | 1.4 |
+  | (2,2) | 7.19 | 15 | 1.6 | 4.88 | 16 | 1.4 |
+  | (4,4) | 12.4 | 22 | 1.5 | 6.05 | 19 | 1.4 |
+  | (6,6) | 25.5 | 26 | 1.5 | 9.24 | 30 | 1.4 |
+  | (8,8) | 151 | 35 | 1.7 | 22.3 | 73 | 1.4 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 29.0 | 14 | 2.0 | 22.4 | 14 | 1.4 |
+  | (2,2) 3 | 7.31 | 15 | 1.5 | 5.29 | 16 | 1.4 |
+  | (4,4) 16 | 12.2 | 22 | 1.5 | 6.25 | 19 | 1.4 |
+  | (6,6) 115 | 26.3 | 26 | 1.5 | 9.63 | 30 | 1.4 |
+  | (8,8) 996 | 158 | 35 | 2.0 | 24.6 | 73 | 1.6 |
+
+* ![cyclopentadiene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/cyclopentadiene.svg)
+
+  cyclopentadiene
+
+  C<sub>5</sub>H<sub>6</sub> · 11 atoms · aug-cc-pVTZ · 368 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 6.77 | 13 | 1.9 | 6.24 | 13 | 1.9 |
+  | (2,2) | 8.02 | 14 | 1.9 | 6.05 | 16 | 1.8 |
+  | (4,4) | 12.0 | 16 | 1.9 | 7.01 | 17 | 1.8 |
+  | (6,6) | 23.3 | 18 | 1.9 | 15.3 | 40 | 1.8 |
+  | (8,8) | 110 | 40 | 2.1 | 18.0 | 41 | 1.9 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 39.4 | 13 | 2.4 | 27.2 | 13 | 1.8 |
+  | (2,2) 3 | 8.19 | 14 | 1.9 | 5.97 | 16 | 1.8 |
+  | (4,4) 16 | 12.4 | 16 | 1.9 | 6.84 | 17 | 1.8 |
+  | (6,6) 115 | 24.6 | 18 | 1.9 | 15.7 | 40 | 1.8 |
+  | (8,8) 996 | 120 | 40 | 2.4 | 21.3 | 41 | 2.0 |
+
+* ![strepto-c5: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/strepto-c5.svg)
+
+  strepto-c5
+
+  C<sub>5</sub>H<sub>9</sub>N<sub>2</sub><sup>+</sup> · 16 atoms · aug-cc-pVTZ · 529 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 15.6 | 14 | 4.0 | 13.8 | 14 | 3.9 |
+  | (2,2) | 16.6 | 11 | 4.1 | 11.5 | 12 | 4.0 |
+  | (4,4) | 33.8 | 24 | 4.2 | 17.1 | 20 | 4.0 |
+  | (6,6) | 92.1 | 35 | 4.1 | 35.8 | 38 | 4.0 |
+  | (8,8) | 314 | 51 | 4.1 | 29.7 | 26 | 4.0 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 99.2 | 14 | 4.5 | 88.6 | 14 | 3.9 |
+  | (2,2) 3 | 15.6 | 11 | 4.1 | 12.1 | 12 | 4.0 |
+  | (4,4) 16 | 34.4 | 24 | 4.1 | 18.9 | 20 | 4.0 |
+  | (6,6) 115 | 94.0 | 35 | 4.1 | 35.8 | 38 | 4.0 |
+  | (8,8) 996 | 318 | 51 | 4.3 | 35.9 | 26 | 4.2 |
+
+* ![diketopyrrolopyrrole: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/diketopyrrolopyrrole.svg)
+
+  diketopyrrolopyrrole
+
+  C<sub>6</sub>H<sub>4</sub>N<sub>2</sub>O<sub>2</sub> · 14 atoms · aug-cc-pVTZ · 552 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 21.9 | 15 | 4.8 | 21.2 | 17 | 4.7 |
+  | (2,2) | 19.4 | 11 | 4.9 | 16.3 | 15 | 4.8 |
+  | (4,4) | 33.0 | 18 | 4.9 | 21.6 | 19 | 4.8 |
+  | (6,6) | 73.1 | 24 | 4.9 | 28.2 | 23 | 4.8 |
+  | (8,8) | 223 | 34 | 4.9 | 39.0 | 27 | 4.9 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 138 | 15 | 5.2 | 112 | 17 | 4.8 |
+  | (2,2) 3 | 19.3 | 11 | 4.9 | 16.4 | 15 | 4.8 |
+  | (4,4) 16 | 32.4 | 18 | 4.9 | 23.9 | 19 | 4.8 |
+  | (6,6) 115 | 70.9 | 24 | 4.9 | 31.4 | 23 | 4.8 |
+  | (8,8) 996 | 233 | 34 | 5.1 | 44.6 | 27 | 5.0 |
+
+* ![naphthalene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/naphthalene.svg)
+
+  naphthalene
+
+  C<sub>10</sub>H<sub>8</sub> · 18 atoms · aug-cc-pVTZ · 644 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 26.5 | 16 | 7.2 | 22.3 | 14 | 7.1 |
+  | (2,2) | 26.3 | 11 | 7.3 | 21.1 | 14 | 7.2 |
+  | (4,4) | 44.7 | 17 | 7.3 | 27.4 | 16 | 7.2 |
+  | (6,6) | 88.2 | 19 | 7.3 | 32.2 | 17 | 7.2 |
+  | (8,8) | 201 | 19 | 7.4 | 48.1 | 21 | 7.2 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 190 | 16 | 7.5 | 160 | 14 | 7.1 |
+  | (2,2) 3 | 26.0 | 11 | 7.4 | 21.2 | 14 | 7.2 |
+  | (4,4) 16 | 45.5 | 17 | 7.3 | 28.3 | 16 | 7.2 |
+  | (6,6) 115 | 90.8 | 19 | 7.3 | 36.9 | 17 | 7.2 |
+  | (8,8) 996 | 219 | 20 | 7.6 | 52.5 | 21 | 7.4 |
+
+* ![dimethylaniline: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/dimethylaniline.svg)
+
+  dimethylaniline
+
+  C<sub>8</sub>H<sub>11</sub>N · 20 atoms · aug-cc-pVTZ · 667 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 33.1 | 19 | 7.8 | 27.2 | 17 | 7.7 |
+  | (2,2) | 38.2 | 19 | 8.0 | 25.5 | 18 | 7.8 |
+  | (4,4) | 57.0 | 20 | 7.9 | 33.3 | 20 | 7.8 |
+  | (6,6) | 185 | 39 | 7.9 | 60.5 | 34 | 7.8 |
+  | (8,8) | 572 | 50 | 8.0 | 235 | 56 | 7.9 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 212 | 19 | 8.0 | 179 | 17 | 7.8 |
+  | (2,2) 3 | 38.1 | 19 | 7.9 | 25.7 | 18 | 7.8 |
+  | (4,4) 16 | 55.8 | 20 | 7.9 | 33.3 | 20 | 7.8 |
+  | (6,6) 115 | 198 | 39 | 8.0 | 67.0 | 34 | 7.8 |
+  | (8,8) 996 | 578 | 50 | 8.1 | 232 | 56 | 8.0 |
+
+* ![twisted-n-phenylpyrrole: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/twisted-n-phenylpyrrole.svg)
+
+  twisted-n-phenylpyrrole
+
+  C<sub>10</sub>H<sub>9</sub>N · 20 atoms · aug-cc-pVTZ · 713 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 64.6 | 31 | 9.3 | 38.0 | 17 | 9.2 |
+  | (2,2) | 54.4 | 23 | 9.4 | 57.7 | 22 | 9.3 |
+  | (4,4) | 222 | 39 | 9.4 | 124 | 40 | 9.3 |
+  | (6,6) | 590 | 38 | 9.4 | 272 | 81 | 9.3 |
+  | (8,8) | 1364 | 75 | 9.4 | 314 | 44 | 9.3 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 287 | 31 | 9.3 | 226 | 17 | 9.2 |
+  | (2,2) 3 | 55.0 | 23 | 9.4 | 55.6 | 22 | 9.3 |
+  | (4,4) 16 | 232 | 39 | 9.4 | 127 | 40 | 9.3 |
+  | (6,6) 115 | 222 | 41 | 9.5 | 276 | 81 | 9.3 |
+  | (8,8) 996 | 1551 | 89 | 9.6 | 302 | 44 | 9.4 |
+
+* ![tdmabn: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/tdmabn.svg)
+
+  tdmabn
+
+  C<sub>9</sub>H<sub>10</sub>N<sub>2</sub> · 21 atoms · aug-cc-pVTZ · 736 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 45.9 | 21 | 10.0 | 34.0 | 17 | 10.0 |
+  | (2,2) | 42.2 | 15 | 10.2 | 41.9 | 26 | 10.0 |
+  | (4,4) | 73.5 | 21 | 10.2 | 44.4 | 20 | 10.0 |
+  | (6,6) | 129 | 21 | 10.2 | 82.8 | 34 | 10.0 |
+  | (8,8) | 514 | 39 | 10.2 | 105 | 36 | 10.0 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 295 | 21 | 10.0 | 263 | 17 | 9.9 |
+  | (2,2) 3 | 41.8 | 15 | 10.2 | 41.4 | 26 | 10.0 |
+  | (4,4) 16 | 75.2 | 21 | 10.2 | 47.9 | 20 | 10.0 |
+  | (6,6) 115 | 134 | 21 | 10.2 | 87.2 | 34 | 10.0 |
+  | (8,8) 996 | 513 | 39 | 10.4 | 113 | 36 | 10.2 |
+
+* ![nitrodimethylaniline: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/nitrodimethylaniline.svg)
+
+  nitrodimethylaniline
+
+  C<sub>8</sub>H<sub>10</sub>N<sub>2</sub>O<sub>2</sub> · 22 atoms · aug-cc-pVTZ · 782 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 59.6 | 20 | 11.6 | 48.4 | 17 | 11.5 |
+  | (2,2) | 52.6 | 14 | 11.7 | 45.4 | 19 | 11.6 |
+  | (4,4) | 92.8 | 23 | 11.8 | 62.7 | 24 | 11.6 |
+  | (6,6) | 251 | 37 | 11.8 | 194 | 26 | 11.6 |
+  | (8,8) | 640 | 43 | 11.8 | 131 | 39 | 11.6 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 351 | 20 | 11.6 | 315 | 17 | 11.5 |
+  | (2,2) 3 | 52.4 | 14 | 11.8 | 44.6 | 19 | 11.6 |
+  | (4,4) 16 | 97.0 | 23 | 11.8 | 63.8 | 24 | 11.6 |
+  | (6,6) 115 | 248 | 37 | 11.8 | 190 | 26 | 11.6 |
+  | (8,8) 996 | 939 | 62 | 11.9 | 307 | 90 | 11.7 |
+
+#### cc-pVTZ: 7 molecules
+
+* ![zethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/zethrene.svg)
+
+  zethrene
+
+  C<sub>24</sub>H<sub>14</sub> · 38 atoms · cc-pVTZ · 916 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 85.4 | 20 | 15.5 | 80.4 | 20 | 15.5 |
+  | (2,2) | 71.8 | 12 | 15.7 | 56.5 | 12 | 15.6 |
+  | (4,4) | 116 | 18 | 15.7 | 76.3 | 16 | 15.6 |
+  | (6,6) | 438 | 49 | 15.9 | 259 | 63 | 15.6 |
+  | (8,8) | 2716 | 35 | 15.9 | 463 | 91 | 15.6 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 559 | 20 | 16.0 | 546 | 20 | 15.5 |
+  | (2,2) 3 | 72.0 | 12 | 15.7 | 55.3 | 12 | 15.6 |
+  | (4,4) 16 | 120 | 18 | 15.7 | 78.0 | 16 | 15.6 |
+  | (6,6) 115 | 446 | 49 | 15.9 | 332 | 79 | 15.6 |
+  | (8,8) 996 | 2972 | 141 | 15.9 | 460 | 88 | 15.8 |
+
+* ![heptazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/heptazethrene.svg)
+
+  heptazethrene
+
+  C<sub>28</sub>H<sub>16</sub> · 44 atoms · cc-pVTZ · 1064 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 160 | 22 | 21.3 | 156 | 23 | 21.2 |
+  | (2,2) | 108 | 11 | 21.6 | 98.0 | 13 | 21.3 |
+  | (4,4) | 157 | 15 | 21.5 | 116 | 14 | 21.3 |
+  | (6,6) | 422 | 33 | 21.7 | 351 | 52 | 21.4 |
+  | (8,8) | 1205 | 47 | 21.7 | 363 | 46 | 21.4 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 882 | 22 | 22.5 | 902 | 23 | 21.4 |
+  | (2,2) 3 | 108 | 11 | 21.5 | 98.5 | 13 | 21.3 |
+  | (4,4) 16 | 158 | 15 | 21.6 | 117 | 14 | 21.3 |
+  | (6,6) 115 | 446 | 33 | 21.7 | 942 | 142 | 21.3 |
+  | (8,8) 996 | 2630 | 62 | 21.8 | 994 | 102 | 21.5 |
+
+* ![octazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/octazethrene.svg)
+
+  octazethrene
+
+  C<sub>32</sub>H<sub>18</sub> · 50 atoms · cc-pVTZ · 1212 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 280 | 29 | 27.7 | 242 | 25 | 27.6 |
+  | (2,2) | 159 | 12 | 27.9 | 142 | 13 | 27.8 |
+  | (4,4) | 205 | 14 | 28.0 | 166 | 14 | 27.9 |
+  | (6,6) | 342 | 18 | 28.0 | 271 | 25 | 27.9 |
+  | (8,8) | 1256 | 41 | 28.2 | 525 | 48 | 27.9 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 1368 | 29 | 29.7 | 1375 | 25 | 28.4 |
+  | (2,2) 3 | 161 | 12 | 28.0 | 142 | 13 | 27.8 |
+  | (4,4) 16 | 209 | 14 | 28.0 | 169 | 14 | 27.8 |
+  | (6,6) 115 | 348 | 18 | 28.0 | 274 | 25 | 27.8 |
+  | (8,8) 996 | 3590 | 97 | 28.1 | 543 | 48 | 28.0 |
+
+* ![super-heptazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/super-heptazethrene.svg)
+
+  super-heptazethrene
+
+  C<sub>40</sub>H<sub>18</sub> · 58 atoms · cc-pVTZ · 1452 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 429 | 26 | 47.7 | 442 | 29 | 47.6 |
+  | (2,2) | 259 | 12 | 48.1 | 241 | 14 | 47.9 |
+  | (4,4) | 334 | 14 | 48.2 | 274 | 14 | 47.9 |
+  | (6,6) | 1020 | 40 | 48.3 | 904 | 58 | 47.9 |
+  | (8,8) | 2328 | 50 | 48.2 | 933 | 51 | 48.1 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 2399 | 26 | 49.8 | 2482 | 29 | 47.9 |
+  | (2,2) 3 | 263 | 12 | 48.2 | 244 | 14 | 47.9 |
+  | (4,4) 16 | 339 | 14 | 48.1 | 283 | 14 | 47.9 |
+  | (6,6) 115 | 2140 | 81 | 48.1 | 946 | 58 | 47.9 |
+  | (8,8) 996 | 2555 | 56 | 48.3 | 2296 | 103 | 48.0 |
+
+* ![super-octazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/super-octazethrene.svg)
+
+  super-octazethrene
+
+  C<sub>46</sub>H<sub>20</sub> · 66 atoms · cc-pVTZ · 1660 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 628 | 25 | 58.4 | 656 | 28 | 57.7 |
+  | (2,2) | 398 | 13 | 56.9 | 378 | 15 | 58.0 |
+  | (4,4) | 476 | 14 | 56.9 | 422 | 15 | 58.0 |
+  | (6,6) | 836 | 21 | 57.0 | 552 | 19 | 58.1 |
+  | (8,8) | 1437 | 23 | 57.1 | 1051 | 38 | 58.2 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 3680 | 25 | 67.1 | 3843 | 28 | 65.2 |
+  | (2,2) 3 | 404 | 13 | 56.9 | 382 | 15 | 58.1 |
+  | (4,4) 16 | 487 | 14 | 56.9 | 430 | 15 | 58.0 |
+  | (6,6) 115 | 870 | 21 | 57.0 | 582 | 19 | 58.1 |
+  | (8,8) 996 | 6023 | 103 | 57.1 | 2415 | 78 | 58.2 |
+
+* ![pentacene-dimer: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/pentacene-dimer.svg)
+
+  pentacene-dimer
+
+  C<sub>44</sub>H<sub>28</sub> · 72 atoms · cc-pVTZ · 1712 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 839 | 32 | 70.8 | 558 | 19 | 68.0 |
+  | (2,2) | 403 | 10 | 66.9 | 389 | 12 | 63.9 |
+  | (4,4) | 515 | 12 | 67.0 | 435 | 12 | 63.9 |
+  | (6,6) | 688 | 13 | 67.3 | 497 | 13 | 63.9 |
+  | (8,8) | 1226 | 15 | 68.1 | 582 | 14 | 63.9 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 6264 | 32 | 78.0 | 4620 | 19 | 77.4 |
+  | (2,2) 3 | 399 | 10 | 66.7 | 381 | 12 | 63.9 |
+  | (4,4) 16 | 531 | 12 | 66.9 | 453 | 12 | 64.0 |
+  | (6,6) 115 | 722 | 13 | 67.4 | 537 | 13 | 63.9 |
+  | (8,8) 996 | 1354 | 15 | 68.2 | 629 | 14 | 64.1 |
+
+* ![super-nonazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/super-nonazethrene.svg)
+
+  super-nonazethrene
+
+  C<sub>52</sub>H<sub>22</sub> · 74 atoms · cc-pVTZ · 1868 bf
+
+  | | BH\&HLYP | | | HF | | |
+  | - | - | - | - | - | - | - |
+  | | s | it. | GiB | s | it. | GiB |
+  | Ground state: reference, SA-REKS | | | | | | |
+  | RKS \| RHF | 2454 | 86 | 71.5 | 1024 | 32 | 72.2 |
+  | (2,2) | 552 | 13 | 70.8 | 548 | 16 | 67.5 |
+  | (4,4) | 723 | 16 | 71.0 | 662 | 18 | 67.7 |
+  | (6,6) | 978 | 18 | 71.3 | 821 | 21 | 67.9 |
+  | (8,8) | 3536 | 48 | 72.4 | 1346 | 36 | 68.4 |
+  | Excited states, states computed: TDA, SSR | | | | | | |
+  | TDA \| CIS 20 | 9015 | 87 | 79.2 | 5667 | 32 | 80.6 |
+  | (2,2) 3 | 551 | 13 | 70.8 | 547 | 16 | 67.5 |
+  | (4,4) 16 | 722 | 16 | 71.0 | 669 | 18 | 67.7 |
+  | (6,6) 115 | 1006 | 18 | 71.3 | 833 | 21 | 67.9 |
+  | (8,8) 996 | 3635 | 47 | 72.5 | 5724 | 145 | 68.7 |
 
 ### Hardware and test set
 

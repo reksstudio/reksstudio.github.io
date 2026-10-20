@@ -1,9 +1,10 @@
 import raw from '../data/cost.json' with { type: 'json' };
+import { DATA as psi4Data, spaces as psi4Spaces, uniq } from './costpsi4.mjs';
 import { landing } from './overview.mjs';
 import { BRANCH, REPO_URL } from './site.mjs';
 
 export const cost = raw;
-const { md, psi4, step } = raw;
+const { md, step } = raw;
 
 export const PREFIX = 'main/cost/';
 
@@ -17,21 +18,26 @@ const WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'e
 const SHORT = { 'TDA-TDDFT': 'TDA' };
 export const short = (m) => SHORT[m] ?? m;
 export const CODE = { 'Psi4-REKS': 'REKS Studio', ORCA: 'ORCA', 'Q-Chem': 'Q-Chem', Psi4: 'Psi4' };
+// job row name: REKS by its active space, other codes by method
+export const jobShort = (r) => (r.code === 'Psi4-REKS' ? r.space : short(r.method));
+// code header of a job group: REKS with its method, active space removed
+export const codeHead = (r) => (r.code === 'Psi4-REKS' ? `${CODE[r.code]}, ${r.method.replace(r.space, '')}` : CODE[r.code]);
+// looser-threshold mark of a job
+export const dagger = (r) => (r?.loose ? ' †' : '');
 
 // label of a job without a measured wall
 export const offLabel = (r) => (r.status === 'stopped' ? `${r.stop_label}, not completed` : r.stop_label ?? 'not run');
 
 export const panels = md.panels;
-export const bases = [...new Set(panels.map((p) => p.basis))];
+export const bases = uniq(panels.map((p) => p.basis));
 export const panelOf = (system) => panels.find((p) => p.system === system);
 // "TO", "TC" in the first basis; "TO def2-TZVP" in the others
 export const sysName = (system) => {
   const p = panelOf(system);
   return p.basis === bases[0] ? system.split('_')[0] : `${system.split('_')[0]} ${p.basis}`;
 };
-export const rowOf = (system, code, method) => md.rows.find((r) => r.system === system && r.code === code && r.method === method);
+const rowOf = (system, code, method) => md.rows.find((r) => r.system === system && r.code === code && r.method === method);
 const closedFirst = (a, b) => (a.shell === b.shell ? 0 : a.shell === 'closed' ? -1 : 1);
-const uniq = (xs) => [...new Set(xs)];
 
 // {code, label, scf, resp} per md.order entry for one panel; resp pairs with scf
 export const figRows = (system) =>
@@ -42,6 +48,10 @@ export const figRows = (system) =>
     resp: o.resp ? rowOf(system, o.code, o.resp) : null,
   }));
 
+// ORCA (or Q-Chem) figRows entry whose response job is the physics partner of the panel (TDA closed, SF-TDA open shell)
+export const partner = (system, code = 'ORCA') => figRows(system).find((f) => f.code === code && f.resp?.method === panelOf(system).ref_method);
+export const setting = (key, code = '') => md.settings.find((s) => s.key === key && s.code === code).value;
+
 const branch = md.setup.find((s) => s.branch).branch;
 const reksRows = md.rows.filter((r) => r.code === 'Psi4-REKS' && r.version);
 const reksMain = Object.entries(Object.groupBy(reksRows, (r) => r.version)).sort((a, b) => b[1].length - a[1].length)[0][0];
@@ -51,8 +61,8 @@ const reksOther = Object.entries(Object.groupBy(reksRows.filter((r) => r.version
 const psi4Rows = md.rows.filter((r) => r.code === 'Psi4' && r.version);
 // "kk/reks.v42 @ cf0bacc93 (TC def2-TZVP (8,8): 3eb094626)"
 export const reksBuild = `${branch} @ ${reksMain}${reksOther.length ? ` (${reksOther.join('; ')})` : ''}`;
-export const buildLine = `REKS rows: ${reksBuild}; Psi4 ${uniq(psi4Rows.map((r) => r.method.replace(' (T)', ''))).join('/')}: ${uniq(psi4Rows.map((r) => r.version)).join(', ')}.`;
 export const codeVersion = (code) => uniq(md.rows.filter((r) => r.code === code && r.version).map((r) => r.version)).join(', ');
+export const buildLine = `REKS rows: ${reksBuild}; Psi4 ${uniq(psi4Rows.map((r) => r.method.replace(' (T)', ''))).join('/')}: ${codeVersion('Psi4')}.`;
 
 const proto = md.protocol;
 // active spaces in ladder order
@@ -67,10 +77,9 @@ export const looseCases = Object.entries(Object.groupBy(md.rows.filter((r) => r.
 // Keyline: per active space, "less" iff SI-SA-REKS wall_max < min wall_min of the ORCA methods on every test
 const claim = (b, s) => md.claims.find((c) => c.basis === b && c.space === s);
 const refs = Object.keys(md.claims[0].systems[0].orca);
-const tag = (sys) => (sys.loose ? ' †' : '');
 const daggers = (systems) => {
   const l = systems.filter((x) => x.holds && x.loose);
-  return l.length ? ` (${l.map((x) => `${x.shell} shell${tag(x)}`).join(', ')})` : '';
+  return l.length ? ` (${l.map((x) => `${x.shell} shell${dagger(x)}`).join(', ')})` : '';
 };
 const kind = (s) => {
   const n = bases.filter((b) => claim(b, s).holds).length;
@@ -89,7 +98,7 @@ const runs = spaces.reduce((acc, s) => {
 }, []);
 const span = (ss) => (ss.length > 1 ? `${ss[0]}–${ss.at(-1)}` : ss[0]);
 // the first SI-SA-REKS space computes fewer states than the others
-const firstSi = `${md.order[0].resp}: ${md.settings.find((x) => x.key === 'states_22').value} states`;
+const firstSi = `${md.order[0].resp}: ${setting('states_22')} states`;
 const parts = runs.map(({ kind: k, spaces: ss }) => {
   const sys = ss.flatMap((s) => bases.flatMap((b) => claim(b, s).systems));
   const head = `${span(ss)}${ss.includes(spaces[0]) ? ` (${firstSi})` : ''}`;
@@ -106,6 +115,20 @@ const parts = runs.map(({ kind: k, spaces: ss }) => {
       .join('; ')}.`,
   };
 });
+// band: ORCA TDA as the reference; headline = leading spaces with SI-SA-REKS wall_max < ORCA TDA wall_min on every test
+const BAND_REF = 'TDA-TDDFT';
+const tdaHolds = (s) => bases.every((b) => claim(b, s).systems.every((x) => x.reks_wall_max < x.orca[BAND_REF].wall_min));
+const tdaFail = spaces.findIndex((s) => !tdaHolds(s));
+const tdaRun = tdaFail < 0 ? spaces : spaces.slice(0, tdaFail);
+if (!tdaRun.length) throw new Error('cost.mjs: no active space takes less time than ORCA TDA on every test');
+export const bandClaim = `Excited states ${span(tdaRun)} in less wall time than ORCA ${short(BAND_REF)}, on all ${WORDS[bases.flatMap((b) => claim(b, tdaRun[0]).systems).length]} tests.`;
+// no line break inside "SI-SA-REKS(2,2)"
+export const bandSiNote = firstSi.replaceAll('-', String.fromCodePoint(0x2011));
+// band test: open shell in the first basis, every job of it measured
+export const bandPanel = panels.find((p) => p.basis === bases[0] && p.shell === 'open');
+// ORCA figRows entry whose response job is the band reference (its SCF job: the ground-state line)
+export const bandRef = figRows(bandPanel.system).find((f) => f.code === 'ORCA' && f.resp?.method === BAND_REF);
+
 // keyline: cases where REKS takes less time or is close; the slower cases set apart
 export const claimsText = parts.filter((x) => x.k !== 'none').map((x) => x.t).join(' ');
 export const claimsMore = parts.filter((x) => x.k === 'none').map((x) => x.t).join(' ');
@@ -126,23 +149,16 @@ export const leadText = `${lead.basis}, ${panelOf(lead.systems[0].system).nbf} b
 export const installed = landing.installed;
 
 // SCF iteration range of SA-REKS in the largest space of B, looser-threshold rows apart
-const big = psi4.spaces.at(-1);
+const big = psi4Spaces.at(-1);
 const bigRows = md.rows.filter((r) => r.method === `SA-REKS${big}` && r.status === 'ok');
 const tight = bigRows.filter((r) => !r.loose).map((r) => r.scf_iter);
 const [lo, hi] = [Math.min(...tight), Math.max(...tight)];
 const looseIt = bigRows.filter((r) => r.loose).map((r) => `${r.scf_iter} in ${sysName(r.system)} †`);
 export const iterA = `SA-REKS${big} from the previous-step orbitals: ${lo === hi ? lo : `${lo}–${hi}`} SCF iterations${looseIt.length ? ` (${looseIt.join(', ')})` : ''}.`;
-export const iterB = `SA-REKS${big} from RKS orbitals: median ${psi4.stats.iterations_reks.bhhlyp[big].median} SCF iterations; RKS from SAD: ${psi4.stats.iterations_reference.bhhlyp.ref.median}.`;
 
-// {head, values} of the BH&HLYP row of psi4[table]; values as numbers
-export function costRow(table) {
-  const row = psi4[table].rows.find((r) => r[0].startsWith('BH&HLYP'));
-  if (!row) throw new Error(`cost.json: no BH&HLYP row in psi4.${table}`);
-  return { head: psi4[table].head.slice(1), values: row.slice(1).map(Number) };
-}
-
-// data file path -> description; build provenance line
+// data file path -> description
 export const DATA = {
   'data/cost_md.tsv': `Cost benchmark A: REKS Studio (Psi4) against ORCA and Q-Chem, one hot-start step of the tetracene dimer, BH&HLYP, ${bases.join(' and ')}; one row per job (${md.rows.length}), tab-separated: ${Object.keys(md.rows[0]).join(', ')}. Wall in s (fastest converged repeat; min, max over repeats), peak PSS in GiB, s per iteration where the program prints the phase time, CPU load in cores; loose: REKS run at ${looseMark}.`,
+  ...psi4Data,
 };
 export const revLine = `Psi4 builds of these outputs: benchmark A ${buildLine.replace(/\.$/, '')}; benchmark B paper v1, build not recorded; C2H4 step ${step.rev}. Install: branch ${BRANCH} of <${REPO_URL}>.`;

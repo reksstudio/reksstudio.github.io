@@ -1,0 +1,52 @@
+---
+import { fnLabel, fsec, functionals, gibOfMb, job, molFormulaMarkup, molId, nStates, refLabel, spaces, tdaShort, testSet } from '../../lib/costpsi4.mjs';
+import { toHtml } from '../../lib/inline.mjs';
+
+// One card per molecule (id mol-<id>), grouped by basis in nbf order; drawings share one scale
+const base = import.meta.env.BASE_URL;
+const IMG_W = 300;
+const scale = Math.min(1, IMG_W / Math.max(...testSet.bases.flatMap((b) => b.mols.map((m) => m.w))));
+const row = (label, note, rs) => ({ label, note, cells: rs.flatMap((r) => [fsec(r.wall_s), String(r.niter), gibOfMb(r.peak_mb)]) });
+const rows = (m) => {
+  const all = (kind, sp) => functionals.map((fn) => job(m.id, fn, kind, sp));
+  return [
+    { head: 'Ground state: reference, SA-REKS', rows: [row(functionals.map(refLabel).join(' | '), '', all('scf')), ...spaces.map((sp) => row(sp, '', all('scf', sp)))] },
+    {
+      head: 'Excited states, states computed: TDA, SSR',
+      rows: [row(functionals.map(tdaShort).join(' | '), String(nStates()), all('exc')), ...spaces.map((sp) => row(sp, String(nStates(sp)), all('exc', sp)))],
+    },
+  ];
+};
+const groups = testSet.bases.map((b) => ({
+  title: `${b.basis}: ${b.mols.length} molecules`,
+  box: Math.ceil(Math.max(...b.mols.map((m) => m.h)) * scale),
+  mols: b.mols.map((m) => ({ m, w: Math.round(m.w * scale), h: Math.round(m.h * scale), meta: `${molFormulaMarkup(m)} · ${m.atoms} atoms · ${m.basis} · ${m.nbf} bf`, blocks: rows(m) })),
+}));
+const cols = 1 + 3 * functionals.length;
+---
+{groups.map((g) => (
+  <>
+    <h4>{g.title}</h4>
+    <ul class="qcards mcards">
+      {g.mols.map(({ m, w, h, meta, blocks }) => (
+        <li class="qcard mcard" id={molId(m)}>
+          <div class="qimg" style={`height:${g.box}px`}><img src={`${base}${m.svg}`} width={w} height={h} alt={`${m.name}: drawing of the computed geometry`} loading="lazy" /></div>
+          <p class="qname">{m.name}</p>
+          <p class="mmeta" set:html={toHtml(meta)} />
+          <table>
+            <thead>
+              <tr><th></th>{functionals.map((fn) => <th colspan="3" class="mfn">{fnLabel(fn)}</th>)}</tr>
+              <tr><th></th>{functionals.map(() => <><th>s</th><th>it.</th><th>GiB</th></>)}</tr>
+            </thead>
+            {blocks.map((b) => (
+              <tbody>
+                <tr class="mgrp"><th colspan={cols}>{b.head}</th></tr>
+                {b.rows.map((r) => <tr><th>{r.label}{r.note && <span class="mst"> {r.note}</span>}</th>{r.cells.map((c) => <td>{c}</td>)}</tr>)}
+              </tbody>
+            ))}
+          </table>
+        </li>
+      ))}
+    </ul>
+  </>
+))}

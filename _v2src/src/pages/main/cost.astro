@@ -3,38 +3,41 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import SubNav from '../../components/main/SubNav.astro';
-import Figure from '../../components/main/Figure.astro';
 import Table from '../../components/main/Table.astro';
 import CountChart from '../../components/main/CountChart.astro';
 import CostDots from '../../components/main/CostDots.astro';
+import CostScatter from '../../components/main/CostScatter.astro';
+import CostMolCards from '../../components/main/CostMolCards.astro';
 import { landing, resultHref } from '../../lib/overview.mjs';
-import { toHtml } from '../../lib/inline.mjs';
+import { formulaMarkup as formula, toHtml } from '../../lib/inline.mjs';
 import {
-  CODE, bases, buildLine, claimsMore, claimsText, codeVersion, cost, fgib, figRows, fs, installed, iterA, iterB, leadText,
-  looseCases, looseMark, offLabel, panelOf, panels, reksBuild, short, spaces, sysName, tightMark,
+  CODE, bases, buildLine, claimsMore, claimsText, codeHead, codeVersion, cost, dagger, fgib, figRows, fs, installed, iterA, jobShort,
+  leadText, looseCases, looseMark, offLabel, panelOf, panels, reksBuild, setting, short, spaces, sysName, tightMark,
 } from '../../lib/cost.mjs';
+import {
+  SIX_LARGEST, fnLabel, fockExponent, functionals, inverse, iterSentence, memory, molecules, nStates, refLabel, repeats,
+  spaces as bSpaces, stat, tdaLabel, testSet, uniq,
+} from '../../lib/costpsi4.mjs';
 import '../../styles/main.css';
 import '../../styles/cost.css';
 
 const base = import.meta.env.BASE_URL;
 const { md, psi4, step, catalogue } = cost;
-const setting = (key, code = '') => md.settings.find((s) => s.key === key && s.code === code).value;
 const proto = md.protocol;
 const mol = md.setup[0];
-const formula = (f) => f.replace(/(\d+)/g, '_{$1}');
 const nbfs = bases.map((b) => panels.find((p) => p.basis === b).nbf);
 const reks22 = md.order[0];
 const signed = (v, d) => (v === 0 ? '0' : v.toFixed(d).replace('-', '−'));
 
 // geometries: DR and SA-REKS(2,2) occupations per basis, open shell first
-const shells = [...new Set(panels.map((p) => p.shell))].map((shell) => {
+const shells = uniq(panels.map((p) => p.shell)).map((shell) => {
   const gs = md.geometry.filter((g) => panelOf(g.system).shell === shell);
   const n = (g) => `${g.n_a.toFixed(2)} / ${g.n_b.toFixed(2)}`;
-  const occ = new Set(gs.map(n)).size === 1 ? n(gs[0]) : gs.map((g) => `${n(g)} in ${panelOf(g.system).basis}`).join(', ');
+  const occ = uniq(gs.map(n)).length === 1 ? n(gs[0]) : gs.map((g) => `${n(g)} in ${panelOf(g.system).basis}`).join(', ');
   return `${gs[0].system.split('_')[0]}, ${shell} shell: DR ${signed(gs[0].dr_a, 2)} Å, ${reks22.scf} occupations ${occ}`;
 });
 
-// one-line protocol above Fig. 1
+// one-line protocol summary
 const geomNames = [...new Map(panels.map((p) => [p.system.split('_')[0], p.shell])).entries()].map(([s, sh]) => `${s} ${sh} shell`);
 const protocolLine = `Tetracene dimer ${formula(mol.formula)}, two geometries (${geomNames.join(', ')}); ${bases.map((b, i) => `${b} (${nbfs[i]} basis functions)`).join(' and ')}; BH&HLYP, SG-1 grid (ORCA DefGrid2), density fitting in all codes; ${setting('cores')} cores; hot start from the orbitals of the neighbouring point; SCF and SCF + states as separate jobs.`;
 
@@ -43,7 +46,7 @@ const CODES = ['Psi4-REKS', 'ORCA', 'Q-Chem'];
 const SETUP_CODE = { 'Psi4-REKS': 'Psi4' };
 const fitting = (code) => {
   const ss = bases.map((b) => md.setup.find((s) => s.code === (SETUP_CODE[code] ?? code) && s.basis === b));
-  const names = [...new Set(ss.map((s) => `${s.aux_name} ${s.aux_nbf}`))];
+  const names = uniq(ss.map((s) => `${s.aux_name} ${s.aux_nbf}`));
   return `${names.join(' / ')}, ${ss[0].aux_jk}`;
 };
 // SI-SA-REKS: exact diagonalization up to the last direct space, Davidson (printed residual threshold) beyond
@@ -72,37 +75,34 @@ const settingsTable = {
 
 // per-job rows of one system in figure order: SCF job, then its SCF + states job
 const jobs = (system) => figRows(system).flatMap((f) => [f.scf, f.resp].filter(Boolean));
-const job = (r) => `${CODE[r.code]} ${r.method}${r.loose ? ' †' : ''}`;
+const job = (r) => `${CODE[r.code]} ${r.method}${dagger(r)}`;
 const dash = '–';
 // a text value ("≈0", as RESULTS.md prints it) is shown as is
-const f2 = (v) => (v == null ? dash : typeof v === 'string' ? v : v.toFixed(2));
+const cell2 = (v) => (v == null ? dash : typeof v === 'string' ? v : v.toFixed(2));
 const resp = (r) =>
   r.kind === 'scf' ? dash : r.status !== 'ok' ? (r.stop_h ? 'stopped' : 'not run') : r.resp_solver === 'direct' ? `${r.resp_iter} (direct)` : String(r.resp_iter);
 const cores = (r) => (r.cpu_load_cores == null ? (r.status === 'ok' && r.code === 'ORCA' ? 'n/p' : dash) : r.cpu_load_cores.toFixed(1));
 // iteration blocks: SCF-only jobs and SCF + response jobs; per test one table, a sub-header per code
-const jobName = (r) => `${r.code === 'Psi4-REKS' ? r.space : short(r.method)}${r.loose ? ' †' : ''}`;
-// REKS sub-header names the method, its rows the active space
-const groupName = (code, rs) => (code === 'Psi4-REKS' ? `${CODE[code]}, ${rs[0].method.replace(rs[0].space, '')}` : CODE[code]);
+const jobName = (r) => `${jobShort(r)}${dagger(r)}`;
 const it = (v) => (v == null ? dash : String(v));
 const wall = (r) => (r.status === 'ok' ? fs(r.wall_s) : dash);
-const respS = f2;
 const BLOCKS = [
   {
     kind: 'scf', title: 'SCF', defs: ['time_split', 's_per_scf_iter'],
     head: ['Job', 'Wall / s', 'SCF it.', 's / SCF it.', 'Cores'],
-    cells: (r) => [jobName(r), wall(r), it(r.scf_iter), f2(r.s_per_scf_iter), cores(r)],
+    cells: (r) => [jobName(r), wall(r), it(r.scf_iter), cell2(r.s_per_scf_iter), cores(r)],
   },
   {
     kind: 'response', title: 'SCF + response', defs: ['time_split', 's_per_scf_iter', 'resp_iter', 's_per_resp_iter'],
     head: ['Job', 'Wall / s', 'SCF / s', 'SCF it.', 's / SCF it.', 'Response / s', 'Resp. it.', 's / resp. it.', 'Cores'],
-    cells: (r) => [jobName(r), r.status === 'ok' ? respS(r.wall_s) : dash, respS(r.scf_s), it(r.scf_iter), f2(r.s_per_scf_iter), respS(r.resp_s), resp(r), f2(r.s_per_resp_iter), cores(r)],
+    cells: (r) => [jobName(r), wall(r), cell2(r.scf_s), it(r.scf_iter), cell2(r.s_per_scf_iter), cell2(r.resp_s), resp(r), cell2(r.s_per_resp_iter), cores(r)],
   },
 ].map((b) => ({
   ...b,
   tables: panels.map((p) => ({
     caption: `${p.system.split('_')[0]}, ${p.shell} shell, ${p.basis}`,
     groups: Object.entries(Object.groupBy(jobs(p.system).filter((r) => r.kind === b.kind), (r) => r.code)).map(([code, rs]) => ({
-      code: groupName(code, rs),
+      code: codeHead(rs[0]),
       rows: rs.map(b.cells),
     })),
   })),
@@ -128,27 +128,32 @@ const offNote = (r) => {
 };
 const spread = Math.ceil(md.rks_spread_meh * 10) / 10;
 
-const ts = psi4.test_set;
-const BASIS = { augccpvtz: 'aug-cc-pVTZ', ccpvtz: 'cc-pVTZ' };
-const st = psi4.stats;
-const FN = [['hf', 'HF'], ['bhhlyp', 'BH&HLYP']];
-const ends = (row) => `${row[1]}–${row[row.length - 1]}`;
-const fockBH = psi4.fock.rows.find((r) => r[0].startsWith('BH&HLYP'));
-const fockHF = psi4.fock.rows.find((r) => r[0].startsWith('HF'));
+// section B: every number from costpsi4.mjs (data/cost_psi4.tsv)
+const [b0, bN] = [bSpaces[0], bSpaces.at(-1)];
+const nMol = testSet.n;
+const tda = nStates();
+const perFn = (f) => functionals.map((fn) => `${fnLabel(fn)} ${f(fn)}`).join('; ');
+const ends = (q, fn, six) => `${cell2(stat(q, fn, b0, six).median)}–${cell2(stat(q, fn, bN, six).median)}`;
+// "12 of 16 with BH&HLYP, 14 with HF"
+const parity = (q, side, sp) => functionals.map((fn, i) => `${stat(q, fn, sp)[side]}${i ? '' : ` of ${nMol}`} with ${fnLabel(fn)}`).join(', ');
+const refFor = functionals.map((fn) => `${refLabel(fn)} for ${fnLabel(fn)}`).join(', ');
+const tdaFor = functionals.map((fn) => `${tdaLabel(fn)} for ${fnLabel(fn)}`).join(', ');
+const largest = molecules.slice(-SIX_LARGEST);
+const bIdent = `Paper v1: ${nMol} molecules, ${testSet.nbf_min}–${testSet.nbf_max} basis functions (${testSet.bases.map((b) => `${b.mols.length} ${b.basis}`).join(', ')}); single points; ${functionals.map(refLabel).join(' / ')} references and ${tda}-state TDA from SAD, SA-REKS and SSR from the converged reference orbitals (untimed); ${psi4.facts.b_cpu}, ${psi4.facts.b_threads} threads.`;
+const scfLine = `Whole run of the SCF job, SA-REKS over the reference, median over ${nMol} molecules, ${b0} to ${bN}: ${perFn((fn) => ends('scf_ratio', fn))}. Below parity at ${b0}: ${parity('scf_ratio', 'n_below_1', b0)}; at ${bN}: ${parity('scf_ratio', 'n_below_1', bN)}.`;
+const fockLine = `Per Fock build, SA-REKS over the reference, median over the ${SIX_LARGEST} largest molecules (${largest[0].nbf}–${largest.at(-1).nbf} basis functions), ${b0} to ${bN}: ${perFn((fn) => ends('fock_ratio', fn, true))}.`;
+const range = (s) => `${s.median} (${s.min}–${s.max})`;
 const iterTableB = {
-  head: ['SCF iterations, median', 'Reference', ...psi4.spaces],
-  rows: FN.map(([k, name]) => [name, `${st.iterations_reference[k].ref.median}`, ...psi4.spaces.map((s) => `${st.iterations_reks[k][s].median}`)]),
+  head: ['SCF iterations, median (range)', 'Reference', ...bSpaces],
+  rows: functionals.map((fn) => [`${fnLabel(fn)}, ${refLabel(fn)}`, range(stat('iterations', fn)), ...bSpaces.map((sp) => range(stat('iterations', fn, sp)))]),
 };
-const expo = (k) => [`reference ${st.fock_exponent[k].ref.median.toFixed(2)}`, ...psi4.spaces.map((s) => `${s} ${st.fock_exponent[k][s].median.toFixed(2)}`)].join(', ');
-const [bhScf, hfScf] = psi4.scf.rows;
-const last = psi4.scf.head.length - 1;
-const big = psi4.spaces.at(-1);
-const above = st.ssr_tda_ratio.bhhlyp[big];
-const siStep = FN.map(([k, name]) => `${name} ${psi4.spaces.map((s) => st.si_response_ratio[k][s].extra).join(', ')}`).join('; ');
-const memScf = st.memory_scf_ratio_six_largest.pooled.pooled;
-const memExc = st.memory_excited_ratio_six_largest.pooled.pooled;
-const mps = psi4.memory_per_space;
-const tda = psi4.facts.b_tda_states;
+const expoLine = `Fitted exponent k of the Fock-build time t ∝ N^{k}, N basis functions (log–log least squares, all ${nMol} molecules): ${perFn((fn) => [null, ...bSpaces].map((sp) => `${sp ?? refLabel(fn)} N^{${fockExponent(fn, sp).k.toFixed(2)}}`).join(', '))}.`;
+const excLine = `Whole SSR run over the whole ${tda}-state TDA run, median over ${nMol} molecules, ${b0} to ${bN}: ${perFn((fn) => `${ends('ssr_tda_ratio', fn)} (${tdaLabel(fn)})`)}. Above parity at ${bN}: ${parity('ssr_tda_ratio', 'n_above_1', bN)}.`;
+const siLine = `SI step alone over the TDA response (TDA wall minus its SCF wall), median, ${bSpaces.join(', ')}: ${perFn((fn) => bSpaces.map((sp) => inverse(stat('si_response_ratio', fn, sp).median)).join(', '))}.`;
+const spread3 = (s) => `${cell2(s.median)} (${cell2(s.min)}–${cell2(s.max)})`;
+const memLine = `Peak memory, median over the ${SIX_LARGEST} largest molecules, all active spaces and functionals: SA-REKS over the reference ${spread3(memory.scf)}, per space and functional ${cell2(memory.perSpace.min)}–${cell2(memory.perSpace.max)}; SSR over TDA ${spread3(memory.excited)}.`;
+const molNote = `Wall: whole run in s, fastest converged of ${repeats} repeats; it.: SCF iterations of that repeat; peak memory: lowest of the ${repeats} repeats, GiB. Reference and TDA from SAD, SA-REKS and SSR from the converged reference orbitals (not timed).`;
+const seed = 'reads the converged reference orbitals (seed run not timed)';
 
 const shown = catalogue.rows.filter((r) => r.shown);
 const SUB = { ms: 'mixed-scheme', ss: 'single-spin', full: 'full' };
@@ -160,8 +165,7 @@ const catTable = {
 
 const sys = step.system;
 const DEG = String.fromCodePoint(0xb0);
-const FUNCTIONAL = { bhhlyp: 'BH&HLYP' };
-const stepLine = `One gradient() call at ${sys.geometry.replace(/^(\d+)-degree /, `$1${DEG} `).replace(/(\d+)/g, (m, d, i) => (i ? `_{${d}}` : d))} from RKS orbitals: SSR(${sys.reks.replace(' ', '')})/${sys.basis.replace('g', 'G')}, ${FUNCTIONAL[sys.functional] ?? sys.functional}, ${sys.scf_type.toUpperCase()}, ${step.note}.`;
+const stepLine = `One gradient() call at ${sys.geometry.replace(/^(\d+)-degree /, `$1${DEG} `).replace(/(\d+)/g, (m, d, i) => (i ? `_{${d}}` : d))} from RKS orbitals: SSR(${sys.reks.replace(' ', '')})/${sys.basis.replace('g', 'G')}, ${fnLabel(sys.functional)}, ${sys.scf_type.toUpperCase()}, ${step.note}.`;
 const stepTable = { head: ['Call', 'Wall / s'], rows: step.cases.map((c) => [c.label, c.wall_s.toFixed(2)]) };
 
 const install = `${base}docs/#install`;
@@ -175,7 +179,7 @@ const h = toHtml;
 <header class="mhead">
   <div class="wrap">
     <h1>Cost and speed</h1>
-    <p class="ident">Wall time, iterations and peak memory of REKS Studio. A: against ORCA and Q-Chem, one hot-start step of a {mol.n_atoms}-atom molecule. B: against DFT inside Psi4, {ts.n_molecules} molecules.</p>
+    <p class="ident">Wall time, iterations and peak memory of REKS Studio. A: against ORCA and Q-Chem, one hot-start step of a {mol.n_atoms}-atom molecule. B: against DFT inside Psi4, {testSet.n} molecules.</p>
     <p class="keyline">{leadText}</p>
     <p>{claimsText}</p>
     <p class="cfoot">† REKS run at {looseMark}.</p>
@@ -295,42 +299,55 @@ const h = toHtml;
 
   <section class="mblock" id="psi4">
     <h2>B. Inside Psi4</h2>
-    <p class="ident">Paper v1: {ts.n_molecules} molecules, {ts.nbf_min}–{ts.nbf_max} basis functions ({Object.entries(ts.bases).map(([b, n]) => `${n} ${BASIS[b]}`).join(', ')}); single points; RKS / RHF references and {tda}-state TDA from SAD, SA-REKS and SSR from the converged reference orbitals (untimed); {psi4.facts.b_cpu}, {psi4.facts.b_threads} threads.</p>
+    <p class="ident">{bIdent}</p>
+
+    <div class="csub" id="scf">
+      <h3>Ground state: whole SCF run</h3>
+      <p class="keyline">{scfLine}</p>
+      <figure class="cfig">
+        <CostScatter fig="scf" />
+        <figcaption class="cnote">Fig. B1. Whole run of the SCF job, SA-REKS over the reference ({refFor}), per molecule; log–log; dashed: parity. SA-REKS {seed}; reference from SAD. Fastest converged repeat. Each point opens its molecule card.</figcaption>
+      </figure>
+    </div>
 
     <div class="csub" id="fock">
       <h3>One Fock build</h3>
-      <p class="keyline">Per Fock build, SA-REKS over the reference, median over the six largest molecules: BH&amp;HLYP {ends(fockBH)}, HF {ends(fockHF)}.</p>
-      <Table table={psi4.fock} />
+      <p class="keyline">{fockLine}</p>
+      <figure class="cfig">
+        <CostScatter fig="fock" />
+        <figcaption class="cnote">Fig. B2. Time of one Fock build, SA-REKS over the reference ({refFor}), per molecule; log–log; dashed: parity. Panel median over all {nMol} molecules. Each point opens its molecule card.</figcaption>
+      </figure>
       <Table table={iterTableB} />
-      <p class="keyline">{iterB}</p>
-      <p>The per-build ratio stays far below the whole-SCF ratio; the whole-SCF ratio follows the iteration counts.</p>
-      <p>Fitted exponent of the Fock-build time in the number of basis functions (log–log, all {ts.n_molecules}): HF {expo('hf')}; BH&amp;HLYP {expo('bhhlyp')}. The drop reflects the cache, not an improvement in scaling.</p>
-    </div>
-
-    <div class="csub" id="scf">
-      <h3>Ground state: whole SCF</h3>
-      <p class="keyline">Whole SCF, SA-REKS / RKS, median: {bhScf[1]} at {psi4.scf.head[1]} to {bhScf[last]} at {psi4.scf.head[last]} with BH&amp;HLYP; {hfScf[1]} to {hfScf[last]} with HF (SA-REKS / RHF).</p>
-      <Table table={psi4.scf} />
+      <p class="keyline">{iterSentence}</p>
+      <p set:html={h(expoLine)} />
     </div>
 
     <div class="csub" id="excited">
       <h3>Excited states</h3>
-      <p class="keyline">Complete SSR over the complete {tda}-state TDA calculation, median; {big}/BH&amp;HLYP lies above parity on {above.n_above_1} of {above.n} molecules.</p>
-      <Table table={psi4.excited} />
-      <p>SI step alone over the TDA response (TDA wall minus its SCF), median, {psi4.spaces.join(', ')}: {siStep}.</p>
-      <Figure fig={{ src: 'figures/main/cost_excited.webp', w: 1046, h: 1300, alt: 'SSR against TDA: step and complete-calculation time ratios and peak memory against the number of basis functions', caption: 'SSR against the TDA reference (CIS for HF, TDDFT-TDA for BH&HLYP), and peak memory, against the number of basis functions.' }} source="paper v1, SI Fig. 7." />
+      <p class="keyline">{excLine}</p>
+      <figure class="cfig">
+        <CostScatter fig="excited" />
+        <figcaption class="cnote">Fig. B3. Whole SSR run over the whole {tda}-state TDA run ({tdaFor}), per molecule; log–log; dashed: parity. SSR {seed}; TDA from SAD. Fastest converged repeat. Each point opens its molecule card.</figcaption>
+      </figure>
+      <p>{siLine}</p>
     </div>
 
     <div class="csub" id="memory">
       <h3>Memory</h3>
-      <p>Peak memory, SA-REKS over the reference, six largest molecules, median over spaces and functionals: SCF {memScf.median.toFixed(2)}× ({memScf.min.toFixed(2)}–{memScf.max.toFixed(2)}), per space {mps.min.toFixed(2)}–{mps.max.toFixed(2)}; SSR over TDA {memExc.median.toFixed(2)}× ({memExc.min.toFixed(2)}–{memExc.max.toFixed(2)}).</p>
+      <p>{memLine}</p>
+    </div>
+
+    <div class="csub" id="molecules">
+      <h3>Molecules</h3>
+      <p class="cnote">{molNote}</p>
+      <CostMolCards />
     </div>
 
     <div class="csub" id="hardware">
       <h3>Hardware and test set</h3>
       <dl class="fields">
         <dt>Hardware</dt><dd>{psi4.facts.b_cpu}, one exclusive node, {psi4.facts.b_threads} threads</dd>
-        <dt>Test set</dt><dd>{ts.n_molecules} molecules, {ts.nbf_min}–{ts.nbf_max} basis functions</dd>
+        <dt>Test set</dt><dd>{nMol} molecules, {testSet.nbf_min}–{testSet.nbf_max} basis functions</dd>
         <dt>Guess</dt><dd>References from SAD; SA-REKS and SSR from the converged reference orbitals, untimed</dd>
         <dt>Build</dt><dd>Psi4 revision not recorded in the outputs</dd>
       </dl>
