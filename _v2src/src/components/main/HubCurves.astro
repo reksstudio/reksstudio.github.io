@@ -1,0 +1,85 @@
+---
+import HubBand from './HubBand.astro';
+import { hub, hubHtml, section } from '../../lib/overview.mjs';
+import { toHtml } from '../../lib/inline.mjs';
+import { f1 } from '../../lib/ladder.mjs';
+import { SHCI, basisText, chains, mini, num, sub, systems, uni } from '../../lib/dissoc.mjs';
+import { entries } from '../../lib/refmap.mjs';
+
+// Large panel for the longest chain with FCI, thumbnails for the other curves of this band
+const base = import.meta.env.BASE_URL;
+const s = section('near-exact');
+const curves = systems.filter((x) => entries.some((e) => e.band === 'near-exact' && e.set === 'dissociation' && e.slug === x.slug));
+const big = chains.reduce((a, x) => (x.order > (a?.order ?? -1) ? x : a), null);
+const thumbs = curves.filter((x) => x !== big);
+const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
+const extent = (m) => Math.round((m.hi - m.lo) * 1000);
+// px per mEh of a panel of height h
+const pxOf = (m, h) => h / ((m.hi - m.lo) * 1000);
+const shift = (x) => `SHCI shifted ${num(x.ref_shift, 2)} mE_{h}`;
+
+const BIG = { W: 360, x0: 30, w: 290, top: 22, h: 156 };
+const TH = { W: 100, H: 62, x0: 2, w: 82, top: 4, h: 54 };
+const mb = mini(big, BIG.x0, BIG.w, BIG.h, BIG.top, true, true);
+const pxB = pxOf(mb, BIG.h);
+const last = mb.s0.at(-1);
+const refLabel = `FCI ${big.ref[0].basis}${big.ref_extra.length ? ', above SSR' : ''}`;
+const exLabel = big.ref_extra.map((e) => `FCI ${e.basis}, ${plural(e.R.length, 'point')}`).join('; ');
+const LY = BIG.top + BIG.h - 58;
+const bigAria = `${uni(big.id)} S0 dissociation curve, ${big.as} ${big.functional}/${big.basis}: SSR as a line, ${refLabel} as circles${exLabel ? `, ${exLabel} as squares` : ''}; vertical extent ${extent(mb)} mEh; scale bar 50 mEh`;
+const thumbOf = (x) => {
+  const m = mini(x, TH.x0, TH.w, TH.h, TH.top, true, true);
+  const ref = x.ref_shift ? 'SHCI' : 'FCI';
+  return { x, m, px: pxOf(m, TH.h), aria: `${uni(x.id)} S0 curve, SSR line${x.ref ? `, ${ref} points` : ''}${x.ref_shift ? `, ${uni(shift(x))}` : ''}; extent ${extent(m)} mEh; scale bar 50 mEh` };
+};
+const tagOf = (x) => {
+  if (x.ref_extra.length) return `FCI lies above SSR in this basis: ${hub.fciReason}; ${x.ref_extra.map((e) => `FCI ${e.basis} (${plural(e.R.length, 'point')})`).join(' / ')} on the page`;
+  if (x.ref_shift) return `${SHCI}, ${x.ref[0].basis}; shifted by ${num(x.ref_shift, 2)} mE_{h}`;
+  return null;
+};
+const capOf = (x) => ({
+  x,
+  name: x.kind === 'molecule' && x.ref ? `${x.id} curves and constants` : `${x.id} curves`,
+  rest: `R ${x.xwin[0]}–${x.xwin[1]} Å · ${x.ref ? `${x.counts.ref_points} ${x.ref_shift ? 'SHCI' : 'FCI'}` : `${x.counts.points} SSR`} points`,
+  tag: tagOf(x),
+});
+const bar = (cx, yb, px) => `M${f1(cx)} ${f1(yb)}V${f1(yb - 50 * px)}`;
+---
+<HubBand id="near-exact">
+  <figure class="hfig" slot="fig">
+    <svg class="hcurves" viewBox={`0 0 ${BIG.W} ${BIG.top + BIG.h + 22}`} role="img" aria-label={bigAria}>
+      <text x="0" y="12" class="hc-name" set:html={sub(big.id)} /><text x="26" y="12" class="hc-t">extent {extent(mb)} mE<tspan class="sb" dy="2">h</tspan></text>
+      <line x1={BIG.x0} x2={BIG.x0 + BIG.w} y1={BIG.top + BIG.h + 4} y2={BIG.top + BIG.h + 4} class="hc-axis" />
+      {big.xwin.map((r, k) => <text x={f1(mb.xAt(r))} y={BIG.top + BIG.h + 17} text-anchor={k ? 'end' : 'start'} class="hc-t">{r}</text>)}<text x={(BIG.x0 + BIG.w / 2).toFixed(0)} y={BIG.top + BIG.h + 17} text-anchor="middle" class="hc-t">R / Å</text>
+      <g transform="scale(.1)"><path d={mb.ssr} class="hc-ssr" /></g>
+      {mb.refPts.map(([px, py]) => <circle cx={f1(px)} cy={f1(py)} r="2" class="hc-ref" />)}
+      {mb.extraPts.map(([px, py]) => <rect x={f1(px - 2.5)} y={f1(py - 2.5)} width="5" height="5" class="hc-ex" />)}
+      <path d={bar(BIG.x0 + BIG.w + 9, BIG.top + BIG.h, pxB)} class="hc-bar" /><text x={BIG.x0 + BIG.w + 12} y={f1(BIG.top + BIG.h - 50 * pxB - 5)} text-anchor="end" class="hc-t">50 mE<tspan class="sb" dy="2">h</tspan></text>
+      <text x={f1(mb.xAt(last[0]))} y={f1(mb.yAt(last[1]) + 14)} text-anchor="end" class="hc-l hc-lo">SSR S0</text>
+      <circle cx={BIG.x0 + 120} cy={LY} r="2" class="hc-ref" /><text x={BIG.x0 + 127} y={LY + 3.5} class="hc-l">{refLabel}</text>
+      {exLabel && <><rect x={BIG.x0 + 117.5} y={LY + 11.5} width="5" height="5" class="hc-ex" /><text x={BIG.x0 + 127} y={LY + 17.5} class="hc-l">{exLabel}</text></>}
+    </svg>
+    <div class="hthumbs">
+      {thumbs.map(thumbOf).map(({ x, m, px, aria }, i) => (
+        <div class:list={['hth', { 'hth-apart': x.kind === 'molecule' && thumbs[i - 1]?.kind === 'chain' }]}>
+          <p class="hth-n" set:html={toHtml(x.id)} />
+          <svg class="hcurves" viewBox={`0 0 ${TH.W} ${TH.H}`} role="img" aria-label={aria}>
+            <g transform="scale(.1)"><path d={m.ssr} class="hc-ssr" /></g>
+            {m.refPts.map(([cx, cy]) => <circle cx={f1(cx)} cy={f1(cy)} r="1.6" class="hc-ref" />)}
+            {m.extraPts.map(([cx, cy]) => <rect x={f1(cx - 2.5)} y={f1(cy - 2.5)} width="5" height="5" class="hc-ex" />)}
+            <path d={bar(TH.x0 + TH.w + 6, TH.top + TH.h, px)} class="hc-bar" /><text x={f1(TH.x0 + TH.w + 6)} y={f1(TH.top + TH.h - 50 * px - 3)} text-anchor="middle" class="hc-t hc-bl">50</text>
+          </svg>
+          <p class="hth-e">extent {extent(m)} mE<sub>h</sub>{x.ref_shift && <Fragment set:html={` · ${toHtml(shift(x))}`} />}</p>
+        </div>
+      ))}
+    </div>
+    <figcaption class="hth-note">Extent: vertical range of each panel. Bars: 50 mE<sub>h</sub> in the scale of each panel. Lines: SSR S0; points: reference.</figcaption>
+  </figure>
+  <p class="hb-num" set:html={hubHtml(s.num)} />
+  <ul class="hcap">
+    {[big, ...thumbs].map(capOf).map((c) => (
+      <li><a href={`${base}main/results/dissociation/${c.x.slug}/`} set:html={toHtml(c.name)} /> <Fragment set:html={toHtml(`${c.x.as} · ${c.x.functional}`)} /> · <span class="nw">{basisText(c.x.basis)}</span> · {c.rest}{c.tag && <span class="hb-tag" set:html={toHtml(c.tag)} />}</li>
+    ))}
+  </ul>
+  <p class="hb-links"><a class="hb-primary" href={`${base}main/results/dissociation/`}>All dissociation curves</a></p>
+</HubBand>

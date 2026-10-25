@@ -10,7 +10,8 @@ function label(a, u) {
     else break;
   }
   const page = document.title.split(' — ')[0];
-  const sec = h ? [...h.childNodes].filter((n) => n.nodeName !== 'A').map((n) => n.textContent).join('').trim() : '';
+  // heading text without its links; the whole text when the heading is only a link
+  const sec = h ? [...h.childNodes].filter((n) => n.nodeName !== 'A').map((n) => n.textContent).join('').trim() || h.textContent.trim() : '';
   return u.pathname === location.pathname ? sec || page : sec ? `${sec} · ${page}` : page;
 }
 

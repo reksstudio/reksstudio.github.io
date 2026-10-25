@@ -2,7 +2,8 @@ import data from '../data/dissociation.json' with { type: 'json' };
 import overview from '../data/overview.json' with { type: 'json' };
 import TEXT from '../data/dissociation_text.json' with { type: 'json' };
 import { andList, escape, toHtml } from './inline.mjs';
-import { citeLink as cite, reference, shortRef } from './literature.mjs';
+import { authorYear, citeLink as cite, reference, shortRef } from './literature.mjs';
+import { notInstalled, orbitalsOf, sgRange } from './ladder.mjs';
 import { BRANCH, REPO_URL } from './site.mjs';
 
 const { rules } = data;
@@ -55,13 +56,15 @@ const rRange = (s) => `${rEnd(s.R[0])}–${rEnd(s.R.at(-1))}`;
 const inXwin = (s, r) => r >= s.xwin[0] - 1e-9 && r <= s.xwin[1] + 1e-9;
 const asOf = (s) => s.as;
 const asRange = (list) => {
-  const sp = [...new Set(list.map(asOf))].sort((a, b) => parseInt(a.slice(1), 10) - parseInt(b.slice(1), 10));
+  const sp = [...new Set(list.map(asOf))].sort((a, b) => orbitalsOf(a) - orbitalsOf(b));
   return sp.length === 1 ? sp[0] : `${sp[0]}–${sp.at(-1)}`;
 };
 // "H_{2}-H_{8}" (en dash) for consecutive chains, "C_{2}H_{4}, C_{2}" for molecules
 const idRange = (list) => (list.length > 2 && list.every((s) => s.kind === 'chain') ? `${list[0].id}–${list.at(-1).id}` : list.map((s) => s.id).join(', '));
 
 const PAPER = 'komarov2026-reks-studio';
+// "Fig. 3 of Komarov et al. 2026": source of a value read from the paper figure
+export const figSource = () => `${FIG} of ${authorYear(reference(PAPER))}`;
 export { cite };
 export const citeText = (key) => shortRef(reference(key));
 
@@ -523,7 +526,7 @@ const f2 = (v) => v.toFixed(2);
 const exp = (s) => s.values.exp ?? {};
 const s0Key = (s) => (s.ref && s.kind === 'molecule' ? 'X' : 'S0');
 // diatomic: the scan is the full geometry; polyatomic: a rigid scan of R_CC
-const diatomic = (s) => /^[A-Z][a-z]?_\{2\}$/.test(s.id);
+export const diatomic = (s) => /^[A-Z][a-z]?_\{2\}$/.test(s.id);
 const scanNote = (s) => (diatomic(s) ? '' : ' (rigid R_{CC} scan)');
 // "R_{e} 1.333 A (rigid R_{CC} scan) . exp. 1.3305 A (r_{e})" (middle dot, angstrom sign)
 export const numberLine = (s) => {
@@ -566,16 +569,33 @@ export const figColumnsHtml = (s, base) => {
   return cols.length ? `${toHtml(andList(cols))} column${cols.length > 1 ? 's' : ''} from ${figCite(base)}; n<sub>i</sub> computed.` : '';
 };
 
+export const storedDecimals = (v) => (String(v).split('.')[1] ?? '').length;
+// ours − experiment on the stored decimals, rounded half away from zero to nd; null for a non-numeric experiment
+export const delta = (ours, v, nd) => {
+  if (!Number.isFinite(Number(v))) return null;
+  const n = Math.max(storedDecimals(ours), storedDecimals(v), nd);
+  const i = Math.round(Number(ours) * 10 ** n) - Math.round(Number(v) * 10 ** n);
+  return (Math.sign(i) * Math.round(Math.abs(i) / 10 ** (n - nd))) / 10 ** nd;
+};
+const QTY = [['Re', 'R_{e}', 'Å', 3], ['Te', 'T_{e}', 'eV', 2], ['De', 'D_{e}', 'eV', 2]];
+const EXP_STATES = ['S0', 'X', 'a', 'A', 'B'];
+// experimental values of a system in table order: {q, label, unit, nd, st, ours (stored), e, d}
+export const expEntries = (s) =>
+  QTY.flatMap(([q, label, unit, nd]) =>
+    EXP_STATES.filter((st) => exp(s)[q]?.[st]).map((st) => {
+      const ours = q === 'De' ? s.values.De : s.values[q][st];
+      const e = exp(s)[q][st];
+      return { q, label, unit, nd, st, ours, e, d: delta(ours, e.v, nd) };
+    }),
+  );
+// systems with an experimental value and their entries
+export const expList = () => expMols.map((s) => ({ s, entries: expEntries(s) }));
+
 // C2 comparison table {head, rows}
-export function constTable(s) {
-  const e = exp(s);
-  const v = s.values;
-  const rows = [];
-  for (const st of ['X', 'a', 'A', 'B']) if (e.Re?.[st]) rows.push([`R_{e} ${STATE_LABEL[st]} / Å`, f3(v.Re[st]), e.Re[st].v]);
-  for (const st of ['a', 'A', 'B']) if (e.Te?.[st]) rows.push([`T_{e} ${STATE_LABEL[st]} / eV`, f2(v.Te[st]), e.Te[st].v]);
-  if (e.De?.X) rows.push([`D_{e} ${STATE_LABEL.X} / eV`, f2(v.De), e.De.X.v]);
-  return { head: ['Quantity', 'SSR', 'Experiment'], rows };
-}
+export const constTable = (s) => ({
+  head: ['Quantity', 'SSR', 'Experiment'],
+  rows: expEntries(s).map((x) => [`${x.label} ${STATE_LABEL[x.st]} / ${x.unit}`, x.ours.toFixed(x.nd), x.e.v]),
+});
 // HTML: "Experiment: R_e, T_e [cite]; D_e [cite]."
 export const constSources = (s, base) => {
   const by = new Map();
@@ -598,39 +618,19 @@ export function cardTable(s) {
     : { head: ['', 'SSR'], rows: [['R_{e} Å', f3(s.values.Re[k])]] };
 }
 
-// mini curve: S0 and (ref = true) the reference S0 on one Eh scale, raw points inside xwin
-export function mini(s, x0, w, h, top = 6, ref = true) {
+// mini curve: S0 and (ref) the reference S0 on one Eh scale inside xwin; pts: ref_extra on the scale, points as [x, y]
+export function mini(s, x0, w, h, top = 6, ref = true, pts = false) {
   const inWin = ([r]) => inXwin(s, r);
   const fci = ref && s.ref ? s.ref[0].R.map((r, j) => [r, s.ref[0].E[j]]).filter(inWin) : [];
+  const extra = pts ? s.ref_extra.flatMap((e) => e.R.map((r, j) => [r, e.E[j]]).filter(inWin)) : [];
   const s0 = s.R.map((r, j) => [r, s.S0[j]]).filter(inWin);
-  const es = [...s0, ...fci].map((p) => p[1]);
+  const es = [...s0, ...fci, ...extra].map((p) => p[1]);
   const [lo, hi] = [Math.min(...es), Math.max(...es)];
   const x = (r) => x0 + ((r - s.xwin[0]) / (s.xwin[1] - s.xwin[0])) * w;
   const y = (e) => top + ((hi - e) / (hi - lo)) * h;
-  return { fci: fci.length ? pathD(fci, x, y) : null, ssr: pathD(s0, x, y) };
+  const xy = ([r, e]) => [x(r), y(e)];
+  return { fci: fci.length ? pathD(fci, x, y) : null, ssr: pathD(s0, x, y), lo, hi, xAt: x, yAt: y, s0, ...(pts && { refPts: fci.map(xy), extraPts: extra.map(xy) }) };
 }
-
-// one row per system: reference kind and headline number
-export const rows = systems.map((s) => {
-  const e = exp(s);
-  const k = s.kind === 'molecule' && s0Key(s);
-  let reference;
-  let number;
-  if (s.kind === 'chain') {
-    reference = s.ref ? `FCI, ${s.ref[0].basis}` : s.ref_note;
-    number = s.ref ? 'vs FCI, same basis' : `${s.counts.points} points`;
-  } else if (s.ref) {
-    reference = 'experiment; near-exact reference points';
-    number = `D_{e} ${f2(s.values.De)} · exp. ${e.De.X.v} eV; R_{e} ${f3(s.values.Re[k])} · exp. ${e.Re[k].v} Å`;
-  } else if (e.Re?.[k]) {
-    reference = 'experiment';
-    number = `R_{e} ${f3(s.values.Re[k])} · exp. ${e.Re[k].v} Å${scanNote(s)}`;
-  } else {
-    reference = 'none';
-    number = `R_{e} ${f3(s.values.Re[k])} Å${scanNote(s)}`;
-  }
-  return { system: s.id, as: s.as, reference, number, anchor: s.slug, cls: s.cls };
-});
 
 // D_e of the reference-point molecule
 export const deSys = pointMols.find((s) => exp(s).De);
@@ -639,8 +639,8 @@ export const deSys = pointMols.find((s) => exp(s).De);
 const h2 = systems.find((s) => s.slug === 'h2');
 export const hero = { ssr: h2.R.map((r, i) => [r, h2.S0[i]]), fci: h2.ref[0].R.map((r, i) => [r, h2.ref[0].E[i]]), ks: h2.rks.R.map((r, i) => [r, h2.rks.E[i]]) };
 
-const NOT_INSTALLED_FROM = Number(overview.landing.installed.match(/\d+/)[0]);
-const notInstalled = [...new Set(systems.map(asOf))].filter((a) => Number(a.match(/\d+/)[0]) > NOT_INSTALLED_FROM);
+// active spaces of the systems beyond the installed catalogues
+const beyond = [...new Set(systems.map(asOf))].filter(notInstalled);
 const byValue = (f) => {
   const m = new Map();
   for (const s of systems) m.set(f(s), [...(m.get(f(s)) ?? []), s]);
@@ -648,7 +648,7 @@ const byValue = (f) => {
 };
 const ids = (list) => list.map((s) => s.id).join(', ');
 // basis as set: H in 6-31G(d) carries no polarisation
-const basisText = (b) => (b === '6-31G(d)' ? '6-31G(d) (on H: 6-31G)' : b);
+export const basisText = (b) => (b === '6-31G(d)' ? '6-31G(d) (on H: 6-31G)' : b);
 const POOL_STD = (s) => {
   const names = s.sa.split(' ').map((t) => t.split(':')[0]);
   const m = Number(s.as.match(/\d+/)[0]) / 2;
@@ -690,10 +690,11 @@ const extraSys = systems.filter((s) => s.ref_extra.length);
 const refExtra = extraSys.length
   ? `FCI single points: ${extraSys.flatMap((s) => s.ref_extra.map((r) => `${r.basis} (${s.id}, R ${r.R.map((v) => v.toFixed(2)).join(', ')} Å)`)).join(', ')}; detci, all MOs.`
   : '';
-// HTML: "Reference points: SHCI extrapolated to the FCI limit, frozen core, cc-pV5Z [cite], shifted by -89.23 mEh."
 const shiftHtml = (s) => (s.ref_shift ? `, shifted by ${num(s.ref_shift, 2)} mE<sub>h</sub>` : '');
+export const SHCI = 'SHCI extrapolated to the FCI limit, frozen core';
+// HTML: "Reference points: SHCI extrapolated to the FCI limit, frozen core, cc-pV5Z [cite], shifted by -89.23 mEh."
 export const refPointsHtml = (s, base) =>
-  `Reference points: SHCI extrapolated to the FCI limit, frozen core, ${escape(s.ref[0].basis)} [${cite(s.ref[0].source, base)}]${shiftHtml(s)}.`;
+  `Reference points: ${SHCI}, ${escape(s.ref[0].basis)} [${cite(s.ref[0].source, base)}]${shiftHtml(s)}.`;
 // HTML, each source once: "Experiment: C_2H_4 R_e [cite]; N_2 R_e, C_2 D_e [cite]; C_2 R_e, T_e [cite]."
 export const expHtml = (base) => {
   const by = new Map();
@@ -729,6 +730,19 @@ export const vertHtml = (base) =>
     figParts.length && `${toHtml(figParts.join('; '))}: ${figCite(base)}.`,
   ].filter(Boolean).join(' ');
 
+// caption of a chain on its page
+export const chainSub = (slug) => TEXT.chainSub[slug];
+// chains with larger-basis FCI points: SSR below FCI on their common grid, the caption states why
+export const extraChains = chains.filter((s) => s.ref_extra.length);
+for (const s of extraChains) {
+  const ssrAt = (r) => s.S0[s.R.findIndex((v) => Math.abs(v - r) < 1e-9)];
+  const diffs = s.ref[0].R.map((r, j) => [ssrAt(r), s.ref[0].E[j]]).filter(([a]) => a != null).map(([a, b]) => a - b);
+  if (Math.max(...diffs) >= 0) throw new Error(`dissoc: ${s.slug}: SSR not below FCI on the common grid`);
+  if (!chainSub(s.slug).includes(`Since ${overview.hub.fciReason}, the FCI curve lies somewhat above the corresponding SSR curve`)) throw new Error(`dissoc: ${s.slug}: caption no longer states the quoted FCI reason`);
+}
+// Δ of every experimental value of quantity q
+const deltasOf = (q) => expMols.flatMap((s) => expEntries(s).filter((x) => x.q === q && x.d != null).map((x) => x.d));
+
 // inline markup strings, no links
 export const vars = {
   h1: `Bond dissociation: ${[idRange([...chains, ...far]), ...molecules.map((s) => s.id)].join(', ')}`,
@@ -740,7 +754,7 @@ export const vars = {
   keyline: `${systems.length} systems · SSR${asRange(systems)} · ${systems.filter((s) => s.source !== 'figure').reduce((t, s) => t + s.counts.points, 0)} computed points along R`,
   farTitle: far.length ? `${ids(far)}: ${OUT_OF_REACH}` : '',
   farNav: far.length ? ids(far) : '',
-  notInstalledAs: andList(notInstalled),
+  notInstalledAs: andList(beyond),
   setupMethod: setupRows.method,
   setupSa: setupRows.sa,
   setupSi: setupRows.si,
@@ -757,6 +771,16 @@ export const vars = {
   rowMolsText: reMols.some((s) => !s.ref) ? `Bonds broken along the full curve; R_{e} against experiment: ${ids(reMols.filter((s) => !s.ref))}.` : 'Bonds broken along the full curve; natural occupations of S0.',
   rowPoints: pointMols.map((s) => s.id).join(' · '),
   rowPointsText: 'Curves against near-exact reference points; natural occupations and spectroscopic constants against experiment.',
+  asChains: asRange(chains),
+  fciPointsAll: chains.reduce((t, s) => t + s.counts.ref_points, 0),
+  shciPoints: pointMols.reduce((t, s) => t + s.counts.ref_points, 0),
+  nExp: expMols.length,
+  reMols: ids(expMols),
+  refShiftC2: pointMols.map((s) => num(s.ref_shift, 2)).join(', '),
+  reRange: sgRange(deltasOf('Re'), 3, 'Å'),
+  teC2: sgRange(deltasOf('Te'), 2, 'eV'),
+  aboveChains: ids(extraChains),
+  aboveBasis: [...new Set(extraChains.map((s) => s.ref[0].basis))].join(', '),
 };
 
 // [anchor, names, text]; a row without systems is left out

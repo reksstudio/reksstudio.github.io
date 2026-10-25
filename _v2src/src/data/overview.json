@@ -1,19 +1,73 @@
 {
   "classes": {
-    "A": { "part": 1, "label": "implementation vs exact oracle" },
-    "B": { "part": 1, "label": "model vs near-exact theory (FCI)" },
-    "C": { "part": 1, "label": "model vs benchmark set (TBE)" },
-    "D": { "part": 1, "label": "model vs experiment" },
-    "trend": { "part": 2, "label": "trend without reference" },
-    "nofci": { "part": 2, "label": "model, FCI out of reach at this size" },
-    "object": { "part": 2, "label": "reference on a different object" },
-    "basis": { "part": 2, "label": "reference in a different basis" },
-    "workflow": { "part": 2, "label": "workflow demonstration" }
+    "A": { "label": "implementation vs exact oracle" },
+    "B": { "label": "model vs near-exact theory (FCI)" },
+    "C": { "label": "model vs benchmark set (TBE)" },
+    "D": { "label": "model vs experiment" },
+    "trend": { "label": "trend without reference" },
+    "nofci": { "label": "model, FCI out of reach at this size" },
+    "object": { "label": "reference on a different object" },
+    "basis": { "label": "reference in a different basis" },
+    "workflow": { "label": "workflow demonstration" }
   },
-  "parts": [
-    { "part": 1, "id": "against-reference", "title": "Part 1: against a reference", "groups": ["A", "B", "C", "D"] },
-    { "part": 2, "id": "beyond-reference", "title": "Part 2: beyond available references: trends and demonstrations", "groups": ["trend", "nofci", "object", "basis", "workflow"] }
-  ],
+  "hub": {
+    "lead": "Ensemble DFT (REKS, SSR states) for broken bonds, diradicals and excited states, checked against exact identities of the equations, near-exact theory, benchmark estimates and experiment.",
+    "indexLink": "Index by problem: every molecule, curve and table",
+    "mapCaption": "Runs of the dissociation, QUEST, zethrene and large-molecule pages",
+    "fciReason": "FCI with a small basis set cannot fully capture the correlation energy",
+    "sections": [
+      {
+        "id": "exact",
+        "kicker": "implementation vs exact identities and finite differences",
+        "title": "Identities and finite-difference checks",
+        "tile": { "k": "exact identities, finite differences", "line": "identities {#exact:idMax} E_{h}, degeneracy {#exact:symMax} E_{h}; gradients vs five-point FD {#exact:fdMax} E_{h} a_{0}^{−1}; up to {exact:reach}", "n": "{#exact:nChecks} checks" }
+      },
+      {
+        "id": "near-exact",
+        "kicker": "model vs near-exact theory",
+        "title": "Bond breaking",
+        "gloss": "FCI: exact in the given basis. SHCI: selected CI extrapolated to the FCI limit.",
+        "num": "{dissoc:fciChains}, SSR {dissoc:asChains}: S0 against FCI in the same basis; C_{2} X^{1}Σ_{g}^{+} against SHCI points",
+        "tile": { "k": "near-exact theory", "line": "{dissoc:fciChains}, SSR {dissoc:asChains}: S0 vs FCI in the same basis; {dissoc:aboveChains}: FCI {dissoc:aboveBasis} above SSR; C_{2} vs SHCI, shifted {dissoc:refShiftC2} mE_{h}", "n": "{#dissoc:fciPointsAll} FCI points · {#dissoc:shciPoints} SHCI points" }
+      },
+      {
+        "id": "tbe",
+        "cls": "C",
+        "title": "Excited states against TBE",
+        "gloss": "TBE: theoretical best estimates of the QUEST database, sets {quest:setList}",
+        "disp": "MAE, per state the closest of {quest:asRange} to the TBE;",
+        "num": "N = {quest:pairs} pairs of {quest:molecules} molecules ({quest:perState} S_{1}/S_{2}/T_{1}/T_{2});",
+        "rule": "Per state and functional, the active space of {quest:asRange} closest to the TBE among those computed; each SSR state paired with one TBE state of the same multiplicity.",
+        "scope": "{quest:complete} of {quest:molecules} molecules with all four states; valence and charge-transfer states, no Rydberg state among the pairs.",
+        "tile": { "k": "benchmark (TBE)", "line": "MAE {#quest:maeRange} eV, MSE {#quest:mseRange} eV, three functionals; per state the closest active space of {quest:asRange}", "n": "{#quest:pairs} state pairs" }
+      },
+      {
+        "id": "experiment",
+        "cls": "D",
+        "title": "Against experiment",
+        "gloss": "measured values the result pages compare; how each value is assigned to a state is stated on its page",
+        "tile": { "k": "experiment", "line": "Δ R_{e} {#dissoc:reRange} ({dissoc:reMols}); C_{2} T_{e} {#dissoc:teC2}; zethrene absorption {#zexp:absRange} ({zexp:absAssigned} of {zexp:absN} author-assigned); {zexp:j2mol} 2J {#zexp:j2}", "n": "{#dissoc:nExp} gas-phase molecules · {#zexp:nMol} zethrene-family molecules ({zexp:nCore} cores)" }
+      },
+      { "id": "run", "title": "Run it" },
+      { "id": "index", "title": "Index" }
+    ],
+    "evidence": {
+      "same|exact": "vs exact identities and FD",
+      "same|near-exact": "vs FCI and SHCI",
+      "same|tbe": "vs TBE",
+      "same|experiment": "vs experiment",
+      "related|experiment": "vs measurements on related molecules"
+    },
+    "costGroup": "Cost and history",
+    "costIndex": [
+      { "href": "main/cost/#md-time-resp", "t": "Wall time against ORCA and Q-Chem" },
+      { "href": "main/cost/#psi4", "t": "Inside Psi4" },
+      { "href": "main/cost/#count", "t": "Configuration count" },
+      { "href": "main/cost/#catalogue", "t": "Catalogue" },
+      { "href": "main/cost/#largest-run", "t": "Largest run" },
+      { "href": "main/cost/#dynamics-step", "t": "One dynamics step" }
+    ]
+  },
   "moved": { "h-chains": "h-chains", "bond-breaking": "molecules", "c2": "c2", "ttr": { "to": "large-molecules/ttr/", "text": "TTR: this result moved to the large-molecules page" } },
   "results": [
     {
@@ -25,11 +79,6 @@
       "short": "Exactness",
       "ident": "Identities, finite differences and conservation checks of the shipped code, each against an exact oracle.",
       "key": "Model identities to ≤ 10^{−10} E_{h}; analytic gradients vs FD5 within 7.8·10^{−5} E_{h} a_{0}^{−1} (worst case, BH wide geminals).",
-      "rows": [
-        { "system": "BH, H_{2}", "as": "(2,2)–(4,6)", "reference": "CASSCF, same basis", "number": "≤ 10^{−10} E_{h} (model identities)", "anchor": "identities" },
-        { "system": "two H_{2} at 50 Å", "as": "(2,2)", "reference": "2 × E(H_{2})", "number": "9.3·10^{−11} E_{h} (size consistency)", "anchor": "identities" },
-        { "system": "C_{2}H_{4}, butadiene, BH", "as": "(2,2)–(4,6)", "reference": "five-point finite differences", "number": "≤ 7.8·10^{−5} E_{h} a_{0}^{−1} (gradients)", "anchor": "derivatives" }
-      ],
       "blocks": [
         {
           "figure": { "todo": "overview figure, max deviation per check against its criterion" },
@@ -112,9 +161,6 @@
       "ident": "S1, S2, T1 and T2 vertical excitation energies of {quest:molecules} molecules from QUEST3/5/6/7 against theoretical best estimates (TBE): {quest:pairs} state pairs ({quest:singlet} singlet, {quest:triplet} triplet); SSR with BH&HLYP, M08-SO and ωB97X, {quest:basis}.",
       "key": "MAE {quest:mae} eV (BH&HLYP / M08-SO / ωB97X); median absolute error {quest:medae} eV.",
       "rule": "Per state, the value of the active space (2,2)–(8,8) closest to the TBE.",
-      "rows": [
-        { "system": "{quest:molecules} molecules, QUEST3/5/6/7; S1, S2, T1, T2", "as": "(2,2)–(8,8), closest to TBE per state", "reference": "TBE", "number": "MAE {quest:mae} eV (BH&HLYP / M08-SO / ωB97X)" }
-      ],
       "blocks": [
         {
           "id": "errors",
@@ -191,9 +237,6 @@
       "short": "Zethrenes",
       "ident": "Seven PAHs of Hu et al. (2016), {zeth:atoms} atoms, {zeth:geometries} geometries (three per compound, two for IF); SA-REKS and SI-SA-REKS from (2,2) to (10,10), {zeth:functional}/{zeth:basis}; {zeth:calculations} calculations; energies, occupations and active orbitals of every one, with its input.",
       "key": "{zeth:compounds} compounds · {zeth:geometries} geometries · {zeth:calculations} calculations · up to {zeth:atomsMax} atoms, {zeth:nbfMax} basis functions · SI up to {zeth:siMax} configurations (2S = 0)",
-      "rows": [
-        { "system": "{zeth:compounds} PAHs of Hu et al. (2016), {zeth:geometries} geometries", "as": "(2,2)–(10,10)", "reference": "none", "number": "{zeth:calculations} calculations, {zeth:atoms} atoms, {zeth:basis}, (2,2)–(10,10)" }
-      ],
       "blocks": [
         { "id": "definitions", "title": "Definitions", "zeth": ["defs"] },
         { "id": "compounds", "title": "Compounds", "zeth": ["cards"] },
@@ -231,9 +274,6 @@
       "short": "C_{2}H_{4} photochemistry",
       "ident": "S0/S1 minimum-energy conical intersection, the S0 torsion transition state by three methods, and an FSSH trajectory of C_{2}H_{4}, all from SSR gradients and couplings.",
       "key": "MECI gap 1.49·10^{−4} E_{h}; S0 torsion barrier 0.1068793 E_{h} = 2.908 eV.",
-      "rows": [
-        { "system": "C_{2}H_{4}", "as": "(2,2)", "reference": "none (no reference MECI compared)", "number": "MECI gap 1.49·10^{−4} E_{h}; barrier 2.908 eV" }
-      ],
       "blocks": [
         {
           "id": "meci", "title": "S0/S1 MECI",
@@ -262,7 +302,7 @@
     }
   ],
   "manualRows": [
-    { "cls": "basis", "problem": "Excited states", "system": "hexatriene", "as": "(6,6)", "reference": "QUEST TBE (aug-cc-pVTZ); SSR in 6-31G(d)", "number": "T1 2.736 / 2.73, S1 5.354 / 5.37 eV; deviations 0.006–0.31 eV", "manual": "first-spin" }
+    { "cls": "basis", "problem": "Excited states", "system": "hexatriene", "manual": "first-spin" }
   ],
   "landing": {
     "hero": {

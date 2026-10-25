@@ -3,61 +3,58 @@ import Base from '../../../layouts/Base.astro';
 import Nav from '../../../components/Nav.astro';
 import Footer from '../../../components/Footer.astro';
 import SubNav from '../../../components/main/SubNav.astro';
-import { classes, html, indexRows, parts } from '../../../lib/overview.mjs';
+import HubHeader from '../../../components/main/HubHeader.astro';
+import HubBand from '../../../components/main/HubBand.astro';
+import HubCurves from '../../../components/main/HubCurves.astro';
+import HubHist from '../../../components/main/HubHist.astro';
+import HubExp from '../../../components/main/HubExp.astro';
+import HubRun from '../../../components/main/HubRun.astro';
+import HubIndex from '../../../components/main/HubIndex.astro';
+import { hubLinks, manualHref } from '../../../lib/overview.mjs';
+import { toHtml } from '../../../lib/inline.mjs';
+import { derivatives, inEh, noUnit, scope } from '../../../lib/exact.mjs';
 import '../../../styles/main.css';
+import '../../../styles/hub.css';
 
 const base = import.meta.env.BASE_URL;
-// first row of each result carries the anchor its page links back to
-const seen = new Set();
-const rowId = (row) => {
-  const slug = row.slug ?? row.system;
-  if (seen.has(slug)) return undefined;
-  seen.add(slug);
-  return `row-${slug}`;
+const R = `${base}main/results/`;
+
+// value up to the first " (" stays; the qualifier after it goes on the next line
+const devCell = (dev) => {
+  const i = dev.indexOf(' (');
+  return i < 0 ? toHtml(dev) : `${toHtml(dev.slice(0, i))}<span class="ex-q">${toHtml(dev.slice(i + 1))}</span>`;
 };
+const exRow = (r) => ({ dt: `${r.system ? `${toHtml(r.system)} · ` : ''}${toHtml(r.qty)}`, id: `${toHtml(r.id)} · vs ${toHtml(r.oracle)}`, dev: devCell(r.dev) });
+// exact band columns: heading, gloss, row lists
+const exCols = [
+  { h: 'Energy identities / E<sub>h</sub>', gloss: 'a limit, equality or symmetry the equations fix exactly', lists: [['exl', inEh], ['exl ex-nounit', noUnit]] },
+  { h: 'Analytic gradients vs five-point finite differences / E<sub>h</sub> a<sub>0</sub><sup>−1</sup>', gloss: 'finite differences of the same energy', lists: [['exl', derivatives]] },
+].map((c) => ({ ...c, lists: c.lists.map(([cls, rows]) => ({ cls, rows: rows.map(exRow) })) }));
+const L = hubLinks(base);
 ---
 <Base title="Results — REKS Studio">
 <Nav variant="light" />
 <SubNav current="results" />
 <main>
-
-<header class="mhead">
-  <div class="wrap">
-    <h1>Results</h1>
-    <p class="ident">Every result shown with REKS Studio, one row per system and question, each one click from its evidence.</p>
-  </div>
-</header>
-
+<HubHeader />
 <div class="wrap mbody">
-  {parts.map((p) => (
-    <section class="mblock" id={p.id}>
-      <h2>{p.title}</h2>
-      {indexRows(p, base).map(({ group, rows }) => (
-        <>
-          <h3>{p.part === 1 ? `${group}: ` : ''}<Fragment set:html={html(classes[group].label)} /></h3>
-          <div class="tbl">
-            <table class="index">
-              <thead><tr><th>System</th><th>Problem class</th><th>Active space</th><th>Reference</th><th>Number</th><th>Evidence</th></tr></thead>
-              <tbody>
-                {rows.map((row) => (
-                  <tr id={rowId(row)}>
-                    <td set:html={html(row.system)} />
-                    <td set:html={html(row.problem)} />
-                    <td set:html={html(row.as)} />
-                    <td set:html={html(row.reference)} />
-                    <td set:html={html(row.number)} />
-                    <td><a href={row.href}>{row.manualRow ? 'Manual' : 'page'}</a></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      ))}
-    </section>
-  ))}
+  <HubBand id="exact" cls="hb-exact">
+    <Fragment slot="raw">{exCols.map((c) => (
+      <div class="ex-col">
+        <p class="ex-h" set:html={c.h} />
+        <p class="hb-gloss">{c.gloss}</p>
+        {c.lists.map((l) => <dl class={l.cls}>{l.rows.map((r) => <div class="ex-r"><dt set:html={r.dt} /><dd class="ex-id" set:html={r.id} /><dd class="ex-dev" set:html={r.dev} /></div>)}</dl>)}
+      </div>
+    ))}</Fragment>
+    <p class="hb-scope">{scope}</p>
+    <p class="hb-links"><a class="hb-primary" href={`${R}exactness/`}>Exactness checks</a><span class="hb-sec">{L.exactness.map((l) => <><a href={l.href}>{l.t}</a> · </>)}Manual <a href={manualHref(base, 'grad-fd')}>Gradients and couplings against FD</a></span></p>
+  </HubBand>
+  <HubCurves />
+  <HubHist />
+  <HubExp />
+<HubRun />
+<HubIndex />
 </div>
 </main>
-
 <Footer />
 </Base>

@@ -1,0 +1,63 @@
+---
+import { hub, hubLinks, indexGroups, manualHref, manualRows, results, section } from '../../lib/overview.mjs';
+import { escape, toHtml } from '../../lib/inline.mjs';
+import { systems } from '../../lib/dissoc.mjs';
+import { molHref, molecules } from '../../lib/quest.mjs';
+import { compounds as zCompounds } from '../../lib/zeth.mjs';
+import { compounds } from '../../lib/scale.mjs';
+import { BAND_ORDER, COMPARED, REF_ORDER, entries } from '../../lib/refmap.mjs';
+
+// one block per problem: h3, evidence line (one link per compared status and band), h4 per result page; then the cost group
+const base = import.meta.env.BASE_URL;
+const R = `${base}main/results/`;
+const s = section('index');
+const a = (href, text, cls) => `<a href="${href}"${cls ? ` class="${cls}"` : ''}>${text}</a>`;
+const ul = (items) => `<ul class="ix-l">${items.map((x) => `<li>${x}</li>`).join('')}</ul>`;
+const evidence = (p) =>
+  [...new Set(entries.filter((e) => e.problem === p && COMPARED.has(e.ref)).map((e) => `${e.ref}|${e.band}`))]
+    .map((k) => k.split('|'))
+    .sort((x, y) => BAND_ORDER.indexOf(x[1]) - BAND_ORDER.indexOf(y[1]) || REF_ORDER.indexOf(x[0]) - REF_ORDER.indexOf(y[0]))
+    .map(([ref, band]) => `<a href="#${band}">${hub.evidence[`${ref}|${band}`]} ↑</a>`)
+    .join(' · ');
+// dissociation system tag: its references, empty without one
+const sysTag = (x) => {
+  const ek = Object.keys(x.values.exp ?? {}).map((k) => `${k[0]}_{${k.slice(1)}}`).join(', ');
+  return [x.ref && `curve vs ${x.ref_shift ? 'SHCI points (shifted)' : 'FCI'}`, ek && `${ek} vs experiment`].filter(Boolean).join('; ');
+};
+const SECTIONS = [['gaps', 'Spin gaps'], ['spins', 'Spin sectors'], ['occupations', 'Occupations'], ['experiment', 'Experiment'], ['calculations', 'Calculations']];
+const L = hubLinks(base);
+const links = (ls) => ls.map((l) => a(l.href, l.t));
+const LISTS = {
+  exactness: () => ul(links(L.exactness)),
+  dissociation: () => ul(systems.map((x) => `${a(`${R}dissociation/${x.slug}/`, toHtml(x.id))}${sysTag(x) ? ` <span class="ix-tag">${toHtml(sysTag(x))}</span>` : ''}`)),
+  quest: () =>
+    ul(links(L.quest)) +
+    ul(molecules.toSorted((m, n) => m.name.localeCompare(n.name)).map((m) => a(`${R}quest/${molHref(m)}`, escape(m.name)))),
+  zethrenes: () =>
+    ul(links([...L.zethrenes, L.zethExp])) +
+    ul(zCompounds.map((c) => `${a(`${R}zethrenes/${c.slug}/`, c.id)} · ${a(`${R}zethrenes/${c.slug}/#calculations`, 'inputs')}`)),
+  'large-molecules': () => compounds.map((c) => ul([a(`${R}large-molecules/${c.slug}/`, c.id, 'ix-mol'), ...SECTIONS.map(([k, t]) => a(`${R}large-molecules/${c.slug}/#${k}`, t))])).join(''),
+  'c2h4-photochemistry': () => ul(links(L.photochemistry)),
+};
+const cap = (t) => `${t[0].toUpperCase()}${t.slice(1)}`;
+const groups = indexGroups.slice(0, -1).map((g) => ({ ...g, ev: evidence(g.t), rs: results.filter((r) => r.problem === g.t), ms: manualRows.filter((m) => m.problem === g.t) }));
+const costGroup = indexGroups.at(-1);
+---
+<section class="mblock hindex" id="index" aria-labelledby="index-h">
+  <h2 id="index-h">{s.title}</h2>
+  <div class="ix-cols">
+    {groups.map((g) => (
+      <div class="ix-p">
+        <h3 id={g.id}>{g.t}</h3>
+        {g.ev && <p class="ix-ev" set:html={g.ev} />}
+        {g.rs.map((r) => <div class="ix-g"><h4 id={`row-${r.slug}`}><a href={`${R}${r.slug}/`} set:html={toHtml(r.short)} /></h4><Fragment set:html={LISTS[r.slug]()} /></div>)}
+        {g.ms.map((m) => <div class="ix-g"><h4 id={`row-${m.system}`}>{cap(m.system)}, Manual</h4><Fragment set:html={ul([a(manualHref(base, m.manual), `${escape(cap(m.system))} (Manual example, TBE in another basis)`)])} /></div>)}
+      </div>
+    ))}
+    <div class="ix-p">
+      <h3 id={costGroup.id}>{costGroup.t}</h3>
+      <div class="ix-g"><h4><a href={`${base}main/cost/`}>Cost</a></h4><Fragment set:html={ul(hub.costIndex.map((c) => a(`${base}${c.href}`, c.t)))} /></div>
+      <div class="ix-g"><h4><a href={`${base}main/history/`}>History</a></h4></div>
+    </div>
+  </div>
+</section>

@@ -1,17 +1,13 @@
 import data from '../data/scale.json' with { type: 'json' };
 import lit from '../data/scale_lit.json' with { type: 'json' };
-import overview from '../data/overview.json' with { type: 'json' };
 import { andList, formulaMarkup, toHtml } from './inline.mjs';
 import { doiUrl, reference, shortRef } from './literature.mjs';
-import { EH_EV, cardId, ladderOf, orbitalsOf, rungId, sg, twoSList } from './ladder.mjs';
-import { systems as dissocSystems } from './dissoc.mjs';
-import { molecules as questMolecules } from './quest.mjs';
-import { compounds as zethCompounds, counts as zethCounts, ladder as zethLadder } from './zeth.mjs';
+import { EH_EV, ladderOf, notInstalled, orbitalsOf, sg, twoSList } from './ladder.mjs';
+import { counts as zethCounts } from './zeth.mjs';
 import { buildOf, pcOf, revLineOf } from './site.mjs';
 
 export const { method, counts } = data;
-// set {key, id (anchor prefix), plain "6-31G(d) · BH&HLYP", html, markup, tick}; SI state energies in meV from the
-// lowest state of the rung
+// set {key, id (anchor prefix), plain "6-31G(d) · BH&HLYP", html, markup, tick}; SI energies in meV above the rung's lowest state
 export const ladder = ladderOf(data, {
   setLabel: (plain) => ({ id: plain.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''), plain, html: toHtml(plain), markup: plain, tick: [plain, ''] }),
   noun: 'set',
@@ -25,7 +21,7 @@ export const { compounds, rungs, rungsOf, geoms, geomsOf, topRung } = ladder;
 export const PREFIX = 'main/results/large-molecules/';
 
 // atom count of a formula in inline markup, "C_{2}H_{4}" -> 6
-const atomsOf = (f) => [...f.replace(/[_{}]/g, '').matchAll(/[A-Z][a-z]?(\d*)/g)].reduce((n, m) => n + (m[1] ? +m[1] : 1), 0);
+export const atomsOf = (f) => [...f.replace(/[_{}]/g, '').matchAll(/[A-Z][a-z]?(\d*)/g)].reduce((n, m) => n + (m[1] ? +m[1] : 1), 0);
 
 // datasets of the reach map: legend label, colour class (spin palette); the large molecules take PALETTE in order
 const PALETTE = ['s6', 's0'];
@@ -36,38 +32,6 @@ export const REACH_SETS = [
   { key: 'zethrenes', label: 'Zethrenes', cls: 's1' },
   ...compounds.map((c, i) => ({ key: c.id, label: c.id, cls: PALETTE[i] })),
 ];
-const RESULTS = 'main/results/';
-// one dot per (dataset, atoms, M) over every published run; href: the calculation of its one system, or the dataset
-// page when several systems share the dot; names: the systems at the dot
-export function reach() {
-  const dots = new Map();
-  const add = (set, atoms, m, name, href, hub) => {
-    const key = `${set}|${atoms}|${m}`;
-    if (!dots.has(key)) dots.set(key, { set, atoms, m, names: [], hrefs: [], hub });
-    const d = dots.get(key);
-    d.names.push(name);
-    d.hrefs.push(href);
-  };
-  for (const s of dissocSystems) add('dissociation', atomsOf(s.id), orbitalsOf(s.as), s.id.replace(/[_{}]/g, ''), `${RESULTS}dissociation/${s.slug}/`, `${RESULTS}dissociation/`);
-  for (const q of questMolecules) {
-    const ks = new Set(Object.values(q.states).flatMap((byF) => Object.values(byF).flatMap((r) => Object.keys(r.rungs ?? {}))));
-    for (const k of ks) add('quest', q.atoms, orbitalsOf(k), q.name, `${RESULTS}quest/${q.slug}/`, `${RESULTS}quest/`);
-  }
-  for (const c of zethCompounds) {
-    for (const r of zethLadder.rungs) {
-      const g = zethLadder.geomsOf(c).find((x) => c.geoms[x.key].rungs[r.key]);
-      if (g) add('zethrenes', c.atoms, orbitalsOf(r.key), c.id, `${RESULTS}zethrenes/${c.slug}/#${rungId(g, r)}`, `${RESULTS}zethrenes/`);
-    }
-  }
-  for (const c of compounds) {
-    for (const r of rungsOf(c)) {
-      const g = geomsOf(c).find((x) => c.geoms[x.key].rungs[r.key]);
-      add(c.id, c.atoms, orbitalsOf(r.key), c.id, `${PREFIX}${c.slug}/#${rungId(g, r)}`, `${PREFIX}${c.slug}/`);
-    }
-  }
-  return [...dots.values()].map((d) => ({ ...d, href: d.hrefs.length === 1 ? d.hrefs[0] : d.hub, names: [...new Set(d.names)] }));
-}
-
 // every job of the sets; the Psi4 builds of their machines
 export const allJobs = compounds.flatMap((c) => Object.values(c.geoms).flatMap((g) => Object.values(g.rungs).flatMap((r) => r.jobs)));
 const pcs = [...new Set(allJobs.map((j) => pcOf(j.host)))].sort();
@@ -127,16 +91,6 @@ export const rungSpan = (c, f = 'label') => {
   const rs = rungsOf(c);
   return rs.length > 2 ? `${rs[0][f]}–${rs.at(-1).label}` : rungList(rs, f);
 };
-// basis functions of a compound over its sets, "2100, 4452"
-const nbfs = (c) => [...new Set(geomsOf(c).map((g) => c.geoms[g.key].nbf))].sort((a, b) => a - b);
-// results-index rows: one per compound, linked to its card on the section page
-export const rows = compounds.map((c) => ({
-  system: `${c.id} ${formulaMarkup(c.formula)}, ${c.atoms} atoms`,
-  as: rungSpan(c),
-  reference: 'experiment on Au(111) (different object)',
-  number: `${c.atoms} atoms, up to ${Math.max(...nbfs(c))} basis functions, ${rungsOf(c).at(-1).label}`,
-  anchor: cardId(c),
-}));
 
 // values substituted for {scale:name} tokens
 export const vars = {
@@ -154,10 +108,7 @@ export const vars = {
   rev: buildLine,
   // "TNS: a.xyz ([cite:key]); TTR: ..."
   geomLine: compounds.map((c) => `${c.id}: ${[...new Set(geomsOf(c).map((g) => c.geoms[g.key].xyz))].join(', ')} ([cite:${c.geometrySource}])`).join('; '),
-  notInstalledAs: (() => {
-    const m = orbitalsOf(overview.landing.installed);
-    return andList(rungs.filter((r) => orbitalsOf(r.label) > m).map((r, i) => (i ? r.label : r.reks)));
-  })(),
+  notInstalledAs: andList(rungs.filter((r) => notInstalled(r.label)).map((r, i) => (i ? r.label : r.reks))),
   // "TNS: 6-31G(d) · BH&HLYP REKS(12,12); ... TTR: ..."
   setList: compounds
     .map((c) => `${c.id}: ${geomsOf(c).map((g) => `${g.plain} ${rungList(rungsOf(c).filter((r) => c.geoms[g.key].rungs[r.key]), 'reks')}`).join('; ')}`)

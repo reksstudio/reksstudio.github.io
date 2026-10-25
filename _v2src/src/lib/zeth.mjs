@@ -1,6 +1,6 @@
 import data from '../data/zeth.json' with { type: 'json' };
-import { fmtCount, toHtml } from './inline.mjs';
-import { ladderOf, sg } from './ladder.mjs';
+import { andList, fmtCount, toHtml } from './inline.mjs';
+import { ladderOf, notInstalled, sg } from './ladder.mjs';
 import { pcOf, revLineOf } from './site.mjs';
 import { expSources } from './zethlit.mjs';
 
@@ -32,9 +32,6 @@ export const absentLine = (only) =>
     .filter((c) => !only || c === only)
     .flatMap((c) => geoms.filter((g) => !c.geoms[g.key]).map((g) => `Hu et al. (2016) give no ${g.html} for ${c.id}.`))
     .join(' ');
-
-// active spaces whose SI catalogues the install does not ship
-const NOT_INSTALLED = ['88', '1010'];
 
 // output path prefix of the section; provenance line of psi4 builds and install branch
 export const PREFIX = 'main/results/zethrenes/';
@@ -76,9 +73,10 @@ export const vars = {
   compounds: counts.compounds,
   geometries: counts.geometries,
   calculations: counts.calculations,
-  notInstalledAs: NOT_INSTALLED.map((k) => rungs.find((r) => r.key === k).label).join(' and '),
-  notInstalled: compounds.flatMap((c) => Object.values(c.geoms).flatMap((g) => Object.keys(g.rungs))).filter((k) => NOT_INSTALLED.includes(k)).length,
+  notInstalledAs: andList(rungs.filter((r) => notInstalled(r.key)).map((r) => r.label)),
+  notInstalled: compounds.flatMap((c) => Object.values(c.geoms).flatMap((g) => Object.keys(g.rungs))).filter(notInstalled).length,
   atoms: `${counts.atoms[0]}–${counts.atoms[1]}`,
+  asRange: `${rungs[0].label}–${rungs.at(-1).label}`,
   atomsMax: counts.atoms[1],
   nbfMax: counts.nbfMax,
   siMax: fmtCount(counts.siMax),

@@ -42,6 +42,9 @@ export function codeHtml(s) {
   return out + escape(s.slice(last));
 }
 
+// data text standing in for a value not yet supplied
+export const PLACEHOLDER = /^(to be added|not stated in v1)/;
+
 // Data text carries no TeX: "$" throws (math is set in md files only)
 function noMath(s) {
   if (s.includes('$')) throw new Error(`inline: "$" in data text: ${s}`);

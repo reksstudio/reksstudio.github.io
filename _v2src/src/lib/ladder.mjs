@@ -1,7 +1,13 @@
+import overview from '../data/overview.json' with { type: 'json' };
 import { signed } from './quest.mjs';
 
 // difference with sign, "0.0" when it rounds to zero; null -> "n/a" (outside the SI space of the rung)
 export const sg = (v, nd = 3) => (v == null ? 'n/a' : Number(v.toFixed(nd)) === 0 ? (0).toFixed(nd) : signed(v, nd));
+// signed range of differences: "+0.27 to +0.81 eV", one value when both ends print alike
+export const sgRange = (ds, nd, unit) => {
+  const [a, b] = [sg(Math.min(...ds), nd), sg(Math.max(...ds), nd)];
+  return a === b ? `${a} ${unit}` : `${a} to ${b} ${unit}`;
+};
 export const f4 = (v) => (v == null ? 'n/a' : v.toFixed(4));
 // orbital label "H-1" -> "H−1"
 export const orb = (t) => t.replace('-', '−');
@@ -32,6 +38,8 @@ export const ORB_KEY = '<b>slot</b> MO · SA-REKS FON / ε (E<sub>h</sub>); head
 export const EH_EV = 27.21138602;
 // orbitals M of an active-space label "(10,10)" or a rung key "1010"
 export const orbitalsOf = (t) => parseInt(t[0] === '(' ? t.slice(1) : t.slice(0, t.length / 2), 10);
+// active space (label or rung key) larger than the installed catalogues
+export const notInstalled = (t) => orbitalsOf(t) > orbitalsOf(overview.landing.installed);
 // 2S values "0–12" when they run in steps of 2 over more than two, else "0, 2"
 export const twoSList = (s) => (s.length > 2 && s.every((v, i) => i === 0 || v - s[i - 1] === 2) ? `${s[0]}–${s.at(-1)}` : s.join(', '));
 

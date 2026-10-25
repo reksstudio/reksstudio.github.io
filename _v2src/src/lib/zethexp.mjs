@@ -1,9 +1,9 @@
-import { EH_EV } from './ladder.mjs';
-import { EH_KCAL, compounds, rungs } from './zeth.mjs';
-import { vsexp } from './zethlit.mjs';
+import { EH_EV, sg, sgRange } from './ladder.mjs';
+import { EH_KCAL, compounds, geoms, rungs } from './zeth.mjs';
+import { authorYear } from './literature.mjs';
+import { refOf, vsexp } from './zethlit.mjs';
 
-// REKS vs experiment: each vsexp row with the REKS value from zeth.json energies (Eh); d = REKS - experiment.
-// Throws on an unknown core, a missing geometry or top rung, or no singlet led by the row's configuration.
+// vsexp rows with the REKS value; d = REKS - experiment. Throws on an unknown core, missing geometry/top rung, or no matching singlet.
 
 const NM_EV = 1239.84198;
 const K_PER_KCAL = 503.2195;
@@ -70,3 +70,58 @@ const ROWS = vsexp.map((row) => {
 
 // rows of one core (all cores without argument), in the order of zeth_lit.json
 export const pairs = (core) => ROWS.filter((r) => !core || r.core === core);
+// rows of one kind in the open panels
+const main = (rows, kind) => rows.filter((p) => p.kind === kind && p.group === 'main');
+// rows split by panel: T1 and absorption (open panels), more, tierB; j2: the 2J row
+export const groupsOf = (rows) => ({
+  t1: main(rows, 'T1'),
+  ab: main(rows, 'abs'),
+  more: rows.filter((p) => p.group === 'more'),
+  tierB: rows.filter((p) => p.group === 'tierB'),
+  j2: rows.find((p) => p.kind === '2J'),
+});
+
+export const geo = (key) => geoms.find((g) => g.key === key);
+export const d2 = (v) => sg(v, 2);
+// "Author (year)" of a row's first source
+export const cite = (p) => authorYear(refOf(p.src[0].key));
+// distinct cite() of the rows, joined by ", "
+export const srcList = (rows) => [...new Set(rows.map(cite))].join(', ');
+// most common zero geometry of the rows, per-core exceptions in parentheses: "R_os (IF: R_cs)"
+export const zeroOf = (rows, fmt = (g) => g.html) => {
+  const count = new Map();
+  for (const p of rows) count.set(p.c.zero, (count.get(p.c.zero) ?? 0) + 1);
+  const common = [...count].sort((a, b) => b[1] - a[1])[0][0];
+  const other = [...new Set(rows.filter((p) => p.c.zero !== common).map((p) => `${p.core}: ${fmt(geo(p.c.zero))}`))];
+  return `${fmt(geo(common))}${other.length ? ` (${other.join('; ')})` : ''}`;
+};
+export const range = (ds) => sgRange(ds, 2, 'eV');
+export const counted = (rows) => {
+  const k = new Set(rows.map((p) => p.core)).size;
+  return `${rows.length} ${rows.length === 1 ? 'molecule' : 'molecules'} (${k} ${k === 1 ? 'core' : 'cores'})`;
+};
+
+// step from the second-last to the last rung
+export const step = (p) => p.ladder.at(-1) - p.ladder.at(-2);
+export const byCore = (rows) => [...new Map(rows.map((p) => [p.core, p])).values()];
+const stepHead = `${rungs.at(-2).label} → ${rungs.at(-1).label}`;
+const t1Steps = (t1) => `${byCore(t1).map((p) => d2(step(p))).join(' / ')} eV (${byCore(t1).map((p) => p.core).join(' / ')})`;
+export const stepLine = (t1, ab) =>
+  `${stepHead}: ${[t1.length && `T1 ${t1Steps(t1)}`, ab.length && `absorption ${range(byCore(ab).map(step))}`].filter(Boolean).join(', ')}; every active space in the details.`;
+
+export const geomSource = 'UCAM-B3LYP/6-31G* geometries of Hu et al. (2016), not reoptimized';
+
+const { t1, ab, more, tierB, j2 } = groupsOf(pairs());
+const shown = [...t1, ...ab, ...more, ...tierB];
+// tokens {zexp:name}
+export const vars = {
+  nMol: new Set(shown.map((p) => p.mol)).size,
+  nCore: new Set(shown.map((p) => p.core)).size,
+  absAssigned: ab.filter((p) => p.assigned).length,
+  absN: ab.length,
+  absRange: range(ab.map((p) => p.d)),
+  j2: `${d2(j2.d)} kcal mol^{−1}`,
+  j2mol: j2.mol,
+  t1Step: `${stepHead}: ${t1Steps(t1)}`,
+  absStep: `${stepHead}: ${range(byCore(ab).map(step))}`,
+};

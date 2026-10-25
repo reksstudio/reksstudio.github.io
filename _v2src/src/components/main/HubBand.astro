@@ -1,0 +1,23 @@
+---
+import { classes, html, hubHtml, section } from '../../lib/overview.mjs';
+
+interface Props {
+  id: string;
+  cls?: string;
+}
+
+// band of hub.sections[id]: slot "fig" beside the text, slot "raw" as grid children, default slot under the head
+const { id, cls } = Astro.props;
+const s = section(id);
+const kicker = s.kicker ?? (s.cls && html(classes[s.cls].label));
+---
+<section class:list={['mblock', 'hband', cls]} id={id} aria-labelledby={`${id}-h`}>
+  <div class="hb-head">
+    {kicker && <p class="hb-k" set:html={kicker} />}
+    <h2 id={`${id}-h`}>{s.title}</h2>
+    {s.gloss && <p class="hb-gloss" set:html={hubHtml(s.gloss)} />}
+  </div>
+  {Astro.slots.has('fig') && <div class="hb-fig"><slot name="fig" /></div>}
+  <slot name="raw" />
+  {Astro.slots.has('default') && <div class="hb-body"><slot /></div>}
+</section>

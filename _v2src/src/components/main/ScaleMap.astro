@@ -1,7 +1,9 @@
 ---
 import { landing } from '../../lib/overview.mjs';
 import { f1, orbitalsOf } from '../../lib/ladder.mjs';
-import { REACH_SETS, compounds, ladder, reach, vars } from '../../lib/scale.mjs';
+import { REACH_SETS, ladder, vars } from '../../lib/scale.mjs';
+import { reach, reachLabels, reachRows, reachSet, reachTitle } from '../../lib/refmap.mjs';
+import { logScale } from '../../lib/svgmarks.mjs';
 import { largest as zMax } from '../../lib/zeth.mjs';
 
 interface Props {
@@ -10,37 +12,36 @@ interface Props {
   line?: boolean;
 }
 
-// x = atoms in 0..AMAX (largest count rounded up to 100), y = active space M0..M1 (one row per rung); one dot per (dataset, atoms, M)
+// One dot per (dataset, atoms, M); y = active space M0..M1, one row per rung
 const { size, line } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const S = {
-  card: { W: 240, H: 120, L: 44, R: 24, T: 14, B: 66, r: 2.2, rTop: 3.2, xStep: 100, xTickY: 81, atomsY: 90, axisY: 72, lineY: 102, keyY: 115, lab: 'largest REKS before this work' },
-  page: { W: 640, H: 300, L: 70, R: 44, T: 30, B: 236, r: 3.4, rTop: 5, xStep: 50, xTickY: 260, atomsY: 272, axisY: 246, lineY: 294, keyY: null, lab: 'largest REKS active space reported before this work' },
+  card: { W: 240, H: 120, L: 44, R: 24, T: 14, B: 66, r: 2.2, rTop: 3.2, log: false, xTicks: [0, 100], xTickY: 81, atomsY: 90, axisY: 72, lineY: 102, keyY: 115, lab: 'largest REKS before this work' },
+  page: { W: 640, H: 300, L: 70, R: 44, T: 30, B: 236, r: 3.4, rTop: 5, log: true, xTicks: [1, 2, 5, 10, 20, 50, 100], xTickY: 260, atomsY: 272, axisY: 246, lineY: 294, keyY: null, lab: 'largest REKS active space reported before this work' },
 }[size];
-const AMAX = Math.ceil(vars.atomsMax / 100) * 100;
-const sets = Object.fromEntries(REACH_SETS.map((s) => [s.key, s]));
+// largest atom count rounded up to 100
+const AMAX =Math.ceil(vars.atomsMax / 100) * 100;
 // drawn in dataset order, the large molecules last (on top)
-const dots = reach().sort((a, b) => REACH_SETS.indexOf(sets[a.set]) - REACH_SETS.indexOf(sets[b.set]));
-const [M0, M1] = [Math.min(...dots.map((d) => d.m)), orbitalsOf(vars.asMax)];
-const x = (a) => S.L + (a / AMAX) * (S.W - S.L - S.R);
+const dots = reach().sort((a, b) => REACH_SETS.indexOf(reachSet(a)) - REACH_SETS.indexOf(reachSet(b)));
+const { M0, M1, rows } = reachRows(dots);
+// x axis: card linear 0..AMAX, page log 1..AMAX
+const PW = S.W - S.L - S.R;
+const x = S.log ? logScale(1, AMAX, S.L, PW) : (a) => S.L + (a / AMAX) * PW;
 const y = (m) => S.B - ((m - M0) / (M1 - M0)) * (S.B - S.T);
 const top = dots.reduce((a, d) => (d.atoms > a.atoms || (d.atoms === a.atoms && d.m > a.m) ? d : a));
-const rows = Array.from({ length: (M1 - M0) / 2 + 1 }, (_, i) => M0 + 2 * i);
 const ticks = size === 'card' ? [M0, M1] : rows;
-const xTicks = Array.from({ length: AMAX / S.xStep + 1 }, (_, i) => i * S.xStep);
+const xTicks = [...S.xTicks.filter((a) => a < AMAX), AMAX];
 const before = orbitalsOf(landing.engine.before);
 const zTop = Math.max(...dots.filter((d) => d.atoms === zMax.atoms && d.set === 'zethrenes').map((d) => d.m));
 const labels = [
-  ...compounds.map((c) => ({ t: c.id, atoms: c.atoms, m: Math.max(...dots.filter((d) => d.set === c.id).map((d) => d.m)) })),
+  ...reachLabels(dots),
   { t: 'zethrenes', atoms: zMax.atoms, m: zTop },
 ].map((l) => ({ t: l.t, x: x(l.atoms), y: y(l.m) - (l.atoms === top.atoms && l.m === top.m ? S.rTop : S.r) - 2 }));
 // card colour key: swatch + label per dataset, advanced by the label width at 9 px (capital 6.2, other 4.9 units)
 const textW = (t) => [...t].reduce((w, ch) => w + (ch === ch.toUpperCase() ? 6.2 : 4.9), 0);
 const key = [];
 for (const s of REACH_SETS) key.push({ ...s, x: key.length ? key.at(-1).x + 14 + textW(key.at(-1).label) : 0 });
-// "QUEST: furan, imidazole · 9 atoms · REKS(4,4)"
 const { reks } = ladder.names;
-const name = (d) => `${sets[d.set].label}${d.names.length > 1 || d.names[0] !== sets[d.set].label ? `: ${d.names.join(', ')}` : ''} · ${d.atoms} atoms · ${reks}(${d.m},${d.m})`;
 const aria =
   size === 'card'
     ? `Atoms against active space for every published REKS Studio run, coloured by dataset; largest: ${vars.atomsMax} atoms, ${vars.reksMax}${line ? `; largest REKS before this work: ${landing.engine.before}` : ''}`
@@ -53,7 +54,7 @@ const circle = (d) => ({ cx: f1(x(d.atoms)), cy: f1(y(d.m)), r: d === top ? S.rT
   <text x="0" y={size === 'card' ? 7 : 14} class="tick">{reks} active space ↑</text>
   {ticks.map((m) => <text x={S.L - 6} y={f1(y(m) + 3)} text-anchor="end" class="tick">({m},{m})</text>)}
   {xTicks.map((a) => <text x={f1(x(a))} y={S.xTickY} text-anchor="middle" class="tick">{a}</text>)}
-  <text x={S.W} y={S.atomsY} text-anchor="end" class="tick">atoms →</text>
+  <text x={S.W} y={S.atomsY} text-anchor="end" class="tick">atoms{S.log && ', log scale'} →</text>
   {line && (
     <>
       <line x1={S.L - 4} x2={S.W - S.R} y1={f1(y(before))} y2={f1(y(before))} class="before" />
@@ -63,6 +64,6 @@ const circle = (d) => ({ cx: f1(x(d.atoms)), cy: f1(y(d.m)), r: d === top ? S.rT
   )}
   {size === 'card' && key.map((k) => <g class={k.cls}><rect x={k.x} y={S.keyY - 6} width="6" height="6" class="sw" /><text x={k.x + 8} y={S.keyY} class="lg">{k.label}</text></g>)}
   {labels.map((l) => <text x={f1(l.x)} y={f1(l.y)} text-anchor="middle" class="lab">{l.t}</text>)}
-  {dots.map((d) => (size === 'page' ? <a href={`${base}${d.href}`} class={`dot ${sets[d.set].cls}`}><title>{name(d)}</title><circle {...circle(d)} /></a> : <circle {...circle(d)} class={`dot ${sets[d.set].cls}`} />))}
+  {dots.map((d) => (size === 'page' ? <a href={`${base}${d.href}`} class={`dot ${reachSet(d).cls}`}><title>{reachTitle(d)}</title><circle {...circle(d)} /></a> : <circle {...circle(d)} class={`dot ${reachSet(d).cls}`} />))}
 </svg>
 {size === 'page' && <ul class="spin-legend qlegend">{REACH_SETS.map((s) => <li class={s.cls}><span class="sw"></span>{s.label}</li>)}</ul>}

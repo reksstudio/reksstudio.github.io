@@ -1,0 +1,75 @@
+---
+import HubBand from './HubBand.astro';
+import HubCard from './HubCard.astro';
+import { hubLinks } from '../../lib/overview.mjs';
+import { escape, toHtml } from '../../lib/inline.mjs';
+import { sg, sgRange } from '../../lib/ladder.mjs';
+import { STATE_LABEL, diatomic, expList, figSource, num, storedDecimals, uni } from '../../lib/dissoc.mjs';
+import { compounds, expRows, vars as scale } from '../../lib/scale.mjs';
+import { compounds as zCompounds, rungs, vars as zeth } from '../../lib/zeth.mjs';
+import { groupsOf, pairs, range, vars as zx } from '../../lib/zethexp.mjs';
+
+const base = import.meta.env.BASE_URL;
+const R = `${base}main/results/`;
+const L = hubLinks(base);
+
+// gas-phase cards; the method shared by most molecules goes in the caption, others in the card condition
+const gas = expList();
+const methodOf = (x) => `${x.functional}/${x.basis}`;
+const byMethod = Object.groupBy(gas, ({ s }) => methodOf(s));
+const common = Object.keys(byMethod).sort((a, b) => byMethod[b].length - byMethod[a].length)[0];
+// C2H4 card also links the photochemistry page
+const extra = { c2h4: [{ label: 'Photochemistry', ls: L.photochemistry }] };
+const gasCards = gas.map(({ s: x, entries }) => {
+  const fb = (x.values.fallback ?? []).map((st) => STATE_LABEL[st]).join(', ');
+  const cond = [methodOf(x) !== common && methodOf(x), x.source === 'figure' && `R_{e} from ${figSource()}`, !diatomic(x) && 'rigid R_{CC} scan', fb && `${fb}: lowest grid point`].filter(Boolean).join('; ');
+  const lines = Object.values(Object.groupBy(entries, (e) => e.q)).map((es) => {
+    const [e] = es;
+    const ds = es.map((y) => y.d).filter((v) => v != null);
+    if (!ds.length) return { q: toHtml(e.label), v: `${num(e.ours, e.nd)} vs ${escape(e.e.v)} ${e.unit}`, ref: 'SSR vs exp.' };
+    if (es.length > 1) return { q: toHtml(e.label), v: `Δ ${sgRange(ds, e.nd, e.unit)}`, ref: `${es.length} states` };
+    const nd = Math.max(e.nd, Math.min(storedDecimals(e.ours), storedDecimals(e.e.v)));
+    return { q: toHtml(e.label), v: `Δ ${sg(e.d, e.nd)} ${e.unit}`, ref: `SSR ${e.ours.toFixed(nd)} · exp. ${escape(e.e.v)} ${e.unit}` };
+  });
+  return {
+    pics: [{ src: x.svg, w: x.w, h: x.h, alt: uni(x.id) }],
+    title: toHtml(x.id),
+    lines,
+    cond: toHtml(cond),
+    links: [{ ls: [{ href: `${R}dissociation/${x.slug}/#numbers`, t: `${toHtml(x.id)} numbers` }] }, ...(extra[x.slug] ?? [])],
+  };
+});
+
+// zethrene family: parent skeleton, T1, absorption, 2J, the ladder
+const { t1, j2 } = groupsOf(pairs());
+const hz = zCompounds[0];
+const zCard = {
+  pics: [{ src: hz.skel, w: hz.sw, h: hz.sh, alt: `${hz.name} (${hz.id})` }],
+  title: 'Zethrene family',
+  lines: [
+    { q: 'T<sub>1</sub>', v: `Δ ${range(t1.map((p) => p.d))}`, ref: `${t1.length} molecules`, sub: toHtml(zx.t1Step) },
+    { q: 'Absorption', v: `Δ ${zx.absRange}`, ref: `${zx.absN} molecules, ${zx.absAssigned} assigned by the authors` },
+    { q: `${escape(j2.mol)} 2J`, v: `${num(j2.ours, 2)} vs ${num(j2.exp, 2)} kcal mol<sup>−1</sup>`, ref: 'REKS vs exp.' },
+    { q: 'Ladder', v: `${zeth.compounds} compounds · ${zeth.asRange}` },
+  ],
+  cond: toHtml(`REKS${rungs.at(-1).label} on the parent core vs substituted derivatives`),
+  links: [{ ls: [{ href: L.zethExp.href, t: 'Zethrenes vs experiment' }, ...L.zethrenes] }],
+};
+
+// large molecules: size and IETS steps on the surface
+const surf = compounds.filter((c) => expRows(c.id).length);
+const substrates = [...new Set(surf.flatMap((c) => expRows(c.id).map((r) => r.substrate)))].join(', ');
+const surfCard = {
+  pics: compounds.map((c) => ({ src: c.skel, w: c.sw, h: c.sh, alt: `${c.name} (${c.id})` })),
+  title: compounds.map((c) => c.id).join(' · '),
+  lines: [{ q: 'Size', v: `up to ${scale.atomsMax} atoms · ${scale.reksMax}` }],
+  cond: toHtml(`IETS steps on ${substrates}, as read in the papers`),
+  links: [{ ls: [...compounds.map((c) => ({ href: `${R}large-molecules/${c.slug}/${surf.includes(c) ? '#experiment' : ''}`, t: c.id })), { href: `${R}large-molecules/`, t: 'Run sheet' }] }],
+};
+---
+<HubBand id="experiment" cls="hb-exp">
+  <div slot="fig">
+    <p class="hc-cap" set:html={toHtml(`SSR − experiment; ${common} unless stated`)} />
+    <ul class="hcards">{[...gasCards, zCard, surfCard].map((c) => <HubCard {...c} />)}</ul>
+  </div>
+</HubBand>

@@ -1,0 +1,22 @@
+---
+import { hub, manualHref, section } from '../../lib/overview.mjs';
+import { andList, formulaMarkup, toHtml } from '../../lib/inline.mjs';
+import { bases, claimParts, cost, looseCases, looseMark, panels, setting, tightMark } from '../../lib/cost.mjs';
+import { EMAIL } from '../../lib/site.mjs';
+
+const base = import.meta.env.BASE_URL;
+const s = section('run');
+const time = hub.costIndex[0];
+const nGeom = new Set(panels.map((p) => p.system.split('_')[0])).size;
+const shells = andList([...new Set(panels.map((p) => p.shell))]);
+// benchmark setup sentence (HTML via formulaMarkup)
+const setup = `one hot-start step of the tetracene dimer ${formulaMarkup(cost.md.setup[0].formula)}, ${nGeom} geometries (${shells} shell) × ${bases.length} bases (${bases.join(', ')}); SI-SA-REKS ${setting('states')} states, ORCA and Q-Chem TDA ${setting('roots')} roots.`;
+---
+<section class="mblock hband hb-run" id="run" aria-labelledby="run-h">
+  <h2 id="run-h">{s.title}</h2>
+  <p class="hb-num"><a href={`${base}${time.href}`}>{time.t}</a>: <Fragment set:html={toHtml(setup)} /></p>
+  <dl class="hrun">{claimParts.map((c) => <div><dt>{c.head}</dt><dd>{c.text}</dd></div>)}</dl>
+  <p class="hb-scope">† {looseCases}: {looseMark}; every other row {tightMark}.</p>
+  <p class="cta"><a class="btn install" href={`${base}docs/#install`}>Install, free</a> <a class="btn" href={`mailto:${EMAIL}`}>Talk to the team about your molecule</a></p>
+  <p class="hb-exits"><a href={manualHref(base, 'overview')}>Manual: Start</a> · <a href={`${base}docs/#install`}>Install</a> · <a href={`${base}docs/#cite`}>Cite</a> · <a href={`${base}docs/#contact`}>Contact</a></p>
+</section>

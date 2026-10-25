@@ -1,0 +1,23 @@
+---
+import HubMap from './HubMap.astro';
+import { hub, hubHtml, indexGroups } from '../../lib/overview.mjs';
+
+// one tile per band
+const tiles = hub.sections.filter((s) => s.tile);
+---
+<header class="mhead hhead">
+  <div class="wrap hh-grid">
+    <div class="hh-text">
+      <h1>Results</h1>
+      <p class="hh-lead">{hub.lead}</p>
+      <p class="hh-ix"><a href="#index">{hub.indexLink}</a></p>
+      <p class="hh-groups">{indexGroups.map((g, i) => <>{i > 0 && ' · '}<a href={`#${g.id}`}>{g.t}</a></>)}</p>
+    </div>
+    <ol class="hladder">
+      {tiles.map((t) => (
+        <li class="ht"><a class="pq ht-k" href={`#${t.id}`} set:html={hubHtml(t.tile.k)} />{' '}<span class="ht-l" set:html={hubHtml(t.tile.line)} />{' '}<span class="ht-n" set:html={hubHtml(t.tile.n)} /></li>
+      ))}
+    </ol>
+    <HubMap />
+  </div>
+</header>

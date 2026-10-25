@@ -1,27 +1,32 @@
+import GithubSlugger from 'github-slugger';
 import raw from '../data/overview.json' with { type: 'json' };
-import { toHtml } from './inline.mjs';
+import { PLACEHOLDER, toHtml } from './inline.mjs';
 import { entryHref } from './manual-pages.mjs';
 import { citeLink, doiUrl, reference, shortRef } from './literature.mjs';
 import { vars as quest } from './quest.mjs';
 import { vars as zeth } from './zeth.mjs';
-import { rows as dissocRows, vars as dissoc } from './dissoc.mjs';
-import { rows as scaleRows, vars as scale } from './scale.mjs';
+import { vars as dissoc } from './dissoc.mjs';
+import { vars as scale } from './scale.mjs';
+import { vars as exact } from './exact.mjs';
+import { vars as zexp } from './zethexp.mjs';
 
-const VARS = { quest, zeth, dissoc, scale };
+const VARS = { quest, zeth, dissoc, scale, exact, zexp };
 const TOKEN = new RegExp(`\\{(${Object.keys(VARS).join('|')}):(\\w+)\\}`, 'g');
+const value = (lib, k) => {
+  if (!(k in VARS[lib])) throw new Error(`overview.json: unknown token {${lib}:${k}}`);
+  return String(VARS[lib][k]);
+};
 // {lib:name} in any text -> the value computed from that lib's data, escaped for the JSON text it splices into
-const data = JSON.parse(
-  JSON.stringify(raw).replace(TOKEN, (_, lib, k) => {
-    if (!(k in VARS[lib])) throw new Error(`overview.json: unknown token {${lib}:${k}}`);
-    return JSON.stringify(String(VARS[lib][k])).slice(1, -1);
-  }),
-);
-// index rows supplied by a result's data module
-const ROWS = { dissociation: dissocRows, 'large-molecules': scaleRows };
+const data = JSON.parse(JSON.stringify(raw).replace(TOKEN, (_, lib, k) => JSON.stringify(value(lib, k)).slice(1, -1)));
 
-export const { classes, parts, results, manualRows, landing, history, moved } = data;
+export const { classes, results, manualRows, landing, history, moved, hub } = data;
 
-const PLACEHOLDER = /^(to be added|not stated in v1)/;
+// hub.sections entry of id; throws on an unknown id
+export const section = (id) => {
+  const s = hub.sections.find((x) => x.id === id);
+  if (!s) throw new Error(`overview.json: no hub section ${id}`);
+  return s;
+};
 
 const CITE = /\[cite:([\w-]+)\]/;
 // inline markup -> HTML; [cite:key] -> linked label (needs base); placeholder text gets class "ph"
@@ -34,35 +39,38 @@ export const html = (s, base) => {
   return PLACEHOLDER.test(s) ? `<span class="ph">${out}</span>` : out;
 };
 
+const HEADLINE = new RegExp(`\\{#(${Object.keys(VARS).join('|')}):(\\w+)\\}`);
+// inline markup -> HTML; {#lib:name} -> its value as a headline number (span.hv)
+export const hubHtml = (s) => {
+  const p = s.split(HEADLINE);
+  let out = toHtml(p[0]);
+  for (let i = 1; i < p.length; i += 3) out += `<span class="hv">${toHtml(value(p[i], p[i + 1]))}</span>${toHtml(p[i + 2])}`;
+  return out;
+};
+
+// hub index groups: distinct results[].problem in order, then the cost group; {t, id}
+const slugger = new GithubSlugger();
+export const indexGroups = [...new Set(results.map((r) => r.problem)), hub.costGroup].map((t) => ({ t, id: `index-${slugger.slug(t)}` }));
+
 export const resultHref = (base, slug, anchor) => `${base}main/results/${slug}/${anchor ? `#${anchor}` : ''}`;
 export const manualHref = (base, id) => entryHref(id, null, base);
+// result-page links per hub topic: {href, t}
+export const hubLinks = (base) => {
+  const l = (slug, anchor, t) => ({ href: resultHref(base, slug, anchor), t });
+  return {
+    exactness: [l('exactness', 'identities', 'Identities'), l('exactness', 'derivatives', 'Derivatives')],
+    quest: [l('quest', 'errors', 'Errors by state'), l('quest', 'sets', 'By set'), l('quest', 'table', 'Full table')],
+    zethrenes: [l('zethrenes', 'ladder', 'Ladder'), l('zethrenes', 'occupations', 'Occupations')],
+    zethExp: l('zethrenes', 'experiment', 'vs experiment'),
+    photochemistry: [l('c2h4-photochemistry', 'meci', 'MECI'), l('c2h4-photochemistry', 'ts', 'Torsion TS'), l('c2h4-photochemistry', 'trajectory', 'Trajectory'), { href: manualHref(base, 'dynamics-inputs'), t: 'Worked inputs (Manual: dynamics)' }],
+  };
+};
 
 // table cell: text, or {t, manual} / {t, href} as a link
 export function cellHtml(c, base) {
   if (typeof c === 'string') return html(c);
   const href = c.manual ? manualHref(base, c.manual) : `${base}${c.href}`;
   return `<a href="${href}">${toHtml(c.t)}</a>`;
-}
-
-// index rows of a result: its own rows, else one row per block with an id (family page)
-export const rowsOf = (r) =>
-  ROWS[r.slug] ??
-  r.rows ??
-  r.blocks.filter((b) => b.id && !b.hidden).map((b) => ({ system: b.system, as: b.as, reference: r.rowRef, number: b.number ?? 'to be added', anchor: b.id }));
-
-// [{group, rows: [{...row, cls, problem, href}]}] of one part, groups in the order of the part
-export function indexRows(part, base) {
-  return part.groups.map((g) => ({
-    group: g,
-    rows: [
-      ...results.flatMap((r) =>
-        rowsOf(r)
-          .filter((row) => (row.cls ?? r.cls) === g)
-          .map((row) => ({ ...row, slug: r.slug, problem: r.problem, href: resultHref(base, r.slug, row.anchor) })),
-      ),
-      ...manualRows.filter((m) => m.cls === g).map((m) => ({ ...m, href: manualHref(base, m.manual), manualRow: true })),
-    ],
-  })).filter((g) => g.rows.length);
 }
 
 // inline markup -> plain text (aria labels): _{x} -> x, ^{x} -> ^x

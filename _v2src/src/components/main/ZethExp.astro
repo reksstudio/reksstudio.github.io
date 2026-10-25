@@ -2,50 +2,24 @@
 import Table from './Table.astro';
 import { andList, codeHtml } from '../../lib/inline.mjs';
 import { authorYear, doiUrl } from '../../lib/literature.mjs';
-import { NOT_COMPUTED, cmpHref, f1, pattern, sg } from '../../lib/ladder.mjs';
-import { geoms, method, rungs } from '../../lib/zeth.mjs';
-import { pairs } from '../../lib/zethexp.mjs';
+import { NOT_COMPUTED, cmpHref, f1, pattern } from '../../lib/ladder.mjs';
+import { method, rungs } from '../../lib/zeth.mjs';
+import { byCore, cite, counted, d2, geo, geomSource, groupsOf, pairs, range, srcList, stepLine, zeroOf } from '../../lib/zethexp.mjs';
 import { coreOf, refOf } from '../../lib/zethlit.mjs';
 
 interface Props {
   core?: string;
 }
 
-// REKS(10,10) next to measured energies. Open: summary line, legend, T1 panel, absorption panel, ladder step,
-// two paragraphs, sources. Details: definitions, Tables 1-2, ladder table, further and other measurements.
 const { core } = Astro.props;
 const ps = pairs(core);
-const main = (kind) => ps.filter((p) => p.kind === kind && p.group === 'main');
-const t1 = main('T1');
-const ab = main('abs');
-const more = ps.filter((p) => p.group === 'more');
-const tierB = ps.filter((p) => p.group === 'tierB');
+const { t1, ab, more, tierB } = groupsOf(ps);
 const top = rungs.at(-1).label;
 const REKS = `REKS${top}`;
-const geo = (key) => geoms.find((g) => g.key === key);
-const d2 = (v) => sg(v, 2);
 const plainText = (s) => s.replace(/_\{([^}]+)\}/g, '$1').replace(/\^\{([^}]+)\}/g, '$1');
-const cite = (p) => authorYear(refOf(p.src[0].key));
 if (ab.some((p) => p.config !== 'H>L')) throw new Error('ZethExp: a main absorption row not led by H>L');
 const HL = pattern('H>L');
 const RT = geo('T').html;
-
-// "R_os" or "R_os (IF: R_cs)": the zero geometry of the rows, exceptions by core
-const zeroOf = (rows, fmt = (g) => g.html) => {
-  const count = new Map();
-  for (const p of rows) count.set(p.c.zero, (count.get(p.c.zero) ?? 0) + 1);
-  const common = [...count].sort((a, b) => b[1] - a[1])[0][0];
-  const other = [...new Set(rows.filter((p) => p.c.zero !== common).map((p) => `${p.core}: ${fmt(geo(p.c.zero))}`))];
-  return `${fmt(geo(common))}${other.length ? ` (${other.join('; ')})` : ''}`;
-};
-const range = (ds) => {
-  const [a, b] = [d2(Math.min(...ds)), d2(Math.max(...ds))];
-  return a === b ? `${a} eV` : `${a} to ${b} eV`;
-};
-const counted = (rows) => {
-  const k = new Set(rows.map((p) => p.core)).size;
-  return `${rows.length} ${rows.length === 1 ? 'molecule' : 'molecules'} (${k} ${k === 1 ? 'core' : 'cores'})`;
-};
 
 // summary line: T1 with its counterpart and the vertical-emission range; absorption maximum
 const keys = [
@@ -60,8 +34,7 @@ const ringItem = `experiment: substituted derivative${sec.length ? ` (dashed: pa
 const reksItem = 'REKS, parent hydrocarbon, isolated molecule (gas phase), one dot per active space, the larger at the last:';
 const deltaItem = `Δ = REKS${top} − experiment / eV`;
 
-// panels: one x domain (0.5 eV ticks) for all pages; the REKS dot of rung i sits (i − 2)·DY below the row centre,
-// the ring and the Δ link at the level of the last rung
+// x domain in 0.5 eV ticks; the dot of rung i sits (i − 2)·DY below the row centre, ring and Δ link at the last rung
 const W = 380;
 const L = 120;
 const R = 56;
@@ -104,25 +77,15 @@ const panels = [
 ].filter(Boolean);
 const absLabel = ab.length && `S0 → Sn vertical at ${zeroOf(ab)}, Sn the ${HL}-led singlet of largest f; experiment E = 1239.84 / λ(nm)`;
 
-// step from the second-last to the last rung
-const prevRung = rungs.at(-2).label;
-const step = (p) => p.ladder.at(-1) - p.ladder.at(-2);
-const byCore = (rows) => [...new Map(rows.map((p) => [p.core, p])).values()];
-const stepLine = `${prevRung} → ${top}: ${[
-  t1.length && `T1 ${byCore(t1).map((p) => d2(step(p))).join(' / ')} eV (${byCore(t1).map((p) => p.core).join(' / ')})`,
-  ab.length && `absorption ${range(byCore(ab).map(step))}`,
-].filter(Boolean).join(', ')}; every active space in the details.`;
-
-// two short paragraphs
+// experiment and REKS paragraphs
 const substituents = [...new Map(ps.filter((p) => p.subst).map((p) => [p.subst, `${p.subst} (${p.mol.slice(p.core.length + 1)})`])).values()];
-const srcList = (rows) => [...new Set(rows.map((p) => cite(p)))].join(', ');
 const expPara = [
   'Experiment.',
   t1.length && `T1: Pt-porphyrin-sensitized phosphorescence (${srcList(t1)}).`,
   ab.length && `Absorption: band maximum in solution (${srcList(ab.filter((p) => !p.secondary))}${sec.length ? `; ‡ ${srcList(sec)}, review` : ''}).`,
   substituents.length && `Substituents: ${substituents.join(', ')}.`,
 ].filter(Boolean).join(' ');
-const reksPara = `REKS. Parent hydrocarbon without substituents, isolated molecule (gas phase); SI-SA-${REKS}/${method.functional}/${method.basis} at the UCAM-B3LYP/6-31G* geometries of Hu et al. (2016), not reoptimized; electronic energies without zero-point energy${ab.length ? '; absorption as a vertical energy' : ''}.`;
+const reksPara = `REKS. Parent hydrocarbon without substituents, isolated molecule (gas phase); SI-SA-${REKS}/${method.functional}/${method.basis} at the ${geomSource}; electronic energies without zero-point energy${ab.length ? '; absorption as a vertical energy' : ''}.`;
 
 // details: definitions
 const defs = [
@@ -289,7 +252,7 @@ const refs = [...new Set(ps.map((p) => p.src[0].key))].map((k) => {
     </svg>
   </>
 ))}
-<p>{stepLine}</p>
+<p>{stepLine(t1, ab)}</p>
 <p class="qcap" set:html={expPara} />
 <p class="qcap" set:html={reksPara} />
 <details class="zcalc">

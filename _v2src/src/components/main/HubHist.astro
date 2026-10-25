@@ -1,0 +1,64 @@
+---
+import HubBand from './HubBand.astro';
+import { hubHtml, hubLinks, indexGroups, results, section } from '../../lib/overview.mjs';
+import { f1 } from '../../lib/ladder.mjs';
+import { sub } from '../../lib/dissoc.mjs';
+import { DELTA_AXIS, funcs, hist, n3, signed, stat, states, vars } from '../../lib/quest.mjs';
+
+// Δ histogram per state and functional on a common axis; tick at MSE, MAE at the right
+const base = import.meta.env.BASE_URL;
+const s = section('tbe');
+const [errors, sets, table] = hubLinks(base).quest;
+const BIN = 0.1;
+const W = 360;
+const [HX0, HX1] = [80, 318];
+const [SH, SG, RG, TOP] = [16, 3, 10, 16];
+const xh = (v) => HX0 + ((v - DELTA_AXIS[0]) / (DELTA_AXIS[1] - DELTA_AXIS[0])) * (HX1 - HX0);
+const strips = states.map((st) => funcs.map((f) => ({ st, f, hs: hist(f.key, BIN, st), stat: stat('all', f.key, st) })));
+const nMax = Math.max(...strips.flat().flatMap((x) => x.hs.n));
+const rowH = funcs.length * SH + (funcs.length - 1) * SG;
+const H = TOP + states.length * rowH + (states.length - 1) * RG + 16;
+const yRow = (i) => TOP + i * (rowH + RG);
+const aria = `Distribution of delta = E(SSR, closest active space) minus E(TBE) per state and functional, ${BIN} eV bins on a common axis ${DELTA_AXIS[0]} to ${DELTA_AXIS[1]} eV; ${strips.flat().map((x) => `${x.st} ${x.f.label}: MAE ${n3(x.stat.MAE)}, MSE ${signed(x.stat.MSE)} eV`).join('; ')}`;
+const ticks = [DELTA_AXIS[0], -1, -0.5, 0, 0.5, 1, DELTA_AXIS[1]];
+const STATS = ['MAE', 'MedAE', 'MSE', 'SDE'];
+const all = funcs.map((f) => stat('all', f.key, 'all'));
+// index group of the QUEST page
+const group = indexGroups.find((g) => g.t === results.find((r) => r.slug === 'quest').problem);
+---
+<HubBand id="tbe">
+  <figure class="hfig" slot="fig">
+    <svg class="hhist" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={aria}>
+      <text x={f1(xh(0))} y="10" text-anchor="middle" class="hh-t">TBE</text><text x={W} y="10" text-anchor="end" class="hh-t">MAE</text>
+      {[-1, -0.5, 0.5, 1].map((v) => <line x1={f1(xh(v))} x2={f1(xh(v))} y1={TOP - 2} y2={H - 14} class="hh-rule" />)}
+      {strips.map((row, i) => (
+        <g>
+          <text x="0" y={yRow(i) + SH - 3} class="hh-st" set:html={sub(`${row[0].st[0]}_{${row[0].st.slice(1)}}`)} />
+          {row.map((x, k) => {
+            const y0 = yRow(i) + k * (SH + SG);
+            const yb = y0 + SH;
+            return (
+              <>
+                <text x={HX0 - 4} y={yb - 3} text-anchor="end" class="hh-t">{x.f.label}</text><line x1={HX0} x2={HX1} y1={yb} y2={yb} class="hh-base" />
+                {x.hs.n.map((n, j) => n > 0 && <rect x={f1(xh(x.hs.lo + j * BIN) + 0.4)} y={f1(yb - (n / nMax) * SH)} width={f1(xh(BIN) - xh(0) - 0.8)} height={f1((n / nMax) * SH)} class="hh-bar" />)}
+                <line x1={f1(xh(x.stat.MSE))} x2={f1(xh(x.stat.MSE))} y1={y0 - 1} y2={yb + 1} class="hh-mse" /><text x={W} y={yb - 3} text-anchor="end" class="hh-v">{n3(x.stat.MAE)}</text>
+              </>
+            );
+          })}
+        </g>
+      ))}
+      <line x1={f1(xh(0))} x2={f1(xh(0))} y1={TOP - 2} y2={H - 14} class="hh-zero" />
+      {ticks.map((v) => <text x={f1(xh(v))} y={H - 2} text-anchor="middle" class="hh-t">{v === 0 ? '0' : signed(v, 1)}</text>)}
+    </svg>
+    <figcaption class="hh-cap">Δ = E(SSR, closest active space) − E(TBE) / eV; tick: MSE; bar height: count, common scale.</figcaption>
+  </figure>
+  <p class="hb-disp"><span class="hb-big" set:html={hubHtml(`${vars.maeRange} eV`)} /> <span class="hb-dl"><Fragment set:html={hubHtml(s.disp)} /> {vars.funcs.replaceAll(' / ', ', ')}</span></p>
+  <table class="hstat">
+    <thead><tr><th scope="col">eV</th>{funcs.map((f) => <th scope="col">{f.label}</th>)}</tr></thead>
+    <tbody>{STATS.map((k) => <tr><th scope="row">{k}</th>{all.map((st) => <td>{k === 'MSE' ? signed(st[k]) : n3(st[k])}</td>)}</tr>)}</tbody>
+  </table>
+  <p class="hb-num"><Fragment set:html={hubHtml(s.num)} /> <span class="nw">{vars.basis}</span></p>
+  <p class="hb-num hb-rule" set:html={hubHtml(s.rule)} />
+  <p class="hb-scope" set:html={hubHtml(s.scope)} />
+  <p class="hb-links"><a class="hb-primary" href={errors.href}>QUEST: errors by state</a><span class="hb-sec"><a href={sets.href}>By QUEST set</a> · <a href={table.href}>Full table</a> · <a href={`#${group.id}`}>All {vars.molecules} molecules</a></span></p>
+</HubBand>

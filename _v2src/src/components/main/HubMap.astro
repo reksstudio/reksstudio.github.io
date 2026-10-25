@@ -1,0 +1,62 @@
+---
+import { hub } from '../../lib/overview.mjs';
+import { f1 } from '../../lib/ladder.mjs';
+import { reach, reachLabels, reachRows, reachTitle } from '../../lib/refmap.mjs';
+import { compounds, vars } from '../../lib/scale.mjs';
+import { logScale } from '../../lib/svgmarks.mjs';
+import { compounds as zCompounds, largest as zMax } from '../../lib/zeth.mjs';
+
+// one mark per (dataset, atoms, M), linked to its calculation or, when shared, to the dataset page
+const base = import.meta.env.BASE_URL;
+const marks = reach();
+
+// caption names the pages whose runs are drawn
+const PAGES = ['dissociation', 'quest', 'zethrenes', 'large-molecules'];
+const pageOf = (x) => (compounds.some((c) => c.id === x.set) ? 'large-molecules' : x.set);
+const drawn = new Set(marks.map(pageOf));
+if (drawn.size !== PAGES.length || !PAGES.every((p) => drawn.has(p))) throw new Error('HubMap: drawn pages differ from the caption');
+
+const S = { W: 360, H: 200, L: 60, R: 14, T: 30, B: 150, r: 3.2, axisY: 164, xTickY: 177, atomsY: 193, gap: 0.8 };
+const A0 = Math.min(...marks.map((x) => x.atoms));
+const AMAX = 10 ** Math.ceil(Math.log10(vars.atomsMax / 2)) * 2;
+const { M0, M1, rows } = reachRows(marks);
+const xm = logScale(A0, AMAX, S.L, S.W - S.L - S.R);
+const ym = (m) => S.B - ((m - M0) / (M1 - M0)) * (S.B - S.T);
+const xticks = [2, 5, 10, 20, 50, 100, 200].filter((v) => v >= A0 && v <= AMAX);
+
+// an overlapping mark moves to the nearest free lane 0, -1, +1, ... of its row; past half the row pitch throws
+const LANE = 2 * S.r + S.gap;
+const PITCH = (S.B - S.T) / ((M1 - M0) / 2);
+const placed = [];
+for (const x of [...marks].sort((a, b) => a.atoms - b.atoms || a.set.localeCompare(b.set))) {
+  const cx = xm(x.atoms);
+  let k = 0;
+  for (let i = 0; ; i += 1) {
+    k = i % 2 ? -Math.ceil(i / 2) : i / 2;
+    if (Math.abs(k) * LANE > PITCH / 2 - S.r) throw new Error(`HubMap: row (${x.m},${x.m}) needs more lanes than its pitch holds`);
+    if (!placed.some((p) => p.m === x.m && p.k === k && Math.abs(p.cx - cx) < LANE)) break;
+  }
+  placed.push({ m: x.m, k, cx });
+  Object.assign(x, { cx, cy: ym(x.m) + k * LANE });
+}
+
+const labels = [
+  ...reachLabels(marks),
+  { t: 'zethrenes', atoms: Math.sqrt(Math.min(...zCompounds.map((c) => c.atoms)) * zMax.atoms), m: M1 },
+];
+const aria = `${hub.mapCaption}: atoms (log axis) against REKS active space; each mark a link to its calculation, every calculation also listed in the index`;
+---
+<figure class="hfig hh-map" id="reach">
+  <p class="hm-cap">{hub.mapCaption}</p>
+  <svg class="hmap" viewBox={`0 0 ${S.W} ${S.H}`} role="group" aria-label={aria}>
+    {rows.map((m) => <><line x1={S.L} x2={S.W - S.R} y1={f1(ym(m))} y2={f1(ym(m))} class="hm-grid" /><text x={S.L - 5} y={f1(ym(m) + 3.5)} text-anchor="end" class="hm-t">({m},{m})</text></>)}
+    <line x1={S.L - 4} x2={S.W - S.R} y1={S.axisY} y2={S.axisY} class="hm-axis" />
+    <text x="0" y="9" class="hm-t">REKS active space ↑</text>
+    {xticks.map((v) => <text x={f1(xm(v))} y={S.xTickY} text-anchor="middle" class="hm-t">{v}</text>)}
+    <text x={S.W} y={S.atomsY} text-anchor="end" class="hm-t">atoms (log) →</text>
+    {labels.map((l) => <text x={f1(xm(l.atoms))} y={f1(ym(l.m) - S.r - 4)} text-anchor="middle" class="hm-lab">{l.t}</text>)}
+    {marks.map((x) => (
+      <a href={`${base}${x.href}`} tabindex="-1"><title>{reachTitle(x)}</title><circle cx={f1(x.cx)} cy={f1(x.cy)} r={S.r} class="hm-dot" /></a>
+    ))}
+  </svg>
+</figure>

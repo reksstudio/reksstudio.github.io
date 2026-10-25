@@ -102,19 +102,23 @@ const firstSi = `${md.order[0].resp}: ${setting('states_22')} states`;
 const parts = runs.map(({ kind: k, spaces: ss }) => {
   const sys = ss.flatMap((s) => bases.flatMap((b) => claim(b, s).systems));
   const head = `${span(ss)}${ss.includes(spaces[0]) ? ` (${firstSi})` : ''}`;
-  if (k === 'all') return { k, t: `${head}: less time than ORCA ${refs.map(short).join(' and ')} on all ${WORDS[sys.length / ss.length]} tests${daggers(sys)}.` };
-  if (k === 'none') return { k, t: `${head}: more, shown as is.` };
+  if (k === 'all') return { k, head, text: `less time than ORCA ${refs.map(short).join(' and ')} on all ${WORDS[sys.length / ss.length]} tests${daggers(sys)}.` };
+  if (k === 'none') return { k, head, text: 'more, shown as is.' };
   const s = ss[0];
   const held = bases.filter((b) => claim(b, s).holds);
   const failed = bases.filter((b) => !claim(b, s).holds);
   const n = claim(held[0], s).systems.length;
   return {
     k,
-    t: `${head}: less in ${held.join(', ')} on ${n === 2 ? 'both' : `all ${WORDS[n]}`} systems${daggers(held.flatMap((b) => claim(b, s).systems))}; ${failed
+    head,
+    text: `less in ${held.join(', ')} on ${n === 2 ? 'both' : `all ${WORDS[n]}`} systems${daggers(held.flatMap((b) => claim(b, s).systems))}; ${failed
       .map((b) => `in ${b} ${claim(b, s).systems.filter((x) => !x.holds).sort(closedFirst).map(failCase).join(', ')}`)
       .join('; ')}.`,
   };
 });
+// keyline parts {head, text} in ladder order
+export const claimParts = parts.map(({ head, text }) => ({ head, text }));
+const joined = (x) => `${x.head}: ${x.text}`;
 // band: ORCA TDA as the reference; headline = leading spaces with SI-SA-REKS wall_max < ORCA TDA wall_min on every test
 const BAND_REF = 'TDA-TDDFT';
 const tdaHolds = (s) => bases.every((b) => claim(b, s).systems.every((x) => x.reks_wall_max < x.orca[BAND_REF].wall_min));
@@ -130,8 +134,8 @@ export const bandPanel = panels.find((p) => p.basis === bases[0] && p.shell === 
 export const bandRef = figRows(bandPanel.system).find((f) => f.code === 'ORCA' && f.resp?.method === BAND_REF);
 
 // keyline: cases where REKS takes less time or is close; the slower cases set apart
-export const claimsText = parts.filter((x) => x.k !== 'none').map((x) => x.t).join(' ');
-export const claimsMore = parts.filter((x) => x.k === 'none').map((x) => x.t).join(' ');
+export const claimsText = parts.filter((x) => x.k !== 'none').map(joined).join(' ');
+export const claimsMore = parts.filter((x) => x.k === 'none').map(joined).join(' ');
 const SPEC_TEXT =
   '(2,2)–(6,6) (SI-SA-REKS(2,2): N states): less time than ORCA TDA and SF-TDA on all four tests. (8,8): less in def2-TZVP on both systems (closed shell †); in 6-31G(d) # s vs ORCA TDA # s (closed shell), # s vs ORCA SF-TDA # s / TDA # s (open shell). (10,10): more, shown as is.';
 if (`${claimsText} ${claimsMore}`.replace(/\d+\.\d+/g, '#').replace(/: \d+ states\)/, ': N states)').replaceAll(NB, ' ') !== SPEC_TEXT) throw new Error(`cost.mjs: keyline differs from the agreed text: ${claimsText}`);

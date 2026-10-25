@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { andList } from '../../lib/inline.mjs';
 import { PAGES, entryMap, manualIndex, pagePath } from '../../lib/manual-pages.mjs';
 import { fragmentText } from '../../lib/reference.mjs';
 import { siteRev } from '../../lib/site.mjs';
@@ -36,8 +37,7 @@ function chapterSpan(nums) {
     else runs.push([n, n]);
   }
   const parts = runs.map(([a, b]) => (a === b ? `${a}` : `${a}–${b}`));
-  const list = parts.length > 1 ? `${parts.slice(0, -1).join(', ')} and ${parts.at(-1)}` : parts[0];
-  return `${nums.length > 1 ? 'Chapters' : 'Chapter'} ${list}`;
+  return `${nums.length > 1 ? 'Chapters' : 'Chapter'} ${andList(parts)}`;
 }
 
 const { pages, index } = Astro.props;

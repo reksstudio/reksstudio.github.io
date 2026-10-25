@@ -23,9 +23,12 @@ export const molHref = (m, s) => `${m.slug}/${s ? `#${s.toLowerCase()}` : ''}`;
 // tooltip of one chart dot: "furan · S1 · BH&HLYP: Δ +0.086 eV, (4,4)"
 export const dotTitle = (m, s, f, r) => `${m.name} · ${s} · ${f.label}: Δ ${signed(r.d)} eV, ${r.as}`;
 
-// histogram of the plotted Δ = SSR - TBE / eV of one functional: bin k counts k bin <= Δ < (k + 1) bin, k from lo / bin
-export function hist(fkey, bin) {
-  const k = molecules.flatMap((m) => states.map((s) => m.states[s]?.[fkey]?.d).filter((d) => d != null)).map((d) => Math.floor(Math.round((d / bin) * 1e6) / 1e6));
+// common Δ axis of the per-state charts / eV
+export const DELTA_AXIS = [-1.4, 1.4];
+
+// histogram of Δ = SSR - TBE / eV for one functional (one state or all); bin k counts k*bin <= Δ < (k+1)*bin, k from lo/bin
+export function hist(fkey, bin, state) {
+  const k = molecules.flatMap((m) => (state ? [state] : states).map((s) => m.states[s]?.[fkey]?.d).filter((d) => d != null)).map((d) => Math.floor(Math.round((d / bin) * 1e6) / 1e6));
   const k0 = Math.min(...k);
   const n = Array(Math.max(...k) - k0 + 1).fill(0);
   for (const i of k) n[i - k0] += 1;
@@ -56,7 +59,6 @@ export const PSI4 = 'ddc2f581c';
 export const PREFIX = 'main/results/quest/';
 export const revLine = `Psi4 commit of these outputs: ${PSI4} (kk/reks.v42). Install: branch ${BRANCH} of <${REPO_URL}>.`;
 
-// tokens {quest:name} in overview.json text
 export const vars = {
   psi4: PSI4,
   molecules: counts.molecules,
@@ -78,4 +80,9 @@ export const vars = {
   stateList: states.map((s) => `${s[0]}_{${s.slice(1)}}`).join(' '),
   // first and last active-space rung: "(2,2)–(8,8)"
   asRange: `${data.rungs[0][1]}–${data.rungs.at(-1)[1]}`,
+  mseRange: (() => {
+    const v = funcs.map((f) => stat('all', f.key, 'all').MSE);
+    return `${signed(Math.min(...v))} to ${signed(Math.max(...v))}`;
+  })(),
+  setList: `QUEST${sets.join(', ')}`,
 };
