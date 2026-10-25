@@ -5,9 +5,11 @@ import '../styles/base.css';
 
 interface Props {
   title: string;
+  // the home page: no return pill
+  home?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, home = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const speculationRules = JSON.stringify({
   prefetch: [{ where: { href_matches: `${base}*` }, eagerness: 'moderate' }],
@@ -23,7 +25,7 @@ const speculationRules = JSON.stringify({
 <link rel="icon" href="data:,">
 <script type="speculationrules" is:inline set:html={speculationRules}></script>
 </head>
-<body><a hidden href={`${Astro.url.pathname}index.md`}>Markdown version</a>
+<body data-home={home || undefined}><a hidden href={`${Astro.url.pathname}index.md`}>Markdown version</a>
 <slot />
 <script src="../scripts/backpill.js"></script>
 </body>

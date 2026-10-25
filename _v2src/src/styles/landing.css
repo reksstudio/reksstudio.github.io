@@ -78,11 +78,14 @@ section{ padding: 88px 0; border-top: 1px solid var(--line); }
 
 /* problem: stepped numbers chart */
 .growth-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-@media (max-width: 860px){ .growth-row{ grid-template-columns: 1fr; gap: 36px; } }
-.chart{ display: flex; align-items: flex-end; gap: 18px; height: 200px; padding-bottom: 28px; border-bottom: 1px solid var(--line); position: relative; }
-.bar-col{ display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; }
-.bar-label{ font-family: var(--mono); font-size: 0.74rem; color: var(--ink-faint); }
+@media (max-width: 860px){ .growth-row{ grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+/* label size = --k x per-bar --s (default 1rem) */
+.chart{ --k: 1; display: flex; align-items: flex-end; gap: 18px; height: 200px; padding-bottom: 28px; border-bottom: 1px solid var(--line); position: relative; }
+.bar-col{ display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.bar-label{ font-family: var(--mono); font-size: calc(var(--k) * var(--s, 1rem)); color: var(--ink-faint); }
 .chart-note{ font-size: 0.8rem; color: var(--ink-faint); margin-top: 10px; font-style: italic; }
+@media (max-width: 440px){ .chart{ --k: 0.8; gap: 8px; } }
+@media (max-width: 360px){ .chart{ --k: 0.72; gap: 6px; } }
 
 /* architecture */
 .arch{ display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 8px; flex-wrap: wrap; }

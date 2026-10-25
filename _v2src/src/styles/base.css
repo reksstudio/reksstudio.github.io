@@ -2,6 +2,8 @@
 @media (prefers-reduced-motion: no-preference){ @view-transition{ navigation: auto; } }
 /* MathML (temml): system math fonts */
 math{ font-family: 'STIX Two Math', 'Cambria Math', 'Noto Sans Math', math; }
+/* display math wider than its column scrolls */
+math[display="block"]{ max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 
 body{
   margin: 0;

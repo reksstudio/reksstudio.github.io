@@ -26,7 +26,7 @@ const chart = [
   ['29082', '170px', '2.00rem', '(10,10)'],
 ];
 ---
-<Base title="REKS Studio — Ensemble DFT for strongly correlated systems">
+<Base title="REKS Studio — Ensemble DFT for strongly correlated systems" home>
 <Nav variant="dark" logoHref="#top" />
 <main>
 
@@ -76,7 +76,7 @@ const chart = [
       <div class="reveal">
         <div class="chart" aria-hidden="true">
           {chart.map(([count, height, size, space]) => (
-            <div class="bar-col"><div class="bar-label" style={`height:${height}; font-size:${size};`}>{count}</div><div class="bar-label" style="font-size:1.00rem;">{space}</div></div>
+            <div class="bar-col"><div class="bar-label" style={`height:${height}; --s:${size};`}>{count}</div><div class="bar-label">{space}</div></div>
           ))}
         </div>
         <div class="chart-note">Configurations to derive by hand, schematic - not to scale.</div>

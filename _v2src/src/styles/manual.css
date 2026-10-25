@@ -63,7 +63,7 @@ figure.mo .g span b{ color: var(--ink); font-weight: 600; }
 h2 code, h3 code, h4 code{ background: none; padding: 0; font-size: 0.9em; }
 
 /* MathML (temml) display math: centred, scrolls when wider than the column */
-math[display="block"]{ max-width: 74ch; overflow-x: auto; overflow-y: hidden; margin: 4px 0 18px; padding: 2px 0; font-size: 1.15em; text-align: center; }
+math[display="block"]{ max-width: min(74ch, 100%); margin: 4px 0 18px; padding: 2px 0; font-size: 1.15em; text-align: center; }
 .tml-right{ text-align: right; }
 .tml-left{ text-align: left; }
 .tml-jot > mtr > mtd{ padding-block: 0.35ex; }
@@ -95,10 +95,6 @@ pre.astro-code[data-language="log"]{
                     linear-gradient(to left, rgba(20,24,31,0.12), rgba(20,24,31,0));
 }
 
-/* tables: right-edge shade while the table overflows (same scheme as pre.astro-code) */
-.reftable-wrap{ overflow-x: auto; margin: 8px 0 24px;
-  background: linear-gradient(to left, var(--bg) 30%, rgba(245,245,242,0)) right / 40px 100% no-repeat local,
-              linear-gradient(to left, rgba(20,24,31,0.12), rgba(20,24,31,0)) right / 12px 100% no-repeat scroll; }
 table{ border-collapse: collapse; width: 100%; min-width: 480px; font-size: 0.9rem; }
 thead th{ text-align: left; font-family: var(--sans); font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--ink-faint); padding: 8px 16px 8px 0; white-space: nowrap; }
 tbody td{ vertical-align: top; padding: 10px 16px 10px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
@@ -155,7 +151,7 @@ section:has(> h2[id$="option-table"]) th:nth-child(2){ width: 15%; }
 section:has(> h2[id$="option-table"]) th:nth-child(3){ width: 30%; }
 section:has(> h2[id$="option-table"]) td:nth-child(4){ font-size: 0.85rem; }
 section:has(> h2[id$="option-table"]) td{ overflow-wrap: break-word; }
-section:has(> h2[id$="option-table"]) td:first-child code{ white-space: normal; overflow-wrap: anywhere; }
+section:has(> h2[id$="option-table"]) td:first-child code{ white-space: normal; }
 section:has(> h2[id$="option-table"]) td small{ display: inline-block; margin-top: 3px; font: 0.76rem/1.35 var(--sans); color: var(--ink-faint); }
 section:has(> h2[id$="option-table"]) td small code{ color: inherit; font-size: 0.72rem; }
 @media (max-width: 560px){
