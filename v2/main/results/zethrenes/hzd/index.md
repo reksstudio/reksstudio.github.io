@@ -169,9 +169,68 @@ HZD R_T, Q1: natural occupations per active space in the order printed, 0 to 2
 
 Natural occupations n<sub>i</sub> of the SI state (0 to 2, the cell is 2), the "occ" line of the output block "Natural occupation numbers and natural orbitals of the active space" in the order printed, centred on the HOMO | LUMO divide (dashed), so an orbital keeps its column along the ladder; y<sub>0</sub> = n<sub>LUNO</sub>, y<sub>1</sub> = n<sub>LUNO+1</sub>, as the code prints them; y<sub>0</sub>, y<sub>1</sub> for S0 only (n/a for T1, Q1); otherwise n/a: no such state or orbital in the SI space of this active space.
 
+Table: natural occupations
+
+R<sub>cs</sub>: natural occupations
+
+| State | Active space | n<sub>i</sub> (slot: n) | y<sub>0</sub> | y<sub>1</sub> |
+| - | - | - | - | - |
+| S0 | (2,2) | a: 1.8965, b: 0.1035 | 0.1035 | n/a |
+| | (4,4) | a: 1.9643, b: 1.8567, c: 0.1432, d: 0.0357 | 0.1432 | 0.0357 |
+| | (6,6) | a: 1.9824, b: 1.9516, c: 1.8343, d: 0.1660, e: 0.0484, f: 0.0174 | 0.1660 | 0.0484 |
+| | (8,8) | a: 1.9862, b: 1.9783, c: 1.9434, d: 1.8025, e: 0.1979, f: 0.0565, g: 0.0213, h: 0.0139 | 0.1979 | 0.0565 |
+| | (10,10) | a: 1.9894, b: 1.9838, c: 1.9748, d: 1.9357, e: 1.7945, f: 0.2059, g: 0.0644, h: 0.0247, i: 0.0162, j: 0.0106 | 0.2059 | 0.0644 |
+| T1 | (2,2) | a: 1.0000, b: 1.0000 | n/a | n/a |
+| | (4,4) | a: 1.9002, b: 1.0600, c: 0.9400, d: 0.0998 | n/a | n/a |
+| | (6,6) | a: 1.9762, b: 1.9127, c: 1.0508, d: 0.9492, e: 0.0874, f: 0.0237 | n/a | n/a |
+| | (8,8) | a: 1.9817, b: 1.9744, c: 1.9028, d: 1.0605, e: 0.9396, f: 0.0972, g: 0.0254, h: 0.0185 | n/a | n/a |
+| | (10,10) | a: 1.9884, b: 1.9791, c: 1.9721, d: 1.8970, e: 1.0617, f: 0.9385, g: 0.1031, h: 0.0277, i: 0.0211, j: 0.0113 | n/a | n/a |
+| Q1 | (4,4) | a: 1.0000, b: 1.0000, c: 1.0000, d: 1.0000 | n/a | n/a |
+| | (6,6) | a: 1.9429, b: 1.0339, c: 1.0088, d: 0.9912, e: 0.9661, f: 0.0571 | n/a | n/a |
+| | (8,8) | a: 1.9755, b: 1.9434, c: 1.0353, d: 1.0150, e: 0.9850, f: 0.9647, g: 0.0564, h: 0.0247 | n/a | n/a |
+| | (10,10) | a: 1.9887, b: 1.9670, c: 1.9402, d: 1.0409, e: 1.0180, f: 0.9821, g: 0.9590, h: 0.0594, i: 0.0334, j: 0.0114 | n/a | n/a |
+
+R<sub>os</sub>: natural occupations
+
+| State | Active space | n<sub>i</sub> (slot: n) | y<sub>0</sub> | y<sub>1</sub> |
+| - | - | - | - | - |
+| S0 | (2,2) | a: 1.4426, b: 0.5574 | 0.5574 | n/a |
+| | (4,4) | a: 1.9733, b: 1.3827, c: 0.6174, d: 0.0266 | 0.6174 | 0.0266 |
+| | (6,6) | a: 1.9805, b: 1.9514, c: 1.3976, d: 0.6024, e: 0.0487, f: 0.0195 | 0.6024 | 0.0487 |
+| | (8,8) | a: 1.9843, b: 1.9768, c: 1.9427, d: 1.3981, e: 0.6020, f: 0.0573, g: 0.0231, h: 0.0158 | 0.6020 | 0.0573 |
+| | (10,10) | a: 1.9878, b: 1.9810, c: 1.9724, d: 1.9344, e: 1.4012, f: 0.5989, g: 0.0657, h: 0.0274, i: 0.0191, j: 0.0121 | 0.5989 | 0.0657 |
+| T1 | (2,2) | a: 1.0000, b: 1.0000 | n/a | n/a |
+| | (4,4) | a: 1.9546, b: 1.0091, c: 0.9909, d: 0.0454 | n/a | n/a |
+| | (6,6) | a: 1.9810, b: 1.9528, c: 1.0071, d: 0.9929, e: 0.0474, f: 0.0188 | n/a | n/a |
+| | (8,8) | a: 1.9857, b: 1.9793, c: 1.9477, d: 1.0089, e: 0.9912, f: 0.0524, g: 0.0205, h: 0.0144 | n/a | n/a |
+| | (10,10) | a: 1.9887, b: 1.9825, c: 1.9755, d: 1.9417, e: 1.0102, f: 0.9899, g: 0.0584, h: 0.0243, i: 0.0178, j: 0.0112 | n/a | n/a |
+| Q1 | (4,4) | a: 1.0000, b: 1.0000, c: 1.0000, d: 1.0000 | n/a | n/a |
+| | (6,6) | a: 1.9195, b: 1.0634, c: 1.0022, d: 0.9978, e: 0.9366, f: 0.0805 | n/a | n/a |
+| | (8,8) | a: 1.9736, b: 1.9271, c: 1.0525, d: 1.0032, e: 0.9969, f: 0.9475, g: 0.0720, h: 0.0273 | n/a | n/a |
+| | (10,10) | a: 1.9886, b: 1.9649, c: 1.9277, d: 1.0523, e: 1.0042, f: 0.9958, g: 0.9476, h: 0.0711, i: 0.0361, j: 0.0116 | n/a | n/a |
+
+R<sub>T</sub>: natural occupations
+
+| State | Active space | n<sub>i</sub> (slot: n) | y<sub>0</sub> | y<sub>1</sub> |
+| - | - | - | - | - |
+| S0 | (2,2) | a: 1.3573, b: 0.6427 | 0.6427 | n/a |
+| | (4,4) | a: 1.9802, b: 1.3091, c: 0.6910, d: 0.0198 | 0.6910 | 0.0198 |
+| | (6,6) | a: 1.9814, b: 1.9585, c: 1.3106, d: 0.6894, e: 0.0416, f: 0.0185 | 0.6894 | 0.0416 |
+| | (8,8) | a: 1.9855, b: 1.9781, c: 1.9507, d: 1.3084, e: 0.6917, f: 0.0493, g: 0.0219, h: 0.0145 | 0.6917 | 0.0493 |
+| | (10,10) | a: 1.9879, b: 1.9820, c: 1.9735, d: 1.9427, e: 1.3099, f: 0.6902, g: 0.0574, h: 0.0264, i: 0.0180, j: 0.0120 | 0.6902 | 0.0574 |
+| T1 | (2,2) | a: 1.0000, b: 1.0000 | n/a | n/a |
+| | (4,4) | a: 1.9669, b: 1.0040, c: 0.9960, d: 0.0331 | n/a | n/a |
+| | (6,6) | a: 1.9820, b: 1.9615, c: 1.0035, d: 0.9965, e: 0.0387, f: 0.0177 | n/a | n/a |
+| | (8,8) | a: 1.9870, b: 1.9805, c: 1.9569, d: 1.0047, e: 0.9953, f: 0.0432, g: 0.0192, h: 0.0131 | n/a | n/a |
+| | (10,10) | a: 1.9890, b: 1.9838, c: 1.9764, d: 1.9510, e: 1.0058, f: 0.9942, g: 0.0491, h: 0.0233, i: 0.0164, j: 0.0109 | n/a | n/a |
+| Q1 | (4,4) | a: 1.0000, b: 1.0000, c: 1.0000, d: 1.0000 | n/a | n/a |
+| | (6,6) | a: 1.9107, b: 1.0736, c: 1.0014, d: 0.9986, e: 0.9264, f: 0.0893 | n/a | n/a |
+| | (8,8) | a: 1.9732, b: 1.9192, c: 1.0617, d: 1.0020, e: 0.9980, f: 0.9383, g: 0.0800, h: 0.0277 | n/a | n/a |
+| | (10,10) | a: 1.9883, b: 1.9638, c: 1.9208, d: 1.0609, e: 1.0029, f: 0.9971, g: 0.9390, h: 0.0781, i: 0.0372, j: 0.0119 | n/a | n/a |
+
 ## Calculations
 
-One entry per geometry and active space; the summary gives ΔE<sub>ST</sub>, ΔE<sub>SQ</sub> / kcal mol⁻¹ to 1 decimal. Inside: the run line, the SI states (f (length) of S0 → Sn; leading excitation patterns as a share of the listed configurations, given where these carry at least half of the state, else the listed share; ΔD entries with |ΔD| ≥ 0.15, as in the hover of the SI-state chart), the SA-REKS active orbitals and the input. Inputs as run; starting orbitals read from a seed file (RKS or ROHF orbitals; for HZ and HZD the orbitals of an earlier REKS(2,2) run), active pairs set per rung.
+One entry per geometry and active space; the summary gives ΔE<sub>ST</sub>, ΔE<sub>SQ</sub> / kcal mol⁻¹ to 1 decimal. Inside: the run line, the SI states (f (length) of S0 → Sn; leading excitation patterns as a share of the listed configurations, given where these carry at least half of the state, else the listed share; ΔD entries with |ΔD| ≥ 0.15, as in the hover of the SI-state chart), the SA-REKS active orbitals and the input. Inputs as run; starting orbitals read from a seed file (RKS or ROHF orbitals; for HZ and HZD the orbitals of an earlier REKS(2,2) run), active pairs set per rung. Machines: PC-2 = 2 × 18-core Intel Xeon Gold 6240 (Cascade Lake), 36 cores, 754 GB.
 
 Orbitals: one column per active pair as the code pairs them, frontier pair first, antibonding orbital above, bonding below. Contours ±0.01, ±0.02, ±0.04 a.u. in a plane 0.6 Å above the molecular plane; blue + / copper −.
 
@@ -179,7 +238,7 @@ Orbitals: one column per active pair as the code pairs them, frontier pair first
 
 R<sub>cs</sub> · (2,2) · 2 orbitals · ΔE<sub>ST</sub> **+14.5** kcal mol⁻¹ · ΔE<sub>SQ</sub> **n/a**
 
-SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 412 s, 8 threads · fenrir04, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_cs_22.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_22.py.txt)
+SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 412 s, 8 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_cs_22.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_22.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -206,7 +265,7 @@ SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 412 s, 8 threads · fe
 
 R<sub>cs</sub> · (4,4) · 4 orbitals · ΔE<sub>ST</sub> **+16.0** · ΔE<sub>SQ</sub> **+60.6** kcal mol⁻¹
 
-SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1251 s, 8 threads · fenrir04, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_cs_44.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_44.py.txt)
+SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1251 s, 8 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_cs_44.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_44.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -241,7 +300,7 @@ SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1251 s
 
 R<sub>cs</sub> · (6,6) · 6 orbitals · ΔE<sub>ST</sub> **+16.3** · ΔE<sub>SQ</sub> **+58.6** kcal mol⁻¹
 
-SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 · wall time 2415 s, 8 threads · fenrir04, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_cs_66.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_66.py.txt)
+SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 · wall time 2415 s, 8 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_cs_66.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_66.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -284,7 +343,7 @@ SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 ·
 
 R<sub>cs</sub> · (8,8) · 8 orbitals · ΔE<sub>ST</sub> **+17.1** · ΔE<sub>SQ</sub> **+58.1** kcal mol⁻¹
 
-SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S = 6: 199, 2S = 8: 1 · wall time 3842 s, 8 threads · fenrir04, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_cs_88.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_88.py.txt)
+SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S = 6: 199, 2S = 8: 1 · wall time 3842 s, 8 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_cs_88.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_88.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -335,7 +394,7 @@ SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S
 
 R<sub>cs</sub> · (10,10) · 10 orbitals · ΔE<sub>ST</sub> **+16.8** · ΔE<sub>SQ</sub> **+57.0** kcal mol⁻¹
 
-SI configurations 2S = 0: 29 082, 2S = 2: 48 090, 2S = 4: 31 275, 2S = 6: 9 635, 2S = 8: 1 209, 2S = 10: 1 · wall time 3343 s, 8 threads · fenrir03, 2026-10-14 · Psi4 d40267fc2 · input [HZD_S_cs_1010.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_1010.py.txt)
+SI configurations 2S = 0: 29 082, 2S = 2: 48 090, 2S = 4: 31 275, 2S = 6: 9 635, 2S = 8: 1 209, 2S = 10: 1 · wall time 3343 s, 8 threads · PC-2, 2026-10-14 · Psi4 d40267fc2 · input [HZD_S_cs_1010.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_cs_1010.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -396,7 +455,7 @@ SI configurations 2S = 0: 29 082, 2S = 2: 48 090, 2S = 4: 31 275,
 
 R<sub>os</sub> · (2,2) · 2 orbitals · ΔE<sub>ST</sub> **+2.9** kcal mol⁻¹ · ΔE<sub>SQ</sub> **n/a**
 
-SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 337 s, 8 threads · fenrir01, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_os_22.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_22.py.txt)
+SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 337 s, 8 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_os_22.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_22.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -423,7 +482,7 @@ SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 337 s, 8 threads · fe
 
 R<sub>os</sub> · (4,4) · 4 orbitals · ΔE<sub>ST</sub> **+6.1** · ΔE<sub>SQ</sub> **+51.5** kcal mol⁻¹
 
-SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1021 s, 8 threads · fenrir01, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_os_44.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_44.py.txt)
+SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1021 s, 8 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_os_44.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_44.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -458,7 +517,7 @@ SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1021 s
 
 R<sub>os</sub> · (6,6) · 6 orbitals · ΔE<sub>ST</sub> **+4.8** · ΔE<sub>SQ</sub> **+49.5** kcal mol⁻¹
 
-SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 · wall time 2005 s, 8 threads · fenrir01, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_os_66.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_66.py.txt)
+SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 · wall time 2005 s, 8 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_os_66.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_66.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -503,7 +562,7 @@ SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 ·
 
 R<sub>os</sub> · (8,8) · 8 orbitals · ΔE<sub>ST</sub> **+5.4** · ΔE<sub>SQ</sub> **+48.4** kcal mol⁻¹
 
-SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S = 6: 199, 2S = 8: 1 · wall time 3129 s, 8 threads · fenrir01, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_os_88.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_88.py.txt)
+SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S = 6: 199, 2S = 8: 1 · wall time 3129 s, 8 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_S_os_88.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_88.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -556,7 +615,7 @@ SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S
 
 R<sub>os</sub> · (10,10) · 10 orbitals · ΔE<sub>ST</sub> **+5.3** · ΔE<sub>SQ</sub> **+47.0** kcal mol⁻¹
 
-SI configurations 2S = 0: 29 082, 2S = 2: 48 090, 2S = 4: 31 275, 2S = 6: 9 635, 2S = 8: 1 209, 2S = 10: 1 · wall time 4684 s, 8 threads · fenrir02, 2026-10-14 · Psi4 d40267fc2 · input [HZD_S_os_1010.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_1010.py.txt)
+SI configurations 2S = 0: 29 082, 2S = 2: 48 090, 2S = 4: 31 275, 2S = 6: 9 635, 2S = 8: 1 209, 2S = 10: 1 · wall time 4684 s, 8 threads · PC-2, 2026-10-14 · Psi4 d40267fc2 · input [HZD_S_os_1010.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_S_os_1010.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -619,7 +678,7 @@ SI configurations 2S = 0: 29 082, 2S = 2: 48 090, 2S = 4: 31 275,
 
 R<sub>T</sub> · (2,2) · 2 orbitals · ΔE<sub>ST</sub> **+1.8** kcal mol⁻¹ · ΔE<sub>SQ</sub> **n/a**
 
-SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 362 s, 8 threads · fenrir04, 2026-10-12 · Psi4 b0c2d45a7 · input [HZD_T_22.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_22.py.txt)
+SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 362 s, 8 threads · PC-2, 2026-10-12 · Psi4 b0c2d45a7 · input [HZD_T_22.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_22.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -646,7 +705,7 @@ SI configurations 2S = 0: 3, 2S = 2: 1 · wall time 362 s, 8 threads · fe
 
 R<sub>T</sub> · (4,4) · 4 orbitals · ΔE<sub>ST</sub> **+4.4** · ΔE<sub>SQ</sub> **+52.1** kcal mol⁻¹
 
-SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1091 s, 8 threads · fenrir04, 2026-10-12 · Psi4 b0c2d45a7 · input [HZD_T_44.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_44.py.txt)
+SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1091 s, 8 threads · PC-2, 2026-10-12 · Psi4 b0c2d45a7 · input [HZD_T_44.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_44.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -683,7 +742,7 @@ SI configurations 2S = 0: 18, 2S = 2: 11, 2S = 4: 1 · wall time 1091 s
 
 R<sub>T</sub> · (6,6) · 6 orbitals · ΔE<sub>ST</sub> **+3.3** · ΔE<sub>SQ</sub> **+50.1** kcal mol⁻¹
 
-SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 · wall time 2557 s, 8 threads · fenrir04, 2026-10-12 · Psi4 b0c2d45a7 · input [HZD_T_66.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_66.py.txt)
+SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 · wall time 2557 s, 8 threads · PC-2, 2026-10-12 · Psi4 b0c2d45a7 · input [HZD_T_66.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_66.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -728,7 +787,7 @@ SI configurations 2S = 0: 161, 2S = 2: 153, 2S = 4: 41, 2S = 6: 1 ·
 
 R<sub>T</sub> · (8,8) · 8 orbitals · ΔE<sub>ST</sub> **+3.8** · ΔE<sub>SQ</sub> **+49.0** kcal mol⁻¹
 
-SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S = 6: 199, 2S = 8: 1 · wall time 4602 s, 8 threads · fenrir04, 2026-10-12 · Psi4 b0c2d45a7 · input [HZD_T_88.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_88.py.txt)
+SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S = 6: 199, 2S = 8: 1 · wall time 4602 s, 8 threads · PC-2, 2026-10-12 · Psi4 b0c2d45a7 · input [HZD_T_88.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_88.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
@@ -781,7 +840,7 @@ SI configurations 2S = 0: 1 934, 2S = 2: 2 524, 2S = 4: 1 172, 2S
 
 R<sub>T</sub> · (10,10) · 10 orbitals · ΔE<sub>ST</sub> **+3.8** · ΔE<sub>SQ</sub> **+47.5** kcal mol⁻¹
 
-SI configurations 2S = 0: 29 082, 2S = 2: 48 090, 2S = 4: 31 275, 2S = 6: 9 635, 2S = 8: 1 209, 2S = 10: 1 · wall time 4012 s, 18 threads · fenrir03, 2026-10-13 · Psi4 d40267fc2 · input [HZD_T_1010.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_1010.py.txt)
+SI configurations 2S = 0: 29 082, 2S = 2: 48 090, 2S = 4: 31 275, 2S = 6: 9 635, 2S = 8: 1 209, 2S = 10: 1 · wall time 4012 s, 18 threads · PC-2, 2026-10-13 · Psi4 d40267fc2 · input [HZD_T_1010.py](https://reksstudio.github.io/v2/inputs/zethrenes/HZD_T_1010.py.txt)
 
 | State | E − E(S0) / eV | f (length) | Leading patterns | ΔD |
 | - | - | - | - | - |
