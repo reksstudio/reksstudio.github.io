@@ -2,7 +2,7 @@ import data from '../data/zeth_lit.json' with { type: 'json' };
 import overview from '../data/overview.json' with { type: 'json' };
 import zeth from '../data/zeth.json' with { type: 'json' };
 import { codeHtml, toHtml } from './inline.mjs';
-import { acs, authorYear, checkEntry, doiUrl, reference, references } from './literature.mjs';
+import { acs, authorYear, checkEntry, doiUrl, reference, references, refLookup } from './literature.mjs';
 
 // zeth_lit.json (written by _LAB/lit/zethrenes/build_lit.py, never by hand): literature on the seven Hu 2016 cores.
 // Load throws unless: every core id is a zeth.json compound; every source key resolves; local keys are unique and
@@ -32,7 +32,8 @@ for (const e of data.refs) {
   if (caps.length) fail(`${e.key}: title not in sentence case (${caps.join(', ')})`);
   local.set(e.key, e);
 }
-export const refOf = (key) => (key === HU ? reference(HU) : local.get(key) ?? fail(`unknown source ${key}`));
+const localRef = refLookup(local, 'zeth_lit.json');
+export const refOf = (key) => (key === HU ? reference(HU) : localRef(key));
 
 const parts = (q) => (q == null ? [] : typeof q === 'string' ? [{ text: q }] : q);
 function checkRow(r, where, kind) {
@@ -98,7 +99,7 @@ const defCell = (r) => [join([r.def, r.cond].map((s) => s && codeHtml(s))), r.de
 const molCell = (r) => `${muted(r.kind)} · ${codeHtml(r.mol)}`;
 export const EXP_HEAD = ['Molecule', 'Quantity', 'Value as printed', 'Conditions, definition, sign', 'Source'];
 export const THEORY_HEAD = ['Molecule', 'Method', 'y<sub>0</sub> / occupation', 'Gap as printed', 'Definition, geometry', 'Source'];
-export const T2_HEAD = 'Quantity';
+const T2_HEAD = 'Quantity';
 
 // substituent labels on a page: the glosses whose suffix ends a printed label
 const glossesOf = (labels) => data.glosses.filter((g) => labels.some((l) => new RegExp(`${g.suffix.replace(/[-]/g, '\\-')}(?![A-Za-z0-9])`).test(l)));

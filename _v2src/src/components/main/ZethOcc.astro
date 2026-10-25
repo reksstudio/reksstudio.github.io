@@ -1,12 +1,16 @@
 ---
-import { SPINS, f1, f4, geomsOf, rungs } from '../../lib/zeth.mjs';
+import Table from './Table.astro';
+import { f1, f4, orbitalsOf } from '../../lib/ladder.mjs';
 
 interface Props {
   c: any;
+  set: any;
 }
 
 // Per geometry and multiplicity: bars of n_i/2 of the cell height, centred on the HOMO | LUMO divide; y0, y1 right of S0
-const { c } = Astro.props;
+const { c, set } = Astro.props;
+const { geomsOf, rungsOf, spins } = set;
+const rungs = rungsOf(c);
 const CW = 14;
 const CG = 2;
 const BH = 18;
@@ -14,27 +18,40 @@ const LH = 12;
 const RG = 6;
 const L = 58;
 const TOP = 26;
-const NCOL = 2 * rungs.length;
+// one column per orbital of the largest active space
+const NCOL = orbitalsOf(rungs.at(-1).label);
 const PLOT = NCOL * (CW + CG);
 const R = 112;
 // right edge of the y0 column (y1 ends at W)
-const XY0 = 266;
+const XY0 = L + PLOT + 48;
 const W = L + PLOT + R;
 const H = TOP + rungs.length * (BH + LH + RG);
 const xc = (col) => L + col * (CW + CG);
 const xDiv = xc(NCOL / 2) - CG / 2;
 const groups = geomsOf(c).map((g) => ({
   g,
-  panels: SPINS.map((sp) => ({
+  panels: spins.map((sp) => ({
     sp,
     label: `${c.id} ${g.plain}, ${sp.label}: natural occupations per active space in the order printed, 0 to 2${sp.s === '0' ? '; y0, y1' : ''}`,
-    rows: rungs.map((rg, i) => {
+    rows: (set.holes ? rungs : rungs.filter((rg) => c.geoms[g.key].rungs[rg.key])).map((rg, i) => {
       const r = c.geoms[g.key].rungs[rg.key];
       const n = r?.occ[sp.s];
       const k = r ? r.slots.length / 2 : 0;
       return { rg, r, y0: TOP + i * (BH + LH + RG), cells: n && n.map((v, j) => ({ v, slot: r.slots[j], x: xc(NCOL / 2 - k + j) })) };
     }),
   })),
+}));
+// table twin per geometry: one row per state and computed active space, occupations in the order printed
+const tables = groups.map(({ g, panels }) => ({
+  title: `${g.markup}: natural occupations`,
+  head: ['State', 'Active space', 'n_{i} (slot: n)', 'y_{0}', 'y_{1}'],
+  rows: panels.flatMap((p) => p.rows.filter((row) => row.cells).map((row) => [
+    p.sp.label,
+    row.rg.ssr,
+    row.cells.map((cl) => `${cl.slot}: ${f4(cl.v)}`).join(', '),
+    p.sp.s === '0' ? f4(row.r.y0) : 'n/a',
+    p.sp.s === '0' ? f4(row.r.y1) : 'n/a',
+  ])),
 }));
 ---
 {groups.map(({ g, panels }) => (
@@ -43,7 +60,7 @@ const groups = geomsOf(c).map((g) => ({
     <div class="zocc">
       {panels.map((p) => (
         <svg class={`zc zd ${p.sp.cls}`} viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" aria-label={p.label}>
-          <text x="0" y="14" class="ttl">{p.sp.label}</text>
+          <text x="0" y="14" class="ttl">{p.sp.label}</text>{set.names.ssr && <text x={L - 6} y="14" text-anchor="end" class="tick">{set.names.ssr}</text>}
           {p.sp.s === '0' && (
             <>
               <text x={XY0} y="14" text-anchor="end" class="tick">y<tspan class="sb" dy="3">0</tspan></text>
@@ -65,7 +82,7 @@ const groups = geomsOf(c).map((g) => ({
                   {row.cells.map((cl) => (
                     <g>
                       <rect x={cl.x} y={row.y0} width={CW} height={BH} class="cell" />
-                      <rect x={cl.x} y={f1(row.y0 + BH - (cl.v / 2) * BH)} width={CW} height={f1((cl.v / 2) * BH)} class="bar"><title>{row.rg.label}, slot {cl.slot}: {f4(cl.v)}</title></rect>
+                      <rect x={cl.x} y={f1(row.y0 + BH - (cl.v / 2) * BH)} width={CW} height={f1((cl.v / 2) * BH)} class="bar"><title>{row.rg.ssr}, slot {cl.slot}: {f4(cl.v)}</title></rect>
                       <text x={cl.x + CW / 2} y={row.y0 + BH + 10} text-anchor="middle" class="sl">{cl.slot}</text>
                     </g>
                   ))}
@@ -86,3 +103,9 @@ const groups = geomsOf(c).map((g) => ({
   </>
 ))}
 <p class="qcap">Natural occupations n<sub>i</sub> of the SI state (0 to 2, the cell is 2), the "occ" line of the output block "Natural occupation numbers and natural orbitals of the active space" in the order printed, centred on the HOMO | LUMO divide (dashed), so an orbital keeps its column along the ladder; y<sub>0</sub> = n<sub>LUNO</sub>, y<sub>1</sub> = n<sub>LUNO+1</sub>, as the code prints them; y<sub>0</sub>, y<sub>1</sub> for S0 only (n/a for T1, Q1); otherwise n/a: no such state or orbital in the SI space of this active space.</p>
+{tables.some((t) => t.rows.length > 0) && (
+  <details class="qmore">
+    <summary>Table: natural occupations</summary>
+    {tables.map((t) => <Table table={t} grouped />)}
+  </details>
+)}

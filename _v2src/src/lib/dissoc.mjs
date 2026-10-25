@@ -1,8 +1,8 @@
 import data from '../data/dissociation.json' with { type: 'json' };
 import overview from '../data/overview.json' with { type: 'json' };
 import TEXT from '../data/dissociation_text.json' with { type: 'json' };
-import { escape, toHtml } from './inline.mjs';
-import { authorYear, reference, shortRef } from './literature.mjs';
+import { andList, escape, toHtml } from './inline.mjs';
+import { citeLink as cite, reference, shortRef } from './literature.mjs';
 import { BRANCH, REPO_URL } from './site.mjs';
 
 const { rules } = data;
@@ -51,6 +51,8 @@ export const num = (v, nd) => v.toFixed(nd).replace('-', '−');
 // R range end: 3 decimals, a trailing zero dropped: 0.700 -> 0.70, 4.925 -> 4.925
 const rEnd = (v) => v.toFixed(3).replace(/0$/, '');
 const rRange = (s) => `${rEnd(s.R[0])}–${rEnd(s.R.at(-1))}`;
+// R inside the plotted window of a system
+const inXwin = (s, r) => r >= s.xwin[0] - 1e-9 && r <= s.xwin[1] + 1e-9;
 const asOf = (s) => s.as;
 const asRange = (list) => {
   const sp = [...new Set(list.map(asOf))].sort((a, b) => parseInt(a.slice(1), 10) - parseInt(b.slice(1), 10));
@@ -58,11 +60,9 @@ const asRange = (list) => {
 };
 // "H_{2}-H_{8}" (en dash) for consecutive chains, "C_{2}H_{4}, C_{2}" for molecules
 const idRange = (list) => (list.length > 2 && list.every((s) => s.kind === 'chain') ? `${list[0].id}–${list.at(-1).id}` : list.map((s) => s.id).join(', '));
-const andList = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
 
-// linked short label "Huber and Herzberg 1979"; the full entry is on the reference page
 const PAPER = 'komarov2026-reks-studio';
-export const cite = (key, base) => `<a href="${base}manual/reference/#${key}">${toHtml(authorYear(reference(key)))}</a>`;
+export { cite };
 export const citeText = (key) => shortRef(reference(key));
 
 // panel geometry, index and big (subpage) sizes
@@ -202,7 +202,7 @@ function buildFigure(s, size) {
   const x = (r) => L + ((r - r0) / (r1 - r0)) * (G.R - L);
   const y = (e) => G.PB - ((e - T.lo) / (T.hi - T.lo)) * (G.PB - G.PT);
   const yo = (n) => G.OB - (n / 2) * (G.OB - G.OT);
-  const inX = (r) => r >= s.xwin[0] - 1e-9 && r <= s.xwin[1] + 1e-9;
+  const inX = (r) => inXwin(s, r);
   const inY = (e) => e >= T.lo - 1e-9 && e <= T.hi + 1e-9;
   const xticks = (() => {
     const st = s.xwin[1] - s.xwin[0] > 2 ? 1 : 0.5;
@@ -598,14 +598,16 @@ export function cardTable(s) {
     : { head: ['', 'SSR'], rows: [['R_{e} Å', f3(s.values.Re[k])]] };
 }
 
-// mini curve of a chain: S0 and FCI on one Eh scale, raw points
-export function mini(s, x0, w, h, top = 6) {
-  const fci = s.ref ? s.ref[0].R.map((r, j) => [r, s.ref[0].E[j]]).filter(([r]) => r >= s.xwin[0] - 1e-9 && r <= s.xwin[1] + 1e-9) : [];
-  const es = [...s.S0, ...fci.map((p) => p[1])];
+// mini curve: S0 and (ref = true) the reference S0 on one Eh scale, raw points inside xwin
+export function mini(s, x0, w, h, top = 6, ref = true) {
+  const inWin = ([r]) => inXwin(s, r);
+  const fci = ref && s.ref ? s.ref[0].R.map((r, j) => [r, s.ref[0].E[j]]).filter(inWin) : [];
+  const s0 = s.R.map((r, j) => [r, s.S0[j]]).filter(inWin);
+  const es = [...s0, ...fci].map((p) => p[1]);
   const [lo, hi] = [Math.min(...es), Math.max(...es)];
   const x = (r) => x0 + ((r - s.xwin[0]) / (s.xwin[1] - s.xwin[0])) * w;
   const y = (e) => top + ((hi - e) / (hi - lo)) * h;
-  return { fci: fci.length ? pathD(fci, x, y) : null, ssr: pathD(s.R.map((r, j) => [r, s.S0[j]]), x, y) };
+  return { fci: fci.length ? pathD(fci, x, y) : null, ssr: pathD(s0, x, y) };
 }
 
 // one row per system: reference kind and headline number
@@ -630,18 +632,8 @@ export const rows = systems.map((s) => {
   return { system: s.id, as: s.as, reference, number, anchor: s.slug, cls: s.cls };
 });
 
-// band: D_e of the reference-point molecule; table: bond lengths; curves: FCI chains
-const bandSys = pointMols.find((s) => exp(s).De);
-const tableRows = reMols.map((s) => [`${s.id}${scanNote(s) ? ' (rigid R_{CC} scan)' : ''}`, f3(s.values.Re[s0Key(s)]), exp(s).Re[s0Key(s)].v]);
-const span1 = (list, f) => [...new Set(list.map(f))];
-export const cards = {
-  band: bandSys && (() => {
-    const [ref, err] = exp(bandSys).De.X.v.split(' ± ').map(Number);
-    return { ours: Number(f2(bandSys.values.De)), ref, err, axis: [Math.floor((ref - 2 * err) * 10) / 10, Math.ceil((ref + 2 * err) * 10) / 10] };
-  })(),
-  table: tableRows.length ? { head: ['', 'SSR / Å', 'exp. / Å'], rows: tableRows } : null,
-  curves: chains,
-};
+// D_e of the reference-point molecule
+export const deSys = pointMols.find((s) => exp(s).De);
 
 // hero: raw H2 S0, FCI, RKS / Eh
 const h2 = systems.find((s) => s.slug === 'h2');
@@ -754,14 +746,11 @@ export const vars = {
   setupSi: setupRows.si,
   refFci,
   refExtra,
-  card2Title: reMols.length ? `${ids(reMols)}: bond length${reMols.length > 1 ? 's' : ''}` : '',
-  card2Sub: reMols.length ? reMols.map((s) => `${s.id}: SSR${s.as}, ${s.functional}/${s.basis}`).join('; ') : '',
-  card3Title: chains.length ? `Hydrogen chains ${idRange(chains)} pulled apart` : '',
-  card3Sub: chains.length
-    ? `SSR${asRange(chains)}, ${span1(chains, (s) => s.functional).join(', ')}; ${byValue((s) => (chains.includes(s) ? s.basis : null)).filter(([k]) => k).map(([b, list]) => `${b} (${ids(list)})`).join(', ')}`
-    : '',
-  De: bandSys ? f2(bandSys.values.De) : '',
-  DeExp: bandSys ? exp(bandSys).De.X.v : '',
+  asAll: asRange(systems),
+  fciChains: idRange(chains),
+  nSystems: systems.length,
+  De: deSys ? f2(deSys.values.De) : '',
+  DeExp: deSys ? exp(deSys).De.X.v : '',
   rowChains: [...chains, ...far].map((s) => s.id).join(' · '),
   rowChainsText: `Bond dissociation against FCI in the same basis${far.length ? `; ${ids(far)}: ${OUT_OF_REACH}` : ''}.`,
   rowMols: molecules.filter((s) => !s.ref).map((s) => s.id).join(' · '),

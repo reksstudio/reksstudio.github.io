@@ -42,6 +42,12 @@ export function reference(key) {
   return e;
 }
 export const references = () => [...entries.values()];
+// key -> map entry; throws on an unknown key, naming file
+export const refLookup = (map, file) => (key) => {
+  const e = map.get(key);
+  if (!e) throw new Error(`${file}: unknown source ${key}`);
+  return e;
+};
 export const doiUrl = (e) => e.doi && `https://doi.org/${e.doi}`;
 
 const surname = (author) => author.split(',')[0];
@@ -52,6 +58,8 @@ const firstPage = (pages) => pages?.split('–')[0];
 
 // "Hu et al. 2016"; with the journal when two cited references share it: "Hu et al., J. Am. Chem. Soc. 2016"
 export const authorYear = (e, journal) => (journal ? `${authorShort(e.authors)}, ${source(e)} ${e.year}` : `${authorShort(e.authors)} ${e.year}`);
+// "Hu et al. 2016" linked to its entry on the reference page
+export const citeLink = (key, base) => `<a href="${base}manual/reference/#${key}">${toHtml(authorYear(reference(key)))}</a>`;
 
 // "Filatov, WIREs Comput. Mol. Sci. 2015, 5, 146"
 export const shortRef = (e) =>

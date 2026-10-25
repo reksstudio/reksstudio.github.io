@@ -25,16 +25,16 @@ const { block: b } = Astro.props;
   {b.setup && (
     <>
       <h3>Setup</h3>
-      <dl class="fields">{b.setup.map(([k, v]) => <><dt set:html={html(k)} /><dd set:html={html(v)} /></>)}</dl>
+      <dl class="fields">{b.setup.map(([k, v]) => <><dt set:html={html(k)} /><dd set:html={html(v, base)} /></>)}</dl>
     </>
   )}
   {b.reference && (
     <>
       <h3>Reference</h3>
-      {b.reference.filter(Boolean).map((line) => <p set:html={html(line)} />)}
+      {b.reference.filter(Boolean).map((line) => <p set:html={html(line, base)} />)}
       {b.dissocRef && <Dissoc parts={b.dissocRef} />}
     </>
   )}
   {b.scope && <p class="scope"><strong>Scope:</strong> <Fragment set:html={html(b.scope)} /></p>}
-  {b.provenance && <p class="prov"><strong>Provenance:</strong> <Fragment set:html={b.provenance.map(html).join(' ')} /></p>}
+  {b.provenance && <p class="prov"><strong>Provenance:</strong> <Fragment set:html={b.provenance.map((p) => html(p, base)).join(' ')} /></p>}
 </section>

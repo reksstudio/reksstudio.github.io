@@ -14,7 +14,7 @@
     { "part": 1, "id": "against-reference", "title": "Part 1: against a reference", "groups": ["A", "B", "C", "D"] },
     { "part": 2, "id": "beyond-reference", "title": "Part 2: beyond available references: trends and demonstrations", "groups": ["trend", "nofci", "object", "basis", "workflow"] }
   ],
-  "moved": { "h-chains": "h-chains", "bond-breaking": "molecules", "c2": "c2" },
+  "moved": { "h-chains": "h-chains", "bond-breaking": "molecules", "c2": "c2", "ttr": { "to": "large-molecules/ttr/", "text": "TTR: this result moved to the large-molecules page" } },
   "results": [
     {
       "slug": "exactness",
@@ -155,40 +155,35 @@
       "exits": { "manual": "first-calculation" }
     },
     {
-      "slug": "ttr",
+      "slug": "large-molecules",
+      "page": true,
       "cls": "object",
       "kind": "ladder",
       "problem": "Diradicals and magnetism",
-      "title": "Tetra[3]trianguleno[3]rhombene (TTR)",
-      "short": "TTR",
-      "ident": "Magnetic gap ladder of a 152-atom open-shell nanographene for active spaces (4,4) to (10,10); the experiment was measured on a surface, the calculation is gas phase.",
-      "key": "S–T gap 0.31 kcal/mol at (4,4) to 0.99 kcal/mol at (10,10); experiment 0.21 kcal/mol (STM on Au(111)).",
-      "rows": [
-        { "system": "TTR, 152 atoms", "as": "(4,4)–(10,10)", "reference": "experiment, STM on Au(111) (different object)", "number": "S–T 0.31–0.99 vs 0.21 kcal/mol" }
-      ],
+      "title": "Large molecules, up to {scale:atomsMax} atoms and {scale:reksMax}",
+      "short": "Large molecules",
+      "ident": "SA-REKS and SI-SA-REKS (SSR) of the triangulene nanostar (TNS) at {scale:asTNS} and of tetra[3]trianguleno[3]rhombene (TTR) along the active-space ladder {scale:asTTR}, every spin sector and every printed root of each set; the zethrenes on their own page.",
+      "key": "{scale:molecules} molecules · up to {scale:atomsMax} atoms · {scale:nbfMax} basis functions · {scale:reksMax}",
       "blocks": [
         {
-          "figure": { "src": "figures/main/ttr.webp", "w": 1504, "h": 565, "alt": "TTR: S0, T1, Q1, H1 energies and FONs for active spaces (4,4) to (10,10)", "caption": "(A) Energies of S0, T1, Q1, H1 per active space, gaps in kcal/mol; (B) FONs of S0 per active space." },
-          "tables": [
-            { "title": "Vertical gaps from S0 / kcal mol^{−1}", "head": ["Gap", "(4,4)", "(6,6)", "(8,8)", "(10,10)", "Experiment"], "rows": [["S–T", "0.31", "0.51", "0.77", "0.99", "0.21"], ["S–Q", "0.53", "1.63", "2.37", "2.14", ""], ["S–H", "", "34.24", "33.09", "31.01", ""]] }
+          "id": "setup",
+          "title": "Setup and provenance",
+          "setup": [
+            ["Method", "SA-REKS(M,M), ensemble {scale:sa}; SI-SA-REKS over the full catalogue of each spin sector the input lists; every root the output prints"],
+            ["Sets", "{scale:setList}"],
+            ["Starting orbitals", "TNS REKS(12,12), 6-31G(d): ROHF 2S + 1 = 13 orbitals, each paired with its Coulson–Rushbrooke partner; TNS def2-TZVP: the converged 6-31G(d) orbitals projected to the larger basis; TTR: a converged run of the same or a neighbouring active space, in the search order of the input"],
+            ["Geometries", "{scale:geomLine}; both planar"],
+            ["Code", "{scale:rev}"]
           ],
-          "note": "Paper's own reading: (4,4) is closest to experiment, larger active spaces open the gap; the comparison is to be viewed cautiously (gas phase, fixed geometry vs STM on Au(111)).",
-          "setup": [["Functional, basis", "BH&HLYP/cc-pVTZ, 4016 basis functions"], ["SA pool", "not stated in v1"], ["Geometry source", "not stated in v1"], ["Convergence", "not stated in v1"]],
-          "reference": ["Experiment: spin-polarized STM on Au(111), Song et al. 2024 (citation and credit to be added)."],
-          "provenance": ["Paper v1, Fig. 1A,B; p6; methods p17."]
-        },
-        {
-          "id": "run",
-          "title": "Run size",
-          "key": "152 atoms, 4016 basis functions, SI over 29 082 configurations; 25 iterations, about 4 h on one 64-core node, hot start from a converged smaller-basis seed.",
-          "provenance": ["Paper v1, SI p88."]
+          "reference": ["Experiment and models: [cite:hieulle2021-nanostar]; [cite:song2024-butterfly]."]
         }
       ],
-      "scope": "Not shown: the same active space with another method; geometry relaxation; surface effects.",
-      "exits": { "notInstalled": "Paper result; catalogue (10,10) not installed." }
+      "scope": "Calculated values: these calculations, gas phase. Experiment: values as printed in the cited papers, measured on Au(111).",
+      "exits": { "notInstalled": "Catalogues {scale:notInstalledAs} are not in the install." }
     },
     {
       "slug": "zethrenes",
+      "partOf": "large-molecules",
       "cls": "trend",
       "kind": "ladder",
       "problem": "Diradicals and magnetism",
@@ -220,7 +215,7 @@
             ["Numbers", "every number from the .out of its calculation; orbital energies and FONs of the SA-REKS SCF, states and natural occupations of the SI"],
             ["Experiment", "{zeth:expSources} sources, cited in the experiment block"]
           ],
-          "reference": ["Geometries: {zeth:hu}, doi:{zeth:huDoi}."],
+          "reference": ["Geometries: [cite:hu2016-tetraradicaloid]."],
           "provenance": ["to be added"]
         }
       ],
@@ -273,21 +268,16 @@
     "hero": {
       "title": "Where ordinary DFT breaks, REKS Studio gets it right.",
       "sub": "Ensemble DFT (REKS/SSR) in Psi4 for breaking bonds, diradicals, magnetic molecules and excited states. Its equations are generated, not derived by hand; (2,2)–(6,6) run from the install.",
-      "loop": "Not only H_{2}. How close is it to experiment?",
+      "loop": "Beyond H_{2}",
       "caption": "H_{2} dissociation: SSR(2,2) and RKS, BH&HLYP; FCI; all aug-cc-pVTZ",
       "callout": "fails at the stretched bond"
     },
     "proof": {
-      "title": "Checked against experiment and exact references",
+      "title": "Checked against exact theory and benchmarks, then run at scale",
       "cards": [
-        { "slug": "dissociation", "anchor": "c2", "problem": "Strength of the C_{2} bond", "kind": "band", "big": "{dissoc:De} eV", "ref_name": "experiment, D_{e} {dissoc:DeExp} eV", "sub": "SSR(6,6), M08-SO/cc-pV5Z; D_{e} to 2 C(^{3}P), SSR(4,4)" },
-        { "slug": "dissociation", "anchor": "molecules", "problem": "{dissoc:card2Title}", "kind": "table", "ref_name": "experiment", "sub": "{dissoc:card2Sub}" },
-        { "slug": "dissociation", "anchor": "h-chains", "problem": "{dissoc:card3Title}", "kind": "curves", "ref_name": "exact in the same basis (FCI)", "sub": "{dissoc:card3Sub}" }
-      ],
-      "trust": { "t": "Exact limits (GVB = CASSCF) reproduced to 10^{−10} E_{h}: H_{2} and BH, (2,2)–(4,6)", "slug": "exactness", "anchor": "identities" },
-      "demos": [
-        { "t": "S_{1}/S_{0} crossing of ethylene found and followed in dynamics, a case TDDFT cannot describe", "slug": "c2h4-photochemistry" },
-        { "t": "seven zethrenes and related PAHs from (2,2) to (10,10), {zeth:calculations} calculations", "slug": "zethrenes" }
+        { "kicker": "Against exact theory and experiment", "slug": "dissociation", "kind": "curves", "title": "Bonds broken, single to quadruple", "big": "{dissoc:De} eV", "ref": "vs experiment, C_{2} D_{e} {dissoc:DeExp} eV", "sub": "{dissoc:fciChains} vs FCI in the same basis; the others to their fragments · SSR{dissoc:asAll}", "count": "{dissoc:nSystems} molecules" },
+        { "kicker": "Against a benchmark", "slug": "quest", "kind": "hist", "title": "Excited states of {quest:molecules} molecules", "big": "{quest:maeRange} eV", "ref": "MAE vs theoretical best estimates (TBE), QUEST", "sub": "{quest:stateList} · {quest:funcs} · per state the active space {quest:asRange} closest to the TBE", "count": "{quest:pairs} state pairs" },
+        { "kicker": "At scale", "slug": "large-molecules", "kind": "map", "line": true, "title": "Active spaces up to {scale:reksMax} on large molecules", "big": "{scale:atomsMax} atoms", "ref": "{scale:reksMax} · {scale:basisMax}, {scale:nbfMax} basis functions", "sub": "Triangulene nanostar {scale:fTNS}, TTR {scale:fTTR}; {zeth:compounds} zethrenes up to {zeth:atomsMax} atoms", "count": "{scale:molecules} molecules" }
       ],
       "bridge": "Multireference accuracy is usually expensive. What does it cost here?"
     },
@@ -323,7 +313,7 @@
       { "as": "(4,4)", "spins": [18, 11, 1], "mark": "largest REKS before this work", "href": "main/history/" },
       { "as": "(6,6)", "spins": [161, 153, 41, 1], "mark": "in your install", "href": "docs/#install" },
       { "as": "(8,8)", "spins": [1934, 2524, 1172, 199, 1] },
-      { "as": "(10,10)", "spins": [29082, 48090, 31275, 9635, 1209, 1], "mark": "applied, TTR", "href": "main/results/ttr/" },
+      { "as": "(10,10)", "spins": [29082, 48090, 31275, 9635, 1209, 1], "mark": "applied, {scale:at1010}", "href": "main/results/large-molecules/" },
       { "as": "(12,12)", "spins": [524292, 1045737, 864275, 374554, 86454, 8651, 1] },
       { "as": "(14,14)", "spins": [11017869, 25684841, 25614281, 14112637, 4586673, 846797, 70573, 1] }
     ],
@@ -390,7 +380,7 @@
     "steps": [
       { "year": 1999, "m": 2, "label": "(2,2)" },
       { "year": 2016, "m": 4, "label": "(4,4)" },
-      { "year": 2026, "m": 10, "label": "(10,10) applied" }
+      { "year": 2026, "m": "{scale:asM}", "label": "{scale:asMax} applied" }
     ],
     "generated": { "year": 2026, "m": 12, "label": "(12,12) generated" },
     "prehistory": [

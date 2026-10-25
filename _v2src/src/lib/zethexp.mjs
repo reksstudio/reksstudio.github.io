@@ -1,4 +1,5 @@
-import { EH_EV, EH_KCAL, compounds, rungs } from './zeth.mjs';
+import { EH_EV } from './ladder.mjs';
+import { EH_KCAL, compounds, rungs } from './zeth.mjs';
 import { vsexp } from './zethlit.mjs';
 
 // REKS vs experiment: each vsexp row with the REKS value from zeth.json energies (Eh); d = REKS - experiment.

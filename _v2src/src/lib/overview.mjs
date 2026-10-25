@@ -1,12 +1,13 @@
 import raw from '../data/overview.json' with { type: 'json' };
 import { toHtml } from './inline.mjs';
 import { entryHref } from './manual-pages.mjs';
-import { doiUrl, reference, shortRef } from './literature.mjs';
+import { citeLink, doiUrl, reference, shortRef } from './literature.mjs';
 import { vars as quest } from './quest.mjs';
 import { vars as zeth } from './zeth.mjs';
 import { rows as dissocRows, vars as dissoc } from './dissoc.mjs';
+import { rows as scaleRows, vars as scale } from './scale.mjs';
 
-const VARS = { quest, zeth, dissoc };
+const VARS = { quest, zeth, dissoc, scale };
 const TOKEN = new RegExp(`\\{(${Object.keys(VARS).join('|')}):(\\w+)\\}`, 'g');
 // {lib:name} in any text -> the value computed from that lib's data, escaped for the JSON text it splices into
 const data = JSON.parse(
@@ -15,15 +16,23 @@ const data = JSON.parse(
     return JSON.stringify(String(VARS[lib][k])).slice(1, -1);
   }),
 );
-// index rows of a result built from its data module
-const ROWS = { dissociation: dissocRows };
+// index rows supplied by a result's data module
+const ROWS = { dissociation: dissocRows, 'large-molecules': scaleRows };
 
 export const { classes, parts, results, manualRows, landing, history, moved } = data;
 
 const PLACEHOLDER = /^(to be added|not stated in v1)/;
 
-// inline markup -> HTML; a value starting with "to be added" or "not stated in v1" is set as a placeholder
-export const html = (s) => (PLACEHOLDER.test(s) ? `<span class="ph">${toHtml(s)}</span>` : toHtml(s));
+const CITE = /\[cite:([\w-]+)\]/;
+// inline markup -> HTML; [cite:key] -> linked label (needs base); placeholder text gets class "ph"
+export const html = (s, base) => {
+  const out = s.split(CITE).map((x, i) => {
+    if (i % 2 === 0) return toHtml(x);
+    if (base === undefined) throw new Error(`overview: [cite:${x}] without base`);
+    return citeLink(x, base);
+  }).join('');
+  return PLACEHOLDER.test(s) ? `<span class="ph">${out}</span>` : out;
+};
 
 export const resultHref = (base, slug, anchor) => `${base}main/results/${slug}/${anchor ? `#${anchor}` : ''}`;
 export const manualHref = (base, id) => entryHref(id, null, base);

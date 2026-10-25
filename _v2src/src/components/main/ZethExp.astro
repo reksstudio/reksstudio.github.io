@@ -1,8 +1,9 @@
 ---
 import Table from './Table.astro';
-import { codeHtml } from '../../lib/inline.mjs';
+import { andList, codeHtml } from '../../lib/inline.mjs';
 import { authorYear, doiUrl } from '../../lib/literature.mjs';
-import { NOT_COMPUTED, cmpHref, f1, geoms, method, pattern, rungs, sg } from '../../lib/zeth.mjs';
+import { NOT_COMPUTED, cmpHref, f1, pattern, sg } from '../../lib/ladder.mjs';
+import { geoms, method, rungs } from '../../lib/zeth.mjs';
 import { pairs } from '../../lib/zethexp.mjs';
 import { coreOf, refOf } from '../../lib/zethlit.mjs';
 
@@ -25,7 +26,6 @@ const geo = (key) => geoms.find((g) => g.key === key);
 const d2 = (v) => sg(v, 2);
 const plainText = (s) => s.replace(/_\{([^}]+)\}/g, '$1').replace(/\^\{([^}]+)\}/g, '$1');
 const cite = (p) => authorYear(refOf(p.src[0].key));
-const list = (xs) => (xs.length < 3 ? xs.join(' and ') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
 if (ab.some((p) => p.config !== 'H>L')) throw new Error('ZethExp: a main absorption row not led by H>L');
 const HL = pattern('H>L');
 const RT = geo('T').html;
@@ -162,9 +162,9 @@ const t2Notes = [
   solventLine,
   ...conflicts,
   [
-    assigned.length && `The authors' TD-DFT (B3LYP/6-31G*) assigns the band to HOMO→LUMO for ${list(assigned.map((p) => p.mol))}.`,
-    sibling.length && `${list(sibling.map((p) => p.mol))}: the same band of the core, not assigned in the source.`,
-    lone.length && `${list(lone.map((p) => p.mol))}: the band of largest ε<sub>max</sub>, not assigned in the source; its ${HL} pairing is ours.`,
+    assigned.length && `The authors' TD-DFT (B3LYP/6-31G*) assigns the band to HOMO→LUMO for ${andList(assigned.map((p) => p.mol))}.`,
+    sibling.length && `${andList(sibling.map((p) => p.mol))}: the same band of the core, not assigned in the source.`,
+    lone.length && `${andList(lone.map((p) => p.mol))}: the band of largest ε<sub>max</sub>, not assigned in the source; its ${HL} pairing is ours.`,
   ].filter(Boolean).join(' '),
   ...sec.map((p) => `‡ ${p.mol}: Clar and Macpherson (1962) as quoted by ${cite(p)} (review), ${p.src[0].loc}.`),
 ].filter(Boolean);
@@ -212,7 +212,7 @@ const moreTable = {
 };
 const lukMore = more.filter((p) => p.printed.unit === 'eV');
 const moreNotes = [
-  lukMore.length && `${list(lukMore.map((p) => p.mol))}: E(S1) abs of ${cite(lukMore[0])}, ${lukMore[0].src[0].loc}, in ${codeHtml(lukMore[0].medium)} (${lukMore[0].mediumAt}), peak or onset not stated; film: thin film; Δ for the solution value.`,
+  lukMore.length && `${andList(lukMore.map((p) => p.mol))}: E(S1) abs of ${cite(lukMore[0])}, ${lukMore[0].src[0].loc}, in ${codeHtml(lukMore[0].medium)} (${lukMore[0].mediumAt}), peak or onset not stated; film: thin film; Δ for the solution value.`,
   ...more
     .filter((p) => p.printed.unit === 'nm')
     .map((p) => {

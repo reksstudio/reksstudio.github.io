@@ -976,7 +976,7 @@ Symbolic contraction of the full (12,12) ensemble: 40.47 h, 83.0 GB.
 
 ## Largest run
 
-The (10,10) run on TTR: [Results, TTR, run size](https://reksstudio.github.io/v2/main/results/ttr/index.md#run).
+TNS (12,12), def2-TZVP · BH\&HLYP · SCF 2 h 12 min, SI 2S = 0 48 min on PC-1 × 96; SI 2S = 2 3 h 9 min, SI 2S = 4 2 h 53 min, SI 2S = 6–12 2 h 2 min on PC-2 × 36: [Results, large molecules, run sheet](https://reksstudio.github.io/v2/main/results/large-molecules/index.md#time).
 
 ## One dynamics step
 

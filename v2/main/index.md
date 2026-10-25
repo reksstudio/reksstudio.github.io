@@ -18,37 +18,29 @@ Ensemble DFT (REKS/SSR) in Psi4 for breaking bonds, diradicals, magnetic molecul
 
 [Free and open source](https://reksstudio.github.io/v2/docs/index.md#licence) · [ChemRxiv 2026](https://doi.org/10.26434/chemrxiv.15008475/v1) · UNIST · IBS
 
-[Not only H<sub>2</sub>. How close is it to experiment? ↓](#evidence)
+[Beyond H<sub>2</sub> ↓](#evidence)
 
-## Checked against experiment and exact references
+## Checked against exact theory and benchmarks, then run at scale
 
-[Strength of the C<sub>2</sub> bond](https://reksstudio.github.io/v2/main/results/dissociation/index.md#c2)
+Against exact theory and experiment [Bonds broken, single to quadruple](https://reksstudio.github.io/v2/main/results/dissociation/index.md)
 
-REKS Studio 6.29 eV, experiment, De 6.32 ± 0.2 eV
+Potential energy curves of H2, H4, H6, H8, H10, C2H4, N2, C2H2, C2: SSR; FCI for H2–H8
 
-6.29 eV vs experiment, D<sub>e</sub> 6.32 ± 0.2 eV SSR(6,6), M08-SO/cc-pV5Z; D<sub>e</sub> to 2 C(<sup>3</sup>P), SSR(4,4)
+6.29 eV vs experiment, C<sub>2</sub> D<sub>e</sub> 6.32 ± 0.2 eV H<sub>2</sub>–H<sub>8</sub> vs FCI in the same basis; the others to their fragments · SSR(2,2)–(10,10) 9 molecules →
 
-[C<sub>2</sub>H<sub>4</sub>, N<sub>2</sub>, C<sub>2</sub>: bond lengths](https://reksstudio.github.io/v2/main/results/dissociation/index.md#molecules)
+Against a benchmark [Excited states of 62 molecules](https://reksstudio.github.io/v2/main/results/quest/index.md)
 
-| | SSR / Å | exp. / Å |
-| - | - | - |
-| C<sub>2</sub>H<sub>4</sub> (rigid R<sub>CC</sub> scan) | 1.333 | 1.3305 |
-| N<sub>2</sub> | 1.096 | 1.0977 |
-| C<sub>2</sub> | 1.268 | 1.2425 |
+Histogram of SSR minus TBE for 192 state pairs, BH\&HLYP; MAE 0.212 / 0.230 / 0.220 eV for BH\&HLYP / M08-SO / ωB97X
 
-vs experiment C<sub>2</sub>H<sub>4</sub>: SSR(4,4), BH\&HLYP/aug-cc-pVTZ; N<sub>2</sub>: SSR(6,6), BH\&HLYP/aug-cc-pVTZ; C<sub>2</sub>: SSR(6,6), M08-SO/cc-pV5Z
+0.21–0.23 eV MAE vs theoretical best estimates (TBE), QUEST S<sub>1</sub> S<sub>2</sub> T<sub>1</sub> T<sub>2</sub> · BH\&HLYP / M08-SO / ωB97X · per state the active space (2,2)–(8,8) closest to the TBE 192 state pairs →
 
-[Hydrogen chains H<sub>2</sub>–H<sub>8</sub> pulled apart](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h-chains)
+At scale [Active spaces up to REKS(12,12) on large molecules](https://reksstudio.github.io/v2/main/results/large-molecules/index.md)
 
-Potential energy curves of H2, H4, H6, H8: REKS Studio and exact in the same basis (FCI)
+Atoms against active space for every published REKS Studio run, coloured by dataset; largest: 192 atoms, REKS(12,12); largest REKS before this work: (4,4)
 
-vs exact in the same basis (FCI) SSR(2,2)–(8,8), BH\&HLYP; aug-cc-pVTZ (H<sub>2</sub>, H<sub>4</sub>), 6-31G(d) (H<sub>6</sub>, H<sub>8</sub>)
+192 atoms REKS(12,12) · def2-TZVP, 4452 basis functions Triangulene nanostar C<sub>132</sub>H<sub>60</sub>, TTR C<sub>118</sub>H<sub>34</sub>; 7 zethrenes up to 70 atoms 9 molecules →
 
-[Exact limits (GVB = CASSCF) reproduced to 10<sup>−10</sup> E<sub>h</sub>: H<sub>2</sub> and BH, (2,2)–(4,6) →](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
-
-Beyond available references: [S<sub>1</sub>/S<sub>0</sub> crossing of ethylene found and followed in dynamics, a case TDDFT cannot describe](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md) · [seven zethrenes and related PAHs from (2,2) to (10,10), 98 calculations](https://reksstudio.github.io/v2/main/results/zethrenes/index.md) →
-
-[All comparisons →](https://reksstudio.github.io/v2/main/results/index.md)
+[All results →](https://reksstudio.github.io/v2/main/results/index.md)
 
 [Multireference accuracy is usually expensive. What does it cost here? ↓](#cost)
 
@@ -147,7 +139,7 @@ $$
 | (4,4) [largest REKS before this work](https://reksstudio.github.io/v2/main/history/index.md) | 234 |
 | (6,6) [in your install](https://reksstudio.github.io/v2/docs/index.md#install) | 23 962 |
 | (8,8) | 4 266 350 |
-| (10,10) [applied, TTR](https://reksstudio.github.io/v2/main/results/ttr/index.md) | 1 007 587 692 |
+| (10,10) [applied, TTR](https://reksstudio.github.io/v2/main/results/large-molecules/index.md) | 1 007 587 692 |
 | (12,12) | 293 819 094 700 |
 | (14,14) [counted](https://reksstudio.github.io/v2/main/cost/index.md#count) | 103 564 870 568 976 |
 

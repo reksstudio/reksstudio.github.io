@@ -14,6 +14,8 @@ Reference class: trend without reference
 
 7 compounds · 20 geometries · 98 calculations · up to 70 atoms, 1716 basis functions · SI up to 29 082 configurations (2S = 0)
 
+Part of: [Large molecules →](https://reksstudio.github.io/v2/main/results/large-molecules/index.md)
+
 [Definitions](#definitions) · [Compounds](#compounds) · [Spin gaps along the active-space ladder](#ladder) · [Natural occupations of S0 along the ladder](#occupations) · [vs experiment](#experiment) · [Setup and reference](#setup)
 
 ## Definitions
@@ -336,7 +338,7 @@ Not computed: IF R<sub>cs</sub> (6,6), PIF R<sub>T</sub> (10,10)
 
 Inputs: as run, on the compound pages; starting orbitals read from a seed file (RKS or ROHF orbitals; for HZ and HZD the orbitals of an earlier REKS(2,2) run), active pairs set per rung
 
-Code: Psi4 kk/reks.v42; builds b0c2d45a7 (fenrir psi4-reks, 10 runs, 2026-10-12); d40267fc2 (fenrir psi4-multiscf, 82 runs, 2026-10-13 to 2026-10-16); 2424fb773 (hawk psi4-reks, 6 runs, 2026-10-16); the .out headers carry no revision
+Code: Psi4 kk/reks.v42; builds b0c2d45a7 (PC-2, 10 runs, 2026-10-12); d40267fc2 (PC-2, PC-3, 82 runs, 2026-10-13 to 2026-10-16); 2424fb773 (PC-1, 6 runs, 2026-10-16); the .out headers carry no revision
 
 Numbers: every number from the .out of its calculation; orbital energies and FONs of the SA-REKS SCF, states and natural occupations of the SI
 
@@ -344,7 +346,7 @@ Experiment: 4 sources, cited in the experiment block
 
 ### Reference
 
-Geometries: Hu et al., J. Am. Chem. Soc. 2016, 138, 1065, doi:10.1021/jacs.5b12532.
+Geometries: [Hu et al. 2016](https://reksstudio.github.io/v2/manual/reference/index.md#hu2016-tetraradicaloid).
 
 **Provenance:** to be added
 
@@ -356,4 +358,4 @@ Geometries: Hu et al., J. Am. Chem. Soc. 2016, 138, 1065, doi:10.1021/jacs.5b125
 * [Manual: Start](https://reksstudio.github.io/v2/manual/index.md#overview) · [Install](https://reksstudio.github.io/v2/docs/index.md#install) · [Cite](https://reksstudio.github.io/v2/docs/index.md#cite) · [Contact](https://reksstudio.github.io/v2/docs/index.md#contact)
 * [Back to the Results index](https://reksstudio.github.io/v2/main/results/index.md#row-zethrenes)
 
-Other results: [Exactness](https://reksstudio.github.io/v2/main/results/exactness/index.md) · [Dissociation](https://reksstudio.github.io/v2/main/results/dissociation/index.md) · [QUEST](https://reksstudio.github.io/v2/main/results/quest/index.md) · [TTR](https://reksstudio.github.io/v2/main/results/ttr/index.md) · [C<sub>2</sub>H<sub>4</sub> photochemistry](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md)
+Other results: [Exactness](https://reksstudio.github.io/v2/main/results/exactness/index.md) · [Dissociation](https://reksstudio.github.io/v2/main/results/dissociation/index.md) · [QUEST](https://reksstudio.github.io/v2/main/results/quest/index.md) · [Large molecules](https://reksstudio.github.io/v2/main/results/large-molecules/index.md) · [C<sub>2</sub>H<sub>4</sub> photochemistry](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md)

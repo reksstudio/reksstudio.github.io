@@ -54,6 +54,9 @@ export const fmtCount = (n, sep = NNBSP) => n.toLocaleString('en-US').replaceAll
 // "C28H16" -> "C_{28}H_{16}"
 export const formulaMarkup = (f) => f.replace(/(\d+)/g, '_{$1}');
 
+// "a", "a and b", "a, b and c"
+export const andList = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
+
 // Markup -> HTML; quotes stay literal
 export function toHtml(s) {
   noMath(s);

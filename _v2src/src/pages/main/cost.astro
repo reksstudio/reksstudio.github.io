@@ -18,6 +18,7 @@ import {
   SIX_LARGEST, fnLabel, fockExponent, functionals, inverse, iterSentence, memory, molecules, nStates, refLabel, repeats,
   spaces as bSpaces, stat, tdaLabel, testSet, uniq,
 } from '../../lib/costpsi4.mjs';
+import { vars as scaleVars } from '../../lib/scale.mjs';
 import '../../styles/main.css';
 import '../../styles/cost.css';
 
@@ -377,7 +378,7 @@ const h = toHtml;
 
   <section class="mblock" id="largest-run">
     <h2>Largest run</h2>
-    <p>The (10,10) run on TTR: <a href={resultHref(base, 'ttr', 'run')}>Results, TTR, run size</a>.</p>
+    <p>{scaleVars.largestRun}: <a href={resultHref(base, 'large-molecules', 'time')}>Results, large molecules, run sheet</a>.</p>
   </section>
 
   <section class="mblock" id="dynamics-step">

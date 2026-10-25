@@ -10,9 +10,11 @@ import ZethExp from '../../../../components/main/ZethExp.astro';
 import ZethLit from '../../../../components/main/ZethLit.astro';
 import ZethOcc from '../../../../components/main/ZethOcc.astro';
 import ZethStates from '../../../../components/main/ZethStates.astro';
-import { fmtCount } from '../../../../lib/inline.mjs';
+import { fmtCount, formulaMarkup } from '../../../../lib/inline.mjs';
+import { NOT_COMPUTED, ORB_KEY, cardId, leadText, rungId, sg, sigText, title } from '../../../../lib/ladder.mjs';
 import { html } from '../../../../lib/overview.mjs';
-import { GAP_TWIN, KCAL, NOT_COMPUTED, absentLine, cardId, compounds, formulaMarkup, geoms, geomsOf, leadText, method, rungId, rungs, sg, sigText, title, topRung, zeth } from '../../../../lib/zeth.mjs';
+import { machineLine, pcOf } from '../../../../lib/site.mjs';
+import { GAP_TWIN, KCAL, absentLine, compounds, geoms, geomsOf, ladder, method, rungs, topRung, zeth } from '../../../../lib/zeth.mjs';
 import { pairs } from '../../../../lib/zethexp.mjs';
 import { LIT_HIDDEN } from '../../../../lib/zethlit.mjs';
 import '../../../../styles/main.css';
@@ -63,11 +65,10 @@ const gapLine = (r) =>
     ? `ΔE<sub>ST</sub> <b>${sg(r.dE.ST, 1)}</b> ${KCAL} · ΔE<sub>SQ</sub> <b>n/a</b>`
     : `ΔE<sub>ST</sub> <b>${sg(r.dE.ST, 1)}</b> · ΔE<sub>SQ</sub> <b>${sg(r.dE.SQ, 1)}</b> ${KCAL}`;
 const flagged = (r) => r.states.some((s) => s.flag);
-const ORB_KEY = '<b>slot</b> MO · SA-REKS FON / ε (E<sub>h</sub>); header: (bonding, antibonding) slots of the pair';
 const NBSP = String.fromCodePoint(0xa0);
 // non-breaking spaces keep "2S = s: n" on one line
 const runLine = (r) =>
-  `SI configurations ${Object.entries(r.si).map(([s, v]) => `2S${NBSP}=${NBSP}${s}:${NBSP}${fmtCount(v.n)}`).join(', ')} · wall time ${r.run.wall_s} s, ${r.run.threads} threads · ${r.run.host}, ${r.run.date.slice(0, 10)} · Psi4 ${r.run.commit}`;
+  `SI configurations ${Object.entries(r.si).map(([s, v]) => `2S${NBSP}=${NBSP}${s}:${NBSP}${fmtCount(v.n)}`).join(', ')} · wall time ${r.run.wall_s} s, ${r.run.threads} threads · ${pcOf(r.run.host)}, ${r.run.date.slice(0, 10)} · Psi4 ${r.run.commit}`;
 // whether experiment pairs exist for this core
 const hasExp = pairs(c.id).length > 0;
 const sections = [
@@ -119,12 +120,12 @@ const sections = [
 
   <section class="mblock" id="states">
     <h2>SI states along the ladder</h2>
-    <ZethStates c={c} />
+    <ZethStates c={c} set={ladder} />
   </section>
 
   <section class="mblock" id="occupations">
     <h2>Natural occupations</h2>
-    <ZethOcc c={c} />
+    <ZethOcc c={c} set={ladder} />
   </section>
 
   {!LIT_HIDDEN && (
@@ -143,7 +144,7 @@ const sections = [
 
   <section class="mblock" id="calculations">
     <h2>Calculations</h2>
-    <p class="qcap">One entry per geometry and active space; the summary gives ΔE<sub>ST</sub>, ΔE<sub>SQ</sub> / kcal mol⁻¹ to 1 decimal. Inside: the run line, the SI states (f (length) of S0 → Sn; leading excitation patterns as a share of the listed configurations, given where these carry at least half of the state, else the listed share; ΔD entries with |ΔD| ≥ 0.15, as in the hover of the SI-state chart), the SA-REKS active orbitals and the input. Inputs as run; starting orbitals read from a seed file (RKS or ROHF orbitals; for HZ and HZD the orbitals of an earlier REKS(2,2) run), active pairs set per rung.</p>
+    <p class="qcap">One entry per geometry and active space; the summary gives ΔE<sub>ST</sub>, ΔE<sub>SQ</sub> / kcal mol⁻¹ to 1 decimal. Inside: the run line, the SI states (f (length) of S0 → Sn; leading excitation patterns as a share of the listed configurations, given where these carry at least half of the state, else the listed share; ΔD entries with |ΔD| ≥ 0.15, as in the hover of the SI-state chart), the SA-REKS active orbitals and the input. Inputs as run; starting orbitals read from a seed file (RKS or ROHF orbitals; for HZ and HZD the orbitals of an earlier REKS(2,2) run), active pairs set per rung. Machines: {machineLine(gs.flatMap((g) => Object.values(c.geoms[g.key].rungs).map((r) => r.run.host)))}.</p>
     <p class="qcap">Orbitals: one column per active pair as the code pairs them, frontier pair first, antibonding orbital above, bonding below. Contours ±{method.levels.join(', ±')} a.u. in a plane {method.planeA} Å above the molecular plane; blue + / copper −.</p>
     {gs.map((g) => (
       <>

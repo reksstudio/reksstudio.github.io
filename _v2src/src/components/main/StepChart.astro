@@ -11,7 +11,8 @@ const T = 16;
 const [y0, y1] = [1998, 2027];
 const x = (yr) => L + ((yr - y0) / (y1 - y0)) * (W - L - R);
 const y = (m) => H - B - (m / 12) * (H - B - T);
-const s = history.steps;
+// m of a step may be a token string
+const s = history.steps.map((p) => ({ ...p, m: Number(p.m) }));
 const path = `M${x(s[0].year)} ${y(s[0].m)} ${s.slice(1).map((p) => `H${x(p.year)} V${y(p.m)}`).join(' ')} H${x(y1)}`;
 const g = history.generated;
 const label = `Largest active space reported per paper, by year: ${s.map((p) => `${p.year} ${p.label}`).join(', ')}; ${g.year} ${g.label} (separate marker)`;
@@ -33,5 +34,5 @@ const label = `Largest active space reported per paper, by year: ${s.map((p) => 
     </g>
   ))}
   <circle cx={x(g.year)} cy={y(g.m)} r="5" class="gen" />
-  <text x={x(g.year) - 8} y={y(g.m) + 4} text-anchor="end" class="val">{g.label}</text>
+  <text x={x(g.year) - 8} y={y(g.m) + (g.m === s.at(-1).m ? 16 : 4)} text-anchor="end" class="val">{g.label}</text>
 </svg>

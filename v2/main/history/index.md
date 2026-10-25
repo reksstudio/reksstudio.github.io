@@ -18,9 +18,9 @@ REKS Studio generates the equations symbolically for an arbitrary active space a
 
 ## Largest active space reported, by year
 
-Largest active space reported per paper, by year: 1999 (2,2), 2016 (4,4), 2026 (10,10) applied; 2026 (12,12) generated (separate marker)
+Largest active space reported per paper, by year: 1999 (2,2), 2016 (4,4), 2026 (12,12) applied; 2026 (12,12) generated (separate marker)
 
-Reported per paper; 2026: (10,10) applied to one system, (12,12) generated.
+Reported per paper; 2026: (12,12) applied ([TNS](https://reksstudio.github.io/v2/main/results/large-molecules/index.md)), (12,12) generated.
 
 ## Before REKS
 

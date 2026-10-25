@@ -4,11 +4,12 @@ import Nav from '../../../components/Nav.astro';
 import Footer from '../../../components/Footer.astro';
 import Block from '../../../components/main/Block.astro';
 import Exits from '../../../components/main/Exits.astro';
-import { classes, html, plain, results } from '../../../lib/overview.mjs';
+import { classes, html, plain, resultHref, results } from '../../../lib/overview.mjs';
 import '../../../styles/main.css';
 
+// results with "page": true have their own page folder
 export function getStaticPaths() {
-  return results.map((r) => ({ params: { slug: r.slug }, props: { r } }));
+  return results.filter((r) => !r.page).map((r) => ({ params: { slug: r.slug }, props: { r } }));
 }
 
 const base = import.meta.env.BASE_URL;
@@ -16,6 +17,7 @@ const { r } = Astro.props;
 // blocks with "hidden": true in overview.json, or a title that resolves to '', are not built
 const blocks = r.blocks.filter((b) => !b.hidden && b.title !== '');
 const sections = blocks.filter((b) => b.id && b.title);
+const parent = r.partOf && results.find((p) => p.slug === r.partOf);
 ---
 <Base title={`${plain(r.title)} — REKS Studio`}>
 <Nav variant="light" />
@@ -29,6 +31,7 @@ const sections = blocks.filter((b) => b.id && b.title);
     <p class="refclass">Reference class: <Fragment set:html={html(classes[r.cls].label)} />{r.secondary && <>; secondary: <Fragment set:html={html(classes[r.secondary].label)} /></>}</p>
     <p class="keyline" set:html={html(r.key)} />
     {r.rule && <p class="rule" set:html={html(r.rule)} />}
+    {parent && <p class="partof">Part of: <a href={resultHref(base, parent.slug)}><Fragment set:html={html(parent.short)} /> →</a></p>}
     {sections.length > 1 && <p class="sections">{sections.map((b, i) => <>{i > 0 && ' · '}<a href={`#${b.id}`} set:html={html(b.nav ?? b.title)} /></>)}</p>}
   </div>
 </header>

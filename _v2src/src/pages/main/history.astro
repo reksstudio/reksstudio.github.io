@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import SubNav from '../../components/main/SubNav.astro';
 import StepChart from '../../components/main/StepChart.astro';
 import { cite, history, html } from '../../lib/overview.mjs';
+import { vars as scaleVars } from '../../lib/scale.mjs';
 import '../../styles/main.css';
 
 const base = import.meta.env.BASE_URL;
@@ -36,7 +37,7 @@ const table = (rows) => rows.map((row) => {
   <section class="mblock" id="reach">
     <h2>Largest active space reported, by year</h2>
     <StepChart />
-    <p class="prov">Reported per paper; 2026: (10,10) applied to one system, (12,12) generated.</p>
+    <p class="prov">Reported per paper; 2026: {history.steps.at(-1).label} (<a href={`${base}main/results/large-molecules/`}>{scaleVars.asMaxOn}</a>), {history.generated.label}.</p>
   </section>
 
   {[['prehistory', 'Before REKS', history.prehistory], ['chronology', 'REKS, SA-REKS, SSR', history.rows]].map(([id, title, rows]) => (

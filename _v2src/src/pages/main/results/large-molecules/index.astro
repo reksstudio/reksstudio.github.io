@@ -1,0 +1,131 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Nav from '../../../../components/Nav.astro';
+import Footer from '../../../../components/Footer.astro';
+import Block from '../../../../components/main/Block.astro';
+import Exits from '../../../../components/main/Exits.astro';
+import ScaleMap from '../../../../components/main/ScaleMap.astro';
+import { fmtCount, formulaMarkup } from '../../../../lib/inline.mjs';
+import { cardId, title } from '../../../../lib/ladder.mjs';
+import { classes, html, landing, manualHref, plain, results } from '../../../../lib/overview.mjs';
+import { GAP_TWIN, allJobs, compounds, geomsOf, gib, jobRole, ladder, rungList, rungsOf, sectors, spinRange, topRung, vars, wall } from '../../../../lib/scale.mjs';
+import { machineNote, pcOf } from '../../../../lib/site.mjs';
+import { allRuns as zRuns, counts as zethCounts, largest as zMax, method as zethMethod, rungs as zethRungs } from '../../../../lib/zeth.mjs';
+import '../../../../styles/main.css';
+
+const base = import.meta.env.BASE_URL;
+const r = results.find((x) => x.slug === 'large-molecules');
+const zethHref = `${base}main/results/zethrenes/`;
+// run-sheet skeletons at half the card scale
+const MINI = 0.5;
+const mini = (c) => ({ src: `${base}${c.skel}`, width: Math.round(c.sw * MINI), height: Math.round(c.sh * MINI), alt: `${c.id}: carbon skeleton`, loading: 'lazy', decoding: 'async' });
+// "SCF · 22 min · PC-1 × 96 · 175 GiB"
+const jobLine = (j) => `${jobRole(j)} · ${wall(j.wall_s)} · ${pcOf(j.host)}* × ${j.cores} · ${gib(j.rss_kb)}`;
+// one row per set at its largest rung; si lines "2S = k: n", merged per molecule when equal across sets
+const sheet = compounds.map((c) => {
+  const rows = geomsOf(c).map((g) => {
+    const s = c.geoms[g.key];
+    const done = rungsOf(c).filter((rg) => s.rungs[rg.key]);
+    const rec = s.rungs[done.at(-1).key];
+    return { basis: s.basis, functional: s.functional, nbf: s.nbf, as: rungList(done, 'reks'), spins: spinRange(rec), si: sectors(rec).map((k) => `2S = ${k}: ${fmtCount(rec.si[k].n)}`), jobs: rec.jobs };
+  });
+  return { c, rows, siOnce: rows.every((x) => x.si.join() === rows[0].si.join()) };
+});
+// zethrenes: longest calculation and its machine
+const zLong = zRuns.reduce((a, x) => (x.wall_s > a.wall_s ? x : a));
+const SHEET_HEAD = ['Molecule', 'Basis (n_{bf}), functional', 'Active spaces', 'Spins finished', 'SI configurations per 2S', 'Jobs'];
+const lastZeth = zethRungs.at(-1).label;
+const machines = machineNote([...allJobs.map((j) => j.host), zLong.host]);
+// systems cards: one skeleton box height, the tallest skeleton
+const skelH = Math.max(...compounds.map((c) => c.sh));
+---
+<Base title={`${plain(r.title)} — REKS Studio`}>
+<Nav variant="light" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href={`${base}main/`}>Overview</a> › <a href={`${base}main/results/`}>Results</a> › <span set:html={html(r.short)} /></nav>
+    <h1 set:html={html(r.title)} />
+    <p class="ident" set:html={html(r.ident)} />
+    <p class="refclass">Reference class: {compounds.map((c) => c.id).join(', ')}: <Fragment set:html={html(classes.object.label)} /> (experiment on a surface, calculation in the gas phase); zethrenes: <Fragment set:html={html(classes.trend.label)} /></p>
+    <p class="keyline" set:html={html(r.key)} />
+    <p class="sections"><a href="#map">Reach</a> · <a href="#time">Run sheet</a> · <a href="#definitions">Definitions</a> · <a href="#systems">Systems</a> · <a href="#setup">Setup</a></p>
+  </div>
+</header>
+
+<div class="wrap mbody">
+  <section class="mblock" id="map">
+    <h2>Atoms and active space of every published run</h2>
+    <div class="tbl mapbox"><ScaleMap size="page" line /></div>
+    <p class="qcap">One dot per dataset and distinct (atoms, active space) over the dissociation, QUEST, zethrene and large-molecule calculations of this site, coloured by dataset; each dot links to its calculation (to the dataset page where several systems share the dot); the largest run is the larger dot. Dashed: the largest REKS active space reported before this work, {landing.engine.before} (<a href={`${base}main/history/`}>History</a>).</p>
+  </section>
+
+  <section class="mblock" id="time">
+    <h2>Run sheet</h2>
+    <div class="tbl">
+      <table class="zlt rsheet">
+        <thead><tr>{SHEET_HEAD.map((h) => <th set:html={html(h)} />)}</tr></thead>
+        {sheet.map(({ c, rows, siOnce }) => (
+          <tbody>
+            {rows.map((s, i) => (
+              <tr>
+                {i === 0 && <td data-l="Molecule" rowspan={rows.length}><a href={`${c.slug}/`}>{title(c)} ({c.id})</a><br /><span set:html={html(formulaMarkup(c.formula))} /><br />{c.atoms} atoms<img {...mini(c)} /></td>}
+                <td data-l="Basis (nbf), functional">{s.basis} ({s.nbf})<br />{s.functional}</td>
+                <td data-l="Active spaces">{s.as}</td>
+                <td data-l="Spins finished">{s.spins}</td>
+                {(!siOnce || i === 0) && <td data-l="SI configurations per 2S" rowspan={siOnce ? rows.length : undefined}>{s.si.map((t) => <span class="job">{t}</span>)}</td>}
+                <td data-l="Jobs">{s.jobs.map((j) => <span class="job">{jobLine(j)}</span>)}</td>
+              </tr>
+            ))}
+          </tbody>
+        ))}
+        <tbody>
+          <tr>
+            <td data-l="Molecule"><a href={zethHref}>Zethrenes</a>, {zethCounts.compounds} compounds<br />{zethCounts.atoms[0]}–{zethCounts.atoms[1]} atoms<img {...mini(zMax)} /></td>
+            <td data-l="Basis (nbf), functional">{zethMethod.basis} (up to {zethCounts.nbfMax})<br />{zethMethod.functional}</td>
+            <td data-l="Active spaces">{ladder.names.reks}{zethRungs[0].label}–{lastZeth}</td>
+            <td data-l="Spins finished">per calculation, on the compound pages</td>
+            <td data-l="SI configurations per 2S">up to {fmtCount(zethCounts.siMax)} (2S = 0)</td>
+            <td data-l="Jobs"><span class="job">{zethCounts.calculations} calculations, one job each</span><span class="job">longest {wall(zLong.wall_s)} · {pcOf(zLong.host)}* × {zLong.threads}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="qcap">{machines}</p>
+    <p class="qcap">Jobs of the largest active space of each set: role, wall time, machine × cores, peak resident memory (GiB = 2<sup>30</sup> bytes). SCF: SA-REKS orbitals and FONs; SI: state interaction of the listed spin sectors in the converged SA-REKS orbitals; SCF + SI: both in one job. Carbon skeletons at half the scale of the cards below.</p>
+    <p class="qcap">Build: {vars.rev}.</p>
+  </section>
+
+  <section class="mblock" id="definitions">
+    <h2>Definitions</h2>
+    <p><a href={manualHref(base, 'configuration-energy')}>Configuration</a>: one antisymmetrized product of the core and one geminal per active electron pair; the SI of a spin sector diagonalizes the Hamiltonian over all configurations of its catalogue. SI configurations per 2S: the number the output prints for each spin sector of the job.</p>
+  </section>
+
+  <section class="mblock" id="systems">
+    <h2>Systems</h2>
+    <ul class="qcards zcards">
+      {compounds.map((c) => (
+        <li class="qcard" id={cardId(c)}>
+          <div class="qimg" style={`height:${skelH}px`}><img src={`${base}${c.skel}`} width={c.sw} height={c.sh} alt={`${c.id}: carbon skeleton`} loading="lazy" decoding="async" /></div>
+          <p class="qname"><a href={`${c.slug}/`} title={title(c)}>{c.id}</a> <span set:html={html(formulaMarkup(c.formula))} /></p>
+          <table>
+            <thead><tr><th>meV</th>{GAP_TWIN.map((t) => <th set:html={html(t.title.replace(' / meV', ''))} />)}</tr></thead>
+            <tbody>
+              {geomsOf(c).map((g) => <tr><th>{g.plain}</th>{GAP_TWIN.map((t) => <td>{t.cell(c.geoms[g.key].rungs[topRung(c, g).key])}</td>)}</tr>)}
+            </tbody>
+          </table>
+        </li>
+      ))}
+    </ul>
+    <p class="qcap">Carbon skeletons at the scale of the zethrene cards. ΔE<sub>ST</sub> = E(T1) − E(S0), ΔE<sub>SQ</sub> = E(Q1) − E(S0) / meV at the largest computed active space of each set: {compounds.map((c) => `${c.id} ${rungsOf(c).at(-1).ssr}`).join(', ')}. Each page: SI states (joined across active spaces by excitation pattern where a set has several), natural occupations, active orbitals where drawn and the jobs of every calculation. The <a href={zethHref}>zethrenes</a> on their own page.</p>
+  </section>
+
+  {r.blocks.map((b) => <Block block={b} />)}
+  {r.scope && <p class="scope"><strong>Scope:</strong> <Fragment set:html={html(r.scope)} /></p>}
+  <Exits r={r} />
+</div>
+</main>
+
+<Footer />
+</Base>

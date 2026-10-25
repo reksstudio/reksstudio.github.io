@@ -1,0 +1,7 @@
+{
+  "machines": [
+    { "id": "PC-1", "host": "^chawk0[1-7]$", "text": "2 × 48-core AMD EPYC 9475F (Zen 5), 96 cores, 384 GB", "build": "conda-forge GCC 15.2, Intel MKL, -march=native" },
+    { "id": "PC-2", "host": "^fenrir0[1-5]$", "text": "2 × 18-core Intel Xeon Gold 6240 (Cascade Lake), 36 cores, 754 GB", "build": "Intel MKL" },
+    { "id": "PC-3", "host": "^fenrir0[6-8]$", "text": "2 × 18-core Intel Xeon Gold 6240 (Cascade Lake), 36 cores, 376 GB" }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "exp": [
+    { "core": "TNS", "step": "E_{1}, step height ≈ 35 %", "bias": "±14(1)", "tip": "not stated (CO tip for bond-resolved images)", "where": "edge of a triangulene unit (Fig. 3b)", "substrate": "Au(111)", "T": "5 K", "src": [{ "key": "hieulle2021-nanostar", "loc": "p. 25227; Fig. 3c (p. 25228); SI §2.1" }] },
+    { "core": "TNS", "step": "E_{2}, step height ≈ 35 %", "bias": "±42(2)", "tip": "not stated (CO tip for bond-resolved images)", "where": "edge of a triangulene unit (Fig. 3b)", "substrate": "Au(111)", "T": "5 K", "src": [{ "key": "hieulle2021-nanostar", "loc": "p. 25227; Fig. 3c (p. 25228); SI §2.1" }] },
+    { "core": "TNS", "step": "E_{3}, step height < 7 %", "bias": "±80(2)", "tip": "not stated (CO tip for bond-resolved images)", "where": "edge of a triangulene unit (Fig. 3b)", "substrate": "Au(111)", "T": "5 K", "src": [{ "key": "hieulle2021-nanostar", "loc": "p. 25227; Fig. 3c (p. 25228); SI §2.1" }] },
+    { "core": "TTR", "step": "step near E_{F}", "bias": "±9 (text: ~9 meV)", "tip": "metal tip", "where": "molecule, point of Fig. 2c", "substrate": "Au(111)", "T": "4.3 K (Fig. 2 caption; Methods: 4.5 K)", "src": [{ "key": "song2024-butterfly", "loc": "p. 940, Fig. 2d; p. 941; Methods" }] },
+    { "core": "TTR", "step": "state C: molecule in its first spin-excited state and NiCp_{2} excited (paper's assignment)", "bias": "±13", "tip": "NiCp_{2}-functionalized tip", "where": "corner of the molecule, large tip–sample distance", "substrate": "Au(111)", "T": "1.3 K", "src": [{ "key": "song2024-butterfly", "loc": "p. 942, Fig. 4c and caption; p. 943; Methods" }] }
+  ],
+  "models": [
+    { "core": "TNS", "text": "steps read as ΔS = 1 transitions from the S_{T} = 0 ground state to collective triplet states", "src": [{ "key": "hieulle2021-nanostar", "loc": "p. 25227" }] },
+    { "core": "TNS", "text": "mean-field Hubbard model of the p_{z} lattice, t_{1} = 2.7 eV, t_{2} = 0.2 eV, t_{3} = 0.18 eV, U = 3.5 eV", "src": [{ "key": "hieulle2021-nanostar", "loc": "SI §2.2" }] },
+    { "core": "TNS", "text": "isotropic Heisenberg ring of six S = 1 spins, J = 18 meV fitted to step E_{1}, T_{eff} = 5 K", "src": [{ "key": "hieulle2021-nanostar", "loc": "p. 25227; SI §2.2" }] },
+    { "core": "TNS", "text": "Heisenberg ring of twelve S = 1/2 spins, J = 14 meV at −J′/J = 5: fits E_{1}, not E_{2}; the six-spin S = 1 ring is kept", "src": [{ "key": "hieulle2021-nanostar", "loc": "SI §2.6" }] },
+    { "core": "TTR", "text": "step near E_{F} read as the singlet–triplet spin excitation", "src": [{ "key": "song2024-butterfly", "loc": "p. 941" }] },
+    { "core": "TTR", "text": "CASSCF(4,4), (8,8) and (12,12), def2-TZVP", "src": [{ "key": "song2024-butterfly", "loc": "SI §3.1" }] },
+    { "core": "TTR", "text": "DLPNO–NEVPT2 on CASSCF(4,4), def2-SVP: S–T 8 meV", "src": [{ "key": "song2024-butterfly", "loc": "p. 941; Methods" }] },
+    { "core": "TTR", "text": "Hubbard CAS-CI, t = −2.8 eV, U = 4.3 eV: S–T 15 meV", "src": [{ "key": "song2024-butterfly", "loc": "SI §3" }] },
+    { "core": "TTR", "text": "DFT S–T 42 (TPSS), 70 (TPSSh), 80 (B3LYP), 117 (PBE0), 269 meV (ωB97X-D3), def2-SVP", "src": [{ "key": "song2024-butterfly", "loc": "Suppl. Table 1; SI §2" }] },
+    { "core": "TTR", "text": "four-site Heisenberg model, J_{12} = 9 meV, J_{13} = J_{14} = −J_{12}; NiCp_{2} anisotropy D_{Ni} = 4 meV, its own excitation at ±4 mV", "src": [{ "key": "song2024-butterfly", "loc": "SI §5" }] }
+  ]
+}

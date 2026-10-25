@@ -62,7 +62,8 @@ Every result shown with REKS Studio, one row per system and question, each one c
 
 | System | Problem class | Active space | Reference | Number | Evidence |
 | - | - | - | - | - | - |
-| TTR, 152 atoms | Diradicals and magnetism | (4,4)–(10,10) | experiment, STM on Au(111) (different object) | S–T 0.31–0.99 vs 0.21 kcal/mol | [page](https://reksstudio.github.io/v2/main/results/ttr/index.md) |
+| TNS C<sub>132</sub>H<sub>60</sub>, 192 atoms | Diradicals and magnetism | (12,12) | experiment on Au(111) (different object) | 192 atoms, up to 4452 basis functions, (12,12) | [page](https://reksstudio.github.io/v2/main/results/large-molecules/index.md#c-tns) |
+| TTR C<sub>118</sub>H<sub>34</sub>, 152 atoms | Diradicals and magnetism | (4,4)–(10,10) | experiment on Au(111) (different object) | 152 atoms, up to 4016 basis functions, (10,10) | [page](https://reksstudio.github.io/v2/main/results/large-molecules/index.md#c-ttr) |
 
 ### reference in a different basis
 

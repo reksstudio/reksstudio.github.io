@@ -1,0 +1,178 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Nav from '../../../../components/Nav.astro';
+import Footer from '../../../../components/Footer.astro';
+import OrbBlock from '../../../../components/main/OrbBlock.astro';
+import QuestElements from '../../../../components/main/QuestElements.astro';
+import Table from '../../../../components/main/Table.astro';
+import ZethOcc from '../../../../components/main/ZethOcc.astro';
+import ZethStates from '../../../../components/main/ZethStates.astro';
+import { fmtCount, formulaMarkup } from '../../../../lib/inline.mjs';
+import { NOT_COMPUTED, ORB_KEY, cardId, rungId, title } from '../../../../lib/ladder.mjs';
+import { html } from '../../../../lib/overview.mjs';
+import { GAP_TWIN, compounds, expRows, geomsOf, gib, jobRole, ladder, litCite, method, modelRows, rungSpan, rungsOf, sectors, spinRange, topRung, wall } from '../../../../lib/scale.mjs';
+import { citeLink } from '../../../../lib/literature.mjs';
+import { machineNote, pcOf } from '../../../../lib/site.mjs';
+import '../../../../styles/main.css';
+
+export function getStaticPaths() {
+  return compounds.map((c, i) => ({ params: { sys: c.slug }, props: { c, prev: compounds[i - 1], next: compounds[i + 1] } }));
+}
+
+const base = import.meta.env.BASE_URL;
+const { c, prev, next } = Astro.props;
+const gs = geomsOf(c);
+const rs = rungsOf(c);
+const exp = expRows(c.id);
+const models = modelRows(c.id);
+const cites = (src) => src.map(litCite);
+const name = title(c);
+// sets grouped by basis: "6-31G(d) (2100 basis functions) · BH&HLYP, HF; def2-TZVP (4452) · BH&HLYP, HF"
+const bases = [...new Set(gs.map((g) => c.geoms[g.key].basis))].map((b) => ({ b, ss: gs.map((g) => c.geoms[g.key]).filter((s) => s.basis === b) }));
+const setText = bases.map(({ b, ss }, i) => `${b} (${ss[0].nbf}${i === 0 ? ' basis functions' : ''}) · ${ss.map((s) => s.functional).join(', ')}`).join('; ');
+// spin gaps: rows active space, columns sets (one table per gap); one active space: rows sets, columns the gaps
+const gapTable = (label, value) => ({
+  title: label,
+  head: ['Active space', ...gs.map((g) => g.markup)],
+  rows: rs.map((rg) => [rg.ssr, ...gs.map((g) => {
+    const r = c.geoms[g.key].rungs[rg.key];
+    return r ? value(r) : NOT_COMPUTED;
+  })]),
+});
+const gaps =
+  rs.length > 1
+    ? GAP_TWIN.map((t) => gapTable(t.title, t.cell))
+    : [{ title: `${GAP_TWIN.map((t) => t.title.replace(' / meV', '')).join(', ')} / meV at ${rs[0].ssr}`, head: ['Basis · functional', ...GAP_TWIN.map((t) => t.title.replace(' / meV', ''))], rows: gs.map((g) => [g.plain, ...GAP_TWIN.map((t) => t.cell(c.geoms[g.key].rungs[rs[0].key]))]) }];
+const hasGap = gaps.some((t) => t.rows.some((row) => row.includes(NOT_COMPUTED)));
+// experiment columns [head, cell(row)]; a column equal in every row goes to the caption
+const EXP_COLS = [
+  ['Step', (e) => html(e.step)],
+  ['Bias / mV', (e) => html(e.bias)],
+  ['Tip', (e) => html(e.tip)],
+  ['Measured over', (e) => html(e.where)],
+  ['Substrate, T', (e) => html(`${e.substrate}, ${e.T}`)],
+  ['Source', (e) => cites(e.src).map((s) => `<a href="${s.href}">${s.text}</a>`).join('; ')],
+];
+const same = (f) => exp.length > 1 && exp.every((e) => f(e) === f(exp[0]));
+const expCols = EXP_COLS.filter(([, f]) => !same(f));
+const expCommon = EXP_COLS.filter(([, f]) => same(f)).map(([h, f]) => `${h}: ${f(exp[0])}`).join('; ');
+// shown SI states of the chart: "S0–S5, T1–T3, Q1"
+const shownStates = ladder.spins.map((sp) => sp.shown).join(', ');
+// rows set × rung, columns 2S: lowest state of the sector, E − E(lowest of the rung) / meV
+const spinKeys = [...new Set(gs.flatMap((g) => Object.values(c.geoms[g.key].rungs).flatMap(sectors)))].sort((a, b) => a - b);
+const lowest = {
+  title: 'Lowest state per spin sector, E − E(lowest) / meV',
+  head: ['Basis · functional', 'Active space', ...spinKeys.map((k) => `2S = ${k}`)],
+  rows: gs.flatMap((g) => rs.filter((rg) => c.geoms[g.key].rungs[rg.key]).map((rg) => {
+    const r = c.geoms[g.key].rungs[rg.key];
+    return [g.plain, rg.ssr, ...spinKeys.map((k) => (r.roots[k] ? `${r.roots[k][0][0]} ${r.roots[k][0][2].toFixed(1)}` : 'n/a'))];
+  })),
+};
+const jobLine = (j) => `${jobRole(j)}: wall time ${wall(j.wall_s)}, ${pcOf(j.host)}* × ${j.cores} cores, peak ${gib(j.rss_kb)} · Psi4 ${j.commit}`;
+const hosts = gs.flatMap((g) => Object.values(c.geoms[g.key].rungs).flatMap((r) => r.jobs)).map((j) => j.host);
+const sections = [
+  ['gaps', 'Spin gaps'],
+  ['spins', 'Spin sectors'],
+  ['states', 'SI states'],
+  ['occupations', 'Natural occupations'],
+  ...(exp.length ? [['experiment', 'Experiment']] : []),
+  ['calculations', 'Calculations'],
+];
+---
+<Base title={`${c.id}: ${c.name} — Large molecules — REKS Studio`}>
+<Nav variant="light" />
+<main>
+
+<header class="mhead">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href={`${base}main/`}>Overview</a> › <a href={`${base}main/results/`}>Results</a> › <a href="../">Large molecules</a> › <span>{c.id}</span></nav>
+    <h1 class="long">{name} ({c.id})</h1>
+    <p class="ident"><Fragment set:html={html(formulaMarkup(c.formula))} />, {c.atoms} atoms{c.alias && <> ({c.alias} of <Fragment set:html={citeLink(c.geometrySource, base)} />)</>}; SA-REKS and SI-SA-REKS (SSR) at {rungSpan(c, 'reks')}; sets {setText}.</p>
+    <p class="sections zlinks">{gs.map((g, i) => <>{i > 0 && ' · '}<a href={`#${rungId(g, topRung(c, g))}`}>{g.plain} {topRung(c, g).reks} details</a></>)}</p>
+    <p class="sections">{sections.map(([id, t], i) => <>{i > 0 && ' · '}<a href={`#${id}`}>{t}</a></>)}</p>
+  </div>
+</header>
+
+<div class="wrap mbody">
+  <section class="mblock">
+    <figure class="qmol">
+      <img src={`${base}${c.svg}`} width={c.w} height={c.h} alt={`${c.id}: drawing of the calculated geometry`} />
+      <figcaption>Calculated geometry, 16 px/Å: explicit hydrogens, no bond orders.</figcaption>
+    </figure>
+    <QuestElements elements={['C', 'H']} />
+  </section>
+
+  <section class="mblock" id="gaps">
+    <h2>Spin gaps</h2>
+    <p class="zf">ΔE<sub>ST</sub> = E(T1) − E(S0), ΔE<sub>SQ</sub> = E(Q1) − E(S0)</p>
+    {gaps.length > 1 ? <div class="zt2">{gaps.map((t) => <div><Table table={t} numeric /></div>)}</div> : <Table table={gaps[0]} numeric />}
+    <p class="qcap">T1, Q1: lowest state with 2S = 2, 4; positive: above S0.{hasGap && ` ${NOT_COMPUTED}: not computed.`}</p>
+  </section>
+
+  <section class="mblock" id="spins">
+    <h2>Spin sectors</h2>
+    <Table table={lowest} numeric grouped />
+    <p class="qcap">Lowest SI state of each spin sector 2S in the output and its E − E(lowest) / meV; n/a: the sector is not in the SI of that active space.</p>
+  </section>
+
+  <section class="mblock" id="states">
+    <h2>{rs.length > 1 ? 'SI states along the ladder' : `SI states at ${rs[0].ssr}`}</h2>
+    <ZethStates c={c} set={ladder} low={rs.length > 1}>
+      <p slot="caption" class="qcap">One column per {rs.length > 1 ? 'active space' : 'set'} and one level per shown SI state ({shownStates}){rs.length > 1 && ' below the largest energy gap among them'} at E − E(lowest) / meV, the lowest computed state of that set and active space at zero; colour = 2S; close levels sit side by side.{rs.length > 1 && ' A line joins a level to one level of the same 2S at the next active space when their leading excitation patterns or density changes ΔD agree (the zethrene rule).'} The hover gives patterns and ΔD. Every printed root of every spin sector: in the calculations below.</p>
+    </ZethStates>
+  </section>
+
+  <section class="mblock" id="occupations">
+    <h2>Natural occupations</h2>
+    <ZethOcc c={c} set={ladder} />
+  </section>
+
+  {exp.length > 0 && (
+    <section class="mblock" id="experiment">
+      <h2>Experiment</h2>
+      <div class="tbl">
+        <table class="zlt">
+          <thead><tr>{expCols.map(([h]) => <th>{h}</th>)}</tr></thead>
+          <tbody>
+            {exp.map((e) => <tr>{expCols.map(([h, f]) => <td data-l={h} set:html={f(e)} />)}</tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p class="qcap">{expCommon && <><Fragment set:html={expCommon} />. </>}Inelastic electron tunnelling spectroscopy (IETS): steps of dI/dV at the bias values printed in the paper; a step at bias ±V is an excitation of energy e|V|. The calculation is the free molecule in the gas phase.</p>
+      <p class="zlm">Models of the papers: {models.map((m, i) => <>{i > 0 && '; '}<Fragment set:html={html(m.text)} /> ({cites(m.src).map((s, k) => <>{k > 0 && '; '}<a href={s.href}>{s.text}</a></>)})</>)}.</p>
+    </section>
+  )}
+
+  <section class="mblock" id="calculations">
+    <h2>Calculations</h2>
+    <p class="qcap">One entry per set and active space. Inside: the run line of each job (wall time, machine × cores, peak resident memory, Psi4 commit), SI configurations per spin sector, every printed root per spin sector as E − E(lowest) / meV, and the SA-REKS active orbitals where drawn.</p>
+    <p class="qcap">Orbitals: one column per active pair as the code pairs them, antibonding orbital above, bonding below. Contours ±{method.levels.join(', ±')} a.u. in a plane {method.planeA} Å above the molecular plane; blue + / copper −.</p>
+    {gs.map((g) => (
+      <>
+        <h3 id={g.id} set:html={g.html} />
+        {rs.filter((rg) => c.geoms[g.key].rungs[rg.key]).map((rg) => {
+          const r = c.geoms[g.key].rungs[rg.key];
+          return (
+            <details class="zcalc" id={rungId(g, rg)}>
+              <summary><span class="zs"><Fragment set:html={g.html} /> · {rg.reks} · {spinRange(r)} ·</span> <span class="zs">lowest {r.low.label}</span></summary>
+              <p class="qcap">{r.jobs.map((j) => <span class="job">{jobLine(j)}</span>)}</p>
+              <p class="qcap">SI configurations: {sectors(r).map((k, i) => <>{i > 0 && ', '}<span class="zs">2S = {k}: {fmtCount(r.si[k].n)}</span></>)}</p>
+              <details class="qmore">
+                <summary>Every printed root per spin sector, E − E(lowest) / meV</summary>
+                <div class="roots">{sectors(r).map((k) => <p><b>2S = {k}</b>, {r.roots[k].length} roots: {r.roots[k].map(([label, , v]) => `${label} ${v.toFixed(1)}`).join(', ')}</p>)}</div>
+              </details>
+              {r.orbitals && <OrbBlock pairs={r.pairs} alt={`${c.id} ${g.plain} ${rg.reks}`} legend={ORB_KEY} auto fonDigits={4} epsDigits={6} />}
+            </details>
+          );
+        })}
+      </>
+    ))}
+    <p class="qcap">{machineNote(hosts)}</p>
+  </section>
+
+  <p class="siblings">{prev && <><a href={`../${prev.slug}/`}>← {prev.id}</a> · </>}<a href={`../#${cardId(c)}`}>Back to the systems</a>{next && <> · <a href={`../${next.slug}/`}>{next.id} →</a></>}</p>
+</div>
+</main>
+
+<Footer />
+</Base>

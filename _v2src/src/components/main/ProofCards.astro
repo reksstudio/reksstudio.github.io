@@ -1,75 +1,69 @@
 ---
+import ScaleMap from './ScaleMap.astro';
 import { html, landing, plain, resultHref } from '../../lib/overview.mjs';
-import { cards as data, mini, sub } from '../../lib/dissoc.mjs';
+import { deSys, mini, sub, systems } from '../../lib/dissoc.mjs';
+import { funcs, hist, signed, vars as quest } from '../../lib/quest.mjs';
 
 const base = import.meta.env.BASE_URL;
-const { trust, demos, bridge } = landing.proof;
-// card values from the dissociation data; a table card without rows is not rendered
-const cards = landing.proof.cards
-  .map((c) => ({ ...c, ...(c.kind === 'band' ? data.band : c.kind === 'table' ? { table: data.table } : { curves: data.curves }) }))
-  .filter((c) => c.kind !== 'table' || c.table);
-// value axis spans 8 to W - 8
+const { cards, bridge } = landing.proof;
+// every card visual: viewBox W x H
 const W = 240;
-const H = 72;
-const ax = (c) => (v) => 8 + ((v - c.axis[0]) / (c.axis[1] - c.axis[0])) * (W - 16);
-// tick values at multiples of step inside the axis range
-const ticks = (c) => {
-  const [a, b] = c.axis;
-  const step = b - a > 2 ? 1 : 0.5;
-  return Array.from({ length: Math.floor(b / step) - Math.ceil(a / step) + 1 }, (_, k) => (Math.ceil(a / step) + k) * step);
-};
-const aria = (c) => {
-  if (c.kind === 'band') return `REKS Studio ${c.ours} eV, ${plain(c.ref_name)}`;
-  if (c.kind === 'table') return `REKS Studio against ${plain(c.ref_name)}: ${c.table.rows.map(([m, o, r]) => `${plain(m)} ${o} vs ${r}`).join(', ')}`;
-  return `Potential energy curves of ${c.curves.map((k) => plain(k.id)).join(', ')}: REKS Studio and ${plain(c.ref_name)}`;
-};
-// mini curves: n panels of width (W - 8 (n - 1)) / n, height 44 from y 4; SSR and FCI share one Eh scale per panel
-const minis = (c) => {
-  const n = c.curves.length;
-  const w = (W - 8 * (n - 1)) / n;
-  return c.curves.map((s, i) => ({ name: s.id, mid: i * (w + 8) + w / 2, ...mini(s, i * (w + 8), w, 44, 4) }));
+const H = 96;
+// curves: 48 x 48 cells, 5 chains in row 1, the molecules centred in row 2; curve box 38 x 31, label under it
+const rows = [systems.filter((s) => s.kind === 'chain'), systems.filter((s) => s.kind === 'molecule')];
+const panels = rows.flatMap((row, r) =>
+  row.map((s, i) => {
+    const x0 = (W - 48 * row.length) / 2 + 48 * i;
+    const top = 3 + 48 * r;
+    return { s, mid: x0 + 24, y: top + 41, ...mini(s, x0 + 5, 38, 31, top, s.kind === 'chain') };
+  }),
+);
+const withFci = panels.filter((p) => p.fci).map((p) => plain(p.s.id));
+// hist: BH&HLYP SSR - TBE in 0.1 eV bins over x 8 to W - 28, unit label right of it; bars from the baseline YB up to YB - BH at the largest bin
+const F = funcs[0];
+const h = hist(F.key, 0.1);
+const X = (v) => 8 + ((v - h.lo) / (h.hi - h.lo)) * (W - 36);
+const YB = 80;
+const BH = 62;
+const nMax = Math.max(...h.n);
+const bars = h.n.map((n, i) => ({ x: X(h.lo + i * h.bin) + 0.5, w: X(h.bin) - X(0) - 1, h: (n / nMax) * BH })).filter((b) => b.h > 0);
+// ticks every 0.5 eV inside the range, zero carries the TBE label instead
+const ticks = Array.from({ length: Math.floor(h.hi / 0.5 + 1e-9) - Math.ceil(h.lo / 0.5 - 1e-9) + 1 }, (_, k) => (Math.ceil(h.lo / 0.5 - 1e-9) + k) * 0.5).filter((v) => v !== 0);
+const aria = {
+  curves: `Potential energy curves of ${panels.map((p) => plain(p.s.id)).join(', ')}: SSR; FCI for ${withFci[0]}–${withFci.at(-1)}`,
+  hist: `Histogram of SSR minus TBE for ${quest.pairs} state pairs, ${F.label}; MAE ${quest.mae} eV for ${quest.funcs}`,
 };
 ---
 <div class="pcards">
-  {cards.map((c) => {
-    const X = c.axis && ax(c);
-    return (
-      <div class="pcard">
-        <a class="pq" href={resultHref(base, c.slug, c.anchor)} set:html={html(c.problem)} />
-        {c.kind === 'table'
-          ? (
-            <table class="ptab" aria-label={aria(c)}>
-              <thead><tr>{c.table.head.map((h) => <th>{h}</th>)}</tr></thead>
-              <tbody>{c.table.rows.map(([m, o, r]) => <tr><th set:html={html(m)} /><td>{o}</td><td>{r}</td></tr>)}</tbody>
-            </table>
-          )
-          : (
-            <svg class="pviz" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={aria(c)}>
-              {c.kind === 'band' && (
-                <>
-                  <rect x={X(c.ref - c.err)} y="20" width={X(c.ref + c.err) - X(c.ref - c.err)} height="20" class="err" />
-                  <line x1="8" x2={W - 8} y1="30" y2="30" class="axis" />
-                  <circle cx={X(c.ref)} cy="30" r="6" class="ref" />
-                  <circle cx={X(c.ours)} cy="30" r="5" class="ours" />
-                  {ticks(c).map((v) => <text x={X(v)} y="62" text-anchor="middle" class="tick">{v.toFixed(1)}</text>)}
-                </>
-              )}
-              {c.kind === 'curves' && minis(c).map((k) => (
-                <g>
-                  <g class="x10" transform="scale(.1)"><path d={k.fci} class="fci" /><path d={k.ssr} class="ssr" /></g>
-                  <text x={k.mid} y="67" text-anchor="middle" class="tick mn" set:html={sub(k.name)} />
-                </g>
-              ))}
-            </svg>
-          )}
-        {c.big && <span class="pbig" set:html={html(c.big)} />}
-        <span class="pref">vs <Fragment set:html={html(c.ref_name)} /></span>
-        <span class="psub" set:html={html(c.sub)} />
-      </div>
-    );
-  })}
+  {cards.map((c) => (
+    <div class="pcard">
+      <span class="pk">{c.kicker}</span>
+      <a class="pq" href={resultHref(base, c.slug)} set:html={html(c.title)} />
+      {c.kind === 'map' ? <ScaleMap size="card" line={c.line} /> : <svg class={`pviz${c.kind === 'curves' ? ' pcv' : ''}`} viewBox={`0 0 ${W} ${H}`} role="img" aria-label={aria[c.kind]}>
+        {c.kind === 'curves' && panels.map((p) => (
+          <g class={p.s === deSys ? 'on' : undefined}>
+            <g class="x10" transform="scale(.1)">{p.fci && <path d={p.fci} class="fci" />}<path d={p.ssr} class="ssr" /></g>
+            <text x={p.mid} y={p.y} text-anchor="middle" class="tick" set:html={sub(p.s.id)} />
+          </g>
+        ))}
+        {c.kind === 'hist' && (
+          <>
+            {bars.map((b) => <rect x={b.x.toFixed(1)} y={(YB - b.h).toFixed(1)} width={b.w.toFixed(1)} height={b.h.toFixed(1)} class="bar" />)}
+            <line x1="8" x2={W - 28} y1={YB} y2={YB} class="axis" />
+            <line x1={X(0).toFixed(1)} x2={X(0).toFixed(1)} y1="12" y2={YB} class="zero" />
+            <text x={X(0).toFixed(1)} y="9" text-anchor="middle" class="tick">TBE</text>
+            <text x={W - 8} y="9" text-anchor="end" class="tick" set:html={sub(F.label)} />
+            {ticks.map((v) => <text x={X(v).toFixed(1)} y={H - 4} text-anchor="middle" class="tick">{signed(v, 1)}</text>)}
+            <text x={W - 4} y={H - 4} text-anchor="end" class="tick">eV</text>
+          </>
+        )}
+      </svg>}
+      <span class="pbig" set:html={html(c.big)} />
+      <span class="pref" set:html={html(c.ref)} />
+      <span class="psub" set:html={html(c.sub)} />
+      <span class="pcnt" set:html={`${html(c.count)} →`} />
+    </div>
+  ))}
 </div>
-<p class="ptrust"><a href={resultHref(base, trust.slug, trust.anchor)}><Fragment set:html={html(trust.t)} /> →</a></p>
-<p class="pdemo"><span>Beyond available references:</span> {demos.map((d, i) => <>{i > 0 && ' · '}<a href={resultHref(base, d.slug)} set:html={html(d.t)} /></>)} →</p>
-<p class="pall"><a href={`${base}main/results/`}>All comparisons →</a></p>
+<p class="pall"><a href={`${base}main/results/`}>All results →</a></p>
 <p class="bridge"><a href="#cost">{bridge} ↓</a></p>

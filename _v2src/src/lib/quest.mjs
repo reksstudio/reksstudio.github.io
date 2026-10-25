@@ -23,7 +23,16 @@ export const molHref = (m, s) => `${m.slug}/${s ? `#${s.toLowerCase()}` : ''}`;
 // tooltip of one chart dot: "furan · S1 · BH&HLYP: Δ +0.086 eV, (4,4)"
 export const dotTitle = (m, s, f, r) => `${m.name} · ${s} · ${f.label}: Δ ${signed(r.d)} eV, ${r.as}`;
 
-const GREEK = { Sigma: 'Σ', Delta: 'Δ', Pi: 'Π' };
+// histogram of the plotted Δ = SSR - TBE / eV of one functional: bin k counts k bin <= Δ < (k + 1) bin, k from lo / bin
+export function hist(fkey, bin) {
+  const k = molecules.flatMap((m) => states.map((s) => m.states[s]?.[fkey]?.d).filter((d) => d != null)).map((d) => Math.floor(Math.round((d / bin) * 1e6) / 1e6));
+  const k0 = Math.min(...k);
+  const n = Array(Math.max(...k) - k0 + 1).fill(0);
+  for (const i of k) n[i - k0] += 1;
+  return { bin, lo: k0 * bin, hi: (k0 + n.length) * bin, n };
+}
+
+const GREEK = {Sigma: 'Σ', Delta: 'Δ', Pi: 'Π' };
 // csv irrep -> inline markup: B3u -> B_{3u}, A1'' -> A_{1}′′, Sigma_u- -> Σ_{u}^{−}, MIXED -> –
 export function irrep(s) {
   if (s === 'MIXED') return '–';
@@ -58,7 +67,15 @@ export const vars = {
   complete: counts.complete,
   geometryOnly: counts.geometryOnly.join(' and '),
   mae: perF((f) => n3(stat('all', f.key, 'all').MAE)),
+  maeRange: (() => {
+    const v = funcs.map((f) => stat('all', f.key, 'all').MAE);
+    return `${Math.min(...v).toFixed(2)}–${Math.max(...v).toFixed(2)}`;
+  })(),
   medae: perF((f) => n3(stat('all', f.key, 'all').MedAE)),
   basis: data.basis.join(', '),
   funcs: funcLabels,
+  // "S_{1} S_{2} T_{1} T_{2}"
+  stateList: states.map((s) => `${s[0]}_{${s.slice(1)}}`).join(' '),
+  // first and last active-space rung: "(2,2)–(8,8)"
+  asRange: `${data.rungs[0][1]}–${data.rungs.at(-1)[1]}`,
 };
