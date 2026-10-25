@@ -15,13 +15,14 @@ const LATIN_BAR = new RegExp(`<mover>${NOT_MOVER}<mi>[A-Za-z]${NOT_MOVER}${OVERL
 // TeX -> MathML (temml; a TeX error throws). \bar on one Latin letter -> one <mi> holding the math-italic
 // letter + U+0304; any other overbar over Latin letters throws. Display math keeps display="block" only.
 // The TeX source rides along as <semantics> + <annotation encoding="application/x-tex">.
+// Display math sits in div.mblk, the scroll box (WebKit and Firefox do not scroll a <math> element).
 export function tex(s, display) {
   const out = temml
     .renderToString(s, { displayMode: display, throwOnError: true, annotate: true })
     .replace(BAR, (m, c) => `<mi>${italic(c)}${MACRON}</mi>`)
     .replace(' class="tml-display" style="display:block math;"', '');
   if (LATIN_BAR.test(out)) throw new Error(`tex: overbar over Latin letters other than one letter: ${s}`);
-  return out;
+  return display ? `<div class="mblk">${out}</div>` : out;
 }
 
 const SPAN = /`([^`]+)`|\*\*(.+?)\*\*|\*(.+?)\*|([_^])\{([^}]+)\}/g;
