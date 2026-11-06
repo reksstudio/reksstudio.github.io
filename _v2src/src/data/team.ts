@@ -11,24 +11,22 @@ export interface Member {
   link?: { href: string; label: string };
 }
 
-const nbsp = ' ';
-
 export const team: Member[] = [
   {
-    name: ['Dr.', 'Konstantin', 'Komarov'].join(nbsp),
+    name: 'Dr. Konstantin Komarov',
     email: 'constlike_at_gmail.com',
     photo: kkomarov,
     alt: 'Konstantin Komarov',
   },
   {
-    name: ['Dr.', 'Michael', 'Filatov'].join(nbsp),
+    name: 'Dr. Michael Filatov',
     email: 'mike.filatov_at_gmail.com',
     photo: mfilatov,
     alt: 'Michael Filatov',
     link: { href: 'https://fimich-git.github.io/', label: 'Personal website' },
   },
   {
-    name: ['Prof.', 'Seung', 'Kyu', 'Min'].join(nbsp),
+    name: 'Prof. Seung Kyu Min',
     email: 'skmin_at_unist.ac.kr',
     photo: skmin,
     alt: 'Seung Kyu Min',

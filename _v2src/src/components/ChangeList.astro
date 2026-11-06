@@ -15,7 +15,7 @@ const last = changes.at(-1);
 const records = changes.slice(-count).reverse();
 ---
 {records.map((r) => (
-  <div class="change">
+  <div>
     <h3>Psi4 <code>{shortRev(r.rev)}</code>, {r.date}</h3>
     {(r.notes.length + r.added.length + r.removed.length + r.defaults.length > 0) && (
       <ul>
