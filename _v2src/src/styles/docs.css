@@ -32,15 +32,23 @@ header.docshero h1 + p{ margin-top: 16px; color: var(--ink-soft); max-width: 56c
 .docsec{ margin-bottom: 72px; }
 .docsec:last-child{ margin-bottom: 0; }
 .docsec h2{ font-size: 1.5rem; margin-bottom: 18px; }
-.docsec .prose p{ max-width: 68ch; }
+.docsec h3{ font-size: 1.12rem; margin: 30px 0 12px; }
+.docsec .prose p{ max-width: 74ch; margin: 0 0 16px; }
+.prose ul, .prose ol{ color: var(--ink-soft); max-width: 74ch; margin: 0 0 16px; padding-left: 22px; }
+.prose ol{ padding-left: 2em; }
+.prose li{ margin-bottom: 8px; }
+.prose strong{ color: var(--ink); }
+.crumbs a{ text-decoration: none; }
+.crumbs a:hover{ text-decoration: underline; }
 /* right-edge shade while the table overflows */
 .reftable-wrap{ overflow-x: auto; margin: 8px 0 24px;
   background: linear-gradient(to left, var(--bg) 30%, rgba(245,245,242,0)) right / 40px 100% no-repeat local,
               linear-gradient(to left, rgba(20,24,31,0.12), rgba(20,24,31,0)) right / 12px 100% no-repeat scroll; }
 
-/* inline code: background only; a wrapped token keeps both edges; a token wider than the column breaks */
-code{ overflow-wrap: anywhere; font-family: var(--mono); font-size: 0.86em; background: var(--bg-raised); border-radius: 4px; padding: 0.05em 0.3em;
+/* inline code: background only; a wrapped token keeps both edges; a token wider than the column breaks, in a table the table scrolls */
+code{ overflow-wrap: break-word; font-family: var(--mono); font-size: 0.86em; background: var(--bg-raised); border-radius: 4px; padding: 0.05em 0.3em;
   -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+td code{ overflow-wrap: normal; }
 /* code blocks: the line box comes from pre, so the code font sets the line step */
 pre{ font: 0.85rem/1.5 var(--mono); }
 pre code{ background: none; padding: 0; font-size: inherit; line-height: inherit; }

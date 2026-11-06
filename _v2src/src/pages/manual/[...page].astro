@@ -99,7 +99,7 @@ const banner = fragmentText('banner').split('\n').map((s) => s.trim()).filter((s
         <section class="docsec contents">
           <h2 id="contents">Contents</h2>
           {pages.map((p) => (
-            <div class="contents-page">
+            <div>
               <h3><a href={p.href}>{p.title}</a></h3>
               <ul>
                 {p.contents.map((h) => <li class={`h${h.depth}`}><a href={`${p.href}#${h.slug}`}>{h.text}</a></li>)}

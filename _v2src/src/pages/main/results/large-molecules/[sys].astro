@@ -86,7 +86,8 @@ const sections = [
 <header class="mhead">
   <div class="wrap">
     <nav class="crumb" aria-label="Breadcrumb"><a href={`${base}main/`}>Overview</a> › <a href={`${base}main/results/`}>Results</a> › <a href="../">Large molecules</a> › <span>{c.id}</span></nav>
-    <h1 class="long">{name} ({c.id})</h1>
+    {/* <wbr> after each "]" allows a line break in long names */}
+    <h1>{name.split(/(?<=\])/).map((part, i) => <>{i > 0 && <wbr />}{part}</>)} ({c.id})</h1>
     <p class="ident"><Fragment set:html={html(formulaMarkup(c.formula))} />, {c.atoms} atoms{c.alias && <> ({c.alias} of <Fragment set:html={citeLink(c.geometrySource, base)} />)</>}; SA-REKS and SI-SA-REKS (SSR) at {rungSpan(c, 'reks')}; sets {setText}.</p>
     <p class="sections zlinks">{gs.map((g, i) => <>{i > 0 && ' · '}<a href={`#${rungId(g, topRung(c, g))}`}>{g.plain} {topRung(c, g).reks} details</a></>)}</p>
     <p class="sections">{sections.map(([id, t], i) => <>{i > 0 && ' · '}<a href={`#${id}`}>{t}</a></>)}</p>

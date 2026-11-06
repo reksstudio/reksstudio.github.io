@@ -75,6 +75,8 @@ const handlers = {
   math: (state, node) => ({ type: node.properties.display === 'block' ? 'math' : 'inlineMath', value: textOf(texOf(node)) }),
   sub: jsx('sub'),
   sup: jsx('sup'),
+  // line-break hint, no text
+  wbr: () => undefined,
   code: (state, node) => (node.children.some((c) => c.type === 'element') ? jsx('code')(state, node) : defaultHandlers.code(state, node)),
   pre: (state, node) =>
     node.properties.dataLanguage

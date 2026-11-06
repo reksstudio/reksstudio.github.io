@@ -517,7 +517,7 @@ svg.zx{ display: block; width: 100%; height: auto; max-width: 480px; margin: 6px
 .zcalc[open] > :not(summary){ margin-left: 1.1em; }
 .zrung{ font-size: 0.92rem; color: var(--ink-soft); }
 .zs{ white-space: nowrap; }
-@media (max-width: 360px){ .zs{ white-space: normal; } }
+@media (max-width: 400px){ .zs{ white-space: normal; } }
 .zst{ max-width: 760px; }
 .zst table.num td:nth-child(4){ white-space: normal; }
 /* literature block: ink only, values in the body face with tabular figures, left-aligned */
@@ -549,7 +549,6 @@ svg.zx{ display: block; width: 100%; height: auto; max-width: 480px; margin: 6px
 .partof{ font-size: 0.9rem; }
 
 /* run sheet table and one block per job */
-.mhead h1.long{ overflow-wrap: anywhere; }
 .tbl table.rsheet{ min-width: 0; width: 100%; }
 .rsheet td{ vertical-align: top; font-size: 0.86rem; }
 .rsheet tbody{ border-top: 1px solid var(--line); }

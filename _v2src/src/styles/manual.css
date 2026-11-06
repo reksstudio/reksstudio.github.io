@@ -6,8 +6,6 @@ header.docshero .branch{ margin-top: 6px; color: var(--ink-faint); font-size: 0.
 header.pagehead{ padding: 40px 0 28px; border-bottom: 1px solid var(--line); }
 header.pagehead h1{ font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
 header.pagehead p{ margin: 10px 0 0; color: var(--ink-soft); }
-.crumbs a{ color: inherit; text-decoration: none; }
-.crumbs a:hover{ text-decoration: underline; }
 
 .docs-layout{ --toc-width: 240px; }
 .toc{ max-height: calc(100vh - var(--nav-offset) - 22px); overflow-y: auto; }
@@ -25,7 +23,6 @@ header.pagehead p{ margin: 10px 0 0; color: var(--ink-soft); }
   .toc .sub a.h4{ padding-left: calc(12px + 2.4em); }
 }
 
-.docsec h3{ font-size: 1.12rem; margin: 30px 0 12px; }
 /* entries (options, properties, diagnose): h4 + dl.fields, code, lists, separated by a rule */
 .docsec h4{ font: 600 1.02rem/1.4 var(--serif); color: var(--ink); margin: 28px 0 10px; padding-top: 22px; border-top: 1px solid var(--line); }
 .docsec h3 + h4{ border-top: none; padding-top: 0; }
@@ -38,12 +35,6 @@ h4 code:only-child{ font-size: 0.92em; font-weight: 600; }
   .fields dt{ float: left; margin-right: 0.7em; }
   .fields dd{ margin-bottom: 8px; }
 }
-
-.docsec .prose p{ max-width: 74ch; margin: 0 0 16px; }
-.prose ul, .prose ol{ color: var(--ink-soft); max-width: 74ch; margin: 0 0 16px; padding-left: 22px; }
-.prose ol{ padding-left: 2em; }
-.prose li{ margin-bottom: 8px; }
-.prose strong{ color: var(--ink); }
 
 /* figures: images fill the text column; scheme SVGs are capped at 360px, pair images at 30rem */
 figure{ margin: 8px 0 24px; max-width: 74ch; }
@@ -98,7 +89,7 @@ pre.astro-code[data-language="log"]{
 table{ border-collapse: collapse; width: 100%; min-width: 480px; font-size: 0.9rem; }
 thead th{ text-align: left; font-family: var(--sans); font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--ink-faint); padding: 8px 16px 8px 0; white-space: nowrap; }
 tbody td{ vertical-align: top; padding: 10px 16px 10px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
-/* first column: prose in the body font, names in mono; wraps between items, each name stays whole */
+/* first column: names in mono, each name stays whole */
 tbody td:first-child code{ color: var(--blue); background: none; padding: 0; font-size: 0.86rem; white-space: nowrap; }
 tbody tr:last-child td{ border-bottom: none; }
 @media (max-width: 860px){
@@ -119,7 +110,7 @@ tbody tr:last-child td{ border-bottom: none; }
 }
 
 /* overview: contents of every page */
-.contents h3{ font-size: 1.12rem; margin: 30px 0 8px; }
+.contents h3{ margin-bottom: 8px; }
 .contents h3 a{ text-decoration: none; }
 .contents ul{ list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; font-size: 0.9rem; }
 .contents li{ break-inside: avoid; padding: 2px 0; }
@@ -143,18 +134,23 @@ tbody tr:last-child td{ border-bottom: none; }
 /* references: doi links break inside on narrow screens */
 .refs a{ overflow-wrap: anywhere; }
 
-/* option table: Option | Default | Meaning | Used in on one grid for all groups; type and alias in small under the
-   name; Used in one chapter per line, smaller; phones: one block per option, Default and Used in labelled */
+/* option table: Option | Default | Meaning | Used in, one fixed grid; narrow container: one block per option */
+section:has(> h2[id$="option-table"]) .reftable-wrap{ container-type: inline-size; }
 section:has(> h2[id$="option-table"]) table{ table-layout: fixed; min-width: 0; }
 section:has(> h2[id$="option-table"]) th:nth-child(1){ width: 30%; }
 section:has(> h2[id$="option-table"]) th:nth-child(2){ width: 15%; }
 section:has(> h2[id$="option-table"]) th:nth-child(3){ width: 30%; }
+/* Default column fits its longest word */
+@container (max-width: 740px){
+  section:has(> h2[id$="option-table"]) th:nth-child(2){ width: 7rem; }
+  section:has(> h2[id$="option-table"]) th:nth-child(3){ width: 27%; }
+}
 section:has(> h2[id$="option-table"]) td:nth-child(4){ font-size: 0.85rem; }
-section:has(> h2[id$="option-table"]) td{ overflow-wrap: break-word; }
+section:has(> h2[id$="option-table"]) :is(td, td code){ overflow-wrap: break-word; }
 section:has(> h2[id$="option-table"]) td:first-child code{ white-space: normal; }
 section:has(> h2[id$="option-table"]) td small{ display: inline-block; margin-top: 3px; font: 0.76rem/1.35 var(--sans); color: var(--ink-faint); }
 section:has(> h2[id$="option-table"]) td small code{ color: inherit; font-size: 0.72rem; }
-@media (max-width: 560px){
+@container (max-width: 640px){
   section:has(> h2[id$="option-table"]) :is(table, tbody, tr, td){ display: block; width: auto; }
   section:has(> h2[id$="option-table"]) thead{ display: none; }
   section:has(> h2[id$="option-table"]) tr{ padding: 10px 0; border-bottom: 1px solid var(--line); }
