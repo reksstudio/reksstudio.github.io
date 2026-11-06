@@ -207,12 +207,17 @@ header.hero{ padding: 28px 0 24px; }
 .eqlad tbody.before tr:last-child > *{ border-bottom: 2px solid var(--ours); }
 .eqlad tbody.counted tr:first-child > *{ border-top: 1px dashed var(--ink-soft); }
 .counted .en::before{ background: none; outline: 1.5px dashed var(--ours); outline-offset: -1.5px; }
-/* digit-group ruler under the last numeral: one 3ch tick per group, 1ch apart, labels staggered on two lines */
+/* digit-group ruler: one 3ch tick per group, labels staggered on two lines */
 .eqlad .eruler td{ padding: 2px 8px 0 0; line-height: 1; }
 .eruler span{ display: inline-block; width: 3ch; margin-left: 1ch; border-top: 1px solid var(--ink-soft); text-align: left; vertical-align: top; }
 .eruler span:first-child{ margin-left: 0; }
 .eruler i{ display: block; width: max-content; position: relative; left: 50%; translate: -50% 0; padding-top: 3px; font: 0.66rem/1.2 var(--sans); white-space: nowrap; color: var(--ink-soft); }
 .eruler span:nth-child(even) i{ padding-top: calc(3px + 1.2em); }
+/* ruler in a proportional table: tick width from invisible digits (b), labels out of flow */
+.tbl tfoot.eruler td{ padding-top: 2px; padding-bottom: 2.2rem; border-bottom: none; line-height: 1; }
+.tbl tfoot.eruler span{ position: relative; width: auto; margin-left: 0; }
+.tbl tfoot.eruler b{ display: block; height: 0; overflow: hidden; font-weight: 400; }
+.tbl tfoot.eruler i{ position: absolute; top: 0; }
 .mblock .eexact, .mblock .eprov{ margin: 0.25em 0 0; font-size: 0.8rem; color: var(--ink-soft); }
 .mblock .eexact{ margin-top: 0.9em; }
 /* one generated equation verbatim: right of the table on wide screens, above it otherwise */

@@ -145,7 +145,7 @@ $$
 
 Exact limits reproduced to 10<sup>−10</sup> E<sub>h</sub> against CASSCF: H<sub>2</sub> and BH, (2,2)–(4,6).
 
-Counts: (2,2)–(8,8) equal generator runs; larger spaces from exact counting rules that reproduce every run.
+Counts: (2,2)–(10,10) equal generator runs; larger spaces from exact counting rules that reproduce every run.
 
 [Configurations, determinants and every spin sector →](https://reksstudio.github.io/v2/main/cost/index.md#count)
 

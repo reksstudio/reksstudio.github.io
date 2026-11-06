@@ -19,6 +19,18 @@ const value = (lib, k) => {
 // {lib:name} in any text -> the value computed from that lib's data, escaped for the JSON text it splices into
 const data = JSON.parse(JSON.stringify(raw).replace(TOKEN, (_, lib, k) => JSON.stringify(value(lib, k)).slice(1, -1)));
 
+// per spin sector: spins = Configurations column, equations = sum of Equations column
+const { head: eqHead, rows: eqRows } = data.landing.equations;
+const confCol = eqHead.indexOf('Configurations');
+const eqCol = eqHead.indexOf('Equations');
+if (confCol < 0 || eqCol < 0) throw new Error('overview.json: no Configurations or Equations column in landing.equations');
+for (const c of data.landing.count) {
+  const rows = eqRows.filter((r) => r[0] === c.as);
+  if (!rows.length) throw new Error(`overview.json: no ${c.as} rows in landing.equations`);
+  c.spins = rows.map((r) => Number(r[confCol].replaceAll(' ', '')));
+  c.equations = rows.reduce((s, r) => s + BigInt(r[eqCol].replaceAll(' ', '')), 0n);
+}
+
 export const { classes, results, manualRows, landing, history, moved, hub } = data;
 
 // hub.sections entry of id; throws on an unknown id

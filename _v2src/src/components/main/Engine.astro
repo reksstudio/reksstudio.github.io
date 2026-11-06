@@ -1,31 +1,23 @@
 ---
 import { html, landing } from '../../lib/overview.mjs';
-import { fmtCount as fmt, tex } from '../../lib/inline.mjs';
+import { digitGroups, fmtCount as fmt, groupCount, tex } from '../../lib/inline.mjs';
 
 const base = import.meta.env.BASE_URL;
-const { engine, count, equations } = landing;
-const col = equations.head.indexOf('Equations');
-if (col < 0) throw new Error('overview.json: no Equations column in landing.equations');
-// equations per active space = sum of the Equations cells over all spin sectors
-const total = (as) => {
-  const rows = equations.rows.filter((r) => r[0] === as);
-  if (!rows.length) throw new Error(`overview.json: no ${as} Equations cells in landing.equations`);
-  return rows.reduce((s, r) => s + BigInt(r[col].replaceAll(' ', '')), 0n);
-};
+const { engine, count } = landing;
 // zones: before = up to engine.before, gen = up to the entry before engine.counted.as, counted = the rest
 const cut = count.findIndex((c) => c.as === engine.counted.as);
 if (cut < 0) throw new Error(`overview.json: landing.engine.counted.as ${engine.counted.as} not in landing.count`);
 const gen = cut - 1;
 const pre = count.findIndex((c) => c.as === engine.before);
 if (pre < 0 || pre >= gen) throw new Error(`overview.json: landing.engine.before ${engine.before} missing or not before ${engine.counted.as}`);
-const rows = count.map((c, i) => ({ ...c, ...(i > gen ? { mark: engine.counted.mark, href: engine.counted.href } : {}), n: fmt(total(c.as), ' ') }));
+const rows = count.map((c, i) => ({ ...c, ...(i > gen ? { mark: engine.counted.mark, href: engine.counted.href } : {}), n: fmt(c.equations, ' ') }));
 const zones = [
   ['before', rows.slice(0, pre + 1)],
   ['gen', rows.slice(pre + 1, gen + 1)],
   ['counted', rows.slice(gen + 1)],
 ];
 // one ruler tick per digit group of the last numeral
-const ruler = ['quadrillions', 'trillions', 'billions', 'millions', 'thousands', 'ones'].slice(-rows.at(-1).n.split(' ').length);
+const ruler = digitGroups(groupCount(rows.at(-1).n));
 ---
 <h2>{engine.title}</h2>
 <p class="eform" set:html={html(engine.def)} />
@@ -63,4 +55,4 @@ const ruler = ['quadrillions', 'trillions', 'billions', 'millions', 'thousands',
 </div>
 <p class="eexact" set:html={html(engine.exact)} />
 <p class="eprov" set:html={html(engine.prov)} />
-<p class="elink"><a href={`${base}${engine.counted.href}`}>Configurations, determinants and every spin sector →</a></p>
+<p><a href={`${base}${engine.counted.href}`}>Configurations, determinants and every spin sector →</a></p>

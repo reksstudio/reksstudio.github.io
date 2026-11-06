@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro';
 import Code from '../components/Code.astro';
 import { acs, doiUrl, references } from '../lib/literature.mjs';
 import { toHtml } from '../lib/inline.mjs';
-import { readFileSync } from 'node:fs';
-import { entryLink } from '../lib/manual-pages.mjs';
+import { landing } from '../lib/overview.mjs';
+import { entryLink, workedInput } from '../lib/manual-pages.mjs';
 import { SOURCE_URL } from '../lib/site.mjs';
 import { vars as quest } from '../lib/quest.mjs';
 import { vars as zeth } from '../lib/zeth.mjs';
@@ -16,15 +16,15 @@ import '../styles/landing.css';
 
 const base = import.meta.env.BASE_URL;
 const landingRefs = references().filter((e) => e.landing).sort((a, b) => a.year - b.year);
-// input text read from the published download at build time
-const workedInput = readFileSync(`${process.cwd()}/public/inputs/reks22_h2.dat`, 'utf8').trimEnd();
-const chart = [
-  ['3', '8px', '0.80rem', '(2,2)'],
-  ['18', '10px', '0.85rem', '(4,4)'],
-  ['161', '20px', '0.95rem', '(6,6)'],
-  ['1934', '60px', '1.40rem', '(8,8)'],
-  ['29082', '170px', '2.00rem', '(10,10)'],
+// bar height and label size per active space, count = 2S = 0 configurations
+const BARS = [
+  ['8px', '0.80rem'],
+  ['10px', '0.85rem'],
+  ['20px', '0.95rem'],
+  ['60px', '1.40rem'],
+  ['170px', '2.00rem'],
 ];
+const chart = BARS.map((bar, i) => [String(landing.count[i].spins[0]), ...bar, landing.count[i].as]);
 ---
 <Base title="REKS Studio — Ensemble DFT for strongly correlated systems" home>
 <Nav variant="dark" logoHref="#top" />

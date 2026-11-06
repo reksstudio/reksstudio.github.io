@@ -147,7 +147,7 @@ In REKS(4,4) the double open-shell singlet (DOSS) and the doubly spin-polarized 
 
 ### Spin manifold and run sector {#run-sector}
 
-A manifold is one total spin $2S$ of the catalog. The sectors of a run are the manifolds addressed by any SA block or SI group, in ascending $2S$, sector 0 being the lowest. Every configuration is built from components of zero $M_S$, so all sectors share one determinant space and one set of orbitals, and the molecular multiplicity remains canonical (1 for even `N`) (§active-space, §spin-manifolds). Determinants with non-zero $M_S$ enter the SA ensemble only through §sa_reks_extra.
+A manifold is one total spin $2S$ of the catalog. The sectors of a run are the manifolds addressed by any SA block or SI group, in ascending $2S$, sector 0 being the lowest. Every configuration is built from components of zero $M_S$, so all sectors share one determinant space and one set of orbitals, and the molecular multiplicity remains canonical (1 for even `N`) (§active-space, §spin-manifolds).
 
 A 2S = 2 configuration holds one $\Phi_{\mathrm{T0}}$. In 2S ≥ 4 (`TT_SPS_0`, `TTT_SPS_0`) the $n_T$ triplet geminals couple to $S = n_T$ through $\Phi_{\mathrm{T+}}$, $\Phi_{\mathrm{T0}}$, $\Phi_{\mathrm{T-}}$ with Clebsch–Gordan coefficients, e.g.
 

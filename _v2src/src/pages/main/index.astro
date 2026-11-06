@@ -8,9 +8,9 @@ import HeroCurve from '../../components/main/HeroCurve.astro';
 import ProofCards from '../../components/main/ProofCards.astro';
 import CostBand from '../../components/main/CostBand.astro';
 import Engine from '../../components/main/Engine.astro';
-import { readFileSync } from 'node:fs';
 import { html, landing, manualHref } from '../../lib/overview.mjs';
 import { doiUrl, reference } from '../../lib/literature.mjs';
+import { workedInput } from '../../lib/manual-pages.mjs';
 import { siteRev } from '../../lib/site.mjs';
 import { buildFromSource } from '../../data/snippets';
 import '../../styles/main.css';
@@ -19,8 +19,6 @@ const base = import.meta.env.BASE_URL;
 const rev = siteRev();
 const paper = reference('komarov2026-reks-studio');
 const { hero, proof, tryit } = landing;
-// worked input of the manual, read from the published download at build time
-const workedInput = readFileSync(`${process.cwd()}/public/inputs/reks22_h2.dat`, 'utf8').trimEnd();
 ---
 <Base title="Overview — REKS Studio">
 <Nav variant="light" />

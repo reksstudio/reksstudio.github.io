@@ -1,5 +1,5 @@
 ---
-import { codeHtml } from '../../lib/inline.mjs';
+import { codeHtml, digitGroups, groupCount } from '../../lib/inline.mjs';
 import { cellHtml, html } from '../../lib/overview.mjs';
 
 type Cell = string | { t: string; manual?: string; href?: string; lit?: boolean };
@@ -8,10 +8,11 @@ interface Props {
   table: { title?: string; head: Cell[]; rows: Cell[][] };
   numeric?: boolean;
   grouped?: boolean;
+  ruler?: string;
 }
 
 const base = import.meta.env.BASE_URL;
-const { table, numeric, grouped } = Astro.props;
+const { table, numeric, grouped, ruler } = Astro.props;
 const key = (c: Cell) => (typeof c === 'string' ? c : c.t);
 // literature cell {t, lit: true, href?}: text as printed (escaped, _{x} / ^{x} only), marked data-lit
 const lit = (c: Cell) => (typeof c === 'object' && c.lit ? '' : undefined);
@@ -28,6 +29,10 @@ const groups = grouped
     }, [])
   : [];
 const cls = [numeric && 'num', grouped && 'grp'].filter(Boolean).join(' ') || undefined;
+// ruler: column whose digit groups are labelled in a footer row
+const rulerCol = ruler ? table.head.findIndex((h) => key(h) === ruler) : -1;
+if (ruler && rulerCol < 0) throw new Error(`Table: no column ${ruler}`);
+const marks = ruler ? digitGroups(Math.max(...table.rows.map((r) => groupCount(key(r[rulerCol]))))) : [];
 ---
 {table.title && <p class="tbl-title" set:html={html(table.title)} />}
 <div class="tbl">
@@ -45,5 +50,10 @@ const cls = [numeric && 'num', grouped && 'grp'].filter(Boolean).join(' ') || un
           </tbody>
         ))
       : <tbody>{table.rows.map((row) => <tr>{row.map((c) => <td data-lit={lit(c)} set:html={body(c)} />)}</tr>)}</tbody>}
+    {ruler && (
+      <tfoot class="eruler" aria-hidden="true">
+        <tr>{table.head.map((_, c) => <td>{c === rulerCol && marks.map((m) => <><span><b>000</b><i>{m}</i></span>{' '}</>)}</td>)}</tr>
+      </tfoot>
+    )}
   </table>
 </div>

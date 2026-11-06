@@ -8,7 +8,7 @@ import CountChart from '../../components/main/CountChart.astro';
 import CostDots from '../../components/main/CostDots.astro';
 import CostScatter from '../../components/main/CostScatter.astro';
 import CostMolCards from '../../components/main/CostMolCards.astro';
-import { landing, resultHref } from '../../lib/overview.mjs';
+import { landing, manualHref, resultHref } from '../../lib/overview.mjs';
 import { formulaMarkup as formula, toHtml } from '../../lib/inline.mjs';
 import {
   CODE, bases, buildLine, claimsMore, claimsText, codeHead, codeVersion, cost, dagger, fgib, figRows, fs, installed, iterA, jobShort,
@@ -365,15 +365,17 @@ const h = toHtml;
     <p class="keyline">Singlet configurations generated for P electron pairs, (2P,2P): n<sub>SI</sub> = 3<sup>P</sup> P! − (P! − C<sub>P</sub>), C<sub>P</sub> the Catalan number.</p>
     <h3>Configurations generated per active space and spin</h3>
     <CountChart />
-    <h3 id="equations">Equations, determinants and SCF configurations</h3>
-    <Table table={landing.equations} numeric grouped />
+    <h3 id="equations">Equations, terms, determinants and catalogue size</h3>
+    <Table table={landing.equations} numeric grouped ruler="Terms" />
+    <p class="prov">* Determinants in the SCF: the default state-averaged ensemble and the recommended all-α determinant, as in the <a href={manualHref(base, 'input-patterns')}>Manual, Input patterns</a> example. The count depends on the active space, not on 2S.</p>
+    <p class="prov"><strong>Equations:</strong> nonzero Hamiltonian elements, <Fragment set:html={h(landing.engine.def)} />. <strong>Terms:</strong> symbolic terms of those elements after collection. <strong>Determinants:</strong> microstates of the sector's elements. <strong>Catalogue:</strong> size of the file of one spin sector. Generator runs give the terms up to (10,10) and at (12,12), 2S = 10 and 12; the other sectors are counted by symmetry classes, a count that reproduces every run. Catalogue sizes: generator runs; ~ marks an estimate.</p>
   </section>
 
   <section class="mblock" id="catalogue">
     <h2>Catalogue</h2>
     <Table table={catTable} />
     <p>Symbolic contraction of the full (12,12) ensemble: {catalogue.contraction_1212.wall}, {catalogue.contraction_1212.peak}.</p>
-    <p class="prov"><strong>Provenance:</strong> paper v1, SI Tables 3 and 6.</p>
+    <p class="prov"><strong>Provenance:</strong> paper v1, SI Tables 3 and 6: singlet sector, file format of the paper.</p>
   </section>
 
   <section class="mblock" id="largest-run">

@@ -54,6 +54,14 @@ function noMath(s) {
 // count with thousands separated by sep (default narrow no-break space U+202F): 1234567 -> "1 234 567"
 const NNBSP = String.fromCodePoint(0x202f);
 export const fmtCount = (n, sep = NNBSP) => n.toLocaleString('en-US').replaceAll(',', sep);
+const GROUPS = ['quadrillions', 'trillions', 'billions', 'millions', 'thousands', 'ones'];
+// names of the n digit groups of a numeral, leftmost first
+export const digitGroups = (n) => {
+  if (n > GROUPS.length) throw new Error(`digitGroups: ${n} groups, ${GROUPS.length} named`);
+  return GROUPS.slice(-n);
+};
+// digit groups of a numeral, whatever its separator
+export const groupCount = (s) => s.split(/\D/).length;
 
 // "C28H16" -> "C_{28}H_{16}"
 export const formulaMarkup = (f) => f.replace(/(\d+)/g, '_{$1}');

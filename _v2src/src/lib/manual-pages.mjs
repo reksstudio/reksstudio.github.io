@@ -21,6 +21,8 @@ export const PAGES = [
 ];
 
 export const pagePath = (slug) => (slug ? `manual/${slug}/` : 'manual/');
+// worked input of the manual, read from the published download at build time
+export const workedInput = readFileSync(`${process.cwd()}/public/inputs/reks22_h2.dat`, 'utf8').trimEnd();
 
 // anchor id on page slug: "#id" from that page, "<base>manual/<slug>/#id" from anywhere else
 const anchorHref = (slug, id, fromSlug, base) => (slug === fromSlug ? `#${id}` : `${base}${pagePath(slug)}#${id}`);
