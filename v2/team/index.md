@@ -12,13 +12,13 @@ Team Members
 
 ![Konstantin Komarov](https://reksstudio.github.io/v2/assets/kkomarov.lLD0J574_1vh5hS.jpg)
 
-## Dr. Konstantin Komarov
+## Dr. Konstantin Komarov
 
 Email: constlike_at_gmail.com
 
 ![Michael Filatov](https://reksstudio.github.io/v2/assets/mfilatov.DTbBvSeJ_ZXv0Vg.jpg)
 
-## Dr. Michael Filatov
+## Dr. Michael Filatov
 
 Email: mike.filatov_at_gmail.com
 
@@ -26,7 +26,7 @@ Email: mike.filatov_at_gmail.com
 
 ![Seung Kyu Min](https://reksstudio.github.io/v2/assets/skmin.DsOsL_Gj_25BGjN.jpg)
 
-## Prof. Seung Kyu Min
+## Prof. Seung Kyu Min
 
 Email: skmin_at_unist.ac.kr
 
