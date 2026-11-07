@@ -944,39 +944,52 @@ Linearly independent configurations per spin sector S and active space, log scal
 | | 6 | 9 635 | 25 109 526 | 759 955 283 | 23 526 | 673 | 2.40 GB |
 | | 8 | 1 209 | 731 445 | 42 169 785 | 4 886 | 673 | 82.7 MB |
 | | 10 | 1 | 1 | 336 | 336 | 673 | 26.3 KB |
-| (12,12) | 0 | 524 292 | 59 351 892 458 | 1 940 383 429 553 | 986 534 | 1 889 | ~8.22 TB |
-| | 2 | 1 045 737 | 143 099 611 285 | 3 144 757 198 668 | 970 490 | 1 889 | ~9.71 TB |
-| | 4 | 864 275 | 73 057 039 358 | 1 859 770 442 447 | 834 746 | 1 889 | ~6.06 TB |
-| | 6 | 374 554 | 16 693 280 767 | 543 855 811 001 | 499 496 | 1 889 | ~1.71 TB |
-| | 8 | 86 454 | 1 579 846 605 | 98 125 447 957 | 168 456 | 1 889 | ~298 GB |
+| (12,12) | 0 | 524 292 | 59 351 892 458 | 1 940 383 429 553 | 986 534 | 1 889 | 8.22 TB<sup>†</sup> |
+| | 2 | 1 045 737 | 143 099 611 285 | 3 144 757 198 668 | 970 490 | 1 889 | 9.71 TB<sup>†</sup> |
+| | 4 | 864 275 | 73 057 039 358 | 1 859 770 442 447 | 834 746 | 1 889 | 6.06 TB<sup>†</sup> |
+| | 6 | 374 554 | 16 693 280 767 | 543 855 811 001 | 499 496 | 1 889 | 1.71 TB<sup>†</sup> |
+| | 8 | 86 454 | 1 579 846 605 | 98 125 447 957 | 168 456 | 1 889 | 298 GB<sup>†</sup> |
 | | 10 | 8 651 | 37 424 226 | 5 026 090 849 | 25 446 | 1 889 | 6.62 GB |
 | | 12 | 1 | 1 | 1 254 | 1 254 | 1 889 | 139 KB |
-| (14,14) | 0 | 11 017 869 | 16 918 238 601 779 | 639 147 179 488 068 | 13 544 877 | 5 057 | ~2.63 PB |
-| | 2 | 25 684 841 | 46 584 198 237 597 | 1 188 693 596 908 138 | 13 463 829 | 5 057 | ~3.70 PB |
-| | 4 | 25 614 281 | 29 041 519 627 069 | 847 074 930 111 080 | 12 508 917 | 5 057 | ~2.80 PB |
-| | 6 | 14 112 637 | 9 288 669 797 107 | 333 416 042 155 132 | 9 158 493 | 5 057 | ~1.21 PB |
-| | 8 | 4 586 673 | 1 607 467 057 929 | 110 094 006 108 480 | 4 339 343 | 5 057 | ~404 TB |
-| | 10 | 846 797 | 122 286 938 043 | 20 623 311 192 918 | 1 122 003 | 5 057 | ~65.6 TB |
-| | 12 | 70 573 | 2 490 309 451 | 924 088 630 219 | 127 611 | 5 057 | ~840 GB |
-| | 14 | 1 | 1 | 4 719 | 4 719 | 5 057 | ~916 KB |
+| (14,14) | 0 | 11 017 869 | 16 918 238 601 779 | 639 147 179 488 068 | 13 544 877 | 5 057 | 2.63 PB<sup>†</sup> |
+| | 2 | 25 684 841 | 46 584 198 237 597 | 1 188 693 596 908 138 | 13 463 829 | 5 057 | 3.70 PB<sup>†</sup> |
+| | 4 | 25 614 281 | 29 041 519 627 069 | 847 074 930 111 080 | 12 508 917 | 5 057 | 2.80 PB<sup>†</sup> |
+| | 6 | 14 112 637 | 9 288 669 797 107 | 333 416 042 155 132 | 9 158 493 | 5 057 | 1.21 PB<sup>†</sup> |
+| | 8 | 4 586 673 | 1 607 467 057 929 | 110 094 006 108 480 | 4 339 343 | 5 057 | 404 TB<sup>†</sup> |
+| | 10 | 846 797 | 122 286 938 043 | 20 623 311 192 918 | 1 122 003 | 5 057 | 65.6 TB<sup>†</sup> |
+| | 12 | 70 573 | 2 490 309 451 | 924 088 630 219 | 127 611 | 5 057 | 840 GB<sup>†</sup> |
+| | 14 | 1 | 1 | 4 719 | 4 719 | 5 057 | 916 KB<sup>†</sup> |
 
 \* Determinants in the SCF: the default state-averaged ensemble and the recommended all-α determinant, as in the [Manual, Input patterns](https://reksstudio.github.io/v2/manual/setup/index.md#input-patterns) example. The count depends on the active space, not on 2S.
 
-**Equations:** nonzero Hamiltonian elements, H<sub>KK′</sub> ≠ 0, K ≤ K′. **Terms:** symbolic terms of those elements after collection. **Determinants:** microstates of the sector's elements. **Catalogue:** size of the file of one spin sector. Generator runs give the terms up to (10,10) and at (12,12), 2S = 10 and 12; the other sectors are counted by symmetry classes, a count that reproduces every run. Catalogue sizes: generator runs; ~ marks an estimate. (14,14): size the file would have, not generated.
+**Equations:** nonzero Hamiltonian elements, H<sub>KK′</sub> ≠ 0, K ≤ K′. **Terms:** symbolic terms of those elements after collection. **Determinants:** microstates of the sector's elements. **Catalogue:** size of the file of one spin sector, from generator runs; † estimated value.
 
 ## Catalogue
 
-| Active space | Configurations | Catalogue size | Emission time, peak memory |
-| - | - | - | - |
-| (2,2) | 3 | 1.7 KB | 0.033 s, 40 MB |
-| (4,4) | 18 | 27.5 KB | 0.040 s, 42 MB |
-| (6,6) | 161 | 1.99 MB | 0.458 s, 80 MB |
-| (8,8), mixed-scheme | 355 | 11.9 MB | 2.20 s, 177 MB |
-| (8,8), full | 1934 | 284 MB | 62.4 s, 804 MB |
+### Determinant contraction
 
-Symbolic contraction of the full (12,12) ensemble: 40.47 h, 83.0 GB.
+| Active space | Configurations | Threads | Wall time | Peak memory |
+| - | - | - | - | - |
+| (2,2) | 3 | 1 | 0.098 s | 34 MB |
+| (4,4) | 18 | 1 | 0.096 s | 34 MB |
+| (6,6) | 161 | 1 | 0.272 s | 65 MB |
+| (8,8) | 1 934 | 1 | 27.66 s | 284 MB |
+| (10,10) | 29 082 | 28 | 469.4 s | 3.30 GB |
+| (12,12) | 524 292 | 28 | 40.47 h | 83.0 GB |
 
-**Provenance:** paper v1, SI Tables 3 and 6: singlet sector, file format of the paper.
+Symbolic Slater–Condon–Fock contraction, singlet sector. Up to (4,4) the time is engine start-up. **Provenance:** paper v1, SI Table 3.
+
+### Catalogue generation
+
+| Active space | Configurations | Catalogue size | Threads | Wall time | Peak memory |
+| - | - | - | - | - | - |
+| (2,2) | 4 | 2.76 KB | 8 | 0.08 s | 56.6 MB |
+| (4,4) | 30 | 32.4 KB | 8 | 0.09 s | 74.3 MB |
+| (6,6) | 356 | 1.91 MB | 8 | 0.28 s | 240 MB |
+| (8,8) | 5 830 | 315 MB | 8 | 15.5 s | 3.85 GB |
+| (10,10) | 119 292 | 74.5 GB | 96 | 39.6 min | 157 GB |
+
+One file with every spin sector; the time covers the whole run, contraction included. **Provenance:** generator runs, current file format.
 
 ## Largest run
 
