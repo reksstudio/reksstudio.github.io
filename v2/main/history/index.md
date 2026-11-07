@@ -26,7 +26,7 @@ H2 energy against H–H distance, 0.5 to 5 Å: ordinary DFT (RKS) rises to −0.
 
    ### One determinant
 
-   Hartree–Fock places each electron in the average field of the others. Orbitals hold 0, 1 or 2 electrons, in one configuration.
+   Hartree–Fock places each electron in the average field of the others. Restricted orbitals hold 0, 1 or 2 electrons, in one determinant.
 
    [Hartree 1928](https://doi.org/10.1017/S0305004100011919); [Slater 1929](https://doi.org/10.1103/PhysRev.34.1293); [Fock 1930](https://doi.org/10.1007/BF01340294)
 
@@ -84,25 +84,25 @@ H2 energy against H–H distance, 0.5 to 5 Å: ordinary DFT (RKS) rises to −0.
 >
 > [Pople, Gill and Handy, 1995](https://doi.org/10.1002/qua.560560414)
 
-Taken literally it rules out REKS, which keeps one orbital set. In substance it hits one determinant: with several configurations the missing spin polarization returns in part, inside the active space.
+Taken literally it rules out REKS, which keeps one orbital set, and REKS leaves that unanswered. Its measurable ground, negative spin density, defeats one determinant; several configurations meet it in part, inside the active space.
 
-REKS is spin-restricted: one orbital set for both spins. The paper says Kohn–Sham theory of open shells “should be developed only in the spin-unrestricted formalism”. Its ROKS is one restricted determinant of a radical or triplet, with more α (spin-up) than β (spin-down) electrons, not the sum method. Its test was the isotropic hyperfine constant of the CH<sub>3</sub> proton, which lies in the nodal plane of the unpaired orbital: that determinant gives zero, while experiment, corrected to planar CH<sub>3</sub>, gives −25 G. The table repeats the test on NH, a triplet whose proton also lies in that plane. The paper gives three grounds.
+REKS is spin-restricted: one orbital set for both spins. The paper says Kohn–Sham theory of open shells “should be developed only in the spin-unrestricted formalism”. Its arguments concern a radical or triplet with more α (spin-up) than β (spin-down) electrons. Its test was the isotropic hyperfine constant of the CH<sub>3</sub> proton, which lies in the nodal plane of the unpaired orbital: one restricted determinant gives zero, while experiment, corrected to planar CH<sub>3</sub>, gives −25 G. The table repeats the test on NH, whose proton lies in the nodal planes of both open orbitals, and adds a carbon of m-xylylene on a Hückel node. The paper gives three grounds.
 
 ### α and β feel different potentials
 
-Each determinant of the REKS energy has its own α and β potentials, and all act on one orbital set. That set is the restriction the paper rejects. REKS builds no multiplicative Kohn–Sham potential, so it avoids this ground and does not answer it.
+Each determinant of the REKS energy has its own α and β potentials, and all act on one orbital set. That set is the restriction the paper rejects. Like ROKS, REKS minimizes the energy over one orbital set and builds no multiplicative Kohn–Sham potential. This ground stands, unanswered.
 
 [Filatov and Shaik 1999](https://doi.org/10.1016/S0009-2614\(99\)00336-X); [Filatov and Shaik 2000](https://doi.org/10.1016/S0009-2614\(00\)01257-4)
 
 ### Spin density can go negative
 
-One restricted determinant cannot show this. SSR can: state interaction mixes in configurations in which a closed pair opens and couples to the unpaired electrons, as first done for singlets. REKS Studio builds every state at M<sub>S</sub> = 0, where spin density vanishes. It scales with M<sub>S</sub>, so the table gives the M<sub>S</sub> = S value, computed from the configuration vector.
+One restricted determinant cannot show this. SSR can: after the ensemble step, state interaction mixes in configurations in which a closed pair opens and couples to the unpaired electrons, as first done for singlets. REKS Studio builds every state at M<sub>S</sub> = 0, where spin density vanishes. It scales with M<sub>S</sub>, so the table gives the M<sub>S</sub> = S value: an expectation value over configurations, not a Kohn–Sham spin density.
 
-[Filatov et al. 2016](https://doi.org/10.1063/1.4972174); [Filatov et al. 2017](https://doi.org/10.1063/1.4996873)
+[Filatov et al. 2017](https://doi.org/10.1063/1.4996873)
 
 ### A determinant without contamination is wrong
 
-The authors’ reason: the Kohn–Sham determinant is not the wave function, so contamination is allowed. REKS makes the opposite choice: every configuration has pure spin. Beyond the REKS(2,2) triplet its energy is a sum of determinant energies, some with negative weights.
+The authors’ reason: the Kohn–Sham determinant is not the wave function, so contamination is allowed. REKS makes the opposite choice: every configuration is coupled to pure spin. Beyond the REKS(2,2) triplet its energy is a sum of determinant energies, some with negative weights. This ground stands as a difference of approach.
 
 [Filatov 2015](https://doi.org/10.1002/wcms.1209); [Filatov and Shaik 1999](https://doi.org/10.1016/S0009-2614\(99\)00336-X)
 
@@ -123,18 +123,17 @@ NH X <sup>3</sup>Σ<sup>−</sup>, cc-pVTZ. SSR(4,4): three choices of σ pair. 
 
 m-xylylene, 6-31G(d). Mulliken population; C1 is a Hückel node of both open orbitals. SSR(4,4): two choices of π pair. UKS includes σ polarization; its π part is −0.249.
 
-[Engels and Peyerimhoff 1989](https://doi.org/10.1080/00268978900101301)
+NH experiment: [Engels and Peyerimhoff 1989](https://doi.org/10.1080/00268978900101301)
 
 ### Where it stands
 
 * The objection holds in full for the REKS(2,2) triplet, which has the energy of one high-spin determinant.
 * Spin reaches only active orbitals: a proton in the nodal plane of a π active space gets none at the nucleus. In NH, SSR(6,6) has all valence electrons active and gives 54% of the experimental value, UKS 90%.
-* REKS(2,2) with BLYP puts the open-shell singlet of α,3-didehydrotoluene 0.9 kcal/mol above the triplet, unrestricted DFT 0.5–1.0 below it; experiment places it up to 5 kcal/mol below. Wider active spaces have not settled this case.
+* In 2002 REKS with BLYP put the open-shell singlet of α,3-didehydrotoluene 0.9 kcal/mol above the triplet and unrestricted BLYP 0.5 below it; experiment places it up to 5 kcal/mol below. The authors conclude that REKS fails here because it “cannot describe spin-polarization correctly”.
 * REKS Studio runs even electron numbers only, so doublet radicals stay outside it; REKS(3,3) treated them in 2000.
-* Strictly, negative weights are not allowed in ensemble Kohn–Sham; the restrictions on the determinants keep the energy finite.
-* Vertical excitation energies against QUEST best estimates, mean absolute error: triplets 0.16–0.20 eV, singlets 0.25–0.26 eV with the best active space per state; 0.29–0.35 and 0.39–0.42 eV with the largest active space run.
+* Strictly, negative weights are not allowed in ensemble Kohn–Sham; Filatov and Shaik keep the energy finite by building all determinants from one orbital set.
 
-[Gräfenstein et al. 2002](https://doi.org/10.3390/i3040360); [Filatov and Shaik 2000](https://doi.org/10.1016/S0009-2614\(00\)01257-4); [Filatov and Shaik 1999](https://doi.org/10.1016/S0009-2614\(99\)00336-X); [QUEST results](https://reksstudio.github.io/v2/main/results/quest/index.md)
+[Gräfenstein et al. 2002](https://doi.org/10.3390/i3040360); [Filatov and Shaik 2000](https://doi.org/10.1016/S0009-2614\(00\)01257-4); [Filatov and Shaik 1999](https://doi.org/10.1016/S0009-2614\(99\)00336-X)
 
 ## What grew from REKS
 
