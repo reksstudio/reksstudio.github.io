@@ -602,10 +602,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 151 | 35 | 1.7 | 22.3 | 73 | 1.4 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 29.0 | 14 | 2.0 | 22.4 | 14 | 1.4 |
-  | (2,2) 3 | 7.31 | – | 1.5 | 5.29 | – | 1.4 |
-  | (4,4) 16 | 12.2 | – | 1.5 | 6.25 | – | 1.4 |
-  | (6,6) 115 | 26.3 | – | 1.5 | 9.63 | – | 1.4 |
-  | (8,8) 996 | 158 | – | 2.0 | 24.6 | – | 1.6 |
+  | (2,2) 3 | 7.31 | 15 | 1.5 | 5.29 | 16 | 1.4 |
+  | (4,4) 16 | 12.2 | 22 | 1.5 | 6.25 | 19 | 1.4 |
+  | (6,6) 115 | 26.3 | 26 | 1.5 | 9.63 | 30 | 1.4 |
+  | (8,8) 996 | 158 | 35 | 2.0 | 24.6 | 73 | 1.6 |
 
 * ![cyclopentadiene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/cyclopentadiene.svg)
 
@@ -624,10 +624,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 110 | 40 | 2.1 | 18.0 | 41 | 1.9 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 39.4 | 13 | 2.4 | 27.2 | 13 | 1.8 |
-  | (2,2) 3 | 8.19 | – | 1.9 | 5.97 | – | 1.8 |
-  | (4,4) 16 | 12.4 | – | 1.9 | 6.84 | – | 1.8 |
-  | (6,6) 115 | 24.6 | – | 1.9 | 15.7 | – | 1.8 |
-  | (8,8) 996 | 120 | – | 2.4 | 21.3 | – | 2.0 |
+  | (2,2) 3 | 8.19 | 14 | 1.9 | 5.97 | 16 | 1.8 |
+  | (4,4) 16 | 12.4 | 16 | 1.9 | 6.84 | 17 | 1.8 |
+  | (6,6) 115 | 24.6 | 18 | 1.9 | 15.7 | 40 | 1.8 |
+  | (8,8) 996 | 120 | 40 | 2.4 | 21.3 | 41 | 2.0 |
 
 * ![strepto-c5: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/strepto-c5.svg)
 
@@ -646,10 +646,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 314 | 51 | 4.1 | 29.7 | 26 | 4.0 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 99.2 | 14 | 4.5 | 88.6 | 14 | 3.9 |
-  | (2,2) 3 | 15.6 | – | 4.1 | 12.1 | – | 4.0 |
-  | (4,4) 16 | 34.4 | – | 4.1 | 18.9 | – | 4.0 |
-  | (6,6) 115 | 94.0 | – | 4.1 | 35.8 | – | 4.0 |
-  | (8,8) 996 | 318 | – | 4.3 | 35.9 | – | 4.2 |
+  | (2,2) 3 | 15.6 | 11 | 4.1 | 12.1 | 12 | 4.0 |
+  | (4,4) 16 | 34.4 | 24 | 4.1 | 18.9 | 20 | 4.0 |
+  | (6,6) 115 | 94.0 | 35 | 4.1 | 35.8 | 38 | 4.0 |
+  | (8,8) 996 | 318 | 51 | 4.3 | 35.9 | 26 | 4.2 |
 
 * ![diketopyrrolopyrrole: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/diketopyrrolopyrrole.svg)
 
@@ -668,10 +668,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 223 | 34 | 4.9 | 39.0 | 27 | 4.9 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 138 | 15 | 5.2 | 112 | 17 | 4.8 |
-  | (2,2) 3 | 19.3 | – | 4.9 | 16.4 | – | 4.8 |
-  | (4,4) 16 | 32.4 | – | 4.9 | 23.9 | – | 4.8 |
-  | (6,6) 115 | 70.9 | – | 4.9 | 31.4 | – | 4.8 |
-  | (8,8) 996 | 233 | – | 5.1 | 44.6 | – | 5.0 |
+  | (2,2) 3 | 19.3 | 11 | 4.9 | 16.4 | 15 | 4.8 |
+  | (4,4) 16 | 32.4 | 18 | 4.9 | 23.9 | 19 | 4.8 |
+  | (6,6) 115 | 70.9 | 24 | 4.9 | 31.4 | 23 | 4.8 |
+  | (8,8) 996 | 233 | 34 | 5.1 | 44.6 | 27 | 5.0 |
 
 * ![naphthalene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/naphthalene.svg)
 
@@ -690,10 +690,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 201 | 19 | 7.4 | 48.1 | 21 | 7.2 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 190 | 16 | 7.5 | 160 | 14 | 7.1 |
-  | (2,2) 3 | 26.0 | – | 7.4 | 21.2 | – | 7.2 |
-  | (4,4) 16 | 45.5 | – | 7.3 | 28.3 | – | 7.2 |
-  | (6,6) 115 | 90.8 | – | 7.3 | 36.9 | – | 7.2 |
-  | (8,8) 996 | 219 | – | 7.6 | 52.5 | – | 7.4 |
+  | (2,2) 3 | 26.0 | 11 | 7.4 | 21.2 | 14 | 7.2 |
+  | (4,4) 16 | 45.5 | 17 | 7.3 | 28.3 | 16 | 7.2 |
+  | (6,6) 115 | 90.8 | 19 | 7.3 | 36.9 | 17 | 7.2 |
+  | (8,8) 996 | 219 | 20 | 7.6 | 52.5 | 21 | 7.4 |
 
 * ![dimethylaniline: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/dimethylaniline.svg)
 
@@ -712,10 +712,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 572 | 50 | 8.0 | 235 | 56 | 7.9 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 212 | 19 | 8.0 | 179 | 17 | 7.8 |
-  | (2,2) 3 | 38.1 | – | 7.9 | 25.7 | – | 7.8 |
-  | (4,4) 16 | 55.8 | – | 7.9 | 33.3 | – | 7.8 |
-  | (6,6) 115 | 198 | – | 8.0 | 67.0 | – | 7.8 |
-  | (8,8) 996 | 578 | – | 8.1 | 232 | – | 8.0 |
+  | (2,2) 3 | 38.1 | 19 | 7.9 | 25.7 | 18 | 7.8 |
+  | (4,4) 16 | 55.8 | 20 | 7.9 | 33.3 | 20 | 7.8 |
+  | (6,6) 115 | 198 | 39 | 8.0 | 67.0 | 34 | 7.8 |
+  | (8,8) 996 | 578 | 50 | 8.1 | 232 | 56 | 8.0 |
 
 * ![twisted-n-phenylpyrrole: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/twisted-n-phenylpyrrole.svg)
 
@@ -734,10 +734,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 1364 | 75 | 9.4 | 314 | 44 | 9.3 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 287 | 31 | 9.3 | 226 | 17 | 9.2 |
-  | (2,2) 3 | 55.0 | – | 9.4 | 55.6 | – | 9.3 |
-  | (4,4) 16 | 232 | – | 9.4 | 127 | – | 9.3 |
-  | (6,6) 115 | 222 | – | 9.5 | 276 | – | 9.3 |
-  | (8,8) 996 | 1551 | – | 9.6 | 302 | – | 9.4 |
+  | (2,2) 3 | 55.0 | 23 | 9.4 | 55.6 | 22 | 9.3 |
+  | (4,4) 16 | 232 | 39 | 9.4 | 127 | 40 | 9.3 |
+  | (6,6) 115 | 222 | 41 | 9.5 | 276 | 81 | 9.3 |
+  | (8,8) 996 | 1551 | 89 | 9.6 | 302 | 44 | 9.4 |
 
 * ![tdmabn: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/tdmabn.svg)
 
@@ -756,10 +756,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 514 | 39 | 10.2 | 105 | 36 | 10.0 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 295 | 21 | 10.0 | 263 | 17 | 9.9 |
-  | (2,2) 3 | 41.8 | – | 10.2 | 41.4 | – | 10.0 |
-  | (4,4) 16 | 75.2 | – | 10.2 | 47.9 | – | 10.0 |
-  | (6,6) 115 | 134 | – | 10.2 | 87.2 | – | 10.0 |
-  | (8,8) 996 | 513 | – | 10.4 | 113 | – | 10.2 |
+  | (2,2) 3 | 41.8 | 15 | 10.2 | 41.4 | 26 | 10.0 |
+  | (4,4) 16 | 75.2 | 21 | 10.2 | 47.9 | 20 | 10.0 |
+  | (6,6) 115 | 134 | 21 | 10.2 | 87.2 | 34 | 10.0 |
+  | (8,8) 996 | 513 | 39 | 10.4 | 113 | 36 | 10.2 |
 
 * ![nitrodimethylaniline: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/nitrodimethylaniline.svg)
 
@@ -778,10 +778,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 640 | 43 | 11.8 | 131 | 39 | 11.6 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 351 | 20 | 11.6 | 315 | 17 | 11.5 |
-  | (2,2) 3 | 52.4 | – | 11.8 | 44.6 | – | 11.6 |
-  | (4,4) 16 | 97.0 | – | 11.8 | 63.8 | – | 11.6 |
-  | (6,6) 115 | 248 | – | 11.8 | 190 | – | 11.6 |
-  | (8,8) 996 | 939 | – | 11.9 | 307 | – | 11.7 |
+  | (2,2) 3 | 52.4 | 14 | 11.8 | 44.6 | 19 | 11.6 |
+  | (4,4) 16 | 97.0 | 23 | 11.8 | 63.8 | 24 | 11.6 |
+  | (6,6) 115 | 248 | 37 | 11.8 | 190 | 26 | 11.6 |
+  | (8,8) 996 | 939 | 62 | 11.9 | 307 | 90 | 11.7 |
 
 #### cc-pVTZ: 7 molecules
 
@@ -802,10 +802,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 2716 | 35 | 15.9 | 463 | 91 | 15.6 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 559 | 20 | 16.0 | 546 | 20 | 15.5 |
-  | (2,2) 3 | 72.0 | – | 15.7 | 55.3 | – | 15.6 |
-  | (4,4) 16 | 120 | – | 15.7 | 78.0 | – | 15.6 |
-  | (6,6) 115 | 446 | – | 15.9 | 332 | – | 15.6 |
-  | (8,8) 996 | 2972 | – | 15.9 | 460 | – | 15.8 |
+  | (2,2) 3 | 72.0 | 12 | 15.7 | 55.3 | 12 | 15.6 |
+  | (4,4) 16 | 120 | 18 | 15.7 | 78.0 | 16 | 15.6 |
+  | (6,6) 115 | 446 | 49 | 15.9 | 332 | 79 | 15.6 |
+  | (8,8) 996 | 2972 | 141 | 15.9 | 460 | 88 | 15.8 |
 
 * ![heptazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/heptazethrene.svg)
 
@@ -824,10 +824,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 1205 | 47 | 21.7 | 363 | 46 | 21.4 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 882 | 22 | 22.5 | 902 | 23 | 21.4 |
-  | (2,2) 3 | 108 | – | 21.5 | 98.5 | – | 21.3 |
-  | (4,4) 16 | 158 | – | 21.6 | 117 | – | 21.3 |
-  | (6,6) 115 | 446 | – | 21.7 | 942 | – | 21.3 |
-  | (8,8) 996 | 2630 | – | 21.8 | 994 | – | 21.5 |
+  | (2,2) 3 | 108 | 11 | 21.5 | 98.5 | 13 | 21.3 |
+  | (4,4) 16 | 158 | 15 | 21.6 | 117 | 14 | 21.3 |
+  | (6,6) 115 | 446 | 33 | 21.7 | 942 | 142 | 21.3 |
+  | (8,8) 996 | 2630 | 62 | 21.8 | 994 | 102 | 21.5 |
 
 * ![octazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/octazethrene.svg)
 
@@ -846,10 +846,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 1256 | 41 | 28.2 | 525 | 48 | 27.9 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 1368 | 29 | 29.7 | 1375 | 25 | 28.4 |
-  | (2,2) 3 | 161 | – | 28.0 | 142 | – | 27.8 |
-  | (4,4) 16 | 209 | – | 28.0 | 169 | – | 27.8 |
-  | (6,6) 115 | 348 | – | 28.0 | 274 | – | 27.8 |
-  | (8,8) 996 | 3590 | – | 28.1 | 543 | – | 28.0 |
+  | (2,2) 3 | 161 | 12 | 28.0 | 142 | 13 | 27.8 |
+  | (4,4) 16 | 209 | 14 | 28.0 | 169 | 14 | 27.8 |
+  | (6,6) 115 | 348 | 18 | 28.0 | 274 | 25 | 27.8 |
+  | (8,8) 996 | 3590 | 97 | 28.1 | 543 | 48 | 28.0 |
 
 * ![super-heptazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/super-heptazethrene.svg)
 
@@ -868,10 +868,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 2328 | 50 | 48.2 | 933 | 51 | 48.1 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 2399 | 26 | 49.8 | 2482 | 29 | 47.9 |
-  | (2,2) 3 | 263 | – | 48.2 | 244 | – | 47.9 |
-  | (4,4) 16 | 339 | – | 48.1 | 283 | – | 47.9 |
-  | (6,6) 115 | 2140 | – | 48.1 | 946 | – | 47.9 |
-  | (8,8) 996 | 2555 | – | 48.3 | 2296 | – | 48.0 |
+  | (2,2) 3 | 263 | 12 | 48.2 | 244 | 14 | 47.9 |
+  | (4,4) 16 | 339 | 14 | 48.1 | 283 | 14 | 47.9 |
+  | (6,6) 115 | 2140 | 81 | 48.1 | 946 | 58 | 47.9 |
+  | (8,8) 996 | 2555 | 56 | 48.3 | 2296 | 103 | 48.0 |
 
 * ![super-octazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/super-octazethrene.svg)
 
@@ -890,10 +890,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 1437 | 23 | 57.1 | 1051 | 38 | 58.2 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 3680 | 25 | 67.1 | 3843 | 28 | 65.2 |
-  | (2,2) 3 | 404 | – | 56.9 | 382 | – | 58.1 |
-  | (4,4) 16 | 487 | – | 56.9 | 430 | – | 58.0 |
-  | (6,6) 115 | 870 | – | 57.0 | 582 | – | 58.1 |
-  | (8,8) 996 | 6023 | – | 57.1 | 2415 | – | 58.2 |
+  | (2,2) 3 | 404 | 13 | 56.9 | 382 | 15 | 58.1 |
+  | (4,4) 16 | 487 | 14 | 56.9 | 430 | 15 | 58.0 |
+  | (6,6) 115 | 870 | 21 | 57.0 | 582 | 19 | 58.1 |
+  | (8,8) 996 | 6023 | 103 | 57.1 | 2415 | 78 | 58.2 |
 
 * ![pentacene-dimer: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/pentacene-dimer.svg)
 
@@ -912,10 +912,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 1226 | 15 | 68.1 | 582 | 14 | 63.9 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 6264 | 32 | 78.0 | 4620 | 19 | 77.4 |
-  | (2,2) 3 | 399 | – | 66.7 | 381 | – | 63.9 |
-  | (4,4) 16 | 531 | – | 66.9 | 453 | – | 64.0 |
-  | (6,6) 115 | 722 | – | 67.4 | 537 | – | 63.9 |
-  | (8,8) 996 | 1354 | – | 68.2 | 629 | – | 64.1 |
+  | (2,2) 3 | 399 | 10 | 66.7 | 381 | 12 | 63.9 |
+  | (4,4) 16 | 531 | 12 | 66.9 | 453 | 12 | 64.0 |
+  | (6,6) 115 | 722 | 13 | 67.4 | 537 | 13 | 63.9 |
+  | (8,8) 996 | 1354 | 15 | 68.2 | 629 | 14 | 64.1 |
 
 * ![super-nonazethrene: drawing of the computed geometry](https://reksstudio.github.io/v2/figures/cost/mol/super-nonazethrene.svg)
 
@@ -934,10 +934,10 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | (8,8) | 3536 | 48 | 72.4 | 1346 | 36 | 68.4 |
   | Excited states, states computed: TDA, SSR | | | | | | |
   | TDA \| CIS 20 | 9015 | 87 | 79.2 | 5667 | 32 | 80.6 |
-  | (2,2) 3 | 551 | – | 70.8 | 547 | – | 67.5 |
-  | (4,4) 16 | 722 | – | 71.0 | 669 | – | 67.7 |
-  | (6,6) 115 | 1006 | – | 71.3 | 833 | – | 67.9 |
-  | (8,8) 996 | 3635 | – | 72.5 | 5724 | – | 68.7 |
+  | (2,2) 3 | 551 | 13 | 70.8 | 547 | 16 | 67.5 |
+  | (4,4) 16 | 722 | 16 | 71.0 | 669 | 18 | 67.7 |
+  | (6,6) 115 | 1006 | 18 | 71.3 | 833 | 21 | 67.9 |
+  | (8,8) 996 | 3635 | 47 | 72.5 | 5724 | 145 | 68.7 |
 
 ### Hardware and test set
 
