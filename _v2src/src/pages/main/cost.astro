@@ -9,7 +9,7 @@ import CostDots from '../../components/main/CostDots.astro';
 import CostScatter from '../../components/main/CostScatter.astro';
 import CostMolCards from '../../components/main/CostMolCards.astro';
 import { landing, manualHref, resultHref } from '../../lib/overview.mjs';
-import { formulaMarkup as formula, toHtml } from '../../lib/inline.mjs';
+import { fmtCount, formulaMarkup as formula, toHtml } from '../../lib/inline.mjs';
 import {
   CODE, bases, buildLine, claimsMore, claimsText, codeHead, codeVersion, cost, dagger, fgib, figRows, fs, installed, iterA, jobShort,
   leadText, looseCases, looseMark, offLabel, panelOf, panels, reksBuild, setting, short, spaces, sysName, tightMark,
@@ -156,12 +156,14 @@ const memLine = `Peak memory, median over the ${SIX_LARGEST} largest molecules, 
 const molNote = `Wall: whole run in s, fastest converged of ${repeats} repeats; it.: SCF iterations of that repeat; peak memory: lowest of the ${repeats} repeats, GiB. Reference and TDA from SAD, SA-REKS and SSR from the converged reference orbitals (not timed).`;
 const seed = 'reads the converged reference orbitals (seed run not timed)';
 
-const shown = catalogue.rows.filter((r) => r.shown);
-const SUB = { ms: 'mixed-scheme', ss: 'single-spin', full: 'full' };
-const catLabel = (r) => (shown.filter((q) => q.space === r.space).length > 1 ? `${r.space}, ${SUB[r.subspace]}` : r.space);
-const catTable = {
-  head: ['Active space', 'Configurations', 'Catalogue size', 'Emission time, peak memory'],
-  rows: shown.map((r) => [catLabel(r), String(r.configs), r.size, `${r.emission_time}, ${r.peak_memory}`]),
+const contractionTable = {
+  head: ['Active space', 'Configurations', 'Threads', 'Wall time', 'Peak memory'],
+  rows: catalogue.contraction.map((r) => [r.space, fmtCount(r.configs, ' '), String(r.threads), r.wall, r.peak_memory]),
+};
+const allSpins = (space) => landing.count.find((c) => c.as === space).spins.reduce((a, b) => a + b, 0);
+const generationTable = {
+  head: ['Active space', 'Configurations', 'Catalogue size', 'Threads', 'Wall time', 'Peak memory'],
+  rows: catalogue.generation.map((r) => [r.space, fmtCount(allSpins(r.space), ' '), r.size, String(r.threads), r.wall, r.peak_memory]),
 };
 
 const sys = step.system;
@@ -368,14 +370,17 @@ const h = toHtml;
     <h3 id="equations">Equations, terms, determinants and catalogue size</h3>
     <Table table={landing.equations} numeric grouped ruler="Terms" />
     <p class="prov">* Determinants in the SCF: the default state-averaged ensemble and the recommended all-α determinant, as in the <a href={manualHref(base, 'input-patterns')}>Manual, Input patterns</a> example. The count depends on the active space, not on 2S.</p>
-    <p class="prov"><strong>Equations:</strong> nonzero Hamiltonian elements, <Fragment set:html={h(landing.engine.def)} />. <strong>Terms:</strong> symbolic terms of those elements after collection. <strong>Determinants:</strong> microstates of the sector's elements. <strong>Catalogue:</strong> size of the file of one spin sector. Generator runs give the terms up to (10,10) and at (12,12), 2S = 10 and 12; the other sectors are counted by symmetry classes, a count that reproduces every run. Catalogue sizes: generator runs; ~ marks an estimate. (14,14): size the file would have, not generated.</p>
+    <p class="prov"><strong>Equations:</strong> nonzero Hamiltonian elements, <Fragment set:html={h(landing.engine.def)} />. <strong>Terms:</strong> symbolic terms of those elements after collection. <strong>Determinants:</strong> microstates of the sector's elements. <strong>Catalogue:</strong> size of the file of one spin sector, from generator runs; † estimated value.</p>
   </section>
 
   <section class="mblock" id="catalogue">
     <h2>Catalogue</h2>
-    <Table table={catTable} />
-    <p>Symbolic contraction of the full (12,12) ensemble: {catalogue.contraction_1212.wall}, {catalogue.contraction_1212.peak}.</p>
-    <p class="prov"><strong>Provenance:</strong> paper v1, SI Tables 3 and 6: singlet sector, file format of the paper.</p>
+    <h3>Determinant contraction</h3>
+    <Table table={contractionTable} numeric />
+    <p class="prov">Symbolic Slater–Condon–Fock contraction, singlet sector. Up to (4,4) the time is engine start-up. <strong>Provenance:</strong> paper v1, SI Table 3.</p>
+    <h3>Catalogue generation</h3>
+    <Table table={generationTable} numeric />
+    <p class="prov">One file with every spin sector; the time covers the whole run, contraction included. <strong>Provenance:</strong> generator runs, current file format.</p>
   </section>
 
   <section class="mblock" id="largest-run">

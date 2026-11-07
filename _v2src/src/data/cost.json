@@ -3996,110 +3996,20 @@
   ]
  },
  "catalogue": {
-  "rows": [
-   {
-    "variant": "(2,2)",
-    "space": "(2,2)",
-    "subspace": "full",
-    "configs": 3,
-    "elements": 5,
-    "size": "1.7 KB",
-    "emission_time": "0.033 s",
-    "peak_memory": "40 MB",
-    "shown": true
-   },
-   {
-    "variant": "(4,4) ms",
-    "space": "(4,4)",
-    "subspace": "ms",
-    "configs": 9,
-    "elements": 42,
-    "size": "11.6 KB",
-    "emission_time": "0.035 s",
-    "peak_memory": "41 MB",
-    "shown": false
-   },
-   {
-    "variant": "(4,4)",
-    "space": "(4,4)",
-    "subspace": "full",
-    "configs": 18,
-    "elements": 159,
-    "size": "27.5 KB",
-    "emission_time": "0.040 s",
-    "peak_memory": "42 MB",
-    "shown": true
-   },
-   {
-    "variant": "(6,6) ss",
-    "space": "(6,6)",
-    "subspace": "ss",
-    "configs": 31,
-    "elements": 348,
-    "size": "57.9 KB",
-    "emission_time": "0.055 s",
-    "peak_memory": "43 MB",
-    "shown": false
-   },
-   {
-    "variant": "(6,6) ms",
-    "space": "(6,6)",
-    "subspace": "ms",
-    "configs": 45,
-    "elements": 953,
-    "size": "241 KB",
-    "emission_time": "0.080 s",
-    "peak_memory": "46 MB",
-    "shown": false
-   },
-   {
-    "variant": "(6,6)",
-    "space": "(6,6)",
-    "subspace": "full",
-    "configs": 161,
-    "elements": 12121,
-    "size": "1.99 MB",
-    "emission_time": "0.458 s",
-    "peak_memory": "80 MB",
-    "shown": true
-   },
-   {
-    "variant": "(8,8) ss",
-    "space": "(8,8)",
-    "subspace": "ss",
-    "configs": 94,
-    "elements": 2305,
-    "size": "454 KB",
-    "emission_time": "0.314 s",
-    "peak_memory": "68 MB",
-    "shown": false
-   },
-   {
-    "variant": "(8,8) ms",
-    "space": "(8,8)",
-    "subspace": "ms",
-    "configs": 355,
-    "elements": 47000,
-    "size": "11.9 MB",
-    "emission_time": "2.20 s",
-    "peak_memory": "177 MB",
-    "shown": true
-   },
-   {
-    "variant": "(8,8)",
-    "space": "(8,8)",
-    "subspace": "full",
-    "configs": 1934,
-    "elements": 1521969,
-    "size": "284 MB",
-    "emission_time": "62.4 s",
-    "peak_memory": "804 MB",
-    "shown": true
-   }
+  "contraction": [
+   { "space": "(2,2)", "configs": 3, "threads": 1, "wall": "0.098 s", "peak_memory": "34 MB" },
+   { "space": "(4,4)", "configs": 18, "threads": 1, "wall": "0.096 s", "peak_memory": "34 MB" },
+   { "space": "(6,6)", "configs": 161, "threads": 1, "wall": "0.272 s", "peak_memory": "65 MB" },
+   { "space": "(8,8)", "configs": 1934, "threads": 1, "wall": "27.66 s", "peak_memory": "284 MB" },
+   { "space": "(10,10)", "configs": 29082, "threads": 28, "wall": "469.4 s", "peak_memory": "3.30 GB" },
+   { "space": "(12,12)", "configs": 524292, "threads": 28, "wall": "40.47 h", "peak_memory": "83.0 GB" }
   ],
-  "contraction_1212": {
-   "wall": "40.47 h",
-   "peak": "83.0 GB"
-  }
+  "generation": [
+   { "space": "(2,2)", "threads": 8, "wall": "0.08 s", "peak_memory": "56.6 MB", "size": "2.76 KB" },
+   { "space": "(4,4)", "threads": 8, "wall": "0.09 s", "peak_memory": "74.3 MB", "size": "32.4 KB" },
+   { "space": "(6,6)", "threads": 8, "wall": "0.28 s", "peak_memory": "240 MB", "size": "1.91 MB" },
+   { "space": "(8,8)", "threads": 8, "wall": "15.5 s", "peak_memory": "3.85 GB", "size": "315 MB" },
+   { "space": "(10,10)", "threads": 96, "wall": "39.6 min", "peak_memory": "157 GB", "size": "74.5 GB" }
+  ]
  }
 }

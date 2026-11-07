@@ -286,6 +286,8 @@ header.hero{ padding: 28px 0 24px; }
 .tbl table.num{ min-width: 0; }
 .tbl table.num th:not(:first-child), .tbl table.num td:not(:first-child), .tbl table.grp td{ text-align: right; padding-left: 20px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .tbl table.grp tbody th{ font-weight: 400; white-space: nowrap; }
+/* note mark hangs past the right edge, units stay aligned */
+.tbl table:has(tfoot.eruler) td:last-child sup{ margin-right: -0.55em; }
 .tbl table.grp tbody tr:not(:last-child) td{ border-bottom: none; padding-bottom: 2px; }
 .tbl table.grp tbody tr:not(:first-child) td{ padding-top: 2px; }
 @media (max-width: 600px){
