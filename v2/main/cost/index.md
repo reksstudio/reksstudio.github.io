@@ -270,7 +270,7 @@ TC, closed shell, def2-TZVP
 
 ### Peak memory
 
-def2-TZVP, SI-SA-REKS(6,6): 41.6 GiB vs ORCA TDA 52.5 GiB (closed shell), 42.1 GiB vs ORCA SF-TDA 96.7 GiB (open shell).
+def2-TZVP, SI-SA-REKS(6,6): 41.6 GiB vs ORCA TDA 52.5 GiB (closed shell), 42.1 GiB vs ORCA SF-TDA 96.7 GiB (open shell).
 
 * REKS Studio
 * ORCA
