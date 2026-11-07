@@ -53,20 +53,12 @@ figure.mo .g span b{ color: var(--ink); font-weight: 600; }
 
 h2 code, h3 code, h4 code{ background: none; padding: 0; font-size: 0.9em; }
 
-/* MathML (temml) display math: centred, scrolls when wider than the column */
+/* MathML (temml) display math: centred */
 math[display="block"]{ max-width: min(74ch, 100%); margin: 4px 0 18px; padding: 2px 0; font-size: 1.15em; text-align: center; }
-.tml-right{ text-align: right; }
-.tml-left{ text-align: left; }
-.tml-jot > mtr > mtd{ padding-block: 0.35ex; }
-/* Chromium only (WebKit and Gecko excluded): mtd alignment needs the -webkit- values */
-@supports (not (-webkit-backdrop-filter: blur(1px))) and (not (-moz-appearance: none)){
-  .tml-right{ text-align: -webkit-right; }
-  .tml-left{ text-align: -webkit-left; }
-}
 
-/* code blocks: right-edge shade while a line overflows (gradient scrolls with content, shade stays) */
 pre{ border-radius: 6px; padding: 20px 22px; margin: 0 0 20px; }
 pre[data-language="log"]{ font-size: 0.78rem; }
+/* right-edge shade while a line overflows (local layer scrolls with content, scroll layer stays) */
 pre.astro-code{
   background-image: linear-gradient(to left, #10131A 30%, rgba(16,19,26,0)),
                     linear-gradient(to left, rgba(255,255,255,0.22), rgba(255,255,255,0));

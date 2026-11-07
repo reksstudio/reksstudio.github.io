@@ -905,7 +905,13 @@ Integrals and the DFT quadrature grid are evaluated once; every configuration of
 
 ## Configuration count
 
-Singlet configurations generated for P electron pairs, (2P,2P): n<sub>SI</sub> = 3<sup>P</sup> P! − (P! − C<sub>P</sub>), C<sub>P</sub> the Catalan number.
+Configurations generated for $P$ electron pairs, $(2P,2P)$, at spin $0 \le S \le P$:
+
+$$
+\begin{aligned} n_{\mathrm{SI}}(P,S) &= P!\binom{P}{S}\left(3^{P-S}-1\right) + f_S \\ f_S &= \binom{2P}{P-S} - \binom{2P}{P-S-1} \end{aligned}
+$$
+
+$f_S$: number of spin functions of spin $S$ on $2P$ open orbitals; $f_0$ is the Catalan number.
 
 ### Configurations generated per active space and spin
 
@@ -975,7 +981,7 @@ Linearly independent configurations per spin sector S and active space, log scal
 | (10,10) | 29 082 | 28 | 469.4 s | 3.30 GB |
 | (12,12) | 524 292 | 28 | 40.47 h | 83.0 GB |
 
-Symbolic Slater–Condon–Fock contraction, singlet sector. Up to (4,4) the time is engine start-up. **Provenance:** paper v1, SI Table 3.
+Symbolic Slater–Condon–Fock contraction, singlet sector. Up to (4,4) the time is engine start-up.
 
 ### Catalogue generation
 

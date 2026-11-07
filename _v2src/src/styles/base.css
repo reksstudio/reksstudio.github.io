@@ -4,6 +4,14 @@
 math{ font-family: 'STIX Two Math', 'Cambria Math', 'Noto Sans Math', math; }
 /* display math wider than its column scrolls inside its box */
 .mblk{ max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.tml-right{ text-align: right; }
+.tml-left{ text-align: left; }
+.tml-jot > mtr > mtd{ padding-block: 0.35ex; }
+/* Chromium only (WebKit and Gecko excluded): mtd alignment needs the -webkit- values */
+@supports (not (-webkit-backdrop-filter: blur(1px))) and (not (-moz-appearance: none)){
+  .tml-right{ text-align: -webkit-right; }
+  .tml-left{ text-align: -webkit-left; }
+}
 
 body{
   margin: 0;

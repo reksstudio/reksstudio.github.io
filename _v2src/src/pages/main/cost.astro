@@ -9,7 +9,7 @@ import CostDots from '../../components/main/CostDots.astro';
 import CostScatter from '../../components/main/CostScatter.astro';
 import CostMolCards from '../../components/main/CostMolCards.astro';
 import { landing, resultHref } from '../../lib/overview.mjs';
-import { fmtCount, formulaMarkup as formula, toHtml } from '../../lib/inline.mjs';
+import { fmtCount, formulaMarkup as formula, tex, toHtml } from '../../lib/inline.mjs';
 import {
   CODE, bases, buildLine, claimsMore, claimsText, codeHead, codeVersion, cost, dagger, fgib, figRows, fs, installed, iterA, jobShort,
   leadText, looseCases, looseMark, offLabel, panelOf, panels, reksBuild, setting, short, spaces, sysName, tightMark,
@@ -173,6 +173,8 @@ const stepTable = { head: ['Call', 'Wall / s'], rows: step.cases.map((c) => [c.l
 
 const install = `${base}docs/#install`;
 const h = toHtml;
+const m = (s) => tex(s, false);
+const countFormula = String.raw`\begin{aligned} n_{\mathrm{SI}}(P,S) &= P!\binom{P}{S}\left(3^{P-S}-1\right) + f_S \\ f_S &= \binom{2P}{P-S} - \binom{2P}{P-S-1} \end{aligned}`;
 ---
 <Base title="Cost — REKS Studio">
 <Nav variant="light" />
@@ -364,7 +366,9 @@ const h = toHtml;
 
   <section class="mblock" id="count">
     <h2>Configuration count</h2>
-    <p class="keyline">Singlet configurations generated for P electron pairs, (2P,2P): n<sub>SI</sub> = 3<sup>P</sup> P! − (P! − C<sub>P</sub>), C<sub>P</sub> the Catalan number.</p>
+    <p class="keyline" set:html={`Configurations generated for ${m('P')} electron pairs, ${m('(2P,2P)')}, at spin ${m(String.raw`0 \le S \le P`)}:`} />
+    <Fragment set:html={tex(countFormula, true)} />
+    <p class="prov" set:html={`${m('f_S')}: number of spin functions of spin ${m('S')} on ${m('2P')} open orbitals; ${m('f_0')} is the Catalan number.`} />
     <h3>Configurations generated per active space and spin</h3>
     <CountChart />
     <h3 id="equations">Equations, terms, determinants and catalogue size</h3>
@@ -376,7 +380,7 @@ const h = toHtml;
     <h2>Catalogue</h2>
     <h3>Determinant contraction</h3>
     <Table table={contractionTable} numeric />
-    <p class="prov">Symbolic Slater–Condon–Fock contraction, singlet sector. Up to (4,4) the time is engine start-up. <strong>Provenance:</strong> paper v1, SI Table 3.</p>
+    <p class="prov">Symbolic Slater–Condon–Fock contraction, singlet sector. Up to (4,4) the time is engine start-up.</p>
     <h3>Catalogue generation</h3>
     <Table table={generationTable} numeric />
     <p class="prov">One file with every spin sector; the time covers the whole run, contraction included.</p>
