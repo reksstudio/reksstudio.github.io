@@ -80,7 +80,7 @@ Bond dissociation against FCI in the same basis; H<sub>10</sub>: FCI out of reac
 
 Bonds broken along the full curve; R<sub>e</sub> against experiment: C<sub>2</sub>H<sub>4</sub>, N<sub>2</sub>.
 
-[C<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/index.md#c2)
+[C<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md)
 
 Curves against near-exact reference points; natural occupations and spectroscopic constants against experiment.
 

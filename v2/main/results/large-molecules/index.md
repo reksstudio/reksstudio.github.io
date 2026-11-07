@@ -18,7 +18,7 @@ Reference class: TNS, TTR: reference on a different object (experiment on a surf
 
 ## Atoms and active space of every published run
 
-Atoms against active space for every published REKS Studio run, one dot per dataset and distinct pair, each a link to its calculation; dashed line: largest REKS active space reported before this work, (4,4)
+Atoms against active space for every published REKS Studio run, one dot per dataset and distinct pair, each a link to its molecule or, where several share it, their list; dashed line: largest REKS active space reported before this work, (4,4)
 
 * Dissociation
 * QUEST

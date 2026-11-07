@@ -18,26 +18,26 @@ Model identities to ≤ 10<sup>−10</sup> E<sub>h</sub>; analytic gradients vs 
 
 Figure to be added: overview figure, max deviation per check against its criterion
 
-**Scope:** Exact checks of the generated equations reach (4,6) PPS and (2,2) SI couplings; (6,6) and (8,8) checks to be added.
+**Scope:** Exact checks of the generated equations cover PPS up to (4,6) and SI couplings at (2,2); (6,6) and (8,8) checks to be added.
 
 ## Model identities and size consistency
 
 | System | Quantity | Identity tested | Oracle | Criterion | Max deviation | Psi4 revision | Manual |
 | - | - | - | - | - | - | - | - |
-| BH | E(PPS1), REKS(2,3) | one geminal = CASSCF(2,M) | CASSCF(2,3) | to be added | ≤ 10<sup>−10</sup> E<sub>h</sub> | to be added | [Lone pair: REKS(2,3)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-lone-pair) |
-| to be added | E(PPS1), (4,4), (4,5), (4,6) | HF, δ → ∞: E(PPS1) = ⟨geminal product\|H\|geminal product⟩ | geminal product | to be added | ≤ 10<sup>−11</sup> E<sub>h</sub> | to be added | [Bond and lone pair](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-two-pairs) |
+| BH | E(PPS1), REKS(2,3) | Hartree–Fock, δ → ∞: one geminal = CASSCF(2,M) | CASSCF(2,3) | to be added | ≤ 10<sup>−10</sup> E<sub>h</sub> | to be added | [Lone pair: REKS(2,3)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-lone-pair) |
+| BH | E(PPS1), (4,4)–(4,6) | Hartree–Fock, δ → ∞: E(PPS1) = ⟨geminal product\|H\|geminal product⟩ | geminal product | to be added | ≤ 10<sup>−11</sup> E<sub>h</sub> | to be added | [Bond and lone pair](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-two-pairs) |
 | H<sub>2</sub> | GVB(2,2)–(2,4) | GVB = CASSCF | CASSCF | to be added | ≤ 9.9·10<sup>−12</sup> E<sub>h</sub> | to be added (rerun at the site revision) | to be added |
-| two H<sub>2</sub> at 50 Å | total energy | E(2 H<sub>2</sub>) = 2 E(H<sub>2</sub>) | two separate runs | to be added | 9.3·10<sup>−11</sup> E<sub>h</sub> | to be added (rerun at the site revision) | to be added |
+| two different H<sub>2</sub>, 50 Å apart | (4,4)–(4,6) | E(A + B) = E(A) + E(B) | two separate runs | to be added | ≤ 9.3·10<sup>−11</sup> E<sub>h</sub> | to be added (rerun at the site revision) | to be added |
 | He–H–H | SI couplings | SI couplings = MO-integral evaluation | MO-integral oracle | to be added | agreement to 6 decimals | to be added (rerun at the site revision) | to be added |
-| BH | ¹Π / ³Π pairs | degenerate states stay degenerate | symmetry | to be added | 1.6·10<sup>−7</sup> E<sub>h</sub> | to be added | [States: SI-SA-REKS(2,3)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-states) |
+| BH | <sup>1</sup>Π and <sup>3</sup>Π | the two components of each stay degenerate | symmetry | to be added | 1.6·10<sup>−7</sup> E<sub>h</sub> | to be added | [States: SI-SA-REKS(2,3)](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-states) |
 
 ## Derivatives and dynamics
 
 | System | Quantity | Identity tested | Oracle | Criterion | Max deviation | Psi4 revision | Manual |
 | - | - | - | - | - | - | - | - |
 | C<sub>2</sub>H<sub>4</sub> | analytic gradients | analytic = derivative of E | FD5 | to be added | 5.6·10<sup>−7</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup> | to be added | [Gradients and couplings against FD](https://reksstudio.github.io/v2/manual/dynamics/index.md#grad-fd) |
-| butadiene, (4,4) | analytic gradients | analytic = derivative of E | FD5 | to be added | 8.0·10<sup>−6</sup> / 3.2·10<sup>−6</sup> / 7.1·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup> (80° near-degenerate case) | to be added | [Gradients and couplings against FD](https://reksstudio.github.io/v2/manual/dynamics/index.md#grad-fd) |
-| BH, wide geminals | analytic gradients, all roots | analytic = derivative of E | FD5 | to be added | 2.9·10<sup>−9</sup> … 7.8·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup> | to be added | [Gradients](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-gradients) |
+| butadiene, (4,4) | analytic gradients | analytic = derivative of E | FD5 | to be added | 8.0·10<sup>−6</sup> / 3.2·10<sup>−6</sup> / 7.1·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup> (distorted in plane, 75°, 80° near-degenerate) | to be added | [Gradients and couplings against FD](https://reksstudio.github.io/v2/manual/dynamics/index.md#grad-fd) |
+| BH, wide geminals | analytic gradients, all roots | analytic = derivative of E | FD5 | to be added | 2.9·10<sup>−9</sup> … 7.8·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup> (Hartree–Fock, δ → ∞) | to be added | [Gradients](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-gradients) |
 | C<sub>2</sub>H<sub>4</sub> | NAC, model part | model part = FD of H and S | FD | to be added | to be added | to be added | [Gradients and couplings against FD](https://reksstudio.github.io/v2/manual/dynamics/index.md#grad-fd) |
 | C<sub>2</sub>H<sub>4</sub> S1, hexatriene T1 | MD total energy | to be added (no exact oracle; dt² scaling candidate) | to be added | to be added | to be added | to be added | [Check the trajectory](https://reksstudio.github.io/v2/manual/dynamics/index.md#check-trajectory) |
 

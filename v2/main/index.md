@@ -10,7 +10,7 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 H2 dissociation energy against H–H distance, 0.5 to 3.5 Å: ordinary DFT (RKS) rises to -0.8828 Eh at 3.5 Å, exact FCI and REKS Studio (SSR) level off near -1.0000 and -0.9923 Eh. H2 dissociation: SSR(2,2) and RKS, BH\&HLYP; FCI; all aug-cc-pVTZ.
 
-[H<sub>2</sub> dissociation: SSR(2,2) and RKS, BH\&HLYP; FCI; all aug-cc-pVTZ →](https://reksstudio.github.io/v2/main/results/dissociation/index.md#h2)
+[H<sub>2</sub> dissociation: SSR(2,2) and RKS, BH\&HLYP; FCI; all aug-cc-pVTZ →](https://reksstudio.github.io/v2/main/results/dissociation/h2/index.md)
 
 [See the evidence ↓](#evidence) [Install, free](https://reksstudio.github.io/v2/docs/index.md#install)
 

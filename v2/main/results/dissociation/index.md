@@ -26,7 +26,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
 
 ## Systems
 
-* [![H₂: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h2.svg)](#h2)
+* [![H₂: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h2.svg)](https://reksstudio.github.io/v2/main/results/dissociation/h2/index.md)
 
   [H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h2/index.md) SSR(2,2)
 
@@ -34,7 +34,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
 
   SSR vs FCI, same basis
 
-* [![H₄: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h4.svg)](#h4)
+* [![H₄: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h4.svg)](https://reksstudio.github.io/v2/main/results/dissociation/h4/index.md)
 
   [H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h4/index.md) SSR(4,4)
 
@@ -42,7 +42,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
 
   SSR vs FCI, same basis
 
-* [![H₆: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h6.svg)](#h6)
+* [![H₆: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h6.svg)](https://reksstudio.github.io/v2/main/results/dissociation/h6/index.md)
 
   [H<sub>6</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h6/index.md) SSR(6,6)
 
@@ -50,7 +50,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
 
   SSR vs FCI, same basis
 
-* [![H₈: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h8.svg)](#h8)
+* [![H₈: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h8.svg)](https://reksstudio.github.io/v2/main/results/dissociation/h8/index.md)
 
   [H<sub>8</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h8/index.md) SSR(8,8)
 
@@ -58,7 +58,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
 
   SSR vs FCI, same basis
 
-* [![H₁₀: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h10.svg)](#h10)
+* [![H₁₀: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/h10.svg)](https://reksstudio.github.io/v2/main/results/dissociation/h10/index.md)
 
   [H<sub>10</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h10/index.md) SSR(10,10)
 
@@ -66,7 +66,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
 
   SSR; FCI out of reach
 
-* [![C₂H₄: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/c2h4.svg)](#c2h4)
+* [![C₂H₄: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/c2h4.svg)](https://reksstudio.github.io/v2/main/results/dissociation/c2h4/index.md)
 
   [C<sub>2</sub>H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2h4/index.md) SSR(4,4)
 
@@ -74,7 +74,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
   | - | - | - |
   | R<sub>e</sub> Å | 1.333 | 1.3305 |
 
-* [![N₂: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/n2.svg)](#n2)
+* [![N₂: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/n2.svg)](https://reksstudio.github.io/v2/main/results/dissociation/n2/index.md)
 
   [N<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/n2/index.md) SSR(6,6)
 
@@ -82,7 +82,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
   | - | - | - |
   | R<sub>e</sub> Å | 1.096 | 1.0977 |
 
-* [![C₂H₂: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/c2h2.svg)](#c2h2)
+* [![C₂H₂: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/c2h2.svg)](https://reksstudio.github.io/v2/main/results/dissociation/c2h2/index.md)
 
   [C<sub>2</sub>H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2h2/index.md) SSR(6,6)
 
@@ -90,7 +90,7 @@ The most demanding case is the carbon dimer, C<sub>2</sub>, whose quadruple bond
   | - | - |
   | R<sub>e</sub> Å | 1.205 |
 
-* [![C₂: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/c2.svg)](#c2)
+* [![C₂: drawing at R_e of S0](https://reksstudio.github.io/v2/figures/dissociation/c2.svg)](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md)
 
   [C<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md) SSR(6,6)
 

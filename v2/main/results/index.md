@@ -8,293 +8,273 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 # Results
 
-Ensemble DFT (REKS, SSR states) for broken bonds, diradicals and excited states, checked against exact identities of the equations, near-exact theory, benchmark estimates and experiment.
+Ensemble DFT ([REKS](https://reksstudio.github.io/v2/manual/concepts/index.md#ensemble-fons), [SSR states](https://reksstudio.github.io/v2/manual/concepts/index.md#ssr-states)) for broken bonds, diradicals and excited states, checked four ways.
 
-[Index by problem: every molecule, curve and table](#index)
+REKS: ensemble Kohn–Sham orbitals with fractional occupations. SSR (SI-SA-REKS): the adiabatic states built on these orbitals.
 
-[Implementation](#index-implementation) · [Bond breaking](#index-bond-breaking) · [Excited states](#index-excited-states) · [Diradicals and magnetism](#index-diradicals-and-magnetism) · [Photochemistry](#index-photochemistry) · [Cost and history](#index-cost-and-history)
+[Komarov et al., ChemRxiv 2026](https://doi.org/10.26434/chemrxiv.15008475/v1)
 
-1. [exact identities, finite differences](#exact) identities ≤ 10<sup>−10</sup> E<sub>h</sub>, degeneracy 1.6·10<sup>−7</sup> E<sub>h</sub>; gradients vs five-point FD ≤ 7.8·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup>; up to (4,6) PPS and (2,2) SI couplings 9 checks
-2. [near-exact theory](#near-exact) H<sub>2</sub>–H<sub>8</sub>, SSR (2,2)–(8,8): S0 vs FCI in the same basis; H<sub>6</sub>, H<sub>8</sub>: FCI 6-31G(d) above SSR; C<sub>2</sub> vs SHCI, shifted −89.23 mE<sub>h</sub> 140 FCI points · 46 SHCI points
-3. [benchmark (TBE)](#tbe) MAE 0.21–0.23 eV, MSE +0.105 to +0.149 eV, three functionals; per state the closest active space of (2,2)–(8,8) 192 state pairs
-4. [experiment](#experiment) Δ R<sub>e</sub> −0.015 to +0.025 Å (C<sub>2</sub>H<sub>4</sub>, N<sub>2</sub>, C<sub>2</sub>); C<sub>2</sub> T<sub>e</sub> −0.49 to −0.06 eV; zethrene absorption +0.27 to +0.81 eV (4 of 9 author-assigned); FP-M 2J −4.51 kcal mol<sup>−1</sup> 3 gas-phase molecules · 10 zethrene-family molecules (5 cores)
+[(6,6) multireference excited states, 1260 basis functions, in less wall time than ORCA TDA and SF-TDA.](#run)
 
-Runs of the dissociation, QUEST, zethrene and large-molecule pages
+[Install, free](https://reksstudio.github.io/v2/docs/index.md#install)
 
-Runs of the dissociation, QUEST, zethrene and large-molecule pages: atoms (log axis) against REKS active space; each mark a link to its calculation, every calculation also listed in the index
+REKS(12,12) at 192 atoms; largest REKS before this work: (4,4)each dot opens its molecule or, where several share it, their list
 
-implementation vs exact identities and finite differences
+REKS(12,12) at 192 atoms; largest REKS before this work: (4,4): atoms (log axis) against REKS active space; shaded rows: from the install, up to (6,6); each mark a link to its molecule or, where several share it, their list
+
+1. [**1** Exact identities ≤ 10<sup>−10</sup> E<sub>h</sub> split of degenerate components 1.6·10<sup>−7</sup> E<sub>h</sub>; gradients vs FD ≤ 7.8·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup> 9 checks](#exact)
+2. [**2** Near-exact theory 140 FCI points S<sub>0</sub> of H<sub>2</sub>–H<sub>8</sub>: SSR (2,2)–(8,8) vs FCI in the SSR basis 46 SHCI points, C<sub>2</sub>, 4 states](#near-exact)
+3. [**3** Benchmark (TBE) 0.21–0.23 eV MAE of vertical excitation energies, three functionals; per state the active space closest to the TBE, (2,2)–(8,8) 192 state pairs, 62 molecules](#tbe)
+4. [**4** Experiment −0.015 to +0.025 Å Δ R<sub>e</sub>: C<sub>2</sub>H<sub>4</sub>, N<sub>2</sub>, C<sub>2</sub>. Δ T<sub>1</sub>, PAHs: −0.01 to +0.08 eV. Δ absorption, 4 bands assigned to H→L: +0.32 to +0.71 eV 3 gas-phase molecules, 7 derivatives of 5 PAHs](#experiment)
+
+[Exactness](https://reksstudio.github.io/v2/main/results/exactness/index.md)[Dissociation](https://reksstudio.github.io/v2/main/results/dissociation/index.md)[QUEST](https://reksstudio.github.io/v2/main/results/quest/index.md)[Large molecules](https://reksstudio.github.io/v2/main/results/large-molecules/index.md)[Zethrenes](https://reksstudio.github.io/v2/main/results/zethrenes/index.md)[C<sub>2</sub>H<sub>4</sub> photochemistry](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md)[Cost](#run)[62 molecules](#molecules-list)[Index](#index)
+
+**1** Code vs exact results
 
 ## Identities and finite-difference checks {#exact-h}
 
-Energy identities / E<sub>h</sub>
+Exact checks of the generated equations cover PPS up to (4,6) and SI couplings at (2,2).
 
-a limit, equality or symmetry the equations fix exactly
+### Energy identities / E<sub>h</sub>
 
-* BH · E(PPS1), REKS(2,3)
+Against exact limits, equalities and symmetry.
 
-  * one geminal = CASSCF(2,M) · vs CASSCF(2,3)
-  * ≤ 10<sup>−10</sup> E<sub>h</sub>
+* [H<sub>2</sub>, GVB(2,2)–(2,4)GVB = CASSCF ≤ 9.9·10<sup>−12</sup>](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
+* [BH, E(PPS1), (4,4)–(4,6)Hartree–Fock, δ → ∞: E(PPS1) = ⟨geminal product|H|geminal product⟩ ≤ 10<sup>−11</sup>](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
+* [two different H<sub>2</sub>, 50 Å apart, (4,4)–(4,6)E(A + B) = E(A) + E(B) ≤ 9.3·10<sup>−11</sup>](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
+* [BH, E(PPS1), REKS(2,3)Hartree–Fock, δ → ∞: one geminal = CASSCF(2,M) ≤ 10<sup>−10</sup>](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
+* [BH, <sup>1</sup>Π and <sup>3</sup>Πthe two components of each stay degenerate 1.6·10<sup>−7</sup>](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
+* [He–H–H, SI couplingsSI couplings = MO-integral evaluation agreement to 6 decimals](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities)
 
-* E(PPS1), (4,4), (4,5), (4,6)
+### Analytic gradients / E<sub>h</sub> a<sub>0</sub><sup>−1</sup>
 
-  * HF, δ → ∞: E(PPS1) = ⟨geminal product|H|geminal product⟩ · vs geminal product
-  * ≤ 10<sup>−11</sup> E<sub>h</sub>
+Against five-point finite differences of the same energy.
 
-* H<sub>2</sub> · GVB(2,2)–(2,4)
+* [C<sub>2</sub>H<sub>4</sub> 5.6·10<sup>−7</sup>](https://reksstudio.github.io/v2/main/results/exactness/index.md#derivatives)
+* [butadiene, (4,4)distorted in plane, 75°, 80° near-degenerate 8.0·10<sup>−6</sup> 3.2·10<sup>−6</sup> 7.1·10<sup>−5</sup>](https://reksstudio.github.io/v2/main/results/exactness/index.md#derivatives)
+* [BH, wide geminals, all rootsHartree–Fock, δ → ∞ 2.9·10<sup>−9</sup> to 7.8·10<sup>−5</sup>](https://reksstudio.github.io/v2/main/results/exactness/index.md#derivatives)
 
-  * GVB = CASSCF · vs CASSCF
-  * ≤ 9.9·10<sup>−12</sup> E<sub>h</sub>
+[Exactness checks](https://reksstudio.github.io/v2/main/results/exactness/index.md)[Manual: gradients and couplings against FD](https://reksstudio.github.io/v2/manual/dynamics/index.md#grad-fd)
 
-* two H<sub>2</sub> at 50 Å · total energy
-
-  * E(2 H<sub>2</sub>) = 2 E(H<sub>2</sub>) · vs two separate runs
-  * 9.3·10<sup>−11</sup> E<sub>h</sub>
-
-* BH · ¹Π / ³Π pairs
-
-  * degenerate states stay degenerate · vs symmetry
-  * 1.6·10<sup>−7</sup> E<sub>h</sub>
-
-- He–H–H · SI couplings
-
-  * SI couplings = MO-integral evaluation · vs MO-integral oracle
-  * agreement to 6 decimals
-
-Analytic gradients vs five-point finite differences / E<sub>h</sub> a<sub>0</sub><sup>−1</sup>
-
-finite differences of the same energy
-
-* C<sub>2</sub>H<sub>4</sub> · analytic gradients
-
-  * analytic = derivative of E · vs FD5
-  * 5.6·10<sup>−7</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup>
-
-* butadiene, (4,4) · analytic gradients
-
-  * analytic = derivative of E · vs FD5
-  * 8.0·10<sup>−6</sup> / 3.2·10<sup>−6</sup> / 7.1·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup>(80° near-degenerate case)
-
-* BH, wide geminals · analytic gradients, all roots
-
-  * analytic = derivative of E · vs FD5
-  * 2.9·10<sup>−9</sup> … 7.8·10<sup>−5</sup> E<sub>h</sub> a<sub>0</sub><sup>−1</sup>
-
-Exact checks of the generated equations reach (4,6) PPS and (2,2) SI couplings.
-
-[Exactness checks](https://reksstudio.github.io/v2/main/results/exactness/index.md)[Identities](https://reksstudio.github.io/v2/main/results/exactness/index.md#identities) · [Derivatives](https://reksstudio.github.io/v2/main/results/exactness/index.md#derivatives) · Manual [Gradients and couplings against FD](https://reksstudio.github.io/v2/manual/dynamics/index.md#grad-fd)
-
-model vs near-exact theory
+**2** Model vs near-exact theory
 
 ## Bond breaking {#near-exact-h}
 
-FCI: exact in the given basis. SHCI: selected CI extrapolated to the FCI limit.
+SSR S<sub>0</sub> against FCI (H<sub>2</sub>–H<sub>8</sub>) and SHCI (C<sub>2</sub>). BH\&HLYP unless stated.
 
-H₈ S0 dissociation curve, (8,8) BH\&HLYP/6-31G(d): SSR as a line, FCI 6-31G(d), above SSR as circles, FCI cc-pVDZ, 2 points as squares; vertical extent 528 mEh; scale bar 50 mEh
+* [H<sub>2</sub>(2,2) · aug-cc-pVTZ H₂ S0 curve, SSR line, RKS dashed, FCI points; scale bar 50 mEh 46 FCI points](https://reksstudio.github.io/v2/main/results/dissociation/h2/index.md)
 
-H<sub>2</sub>
+* [H<sub>4</sub>(4,4) · aug-cc-pVTZ H₄ S0 curve, SSR line, RKS dashed, FCI points; scale bar 50 mEh 11 FCI points](https://reksstudio.github.io/v2/main/results/dissociation/h4/index.md)
 
-H₂ S0 curve, SSR line, FCI points; extent 179 mEh; scale bar 50 mEh
+* [H<sub>6</sub>(6,6) · 6-31G H₆ S0 curve, SSR line, RKS dashed, FCI points; scale bar 50 mEh 40 FCI points †](https://reksstudio.github.io/v2/main/results/dissociation/h6/index.md)
 
-extent 179 mE<sub>h</sub>
+* [H<sub>8</sub>(8,8) · 6-31G H₈ S0 curve, SSR line, RKS dashed, FCI points; scale bar 50 mEh 43 FCI points †](https://reksstudio.github.io/v2/main/results/dissociation/h8/index.md)
 
-H<sub>4</sub>
+* [H<sub>10</sub>(10,10) · 6-31G H₁₀ S0 curve, SSR line, RKS dashed; scale bar 50 mEh no reference](https://reksstudio.github.io/v2/main/results/dissociation/h10/index.md)
 
-H₄ S0 curve, SSR line, FCI points; extent 434 mEh; scale bar 50 mEh
+* [C<sub>2</sub>H<sub>2</sub>(6,6) · aug-cc-pVTZ C₂H₂ S0 curve, SSR line; scale bar 50 mEh no reference](https://reksstudio.github.io/v2/main/results/dissociation/c2h2/index.md)
 
-extent 434 mE<sub>h</sub>
+* [C<sub>2</sub>(6,6) · M08-SO · cc-pV5Z C₂ S0 curve, SSR line, SHCI points; scale bar 50 mEh X<sup>1</sup>Σ<sub>g</sub><sup>+</sup>: 12 of 46 SHCI points, shifted by −89.23 mE<sub>h</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md)
 
-H<sub>6</sub>
+* * **Solid line
 
-H₆ S0 curve, SSR line, FCI points; extent 399 mEh; scale bar 50 mEh
+    SSR S<sub>0</sub>
 
-extent 399 mE<sub>h</sub>
+  * **Dashed line
 
-H<sub>10</sub>
+    RKS, same functional
 
-H₁₀ S0 curve, SSR line; extent 631 mEh; scale bar 50 mEh
+  * **Circle
 
-extent 631 mE<sub>h</sub>
+    FCI: exact in the panel's basis. SHCI (C<sub>2</sub>): selected CI extrapolated to the frozen-core FCI limit
 
-C<sub>2</sub>H<sub>2</sub>
+  * **Square
 
-C₂H₂ S0 curve, SSR line; extent 757 mEh; scale bar 50 mEh
+    FCI in a larger basis. H<sub>6</sub>: aug-cc-pVDZ, 1 point; H<sub>8</sub>: cc-pVDZ, 2 points
 
-extent 757 mE<sub>h</sub>
+  * **Bar
 
-C<sub>2</sub>
+    50 mE<sub>h</sub>, drawn to each panel's scale
 
-C₂ S0 curve, SSR line, SHCI points, SHCI shifted −89.23 mEh; extent 378 mEh; scale bar 50 mEh
+  * †
 
-extent 378 mE<sub>h</sub> · SHCI shifted −89.23 mE<sub>h</sub>
-
-Extent: vertical range of each panel. Bars: 50 mE<sub>h</sub> in the scale of each panel. Lines: SSR S0; points: reference.
-
-H<sub>2</sub>–H<sub>8</sub>, SSR (2,2)–(8,8): S0 against FCI in the same basis; C<sub>2</sub> X<sup>1</sup>Σ<sub>g</sub><sup>+</sup> against SHCI points
-
-* [H<sub>8</sub> curves](https://reksstudio.github.io/v2/main/results/dissociation/h8/index.md) (8,8) · BH\&HLYP · 6-31G(d) (on H: 6-31G) · R 0.7–4.925 Å · 43 FCI pointsFCI lies above SSR in this basis: FCI with a small basis set cannot fully capture the correlation energy; FCI cc-pVDZ (2 points) on the page
-* [H<sub>2</sub> curves](https://reksstudio.github.io/v2/main/results/dissociation/h2/index.md) (2,2) · BH\&HLYP · aug-cc-pVTZ · R 0.5–5 Å · 46 FCI points
-* [H<sub>4</sub> curves](https://reksstudio.github.io/v2/main/results/dissociation/h4/index.md) (4,4) · BH\&HLYP · aug-cc-pVTZ · R 0.5–5 Å · 11 FCI points
-* [H<sub>6</sub> curves](https://reksstudio.github.io/v2/main/results/dissociation/h6/index.md) (6,6) · BH\&HLYP · 6-31G(d) (on H: 6-31G) · R 0.7–4.65 Å · 40 FCI pointsFCI lies above SSR in this basis: FCI with a small basis set cannot fully capture the correlation energy; FCI aug-cc-pVDZ (1 point) on the page
-* [H<sub>10</sub> curves](https://reksstudio.github.io/v2/main/results/dissociation/h10/index.md) (10,10) · BH\&HLYP · 6-31G(d) (on H: 6-31G) · R 0.7–4.8 Å · 83 SSR points
-* [C<sub>2</sub>H<sub>2</sub> curves](https://reksstudio.github.io/v2/main/results/dissociation/c2h2/index.md) (6,6) · BH\&HLYP · aug-cc-pVTZ · R 0.8–5 Å · 85 SSR points
-* [C<sub>2</sub> curves and constants](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md) (6,6) · M08-SO · cc-pV5Z · R 0.9–2.55 Å · 46 SHCI pointsSHCI extrapolated to the FCI limit, frozen core, cc-pV5Z; shifted by −89.23 mE<sub>h</sub>
+    FCI above SSR: FCI with a small basis set cannot fully capture the correlation energy; DFT-based methods are less sensitive to basis set size.
 
 [All dissociation curves](https://reksstudio.github.io/v2/main/results/dissociation/index.md)
 
-model vs benchmark set (TBE)
+**3** Model vs benchmark
 
 ## Excited states against TBE {#tbe-h}
 
-TBE: theoretical best estimates of the QUEST database, sets QUEST3, 5, 6, 7
+Vertical excitation energies against theoretical best estimates (TBE) of the QUEST database, sets QUEST3, 5, 6, 7.
+
+0.21–0.23 eVmean absolute error by functional
 
 Distribution of delta = E(SSR, closest active space) minus E(TBE) per state and functional, 0.1 eV bins on a common axis -1.4 to 1.4 eV; S1 BH\&HLYP: MAE 0.248, MSE +0.134 eV; S1 M08-SO: MAE 0.233, MSE +0.086 eV; S1 ωB97X: MAE 0.224, MSE +0.156 eV; S2 BH\&HLYP: MAE 0.271, MSE +0.113 eV; S2 M08-SO: MAE 0.296, MSE +0.043 eV; S2 ωB97X: MAE 0.289, MSE +0.133 eV; T1 BH\&HLYP: MAE 0.140, MSE +0.116 eV; T1 M08-SO: MAE 0.217, MSE +0.200 eV; T1 ωB97X: MAE 0.192, MSE +0.180 eV; T2 BH\&HLYP: MAE 0.190, MSE +0.041 eV; T2 M08-SO: MAE 0.180, MSE +0.139 eV; T2 ωB97X: MAE 0.178, MSE +0.121 eV
 
-Δ = E(SSR, closest active space) − E(TBE) / eV; tick: MSE; bar height: count, common scale.
-
-0.21–0.23 eV MAE, per state the closest of (2,2)–(8,8) to the TBE; BH\&HLYP, M08-SO, ωB97X
+Δ = ΔE(SSR) − TBE, eV** mean signed error · bar height: count, common scale · number under each state: pairs
 
 | eV | BH\&HLYP | M08-SO | ωB97X |
 | - | - | - | - |
-| MAE | 0.212 | 0.230 | 0.220 |
-| MedAE | 0.131 | 0.169 | 0.158 |
-| MSE | +0.105 | +0.118 | +0.149 |
-| SDE | 0.280 | 0.294 | 0.267 |
+| Mean absolute (MAE) | 0.212 | 0.230 | 0.220 |
+| Median absolute | 0.131 | 0.169 | 0.158 |
+| Mean signed | +0.105 | +0.118 | +0.149 |
+| Standard deviation | 0.280 | 0.294 | 0.267 |
 
-N = 192 pairs of 62 molecules (59 / 41 / 50 / 42 S<sub>1</sub>/S<sub>2</sub>/T<sub>1</sub>/T<sub>2</sub>); aug-cc-pVTZ
+* Set
 
-Per state and functional, the active space of (2,2)–(8,8) closest to the TBE among those computed; each SSR state paired with one TBE state of the same multiplicity.
+  192 pairs of 62 molecules, aug-cc-pVTZ (one TBE: cc-pVTZ); 35 molecules with S<sub>1</sub>, S<sub>2</sub>, T<sub>1</sub> and T<sub>2</sub>
 
-35 of 62 molecules with all four states; valence and charge-transfer states, no Rydberg state among the pairs.
+* States
 
-[QUEST: errors by state](https://reksstudio.github.io/v2/main/results/quest/index.md#errors)[By QUEST set](https://reksstudio.github.io/v2/main/results/quest/index.md#sets) · [Full table](https://reksstudio.github.io/v2/main/results/quest/index.md#table) · [All 62 molecules](#index-excited-states)
+  valence and charge-transfer, no Rydberg state among the pairs
 
-model vs experiment
+* Active space
+
+  per state and functional, the computed one of (2,2)–(8,8) closest to the TBE
+
+* Pairing
+
+  per functional, each SSR state with one TBE state of the same multiplicity
+
+* Numbering
+
+  S<sub>1</sub>…T<sub>2</sub>: order in the TBE list of the molecule or, where that state has no SSR partner, in SSR
+
+[QUEST: errors by state](https://reksstudio.github.io/v2/main/results/quest/index.md#errors)[By set](https://reksstudio.github.io/v2/main/results/quest/index.md#sets)[Full table](https://reksstudio.github.io/v2/main/results/quest/index.md#table)[All 62 molecules](#molecules-list)
+
+**4** Model vs experiment
 
 ## Against experiment {#experiment-h}
 
-measured values the result pages compare; how each value is assigned to a state is stated on its page
+Δ = SSR − experiment. Gas-phase molecules: BH\&HLYP/aug-cc-pVTZ unless noted. Each page states which state a value belongs to. Rulers: 0 at the black tick, ends ±0.03 Å, ±0.9 eV.
 
-SSR − experiment; BH\&HLYP/aug-cc-pVTZ unless stated
+* ### [C<sub>2</sub>H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2h4/index.md)
 
-* ![C₂H₄](https://reksstudio.github.io/v2/figures/dissociation/c2h4.svg)
+  ![C₂H₄](https://reksstudio.github.io/v2/figures/dissociation/c2h4.svg)
 
-  ### C<sub>2</sub>H<sub>4</sub>
+  * Δ R<sub>e</sub> / Å
 
-  * R<sub>e</sub>
-
-    * Δ +0.002 Å
-    * SSR 1.3327 · exp. 1.3305 Å
+    * +0.002
+    * SSR 1.3327 · exp. 1.3305
 
   rigid R<sub>CC</sub> scan
 
-  [C<sub>2</sub>H<sub>4</sub> numbers](https://reksstudio.github.io/v2/main/results/dissociation/c2h4/index.md#numbers)
+* ### [N<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/n2/index.md)
 
-  Photochemistry[MECI](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md#meci)[Torsion TS](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md#ts)[Trajectory](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md#trajectory)[Worked inputs (Manual: dynamics)](https://reksstudio.github.io/v2/manual/dynamics/index.md#dynamics-inputs)
+  ![N₂](https://reksstudio.github.io/v2/figures/dissociation/n2.svg)
 
-* ![N₂](https://reksstudio.github.io/v2/figures/dissociation/n2.svg)
+  * Δ R<sub>e</sub> / Å
 
-  ### N<sub>2</sub>
-
-  * R<sub>e</sub>
-
-    * Δ −0.002 Å
-    * SSR 1.096 · exp. 1.0977 Å
+    * −0.002
+    * SSR 1.096 · exp. 1.0977
 
   R<sub>e</sub> from Fig. 3 of Komarov et al. 2026
 
-  [N<sub>2</sub> numbers](https://reksstudio.github.io/v2/main/results/dissociation/n2/index.md#numbers)
+* ### [C<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md)
 
-* ![C₂](https://reksstudio.github.io/v2/figures/dissociation/c2.svg)
+  ![C₂](https://reksstudio.github.io/v2/figures/dissociation/c2.svg)
 
-  ### C<sub>2</sub>
+  * Δ R<sub>e</sub> / Å
 
-  * R<sub>e</sub>
-
-    * Δ −0.015 to +0.025 Å
+    * −0.015 to +0.025
     * 4 states
 
-  * T<sub>e</sub>
+  * Δ T<sub>e</sub> / eV
 
-    * Δ −0.49 to −0.06 eV
+    * −0.49 to −0.06
     * 3 states
 
-  * D<sub>e</sub>
+  * D<sub>e</sub> / eV
 
-    * 6.29 vs 6.32 ± 0.2 eV
-    * SSR vs exp.
+    * 6.29 vs 6.32 ± 0.2
+    * SSR vs exp., atoms SSR(4,4)
 
   M08-SO/cc-pV5Z; B<sup>1</sup>Δ<sub>g</sub>: lowest grid point
 
-  [C<sub>2</sub> numbers](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md#numbers)
+* ### [Zethrenes and related PAHs](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#experiment)
 
-* ![heptazethrene (HZ)](https://reksstudio.github.io/v2/figures/zeth/mol/HZ_skel.svg)
+  ![heptazethrene (HZ)](https://reksstudio.github.io/v2/figures/zeth/mol/HZ_skel.svg)
 
-  ### Zethrene family
+  * Δ T<sub>1</sub> / eV
 
-  * T<sub>1</sub>
+    * −0.01 to +0.08
+    * E(T<sub>1</sub>) at R<sub>T</sub> − E(S<sub>0</sub>) at R<sub>os</sub>, 4 derivatives of 2 parents
+    * Δ vertical emission −0.25 to −0.22
+    * T<sub>1</sub> change (8,8) → (10,10): HZ +0.07, PF +0.10
 
-    * Δ −0.01 to +0.08 eV
-    * 4 molecules
-    * (8,8) → (10,10): +0.07 / +0.10 eV (HZ / PF)
+  * Δ absorption / eV
 
-  * Absorption
+    * +0.32 to +0.71
+    * 4 molecules, band assigned to H→L in the source
 
-    * Δ +0.27 to +0.81 eV
-    * 9 molecules, 4 assigned by the authors
+  * Δ 2J / kcal mol<sup>−1</sup>
 
-  * FP-M 2J
+    * −4.51
+    * SSR FP −6.20
+    * exp. FP-M −1.69
 
-    * −6.20 vs −1.69 kcal mol<sup>−1</sup>
-    * REKS vs exp.
+  Calculation: isolated parent PAH, SSR(10,10), BH\&HLYP/cc-pVTZ. Experiment: substituted derivatives; phosphorescence (T<sub>1</sub>), solution (absorption), SQUID on powder (2J).
 
-  * Ladder
+* ### [TNS](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md)
 
-    7 compounds · (2,2)–(10,10)
+  triangulene nanostar, 192 atoms, REKS(12,12)
 
-  REKS(10,10) on the parent core vs substituted derivatives
+  ![triangulene nanostar (TNS)](https://reksstudio.github.io/v2/figures/scale/mol/TNS_skel.svg)
 
-  [Zethrenes vs experiment](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#experiment)[Ladder](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#ladder)[Occupations](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#occupations)
+  * Measured on Au(111) / mV
 
-* ![triangulene nanostar (TNS)](https://reksstudio.github.io/v2/figures/scale/mol/TNS_skel.svg)![Tetra\[3\]trianguleno\[3\]rhombene (TTR)](https://reksstudio.github.io/v2/figures/scale/mol/TTR_skel.svg)
+    * ±14(1), ±42(2), ±80(2)
+    * IETS steps; not compared: the calculation is the isolated molecule
 
-  ### TNS · TTR
+* ### [TTR](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md)
 
-  * Size
+  tetra\[3]trianguleno\[3]rhombene, 152 atoms, REKS(10,10)
 
-    up to 192 atoms · REKS(12,12)
+  ![Tetra\[3\]trianguleno\[3\]rhombene (TTR)](https://reksstudio.github.io/v2/figures/scale/mol/TTR_skel.svg)
 
-  IETS steps on Au(111), as read in the papers
+  * Measured on Au(111) / mV
 
-  [TNS](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md#experiment)[TTR](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#experiment)[Run sheet](https://reksstudio.github.io/v2/main/results/large-molecules/index.md)
+    * ±9
+    * IETS steps, metal tip; not compared: the calculation is the isolated molecule
 
-## Run it {#run-h}
+Cost
 
-[Wall time against ORCA and Q-Chem](https://reksstudio.github.io/v2/main/cost/index.md#md-time-resp): one hot-start step of the tetracene dimer C<sub>36</sub>H<sub>24</sub>, 2 geometries (open and closed shell) × 2 bases (6-31G(d), def2-TZVP); SI-SA-REKS 10 states, ORCA and Q-Chem TDA 10 roots.
+## (6,6) multireference excited states, 1260 basis functions, in less wall time than ORCA TDA and SF-TDA. {#run-h}
 
-* (2,2)–(6,6) (SI-SA-REKS(2,2): 3 states)
+One hot-start step of the tetracene dimer C<sub>36</sub>H<sub>24</sub>, no gradients: 10 states, BH\&HLYP, 36 cores. Bars: def2-TZVP; all tests: two geometries, two bases.
 
-  less time than ORCA TDA and SF-TDA on all four tests.
+[Closed shell SI-SA-REKS(6,6)**132.53 sORCA TDA**259.81 s Open shell SI-SA-REKS(6,6)**185.17 sORCA SF-TDA**386.26 s](https://reksstudio.github.io/v2/main/cost/index.md#md-time-resp)
+
+* (2,2)–(6,6)SI-SA-REKS(2,2): 3 states
+
+  Less time than ORCA TDA and SF-TDA on all four tests.
 
 * (8,8)
 
-  less in def2-TZVP on both systems (closed shell †); in 6-31G(d) 66.69 s vs ORCA TDA 67.53 s (closed shell), 87.74 s vs ORCA SF-TDA 75.44 s / TDA 88.12 s (open shell).
+  def2-TZVP: less on both geometries (closed shell †).6-31G(d): 66.69 s vs ORCA TDA 67.53 s (closed shell).6-31G(d): 87.74 s vs ORCA SF-TDA 75.44 s / TDA 88.12 s (open shell).
 
 * (10,10)
 
-  more, shown as is.
+  More time than ORCA on all four tests.
 
-† TC (10,10), TC def2-TZVP (8,8), (10,10): e 1e-7, d 1e-6; every other row e 1e-8, d 1e-7.
+* [Largest run](https://reksstudio.github.io/v2/main/cost/index.md#largest-run)
 
-[Install, free](https://reksstudio.github.io/v2/docs/index.md#install) [Talk to the team about your molecule](mailto:reks.studio1@gmail.com)
+  Triangulene nanostar, 192 atoms, (12,12), def2-TZVP, BH\&HLYP.
 
-[Manual: Start](https://reksstudio.github.io/v2/manual/index.md#overview) · [Install](https://reksstudio.github.io/v2/docs/index.md#install) · [Cite](https://reksstudio.github.io/v2/docs/index.md#cite) · [Contact](https://reksstudio.github.io/v2/docs/index.md#contact)
+† REKS at looser SCF thresholds.
+
+[All tests](https://reksstudio.github.io/v2/main/cost/index.md#md-time-resp)
+
+[Install, free](https://reksstudio.github.io/v2/docs/index.md#install) [Talk to the team about your molecule](mailto:reks.studio1@gmail.com?subject=REKS%20Studio%3A%20my%20molecule)
+
+From the install: up to (6,6). Catalogues REKS(8,8), (10,10) and (12,12): on request.
+
+[First calculation](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-calculation)[Cite](https://reksstudio.github.io/v2/docs/index.md#cite)
 
 ## Index {#index-h}
 
 ### Implementation {#index-implementation}
-
-[vs exact identities and FD ↑](#exact)
 
 #### [Exactness](https://reksstudio.github.io/v2/main/results/exactness/index.md) {#row-exactness}
 
@@ -303,116 +283,43 @@ SSR − experiment; BH\&HLYP/aug-cc-pVTZ unless stated
 
 ### Bond breaking {#index-bond-breaking}
 
-[vs FCI and SHCI ↑](#near-exact) · [vs experiment ↑](#experiment)
-
 #### [Dissociation](https://reksstudio.github.io/v2/main/results/dissociation/index.md) {#row-dissociation}
 
-* [H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h2/index.md) curve vs FCI
-* [H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h4/index.md) curve vs FCI
-* [H<sub>6</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h6/index.md) curve vs FCI
-* [H<sub>8</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h8/index.md) curve vs FCI
-* [H<sub>10</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h10/index.md)
-* [C<sub>2</sub>H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2h4/index.md) R<sub>e</sub> vs experiment
-* [N<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/n2/index.md) R<sub>e</sub> vs experiment
-* [C<sub>2</sub>H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2h2/index.md)
-* [C<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md) curve vs SHCI points (shifted); R<sub>e</sub>, T<sub>e</sub>, D<sub>e</sub> vs experiment
+* [H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h2/index.md) [H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h4/index.md) [H<sub>6</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h6/index.md) [H<sub>8</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h8/index.md)
 
-### Excited states {#index-excited-states}
+  curve vs FCI
 
-[vs TBE ↑](#tbe)
+* [H<sub>10</sub>](https://reksstudio.github.io/v2/main/results/dissociation/h10/index.md) [C<sub>2</sub>H<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2h2/index.md)
 
-#### [QUEST](https://reksstudio.github.io/v2/main/results/quest/index.md) {#row-quest}
+  curve
 
-* [Errors by state](https://reksstudio.github.io/v2/main/results/quest/index.md#errors)
-* [By set](https://reksstudio.github.io/v2/main/results/quest/index.md#sets)
-* [Full table](https://reksstudio.github.io/v2/main/results/quest/index.md#table)
+* [C<sub>2</sub>H<sub>4</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2h4/index.md) [N<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/n2/index.md)
 
-- [acetone](https://reksstudio.github.io/v2/main/results/quest/quest3-acetone/index.md)
-- [acrolein](https://reksstudio.github.io/v2/main/results/quest/quest3-acrolein/index.md)
-- [aminobenzonitrile](https://reksstudio.github.io/v2/main/results/quest/quest6-aminobenzonitrile/index.md)
-- [aniline](https://reksstudio.github.io/v2/main/results/quest/quest6-aniline/index.md)
-- [azanaphthalene](https://reksstudio.github.io/v2/main/results/quest/quest5-azanaphthalene/index.md)
-- [azulene](https://reksstudio.github.io/v2/main/results/quest/quest6-azulene/index.md)
-- [benzene](https://reksstudio.github.io/v2/main/results/quest/quest3-benzene/index.md)
-- [benzoquinone](https://reksstudio.github.io/v2/main/results/quest/quest5-benzoquinone/index.md)
-- [benzothiadiazole](https://reksstudio.github.io/v2/main/results/quest/quest6-benzothiadiazole/index.md)
-- [benzoxadiazole](https://reksstudio.github.io/v2/main/results/quest/quest7-benzoxadiazole/index.md)
-- [butadiene](https://reksstudio.github.io/v2/main/results/quest/quest3-butadiene/index.md)
-- [cyanoacetylene](https://reksstudio.github.io/v2/main/results/quest/quest3-cyanoacetylene/index.md)
-- [cyanoformaldehyde](https://reksstudio.github.io/v2/main/results/quest/quest3-cyanoformaldehyde/index.md)
-- [cyanogen](https://reksstudio.github.io/v2/main/results/quest/quest3-cyanogen/index.md)
-- [cyclopentadiene](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopentadiene/index.md)
-- [cyclopentadienethione](https://reksstudio.github.io/v2/main/results/quest/quest5-cyclopentadienethione/index.md)
-- [cyclopentadienone](https://reksstudio.github.io/v2/main/results/quest/quest5-cyclopentadienone/index.md)
-- [cyclopropenethione](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenethione/index.md)
-- [cyclopropenone](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenone/index.md)
-- [diacetylene](https://reksstudio.github.io/v2/main/results/quest/quest3-diacetylene/index.md)
-- [diazirine](https://reksstudio.github.io/v2/main/results/quest/quest5-diazirine/index.md)
-- [diketopyrrolopyrrole](https://reksstudio.github.io/v2/main/results/quest/quest7-diketopyrrolopyrrole/index.md)
-- [dimethylaniline](https://reksstudio.github.io/v2/main/results/quest/quest6-dimethylaniline/index.md)
-- [dipeptide](https://reksstudio.github.io/v2/main/results/quest/quest6-dipeptide/index.md)
-- [DMABN](https://reksstudio.github.io/v2/main/results/quest/quest6-dmabn/index.md)
-- [furan](https://reksstudio.github.io/v2/main/results/quest/quest3-furan/index.md)
-- [furofuran](https://reksstudio.github.io/v2/main/results/quest/quest7-furofuran/index.md)
-- [glyoxal](https://reksstudio.github.io/v2/main/results/quest/quest3-glyoxal/index.md)
-- [hexatriene](https://reksstudio.github.io/v2/main/results/quest/quest5-hexatriene/index.md)
-- [imidazole](https://reksstudio.github.io/v2/main/results/quest/quest3-imidazole/index.md)
-- [isobutene](https://reksstudio.github.io/v2/main/results/quest/quest3-isobutene/index.md)
-- [maleimide](https://reksstudio.github.io/v2/main/results/quest/quest5-maleimide/index.md)
-- [methylenecyclopropene](https://reksstudio.github.io/v2/main/results/quest/quest3-methylenecyclopropene/index.md)
-- [N-phenylpyrrole](https://reksstudio.github.io/v2/main/results/quest/quest6-n-phenylpyrrole/index.md)
-- [naphthalene](https://reksstudio.github.io/v2/main/results/quest/quest5-naphthalene/index.md)
-- [nitroaniline](https://reksstudio.github.io/v2/main/results/quest/quest6-nitroaniline/index.md)
-- [nitrobenzene](https://reksstudio.github.io/v2/main/results/quest/quest6-nitrobenzene/index.md)
-- [nitrodimethylaniline](https://reksstudio.github.io/v2/main/results/quest/quest6-nitrodimethylaniline/index.md)
-- [nitroxyl](https://reksstudio.github.io/v2/main/results/quest/quest5-nitroxyl/index.md)
-- [NPNO](https://reksstudio.github.io/v2/main/results/quest/quest6-npno/index.md)
-- [octatetraene](https://reksstudio.github.io/v2/main/results/quest/quest5-octatetraene/index.md)
-- [phthalazine](https://reksstudio.github.io/v2/main/results/quest/quest6-phthalazine/index.md)
-- [propynal](https://reksstudio.github.io/v2/main/results/quest/quest3-propynal/index.md)
-- [pyrazine](https://reksstudio.github.io/v2/main/results/quest/quest3-pyrazine/index.md)
-- [pyridazine](https://reksstudio.github.io/v2/main/results/quest/quest3-pyridazine/index.md)
-- [pyridine](https://reksstudio.github.io/v2/main/results/quest/quest3-pyridine/index.md)
-- [pyrimidine](https://reksstudio.github.io/v2/main/results/quest/quest3-pyrimidine/index.md)
-- [pyrrole](https://reksstudio.github.io/v2/main/results/quest/quest3-pyrrole/index.md)
-- [pyrrolopyrrole](https://reksstudio.github.io/v2/main/results/quest/quest7-pyrrolopyrrole/index.md)
-- [quinoxaline](https://reksstudio.github.io/v2/main/results/quest/quest6-quinoxaline/index.md)
-- [streptocyanine-C3](https://reksstudio.github.io/v2/main/results/quest/quest5-strepto-c3/index.md)
-- [streptocyanine-C5](https://reksstudio.github.io/v2/main/results/quest/quest5-strepto-c5/index.md)
-- [tetrazine](https://reksstudio.github.io/v2/main/results/quest/quest3-tetrazine/index.md)
-- [thienothiophene](https://reksstudio.github.io/v2/main/results/quest/quest7-thienothiophene/index.md)
-- [thioacetone](https://reksstudio.github.io/v2/main/results/quest/quest3-thioacetone/index.md)
-- [thioacrolein](https://reksstudio.github.io/v2/main/results/quest/quest5-thioacrolein/index.md)
-- [thiophene](https://reksstudio.github.io/v2/main/results/quest/quest3-thiophene/index.md)
-- [thiopropynal](https://reksstudio.github.io/v2/main/results/quest/quest3-thiopropynal/index.md)
-- [triazine](https://reksstudio.github.io/v2/main/results/quest/quest3-triazine/index.md)
-- [TTF](https://reksstudio.github.io/v2/main/results/quest/quest7-ttf/index.md)
-- [twisted DMABN](https://reksstudio.github.io/v2/main/results/quest/quest6-tdmabn/index.md)
-- [twisted N-phenylpyrrole](https://reksstudio.github.io/v2/main/results/quest/quest6-twisted-n-phenylpyrrole/index.md)
+  R<sub>e</sub> vs experiment
 
-#### Hexatriene, Manual {#row-hexatriene}
+* [C<sub>2</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md)
 
-* [Hexatriene (Manual example, TBE in another basis)](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-spin)
+  curve vs SHCI points (shifted); R<sub>e</sub>, T<sub>e</sub>, D<sub>e</sub> vs experiment
 
 ### Diradicals and magnetism {#index-diradicals-and-magnetism}
 
-[vs measurements on related molecules ↑](#experiment)
-
 #### [Large molecules](https://reksstudio.github.io/v2/main/results/large-molecules/index.md) {#row-large-molecules}
 
-* [TNS](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md)
+[TNS](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md)
+
 * [Spin gaps](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md#gaps)
 * [Spin sectors](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md#spins)
 * [Occupations](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md#occupations)
 * [Experiment](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md#experiment)
 * [Calculations](https://reksstudio.github.io/v2/main/results/large-molecules/tns/index.md#calculations)
 
-- [TTR](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md)
-- [Spin gaps](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#gaps)
-- [Spin sectors](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#spins)
-- [Occupations](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#occupations)
-- [Experiment](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#experiment)
-- [Calculations](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#calculations)
+[TTR](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md)
+
+* [Spin gaps](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#gaps)
+* [Spin sectors](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#spins)
+* [Occupations](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#occupations)
+* [Experiment](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#experiment)
+* [Calculations](https://reksstudio.github.io/v2/main/results/large-molecules/ttr/index.md#calculations)
 
 #### [Zethrenes](https://reksstudio.github.io/v2/main/results/zethrenes/index.md) {#row-zethrenes}
 
@@ -420,13 +327,7 @@ SSR − experiment; BH\&HLYP/aug-cc-pVTZ unless stated
 * [Occupations](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#occupations)
 * [vs experiment](https://reksstudio.github.io/v2/main/results/zethrenes/index.md#experiment)
 
-- [HZ](https://reksstudio.github.io/v2/main/results/zethrenes/hz/index.md) · [inputs](https://reksstudio.github.io/v2/main/results/zethrenes/hz/index.md#calculations)
-- [HZD](https://reksstudio.github.io/v2/main/results/zethrenes/hzd/index.md) · [inputs](https://reksstudio.github.io/v2/main/results/zethrenes/hzd/index.md#calculations)
-- [FP](https://reksstudio.github.io/v2/main/results/zethrenes/fp/index.md) · [inputs](https://reksstudio.github.io/v2/main/results/zethrenes/fp/index.md#calculations)
-- [PIF](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md) · [inputs](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#calculations)
-- [IFD](https://reksstudio.github.io/v2/main/results/zethrenes/ifd/index.md) · [inputs](https://reksstudio.github.io/v2/main/results/zethrenes/ifd/index.md#calculations)
-- [PF](https://reksstudio.github.io/v2/main/results/zethrenes/pf/index.md) · [inputs](https://reksstudio.github.io/v2/main/results/zethrenes/pf/index.md#calculations)
-- [IF](https://reksstudio.github.io/v2/main/results/zethrenes/if/index.md) · [inputs](https://reksstudio.github.io/v2/main/results/zethrenes/if/index.md#calculations)
+pages[HZ](https://reksstudio.github.io/v2/main/results/zethrenes/hz/index.md)[HZD](https://reksstudio.github.io/v2/main/results/zethrenes/hzd/index.md)[FP](https://reksstudio.github.io/v2/main/results/zethrenes/fp/index.md)[PIF](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md)[IFD](https://reksstudio.github.io/v2/main/results/zethrenes/ifd/index.md)[PF](https://reksstudio.github.io/v2/main/results/zethrenes/pf/index.md)[IF](https://reksstudio.github.io/v2/main/results/zethrenes/if/index.md)inputs[HZ](https://reksstudio.github.io/v2/main/results/zethrenes/hz/index.md#calculations)[HZD](https://reksstudio.github.io/v2/main/results/zethrenes/hzd/index.md#calculations)[FP](https://reksstudio.github.io/v2/main/results/zethrenes/fp/index.md#calculations)[PIF](https://reksstudio.github.io/v2/main/results/zethrenes/pif/index.md#calculations)[IFD](https://reksstudio.github.io/v2/main/results/zethrenes/ifd/index.md#calculations)[PF](https://reksstudio.github.io/v2/main/results/zethrenes/pf/index.md#calculations)[IF](https://reksstudio.github.io/v2/main/results/zethrenes/if/index.md#calculations)
 
 ### Photochemistry {#index-photochemistry}
 
@@ -437,9 +338,7 @@ SSR − experiment; BH\&HLYP/aug-cc-pVTZ unless stated
 * [Trajectory](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md#trajectory)
 * [Worked inputs (Manual: dynamics)](https://reksstudio.github.io/v2/manual/dynamics/index.md#dynamics-inputs)
 
-### Cost and history {#index-cost-and-history}
-
-#### [Cost](https://reksstudio.github.io/v2/main/cost/index.md)
+### Cost {#index-cost}
 
 * [Wall time against ORCA and Q-Chem](https://reksstudio.github.io/v2/main/cost/index.md#md-time-resp)
 * [Inside Psi4](https://reksstudio.github.io/v2/main/cost/index.md#psi4)
@@ -448,4 +347,77 @@ SSR − experiment; BH\&HLYP/aug-cc-pVTZ unless stated
 * [Largest run](https://reksstudio.github.io/v2/main/cost/index.md#largest-run)
 * [One dynamics step](https://reksstudio.github.io/v2/main/cost/index.md#dynamics-step)
 
-#### [History](https://reksstudio.github.io/v2/main/history/index.md)
+### Excited states {#index-excited-states}
+
+#### [QUEST](https://reksstudio.github.io/v2/main/results/quest/index.md) {#row-quest}
+
+* [Errors by state](https://reksstudio.github.io/v2/main/results/quest/index.md#errors)
+* [By set](https://reksstudio.github.io/v2/main/results/quest/index.md#sets)
+* [Full table](https://reksstudio.github.io/v2/main/results/quest/index.md#table)
+
+All 62 molecules
+
+* [acetone](https://reksstudio.github.io/v2/main/results/quest/quest3-acetone/index.md)
+* [acrolein](https://reksstudio.github.io/v2/main/results/quest/quest3-acrolein/index.md)
+* [aminobenzonitrile](https://reksstudio.github.io/v2/main/results/quest/quest6-aminobenzonitrile/index.md)
+* [aniline](https://reksstudio.github.io/v2/main/results/quest/quest6-aniline/index.md)
+* [azanaphthalene](https://reksstudio.github.io/v2/main/results/quest/quest5-azanaphthalene/index.md)
+* [azulene](https://reksstudio.github.io/v2/main/results/quest/quest6-azulene/index.md)
+* [benzene](https://reksstudio.github.io/v2/main/results/quest/quest3-benzene/index.md)
+* [benzoquinone](https://reksstudio.github.io/v2/main/results/quest/quest5-benzoquinone/index.md)
+* [benzothiadiazole](https://reksstudio.github.io/v2/main/results/quest/quest6-benzothiadiazole/index.md)
+* [benzoxadiazole](https://reksstudio.github.io/v2/main/results/quest/quest7-benzoxadiazole/index.md)
+* [butadiene](https://reksstudio.github.io/v2/main/results/quest/quest3-butadiene/index.md)
+* [cyanoacetylene](https://reksstudio.github.io/v2/main/results/quest/quest3-cyanoacetylene/index.md)
+* [cyanoformaldehyde](https://reksstudio.github.io/v2/main/results/quest/quest3-cyanoformaldehyde/index.md)
+* [cyanogen](https://reksstudio.github.io/v2/main/results/quest/quest3-cyanogen/index.md)
+* [cyclopentadiene](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopentadiene/index.md)
+* [cyclopentadienethione](https://reksstudio.github.io/v2/main/results/quest/quest5-cyclopentadienethione/index.md)
+* [cyclopentadienone](https://reksstudio.github.io/v2/main/results/quest/quest5-cyclopentadienone/index.md)
+* [cyclopropenethione](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenethione/index.md)
+* [cyclopropenone](https://reksstudio.github.io/v2/main/results/quest/quest3-cyclopropenone/index.md)
+* [diacetylene](https://reksstudio.github.io/v2/main/results/quest/quest3-diacetylene/index.md)
+* [diazirine](https://reksstudio.github.io/v2/main/results/quest/quest5-diazirine/index.md)
+* [diketopyrrolopyrrole](https://reksstudio.github.io/v2/main/results/quest/quest7-diketopyrrolopyrrole/index.md)
+* [dimethylaniline](https://reksstudio.github.io/v2/main/results/quest/quest6-dimethylaniline/index.md)
+* [dipeptide](https://reksstudio.github.io/v2/main/results/quest/quest6-dipeptide/index.md)
+* [DMABN](https://reksstudio.github.io/v2/main/results/quest/quest6-dmabn/index.md)
+* [furan](https://reksstudio.github.io/v2/main/results/quest/quest3-furan/index.md)
+* [furofuran](https://reksstudio.github.io/v2/main/results/quest/quest7-furofuran/index.md)
+* [glyoxal](https://reksstudio.github.io/v2/main/results/quest/quest3-glyoxal/index.md)
+* [hexatriene](https://reksstudio.github.io/v2/main/results/quest/quest5-hexatriene/index.md)
+* [imidazole](https://reksstudio.github.io/v2/main/results/quest/quest3-imidazole/index.md)
+* [isobutene](https://reksstudio.github.io/v2/main/results/quest/quest3-isobutene/index.md)
+* [maleimide](https://reksstudio.github.io/v2/main/results/quest/quest5-maleimide/index.md)
+* [methylenecyclopropene](https://reksstudio.github.io/v2/main/results/quest/quest3-methylenecyclopropene/index.md)
+* [N-phenylpyrrole](https://reksstudio.github.io/v2/main/results/quest/quest6-n-phenylpyrrole/index.md)
+* [naphthalene](https://reksstudio.github.io/v2/main/results/quest/quest5-naphthalene/index.md)
+* [nitroaniline](https://reksstudio.github.io/v2/main/results/quest/quest6-nitroaniline/index.md)
+* [nitrobenzene](https://reksstudio.github.io/v2/main/results/quest/quest6-nitrobenzene/index.md)
+* [nitrodimethylaniline](https://reksstudio.github.io/v2/main/results/quest/quest6-nitrodimethylaniline/index.md)
+* [nitroxyl](https://reksstudio.github.io/v2/main/results/quest/quest5-nitroxyl/index.md)
+* [NPNO](https://reksstudio.github.io/v2/main/results/quest/quest6-npno/index.md)
+* [octatetraene](https://reksstudio.github.io/v2/main/results/quest/quest5-octatetraene/index.md)
+* [phthalazine](https://reksstudio.github.io/v2/main/results/quest/quest6-phthalazine/index.md)
+* [propynal](https://reksstudio.github.io/v2/main/results/quest/quest3-propynal/index.md)
+* [pyrazine](https://reksstudio.github.io/v2/main/results/quest/quest3-pyrazine/index.md)
+* [pyridazine](https://reksstudio.github.io/v2/main/results/quest/quest3-pyridazine/index.md)
+* [pyridine](https://reksstudio.github.io/v2/main/results/quest/quest3-pyridine/index.md)
+* [pyrimidine](https://reksstudio.github.io/v2/main/results/quest/quest3-pyrimidine/index.md)
+* [pyrrole](https://reksstudio.github.io/v2/main/results/quest/quest3-pyrrole/index.md)
+* [pyrrolopyrrole](https://reksstudio.github.io/v2/main/results/quest/quest7-pyrrolopyrrole/index.md)
+* [quinoxaline](https://reksstudio.github.io/v2/main/results/quest/quest6-quinoxaline/index.md)
+* [streptocyanine-C3](https://reksstudio.github.io/v2/main/results/quest/quest5-strepto-c3/index.md)
+* [streptocyanine-C5](https://reksstudio.github.io/v2/main/results/quest/quest5-strepto-c5/index.md)
+* [tetrazine](https://reksstudio.github.io/v2/main/results/quest/quest3-tetrazine/index.md)
+* [thienothiophene](https://reksstudio.github.io/v2/main/results/quest/quest7-thienothiophene/index.md)
+* [thioacetone](https://reksstudio.github.io/v2/main/results/quest/quest3-thioacetone/index.md)
+* [thioacrolein](https://reksstudio.github.io/v2/main/results/quest/quest5-thioacrolein/index.md)
+* [thiophene](https://reksstudio.github.io/v2/main/results/quest/quest3-thiophene/index.md)
+* [thiopropynal](https://reksstudio.github.io/v2/main/results/quest/quest3-thiopropynal/index.md)
+* [triazine](https://reksstudio.github.io/v2/main/results/quest/quest3-triazine/index.md)
+* [TTF](https://reksstudio.github.io/v2/main/results/quest/quest7-ttf/index.md)
+* [twisted DMABN](https://reksstudio.github.io/v2/main/results/quest/quest6-tdmabn/index.md)
+* [twisted N-phenylpyrrole](https://reksstudio.github.io/v2/main/results/quest/quest6-twisted-n-phenylpyrrole/index.md)
+
+[Manual: hexatriene, 6-31G(d) against the TBE](https://reksstudio.github.io/v2/manual/first-calculation/index.md#first-spin)
