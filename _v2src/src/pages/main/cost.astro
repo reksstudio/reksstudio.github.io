@@ -8,7 +8,7 @@ import CountChart from '../../components/main/CountChart.astro';
 import CostDots from '../../components/main/CostDots.astro';
 import CostScatter from '../../components/main/CostScatter.astro';
 import CostMolCards from '../../components/main/CostMolCards.astro';
-import { landing, manualHref, resultHref } from '../../lib/overview.mjs';
+import { landing, resultHref } from '../../lib/overview.mjs';
 import { fmtCount, formulaMarkup as formula, toHtml } from '../../lib/inline.mjs';
 import {
   CODE, bases, buildLine, claimsMore, claimsText, codeHead, codeVersion, cost, dagger, fgib, figRows, fs, installed, iterA, jobShort,
@@ -369,7 +369,6 @@ const h = toHtml;
     <CountChart />
     <h3 id="equations">Equations, terms, determinants and catalogue size</h3>
     <Table table={landing.equations} numeric grouped ruler="Terms" />
-    <p class="prov">* Determinants in the SCF: the default state-averaged ensemble and the recommended all-α determinant, as in the <a href={manualHref(base, 'input-patterns')}>Manual, Input patterns</a> example. The count depends on the active space, not on 2S.</p>
     <p class="prov"><strong>Equations:</strong> nonzero Hamiltonian elements, <Fragment set:html={h(landing.engine.def)} />. <strong>Terms:</strong> symbolic terms of those elements after collection. <strong>Determinants:</strong> microstates of the sector's elements. <strong>Catalogue:</strong> size of the file of one spin sector, from generator runs; † estimated value.</p>
   </section>
 
