@@ -8,51 +8,54 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 # Cost and speed
 
-Wall time, iterations and peak memory of REKS Studio. A: against ORCA and Q-Chem, one hot-start step of a 60-atom molecule. B: against DFT inside Psi4, 16 molecules.
+Multireference excited states in less wall time than ORCA TDA and SF-TDA, 1260 basis functions.
 
-def2-TZVP, 1260 basis functions: closed shell SI-SA-REKS(6,6) 132.53 s vs ORCA TDA 259.81 s; open shell SI-SA-REKS(6,6) 185.17 s vs ORCA SF-TDA 386.26 s.
+Wall time, iterations and peak memory of REKS Studio, an open-source multireference method in Psi4.
 
-(2,2)–(6,6) (SI-SA-REKS(2,2): 3 states): less time than ORCA TDA and SF-TDA on all four tests. (8,8): less in def2-TZVP on both systems (closed shell †); in 6-31G(d) 66.69 s vs ORCA TDA 67.53 s (closed shell), 87.74 s vs ORCA SF-TDA 75.44 s / TDA 88.12 s (open shell).
+def2-TZVP, 1260 basis functions, 10 states
 
-† REKS run at e 1e-7, d 1e-6.
+| Job | Wall / s | SCF / s | Response / s |
+| - | - | - | - |
+| Closed shell | | | |
+| SI-SA-REKS(6,6) | 132.53 | 122.52 | 10.01 |
+| ORCA TDA | 259.81 | 110.42 | 149.39 |
+| Open shell | | | |
+| SI-SA-REKS(6,6) | 185.17 | 172.30 | 12.87 |
+| ORCA SF-TDA | 386.26 | 223.73 | 162.53 |
 
-* Tetracene dimer C<sub>36</sub>H<sub>24</sub>, 60 atoms
-* 552 / 1260 basis functions
-* BH\&HLYP
-* SG-1 grid (ORCA DefGrid2)
-* 36 cores
-* hot start
-* open source
+Tetracene dimer C<sub>36</sub>H<sub>24</sub>, 60 atoms · 552 / 1260 basis functions · BH\&HLYP · SG-1 grid (ORCA DefGrid2) · 36 cores · hot start · open source, LGPL‑3.0
 
-[Install, free](https://reksstudio.github.io/v2/docs/index.md#install) From the install: up to [(6,6)](#catalogue).
+[Install, free](https://reksstudio.github.io/v2/docs/index.md#install) From the install: up to [(6,6)](#catalogue). Accuracy: [Results](https://reksstudio.github.io/v2/main/results/index.md).
+
+[A. Against ORCA and Q-Chem](#md) · [B. Against DFT in Psi4](#psi4) · [Largest run](#largest-run) · [One dynamics step](#dynamics-step) · [Configuration count](#count) · [Catalogue](#catalogue)
 
 ## A. Against ORCA and Q-Chem
 
-One hot-start step; it imitates a dynamics step: orbitals of the previous geometry 0.01 Å away; energies and states, no gradients.
+One hot-start step; it imitates a dynamics step: orbitals of the previous geometry 0.01 Å away; energies and states, no gradients. Gradients: [one dynamics step](#dynamics-step).
 
-Tetracene dimer C<sub>36</sub>H<sub>24</sub>, two geometries (TO open shell, TC closed shell); 6-31G(d) (552 basis functions) and def2-TZVP (1260 basis functions); BH\&HLYP, SG-1 grid (ORCA DefGrid2), density fitting in all codes; 36 cores; hot start from the orbitals of the neighbouring point; SCF and SCF + states as separate jobs. [Full setup](#md-setup).
+System: Tetracene dimer C<sub>36</sub>H<sub>24</sub>, two geometries: TO open shell, TC closed shell
 
-### Wall time: SCF
+Bases: 6-31G(d), 552 basis functions; def2-TZVP, 1260 basis functions
 
-* REKS Studio
-* ORCA
-* Q-Chem
-* Psi4
-* † e 1e-7, d 1e-6
+Method: BH\&HLYP, SG-1 grid (ORCA DefGrid2), density fitting (ORCA: RIJCOSX), 36 cores
 
-Wall time per SCF job, log scale: TO, open shell, 6-31G(d), 552 bf. REKS Studio (2,2) 42.51 s; REKS Studio (4,4) 46.48 s; REKS Studio (6,6) 57.53 s; REKS Studio (8,8) 77.45 s; REKS Studio (10,10) 143.17 s; ORCA RKS 50.12 s; ORCA UKS (T) 43.38 s; ORCA ROKS (T) 43.05 s; Q-Chem RKS 76.44 s; Q-Chem UKS (T) 119.47 s; Q-Chem ROKS (T) 299.80 s; Psi4 RKS 31.89 s; Psi4 UKS (T) 28.66 s.
+Start: Hot start from the orbitals of the neighbouring point
 
-Wall time per SCF job, log scale: TC, closed shell, 6-31G(d), 552 bf. REKS Studio (2,2) 31.04 s; REKS Studio (4,4) 29.89 s; REKS Studio (6,6) 48.74 s; REKS Studio (8,8) 56.71 s; REKS Studio (10,10) 87.78 s †; ORCA RKS 38.23 s; ORCA UKS (T) 41.82 s; ORCA ROKS (T) 36.88 s; Q-Chem RKS 15.45 s; Q-Chem UKS (T) 70.40 s; Q-Chem ROKS (T) 132.05 s; Psi4 RKS 29.84 s; Psi4 UKS (T) 33.74 s.
+Jobs: SCF and SCF + states as separate jobs
 
-Wall time per SCF job, log scale: TO, open shell, def2-TZVP, 1260 bf. REKS Studio (2,2) 153.20 s; REKS Studio (4,4) 174.24 s; REKS Studio (6,6) 181.95 s; REKS Studio (8,8) 260.98 s; REKS Studio (10,10) 417.01 s; ORCA RKS 180.64 s; ORCA UKS (T) 222.43 s; ORCA ROKS (T) 192.01 s; Q-Chem RKS 284.31 s; Q-Chem UKS (T) 364.51 s; Q-Chem ROKS (T) 1412.60 s; Psi4 RKS 86.10 s; Psi4 UKS (T) 98.24 s.
-
-Wall time per SCF job, log scale: TC, closed shell, def2-TZVP, 1260 bf. REKS Studio (2,2) 103.33 s; REKS Studio (4,4) 103.18 s; REKS Studio (6,6) 128.39 s; REKS Studio (8,8) 139.43 s †; REKS Studio (10,10) 226.84 s †; ORCA RKS 122.71 s; ORCA UKS (T) 150.06 s; ORCA ROKS (T) 112.94 s; Q-Chem RKS 37.75 s; Q-Chem UKS (T) 259.36 s; Q-Chem ROKS (T) 610.53 s; Psi4 RKS 66.92 s; Psi4 UKS (T) 95.82 s.
-
-Fig. 1a. Wall time of the SCF jobs of one hot-start step, log axis shared with Fig. 1b. Dotted line: ORCA RKS (closed shell) or UKS (T) (open shell). Fastest converged repeat; min–max in the tooltips. † REKS run at e 1e-7, d 1e-6.
+[Full setup](#md-setup)
 
 ### Wall time: SCF + response
 
-SI-SA-REKS against ORCA TDA and SF-TDA, larger spaces — (10,10): more, shown as is. † REKS run at e 1e-7, d 1e-6 (TC (10,10), TC def2-TZVP (8,8), (10,10)).
+SI-SA-REKS against ORCA TDA and SF-TDA:
+
+(2,2)–(6,6) (SI-SA-REKS(2,2): 3 states): less time than ORCA TDA and SF-TDA on all four tests.
+
+(8,8): less in def2-TZVP on both systems (closed shell †); in 6-31G(d) 66.69 s vs ORCA TDA 67.53 s (closed shell), 87.74 s vs ORCA SF-TDA 75.44 s / TDA 88.12 s (open shell).
+
+(10,10): more, shown as is.
+
+† REKS run at e 1e-7, d 1e-6 (TC (10,10), TC def2-TZVP (8,8), (10,10)).
 
 * REKS Studio
 * ORCA
@@ -69,7 +72,27 @@ Wall time per SCF + response job, log scale: TO, open shell, def2-TZVP, 1260 bf.
 
 Wall time per SCF + response job, log scale: TC, closed shell, def2-TZVP, 1260 bf. REKS Studio (2,2) 105.89 s; REKS Studio (4,4) 105.42 s; REKS Studio (6,6) 132.53 s; REKS Studio (8,8) 152.58 s †; REKS Studio (10,10) 424.89 s †; ORCA TDA 259.81 s; ORCA SF-TDA 284.70 s; Q-Chem TDA stopped after ~30 min, not completed; Q-Chem SF-TDA 38159.22 s; Q-Chem MRSF-TDA stopped after 11.5 h.
 
-Fig. 1b. Wall time of the SCF + response jobs (SCF and states in one run), log axis shared with Fig. 1a. Dotted line: ORCA TDA (closed shell) or SF-TDA (open shell). Arrow: run stopped at the time shown; not run: job not started. Fastest converged repeat; min–max in the tooltips. REKS rows: kk/reks.v42 @ cf0bacc93 (TC def2-TZVP (8,8): 3eb094626); Psi4 RKS/UKS: 2acf2c145.
+Fig. 1a. Wall time of the SCF + response jobs (SCF and states in one run), log axis shared with Fig. 1b. Dotted line: ORCA TDA (closed shell) or SF-TDA (open shell). Arrow: run stopped at the time shown; not run: job not started. Fastest converged repeat; min–max in the tooltips. Q-Chem CPU load, 6-31G(d): SCF 23–30 cores; response part TDA 1.4–1.9, SF-TDA 1.1, MRSF-TDA 19.3: [notes](#md-notes).
+
+### Wall time: SCF
+
+def2-TZVP, SA-REKS(6,6): 128.39 s vs ORCA RKS 122.71 s (closed shell), 181.95 s vs ORCA UKS (T) 222.43 s (open shell).
+
+* REKS Studio
+* ORCA
+* Q-Chem
+* Psi4
+* † e 1e-7, d 1e-6
+
+Wall time per SCF job, log scale: TO, open shell, 6-31G(d), 552 bf. REKS Studio (2,2) 42.51 s; REKS Studio (4,4) 46.48 s; REKS Studio (6,6) 57.53 s; REKS Studio (8,8) 77.45 s; REKS Studio (10,10) 143.17 s; ORCA RKS 50.12 s; ORCA UKS (T) 43.38 s; ORCA ROKS (T) 43.05 s; Q-Chem RKS 76.44 s; Q-Chem UKS (T) 119.47 s; Q-Chem ROKS (T) 299.80 s; Psi4 RKS 31.89 s; Psi4 UKS (T) 28.66 s.
+
+Wall time per SCF job, log scale: TC, closed shell, 6-31G(d), 552 bf. REKS Studio (2,2) 31.04 s; REKS Studio (4,4) 29.89 s; REKS Studio (6,6) 48.74 s; REKS Studio (8,8) 56.71 s; REKS Studio (10,10) 87.78 s †; ORCA RKS 38.23 s; ORCA UKS (T) 41.82 s; ORCA ROKS (T) 36.88 s; Q-Chem RKS 15.45 s; Q-Chem UKS (T) 70.40 s; Q-Chem ROKS (T) 132.05 s; Psi4 RKS 29.84 s; Psi4 UKS (T) 33.74 s.
+
+Wall time per SCF job, log scale: TO, open shell, def2-TZVP, 1260 bf. REKS Studio (2,2) 153.20 s; REKS Studio (4,4) 174.24 s; REKS Studio (6,6) 181.95 s; REKS Studio (8,8) 260.98 s; REKS Studio (10,10) 417.01 s; ORCA RKS 180.64 s; ORCA UKS (T) 222.43 s; ORCA ROKS (T) 192.01 s; Q-Chem RKS 284.31 s; Q-Chem UKS (T) 364.51 s; Q-Chem ROKS (T) 1412.60 s; Psi4 RKS 86.10 s; Psi4 UKS (T) 98.24 s.
+
+Wall time per SCF job, log scale: TC, closed shell, def2-TZVP, 1260 bf. REKS Studio (2,2) 103.33 s; REKS Studio (4,4) 103.18 s; REKS Studio (6,6) 128.39 s; REKS Studio (8,8) 139.43 s †; REKS Studio (10,10) 226.84 s †; ORCA RKS 122.71 s; ORCA UKS (T) 150.06 s; ORCA ROKS (T) 112.94 s; Q-Chem RKS 37.75 s; Q-Chem UKS (T) 259.36 s; Q-Chem ROKS (T) 610.53 s; Psi4 RKS 66.92 s; Psi4 UKS (T) 95.82 s.
+
+Fig. 1b. Wall time of the SCF jobs of one hot-start step, log axis shared with Fig. 1a. Dotted line: ORCA RKS (closed shell) or UKS (T) (open shell); (T): triplet reference. Fastest converged repeat; min–max in the tooltips. † REKS run at e 1e-7, d 1e-6.
 
 ### Iterations and CPU load
 
@@ -77,9 +100,9 @@ SA-REKS(8,8) from the previous-step orbitals: 11–13 SCF iterations (8 in TC de
 
 Cores: CPU / wall of the whole run; n/p: ORCA prints wall times only and the benchmark recorded wall and peak memory only. Stopped and not-run jobs: measurement notes below. Per Fock build inside Psi4: [B](#fock).
 
-#### SCF
+SCF, 4 tests
 
-SCF, s + resp, s = Wall, s: SCF = SCF time the code reports (ORCA 'SCF iterations' module, Q-Chem 'SCF time ... wall', Psi4 SI-SA-REKS: timers before 'REKS: compute_si'), resp = the rest of the run; an SCF-only job is SCF throughout; s / SCF it = SCF, s / SCF iterations.
+s / SCF it = Wall, s / SCF iterations.
 
 TO, open shell, 6-31G(d)
 
@@ -169,7 +192,7 @@ TC, closed shell, def2-TZVP
 | RKS | 66.92 | 9 | 7.44 | 24.6 |
 | UKS (T) | 95.82 | 9 | 10.65 | 27.7 |
 
-#### SCF + response
+SCF + response, 4 tests
 
 SCF, s + resp, s = Wall, s: SCF = SCF time the code reports (ORCA 'SCF iterations' module, Q-Chem 'SCF time ... wall', Psi4 SI-SA-REKS: timers before 'REKS: compute_si'), resp = the rest of the run; an SCF-only job is SCF throughout; s / SCF it = SCF, s / SCF iterations; resp. it = Davidson iterations of the response (1 (direct) = SI of dimension \<= 4000 solved by one dense LAPACK diagonalization); s / resp. it = resp, s / resp. it.
 
@@ -247,6 +270,8 @@ TC, closed shell, def2-TZVP
 
 ### Peak memory
 
+def2-TZVP, SI-SA-REKS(6,6): 41.6 GiB vs ORCA TDA 52.5 GiB (closed shell), 42.1 GiB vs ORCA SF-TDA 96.7 GiB (open shell).
+
 * REKS Studio
 * ORCA
 * Q-Chem
@@ -266,19 +291,19 @@ Fig. 2. Peak memory per job, GiB, linear axis. Bar: SCF + states job (rows with 
 
 ### Setup
 
-System: Tetracene dimer (TTRCN2), C<sub>36</sub>H<sub>24</sub>, 60 atoms; DR = interplanar displacement of the monomers. TO, open shell: DR −0.40 Å, SA-REKS(2,2) occupations 1.71 / 0.29 in 6-31G(d), 1.76 / 0.24 in def2-TZVP; TC, closed shell: DR 0 Å, SA-REKS(2,2) occupations 2.00 / 0.00.
+System: Tetracene dimer, C<sub>36</sub>H<sub>24</sub>, 60 atoms; DR = interplanar displacement of the monomers. TO, open shell: DR −0.40 Å, SA-REKS(2,2) occupations 1.71 / 0.29 in 6-31G(d), 1.76 / 0.24 in def2-TZVP; TC, closed shell: DR 0 Å, SA-REKS(2,2) occupations 2.00 / 0.00.
 
 Bases: 6-31G(d), 552; def2-TZVP, 1260 basis functions, spherical, the same count in all three codes.
 
 Protocol: Zeroth calculation at the seed geometry, DR 0.01 Å away, untimed; the timed run reads its orbitals. SCF and SCF + states are separate jobs. Wall = whole program run, start-up included.
 
-Settings: Default settings of each code except what was set for all: basis, BH\&HLYP, SG-1 grid (ORCA DefGrid2, it has no SG-1), density-fitted integrals (Psi4 DF, ORCA RIJCOSX, Q-Chem RI-J/RI-K), SCF convergence energy 1e-8 / density (error) 1e-7, at most 150 SCF cycles, response convergence 1e-6, 10 roots, 36 cores, 300 GB. REKS rows marked † ran at e 1e-7, d 1e-6 (TC (10,10), TC def2-TZVP (8,8), (10,10)).
+Settings: Default settings of each code except what was set for all: basis, BH\&HLYP, SG-1 grid (ORCA DefGrid2, it has no SG-1), density-fitted integrals (Psi4 DF, ORCA RIJCOSX, Q-Chem RI-J/RI-K), SCF convergence energy 1e-8 / density (error) 1e-7, at most 150 SCF cycles, response convergence 1e-6, 10 roots, 36 cores, 300 GB. Q-Chem SF-TDA input: `scf_algorithm gdm`. REKS rows marked † ran at e 1e-7, d 1e-6 (TC (10,10), TC def2-TZVP (8,8), (10,10)).
 
 Hardware: 2x Xeon Gold 6240, 36 cores; 36 threads or MPI ranks and 300 GB for every code.
 
 Repeats: ORCA and Psi4 3; Q-Chem 3 where its wall time is within 1.5x of the faster of ORCA (same method) and SA-REKS(2,2), else 1. Shown: the fastest converged repeat.
 
-Too slow: a Q-Chem run still going past both 2 x max(ORCA with the same method, slowest REKS job of the molecule) and 1 h is killed; every finished run keeps its numbers.
+Too slow: a Q-Chem run still going past both 2 x max(ORCA with the same method, slowest REKS job of the molecule) and 1 h is killed; every finished run keeps its numbers. Exception: TC def2-TZVP TDA was stopped earlier, at ~30 min.
 
 Memory: Peak PSS summed over the process tree, sampled every 0.5 s; GiB.
 
@@ -303,10 +328,10 @@ Builds: REKS rows: kk/reks.v42 @ cf0bacc93 (TC def2-TZVP (8,8): 3eb094626); Psi4
 
 Inputs, TO (open shell, 6-31G(d)); seeds not shipped
 
-* [`reks_sa66.py`](https://reksstudio.github.io/v2/inputs/cost/reks_sa66.py.txt): SA-REKS(6,6): threads and memory from the environment (`OMP_NUM_THREADS`, `PSI4_MEMORY`); seed orbitals read from `prev.npy` (not shipped).
+* [`reks_sa66.py`](https://reksstudio.github.io/v2/inputs/cost/reks_sa66.py.txt): SA-REKS(6,6): threads and memory from the environment (`OMP_NUM_THREADS`, `PSI4_MEMORY`); seed orbitals read from `prev.npy`.
 * [`reks_si66.py`](https://reksstudio.github.io/v2/inputs/cost/reks_si66.py.txt): SI-SA-REKS(6,6), 10 states: environment and `prev.npy` seed as for SA-REKS(6,6).
-* [`orca_sftda.inp`](https://reksstudio.github.io/v2/inputs/cost/orca_sftda.inp.txt): ORCA SF-TDA, 10 roots: `%pal nprocs 36` and `%maxcore 8333` (MB per rank) set in the input; seed `prev.gbw` read by `MORead` (not shipped).
-* [`qchem_sftda.in`](https://reksstudio.github.io/v2/inputs/cost/qchem_sftda.in.txt): Q-Chem SF-TDA, 10 roots: `mem_total 300000` (MB) set in the input, threads from `qchem -nt`; seed read by `scf_guess read` (not shipped).
+* [`orca_sftda.inp`](https://reksstudio.github.io/v2/inputs/cost/orca_sftda.inp.txt): ORCA SF-TDA, 10 roots: `%pal nprocs 36` and `%maxcore 8333` (MB per rank) set in the input; seed `prev.gbw` read by `MORead`.
+* [`qchem_sftda.in`](https://reksstudio.github.io/v2/inputs/cost/qchem_sftda.in.txt): Q-Chem SF-TDA, 10 roots: `mem_total 300000` (MB) set in the input, threads from `qchem -nt`; seed read by `scf_guess read`.
 
 ### Measurement notes
 
@@ -314,7 +339,7 @@ Inputs, TO (open shell, 6-31G(d)); seeds not shipped
 * Psi4 memory: MEM_DF keeps the 3-index DF tensor in core (Psi4 output 'AOs need': 5.19 GiB 6-31G(d), 26.70 GiB def2-TZVP = (1260/552)^2 x); ORCA RIJCOSX stores no 3-index K tensor.
 * Psi4 has no ROKS ("ROHF reference for DFT is not available"): no Psi4 ROKS row. Psi4 UKS starts from the Psi4 UKS triplet seed, which reads the RKS seed (as in ORCA and Q-Chem).
 * Time split, every code: SCF, s + resp, s = Wall, s of the same run. SCF = the SCF time the code reports (ORCA 'SCF iterations' module timing, Q-Chem 'SCF time ... wall', Psi4 SI-SA-REKS: wall sum of the timers before 'REKS: compute_si'); resp = the rest of the run, start-up and output included. Psi4 SI: the run time outside the Psi4 timers falls into resp.
-* TO def2-TZVP: Q-Chem MRSF-TDA too slow: the same job in TC_tz took ~8 h for its first Davidson iteration; not run.
+* TO def2-TZVP: Q-Chem MRSF-TDA too slow: the same job in TC def2-TZVP took ~8 h for its first Davidson iteration; not run.
 * TO def2-TZVP: Q-Chem SF-TDA too slow: 7 Davidson iterations in 11 h on one core (94 % CPU), then stopped.
 * TO def2-TZVP: Q-Chem TDA too slow, not run: in 6-31G(d) TDA took as long as SF-TDA (1545 vs 1477 s), and SF-TDA here runs 10-11 h.
 * TC def2-TZVP: Q-Chem MRSF-TDA too slow: SCF 495 s, then the first Davidson iteration took ~8 h (6-31G(d): 10 iterations of ~540 s); stopped after 11.5 h.
@@ -437,13 +462,20 @@ TC, closed shell, def2-TZVP, 1260 basis functions
 
 [Install, free](https://reksstudio.github.io/v2/docs/index.md#install) From the install: up to [(6,6)](#catalogue).
 
-## B. Inside Psi4
+## B. Against DFT in Psi4
 
-Paper v1: 16 molecules, 322–1868 basis functions (9 aug-cc-pVTZ, 7 cc-pVTZ); single points; RKS / RHF references and 20-state TDA from SAD, SA-REKS and SSR from the converged reference orbitals (untimed); Intel Xeon E5-2697 v3 (Haswell), 28 threads.
+Paper v1: 16 molecules, 322–1868 basis functions (9 aug-cc-pVTZ, 7 cc-pVTZ); single points; RKS / RHF references and 20-state TDA from SAD, SA-REKS and SSR from the converged reference orbitals; Intel Xeon E5-2697 v3 (Haswell), 28 threads. SSR: the SI-SA-REKS states.
 
-### Ground state: whole SCF run
+### Whole SCF run
 
-Whole run of the SCF job, SA-REKS over the reference, median over 16 molecules, (2,2) to (8,8): BH\&HLYP 0.86–10.47; HF 0.80–2.25. Below parity at (2,2): 12 of 16 with BH\&HLYP, 14 with HF; at (8,8): 0 of 16 with BH\&HLYP, 0 with HF.
+Whole run of the SCF job, SA-REKS over the reference, median over 16 molecules
+
+| | (2,2) | (4,4) | (6,6) | (8,8) |
+| - | - | - | - | - |
+| BH\&HLYP, RKS | 0.86 | 1.53 | 3.33 | 10.47 |
+| HF, RHF | 0.80 | 1.03 | 2.14 | 2.25 |
+
+Below parity at (2,2): 12 of 16 with BH\&HLYP, 14 with HF; at (8,8): 0 of 16 with BH\&HLYP, 0 with HF.
 
 * SA-REKS(2,2)
 * SA-REKS(4,4)
@@ -463,11 +495,18 @@ median, 16 molecules: (2,2) 0.80 · (4,4) 1.03 · (6,6) 2.14 · (8,8) 2.25
 
 HF: SA-REKS / RHF, whole SCF run, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 0.80, (4,4) 1.03, (6,6) 2.14, (8,8) 2.25
 
-Fig. B1. Whole run of the SCF job, SA-REKS over the reference (RKS for BH\&HLYP, RHF for HF), per molecule; log–log; dashed: parity. SA-REKS reads the converged reference orbitals (seed run not timed); reference from SAD. Fastest converged repeat. Each point opens its molecule card.
+Fig. B1. Whole run of the SCF job, SA-REKS over the reference (RKS for BH\&HLYP, RHF for HF), per molecule; log–log; dashed: parity; vertical line: boundary between the two basis sets. SA-REKS reads the converged reference orbitals; reference from SAD. Fastest converged repeat. Each point opens its molecule card.
 
 ### One Fock build
 
-Per Fock build, SA-REKS over the reference, median over the 6 largest molecules (1064–1868 basis functions), (2,2) to (8,8): BH\&HLYP 1.57–5.59; HF 1.30–2.29.
+Per Fock build, SA-REKS over the reference, median
+
+| | (2,2) | (4,4) | (6,6) | (8,8) |
+| - | - | - | - | - |
+| BH\&HLYP, 16 molecules | 2.15 | 3.12 | 6.29 | 14.83 |
+| HF, 16 molecules | 1.76 | 2.48 | 3.21 | 4.03 |
+| BH\&HLYP, 6 largest (1064–1868 basis functions) | 1.57 | 2.06 | 2.96 | 5.59 |
+| HF, 6 largest (1064–1868 basis functions) | 1.30 | 1.65 | 1.95 | 2.29 |
 
 * SA-REKS(2,2)
 * SA-REKS(4,4)
@@ -487,7 +526,7 @@ median, 16 molecules: (2,2) 1.76 · (4,4) 2.48 · (6,6) 3.21 · (8,8) 4.03
 
 HF: SA-REKS / RHF, one Fock build, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 1.76, (4,4) 2.48, (6,6) 3.21, (8,8) 4.03
 
-Fig. B2. Time of one Fock build, SA-REKS over the reference (RKS for BH\&HLYP, RHF for HF), per molecule; log–log; dashed: parity. Panel median over all 16 molecules. Each point opens its molecule card.
+Fig. B2. Time of one Fock build, SA-REKS over the reference (RKS for BH\&HLYP, RHF for HF), per molecule; log–log; dashed: parity; vertical line: boundary between the two basis sets. Panel median over all 16 molecules. Each point opens its molecule card.
 
 | SCF iterations, median (range) | Reference | (2,2) | (4,4) | (6,6) | (8,8) |
 | - | - | - | - | - | - |
@@ -498,9 +537,20 @@ BH\&HLYP, SA-REKS(8,8) from RKS orbitals: median 40.5 SCF iterations; RKS from S
 
 Fitted exponent k of the Fock-build time t ∝ N<sup>k</sup>, N basis functions (log–log least squares, all 16 molecules): BH\&HLYP RKS N<sup>2.99</sup>, (2,2) N<sup>2.68</sup>, (4,4) N<sup>2.52</sup>, (6,6) N<sup>2.22</sup>, (8,8) N<sup>1.97</sup>; HF RHF N<sup>3.44</sup>, (2,2) N<sup>3.09</sup>, (4,4) N<sup>2.97</sup>, (6,6) N<sup>2.87</sup>, (8,8) N<sup>2.80</sup>.
 
+### Mechanism
+
+Integrals and the DFT quadrature grid are evaluated once; every configuration of the ensemble reads them. The Fock matrices of the configurations combine by weighted addition; energy and gradient of the ensemble follow from the assembled matrices.
+
 ### Excited states
 
-Whole SSR run over the whole 20-state TDA run, median over 16 molecules, (2,2) to (8,8): BH\&HLYP 0.14–2.65 (TDDFT-TDA); HF 0.13–0.81 (CIS). Above parity at (8,8): 14 of 16 with BH\&HLYP, 5 with HF.
+Whole SSR run over the whole 20-state TDA run, median over 16 molecules
+
+| | (2,2) | (4,4) | (6,6) | (8,8) |
+| - | - | - | - | - |
+| BH\&HLYP, TDDFT-TDA | 0.14 | 0.24 | 0.57 | 2.65 |
+| HF, CIS | 0.13 | 0.18 | 0.38 | 0.81 |
+
+Above parity at (8,8): 14 of 16 with BH\&HLYP, 5 with HF.
 
 * SSR(2,2), 3 states
 * SSR(4,4), 16 states
@@ -521,7 +571,7 @@ median, 16 molecules: (2,2) 0.13 · (4,4) 0.18 · (6,6) 0.38 · (8,8) 0.81
 
 HF: SSR / CIS, whole run, per molecule against basis functions, log–log; median over 16 molecules: (2,2) 0.13, (4,4) 0.18, (6,6) 0.38, (8,8) 0.81
 
-Fig. B3. Whole SSR run over the whole 20-state TDA run (TDDFT-TDA for BH\&HLYP, CIS for HF), per molecule; log–log; dashed: parity. SSR reads the converged reference orbitals (seed run not timed); TDA from SAD. Fastest converged repeat. Each point opens its molecule card.
+Fig. B3. Whole SSR run over the whole 20-state TDA run (TDDFT-TDA for BH\&HLYP, CIS for HF), per molecule; log–log; dashed: parity; vertical line: boundary between the two basis sets. SSR reads the converged reference orbitals; TDA from SAD. Fastest converged repeat. Each point opens its molecule card.
 
 SI step alone over the TDA response (TDA wall minus its SCF wall), median, (2,2), (4,4), (6,6), (8,8): BH\&HLYP 1/1194, 1/190, 1/68, 1/13; HF 1/1105, 1/205, 1/70, 1/36.
 
@@ -531,7 +581,7 @@ Peak memory, median over the 6 largest molecules, all active spaces and function
 
 ### Molecules
 
-Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of that repeat; peak memory: lowest of the 4 repeats, GiB. Reference and TDA from SAD, SA-REKS and SSR from the converged reference orbitals (not timed).
+Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of that repeat; peak memory: lowest of the 4 repeats, GiB. Reference and TDA from SAD, SA-REKS and SSR from the converged reference orbitals.
 
 #### aug-cc-pVTZ: 9 molecules
 
@@ -544,7 +594,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 6.38 | 14 | 1.6 | 5.85 | 14 | 1.4 |
   | (2,2) | 7.19 | 15 | 1.6 | 4.88 | 16 | 1.4 |
   | (4,4) | 12.4 | 22 | 1.5 | 6.05 | 19 | 1.4 |
@@ -566,7 +616,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 6.77 | 13 | 1.9 | 6.24 | 13 | 1.9 |
   | (2,2) | 8.02 | 14 | 1.9 | 6.05 | 16 | 1.8 |
   | (4,4) | 12.0 | 16 | 1.9 | 7.01 | 17 | 1.8 |
@@ -588,7 +638,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 15.6 | 14 | 4.0 | 13.8 | 14 | 3.9 |
   | (2,2) | 16.6 | 11 | 4.1 | 11.5 | 12 | 4.0 |
   | (4,4) | 33.8 | 24 | 4.2 | 17.1 | 20 | 4.0 |
@@ -610,7 +660,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 21.9 | 15 | 4.8 | 21.2 | 17 | 4.7 |
   | (2,2) | 19.4 | 11 | 4.9 | 16.3 | 15 | 4.8 |
   | (4,4) | 33.0 | 18 | 4.9 | 21.6 | 19 | 4.8 |
@@ -632,7 +682,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 26.5 | 16 | 7.2 | 22.3 | 14 | 7.1 |
   | (2,2) | 26.3 | 11 | 7.3 | 21.1 | 14 | 7.2 |
   | (4,4) | 44.7 | 17 | 7.3 | 27.4 | 16 | 7.2 |
@@ -654,7 +704,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 33.1 | 19 | 7.8 | 27.2 | 17 | 7.7 |
   | (2,2) | 38.2 | 19 | 8.0 | 25.5 | 18 | 7.8 |
   | (4,4) | 57.0 | 20 | 7.9 | 33.3 | 20 | 7.8 |
@@ -676,7 +726,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 64.6 | 31 | 9.3 | 38.0 | 17 | 9.2 |
   | (2,2) | 54.4 | 23 | 9.4 | 57.7 | 22 | 9.3 |
   | (4,4) | 222 | 39 | 9.4 | 124 | 40 | 9.3 |
@@ -698,7 +748,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 45.9 | 21 | 10.0 | 34.0 | 17 | 10.0 |
   | (2,2) | 42.2 | 15 | 10.2 | 41.9 | 26 | 10.0 |
   | (4,4) | 73.5 | 21 | 10.2 | 44.4 | 20 | 10.0 |
@@ -720,7 +770,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 59.6 | 20 | 11.6 | 48.4 | 17 | 11.5 |
   | (2,2) | 52.6 | 14 | 11.7 | 45.4 | 19 | 11.6 |
   | (4,4) | 92.8 | 23 | 11.8 | 62.7 | 24 | 11.6 |
@@ -744,7 +794,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 85.4 | 20 | 15.5 | 80.4 | 20 | 15.5 |
   | (2,2) | 71.8 | 12 | 15.7 | 56.5 | 12 | 15.6 |
   | (4,4) | 116 | 18 | 15.7 | 76.3 | 16 | 15.6 |
@@ -766,7 +816,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 160 | 22 | 21.3 | 156 | 23 | 21.2 |
   | (2,2) | 108 | 11 | 21.6 | 98.0 | 13 | 21.3 |
   | (4,4) | 157 | 15 | 21.5 | 116 | 14 | 21.3 |
@@ -788,7 +838,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 280 | 29 | 27.7 | 242 | 25 | 27.6 |
   | (2,2) | 159 | 12 | 27.9 | 142 | 13 | 27.8 |
   | (4,4) | 205 | 14 | 28.0 | 166 | 14 | 27.9 |
@@ -810,7 +860,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 429 | 26 | 47.7 | 442 | 29 | 47.6 |
   | (2,2) | 259 | 12 | 48.1 | 241 | 14 | 47.9 |
   | (4,4) | 334 | 14 | 48.2 | 274 | 14 | 47.9 |
@@ -832,7 +882,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 628 | 25 | 58.4 | 656 | 28 | 57.7 |
   | (2,2) | 398 | 13 | 56.9 | 378 | 15 | 58.0 |
   | (4,4) | 476 | 14 | 56.9 | 422 | 15 | 58.0 |
@@ -854,7 +904,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 839 | 32 | 70.8 | 558 | 19 | 68.0 |
   | (2,2) | 403 | 10 | 66.9 | 389 | 12 | 63.9 |
   | (4,4) | 515 | 12 | 67.0 | 435 | 12 | 63.9 |
@@ -876,7 +926,7 @@ Wall: whole run in s, fastest converged of 4 repeats; it.: SCF iterations of tha
   | | BH\&HLYP | | | HF | | |
   | - | - | - | - | - | - | - |
   | | s | it. | GiB | s | it. | GiB |
-  | Ground state: reference, SA-REKS | | | | | | |
+  | SCF: reference, SA-REKS | | | | | | |
   | RKS \| RHF | 2454 | 86 | 71.5 | 1024 | 32 | 72.2 |
   | (2,2) | 552 | 13 | 70.8 | 548 | 16 | 67.5 |
   | (4,4) | 723 | 16 | 71.0 | 662 | 18 | 67.7 |
@@ -895,13 +945,36 @@ Hardware: Intel Xeon E5-2697 v3 (Haswell), one exclusive node, 28 threads
 
 Test set: 16 molecules, 322–1868 basis functions
 
-Guess: References from SAD; SA-REKS and SSR from the converged reference orbitals, untimed
+Guess: References from SAD; SA-REKS and SSR from the converged reference orbitals
 
 Build: Psi4 revision not recorded in the outputs
 
-### Mechanism
+## Largest run
 
-Integrals and the DFT quadrature grid are evaluated once; every configuration of the ensemble reads them. The Fock matrices of the configurations combine by weighted addition; energy and gradient of the ensemble follow from the assembled matrices.
+Triangulene nanostar, 192 atoms, (12,12), def2-TZVP, BH\&HLYP.
+
+| Job | Wall | Cores |
+| - | - | - |
+| SCF | 2 h 12 min | 96 |
+| SI 2S = 0 | 48 min | 96 |
+| SI 2S = 2 | 3 h 9 min | 36 |
+| SI 2S = 4 | 2 h 53 min | 36 |
+| SI 2S = 6–12 | 2 h 2 min | 36 |
+
+[Results, large molecules, run sheet](https://reksstudio.github.io/v2/main/results/large-molecules/index.md#time).
+
+## One dynamics step
+
+One gradient() call at 90° C<sub>2</sub>H<sub>4</sub> from RKS orbitals: SSR(2,2)/6-31G(d), BH\&HLYP, DF, 4 threads, faster of two repeats.
+
+| Call | Wall / s |
+| - | - |
+| one-state gradient | 1.11 |
+| two gradients | 1.21 |
+| three gradients | 1.26 |
+| gradient + 3 NACs | 1.70 |
+
+**Provenance:** site run, Psi4 e95c2d234.
 
 ## Configuration count
 
@@ -915,7 +988,7 @@ $f_S$: number of spin functions of spin $S$ on $2P$ open orbitals; $f_0$ is the 
 
 ### Configurations generated per active space and spin
 
-Linearly independent configurations per spin sector S and active space, log scale: (2,2) S=0 3, S=1 1; (4,4) S=0 18, S=1 11, S=2 1; (6,6) S=0 161, S=1 153, S=2 41, S=3 1; (8,8) S=0 1 934, S=1 2 524, S=2 1 172, S=3 199, S=4 1; (10,10) S=0 29 082, S=1 48 090, S=2 31 275, S=3 9 635, S=4 1 209, S=5 1; (12,12) S=0 524 292, S=1 1 045 737, S=2 864 275, S=3 374 554, S=4 86 454, S=5 8 651, S=6 1; (14,14) S=0 11 017 869, S=1 25 684 841, S=2 25 614 281, S=3 14 112 637, S=4 4 586 673, S=5 846 797, S=6 70 573, S=7 1
+Configurations generated per spin sector S and active space, log scale: (2,2) S=0 3, S=1 1; (4,4) S=0 18, S=1 11, S=2 1; (6,6) S=0 161, S=1 153, S=2 41, S=3 1; (8,8) S=0 1 934, S=1 2 524, S=2 1 172, S=3 199, S=4 1; (10,10) S=0 29 082, S=1 48 090, S=2 31 275, S=3 9 635, S=4 1 209, S=5 1; (12,12) S=0 524 292, S=1 1 045 737, S=2 864 275, S=3 374 554, S=4 86 454, S=5 8 651, S=6 1; (14,14) S=0 11 017 869, S=1 25 684 841, S=2 25 614 281, S=3 14 112 637, S=4 4 586 673, S=5 846 797, S=6 70 573, S=7 1
 
 * S = 0
 * S = 1
@@ -950,23 +1023,23 @@ Linearly independent configurations per spin sector S and active space, log scal
 | | 6 | 9 635 | 25 109 526 | 759 955 283 | 23 526 | 2.40 GB |
 | | 8 | 1 209 | 731 445 | 42 169 785 | 4 886 | 82.7 MB |
 | | 10 | 1 | 1 | 336 | 336 | 26.3 KB |
-| (12,12) | 0 | 524 292 | 59 351 892 458 | 1 940 383 429 553 | 986 534 | 8.22 TB<sup>†</sup> |
-| | 2 | 1 045 737 | 143 099 611 285 | 3 144 757 198 668 | 970 490 | 9.71 TB<sup>†</sup> |
-| | 4 | 864 275 | 73 057 039 358 | 1 859 770 442 447 | 834 746 | 6.06 TB<sup>†</sup> |
-| | 6 | 374 554 | 16 693 280 767 | 543 855 811 001 | 499 496 | 1.71 TB<sup>†</sup> |
-| | 8 | 86 454 | 1 579 846 605 | 98 125 447 957 | 168 456 | 298 GB<sup>†</sup> |
+| (12,12) | 0 | 524 292 | 59 351 892 458 | 1 940 383 429 553 | 986 534 | 8.22 TB<sup>‡</sup> |
+| | 2 | 1 045 737 | 143 099 611 285 | 3 144 757 198 668 | 970 490 | 9.71 TB<sup>‡</sup> |
+| | 4 | 864 275 | 73 057 039 358 | 1 859 770 442 447 | 834 746 | 6.06 TB<sup>‡</sup> |
+| | 6 | 374 554 | 16 693 280 767 | 543 855 811 001 | 499 496 | 1.71 TB<sup>‡</sup> |
+| | 8 | 86 454 | 1 579 846 605 | 98 125 447 957 | 168 456 | 298 GB<sup>‡</sup> |
 | | 10 | 8 651 | 37 424 226 | 5 026 090 849 | 25 446 | 6.62 GB |
 | | 12 | 1 | 1 | 1 254 | 1 254 | 139 KB |
-| (14,14) | 0 | 11 017 869 | 16 918 238 601 779 | 639 147 179 488 068 | 13 544 877 | 2.63 PB<sup>†</sup> |
-| | 2 | 25 684 841 | 46 584 198 237 597 | 1 188 693 596 908 138 | 13 463 829 | 3.66 PB<sup>†</sup> |
-| | 4 | 25 614 281 | 29 041 519 627 069 | 847 074 930 111 080 | 12 508 917 | 2.74 PB<sup>†</sup> |
-| | 6 | 14 112 637 | 9 288 669 797 107 | 333 416 042 155 132 | 9 158 493 | 1.21 PB<sup>†</sup> |
-| | 8 | 4 586 673 | 1 607 467 057 929 | 110 094 006 108 480 | 4 339 343 | 398 TB<sup>†</sup> |
-| | 10 | 846 797 | 122 286 938 043 | 20 623 311 192 918 | 1 122 003 | 65.6 TB<sup>†</sup> |
-| | 12 | 70 573 | 2 490 309 451 | 924 088 630 219 | 127 611 | 840 GB<sup>†</sup> |
-| | 14 | 1 | 1 | 4 719 | 4 719 | 916 KB<sup>†</sup> |
+| (14,14) | 0 | 11 017 869 | 16 918 238 601 779 | 639 147 179 488 068 | 13 544 877 | 2.63 PB<sup>‡</sup> |
+| | 2 | 25 684 841 | 46 584 198 237 597 | 1 188 693 596 908 138 | 13 463 829 | 3.66 PB<sup>‡</sup> |
+| | 4 | 25 614 281 | 29 041 519 627 069 | 847 074 930 111 080 | 12 508 917 | 2.74 PB<sup>‡</sup> |
+| | 6 | 14 112 637 | 9 288 669 797 107 | 333 416 042 155 132 | 9 158 493 | 1.21 PB<sup>‡</sup> |
+| | 8 | 4 586 673 | 1 607 467 057 929 | 110 094 006 108 480 | 4 339 343 | 398 TB<sup>‡</sup> |
+| | 10 | 846 797 | 122 286 938 043 | 20 623 311 192 918 | 1 122 003 | 65.6 TB<sup>‡</sup> |
+| | 12 | 70 573 | 2 490 309 451 | 924 088 630 219 | 127 611 | 840 GB<sup>‡</sup> |
+| | 14 | 1 | 1 | 4 719 | 4 719 | 916 KB<sup>‡</sup> |
 
-**Equations:** nonzero Hamiltonian elements, H<sub>KK′</sub> ≠ 0, K ≤ K′. **Terms:** symbolic terms of those elements after collection. **Determinants:** microstates of the sector's elements. **Catalogue:** size of the file of one spin sector, from generator runs; † estimated value.
+**Equations:** nonzero Hamiltonian elements, H<sub>KK′</sub> ≠ 0, K ≤ K′. **Terms:** symbolic terms of those elements after collection. **Determinants:** microstates of the sector's elements. **Catalogue:** size of the file of one spin sector, from generator runs; ‡ estimated value.
 
 ## Catalogue
 
@@ -995,28 +1068,11 @@ Symbolic Slater–Condon–Fock contraction, singlet sector. Up to (4,4) the tim
 
 One file with every spin sector; the time covers the whole run, contraction included.
 
-## Largest run
-
-TNS (12,12), def2-TZVP · BH\&HLYP · SCF 2 h 12 min, SI 2S = 0 48 min on PC-1 × 96; SI 2S = 2 3 h 9 min, SI 2S = 4 2 h 53 min, SI 2S = 6–12 2 h 2 min on PC-2 × 36: [Results, large molecules, run sheet](https://reksstudio.github.io/v2/main/results/large-molecules/index.md#time).
-
-## One dynamics step
-
-One gradient() call at 90° C<sub>2</sub>H<sub>4</sub> from RKS orbitals: SSR(2,2)/6-31G(d), BH\&HLYP, DF, 4 threads, faster of two repeats.
-
-| Call | Wall / s |
-| - | - |
-| one-state gradient | 1.11 |
-| two gradients | 1.21 |
-| three gradients | 1.26 |
-| gradient + 3 NACs | 1.70 |
-
-**Provenance:** site run, Psi4 e95c2d234.
-
 ## Get it
 
 Free and open source.
 
-[Install, free](https://reksstudio.github.io/v2/docs/index.md#install) From the install: up to [(6,6)](#catalogue).
+[Install, free](https://reksstudio.github.io/v2/docs/index.md#install) From the install: up to [(6,6)](#catalogue). Accuracy: [Results](https://reksstudio.github.io/v2/main/results/index.md).
 
 ## Linked files
 
