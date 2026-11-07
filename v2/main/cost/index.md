@@ -989,7 +989,7 @@ Symbolic Slater–Condon–Fock contraction, singlet sector. Up to (4,4) the tim
 | (8,8) | 5 830 | 315 MB | 8 | 15.5 s | 3.85 GB |
 | (10,10) | 119 292 | 74.5 GB | 96 | 39.6 min | 157 GB |
 
-One file with every spin sector; the time covers the whole run, contraction included. **Provenance:** generator runs, current file format.
+One file with every spin sector; the time covers the whole run, contraction included.
 
 ## Largest run
 
