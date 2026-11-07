@@ -368,7 +368,7 @@ const h = toHtml;
     <h3 id="equations">Equations, terms, determinants and catalogue size</h3>
     <Table table={landing.equations} numeric grouped ruler="Terms" />
     <p class="prov">* Determinants in the SCF: the default state-averaged ensemble and the recommended all-α determinant, as in the <a href={manualHref(base, 'input-patterns')}>Manual, Input patterns</a> example. The count depends on the active space, not on 2S.</p>
-    <p class="prov"><strong>Equations:</strong> nonzero Hamiltonian elements, <Fragment set:html={h(landing.engine.def)} />. <strong>Terms:</strong> symbolic terms of those elements after collection. <strong>Determinants:</strong> microstates of the sector's elements. <strong>Catalogue:</strong> size of the file of one spin sector. Generator runs give the terms up to (10,10) and at (12,12), 2S = 10 and 12; the other sectors are counted by symmetry classes, a count that reproduces every run. Catalogue sizes: generator runs; ~ marks an estimate.</p>
+    <p class="prov"><strong>Equations:</strong> nonzero Hamiltonian elements, <Fragment set:html={h(landing.engine.def)} />. <strong>Terms:</strong> symbolic terms of those elements after collection. <strong>Determinants:</strong> microstates of the sector's elements. <strong>Catalogue:</strong> size of the file of one spin sector. Generator runs give the terms up to (10,10) and at (12,12), 2S = 10 and 12; the other sectors are counted by symmetry classes, a count that reproduces every run. Catalogue sizes: generator runs; ~ marks an estimate. (14,14): size the file would have, not generated.</p>
   </section>
 
   <section class="mblock" id="catalogue">
