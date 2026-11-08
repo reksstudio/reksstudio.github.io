@@ -72,7 +72,11 @@ SSR S<sub>0</sub> against FCI (H<sub>2</sub>–H<sub>8</sub>) and SHCI (C<sub>2<
 
 * [H<sub>10</sub>(10,10) · 6-31G H₁₀ S0 curve, SSR line, RKS dashed; scale bar 50 mEh no reference](https://reksstudio.github.io/v2/main/results/dissociation/h10/index.md)
 
-* [C<sub>2</sub>H<sub>2</sub>(6,6) · aug-cc-pVTZ C₂H₂ S0 curve, SSR line; scale bar 50 mEh no reference](https://reksstudio.github.io/v2/main/results/dissociation/c2h2/index.md)
+* [C<sub>2</sub>H<sub>4</sub>(4,4) · aug-cc-pVTZ C₂H₄ S0 curve, SSR line, RKS dashed; scale bar 50 mEh no reference](https://reksstudio.github.io/v2/main/results/dissociation/c2h4/index.md)
+
+* [N<sub>2</sub>(6,6) · aug-cc-pVTZ N₂ S0 curve, SSR line, RKS dashed; scale bar 50 mEh no reference](https://reksstudio.github.io/v2/main/results/dissociation/n2/index.md)
+
+* [C<sub>2</sub>H<sub>2</sub>(6,6) · aug-cc-pVTZ C₂H₂ S0 curve, SSR line, RKS dashed; scale bar 50 mEh no reference](https://reksstudio.github.io/v2/main/results/dissociation/c2h2/index.md)
 
 * [C<sub>2</sub>(6,6) · M08-SO · cc-pV5Z C₂ S0 curve, SSR line, SHCI points; scale bar 50 mEh X<sup>1</sup>Σ<sub>g</sub><sup>+</sup>: 12 of 46 SHCI points, shifted by −89.23 mE<sub>h</sub>](https://reksstudio.github.io/v2/main/results/dissociation/c2/index.md)
 
