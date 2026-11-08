@@ -178,7 +178,7 @@ One equation: one nonzero Hamiltonian matrix element between configurations K an
 | (6,6) [in your install](https://reksstudio.github.io/v2/docs/index.md#install) | 23 962 |
 | (8,8) | 4 266 350 |
 | (10,10) [applied, TTR](https://reksstudio.github.io/v2/main/results/large-molecules/index.md) | 1 007 587 692 |
-| (12,12) | 293 819 094 700 |
+| (12,12) [counted](https://reksstudio.github.io/v2/main/cost/index.md#count) | 293 819 094 700 |
 | (14,14) [counted](https://reksstudio.github.io/v2/main/cost/index.md#count) | 103 564 870 568 976 |
 
 The hand-derived (4,4) method spans 9 of the 18 singlet configurations of the full catalogue.

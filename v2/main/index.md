@@ -105,7 +105,7 @@ cmake -S. -Bobjdir -DCMAKE_INSTALL_PREFIX=/path/to/install
 cmake --build objdir --target install -j$(nproc)
 ```
 
-[Choosing the active space →](https://reksstudio.github.io/v2/manual/setup/index.md#active-space)
+[Choosing the active space →](https://reksstudio.github.io/v2/manual/first-calculation/index.md#choose-pairs)
 
 ## Equations no one derives by hand. Ours are generated.
 
@@ -140,10 +140,10 @@ $$
 | (6,6) [in your install](https://reksstudio.github.io/v2/docs/index.md#install) | 23 962 |
 | (8,8) | 4 266 350 |
 | (10,10) [applied, TTR](https://reksstudio.github.io/v2/main/results/large-molecules/index.md) | 1 007 587 692 |
-| (12,12) | 293 819 094 700 |
+| (12,12) [counted](https://reksstudio.github.io/v2/main/cost/index.md#count) | 293 819 094 700 |
 | (14,14) [counted](https://reksstudio.github.io/v2/main/cost/index.md#count) | 103 564 870 568 976 |
 
-Exact limits reproduced to 10<sup>−10</sup> E<sub>h</sub> against CASSCF: H<sub>2</sub> and BH, (2,2)–(4,6).
+Exact limits reproduced to 10<sup>−10</sup> E<sub>h</sub>: H<sub>2</sub> and BH against CASSCF, (2,2)–(2,4); against the geminal product, (4,4)–(4,6).
 
 Counts: (2,2)–(10,10) equal generator runs; larger spaces from exact counting rules that reproduce every run.
 
@@ -154,7 +154,7 @@ Counts: (2,2)–(10,10) equal generator runs; larger spaces from exact counting 
 * [SI states and spin manifolds](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)
 * [analytic gradients](https://reksstudio.github.io/v2/manual/properties/index.md#state-gradient)
 * [NACs](https://reksstudio.github.io/v2/manual/properties/index.md#nac)
-* [MECI (DL-FIND)](https://reksstudio.github.io/v2/manual/dynamics/index.md#geometry-optimization)
+* [MECI (DL-FIND)](https://reksstudio.github.io/v2/main/results/c2h4-photochemistry/index.md#meci)
 * [surface hopping (PyUNIxMD)](https://reksstudio.github.io/v2/manual/dynamics/index.md#surface-hopping)
 
 Gradients, couplings, MECI and dynamics in one code.

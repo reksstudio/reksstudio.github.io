@@ -8,7 +8,7 @@ Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://rek
 
 Team Members
 
-# Current members of REKS Studio developers team
+# REKS Studio developers team
 
 ![Konstantin Komarov](https://reksstudio.github.io/v2/assets/kkomarov.lLD0J574_1vh5hS.jpg)
 
