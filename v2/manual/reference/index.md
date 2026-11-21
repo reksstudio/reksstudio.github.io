@@ -26,13 +26,13 @@ Chapters 18–19 of the REKS Studio user manual
 
 | Option | Default | Meaning | Used in |
 | - | - | - | - |
-| [`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md) array | `[]` (all 2) | Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`. | §1 §2 Pairing scheme §4 Geminal of width w · Lone pair: REKS(2,3) §6 |
+| [`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md) array | `[]` (all 2) | Units of the active space: electron or hole geminals, electron or hole doublets, one token each; selects the catalog. | §1 §2 Pairing scheme §4 Geminal of width w · Lone pair: REKS(2,3) §6 §12 |
 
 ### SA pool {#sa-pool}
 
 | Option | Default | Meaning | Used in |
 | - | - | - | - |
-| [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md) array · alias `REKS_SA_CONFIGS` | catalog `sa_default` pool on 2S = 0 | SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens. | §1 Minimal input · Explicit SA pool and SI cassettes §3 Higher spin states §4 Lone pair: REKS(2,3) §9 `SA_REKS_2SPIN` |
+| [`SA_REKS_CONFIGS`](https://reksstudio.github.io/v2/options/SA_REKS_CONFIGS.md) array · alias `REKS_SA_CONFIGS` | PPS + OSS pool of scheme 0 on the lowest manifold, 2S = N mod 2 | SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens. | §1 Minimal input · Explicit SA pool and SI cassettes §3 Higher spin states §4 Lone pair: REKS(2,3) §9 `SA_REKS_2SPIN` |
 | [`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md) array · alias `REKS_SA_WEIGHTS` | uniform `1/n` | Weights of the SA pool entries, configurations first, then the `sa_reks_extra` determinants; non-negative, summing to 1. | §1 Minimal input · Explicit SA pool and SI cassettes §2 SA-REKS ensemble and weights §8 `SA_REKS_CONFIGS` · `SA_REKS_EXTRA` §16 SCF |
 | [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md) array of arrays · alias `REKS_SA_EXTRA` | none | Extra Slater determinants of the SA ensemble, as occupation vectors; each has its own weight, carries no FON and enters no SI cassette. | §2 SA-REKS ensemble and weights §3 Higher spin states §4 States: SI-SA-REKS(2,3) §5 Geometry optimization · Surface hopping §8 `SA_REKS_CONFIGS` · `SA_REKS_WEIGHTS` §9 Input patterns |
 
@@ -157,7 +157,7 @@ Chapters 18–19 of the REKS Studio user manual
 
 | Option | Default | Meaning | Used in |
 | - | - | - | - |
-| [`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md) bool | `false` | After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA. | §14 §15 `REKS_REPORT_LEVEL` §17 |
+| [`REKS_GEMINAL_DELOC`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_DELOC.md) bool | `false` | After the SCF, rotates generation-0 pairs past the IPR midpoint to their IPR minimum and reconverges; kept if lower in E_SA. | §14 §15 `REKS_REPORT_LEVEL` §17 |
 
 ### Reporting {#reporting}
 
@@ -446,6 +446,8 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`REKS <L>_FON K=<e>`](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)
 * [`REKS <L>_FON META`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons)
 * [`REKS <L>_FON META K=<e>`](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)
+* [`REKS <L>_ROOT SIGNS`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons)
+* [`REKS <L>_ROOT SIGNS K=<e>`](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)
 * [`REKS C PATH B K=<e>`](https://reksstudio.github.io/v2/manual/properties/index.md#si-orbitals)
 * [`REKS DYSON ORBITALS AO`](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-ensemble)
 * [`REKS DYSON ORBITALS MO`](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-ensemble)
@@ -473,6 +475,8 @@ What to cite for a calculation: [Documentation, Cite](https://reksstudio.github.
 * [`REKS QUALITY LANDINGS`](https://reksstudio.github.io/v2/manual/properties/index.md#convergence-quality)
 * [`REKS QUALITY MAX RUNG`](https://reksstudio.github.io/v2/manual/properties/index.md#convergence-quality)
 * [`REKS QUALITY VERDICT TRIPS`](https://reksstudio.github.io/v2/manual/properties/index.md#convergence-quality)
+* [`REKS ROOT SIGNS`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-fons)
+* [`REKS ROOT SIGNS K=<e>`](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)
 * [`REKS SA_WEIGHTS`](https://reksstudio.github.io/v2/manual/properties/index.md#sa-energy)
 * [`REKS SECTOR <s> …`](https://reksstudio.github.io/v2/manual/properties/index.md#si-fons)
 * [`REKS SECTOR <s> EKT ...`](https://reksstudio.github.io/v2/manual/properties/index.md#ekt-ensemble)

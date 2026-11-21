@@ -8,7 +8,7 @@ Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: br
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
-After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA.
+After the SCF, rotates generation-0 pairs past the IPR midpoint to their IPR minimum and reconverges; kept if lower in E_SA.
 
 Type: bool
 

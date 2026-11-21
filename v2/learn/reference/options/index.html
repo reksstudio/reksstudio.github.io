@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex"><title>Option table — REKS Studio Learn</title><link rel="icon" href="data:,"><script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/v2/*"},"eagerness":"moderate"}]}</script><style>@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-normal.BwJpYdxm.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-normal.CqbZqcAx.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-ext-opsz-italic.Dgrugb19.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/v2/assets/newsreader-latin-opsz-italic.BQZfvhrE.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-400-normal.C1F_rdXf.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-400-normal.CgvVWtt1.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-400-normal.CVtoA3K0.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-500-normal.D7VaMi-S.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-500-normal.CLSVXy90.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-500-normal.Buxg-I-T.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-greek-600-normal.BqqF80ia.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-ext-600-normal.EnRqolih.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/v2/assets/ibm-plex-sans-latin-600-normal.r1Mvb25P.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-400-normal.Us7hA_VS.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-400-normal.Fo9UdhO4.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-ext-500-normal.BkYod2nZ.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/v2/assets/ibm-plex-mono-latin-500-normal.DCc8nWQ7.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--bg:#f5f5f2;--bg-raised:#efeee9;--ink:#14181f;--ink-soft:#4a5160;--ink-faint:#8a8f98;--blue:#2a4b8d;--copper:#b5502a;--line:#d8d6cd;--navy-900:#0a1626;--navy-800:#123055;--navy-700:#1d3e68;--mint:#d6e6dc;--copper-bright:#de7f3d;--gold:#d9b36c;--serif:"Newsreader", Georgia, serif;--sans:"IBM Plex Sans", -apple-system, sans-serif;--mono:"IBM Plex Mono", "SF Mono", Consolas, monospace;--nav-offset:88px}*{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}math{font-family:STIX Two Math,Cambria Math,Noto Sans Math,math}.mblk{max-width:100%;overflow:auto hidden}.tml-right{text-align:right}.tml-left{text-align:left}.tml-jot>mtr>mtd{padding-block:.35ex}@supports (not ((-webkit-backdrop-filter:blur(1px)))) and (not ((-moz-appearance:none))){.tml-right{text-align:-webkit-right}.tml-left{text-align:-webkit-left}}body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;margin:0;font-size:17px;line-height:1.6}a{color:inherit}html{scroll-padding-top:var(--nav-offset)}:is(.nav-light,.nav-dark) a{scroll-margin-top:calc(-1 * var(--nav-offset))}.bkp{z-index:60;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));background:var(--ink);max-width:calc(100vw - 32px);color:var(--bg);white-space:nowrap;text-overflow:ellipsis;border-radius:22px;padding:10px 16px;font-size:.88rem;line-height:1.3;text-decoration:none;position:fixed;overflow:hidden;transform:translate(-50%);box-shadow:0 4px 16px #0004}.bkf{animation:2s bkf}@keyframes bkf{0%,40%{background:color-mix(in srgb, var(--copper) 25%, transparent)}}html:not(.bkr) :is(:target>:is(h2,h3):first-child,:target>.hb-head h2,:is(h2,h3,h4):target,tr:target>*){animation:2s bkf}.wrap{max-width:1160px;margin:0 auto;padding:0 40px}@media (width<=700px){.wrap{padding:0 24px}}h1,h2,h3{font-family:var(--serif);color:var(--ink);margin:0;font-weight:600}sub,sup{line-height:0}.ph{color:var(--copper);font-style:italic}.kicker{color:var(--copper);letter-spacing:.02em;margin-bottom:14px;font-size:.86rem;font-weight:500}.prose p{color:var(--ink-soft)}nav{z-index:50;position:sticky;top:0}nav .wrap{justify-content:space-between;align-items:center;min-height:64px;display:flex}.logo{font-family:var(--serif);align-items:baseline;gap:6px;text-decoration:none;display:flex}.navlinks{flex-wrap:wrap;justify-content:flex-end;gap:0 28px;font-size:.92rem;display:flex}.navlinks a{border-bottom:1px solid #0000;padding:6px 0;text-decoration:none;transition:color .15s,border-color .15s}@media (width<=720px){.navlinks{gap:0 16px;font-size:.85rem}}@media (width<=480px){nav .wrap{gap:6px;padding:0 16px}.navlinks{gap:0 8px;font-size:.78rem}nav .wrap .logo{font-size:1rem}}@media (width<=380px){.navlinks{gap:0 6px}.navlinks a:first-child{display:none}}nav.nav-dark{background:var(--navy-900);border-bottom:1px solid #ffffff14}.nav-dark .logo{letter-spacing:.01em;color:var(--mint);font-size:1.3rem;font-style:italic;font-weight:500}.nav-dark .logo .dot{color:var(--copper-bright)}.nav-dark .navlinks a{color:#ffffffd1}.nav-dark .navlinks a:hover,.nav-dark .navlinks a[aria-current]{color:#fff;border-color:var(--copper-bright)}nav.nav-light{backdrop-filter:blur(8px);border-bottom:1px solid var(--line);background:#f5f5f2db}.nav-light .logo{font-size:1.15rem;font-weight:600}.nav-light .logo .dot{color:var(--copper)}.nav-light .navlinks a{color:var(--ink-soft)}.nav-light .navlinks a:hover,.nav-light .navlinks a[aria-current]{color:var(--ink);border-color:var(--copper)}footer{border-top:1px solid var(--line)}footer.foot{padding:40px 0 56px;font-size:.88rem}.foot .wrap{flex-wrap:wrap;gap:12px 28px;display:flex}.foot a{color:var(--ink-soft);text-decoration:none}.foot a:hover{color:var(--ink);text-decoration:underline}
+.astro-code .line.hl{background:#de7f3d33;min-width:100%;display:inline-block}.rm pre.astro-code{border:1px dashed var(--line);border-left:3px dashed var(--copper);background:var(--bg-raised)!important}.rm pre.astro-code span{text-decoration:line-through;color:var(--ink-soft)!important}details>summary{cursor:pointer;color:var(--ink-soft)}details{max-width:74ch;margin:0 0 16px}.findform{margin:16px 0 0}.findform input{width:100%;max-width:60ch;font:inherit;border:1px solid var(--line);background:#fff;border-radius:6px;padding:6px 10px}.findform p{color:var(--ink-soft);margin:4px 0 0;font-size:.82rem}.docsec.find h2{font:600 .75rem/1.6 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:20px 0 2px}.find>div:not(:has(li:not([hidden]))){display:none}.find ul{margin:0;padding:0;font-size:.88rem;line-height:1.75;list-style:none}.find li{border-bottom:1px solid var(--line);overflow-wrap:anywhere;padding:2px 0}.find li>*+*{margin-left:8px}.find small{color:var(--ink-soft)}.find a{color:var(--ink-soft);display:inline-block}.toc .tg{font:600 .7rem/1.6 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px}.docs-layout>div>p{max-width:74ch;margin:0 0 16px}.u-e,.u-h,.u-d,.u-hd{font-family:var(--mono);border-radius:3px;padding:0 .2em;font-size:.9em}.u-e,.u-d{color:var(--blue)}.u-h,.u-hd{color:var(--copper)}.u-d,.u-hd{background:var(--mint)}.u-hd{color:#9a4320}.rk{white-space:nowrap;min-width:24px;min-height:24px;margin:4px 0;line-height:24px;text-decoration:none;display:block}#reks-table~.reftable-wrap :is(th,td){padding-right:8px}#reks-table~.reftable-wrap tbody th{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink);padding:14px 8px 10px 0;font-weight:600;line-height:24px}#reks-table~.reftable-wrap tbody tr:last-child th{border-bottom:none}
+header.docshero{border-bottom:1px solid var(--line);padding:64px 0 40px}header.docshero h1{max-width:20ch;font-size:clamp(1.9rem,4vw,2.7rem)}header.docshero h1+p{color:var(--ink-soft);max-width:56ch;margin-top:16px;font-size:1.05rem}.docs-layout{grid-template-columns:var(--toc-width,200px) minmax(0, 1fr);align-items:start;gap:56px;padding:56px 0 96px;display:grid}@media (width<=860px){.docs-layout{grid-template-columns:minmax(0,1fr)}}.docs-single{padding:56px 0 96px}.toc{top:var(--nav-offset);position:sticky}.toc>summary{display:none}.toc::details-content{content-visibility:visible;display:contents}.toc-list{flex-direction:column;gap:2px;display:flex}.toc a{color:var(--ink-soft);border-left:2px solid #0000;padding:6px 0 6px 12px;font-size:.88rem;text-decoration:none;transition:color .15s,border-color .15s}.toc a:hover{color:var(--ink);border-color:var(--copper)}@media (width<=860px){.toc{border:1px solid var(--line);border-radius:6px;margin-bottom:8px;padding:10px 14px;position:static}.toc>summary{cursor:pointer;color:var(--ink);font-weight:600;display:list-item}.toc::details-content{content-visibility:hidden;display:block}.toc[open]::details-content{content-visibility:visible}.toc-list{margin-top:8px}.toc a{border-left:none;padding-left:0}}.docsec{margin-bottom:72px}.docsec:last-child{margin-bottom:0}.docsec h2{margin-bottom:18px;font-size:1.5rem}.docsec h3{margin:30px 0 12px;font-size:1.12rem}.docsec .prose p{max-width:74ch;margin:0 0 16px}.prose ul,.prose ol{color:var(--ink-soft);max-width:74ch;margin:0 0 16px;padding-left:22px}.prose ol{padding-left:2em}.prose li{margin-bottom:8px}.prose strong{color:var(--ink)}.crumbs a{text-decoration:none}.crumbs a:hover{text-decoration:underline}.reftable-wrap{background:linear-gradient(to left, var(--bg) 30%, #f5f5f200) right / 40px 100% no-repeat local, linear-gradient(to left, #14181f1f, #14181f00) right / 12px 100% no-repeat scroll;margin:8px 0 24px;overflow-x:auto}code{overflow-wrap:break-word;font-family:var(--mono);background:var(--bg-raised);-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:4px;padding:.05em .3em;font-size:.86em}td code{overflow-wrap:normal}pre{font:.85rem/1.5 var(--mono)}pre code{font-size:inherit;line-height:inherit;background:0 0;padding:0}
+header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft);max-width:62ch;margin-top:16px;font-size:1.05rem}header.docshero .branch{color:var(--ink-faint);font-size:.9rem;font-family:var(--mono);margin-top:6px}.banner{border-left:3px solid var(--copper);background:var(--bg-raised);color:var(--ink-soft);width:fit-content;max-width:100%;margin-top:12px;padding:8px 14px;font-size:.8rem;line-height:1.5}header.pagehead{border-bottom:1px solid var(--line);padding:40px 0 28px}header.pagehead h1{font-size:clamp(1.6rem,3.2vw,2.2rem)}header.pagehead p{color:var(--ink-soft);margin:10px 0 0}.docs-layout{--toc-width:240px}.toc{max-height:calc(100vh - var(--nav-offset) - 22px);overflow-y:auto}@media (width<=860px){.toc{max-height:none}}.toc a{font-size:.85rem}.toc a[aria-current]{color:var(--ink);border-color:var(--copper);font-weight:600}.toc .sub{flex-direction:column;gap:2px;margin-bottom:6px;display:flex}.toc .sub a{text-indent:-1.4em;padding-left:calc(24px + 1.4em)}.toc .sub a.h3{text-indent:0;padding-top:3px;padding-bottom:3px;font-size:.8rem}.toc .sub a.h4{text-indent:0;color:var(--ink-faint);overflow-wrap:anywhere;padding-top:1px;padding-bottom:1px;padding-left:calc(24px + 2.4em);font-size:.75rem}@media (width<=860px){.toc a[aria-current]{border-left:2px solid var(--copper);padding-left:10px}.toc .sub a{padding-left:calc(12px + 1.4em)}.toc .sub a.h4{padding-left:calc(12px + 2.4em)}}.docsec h4{font:600 1.02rem/1.4 var(--serif);color:var(--ink);border-top:1px solid var(--line);margin:28px 0 10px;padding-top:22px}.docsec h3+h4{border-top:none;padding-top:0}h4 code:only-child{font-size:.92em;font-weight:600}.fields{max-width:74ch;color:var(--ink-soft);grid-template-columns:max-content minmax(0,1fr);gap:6px 18px;margin:0 0 20px;display:grid}.fields dt{font:600 .74rem/2.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}.fields dd{margin:0}@media (width<=700px){.fields{display:block}.fields dt{float:left;margin-right:.7em}.fields dd{margin-bottom:8px}}figure{max-width:74ch;margin:8px 0 24px}figure img{width:100%;height:auto;margin:0 0 8px;display:block}figure.scheme svg{width:100%;max-width:360px;height:auto;display:block}figure.pair img{max-width:30rem}figcaption{color:var(--ink-soft);font-size:.85rem}figure.mo .g{gap:4px 16px;margin:0 0 8px;display:grid}figure.mo .n2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:30rem}figure.mo .n3{grid-template-columns:repeat(3,minmax(0,1fr))}figure.mo .h{color:var(--ink);text-align:center;border-bottom:1px solid var(--line);padding-bottom:2px;font-size:.85rem;font-weight:600}figure.mo .g img{margin:0 0 2px}figure.mo .g span{text-align:center;color:var(--ink-soft);font-variant-numeric:tabular-nums;font-size:.8rem;line-height:1.3;display:block}figure.mo .g span b{color:var(--ink);font-weight:600}h2 code,h3 code,h4 code{background:0 0;padding:0;font-size:.9em}math[display=block]{text-align:center;max-width:min(74ch,100%);margin:4px 0 18px;padding:2px 0;font-size:1.15em}pre{border-radius:6px;margin:0 0 20px;padding:20px 22px}pre[data-language=log]{font-size:.78rem}pre.astro-code{background-image:linear-gradient(270deg,#10131a 30%,#10131a00),linear-gradient(270deg,#ffffff38,#fff0);background-position:100%;background-repeat:no-repeat;background-size:40px 100%,16px 100%;background-attachment:local,scroll}@media (width<=700px){pre.astro-code{border-radius:0;margin-inline:-24px;padding:14px}}pre.astro-code[data-language=log]{border:1px solid var(--line);border-left:3px solid var(--copper);background-image:linear-gradient(to left, var(--bg-raised) 30%, #efeee900), linear-gradient(to left, #14181f1f, #14181f00);border-radius:0 6px 6px 0;background-color:var(--bg-raised)!important;color:var(--ink)!important}table{border-collapse:collapse;width:100%;min-width:480px;font-size:.9rem}thead th{text-align:left;font-family:var(--sans);color:var(--ink);border-bottom:1px solid var(--ink-faint);white-space:nowrap;padding:8px 16px 8px 0;font-weight:600}tbody td{vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-soft);padding:10px 16px 10px 0}tbody td:first-child code{color:var(--blue);white-space:nowrap;background:0 0;padding:0;font-size:.86rem}tbody tr:last-child td{border-bottom:none}@media (width<=860px){table{min-width:0}tbody td:first-child code{white-space:normal}}#print-order+p+.reftable-wrap tbody td:first-child code{white-space:normal}.pager{border-top:1px solid var(--line);grid-template-columns:1fr 1fr;gap:16px;margin-top:64px;padding-top:24px;display:grid;position:static}.pager a{font-family:var(--serif);color:var(--ink);font-size:1.05rem;text-decoration:none}.pager a[rel=next]{text-align:right;grid-column:2}.pager small{font:.8rem var(--sans);color:var(--ink-soft);display:block}@media (width<=560px){.pager{grid-template-columns:1fr}.pager a[rel=next]{grid-column:1}}.contents h3{margin-bottom:8px}.contents h3 a{text-decoration:none}.contents ul{columns:2 300px;column-gap:40px;margin:0;padding:0;font-size:.9rem;list-style:none}.contents li{break-inside:avoid;padding:2px 0}.contents li.h3{padding-left:1.4em;font-size:.85rem}.contents li a{color:var(--ink-soft);text-decoration:none}.contents li a:hover{color:var(--ink)}.az-letters{flex-wrap:wrap;gap:4px 12px;font-weight:600;display:flex}.az-letters a{text-decoration:none}.az-cols{columns:3 220px;column-gap:32px;font-size:.85rem;line-height:1.35}.az h3{break-after:avoid;margin:14px 0 4px;font-size:1rem}.az h3:first-child{margin-top:0}.az ul{margin:0;padding:0;list-style:none}.az li{break-inside:avoid;text-indent:-1em;overflow-wrap:anywhere;padding:1px 0 1px 1em}.az li a{color:var(--ink-soft);text-decoration:none}.az li a:hover{color:var(--ink)}.az code{background:0 0;padding:0;font-size:.92em}.az .az-page{color:var(--ink-faint);margin-left:4px;font-size:.8em}.refs a{overflow-wrap:anywhere}section:has(>h2[id$=option-table]) .reftable-wrap{container-type:inline-size}section:has(>h2[id$=option-table]) table{table-layout:fixed;min-width:0}section:has(>h2[id$=option-table]) th:first-child{width:30%}section:has(>h2[id$=option-table]) th:nth-child(2){width:15%}section:has(>h2[id$=option-table]) th:nth-child(3){width:30%}@container (width<=740px){section:has(>h2[id$=option-table]) th:nth-child(2){width:7rem}section:has(>h2[id$=option-table]) th:nth-child(3){width:27%}}section:has(>h2[id$=option-table]) td:nth-child(4){font-size:.85rem}section:has(>h2[id$=option-table]) :is(td,td code){overflow-wrap:break-word}section:has(>h2[id$=option-table]) td:first-child code{white-space:normal}section:has(>h2[id$=option-table]) td small{font:.76rem/1.35 var(--sans);color:var(--ink-faint);margin-top:3px;display:inline-block}section:has(>h2[id$=option-table]) td small code{color:inherit;font-size:.72rem}@container (width<=640px){section:has(>h2[id$=option-table]) :is(table,tbody,tr,td){width:auto;display:block}section:has(>h2[id$=option-table]) thead{display:none}section:has(>h2[id$=option-table]) tr{border-bottom:1px solid var(--line);padding:10px 0}section:has(>h2[id$=option-table]) tbody td{border:none;padding:2px 0}section:has(>h2[id$=option-table]) td:nth-child(2):before{content:"Default: ";color:var(--ink-faint);font-family:var(--sans)}section:has(>h2[id$=option-table]) td:nth-child(4):not(:empty):before{content:"Used in: ";color:var(--ink-faint);font-family:var(--sans)}}
+</style></head> <body><a hidden href="/v2/learn/reference/options/index.md">Markdown version</a>  <nav class="nav-light" aria-label="Site"> <div class="wrap"> <a class="logo" href="/v2/">REKS<span class="dot">·</span>Studio</a> <div class="navlinks"> <a href="/v2/">Overview</a><a href="/v2/docs/">Documentation</a><a href="/v2/manual/" aria-current="page">Manual</a><a href="/v2/team/">Team</a> </div> </div> </nav> <main> <header class="pagehead"> <div class="wrap"> <div class="kicker crumbs"><a href="/v2/learn/">Learn</a> › Option table</div> <h1>Option table</h1>  </div> </header><div class="wrap"><form class="findform" action="/v2/learn/find/" role="search"> <input type="search" name="q" placeholder="triplet, radical, REKS_GEMINAL_WIDTHS, or paste an error line" aria-label="Find in Learn" autocomplete="off"> </form> <div class="docs-layout"> <details class="toc"> <summary>Contents · Option table (21 of 22)</summary> <nav class="toc-list" aria-label="Contents"> <a href="/v2/learn/">Learn</a><span class="tg">Path</span><a href="/v2/learn/path/p1/">P1. One pair</a><a href="/v2/learn/path/p2/">P2. Broken π bond</a><a href="/v2/learn/path/p3/">P3. Seed orbitals</a><a href="/v2/learn/path/p4/">P4. Two pairs</a><a href="/v2/learn/path/p5/">P5. Spin states</a><a href="/v2/learn/path/p6/">P6. Forces</a><a href="/v2/learn/procedure/">Procedure</a><span class="tg">Branches</span><a href="/v2/learn/branch/units/">Wide, hole and doublet units</a><a href="/v2/learn/branch/spin/">Spin manifolds and J</a><a href="/v2/learn/branch/properties/">State properties</a><a href="/v2/learn/branch/dynamics/">Optimization and dynamics</a><a href="/v2/learn/branch/solvers/">Solvers and control</a><a href="/v2/learn/branch/environment/">Environment and files</a><span class="tg">Look up</span><a href="/v2/learn/concepts/">Concepts</a><a href="/v2/learn/diagnose/">Diagnose</a><a href="/v2/learn/reference/">Input reference</a><a href="/v2/learn/reference/run-control/">Run-control reference</a><a href="/v2/learn/reference/output/">Output reference</a><a href="/v2/learn/reference/properties/">Property reference</a> <a href="/v2/learn/reference/options/" aria-current="page">Option table</a> <div class="sub"> <a class="h2" href="#option-table">Option table</a><a class="h3" href="#active-space">Active space</a><a class="h3" href="#catalog">Catalog</a><a class="h3" href="#sa-pool">SA pool</a><a class="h3" href="#si-cassettes">SI cassettes</a><a class="h3" href="#spin-manifolds">Spin manifolds</a><a class="h3" href="#state-properties">State properties</a><a class="h3" href="#gradients-and-couplings">Gradients and couplings</a><a class="h3" href="#guess">Guess</a><a class="h3" href="#fons">FONs</a><a class="h3" href="#fon-micro-solver">FON micro-solver</a><a class="h3" href="#convergence-engines">Convergence engines</a><a class="h3" href="#level-shift">Level shift</a><a class="h3" href="#gvb-diis-conditioning-chain-expert">GVB-DIIS conditioning chain (expert)</a><a class="h3" href="#gvb-diis-monitors-verdicts-expert">GVB-DIIS monitors / verdicts (expert)</a><a class="h3" href="#geminal-delocalization">Geminal delocalization</a><a class="h3" href="#reporting">Reporting</a> </div> <a href="/v2/learn/find/">Find</a>  </nav> </details> <div> <section class="docsec"><h2 id="option-table">Option table</h2><div class="prose">
+<p><a href="#row-guess_active_window"><code>GUESS_ACTIVE_WINDOW</code></a> is a general SCF option; the others are REKS options. Seven options have an <code>REKS_</code>-prefixed alias, given under the option name; setting both names is an error.</p>
+<h3 id="active-space">Active space</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Active space"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks"><a href="/v2/learn/reference/#reks"><code>REKS</code></a></span><br><small><code>[N, M]</code></small></td>
+<td>— (required)</td>
+<td>Active space <code>[N, M]</code>: N active electrons in M active orbitals; selects the catalog.</td>
+<td><a href="/v2/learn/#tasks">I want to…</a> <a href="/v2/learn/#reks-table">Every active space you can run today</a><br><a href="/v2/learn/path/p1/#case-h2-pair">One electron pair: H₂, REKS(2,2)</a><br><a href="/v2/learn/path/p2/#case-c2h4-90">Twisted ethylene, REKS(2,2)</a><br><a href="/v2/learn/path/p3/#case-c2h4-90-cold">Twisted ethylene without a seed</a><br><a href="/v2/learn/path/p4/#case-butadiene-44">Two pairs: butadiene, REKS(4,4)</a><br><a href="/v2/learn/path/p5/#case-butadiene-spin">Singlets, triplets and the quintet of butadiene</a><br><a href="/v2/learn/path/p6/#case-c2h4-gradient">S1 gradient and S0/S1 coupling of twisted ethylene</a><br><a href="/v2/learn/procedure/#procedure">Procedure</a> <a href="/v2/learn/procedure/#start-reks">Start REKS</a><br><a href="/v2/learn/branch/units/#units-wide">Wide electron geminals</a> <a href="/v2/learn/branch/units/#case-wide-bh-23">Lone pair over three orbitals: BH, REKS(2,3) 3</a><br><a href="/v2/learn/branch/spin/#branch-spin">Spin manifolds and J</a> <a href="/v2/learn/branch/spin/#case-h4-singlet-triplet">Singlets and triplets of linear H₄</a> · <a href="/v2/learn/branch/spin/#case-h4-heisenberg">Singlets, triplets and the quintet of linear H₄</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-ladder">Spin ladder of hexatriene, 2S = 0 to 6</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-sa-t1">A triplet configuration in the SA ensemble</a><br><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-c2h4">Dipoles, charges, NTOs, relaxed properties and EKT</a> · <a href="/v2/learn/branch/properties/#case-props-h2-triplet">Gradient and relaxed properties of a triplet</a><br><a href="/v2/learn/branch/dynamics/#geometry-optimization">Geometry optimization</a> <a href="/v2/learn/branch/dynamics/#case-opt-c2h4">S0 minimum of ethylene with DL-FIND</a> · <a href="/v2/learn/branch/dynamics/#case-opt-hexatriene">T1 minimum of hexatriene</a><br><a href="/v2/learn/branch/dynamics/#surface-hopping">Surface hopping</a> <a href="/v2/learn/branch/dynamics/#case-md-c2h4">Surface hopping of ethylene on S1</a> · <a href="/v2/learn/branch/dynamics/#case-md-hexatriene">Surface hopping of hexatriene on T1</a><br><a href="/v2/learn/branch/dynamics/#dyn-ci">Conical intersections</a> <a href="/v2/learn/branch/dynamics/#case-meci-c2h4">S0/S1 MECI of ethylene with DL-FIND</a><br><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-trah-bh">TRAH for the whole SCF: states of BH</a> · <a href="/v2/learn/branch/solvers/#case-cassettes-h4">Four SI cassettes from one SCF</a> · <a href="/v2/learn/branch/solvers/#case-scan-h4">Scan with restarts: linear H₄</a> · <a href="/v2/learn/branch/solvers/#case-basis-c2h4">Small basis first: 6-31G(d) to cc-pVTZ</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#active-core-virtual">Active space, core, virtual</a><br><a href="/v2/learn/reference/#input">Input</a> <a href="/v2/learn/reference/#minimal-input">Minimal input</a> · <a href="/v2/learn/reference/#explicit-input">Explicit SA pool and SI cassettes</a> · <a href="/v2/learn/reference/#required-settings">Required and rejected settings</a><br><a href="/v2/learn/reference/#catalog">Active space and catalog</a> <a href="/v2/learn/reference/#reks_geminal_widths"><code>REKS_GEMINAL_WIDTHS</code></a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#input-patterns">Input patterns</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#si_reks_grad"><code>SI_REKS_GRAD</code></a><br><a href="/v2/learn/reference/run-control/#guesses">Guesses and restarts</a> <a href="/v2/learn/reference/run-control/#guess_active_window"><code>GUESS_ACTIVE_WINDOW</code></a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="catalog">Catalog</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Catalog"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks_geminal_widths"><a href="/v2/learn/reference/#reks_geminal_widths"><code>REKS_GEMINAL_WIDTHS</code></a></span><br><small>array</small></td>
+<td><code>[]</code> (all 2)</td>
+<td>Units of the active space: electron or hole geminals, electron or hole doublets, one token each; selects the catalog.</td>
+<td><a href="/v2/learn/procedure/#procedure">Procedure</a> <a href="/v2/learn/procedure/#unit-slots">Slots of each unit kind</a><br><a href="/v2/learn/branch/units/#units-wide">Wide electron geminals</a> <a href="/v2/learn/branch/units/#case-wide-bh-23">Lone pair over three orbitals: BH, REKS(2,3) 3</a><br><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-trah-bh">TRAH for the whole SCF: states of BH</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#unit">Unit</a> · <a href="/v2/learn/concepts/#pairing-scheme">Pairing scheme</a><br><a href="/v2/learn/reference/#catalog">Active space and catalog</a><br><a href="/v2/learn/reference/run-control/#fons">Fractional occupation numbers (FONs)</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="sa-pool">SA pool</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="SA pool"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-sa_reks_configs"><a href="/v2/learn/reference/#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a></span><br><small>array · alias <a href="#row-sa_reks_configs"><code>REKS_SA_CONFIGS</code></a></small></td>
+<td>PPS + OSS pool of scheme 0 on the lowest manifold, 2S = N mod 2</td>
+<td>SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens.</td>
+<td><a href="/v2/learn/branch/spin/#branch-spin">Spin manifolds and J</a> <a href="/v2/learn/branch/spin/#case-hexatriene-sa-t1">A triplet configuration in the SA ensemble</a><br><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-h2-triplet">Gradient and relaxed properties of a triplet</a><br><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-cassettes-h4">Four SI cassettes from one SCF</a><br><a href="/v2/learn/reference/#input">Input</a> <a href="/v2/learn/reference/#minimal-input">Minimal input</a> · <a href="/v2/learn/reference/#explicit-input">Explicit SA pool and SI cassettes</a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#sa_reks_2spin"><code>SA_REKS_2SPIN</code></a></td>
+</tr>
+<tr>
+<td><span id="row-sa_reks_weights"><a href="/v2/learn/reference/#sa_reks_weights"><code>SA_REKS_WEIGHTS</code></a></span><br><small>array · alias <a href="#row-sa_reks_weights"><code>REKS_SA_WEIGHTS</code></a></small></td>
+<td>uniform <code>1/n</code></td>
+<td>Weights of the SA pool entries, configurations first, then the <a href="#row-sa_reks_extra"><code>sa_reks_extra</code></a> determinants; non-negative, summing to 1.</td>
+<td><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-h2-triplet">Gradient and relaxed properties of a triplet</a><br><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-cassettes-h4">Four SI cassettes from one SCF</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#sa-ensemble">SA-REKS ensemble and weights</a><br><a href="/v2/learn/reference/#input">Input</a> <a href="/v2/learn/reference/#minimal-input">Minimal input</a> · <a href="/v2/learn/reference/#explicit-input">Explicit SA pool and SI cassettes</a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a> · <a href="/v2/learn/reference/#sa_reks_extra"><code>SA_REKS_EXTRA</code></a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#scf">SCF</a></td>
+</tr>
+<tr>
+<td><span id="row-sa_reks_extra"><a href="/v2/learn/reference/#sa_reks_extra"><code>SA_REKS_EXTRA</code></a></span><br><small>array of arrays · alias <a href="#row-sa_reks_extra"><code>REKS_SA_EXTRA</code></a></small></td>
+<td>none</td>
+<td>Extra Slater determinants of the SA ensemble, as occupation vectors; each has its own weight, carries no FON and enters no SI cassette.</td>
+<td><a href="/v2/learn/path/p4/#case-butadiene-44">Two pairs: butadiene, REKS(4,4)</a> <a href="/v2/learn/path/p4/#window-measured">Window, measured</a><br><a href="/v2/learn/path/p5/#case-butadiene-spin">Singlets, triplets and the quintet of butadiene</a><br><a href="/v2/learn/procedure/#procedure">Procedure</a> <a href="/v2/learn/procedure/#start-reks">Start REKS</a><br><a href="/v2/learn/branch/spin/#branch-spin">Spin manifolds and J</a> <a href="/v2/learn/branch/spin/#case-h4-singlet-triplet">Singlets and triplets of linear H₄</a> · <a href="/v2/learn/branch/spin/#case-h4-heisenberg">Singlets, triplets and the quintet of linear H₄</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-ladder">Spin ladder of hexatriene, 2S = 0 to 6</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-sa-t1">A triplet configuration in the SA ensemble</a><br><a href="/v2/learn/branch/dynamics/#geometry-optimization">Geometry optimization</a> <a href="/v2/learn/branch/dynamics/#case-opt-hexatriene">T1 minimum of hexatriene</a><br><a href="/v2/learn/branch/dynamics/#surface-hopping">Surface hopping</a> <a href="/v2/learn/branch/dynamics/#case-md-hexatriene">Surface hopping of hexatriene on T1</a><br><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-trah-bh">TRAH for the whole SCF: states of BH</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#sa-ensemble">SA-REKS ensemble and weights</a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a> · <a href="/v2/learn/reference/#sa_reks_weights"><code>SA_REKS_WEIGHTS</code></a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#input-patterns">Input patterns</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="si-cassettes">SI cassettes</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="SI cassettes"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-si_reks_configs"><a href="/v2/learn/reference/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a></span><br><small>array · alias <a href="#row-si_reks_configs"><code>REKS_SI_CONFIGS</code></a></small></td>
+<td>one full-block cassette, lowest manifold</td>
+<td>SI-SA-REKS cassettes: the configuration sets whose secular equations give the states, in groups per spin manifold.</td>
+<td><a href="/v2/learn/path/p5/#case-butadiene-spin">Singlets, triplets and the quintet of butadiene</a><br><a href="/v2/learn/branch/spin/#branch-spin">Spin manifolds and J</a> <a href="/v2/learn/branch/spin/#case-h4-singlet-triplet">Singlets and triplets of linear H₄</a> · <a href="/v2/learn/branch/spin/#case-h4-heisenberg">Singlets, triplets and the quintet of linear H₄</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-ladder">Spin ladder of hexatriene, 2S = 0 to 6</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-sa-t1">A triplet configuration in the SA ensemble</a><br><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-h2-triplet">Gradient and relaxed properties of a triplet</a><br><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-trah-bh">TRAH for the whole SCF: states of BH</a> · <a href="/v2/learn/branch/solvers/#case-cassettes-h4">Four SI cassettes from one SCF</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-cassette">SI cassette</a><br><a href="/v2/learn/reference/#input">Input</a> <a href="/v2/learn/reference/#minimal-input">Minimal input</a> · <a href="/v2/learn/reference/#explicit-input">Explicit SA pool and SI cassettes</a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> · <a href="/v2/learn/reference/#input-patterns">Input patterns</a> · <a href="/v2/learn/reference/#cassette-order">Cassette order</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#property-rules">Rules for all entries</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_print_states"><a href="/v2/learn/reference/#si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a></span><br><small>int</small></td>
+<td><code>5</code></td>
+<td>States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all.</td>
+<td><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#si_reks_solver"><code>SI_REKS_SOLVER</code></a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#property-rules">Rules for all entries</a> · <a href="/v2/learn/reference/properties/#si-states">SSR states</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_store_states"><a href="/v2/learn/reference/#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a></span><br><small>array of int · alias <a href="#row-si_reks_store_states"><code>REKS_SI_STORE_STATES</code></a></small></td>
+<td>all; the first 10 if <code>M ≥ 6</code> and &gt; 10 configurations</td>
+<td>States per cassette whose properties are stored on the wavefunction (arrays, Molden and cube files); 0 = none, -1 = all.</td>
+<td><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a> · <a href="/v2/learn/reference/#si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a> · <a href="/v2/learn/reference/#si_reks_solver"><code>SI_REKS_SOLVER</code></a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> · <a href="/v2/learn/reference/#cassette-order">Cassette order</a><br><a href="/v2/learn/reference/output/#reading-output">Reading the output</a> <a href="/v2/learn/reference/output/#files">Files</a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#property-rules">Rules for all entries</a> · <a href="/v2/learn/reference/properties/#si-states">SSR states</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_overlap_cutoff"><a href="/v2/learn/reference/#si_reks_overlap_cutoff"><code>SI_REKS_OVERLAP_CUTOFF</code></a></span><br><small>double</small></td>
+<td><code>1e-10</code></td>
+<td>Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped.</td>
+<td><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-hamiltonian">SI Hamiltonian and overlap</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_solver"><a href="/v2/learn/reference/#si_reks_solver"><code>SI_REKS_SOLVER</code></a></span><br><small><code>AUTO</code>|<code>DIRECT</code>|<code>DAVIDSON</code></small></td>
+<td><code>AUTO</code></td>
+<td>Eigensolver of each SI cassette: LAPACK on every root, or Davidson on the lowest roots.</td>
+<td><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#si-states">SSR states</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_davidson_r_convergence"><a href="/v2/learn/reference/#si_reks_davidson_r_convergence"><code>SI_REKS_DAVIDSON_R_CONVERGENCE</code></a></span><br><small>double</small></td>
+<td><code>1e-12</code></td>
+<td>Residual norm in E_h each Davidson root of the SI problem converges to.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="spin-manifolds">Spin manifolds</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Spin manifolds"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-sa_reks_2spin"><a href="/v2/learn/reference/#sa_reks_2spin"><code>SA_REKS_2SPIN</code></a></span><br><small>array · alias <a href="#row-sa_reks_2spin"><code>REKS_SA_2SPIN</code></a></small></td>
+<td>ladder, lowest manifold</td>
+<td>Spin manifold 2S of each SA block, one integer per block.</td>
+<td><a href="/v2/learn/branch/spin/#branch-spin">Spin manifolds and J</a> <a href="/v2/learn/branch/spin/#case-hexatriene-sa-t1">A triplet configuration in the SA ensemble</a><br><a href="/v2/learn/reference/#catalog">Active space and catalog</a> <a href="/v2/learn/reference/#reks"><code>REKS</code></a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a> · <a href="/v2/learn/reference/#sa_reks_weights"><code>SA_REKS_WEIGHTS</code></a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_2spin"><a href="/v2/learn/reference/#si_reks_2spin"><code>SI_REKS_2SPIN</code></a></span><br><small>array · alias <a href="#row-si_reks_2spin"><code>REKS_SI_2SPIN</code></a></small></td>
+<td>ladder, lowest manifold</td>
+<td>2S of each SI group; more than one entry requires the 3-level <a href="#row-si_reks_configs"><code>si_reks_configs</code></a> form.</td>
+<td><a href="/v2/learn/path/p5/#case-butadiene-spin">Singlets, triplets and the quintet of butadiene</a><br><a href="/v2/learn/branch/spin/#branch-spin">Spin manifolds and J</a> <a href="/v2/learn/branch/spin/#case-h4-singlet-triplet">Singlets and triplets of linear H₄</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-ladder">Spin ladder of hexatriene, 2S = 0 to 6</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-sa-t1">A triplet configuration in the SA ensemble</a><br><a href="/v2/learn/branch/dynamics/#geometry-optimization">Geometry optimization</a> <a href="/v2/learn/branch/dynamics/#case-opt-hexatriene">T1 minimum of hexatriene</a><br><a href="/v2/learn/branch/dynamics/#surface-hopping">Surface hopping</a> <a href="/v2/learn/branch/dynamics/#case-md-hexatriene">Surface hopping of hexatriene on T1</a><br><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-trah-bh">TRAH for the whole SCF: states of BH</a><br><a href="/v2/learn/reference/#catalog">Active space and catalog</a> <a href="/v2/learn/reference/#reks"><code>REKS</code></a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#si_reks_configs"><code>SI_REKS_CONFIGS</code></a> · <a href="/v2/learn/reference/#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#sa_reks_2spin"><code>SA_REKS_2SPIN</code></a> · <a href="/v2/learn/reference/#input-patterns">Input patterns</a> · <a href="/v2/learn/reference/#cassette-order">Cassette order</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> · <a href="/v2/learn/reference/#si_reks_grad"><code>SI_REKS_GRAD</code></a> · <a href="/v2/learn/reference/#si_reks_nac"><code>SI_REKS_NAC</code></a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#si-states">SSR states</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="state-properties">State properties</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="State properties"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-si_reks_analysis"><a href="/v2/learn/reference/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a></span><br><small>array</small></td>
+<td>all blocks except multipoles &gt; 2</td>
+<td>State-property blocks of the SI states to compute, print and store (moments, charges, bond indices, NTO, exciton, …).</td>
+<td><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-c2h4">Dipoles, charges, NTOs, relaxed properties and EKT</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#densities">Unrelaxed and relaxed densities</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#state-properties">State properties</a><br><a href="/v2/learn/reference/output/#reading-output">Reading the output</a> <a href="/v2/learn/reference/output/#files">Files</a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#property-rules">Rules for all entries</a> · <a href="/v2/learn/reference/properties/#unrelaxed-state-and-transition-properties">Unrelaxed state and transition properties</a> · <a href="/v2/learn/reference/properties/#gradients-nac-conical-intersections">Gradients, NAC, conical intersections</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_analysis_change_min"><a href="/v2/learn/reference/#si_reks_analysis_change_min"><code>SI_REKS_ANALYSIS_CHANGE_MIN</code></a></span><br><small>double</small></td>
+<td><code>0.1</code></td>
+<td>Smallest state-to-state change of a charge or bond index that is printed.</td>
+<td><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#unrelaxed-state-and-transition-properties">Unrelaxed state and transition properties</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_property_for"><a href="/v2/learn/reference/#si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a></span><br><small>array of arrays</small></td>
+<td><code>[]</code></td>
+<td>States, per cassette, whose dipole, quadrupole, charges and bond indices are evaluated with the relaxed (CP-REKS) density.</td>
+<td><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-c2h4">Dipoles, charges, NTOs, relaxed properties and EKT</a> · <a href="/v2/learn/branch/properties/#case-props-h2-triplet">Gradient and relaxed properties of a triplet</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-solver">SI eigensolver</a> · <a href="/v2/learn/concepts/#densities">Unrelaxed and relaxed densities</a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a> · <a href="/v2/learn/reference/#si_reks_solver"><code>SI_REKS_SOLVER</code></a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> · <a href="/v2/learn/reference/#cassette-order">Cassette order</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#state-properties">State properties</a> · <a href="/v2/learn/reference/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> · <a href="/v2/learn/reference/#reks_ekt"><code>REKS_EKT</code></a> · <a href="/v2/learn/reference/#si_reks_grad"><code>SI_REKS_GRAD</code></a> · <a href="/v2/learn/reference/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#property-rules">Rules for all entries</a> · <a href="/v2/learn/reference/properties/#relaxed-properties-and-ekt">Relaxed properties and EKT</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_ekt"><a href="/v2/learn/reference/#reks_ekt"><code>REKS_EKT</code></a></span><br><small>bool</small></td>
+<td><code>false</code></td>
+<td>Enables EKT: ionization energies, pole strengths and Dyson orbitals of the <a href="#row-si_reks_property_for"><code>si_reks_property_for</code></a> states or of the SA ensemble.</td>
+<td><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-c2h4">Dipoles, charges, NTOs, relaxed properties and EKT</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#orbitals-scf">Orbitals, orbital energies, SCF convergence</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#state-properties">State properties</a> · <a href="/v2/learn/reference/#si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#property-rules">Rules for all entries</a> · <a href="/v2/learn/reference/properties/#relaxed-properties-and-ekt">Relaxed properties and EKT</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_ekt_occ_tol"><a href="/v2/learn/reference/#reks_ekt_occ_tol"><code>REKS_EKT_OCC_TOL</code></a></span><br><small>double</small></td>
+<td><code>1e-6</code></td>
+<td>Cutoff on the density eigenvalues: those at or below it are dropped from the EKT metric.</td>
+<td><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#relaxed-properties-and-ekt">Relaxed properties and EKT</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="gradients-and-couplings">Gradients and couplings</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Gradients and couplings"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-si_reks_grad"><a href="/v2/learn/reference/#si_reks_grad"><code>SI_REKS_GRAD</code></a></span><br><small>array of arrays</small></td>
+<td><code>[]</code> (SA ensemble)</td>
+<td>Roots whose analytic gradients are computed, per cassette; the first listed root is followed (<code>CURRENT ENERGY</code>, returned gradient).</td>
+<td><a href="/v2/learn/path/p6/#case-c2h4-gradient">S1 gradient and S0/S1 coupling of twisted ethylene</a><br><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-c2h4">Dipoles, charges, NTOs, relaxed properties and EKT</a> · <a href="/v2/learn/branch/properties/#case-props-h2-triplet">Gradient and relaxed properties of a triplet</a><br><a href="/v2/learn/branch/dynamics/#geometry-optimization">Geometry optimization</a> <a href="/v2/learn/branch/dynamics/#case-opt-c2h4">S0 minimum of ethylene with DL-FIND</a> · <a href="/v2/learn/branch/dynamics/#case-opt-hexatriene">T1 minimum of hexatriene</a><br><a href="/v2/learn/branch/dynamics/#surface-hopping">Surface hopping</a><br><a href="/v2/learn/branch/dynamics/#dyn-ci">Conical intersections</a> <a href="/v2/learn/branch/dynamics/#case-meci-c2h4">S0/S1 MECI of ethylene with DL-FIND</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-quasi-degenerate">Quasi-degenerate roots</a><br><a href="/v2/learn/reference/#input">Input</a> <a href="/v2/learn/reference/#explicit-input">Explicit SA pool and SI cassettes</a> · <a href="/v2/learn/reference/#worked-inputs">Worked inputs</a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a> · <a href="/v2/learn/reference/#si_reks_solver"><code>SI_REKS_SOLVER</code></a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> · <a href="/v2/learn/reference/#cassette-order">Cassette order</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#si_reks_nac"><code>SI_REKS_NAC</code></a> · <a href="/v2/learn/reference/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#scf">SCF</a> · <a href="/v2/learn/reference/properties/#gradients-nac-conical-intersections">Gradients, NAC, conical intersections</a></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_nac"><a href="/v2/learn/reference/#si_reks_nac"><code>SI_REKS_NAC</code></a></span><br><small>array</small></td>
+<td><code>[]</code></td>
+<td>Root pairs <code>[I, J]</code> per cassette whose nonadiabatic couplings and conical-intersection topography are computed.</td>
+<td><a href="/v2/learn/path/p6/#case-c2h4-gradient">S1 gradient and S0/S1 coupling of twisted ethylene</a><br><a href="/v2/learn/branch/properties/#branch-properties">State properties</a> <a href="/v2/learn/branch/properties/#case-props-c2h4">Dipoles, charges, NTOs, relaxed properties and EKT</a><br><a href="/v2/learn/branch/dynamics/#surface-hopping">Surface hopping</a><br><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/learn/reference/#input">Input</a> <a href="/v2/learn/reference/#explicit-input">Explicit SA pool and SI cassettes</a><br><a href="/v2/learn/reference/#selecting">SA pool and SI cassettes</a> <a href="/v2/learn/reference/#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a><br><a href="/v2/learn/reference/#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a> <a href="/v2/learn/reference/#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> · <a href="/v2/learn/reference/#cassette-order">Cassette order</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#si_reks_grad"><code>SI_REKS_GRAD</code></a> · <a href="/v2/learn/reference/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#gradients-nac-conical-intersections">Gradients, NAC, conical intersections</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_cpreks_conv"><a href="/v2/learn/reference/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a></span><br><small>double</small></td>
+<td><code>1e-9</code></td>
+<td>Residual threshold of the CP-REKS (Z-vector) solver. <a href="#row-reks_cpreks_maxiter"><code>reks_cpreks_maxiter</code></a> (200) bounds its rounds.</td>
+<td><a href="/v2/learn/path/p6/#case-c2h4-gradient">S1 gradient and S0/S1 coupling of twisted ethylene</a><br><a href="/v2/learn/branch/dynamics/#surface-hopping">Surface hopping</a> <a href="/v2/learn/branch/dynamics/#case-md-hexatriene">Surface hopping of hexatriene on T1</a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#gradients-nac-conical-intersections">Gradients, NAC, conical intersections</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_cpreks_maxiter"><a href="/v2/learn/reference/#reks_cpreks_maxiter"><code>REKS_CPREKS_MAXITER</code></a></span><br><small>int</small></td>
+<td><code>200</code></td>
+<td>Maximum number of rounds of the CP-REKS (Z-vector) solver; exceeding it stops the run with the residual reached.</td>
+<td><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a></td>
+</tr>
+<tr>
+<td><span id="row-reks_grad_degen_tol"><a href="/v2/learn/reference/#reks_grad_degen_tol"><code>REKS_GRAD_DEGEN_TOL</code></a></span><br><small>double</small></td>
+<td><code>1e-6</code></td>
+<td>Gap below which a requested root is flagged as quasi-degenerate.</td>
+<td><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-solver">SI eigensolver</a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#gradients-nac-conical-intersections">Gradients, NAC, conical intersections</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_ci_topography_gap"><a href="/v2/learn/reference/#reks_ci_topography_gap"><code>REKS_CI_TOPOGRAPHY_GAP</code></a></span><br><small>double</small></td>
+<td><code>5e-3</code></td>
+<td>Largest gap at which the topography table of a NAC pair is printed.</td>
+<td><a href="/v2/learn/branch/dynamics/#dyn-ci">Conical intersections</a> <a href="/v2/learn/branch/dynamics/#case-ci-topography">Topography of a conical intersection</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-quasi-degenerate">Quasi-degenerate roots</a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#gradients-nac-conical-intersections">Gradients, NAC, conical intersections</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="guess">Guess</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Guess"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-guess_active_window"><a href="/v2/learn/reference/run-control/#guess_active_window"><code>GUESS_ACTIVE_WINDOW</code></a></span><br><small>array</small></td>
+<td><code>[]</code> (off)</td>
+<td>MOs of the read guess placed in the active columns, one token per active orbital: 0-based index, <code>HOMO-k</code> or <code>LUMO+k</code>.</td>
+<td><a href="/v2/learn/path/p4/#case-butadiene-44">Two pairs: butadiene, REKS(4,4)</a><br><a href="/v2/learn/path/p5/#case-butadiene-spin">Singlets, triplets and the quintet of butadiene</a><br><a href="/v2/learn/procedure/#procedure">Procedure</a> <a href="/v2/learn/procedure/#unit-slots">Slots of each unit kind</a> · <a href="/v2/learn/procedure/#start-reks">Start REKS</a><br><a href="/v2/learn/branch/units/#units-wide">Wide electron geminals</a> <a href="/v2/learn/branch/units/#case-wide-bh-45">Bond and lone pair: BH, REKS(4,5) 2 3</a><br><a href="/v2/learn/branch/spin/#branch-spin">Spin manifolds and J</a> <a href="/v2/learn/branch/spin/#case-hexatriene-ladder">Spin ladder of hexatriene, 2S = 0 to 6</a> · <a href="/v2/learn/branch/spin/#case-hexatriene-sa-t1">A triplet configuration in the SA ensemble</a><br><a href="/v2/learn/branch/dynamics/#geometry-optimization">Geometry optimization</a> <a href="/v2/learn/branch/dynamics/#case-opt-hexatriene">T1 minimum of hexatriene</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-wrong-window">SCF converges instantly to a wrong energy after a restart</a><br><a href="/v2/learn/reference/run-control/#guesses">Guesses and restarts</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="fons">FONs</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="FONs"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks_fon_interp_delta"><a href="/v2/learn/reference/run-control/#reks_fon_interp_delta"><code>REKS_FON_INTERP_DELTA</code></a></span><br><small>double</small></td>
+<td><code>0.4</code></td>
+<td>Parameter δ of the factor f(n_p n_q) that multiplies the coupling term of each geminal in the REKS energy.</td>
+<td><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#unit">Unit</a> · <a href="/v2/learn/concepts/#coupling">Coupling Δ and factor f</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_l_fon"><a href="/v2/learn/reference/run-control/#reks_l_fon"><code>REKS_&lt;L&gt;_FON</code></a></span><br><small>double</small></td>
+<td><code>-1.0</code> each</td>
+<td>Lower bound on the free FON n_p of every geminal of one FON generation (<a href="#row-reks_l_fon"><code>reks_n_fon</code></a>, <a href="#row-reks_l_fon"><code>reks_m_fon</code></a>, …); negative disables it.</td>
+<td><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-fon-bound">Lower bound on the FONs of a generation</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-fon-inverted">FONs of a geminal invert</a><br><a href="/v2/learn/reference/#catalog">Active space and catalog</a> <a href="/v2/learn/reference/#fon-sets">FON sets</a><br><a href="/v2/learn/reference/run-control/#fons">Fractional occupation numbers (FONs)</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="fon-micro-solver">FON micro-solver</h3>
+<p><a href="/v2/learn/reference/run-control/#fon-micro">FON micro-solver</a></p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="FON micro-solver"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks_fon_micro_nr_maxiter"><code>REKS_FON_MICRO_NR_MAXITER</code></span><br><small>int</small></td>
+<td><code>20</code></td>
+<td>Newton iteration cap per geminal block per SCF iteration.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_fon_micro_ls_maxiter"><code>REKS_FON_MICRO_LS_MAXITER</code></span><br><small>int</small></td>
+<td><code>20</code></td>
+<td>Armijo backtracking (step halving) cap inside one Newton step.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_fon_micro_convergence"><code>REKS_FON_MICRO_CONVERGENCE</code></span><br><small>double</small></td>
+<td><code>1e-12</code></td>
+<td>Step-norm convergence threshold.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_fon_micro_min_eigenvalue"><code>REKS_FON_MICRO_MIN_EIGENVALUE</code></span><br><small>double</small></td>
+<td><code>1e-8</code></td>
+<td>Floor on the absolute eigenvalues of the reduced Hessian; negative curvature is flipped.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_fon_micro_bound_margin"><code>REKS_FON_MICRO_BOUND_MARGIN</code></span><br><small>double</small></td>
+<td><code>1e-8</code></td>
+<td>Margin m of the SCF FON box [ℓ, 2 − m] kept by the FON micro-solver and the TRAH step, in (0, 1); SI box: <a href="#row-si_reks_fon_bound_margin"><code>SI_REKS_FON_BOUND_MARGIN</code></a>.</td>
+<td><a href="/v2/learn/reference/run-control/#fons">Fractional occupation numbers (FONs)</a> <a href="/v2/learn/reference/run-control/#reks_l_fon"><code>REKS_&lt;L&gt;_FON</code></a></td>
+</tr>
+<tr>
+<td><span id="row-reks_fon_micro_boundary_skin"><code>REKS_FON_MICRO_BOUNDARY_SKIN</code></span><br><small>double</small></td>
+<td><code>0.05</code></td>
+<td>A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-si_reks_fon_bound_margin"><code>SI_REKS_FON_BOUND_MARGIN</code></span><br><small>double</small></td>
+<td><code>1e-8</code></td>
+<td>Margin m of the box [m, 2 − m] of the SI-only FONs (<a href="/v2/learn/concepts/#si-only-fons">SI-only FONs</a>) and of their CP-REKS at-bound test, in [0, 1).</td>
+<td><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-only-fons">SI-only FONs</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="convergence-engines">Convergence engines</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Convergence engines"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks_use_trah"><a href="/v2/learn/reference/run-control/#reks_use_trah"><code>REKS_USE_TRAH</code></a></span><br><small>bool</small></td>
+<td><code>false</code></td>
+<td>Trust-region Newton (TRAH) step on the active–active rotations and FONs: warm-up before GVB-DIIS, or the whole SCF without it.</td>
+<td><a href="/v2/learn/branch/spin/#branch-spin">Spin manifolds and J</a> <a href="/v2/learn/branch/spin/#case-h4-singlet-triplet">Singlets and triplets of linear H₄</a> · <a href="/v2/learn/branch/spin/#case-h4-heisenberg">Singlets, triplets and the quintet of linear H₄</a><br><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-trah-bh">TRAH for the whole SCF: states of BH</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-oscillation">SCF oscillates or cycles</a><br><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a> <a href="/v2/learn/reference/run-control/#engines">The three engines</a> · <a href="/v2/learn/reference/run-control/#reks_diis_activation"><code>REKS_DIIS_ACTIVATION</code></a> · <a href="/v2/learn/reference/run-control/#reks_diis_cfm_activation_gorb"><code>REKS_DIIS_CFM_ACTIVATION_GORB</code></a><br><a href="/v2/learn/reference/run-control/#geminal-deloc">Geminal delocalization</a> <a href="/v2/learn/reference/run-control/#reks_geminal_deloc"><code>REKS_GEMINAL_DELOC</code></a></td>
+</tr>
+<tr>
+<td><span id="row-reks_gvb_diis"><a href="/v2/learn/reference/run-control/#reks_gvb_diis"><code>REKS_GVB_DIIS</code></a></span><br><small>bool</small></td>
+<td><code>true</code></td>
+<td>GVB-DIIS accelerator of the orbital optimization, in the formulation set by <a href="#row-reks_diis_formulation"><code>reks_diis_formulation</code></a>.</td>
+<td><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-trah-bh">TRAH for the whole SCF: states of BH</a><br><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a> <a href="/v2/learn/reference/run-control/#engines">The three engines</a><br><a href="/v2/learn/reference/run-control/#geminal-deloc">Geminal delocalization</a> <a href="/v2/learn/reference/run-control/#reks_geminal_deloc"><code>REKS_GEMINAL_DELOC</code></a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#scf">SCF</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_formulation"><a href="/v2/learn/reference/run-control/#reks_diis_formulation"><code>REKS_DIIS_FORMULATION</code></a></span><br><small><code>CFM</code>|<code>ORBITAL</code></small></td>
+<td><code>ORBITAL</code></td>
+<td>GVB-DIIS formulation: extrapolation of the orbital-rotation generators κ, or of the composite multishell Fock matrix (<code>CFM</code>).</td>
+<td><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-oscillation">SCF oscillates or cycles</a><br><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a> <a href="/v2/learn/reference/run-control/#reks_gvb_diis"><code>REKS_GVB_DIIS</code></a> · <a href="/v2/learn/reference/run-control/#reks_gvb_level_shift"><code>REKS_GVB_LEVEL_SHIFT</code></a></td>
+</tr>
+<tr>
+<td><span id="row-reks_gvb_diis_start"><a href="/v2/learn/reference/run-control/#reks_gvb_diis_start"><code>REKS_GVB_DIIS_START</code></a></span><br><small>int</small></td>
+<td><code>3</code></td>
+<td>First SCF iteration of GVB-DIIS; earlier iterations run the level-shifted burn-in or TRAH.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a> <a href="/v2/learn/reference/run-control/#engines">The three engines</a> · <a href="/v2/learn/reference/run-control/#reks_diis_activation"><code>REKS_DIIS_ACTIVATION</code></a> · <a href="/v2/learn/reference/run-control/#reks_diis_cfm_activation_gorb"><code>REKS_DIIS_CFM_ACTIVATION_GORB</code></a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_activation"><a href="/v2/learn/reference/run-control/#reks_diis_activation"><code>REKS_DIIS_ACTIVATION</code></a></span><br><small><code>ITERATION</code>|<code>GRADIENT</code></small></td>
+<td><code>ITERATION</code></td>
+<td>Criterion for <code>ORBITAL</code> GVB-DIIS to take over from the TRAH warm-up: the iteration count alone, or also the orbital gradient.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a> <a href="/v2/learn/reference/run-control/#engines">The three engines</a> · <a href="/v2/learn/reference/run-control/#reks_diis_cfm_activation_gorb"><code>REKS_DIIS_CFM_ACTIVATION_GORB</code></a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_cfm_activation_gorb"><a href="/v2/learn/reference/run-control/#reks_diis_cfm_activation_gorb"><code>REKS_DIIS_CFM_ACTIVATION_GORB</code></a></span><br><small>double</small></td>
+<td><code>1e-3</code></td>
+<td>Orbital-gradient norm ‖g_orb‖_F below which GVB-DIIS takes over from the TRAH warm-up.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a> <a href="/v2/learn/reference/run-control/#engines">The three engines</a> · <a href="/v2/learn/reference/run-control/#reks_diis_activation"><code>REKS_DIIS_ACTIVATION</code></a></td>
+</tr>
+<tr>
+<td><span id="row-reks_gvb_robust_verdict"><a href="/v2/learn/reference/run-control/#reks_gvb_robust_verdict"><code>REKS_GVB_ROBUST_VERDICT</code></a></span><br><small>bool</small></td>
+<td><code>true</code></td>
+<td>Enables the post-hoc verdict that rewinds extrapolated GVB-DIIS steps whose orbital gradient grows.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_gvb_level_shift"><a href="/v2/learn/reference/run-control/#reks_gvb_level_shift"><code>REKS_GVB_LEVEL_SHIFT</code></a></span><br><small>double</small></td>
+<td><code>1.0</code> (CFM only)</td>
+<td>Shell gap of the multishell Fock matrix in the <code>CFM</code> formulation of GVB-DIIS.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="level-shift">Level shift</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Level shift"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-level_shift_adapt"><a href="/v2/learn/reference/run-control/#level_shift_adapt"><code>LEVEL_SHIFT_ADAPT</code></a></span><br><small>bool</small></td>
+<td><code>true</code></td>
+<td>Adaptive base of the staircase level shift: decays while the orbitals are stable, grows back up to <code>level_shift</code> on swaps or strong mixing.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="gvb-diis-conditioning-chain-expert">GVB-DIIS conditioning chain (expert)</h3>
+<p><a href="/v2/learn/reference/run-control/#diis-conditioning">GVB-DIIS conditioning chain (expert)</a></p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="GVB-DIIS conditioning chain (expert)"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks_diis_cond_angle_filter"><code>REKS_DIIS_COND_ANGLE_FILTER</code></span></td>
+<td><code>true</code></td>
+<td>Enables the angle filter with stale-drop that prunes near-dependent and stale GVB-DIIS error vectors.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_cond_angle_cutoff"><code>REKS_DIIS_COND_ANGLE_CUTOFF</code></span></td>
+<td><code>0.1</code></td>
+<td>Angle-filter cutoff c_s: smallest sine of the angle to the kept differences for a GVB-DIIS error vector to stay.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_cond_stale_delta"><code>REKS_DIIS_COND_STALE_DELTA</code></span></td>
+<td><code>1e-4</code></td>
+<td>Stale-drop threshold δ: GVB-DIIS error vectors with norm above the newest norm / √δ are dropped; 0 switches it off.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_cond_kappa_bypass"><code>REKS_DIIS_COND_KAPPA_BYPASS</code></span></td>
+<td><code>1e9</code></td>
+<td>Condition number of the GVB-DIIS error matrix above which the SVD-conditioned solve replaces the plain bordered solve.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_cond_svd_rcond"><code>REKS_DIIS_COND_SVD_RCOND</code></span></td>
+<td><code>1e-8</code></td>
+<td>Relative singular-value cutoff of the SVD-conditioned GVB-DIIS solve.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_cond_coeff_norm_max"><code>REKS_DIIS_COND_COEFF_NORM_MAX</code></span></td>
+<td><code>1e3</code></td>
+<td>Bound c_max on the GVB-DIIS coefficient norm |c|², also used by the angle filter to drop near-duplicate error vectors.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_cond_tikhonov"><code>REKS_DIIS_COND_TIKHONOV</code></span></td>
+<td><code>true</code></td>
+<td>Enables the Tikhonov ridge on the SVD-conditioned GVB-DIIS solve.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_cond_tikhonov_scale"><code>REKS_DIIS_COND_TIKHONOV_SCALE</code></span></td>
+<td><code>0.0</code></td>
+<td>Ridge magnitude of the Tikhonov-regularized GVB-DIIS SVD solve; 0 applies no ridge.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="gvb-diis-monitors-verdicts-expert">GVB-DIIS monitors / verdicts (expert)</h3>
+<p><a href="/v2/learn/reference/run-control/#diis-monitors">GVB-DIIS monitors / verdicts (expert)</a></p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="GVB-DIIS monitors / verdicts (expert)"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks_diis_mon_verdict_rho"><code>REKS_DIIS_MON_VERDICT_RHO</code></span></td>
+<td><code>1.5</code></td>
+<td>Verdict trip ratio: a GVB-DIIS step is rewound when ‖g_orb‖ exceeds this multiple of its maximum over the recent iterates.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a> <a href="/v2/learn/reference/run-control/#reks_gvb_robust_verdict"><code>REKS_GVB_ROBUST_VERDICT</code></a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_mon_verdict_streak"><code>REKS_DIIS_MON_VERDICT_STREAK</code></span></td>
+<td><code>3</code></td>
+<td>Consecutive verdict rewinds without a new best iterate before GVB-DIIS restarts from the best iterate.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_mon_suppress_window"><code>REKS_DIIS_MON_SUPPRESS_WINDOW</code></span></td>
+<td><code>3</code></td>
+<td>Iterations after a GVB-DIIS rewind, restart or switch during which the verdict is suspended.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_mon_nonmonotone_m"><code>REKS_DIIS_MON_NONMONOTONE_M</code></span></td>
+<td><code>3</code></td>
+<td>Depth M of the nonmonotone references of the GVB-DIIS monitors: max ‖g_orb‖ and min E_SA over the last M iterates.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_gvb_gate_streak"><code>REKS_GVB_GATE_STREAK</code></span></td>
+<td><code>2</code></td>
+<td>Consecutive iterations meeting the energy and gradient thresholds before GVB-DIIS reports convergence.</td>
+<td><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a> <a href="/v2/learn/reference/run-control/#engines">The three engines</a></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_guard_latch_grace"><code>REKS_DIIS_GUARD_LATCH_GRACE</code></span></td>
+<td><code>3</code></td>
+<td>Consecutive iterations without the basin signal after which the GVB-DIIS outcome guard clears its basin latch.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_guard_landing_tolerance"><code>REKS_DIIS_GUARD_LANDING_TOLERANCE</code></span></td>
+<td><code>1e-12</code></td>
+<td>Relative tolerance at which a GVB-DIIS rewind landing counts as a repeat (best E_SA and best ‖g_orb‖ reproduced).</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_mon_progress_eps"><code>REKS_DIIS_MON_PROGRESS_EPS</code></span></td>
+<td><code>1e-2</code></td>
+<td>Sufficient-decrease fraction ε: a GVB-DIIS iterate counts as progress only if ‖g_orb‖ ≤ (1 − ε) × best ‖g_orb‖.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_fon_branch_cutoff"><code>REKS_DIIS_FON_BRANCH_CUTOFF</code></span></td>
+<td><code>0.1</code></td>
+<td>FON displacement from the best iterate at or above which the GVB-DIIS guard reads an energy drop as a basin transition.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_restart_budget"><code>REKS_DIIS_RESTART_BUDGET</code></span></td>
+<td><code>2</code></td>
+<td>GVB-DIIS monitor restarts without sufficient improvement allowed before the monitors stop and rewind once to the best iterate.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_mon_cycle"><code>REKS_DIIS_MON_CYCLE</code></span></td>
+<td><code>true</code></td>
+<td>Enables the GVB-DIIS no-progress / step-cap monitor, which restarts from the best iterate.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_mon_cycle_window"><code>REKS_DIIS_MON_CYCLE_WINDOW</code></span></td>
+<td><code>12</code></td>
+<td>Iterations without a new best ‖g_orb‖ before the GVB-DIIS cycle monitor restarts from the best iterate.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_mon_cycle_cap_streak"><code>REKS_DIIS_MON_CYCLE_CAP_STREAK</code></span></td>
+<td><code>3</code></td>
+<td>Consecutive <code>ORBITAL</code> step-cap hits before the GVB-DIIS cycle monitor restarts.</td>
+<td></td>
+</tr>
+<tr>
+<td><span id="row-reks_diis_orb_base_map_damp"><code>REKS_DIIS_ORB_BASE_MAP_DAMP</code></span></td>
+<td><code>0.6</code></td>
+<td>Damping α of the <code>ORBITAL</code> GVB-DIIS Newton step from the re-anchored frame after a restart.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="geminal-delocalization">Geminal delocalization</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Geminal delocalization"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks_geminal_deloc"><a href="/v2/learn/reference/run-control/#reks_geminal_deloc"><code>REKS_GEMINAL_DELOC</code></a></span><br><small>bool</small></td>
+<td><code>false</code></td>
+<td>After the SCF, rotates generation-0 pairs past the IPR midpoint to their IPR minimum and reconverges; kept if lower in E_SA.</td>
+<td><a href="/v2/learn/branch/solvers/#branch-solvers">Solvers and control</a> <a href="/v2/learn/branch/solvers/#case-deloc">Delocalizing localized active orbitals</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-lower-esa">A lower ensemble energy from another start</a> · <a href="/v2/learn/diagnose/#diag-localized">Active orbitals localize on one fragment</a><br><a href="/v2/learn/reference/run-control/#geminal-deloc">Geminal delocalization</a><br><a href="/v2/learn/reference/output/#reading-output">Reading the output</a> <a href="/v2/learn/reference/output/#reks_report_level"><code>REKS_REPORT_LEVEL</code></a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="reporting">Reporting</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Reporting"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span id="row-reks_report_level"><a href="/v2/learn/reference/output/#reks_report_level"><code>REKS_REPORT_LEVEL</code></a></span><br><small>int (1–5)</small></td>
+<td><code>2</code></td>
+<td>Verbosity of the REKS output, 1–5: from the SCF trace and energetics up to per-iteration solver traces and intermediate matrices.</td>
+<td><a href="/v2/learn/concepts/#concepts">Concepts</a> <a href="/v2/learn/concepts/#si-hamiltonian">SI Hamiltonian and overlap</a> · <a href="/v2/learn/concepts/#coupling-damping">Coupling damping below 100 % exact exchange</a><br><a href="/v2/learn/diagnose/#diagnose">Diagnose</a> <a href="/v2/learn/diagnose/#diag-maxiter">SCF hits MAXITER or continues unconverged</a> · <a href="/v2/learn/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a><br><a href="/v2/learn/reference/#response">Properties, gradients, couplings</a> <a href="/v2/learn/reference/#reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a><br><a href="/v2/learn/reference/run-control/#fons">Fractional occupation numbers (FONs)</a> <a href="/v2/learn/reference/run-control/#reks_l_fon"><code>REKS_&lt;L&gt;_FON</code></a><br><a href="/v2/learn/reference/run-control/#scf-engines">SCF convergence engines</a><br><a href="/v2/learn/reference/output/#reading-output">Reading the output</a> <a href="/v2/learn/reference/output/#print-order">Print order</a> · <a href="/v2/learn/reference/output/#run-report">Run report</a><br><a href="/v2/learn/reference/properties/#properties">Properties</a> <a href="/v2/learn/reference/properties/#property-rules">Rules for all entries</a> · <a href="/v2/learn/reference/properties/#scf">SCF</a> · <a href="/v2/learn/reference/properties/#si-states">SSR states</a> · <a href="/v2/learn/reference/properties/#unrelaxed-state-and-transition-properties">Unrelaxed state and transition properties</a> · <a href="/v2/learn/reference/properties/#relaxed-properties-and-ekt">Relaxed properties and EKT</a></td>
+</tr>
+</tbody>
+</table></div></div></section>
+   <nav class="pager" aria-label="Learn pages"> <a rel="prev" href="/v2/learn/reference/properties/"><small>Previous</small>Property reference</a> <a rel="next" href="/v2/learn/find/"><small>Next</small>Find</a> </nav> </div> </div> </div> </main> <footer class="foot"> <div class="wrap"> <a href="/v2/docs/#contact">Contact</a><a href="/v2/docs/#cite">Cite</a><a href="/v2/docs/#licence">Licence</a><a href="https://github.com/ConstLike/psi4/tree/kk/reks.studio" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://doi.org/10.26434/chemrxiv.15008475/v1" target="_blank" rel="noopener noreferrer">Paper</a><a href="/v2/team/">Team</a> </div> </footer> <script type="module">var e=`bkref`,t=document.body.hasAttribute(`data-home`),n=()=>[...document.querySelectorAll(`a[href]`)];function r(e,t){let n;for(let t of document.querySelectorAll(`h2,h3,h4`))if(t.compareDocumentPosition(e)&Node.DOCUMENT_POSITION_FOLLOWING)n=t;else break;let r=document.title.split(` — `)[0],i=n?n.dataset.b||[...n.childNodes].filter(e=>e.nodeName!==`A`).map(e=>e.textContent).join(``).trim()||n.textContent.trim():``;return t.pathname===location.pathname?i||r:i?`${i} · ${r}`:r}var i;function a(r){if(history.state===null){let t=null;try{t=JSON.parse(sessionStorage.getItem(e)),sessionStorage.removeItem(e)}catch{}t&&t.to===location.href&&history.replaceState({b:t.b,u:t.u},``)}let a=history.state||{};if(i?.remove(),i=null,a.b&&!t){i=document.createElement(`a`),i.className=`bkp`,i.href=a.u,i.textContent=`← Back to ${a.b}`,i.onclick=e=>{e.preventDefault(),history.back()};let e=document.getElementById(location.hash.slice(1));(e?.closest(`details`)??e??document.body.lastElementChild).after(i)}let o=r.type===`popstate`;(o||r.persisted||performance.getEntriesByType(`navigation`)[0]?.type===`back_forward`)&&a.y!=null&&(document.documentElement.classList.add(`bkr`),requestAnimationFrame(()=>requestAnimationFrame(()=>{let e=a.f!=null&&n()[a.f];e?.closest(`details`)&&(e.closest(`details`).open=!0),!o&&Math.abs(scrollY-a.y)>1&&scrollTo({top:a.y,behavior:`instant`}),history.replaceState({...history.state,y:null,f:null},``),e&&(e.focus({preventScroll:!0}),e.classList.add(`bkf`),setTimeout(()=>e.classList.remove(`bkf`),2e3))})))}addEventListener(`click`,i=>{let a=i.target.closest(`a[href]`);if(!a||i.defaultPrevented||i.button||i.metaKey||i.ctrlKey||i.shiftKey||i.altKey||a.getAttribute(`target`)||a.matches(`.skip`))return;let o=new URL(a.getAttribute(`href`),location.href);if(o.origin===location.origin&&o.href!==location.href){o.pathname===location.pathname&&document.documentElement.classList.remove(`bkr`),history.replaceState({...history.state,y:scrollY,f:n().indexOf(a)},``);try{t?sessionStorage.removeItem(e):sessionStorage.setItem(e,JSON.stringify({to:o.href,b:r(a,o),u:location.href}))}catch{}}}),addEventListener(`popstate`,a),addEventListener(`pageshow`,a);</script></body> </html>

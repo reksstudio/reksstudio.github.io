@@ -294,11 +294,11 @@ Units: electrons
       10A     -0.097027  (d)    n_d =  0.029286    m_d =  0.029855
 ```
 
-Stored: `REKS FON`, `REKS <L>_FON` (L = M, U, V, W, X, Y, Z), `REKS FON META`, `REKS <L>_FON META`; `REKS N ACTIVE ELECTRONS`, `REKS N ACTIVE ORBITALS`, `REKS G`, `REKS N SECTORS`
+Stored: `REKS FON`, `REKS <L>_FON` (L = M, U, V, W, X, Y, Z), `REKS FON META`, `REKS <L>_FON META`, `REKS ROOT SIGNS`, `REKS <L>_ROOT SIGNS`; `REKS N ACTIVE ELECTRONS`, `REKS N ACTIVE ORBITALS`, `REKS G`, `REKS N SECTORS`
 
 Files: `<prefix>.molden` (`MOLDEN_WRITE`): `Occup` of the active MOs = FONs of set n, not natural occupations
 
-* FON arrays: (u − 1) × n<sub>g</sub>, u = widest geminal width, n<sub>g</sub> = geminals of the generation; row r = free FON n<sub>r</sub>, the last FON is 2 − Σ; unused cells −1. META arrays: (1 + u) × n<sub>g</sub>, pairing scheme (row 0) and MO indices (rows 1..).
+* FON arrays: (u − 1) × n<sub>g</sub>, u = widest geminal width, n<sub>g</sub> = geminals of the generation; row r = free FON n<sub>r</sub> (hole geminal: h<sub>r</sub> = 2 − n<sub>r</sub>), the last FON is 2 − Σ; unused cells −1. META arrays: (1 + u) × n<sub>g</sub>, pairing scheme (row 0) and MO indices (rows 1..). ROOT SIGNS arrays: u × n<sub>g</sub>, root sign s<sub>p</sub> of each slot; unused cells 0.
 * Check: the active set ([Check the solution](https://reksstudio.github.io/v2/manual/first-calculation/index.md#check-solution)); `2.000000`/`0.000000` lie at the bound ([FON pinned at a bound, symmetry-broken charges](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-fon-pinned)).
 
 #### GVB-DIIS convergence quality {#convergence-quality}
@@ -349,7 +349,7 @@ Units: electrons
    Second table: n_p/n_q of each geminal (p,q) per FON set; * = SA geminal, optimized in the SCF.
 ```
 
-Stored: `REKS FON K=<e>`, `REKS <L>_FON K=<e>`, `REKS FON META K=<e>`, `REKS <L>_FON META K=<e>` (sector form `REKS SECTOR <s> …`); per SI cassette, per generation whose FON layer holds all geminals of the cassette
+Stored: `REKS FON K=<e>`, `REKS <L>_FON K=<e>`, `REKS FON META K=<e>`, `REKS <L>_FON META K=<e>`, `REKS ROOT SIGNS K=<e>`, `REKS <L>_ROOT SIGNS K=<e>` (sector form `REKS SECTOR <s> …`); per SI cassette, per generation whose FON layer holds all geminals of the cassette
 
 * No bare (cassette 0) alias.
 * Read the `Residual` column. Geminals without `*` printed as `2.000000/0.000000` lie at the bound, as scheme 1 `(a,c)` above; compare the same columns between runs.

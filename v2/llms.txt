@@ -31,7 +31,7 @@ Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: br
 - [`SI_REKS_OVERLAP_CUTOFF`](/v2/options/SI_REKS_OVERLAP_CUTOFF.md): Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped.
 - [`SI_REKS_SOLVER`](/v2/options/SI_REKS_SOLVER.md): Eigensolver of each SI cassette: LAPACK on every root, or Davidson on the lowest roots.
 - [`SI_REKS_DAVIDSON_R_CONVERGENCE`](/v2/options/SI_REKS_DAVIDSON_R_CONVERGENCE.md): Residual norm in E_h each Davidson root of the SI problem converges to.
-- [`REKS_GEMINAL_WIDTHS`](/v2/options/REKS_GEMINAL_WIDTHS.md): Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`.
+- [`REKS_GEMINAL_WIDTHS`](/v2/options/REKS_GEMINAL_WIDTHS.md): Units of the active space: electron or hole geminals, electron or hole doublets, one token each; selects the catalog.
 - [`SI_REKS_GRAD`](/v2/options/SI_REKS_GRAD.md): Roots whose analytic gradients are computed, per cassette; the first listed root is followed (`CURRENT ENERGY`, returned gradient).
 - [`SI_REKS_NAC`](/v2/options/SI_REKS_NAC.md): Root pairs `[I, J]` per cassette whose nonadiabatic couplings and conical-intersection topography are computed.
 - [`SI_REKS_PROPERTY_FOR`](/v2/options/SI_REKS_PROPERTY_FOR.md): States, per cassette, whose dipole, quadrupole, charges and bond indices are evaluated with the relaxed (CP-REKS) density.
@@ -51,7 +51,7 @@ Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: br
 - [`REKS_FON_MICRO_BOUND_MARGIN`](/v2/options/REKS_FON_MICRO_BOUND_MARGIN.md): Margin m of the SCF FON box \[ℓ, 2 − m] kept by the FON micro-solver and the TRAH step, in (0, 1); SI box: `SI_REKS_FON_BOUND_MARGIN`.
 - [`SI_REKS_FON_BOUND_MARGIN`](/v2/options/SI_REKS_FON_BOUND_MARGIN.md): Margin m of the box \[m, 2 − m] of the SI-only FONs ([SI-only FONs](/v2/manual/concepts/index.md#si-only-fons)) and of their CP-REKS at-bound test, in \[0, 1).
 - [`REKS_FON_MICRO_BOUNDARY_SKIN`](/v2/options/REKS_FON_MICRO_BOUNDARY_SKIN.md): A generation-0 multi-start seed landing within this distance of 0 or 2 counts as boundary-trapped and loses to an interior minimum.
-- [`REKS_GEMINAL_DELOC`](/v2/options/REKS_GEMINAL_DELOC.md): After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA.
+- [`REKS_GEMINAL_DELOC`](/v2/options/REKS_GEMINAL_DELOC.md): After the SCF, rotates generation-0 pairs past the IPR midpoint to their IPR minimum and reconverges; kept if lower in E_SA.
 - [`REKS_REPORT_LEVEL`](/v2/options/REKS_REPORT_LEVEL.md): Verbosity of the REKS output, 1–5: from the SCF trace and energetics up to per-iteration solver traces and intermediate matrices.
 - [`REKS_USE_TRAH`](/v2/options/REKS_USE_TRAH.md): Trust-region Newton (TRAH) step on the active–active rotations and FONs: warm-up before GVB-DIIS, or the whole SCF without it.
 - [`REKS_GVB_DIIS`](/v2/options/REKS_GVB_DIIS.md): GVB-DIIS accelerator of the orbital optimization, in the formulation set by `reks_diis_formulation`.

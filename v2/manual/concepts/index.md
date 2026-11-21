@@ -54,7 +54,7 @@ $$
 \begin{aligned} \Phi_0 &= \tfrac{1}{\sqrt2}\big(\sqrt{n_p}\,|p\bar p| - \sqrt{n_q}\,|q\bar q|\big) && \text{perfectly paired}\\ \Phi_2 &= \tfrac{1}{\sqrt2}\big(\sqrt{n_q}\,|p\bar p| + \sqrt{n_p}\,|q\bar q|\big) && \text{doubly excited}\\ \Phi_1 &= \tfrac{1}{\sqrt2}\big(|p\bar q| + |q\bar p|\big) && \text{open-shell singlet}\\ \Phi_{\mathrm{T0}} &= \tfrac{1}{\sqrt2}\big(|p\bar q| - |q\bar p|\big) && \text{triplet, } m = 0\\ \Phi_{\mathrm{T+}} &= |pq|, \quad \Phi_{\mathrm{T-}} = |\bar p\bar q| && \text{triplet, } m = \pm 1 \>. \end{aligned}
 $$
 
-Only four geminals with $m = 0$ are included in REKS(M,M).
+A configuration of REKS(M,M) is a product of these four $m = 0$ geminals; $\Phi_{\mathrm{T+}}$ and $\Phi_{\mathrm{T-}}$ enter only the spin-coupled configurations of $2S \ge 4$ ([Spin manifold and run sector](#run-sector)).
 
 ### Pairing scheme {#pairing-scheme}
 
@@ -64,7 +64,7 @@ $$
 P = M/2.
 $$
 
-With [`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md) geminal $i$ spans $w_i$ orbitals, $\sum_i w_i = M$; `Pairing schemes` prints all its orbitals.
+With [`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md) unit $i$ spans $w_i$ orbitals, $\sum_i w_i = M$: an electron geminal holds 2 electrons, a hole geminal $2w_i - 2$, a doublet unit 1 or $2w_i - 1$; for odd $N$ a SOMO is implicit unless a doublet unit is listed. `Pairing schemes` prints all orbitals of each unit.
 
 Scheme 0 pairs the active slots (active columns, from 0, labelled a, b, …) from the outside in: (2,2) (a,b); (4,4) (a,d) & (b,c); (6,6) (a,f) & (b,e) & (c,d):
 
@@ -114,7 +114,7 @@ As the closed-shell limit ($n_a \to 2$) is approached, the factor $f$ suppresses
 
 ### FON set and generation {#fon-generation}
 
-The \emph{generation} of a configuration is its number of open pairs: $\Phi_1$, and a triplet of geminals ($\Phi_{\mathrm{T+}}$, $\Phi_{\mathrm{T0}}$, $\Phi_{\mathrm{T-}}$) in a sector of positive $2S$. A FON set keeps the FONs of one generation, pairing scheme, and run sector; all configurations of that set use the same FONs. $\Phi_0$ and $\Phi_2$ of one pair use the same FONs; $\Phi_1$ and $\Phi_{\mathrm{T0}}$ use none. FON-set labels: [FON sets](https://reksstudio.github.io/v2/manual/setup/index.md#fon-sets).
+The **generation** of a configuration is its number of open pairs: $\Phi_1$, and a triplet of geminals ($\Phi_{\mathrm{T+}}$, $\Phi_{\mathrm{T0}}$, $\Phi_{\mathrm{T-}}$) in a sector of positive $2S$. A FON set keeps the FONs of one generation, pairing scheme, and run sector; all configurations of that set use the same FONs. $\Phi_0$ and $\Phi_2$ of one pair use the same FONs; $\Phi_1$ and $\Phi_{\mathrm{T0}}$ use none. FON-set labels: [FON sets](https://reksstudio.github.io/v2/manual/setup/index.md#fon-sets).
 
 ### SA-REKS ensemble and weights {#sa-ensemble}
 
@@ -146,7 +146,7 @@ In REKS(4,4) the double open-shell singlet (DOSS) and the doubly spin-polarized 
 
 ### Spin manifold and run sector {#run-sector}
 
-A manifold is one total spin $2S$ of the catalog. The sectors of a run are the manifolds addressed by any SA block or SI group, in ascending $2S$, sector 0 being the lowest. Every configuration is built from components of zero $M_S$, so all sectors share one determinant space and one set of orbitals, and the molecular multiplicity remains canonical (1 for even `N`) ([Active space](https://reksstudio.github.io/v2/manual/setup/index.md#active-space), [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)).
+A manifold is one total spin $2S$ of the catalog. The sectors of a run are the manifolds addressed by any SA block or SI group, in ascending $2S$, sector 0 being the lowest. Every configuration has the canonical total $M_S$ (0 for even `N`, 1/2 for odd `N`), so all sectors share one determinant space and one set of orbitals, and the molecular multiplicity remains canonical (1 for even `N`, 2 for odd `N`) ([Active space](https://reksstudio.github.io/v2/manual/setup/index.md#active-space), [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)).
 
 A 2S = 2 configuration holds one $\Phi_{\mathrm{T0}}$. In 2S ≥ 4 (`TT_SPS_0`, `TTT_SPS_0`) the $n_T$ triplet geminals couple to $S = n_T$ through $\Phi_{\mathrm{T+}}$, $\Phi_{\mathrm{T0}}$, $\Phi_{\mathrm{T-}}$ with Clebsch–Gordan coefficients, e.g.
 
@@ -261,7 +261,7 @@ $$
 \mathbf{H}\mathbf{c}_k = E_k\,\mathbf{S}\mathbf{c}_k.
 $$
 
-Roots are 0-based and sorted by energy; they are labeled `S0`, `S1`, … for $2S$ zero and `T1`, `Q1`, … (counted from 1) for positive $2S$ ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Physical roots exclude the overlap null modes and ghost roots more than 100 $E_{\mathrm{h}}$ above the lowest root ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)); `SSR ENERGIES K=e` holds every physical root of cassette e, on the Davidson path its computed roots ([SI eigensolver](#si-solver), [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)).
+Roots are 0-based and sorted by energy; they are labeled by the spin letter (`S`, `D`, `T`, `Qa`, `Q`, `Sx`, `Sp`, `Oc`, `N`, `De`, `U`, `Du`, `Tr` for $2S$ = 0 … 12), counted from 0 on the lowest manifold (`S0`, `D0`) and from 1 on every other (`T1`, `Q1`) ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Physical roots exclude the overlap null modes and ghost roots more than 100 $E_{\mathrm{h}}$ above the lowest root ([Ghost states and a collapsed SI spectrum](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-ghost-states)); `SSR ENERGIES K=e` holds every physical root of cassette e, on the Davidson path its computed roots ([SI eigensolver](#si-solver), [SSR state energies](https://reksstudio.github.io/v2/manual/properties/index.md#ssr-energies)).
 
 ### Chirgwin–Coulson weights {#cc-weights}
 

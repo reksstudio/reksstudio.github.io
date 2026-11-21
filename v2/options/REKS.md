@@ -23,4 +23,4 @@ REKS requires the canonical symmetric-Ms reference: N=2 implies molecule multipl
 ```
 
 * N active electrons in M active orbitals, exactly two integers; a third element is an input error. Only installed catalogs run ([§6](https://reksstudio.github.io/v2/manual/setup/index.md#catalog)).
-* Molecule multiplicity: 1 for even N, 2 for odd N (no installed catalog has odd N); any other value is the error above. The spin manifolds are chosen by [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) / [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) or the ladder ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)).
+* Molecule multiplicity: 1 for even N, 2 for odd N; any other value is the error above. The spin manifolds are chosen by [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) / [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) or the ladder ([§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)).

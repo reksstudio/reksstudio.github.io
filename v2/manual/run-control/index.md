@@ -84,7 +84,7 @@ $$
 n_p \in [\,\ell,\; 2 - m\,], \qquad \ell = \begin{cases} \texttt{REKS\_<L>\_FON} & \text{if} \ge 0 \\ m & \text{otherwise} \end{cases}, \qquad m = \texttt{REKS\_FON\_MICRO\_BOUND\_MARGIN}.
 $$
 
-A FON pushed past an end of the box stops on it, and the SCF counts it converged there. A two-orbital pair keeps its orbitals in their slots, also when its FON crosses 1: the printed $n_a$ can be below 1, $n_a < n_b$. A generation-0 geminal wider than two is kept in descending occupation of the SA spin sector: after every FON step its orbitals are reordered when the order changes, columns and FONs of every set together (the energy is unchanged). TRAH steps move the FONs without reordering. FONs of higher generations are never reordered. Outside TRAH steps FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set; each generation has its own lower-bound option ([`REKS_<L>_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md)).
+For a hole geminal ([`REKS_GEMINAL_WIDTHS`](https://reksstudio.github.io/v2/options/REKS_GEMINAL_WIDTHS.md)) the free variable and its box are the hole occupation $h = 2 - n$ in place of $n$. A FON pushed past an end of the box stops on it, and the SCF counts it converged there. A two-orbital pair keeps its orbitals in their slots, also when its FON crosses 1: the printed $n_a$ can be below 1, $n_a < n_b$. A generation-0 geminal wider than two is kept in descending occupation of the SA spin sector: after every FON step its orbitals are reordered when the order changes, columns and FONs of every set together (the energy is unchanged). TRAH steps move the FONs without reordering. FONs of higher generations are never reordered. Outside TRAH steps FONs are optimized every SCF iteration by a projected-Newton micro-solver with Armijo backtracking: one joint Newton solve over all FONs of a (sector, generation) block, the other blocks held fixed. FONs are stored per FON set; each generation has its own lower-bound option ([`REKS_<L>_FON`](https://reksstudio.github.io/v2/options/REKS_N_FON.md)).
 
 #### `REKS_FON_INTERP_DELTA` {#reks_fon_interp_delta}
 
@@ -123,6 +123,7 @@ Default: `-1.0` each
 * One option per FON generation ([FON sets](https://reksstudio.github.io/v2/manual/setup/index.md#fon-sets)). A non-negative value ℓ is the lower end of the box of the free FON n<sub>p</sub> of every geminal of that generation ([§12](#fons)): n<sub>p</sub> stays variable in \[ℓ, 2 − m], m = `REKS_FON_MICRO_BOUND_MARGIN`.
 * The call above restricts n<sub>p</sub> of every generation-1 geminal to \[1, 2 − m]: it excludes n<sub>p</sub> \< n<sub>q</sub>, and n<sub>p</sub> may still reach the closed-shell limit 2 ([FONs of a geminal invert](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-fon-inverted)). At `REKS_REPORT_LEVEL` ≥ 4 an active floor prints the first line above.
 * A value above 2 − m is clamped to 2 − m and the FON is frozen there, with the warning above (`REKS_M_FON` 2.5). Negative (the default) disables the bound; the lower end is then m.
+* For a hole geminal the bounds apply to the hole occupation h = 2 − n.
 
 FON micro-solver traces are printed at `REKS_REPORT_LEVEL` ≥ 4.
 
@@ -151,13 +152,13 @@ Three engines optimize the orbitals and FONs; most runs set at most `LEVEL_SHIFT
 | true | false | TRAH for the entire SCF |
 | false | false | level-shifted Fock steps (`PLAIN/SHIFT`) |
 
-`Iterations` prints one line per SCF iteration: `@REKS iter` (`@DF-REKS iter` with density fitting), the SA-REKS energy, its change, `RMS |[F,D]|` and the engine tag. `RMS |[F,D]|` is compared with `D_CONVERGENCE`; with $n$ the number of MOs it is
+`Iterations` prints a one-line legend, then one line per SCF iteration: `@REKS iter` (`@DF-REKS iter` with density fitting), the SA-REKS energy, its change, `|g|_F/nmo` and the engine tag. `|g|_F/nmo` is compared with `D_CONVERGENCE`; with $g_{pq} = -2\,(F_{pq} - F_{qp})$ the SA-REKS orbital gradient over the core–active, core–virtual, active–virtual and active–active rotations and $n$ the number of MOs it is
 
 $$
-\mathrm{RMS} = \begin{cases} \lVert \mathbf g_{\mathrm{orb}} \rVert_F / n & \text{GVB-DIIS}\\ \max\!\big(\sqrt{\lVert \mathbf g_{\mathrm{orb}} \rVert^2 + \lVert \mathbf g_{\mathrm{FON}} \rVert^2},\ \lVert \mathbf V - \mathbf 1 \rVert_F\big) / n & \text{TRAH}\\ \mathrm{rms}(\mathbf{FDS} - \mathbf{SDF}) & \text{otherwise} \end{cases}
+|g|_F/\mathrm{nmo} = \begin{cases} \lVert \mathbf g_{\mathrm{orb}} \rVert_F / n & \text{GVB-DIIS, plain and burn-in steps}\\ \max\!\big(\sqrt{\lVert \mathbf g_{\mathrm{orb}} \rVert^2 + \lVert \mathbf g_{\mathrm{FON}} \rVert^2},\ \lVert \mathbf V - \mathbf 1 \rVert_F\big) / n & \text{TRAH}\end{cases}
 $$
 
-with $\mathbf g_{\mathrm{orb}}$, $\mathbf g_{\mathrm{FON}}$ the orbital and FON gradients and $\mathbf V$ the rotation that canonicalizes the current orbitals within their roles. GVB-DIIS converges when $|\Delta E| <$ `E_CONVERGENCE` and RMS $<$ `D_CONVERGENCE` hold in `REKS_GVB_GATE_STREAK` (default 2) consecutive iterations; the sign of $\Delta E$ is not tested, so the last iterations may rise within these bounds. A converged SCF ends with the line below (otherwise [SCF hits MAXITER or continues unconverged](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-maxiter)):
+with $\mathbf g_{\mathrm{orb}}$, $\mathbf g_{\mathrm{FON}}$ the orbital and FON gradients and $\mathbf V$ the rotation that canonicalizes the current orbitals within their roles. GVB-DIIS converges when $|\Delta E| <$ `E_CONVERGENCE` and $|g|_F/\mathrm{nmo} <$ `D_CONVERGENCE` hold in `REKS_GVB_GATE_STREAK` (default 2) consecutive iterations; the sign of $\Delta E$ is not tested, so the last iterations may rise within these bounds. A converged SCF ends with the line below (otherwise [SCF hits MAXITER or continues unconverged](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-maxiter)):
 
 ```log
 ==> Iterations <==
@@ -331,7 +332,7 @@ with $\mathbf P$ the projector on the differences kept so far, $\delta$ = `REKS_
 
 #### `REKS_GEMINAL_DELOC` {#reks_geminal_deloc}
 
-After the SCF, rotates generation-0 geminal pairs to their IPR minimum and reconverges; kept if it converges to a lower E_SA.
+After the SCF, rotates generation-0 pairs past the IPR midpoint to their IPR minimum and reconverges; kept if lower in E_SA.
 
 Type: bool
 

@@ -8,7 +8,7 @@ Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: br
 
 Site index: <https://reksstudio.github.io/v2/llms.txt>. Every page: `https://reksstudio.github.io/v2/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/v2/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/v2/inputs/<file>.txt`.
 
-Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`.
+Units of the active space: electron or hole geminals, electron or hole doublets, one token each; selects the catalog.
 
 Type: array
 
@@ -19,6 +19,8 @@ Default: `[]` (all 2)
 "reks_geminal_widths": [2, 3],
 ```
 
-* Orbital count of each two-electron geminal: N/2 integers, each in \[2, 8], summing to M. Empty (default): every geminal spans 2 orbitals.
-* A width-w geminal holds 2 electrons in w orbitals; its configurations carry orbital-letter suffixes (`OSSa1`, `DESb1`).
-* Selects the catalog `reks{N}{M}_u{w0}{w1}…`; the installed ones are listed above.
+* One token per unit of the active space, in unit order; K = width, the number of the unit's orbitals, K ≤ 8:
+* `K` or `"K"`: electron geminal, 2 electrons in K orbitals (K ≥ 2). `"hK"`: hole geminal, 2K − 2 electrons (K ≥ 3); its FON variable is the hole occupation h = 2 − n. `"dK"`: electron doublet, 1 electron (K ≥ 1). `"hdK"`: hole doublet, 2K − 1 electrons (K ≥ 2).
+* At least one geminal and at most one doublet. For odd N without a doublet token the SOMO (`"d1"`) is implicit. Unit electrons (plus the implicit SOMO) sum to N, widths to M. Empty (default): every unit is a two-orbital electron geminal.
+* Configurations of wider units carry orbital-letter suffixes (`OSSa1`, `DESb1`).
+* Selects the catalog `reks{N}{M}_u{tokens}`, the tokens concatenated in unit order, the plain `reks{N}{M}` when every token is 2; the installed ones and their tokens: [§6](https://reksstudio.github.io/v2/manual/setup/index.md#catalog).

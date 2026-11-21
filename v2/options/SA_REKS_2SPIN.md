@@ -21,4 +21,4 @@ Alias: `REKS_SA_2SPIN`
 ```
 
 * One integer 2S per SA block (explicit mode, [§9](https://reksstudio.github.io/v2/manual/setup/index.md#spin-manifolds)). Entries are pairwise distinct, in any order (re-sorted ascending).
-* Without `SA_REKS_CONFIGS` only `[0]` is accepted; any other value is an input error. States of 2S > 0 on the default ensemble: [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md).
+* Without `SA_REKS_CONFIGS` only `[N mod 2]` is accepted (`[0]` for even N, `[1]` for odd N); any other value is an input error. States of higher 2S on the default ensemble: [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md).

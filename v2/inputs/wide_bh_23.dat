@@ -1,0 +1,17 @@
+#! SA-REKS(2,3) and SI-SA-REKS(2,3) of BH, BH&HLYP/cc-pVDZ: one geminal over the lone pair and both pi orbitals.
+
+molecule bh {
+0 1
+B 0.0 0.0 0.0
+H 0.0 0.0 1.2324
+symmetry c1
+}
+
+set {
+  basis      cc-pvdz
+  reference  reks
+  reks       [2, 3]
+  reks_geminal_widths [3]
+}
+
+energy('bhhlyp')

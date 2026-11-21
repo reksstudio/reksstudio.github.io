@@ -24,7 +24,7 @@ $$
 \Phi_0 = \sum_{k=1}^{w} s_k \sqrt{\tfrac{n_{p_k}}{2}}\;|p_k\bar p_k|, \qquad \sum_{k=1}^{w} n_{p_k} = 2, \qquad s = (+, -, \dots, -).
 $$
 
-For w = 2 this is Φ<sub>0</sub> of [Geminals](https://reksstudio.github.io/v2/manual/concepts/index.md#geminals). The first slot of each geminal carries the + sign; in a seed it holds a doubly occupied orbital. Geminals of scheme 0, as `Pairing scheme 0` prints them in `Post-Iterations`:
+For w = 2 this is Φ<sub>0</sub> of [Geminals](https://reksstudio.github.io/v2/manual/concepts/index.md#geminals). The first slot of each geminal (the anchor) carries the + sign; in a seed it holds a doubly occupied orbital. For w ≥ 3 the signs of the other w − 1 slots are variational: the FON solver compares the 2<sup>w−1</sup> sign patterns, starting from (+, −, …, −), and keeps the lowest-energy one; the result is published as `REKS ROOT SIGNS` (`REKS M_ROOT SIGNS`, … for higher generations). Geminals of scheme 0, as `Pairing scheme 0` prints them in `Post-Iterations`:
 
 | `reks` | `reks_geminal_widths` | Geminals of scheme 0 |
 | - | - | - |

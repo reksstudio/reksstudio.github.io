@@ -14,19 +14,29 @@ Chapters 6–10 of the REKS Studio user manual
 
 ## 6. Active Space and Catalog {#catalog}
 
-Configurations come from binary catalogs, one per `(N,M)` and geminal-width set, in `<PSIDATADIR>/reks_catalog` (a non-empty environment variable `PSI4_REKS_CATALOG` replaces the directory). A catalog lists every spin-inequivalent configuration of every spin manifold, each with a **name** and a **type**. Installed:
+Configurations come from binary catalogs, one per `(N,M)` and unit set, in `<PSIDATADIR>/reks_catalog` (a non-empty environment variable `PSI4_REKS_CATALOG` replaces the directory). A catalog lists every spin-inequivalent configuration of every spin manifold, each with a **name** and a **type**. Installed:
 
 | `reks` | `reks_geminal_widths` | Catalog | 2S |
 | - | - | - | - |
 | `[2, 2]` | — | `reks22` | 0, 2 |
 | `[2, 3]` | `[3]` | `reks23_u3` | 0, 2 |
 | `[2, 4]` | `[4]` | `reks24_u4` | 0, 2 |
+| `[3, 3]` | — | `reks33` | 1, 3 |
+| `[3, 4]` | `[3]` | `reks34_u3` | 1, 3 |
+| `[3, 4]` | `["2", "d2"]` | `reks34_u2d2` | 1, 3 |
+| `[4, 3]` | `["h3"]` | `reks43_uh3` | 0, 2 |
 | `[4, 4]` | — | `reks44` | 0, 2, 4 |
 | `[4, 5]` | `[2, 3]` | `reks45_u23` | 0, 2, 4 |
 | `[4, 6]` | `[3, 3]` | `reks46_u33` | 0, 2, 4 |
+| `[5, 4]` | `["h3"]` | `reks54_uh3` | 1, 3 |
+| `[5, 4]` | `["2", "hd2"]` | `reks54_u2hd2` | 1, 3 |
+| `[5, 5]` | — | `reks55` | 1, 3, 5 |
+| `[6, 5]` | `["h3", "2"]` | `reks65_uh32` | 0, 2, 4 |
 | `[6, 6]` | — | `reks66` | 0, 2, 4, 6 |
+| `[7, 6]` | `["3", "hd3"]` | `reks76_u3hd3` | 1, 3 |
+| `[8, 6]` | `["h3", "h3"]` | `reks86_uh3h3` | 0, 2, 4 |
 
-Any other `(N,M)`, or `(4,5)`/`(4,6)` without `REKS_GEMINAL_WIDTHS`, stops the run at catalog load ([Active space fails to load](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-catalog)). Slots, seeds and checks of the wide catalogs: [§4](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-geminals).
+Odd N: the singly occupied orbital (SOMO) is implicit unless a doublet unit (`"dK"`, `"hdK"`) is listed. Any other `(N,M)` or unit set stops the run at catalog load ([Active space fails to load](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-catalog)). Slots, seeds and checks of the wide catalogs: [§4](https://reksstudio.github.io/v2/manual/wide-geminals/index.md#wide-geminals).
 
 ### Active space {#active-space}
 
@@ -47,11 +57,11 @@ REKS requires the canonical symmetric-Ms reference: N=2 implies molecule multipl
 ```
 
 * N active electrons in M active orbitals, exactly two integers; a third element is an input error. Only installed catalogs run ([§6](#catalog)).
-* Molecule multiplicity: 1 for even N, 2 for odd N (no installed catalog has odd N); any other value is the error above. The spin manifolds are chosen by [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) / [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) or the ladder ([§9](#spin-manifolds)).
+* Molecule multiplicity: 1 for even N, 2 for odd N; any other value is the error above. The spin manifolds are chosen by [`SA_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SA_REKS_2SPIN.md) / [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md) or the ladder ([§9](#spin-manifolds)).
 
 #### `REKS_GEMINAL_WIDTHS` {#reks_geminal_widths}
 
-Width (orbital count) of each geminal, N/2 integers summing to M; selects the catalog `reks{N}{M}_u{w0}{w1}…`.
+Units of the active space: electron or hole geminals, electron or hole doublets, one token each; selects the catalog.
 
 Type: array
 
@@ -62,9 +72,11 @@ Default: `[]` (all 2)
 "reks_geminal_widths": [2, 3],
 ```
 
-* Orbital count of each two-electron geminal: N/2 integers, each in \[2, 8], summing to M. Empty (default): every geminal spans 2 orbitals.
-* A width-w geminal holds 2 electrons in w orbitals; its configurations carry orbital-letter suffixes (`OSSa1`, `DESb1`).
-* Selects the catalog `reks{N}{M}_u{w0}{w1}…`; the installed ones are listed above.
+* One token per unit of the active space, in unit order; K = width, the number of the unit's orbitals, K ≤ 8:
+* `K` or `"K"`: electron geminal, 2 electrons in K orbitals (K ≥ 2). `"hK"`: hole geminal, 2K − 2 electrons (K ≥ 3); its FON variable is the hole occupation h = 2 − n. `"dK"`: electron doublet, 1 electron (K ≥ 1). `"hdK"`: hole doublet, 2K − 1 electrons (K ≥ 2).
+* At least one geminal and at most one doublet. For odd N without a doublet token the SOMO (`"d1"`) is implicit. Unit electrons (plus the implicit SOMO) sum to N, widths to M. Empty (default): every unit is a two-orbital electron geminal.
+* Configurations of wider units carry orbital-letter suffixes (`OSSa1`, `DESb1`).
+* Selects the catalog `reks{N}{M}_u{tokens}`, the tokens concatenated in unit order, the plain `reks{N}{M}` when every token is 2; the installed ones and their tokens: [§6](#catalog).
 
 ### Naming convention {#naming-convention}
 
@@ -78,7 +90,7 @@ Every configuration has a name of the form `<TYPE><index>`, e.g. `PPS1`, `OSS2`,
 | Compound types (`OSS_DES`, `DOSS_DES`, `OSS_DDES`) | Both kinds of geminals in one configuration. |
 | A first word of k letters `T` (`T_PPS3`, `TT_SPS_0`, `TTT_SPS_0`) | k triplet-coupled geminals (a `T` glued to `OSS` or `DES`, as in `TOSS`, is the multiplier 3); manifold 2S = 2k (coupling: [Spin manifold and run sector](https://reksstudio.github.io/v2/manual/concepts/index.md#run-sector)). In `(2,2)` the single 2S = 2 configuration is named `T1`. |
 | `SPS` (as in `DOSS_SPS_0`) | A **spin-polarized** configuration; member `k` of the set is orthogonalized to members 0 … k − 1. |
-| Lettered types (`OSSa`, `DESb`, `Ta`, `DESa_OSSb`, `TaTb_SPS`) | Generalized-geminal catalogs (`REKS_GEMINAL_WIDTHS`). |
+| Lettered types (`OSSa`, `DESb`, `Ta`, `DESa_OSSb`, `TaTb_SPS`, `PPS_Da`, `T_PPSd`) | Unit catalogs (`REKS_GEMINAL_WIDTHS`): wide, hole and doublet units. |
 
 Bulk tokens ([§7](#bulk-tokens)) select configurations without listing names; an unknown token lists every valid type and name of the block's manifold ([Unknown configuration name or type](https://reksstudio.github.io/v2/manual/diagnose/index.md#diag-unknown-token)).
 
@@ -141,7 +153,7 @@ SA-REKS configuration pool: one block (flat list) or one block per spin manifold
 
 Type: array
 
-Default: catalog `sa_default` pool on 2S = 0
+Default: PPS + OSS pool of scheme 0 on the lowest manifold, 2S = N mod 2
 
 Alias: `REKS_SA_CONFIGS`
 
@@ -171,7 +183,7 @@ Alias: `REKS_SA_CONFIGS`
 * Flat list = one block on one spin manifold, e.g. `["PPS1", "OSS1", "OSS2"]` or by local index `[0, 1, 2]`. Elements: configuration names, local integer indices, or bulk tokens ([§7](#bulk-tokens)).
 * A configuration may not repeat within a block: an SA block is a weighted list ([§7](#bulk-tokens)).
 * Nested list = one block per spin manifold, e.g. `[["PPS1", "OSS1"], ["T_PPS1"]]`, mapped to manifolds by ladder position or by `SA_REKS_2SPIN` ([§9](#spin-manifolds)).
-* Absent: the catalog's `sa_default` pool on 2S = 0. Defaults: `REKS(2,2)` `[PPS1, OSS1]`, `REKS(4,4)` `[PPS1, OSS1, OSS2]`, `REKS(6,6)` `[PPS1, OSS1, OSS2, OSS3]`.
+* Absent: one block on the lowest manifold, 2S = N mod 2: the configurations of pairing scheme 0 with no doubly excited unit, at most one open-shell-singlet unit, no triplet word and the doublet unit at its aufbau placement, in catalog order. Defaults: `REKS(2,2)` `[PPS1, OSS1]`, `REKS(4,4)` `[PPS1, OSS1, OSS2]`, `REKS(6,6)` `[PPS1, OSS1, OSS2, OSS3]`.
 * Check `sum = 1.000000` and that every `SA_REKS_EXTRA` determinant of the input is listed (`Extra1`, …).
 
 See: [`SA_REKS_WEIGHTS`](https://reksstudio.github.io/v2/options/SA_REKS_WEIGHTS.md), [`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md), [SA-REKS ensemble and weights](https://reksstudio.github.io/v2/manual/concepts/index.md#sa-ensemble)
@@ -426,7 +438,7 @@ Alias: `REKS_SA_2SPIN`
 ```
 
 * One integer 2S per SA block (explicit mode, [§9](#spin-manifolds)). Entries are pairwise distinct, in any order (re-sorted ascending).
-* Without `SA_REKS_CONFIGS` only `[0]` is accepted; any other value is an input error. States of 2S > 0 on the default ensemble: [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md).
+* Without `SA_REKS_CONFIGS` only `[N mod 2]` is accepted (`[0]` for even N, `[1]` for odd N); any other value is an input error. States of higher 2S on the default ensemble: [`SI_REKS_2SPIN`](https://reksstudio.github.io/v2/options/SI_REKS_2SPIN.md).
 
 #### `SI_REKS_2SPIN` {#si_reks_2spin}
 
@@ -448,7 +460,7 @@ Alias: `REKS_SI_2SPIN`
 
 ### Input patterns {#input-patterns}
 
-Recommended SA ensemble for states on several spin manifolds: the default 2S = 0 pool (PPS and every OSS); the T_PPS configurations that lead T1/T2 may be added, nothing of higher spin. The all-α determinant is added for SCF stability ([`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md)).
+Recommended SA ensemble for states on several spin manifolds: the default 2S = 0 pool (PPS and the OSS configurations of pairing scheme 0); the T_PPS configurations that lead T1/T2 may be added, nothing of higher spin. The all-α determinant is added for SCF stability ([`SA_REKS_EXTRA`](https://reksstudio.github.io/v2/options/SA_REKS_EXTRA.md)).
 
 Linear H₄ (R = 1.6 Å), BH\&HLYP/6-31G. In all three the SA ensemble is the default 2S = 0 pool of REKS(4,4), `PPS1`, `OSS1`, `OSS2`. The input adds the all-α determinant (`sa_reks_extra`): four SA members, weights 1/4 each; one SCF, E<sub>SA</sub> = −1.8826103083 E<sub>h</sub> in every case.
 
@@ -484,11 +496,15 @@ The third group of the ladder is 2S = 4: one configuration, `TT_SPS_0`, one quin
 
 ### State labels {#state-labels}
 
-| 2S | 0 | 2 | 4 | 6 | 8 | 10 | 12 |
+| Even N, 2S | 0 | 2 | 4 | 6 | 8 | 10 | 12 |
 | - | - | - | - | - | - | - | - |
 | Root 0, 1, … | `S0`, `S1`, … | `T1`, `T2`, … | `Q1` | `Sp1` | `N1` | `U1` | `Tr1` |
 
-`SI_REKS_PROPERTY_FOR` accepts these labels; Molden and cube file names use them.
+| Odd N, 2S | 1 | 3 | 5 | 7 | 9 | 11 |
+| - | - | - | - | - | - | - |
+| Root 0, 1, … | `D0`, `D1`, … | `Qa1`, `Qa2`, … | `Sx1` | `Oc1` | `De1` | `Du1` |
+
+The lowest manifold counts from 0, every other from 1. `SI_REKS_PROPERTY_FOR` accepts these labels, `SI_REKS_GRAD` takes 0-based root indices; Molden and cube file names use the labels.
 
 ### Output {#output}
 
