@@ -1,0 +1,15 @@
+# `REKS_DIIS_GUARD_LATCH_GRACE`
+
+HTML: <https://reksstudio.github.io/manual/reference/#gvb-diis-monitors-verdicts-expert>
+
+Chapter: [18. Option Table](https://reksstudio.github.io/manual/reference/index.md#option-table)
+
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+
+Site index: <https://reksstudio.github.io/llms.txt>. Every page: `https://reksstudio.github.io/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/inputs/<file>.txt`.
+
+Default: `3`
+
+Meaning: Consecutive iterations without the basin signal after which the GVB-DIIS outcome guard clears its basin latch.
+
+Used in: 

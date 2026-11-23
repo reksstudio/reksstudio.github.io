@@ -1,0 +1,21 @@
+# `REKS_CI_TOPOGRAPHY_GAP`
+
+HTML: <https://reksstudio.github.io/manual/setup/#reks_ci_topography_gap>
+
+Chapter: [10. Properties, Gradients, Couplings](https://reksstudio.github.io/manual/setup/index.md#response)
+
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+
+Site index: <https://reksstudio.github.io/llms.txt>. Every page: `https://reksstudio.github.io/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/inputs/<file>.txt`.
+
+Largest gap at which the topography table of a NAC pair is printed.
+
+Type: double
+
+Default: `5e-3`
+
+```python
+"reks_ci_topography_gap": 1e-2,
+```
+
+* Largest pair gap (E<sub>h</sub>) at which the topography table of a NAC pair is printed ([Conical-intersection topography](https://reksstudio.github.io/manual/properties/index.md#ci-topography)).

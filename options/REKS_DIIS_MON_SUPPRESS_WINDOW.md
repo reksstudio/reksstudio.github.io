@@ -1,0 +1,15 @@
+# `REKS_DIIS_MON_SUPPRESS_WINDOW`
+
+HTML: <https://reksstudio.github.io/manual/reference/#gvb-diis-monitors-verdicts-expert>
+
+Chapter: [18. Option Table](https://reksstudio.github.io/manual/reference/index.md#option-table)
+
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+
+Site index: <https://reksstudio.github.io/llms.txt>. Every page: `https://reksstudio.github.io/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/inputs/<file>.txt`.
+
+Default: `3`
+
+Meaning: Iterations after a GVB-DIIS rewind, restart or switch during which the verdict is suspended.
+
+Used in: 

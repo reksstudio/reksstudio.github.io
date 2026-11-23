@@ -1,0 +1,21 @@
+# `REKS_GVB_DIIS_START`
+
+HTML: <https://reksstudio.github.io/manual/run-control/#reks_gvb_diis_start>
+
+Chapter: [13. SCF Convergence Engines](https://reksstudio.github.io/manual/run-control/index.md#scf-engines)
+
+Psi4 e95c2d234, 2026-10-19: the commit of every output on this site. Install: branch kk/reks.studio of <https://github.com/ConstLike/psi4>.
+
+Site index: <https://reksstudio.github.io/llms.txt>. Every page: `https://reksstudio.github.io/<page>/index.md` (markdown). Option cards: `https://reksstudio.github.io/options/<NAME>.md`. Raw files: file URL + `.txt` (text/plain), e.g. `https://reksstudio.github.io/inputs/<file>.txt`.
+
+First SCF iteration of GVB-DIIS; earlier iterations run the level-shifted burn-in or TRAH.
+
+Type: int
+
+Default: `3`
+
+```python
+"reks_gvb_diis_start": 5,
+```
+
+* SCF iteration at which GVB-DIIS takes over from the burn-in or from TRAH ([The three engines](https://reksstudio.github.io/manual/run-control/index.md#engines)).

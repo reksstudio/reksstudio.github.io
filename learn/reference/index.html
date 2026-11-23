@@ -1,0 +1,1022 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex"><title>Input reference — REKS Studio Learn</title><link rel="icon" href="data:,"><script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script><style>@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/newsreader-latin-ext-opsz-normal.BwJpYdxm.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/newsreader-latin-opsz-normal.CqbZqcAx.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/assets/newsreader-latin-ext-opsz-italic.Dgrugb19.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Newsreader;font-style:italic;font-weight:400;font-display:swap;src:url(/assets/newsreader-latin-opsz-italic.BQZfvhrE.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/ibm-plex-sans-greek-400-normal.C1F_rdXf.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/ibm-plex-sans-latin-ext-400-normal.CgvVWtt1.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/ibm-plex-sans-latin-400-normal.CVtoA3K0.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/ibm-plex-sans-greek-500-normal.D7VaMi-S.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/ibm-plex-sans-latin-ext-500-normal.CLSVXy90.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/ibm-plex-sans-latin-500-normal.Buxg-I-T.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/ibm-plex-sans-greek-600-normal.BqqF80ia.woff2)format("woff2");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/ibm-plex-sans-latin-ext-600-normal.EnRqolih.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Sans;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/ibm-plex-sans-latin-600-normal.r1Mvb25P.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/ibm-plex-mono-latin-ext-400-normal.Us7hA_VS.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/ibm-plex-mono-latin-400-normal.Fo9UdhO4.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/ibm-plex-mono-latin-ext-500-normal.BkYod2nZ.woff2)format("woff2");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:IBM Plex Mono;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/ibm-plex-mono-latin-500-normal.DCc8nWQ7.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--bg:#f5f5f2;--bg-raised:#efeee9;--ink:#14181f;--ink-soft:#4a5160;--ink-faint:#8a8f98;--blue:#2a4b8d;--copper:#b5502a;--line:#d8d6cd;--navy-900:#0a1626;--navy-800:#123055;--navy-700:#1d3e68;--mint:#d6e6dc;--copper-bright:#de7f3d;--gold:#d9b36c;--serif:"Newsreader", Georgia, serif;--sans:"IBM Plex Sans", -apple-system, sans-serif;--mono:"IBM Plex Mono", "SF Mono", Consolas, monospace;--nav-offset:88px}*{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}math{font-family:STIX Two Math,Cambria Math,Noto Sans Math,math}.mblk{max-width:100%;overflow:auto hidden}.tml-right{text-align:right}.tml-left{text-align:left}.tml-jot>mtr>mtd{padding-block:.35ex}@supports (not ((-webkit-backdrop-filter:blur(1px)))) and (not ((-moz-appearance:none))){.tml-right{text-align:-webkit-right}.tml-left{text-align:-webkit-left}}body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;margin:0;font-size:17px;line-height:1.6}a{color:inherit}html{scroll-padding-top:var(--nav-offset)}:is(.nav-light,.nav-dark) a{scroll-margin-top:calc(-1 * var(--nav-offset))}.bkp{z-index:60;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));background:var(--ink);max-width:calc(100vw - 32px);color:var(--bg);white-space:nowrap;text-overflow:ellipsis;border-radius:22px;padding:10px 16px;font-size:.88rem;line-height:1.3;text-decoration:none;position:fixed;overflow:hidden;transform:translate(-50%);box-shadow:0 4px 16px #0004}.bkf{animation:2s bkf}@keyframes bkf{0%,40%{background:color-mix(in srgb, var(--copper) 25%, transparent)}}html:not(.bkr) :is(:target>:is(h2,h3):first-child,:target>.hb-head h2,:is(h2,h3,h4):target,tr:target>*){animation:2s bkf}.wrap{max-width:1160px;margin:0 auto;padding:0 40px}@media (width<=700px){.wrap{padding:0 24px}}h1,h2,h3{font-family:var(--serif);color:var(--ink);margin:0;font-weight:600}sub,sup{line-height:0}.ph{color:var(--copper);font-style:italic}.kicker{color:var(--copper);letter-spacing:.02em;margin-bottom:14px;font-size:.86rem;font-weight:500}.prose p{color:var(--ink-soft)}nav{z-index:50;position:sticky;top:0}nav .wrap{justify-content:space-between;align-items:center;min-height:64px;display:flex}.logo{font-family:var(--serif);align-items:baseline;gap:6px;text-decoration:none;display:flex}.navlinks{flex-wrap:wrap;justify-content:flex-end;gap:0 28px;font-size:.92rem;display:flex}.navlinks a{border-bottom:1px solid #0000;padding:6px 0;text-decoration:none;transition:color .15s,border-color .15s}@media (width<=720px){.navlinks{gap:0 16px;font-size:.85rem}}@media (width<=480px){nav .wrap{gap:6px;padding:0 16px}.navlinks{gap:0 8px;font-size:.78rem}nav .wrap .logo{font-size:1rem}}@media (width<=380px){.navlinks{gap:0 6px}.navlinks a:first-child{display:none}}nav.nav-dark{background:var(--navy-900);border-bottom:1px solid #ffffff14}.nav-dark .logo{letter-spacing:.01em;color:var(--mint);font-size:1.3rem;font-style:italic;font-weight:500}.nav-dark .logo .dot{color:var(--copper-bright)}.nav-dark .navlinks a{color:#ffffffd1}.nav-dark .navlinks a:hover,.nav-dark .navlinks a[aria-current]{color:#fff;border-color:var(--copper-bright)}nav.nav-light{backdrop-filter:blur(8px);border-bottom:1px solid var(--line);background:#f5f5f2db}.nav-light .logo{font-size:1.15rem;font-weight:600}.nav-light .logo .dot{color:var(--copper)}.nav-light .navlinks a{color:var(--ink-soft)}.nav-light .navlinks a:hover,.nav-light .navlinks a[aria-current]{color:var(--ink);border-color:var(--copper)}footer{border-top:1px solid var(--line)}footer.foot{padding:40px 0 56px;font-size:.88rem}.foot .wrap{flex-wrap:wrap;gap:12px 28px;display:flex}.foot a{color:var(--ink-soft);text-decoration:none}.foot a:hover{color:var(--ink);text-decoration:underline}
+.astro-code .line.hl{background:#de7f3d33;min-width:100%;display:inline-block}.rm pre.astro-code{border:1px dashed var(--line);border-left:3px dashed var(--copper);background:var(--bg-raised)!important}.rm pre.astro-code span{text-decoration:line-through;color:var(--ink-soft)!important}details>summary{cursor:pointer;color:var(--ink-soft)}details{max-width:74ch;margin:0 0 16px}.findform{margin:16px 0 0}.findform input{width:100%;max-width:60ch;font:inherit;border:1px solid var(--line);background:#fff;border-radius:6px;padding:6px 10px}.findform p{color:var(--ink-soft);margin:4px 0 0;font-size:.82rem}.docsec.find h2{font:600 .75rem/1.6 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:20px 0 2px}.find>div:not(:has(li:not([hidden]))){display:none}.find ul{margin:0;padding:0;font-size:.88rem;line-height:1.75;list-style:none}.find li{border-bottom:1px solid var(--line);overflow-wrap:anywhere;padding:2px 0}.find li>*+*{margin-left:8px}.find small{color:var(--ink-soft)}.find a{color:var(--ink-soft);display:inline-block}.toc .tg{font:600 .7rem/1.6 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px}.docs-layout>div>p{max-width:74ch;margin:0 0 16px}.u-e,.u-h,.u-d,.u-hd{font-family:var(--mono);border-radius:3px;padding:0 .2em;font-size:.9em}.u-e,.u-d{color:var(--blue)}.u-h,.u-hd{color:var(--copper)}.u-d,.u-hd{background:var(--mint)}.u-hd{color:#9a4320}.rk{white-space:nowrap;min-width:24px;min-height:24px;margin:4px 0;line-height:24px;text-decoration:none;display:block}#reks-table~.reftable-wrap :is(th,td){padding-right:8px}#reks-table~.reftable-wrap tbody th{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink);padding:14px 8px 10px 0;font-weight:600;line-height:24px}#reks-table~.reftable-wrap tbody tr:last-child th{border-bottom:none}
+header.docshero{border-bottom:1px solid var(--line);padding:64px 0 40px}header.docshero h1{max-width:20ch;font-size:clamp(1.9rem,4vw,2.7rem)}header.docshero h1+p{color:var(--ink-soft);max-width:56ch;margin-top:16px;font-size:1.05rem}.docs-layout{grid-template-columns:var(--toc-width,200px) minmax(0, 1fr);align-items:start;gap:56px;padding:56px 0 96px;display:grid}@media (width<=860px){.docs-layout{grid-template-columns:minmax(0,1fr)}}.docs-single{padding:56px 0 96px}.toc{top:var(--nav-offset);position:sticky}.toc>summary{display:none}.toc::details-content{content-visibility:visible;display:contents}.toc-list{flex-direction:column;gap:2px;display:flex}.toc a{color:var(--ink-soft);border-left:2px solid #0000;padding:6px 0 6px 12px;font-size:.88rem;text-decoration:none;transition:color .15s,border-color .15s}.toc a:hover{color:var(--ink);border-color:var(--copper)}@media (width<=860px){.toc{border:1px solid var(--line);border-radius:6px;margin-bottom:8px;padding:10px 14px;position:static}.toc>summary{cursor:pointer;color:var(--ink);font-weight:600;display:list-item}.toc::details-content{content-visibility:hidden;display:block}.toc[open]::details-content{content-visibility:visible}.toc-list{margin-top:8px}.toc a{border-left:none;padding-left:0}}.docsec{margin-bottom:72px}.docsec:last-child{margin-bottom:0}.docsec h2{margin-bottom:18px;font-size:1.5rem}.docsec h3{margin:30px 0 12px;font-size:1.12rem}.docsec .prose p{max-width:74ch;margin:0 0 16px}.prose ul,.prose ol{color:var(--ink-soft);max-width:74ch;margin:0 0 16px;padding-left:22px}.prose ol{padding-left:2em}.prose li{margin-bottom:8px}.prose strong{color:var(--ink)}.crumbs a{text-decoration:none}.crumbs a:hover{text-decoration:underline}.reftable-wrap{background:linear-gradient(to left, var(--bg) 30%, #f5f5f200) right / 40px 100% no-repeat local, linear-gradient(to left, #14181f1f, #14181f00) right / 12px 100% no-repeat scroll;margin:8px 0 24px;overflow-x:auto}code{overflow-wrap:break-word;font-family:var(--mono);background:var(--bg-raised);-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:4px;padding:.05em .3em;font-size:.86em}td code{overflow-wrap:normal}pre{font:.85rem/1.5 var(--mono)}pre code{font-size:inherit;line-height:inherit;background:0 0;padding:0}
+header.docshero h1{max-width:30ch}header.docshero .tagline{color:var(--ink-soft);max-width:62ch;margin-top:16px;font-size:1.05rem}header.docshero .branch{color:var(--ink-faint);font-size:.9rem;font-family:var(--mono);margin-top:6px}.banner{border-left:3px solid var(--copper);background:var(--bg-raised);color:var(--ink-soft);width:fit-content;max-width:100%;margin-top:12px;padding:8px 14px;font-size:.8rem;line-height:1.5}header.pagehead{border-bottom:1px solid var(--line);padding:40px 0 28px}header.pagehead h1{font-size:clamp(1.6rem,3.2vw,2.2rem)}header.pagehead p{color:var(--ink-soft);margin:10px 0 0}.docs-layout{--toc-width:240px}.toc{max-height:calc(100vh - var(--nav-offset) - 22px);overflow-y:auto}@media (width<=860px){.toc{max-height:none}}.toc a{font-size:.85rem}.toc a[aria-current]{color:var(--ink);border-color:var(--copper);font-weight:600}.toc .sub{flex-direction:column;gap:2px;margin-bottom:6px;display:flex}.toc .sub a{text-indent:-1.4em;padding-left:calc(24px + 1.4em)}.toc .sub a.h3{text-indent:0;padding-top:3px;padding-bottom:3px;font-size:.8rem}.toc .sub a.h4{text-indent:0;color:var(--ink-faint);overflow-wrap:anywhere;padding-top:1px;padding-bottom:1px;padding-left:calc(24px + 2.4em);font-size:.75rem}@media (width<=860px){.toc a[aria-current]{border-left:2px solid var(--copper);padding-left:10px}.toc .sub a{padding-left:calc(12px + 1.4em)}.toc .sub a.h4{padding-left:calc(12px + 2.4em)}}.docsec h4{font:600 1.02rem/1.4 var(--serif);color:var(--ink);border-top:1px solid var(--line);margin:28px 0 10px;padding-top:22px}.docsec h3+h4{border-top:none;padding-top:0}h4 code:only-child{font-size:.92em;font-weight:600}.fields{max-width:74ch;color:var(--ink-soft);grid-template-columns:max-content minmax(0,1fr);gap:6px 18px;margin:0 0 20px;display:grid}.fields dt{font:600 .74rem/2.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}.fields dd{margin:0}@media (width<=700px){.fields{display:block}.fields dt{float:left;margin-right:.7em}.fields dd{margin-bottom:8px}}figure{max-width:74ch;margin:8px 0 24px}figure img{width:100%;height:auto;margin:0 0 8px;display:block}figure.scheme svg{width:100%;max-width:360px;height:auto;display:block}figure.pair img{max-width:30rem}figcaption{color:var(--ink-soft);font-size:.85rem}figure.mo .g{gap:4px 16px;margin:0 0 8px;display:grid}figure.mo .n2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:30rem}figure.mo .n3{grid-template-columns:repeat(3,minmax(0,1fr))}figure.mo .h{color:var(--ink);text-align:center;border-bottom:1px solid var(--line);padding-bottom:2px;font-size:.85rem;font-weight:600}figure.mo .g img{margin:0 0 2px}figure.mo .g span{text-align:center;color:var(--ink-soft);font-variant-numeric:tabular-nums;font-size:.8rem;line-height:1.3;display:block}figure.mo .g span b{color:var(--ink);font-weight:600}h2 code,h3 code,h4 code{background:0 0;padding:0;font-size:.9em}math[display=block]{text-align:center;max-width:min(74ch,100%);margin:4px 0 18px;padding:2px 0;font-size:1.15em}pre{border-radius:6px;margin:0 0 20px;padding:20px 22px}pre[data-language=log]{font-size:.78rem}pre.astro-code{background-image:linear-gradient(270deg,#10131a 30%,#10131a00),linear-gradient(270deg,#ffffff38,#fff0);background-position:100%;background-repeat:no-repeat;background-size:40px 100%,16px 100%;background-attachment:local,scroll}@media (width<=700px){pre.astro-code{border-radius:0;margin-inline:-24px;padding:14px}}pre.astro-code[data-language=log]{border:1px solid var(--line);border-left:3px solid var(--copper);background-image:linear-gradient(to left, var(--bg-raised) 30%, #efeee900), linear-gradient(to left, #14181f1f, #14181f00);border-radius:0 6px 6px 0;background-color:var(--bg-raised)!important;color:var(--ink)!important}table{border-collapse:collapse;width:100%;min-width:480px;font-size:.9rem}thead th{text-align:left;font-family:var(--sans);color:var(--ink);border-bottom:1px solid var(--ink-faint);white-space:nowrap;padding:8px 16px 8px 0;font-weight:600}tbody td{vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-soft);padding:10px 16px 10px 0}tbody td:first-child code{color:var(--blue);white-space:nowrap;background:0 0;padding:0;font-size:.86rem}tbody tr:last-child td{border-bottom:none}@media (width<=860px){table{min-width:0}tbody td:first-child code{white-space:normal}}#print-order+p+.reftable-wrap tbody td:first-child code{white-space:normal}.pager{border-top:1px solid var(--line);grid-template-columns:1fr 1fr;gap:16px;margin-top:64px;padding-top:24px;display:grid;position:static}.pager a{font-family:var(--serif);color:var(--ink);font-size:1.05rem;text-decoration:none}.pager a[rel=next]{text-align:right;grid-column:2}.pager small{font:.8rem var(--sans);color:var(--ink-soft);display:block}@media (width<=560px){.pager{grid-template-columns:1fr}.pager a[rel=next]{grid-column:1}}.contents h3{margin-bottom:8px}.contents h3 a{text-decoration:none}.contents ul{columns:2 300px;column-gap:40px;margin:0;padding:0;font-size:.9rem;list-style:none}.contents li{break-inside:avoid;padding:2px 0}.contents li.h3{padding-left:1.4em;font-size:.85rem}.contents li a{color:var(--ink-soft);text-decoration:none}.contents li a:hover{color:var(--ink)}.az-letters{flex-wrap:wrap;gap:4px 12px;font-weight:600;display:flex}.az-letters a{text-decoration:none}.az-cols{columns:3 220px;column-gap:32px;font-size:.85rem;line-height:1.35}.az h3{break-after:avoid;margin:14px 0 4px;font-size:1rem}.az h3:first-child{margin-top:0}.az ul{margin:0;padding:0;list-style:none}.az li{break-inside:avoid;text-indent:-1em;overflow-wrap:anywhere;padding:1px 0 1px 1em}.az li a{color:var(--ink-soft);text-decoration:none}.az li a:hover{color:var(--ink)}.az code{background:0 0;padding:0;font-size:.92em}.az .az-page{color:var(--ink-faint);margin-left:4px;font-size:.8em}.refs a{overflow-wrap:anywhere}section:has(>h2[id$=option-table]) .reftable-wrap{container-type:inline-size}section:has(>h2[id$=option-table]) table{table-layout:fixed;min-width:0}section:has(>h2[id$=option-table]) th:first-child{width:30%}section:has(>h2[id$=option-table]) th:nth-child(2){width:15%}section:has(>h2[id$=option-table]) th:nth-child(3){width:30%}@container (width<=740px){section:has(>h2[id$=option-table]) th:nth-child(2){width:7rem}section:has(>h2[id$=option-table]) th:nth-child(3){width:27%}}section:has(>h2[id$=option-table]) td:nth-child(4){font-size:.85rem}section:has(>h2[id$=option-table]) :is(td,td code){overflow-wrap:break-word}section:has(>h2[id$=option-table]) td:first-child code{white-space:normal}section:has(>h2[id$=option-table]) td small{font:.76rem/1.35 var(--sans);color:var(--ink-faint);margin-top:3px;display:inline-block}section:has(>h2[id$=option-table]) td small code{color:inherit;font-size:.72rem}@container (width<=640px){section:has(>h2[id$=option-table]) :is(table,tbody,tr,td){width:auto;display:block}section:has(>h2[id$=option-table]) thead{display:none}section:has(>h2[id$=option-table]) tr{border-bottom:1px solid var(--line);padding:10px 0}section:has(>h2[id$=option-table]) tbody td{border:none;padding:2px 0}section:has(>h2[id$=option-table]) td:nth-child(2):before{content:"Default: ";color:var(--ink-faint);font-family:var(--sans)}section:has(>h2[id$=option-table]) td:nth-child(4):not(:empty):before{content:"Used in: ";color:var(--ink-faint);font-family:var(--sans)}}
+</style></head> <body><a hidden href="/learn/reference/index.md">Markdown version</a>  <nav class="nav-light" aria-label="Site"> <div class="wrap"> <a class="logo" href="/">REKS<span class="dot">·</span>Studio</a> <div class="navlinks"> <a href="/">Overview</a><a href="/docs/">Documentation</a><a href="/manual/" aria-current="page">Manual</a><a href="/team/">Team</a> </div> </div> </nav> <main> <header class="pagehead"> <div class="wrap"> <div class="kicker crumbs"><a href="/learn/">Learn</a> › Input reference</div> <h1>Input reference</h1>  </div> </header><div class="wrap"><form class="findform" action="/learn/find/" role="search"> <input type="search" name="q" placeholder="triplet, radical, REKS_GEMINAL_WIDTHS, or paste an error line" aria-label="Find in Learn" autocomplete="off"> </form> <div class="docs-layout"> <details class="toc"> <summary>Contents · Input reference (17 of 22)</summary> <nav class="toc-list" aria-label="Contents"> <a href="/learn/">Learn</a><span class="tg">Path</span><a href="/learn/path/p1/">P1. One pair</a><a href="/learn/path/p2/">P2. Broken π bond</a><a href="/learn/path/p3/">P3. Seed orbitals</a><a href="/learn/path/p4/">P4. Two pairs</a><a href="/learn/path/p5/">P5. Spin states</a><a href="/learn/path/p6/">P6. Forces</a><a href="/learn/procedure/">Procedure</a><span class="tg">Branches</span><a href="/learn/branch/units/">Wide, hole and doublet units</a><a href="/learn/branch/spin/">Spin manifolds and J</a><a href="/learn/branch/properties/">State properties</a><a href="/learn/branch/dynamics/">Optimization and dynamics</a><a href="/learn/branch/solvers/">Solvers and control</a><a href="/learn/branch/environment/">Environment and files</a><span class="tg">Look up</span><a href="/learn/concepts/">Concepts</a><a href="/learn/diagnose/">Diagnose</a> <a href="/learn/reference/" aria-current="page">Input reference</a> <div class="sub"> <a class="h2" href="#input">Input</a><a class="h3" href="#minimal-input">Minimal input</a><a class="h3" href="#explicit-input">Explicit SA pool and SI cassettes</a><a class="h3" href="#required-settings">Required and rejected settings</a><a class="h3" href="#worked-inputs">Worked inputs</a><a class="h2" href="#catalog">Active space and catalog</a><a class="h3" href="#active-space">Active space</a><a class="h4" href="#reks">REKS</a><a class="h4" href="#reks_geminal_widths">REKS_GEMINAL_WIDTHS</a><a class="h3" href="#naming-convention">Naming convention</a><a class="h3" href="#fon-sets">FON sets</a><a class="h3" href="#pairing-schemes">Pairing schemes</a><a class="h2" href="#bulk-tokens">Bulk tokens and pattern syntax</a><a class="h2" href="#selecting">SA pool and SI cassettes</a><a class="h3" href="#sa-pool">SA pool</a><a class="h4" href="#sa_reks_configs">SA_REKS_CONFIGS</a><a class="h4" href="#sa_reks_weights">SA_REKS_WEIGHTS</a><a class="h4" href="#sa_reks_extra">SA_REKS_EXTRA</a><a class="h3" href="#si-cassettes">SI cassettes</a><a class="h4" href="#si_reks_configs">SI_REKS_CONFIGS</a><a class="h4" href="#si_reks_print_states">SI_REKS_PRINT_STATES</a><a class="h4" href="#si_reks_store_states">SI_REKS_STORE_STATES</a><a class="h4" href="#si_reks_overlap_cutoff">SI_REKS_OVERLAP_CUTOFF</a><a class="h4" href="#si_reks_solver">SI_REKS_SOLVER</a><a class="h4" href="#si_reks_davidson_r_convergence">SI_REKS_DAVIDSON_R_CONVERGENCE</a><a class="h2" href="#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a><a class="h3" href="#spin-options">Spin-manifold options</a><a class="h4" href="#sa_reks_2spin">SA_REKS_2SPIN</a><a class="h4" href="#si_reks_2spin">SI_REKS_2SPIN</a><a class="h3" href="#input-patterns">Input patterns</a><a class="h3" href="#state-labels">State labels</a><a class="h3" href="#output">Output</a><a class="h3" href="#cassette-order">Cassette order</a><a class="h2" href="#response">Properties, gradients, couplings</a><a class="h3" href="#state-properties">State properties</a><a class="h4" href="#si_reks_analysis">SI_REKS_ANALYSIS</a><a class="h4" href="#si_reks_analysis_change_min">SI_REKS_ANALYSIS_CHANGE_MIN</a><a class="h4" href="#si_reks_property_for">SI_REKS_PROPERTY_FOR</a><a class="h4" href="#reks_ekt">REKS_EKT</a><a class="h4" href="#reks_ekt_occ_tol">REKS_EKT_OCC_TOL</a><a class="h3" href="#gradients-couplings">Gradients and couplings</a><a class="h4" href="#si_reks_grad">SI_REKS_GRAD</a><a class="h4" href="#si_reks_nac">SI_REKS_NAC</a><a class="h4" href="#reks_cpreks_conv">REKS_CPREKS_CONV</a><a class="h4" href="#reks_cpreks_maxiter">REKS_CPREKS_MAXITER</a><a class="h4" href="#reks_grad_degen_tol">REKS_GRAD_DEGEN_TOL</a><a class="h4" href="#reks_ci_topography_gap">REKS_CI_TOPOGRAPHY_GAP</a> </div> <a href="/learn/reference/run-control/">Run-control reference</a><a href="/learn/reference/output/">Output reference</a><a href="/learn/reference/properties/">Property reference</a><a href="/learn/reference/options/">Option table</a><a href="/learn/find/">Find</a>  </nav> </details> <div> <section class="docsec"><h2 id="input">Input</h2><div class="prose">
+<p>REKS Studio is the REKS solver of this Psi4 branch, selected with <code>reference reks</code>. A functional, a basis, and an SCF type are chosen as for any Psi4 reference, and <code>psi4.energy("&lt;functional&gt;")</code> is called as usual, e.g. <code>psi4.energy("bhhlyp")</code>; the functional builds the Kohn–Sham matrices of every microstate (<a href="/learn/concepts/#microstate">Microstate</a>). <code>psi4.energy("scf")</code> runs REKS with Hartree–Fock exchange and no functional; its setup block then has no <code>XC evaluation</code> line.</p>
+<h3 id="minimal-input">Minimal input</h3>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="psithon"><code><span class="line"><span>set {</span></span>
+<span class="line"><span>    reference  reks</span></span>
+<span class="line"><span>    <a href="/learn/reference/options/#row-reks">reks</a>       [ 2, 2 ]</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>energy('bhhlyp')</span></span></code></pre>
+<p>Only <code>reference reks</code> and <a href="/learn/reference/options/#row-reks"><code>reks [N, M]</code></a> are required. Absent <a href="/learn/reference/options/#row-sa_reks_configs"><code>sa_reks_configs</code></a>: the catalog's default SA pool (<a href="#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a>). Absent <a href="/learn/reference/options/#row-sa_reks_weights"><code>sa_reks_weights</code></a>: uniform weights. Absent <a href="/learn/reference/options/#row-si_reks_configs"><code>si_reks_configs</code></a>: one cassette spanning the full configuration block of the run's lowest manifold (<a href="#si_reks_configs"><code>SI_REKS_CONFIGS</code></a>). For <a href="/learn/reference/options/#row-reks"><code>reks [2, 2]</code></a>, the defaults are SA = PPS1, OSS1 (weights 0.5) and the cassette PPS1, OSS1, DES1, printed as <code>3SI-2SA-REKS(2,2)</code>. A new molecule starts from seeded and checked active orbitals (<a href="/learn/procedure/#procedure">Procedure</a>).</p>
+<h3 id="explicit-input">Explicit SA pool and SI cassettes</h3>
+<p>SSR(4,4) with an explicit SA pool and weights and four SI cassettes, written as one group (one spin manifold) of four cassettes <code>[[[…], […], […], […]]]</code> (<a href="#si_reks_configs"><code>SI_REKS_CONFIGS</code></a>). Each cassette is its own eigenproblem in the same SA orbitals; <code>PPS2</code> belongs to pairing scheme 1 (<code>SI pools</code> prints the definition of every name, <a href="/learn/concepts/#pairing-scheme">Pairing scheme</a>; tokens: <a href="#bulk-tokens">Bulk tokens and pattern syntax</a>). Complete input: <a href="/learn/branch/solvers/#case-cassettes-h4">Four SI cassettes from one SCF</a>.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span></span>
+<span class="line"><span style="color:#E7A98A">    'reference'</span><span style="color:#E7E6E2">:       </span><span style="color:#E7A98A">'reks'</span><span style="color:#E7E6E2">,</span></span>
+<span class="line"><span style="color:#E7A98A">    'reks'</span><span style="color:#E7E6E2">:            [4, 4],</span></span>
+<span class="line"><span style="color:#E7A98A">    '<a href="/learn/reference/options/#row-sa_reks_configs">sa_reks_configs</a>'</span><span style="color:#E7E6E2">: [</span><span style="color:#E7A98A">'PPS1'</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">'OSS1'</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">'OSS2'</span><span style="color:#E7E6E2">],</span></span>
+<span class="line"><span style="color:#E7A98A">    '<a href="/learn/reference/options/#row-sa_reks_weights">sa_reks_weights</a>'</span><span style="color:#E7E6E2">: [0.5, 0.25, 0.25],</span></span>
+<span class="line"><span style="color:#E7A98A">    '<a href="/learn/reference/options/#row-si_reks_configs">si_reks_configs</a>'</span><span style="color:#E7E6E2">: [[[</span><span style="color:#E7A98A">'PPS1'</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">'PPS2'</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">'OSS1'</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">'OSS2'</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">'single-scheme'</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">'mixed-scheme'</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">'full'</span><span style="color:#E7E6E2">]]],</span></span>
+<span class="line"><span style="color:#E7E6E2">})</span></span>
+<span class="line"><span style="color:#E7E6E2">psi4.energy(</span><span style="color:#E7A98A">'scf'</span><span style="color:#E7E6E2">)</span></span></code></pre>
+<p>or as PSithon (<code>.dat</code>) input:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="psithon"><code><span class="line"><span>set {</span></span>
+<span class="line"><span>    reference        reks</span></span>
+<span class="line"><span>    <a href="/learn/reference/options/#row-reks">reks</a>             [ 4, 4 ]</span></span>
+<span class="line"><span>    <a href="/learn/reference/options/#row-sa_reks_configs">sa_reks_configs</a>  [ PPS1, OSS1, OSS2 ]</span></span>
+<span class="line"><span>    <a href="/learn/reference/options/#row-sa_reks_weights">sa_reks_weights</a>  [ 0.5, 0.25, 0.25 ]</span></span>
+<span class="line"><span>    <a href="/learn/reference/options/#row-si_reks_configs">si_reks_configs</a>  [ [ [PPS1, PPS2, OSS1, OSS2], [single-scheme], [mixed-scheme], [full] ] ]</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>energy('scf')</span></span></code></pre>
+<p>Linear H₄ (sto-3g, H–H 0.9 Å, <code>symmetry c1</code>), HF: one SCF, E<sub>SA</sub> = −1.643432513968 E<sub>h</sub>; the four cassettes give (E<sub>h</sub>):</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Explicit SA pool and SI cassettes"><table>
+<thead>
+<tr>
+<th>Cassette</th>
+<th>Configurations (states)</th>
+<th>S0</th>
+<th>S1</th>
+<th>S2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0: <code>PPS1</code>, <code>PPS2</code>, <code>OSS1</code>, <code>OSS2</code></td>
+<td>4 (4)</td>
+<td>−2.125272976235</td>
+<td>−1.575184105930</td>
+<td>−0.754226404381</td>
+</tr>
+<tr>
+<td>1: <code>single-scheme</code> (scheme 0 + <code>DOSS_SPS_0</code>, <code>_1</code>)</td>
+<td>10 (10)</td>
+<td>−2.140622335856</td>
+<td>−1.578546559161</td>
+<td>−1.311136456214</td>
+</tr>
+<tr>
+<td>2: <code>mixed-scheme</code></td>
+<td>9 (9)</td>
+<td>−2.143592670888</td>
+<td>−1.575184105930</td>
+<td>−1.475834553802</td>
+</tr>
+<tr>
+<td>3: <code>full</code></td>
+<td>18 (16)</td>
+<td>−2.157804217606</td>
+<td>−1.578546559161</td>
+<td>−1.556892128760</td>
+</tr>
+</tbody>
+</table></div>
+<p>S0 falls by 32.5 mE<sub>h</sub> from cassette 0 to the full block. S1 is the <code>OSS2</code> state in every cassette; it is lower in cassettes 1 and 3, which add <code>OSS_DES1</code>. S2 changes character with the cassette: <code>OSS1</code> in cassette 0, <code>DES2</code> in cassette 1, an <code>OSS3</code>/<code>DES2</code> mixture in cassettes 2 and 3 (with <code>DES3</code> 7.7 % in cassette 3). The first four states of each cassette in <code>Adiabatic states</code>:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Adiabatic states, cassette 0 &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   State           E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)</span></span>
+<span class="line"><span>   ------------------------------------------------------------------------</span></span>
+<span class="line"><span>   S0     -2.125272976235         0.000   PPS1(51.1) PPS2(48.9)</span></span>
+<span class="line"><span>   S1     -1.575184105930        14.969   OSS2(99.7) OSS1(0.3)</span></span>
+<span class="line"><span>   S2     -0.754226404381        37.308   OSS1(99.7) OSS2(0.3)</span></span>
+<span class="line"><span>   S3      3.641662279045       156.926   PPS2(51.1) PPS1(48.9)</span></span>
+<span class="line"><span>   ------------------------------------------------------------------------</span></span>
+<span class="line"><span>   w_j = c_j (S c)_j = Chirgwin-Coulson weight of configuration j in the state, sum_j w_j = 100 %;</span></span>
+<span class="line"><span>   listed: the three largest |w_j| &gt;= 0.1 %, then every further |w_j| &gt; 5 %.</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Adiabatic states, cassette 1 &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   State           E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)</span></span>
+<span class="line"><span>   -----------------------------------------------------------------------------------</span></span>
+<span class="line"><span>   ref    -2.125272976235         0.000   S0 of cassette 0</span></span>
+<span class="line"><span>   S0[1]  -2.140622335856        -0.418   PPS1(98.9) DOSS_SPS_1(1.0)</span></span>
+<span class="line"><span>   S1[1]  -1.578546559161        14.877   OSS2(99.5) OSS1(0.3) OSS_DES1(0.1)</span></span>
+<span class="line"><span>   S2[1]  -1.311136456214        22.154   DES2(94.3) DOSS_SPS_1(5.0) DDES1(0.3)</span></span>
+<span class="line"><span>   S3[1]  -0.759700282426        37.159   OSS1(99.0) OSS_DES2(0.7) OSS2(0.3)</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Adiabatic states, cassette 2 &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   State           E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)</span></span>
+<span class="line"><span>   -----------------------------------------------------------------------------------</span></span>
+<span class="line"><span>   ref    -2.125272976235         0.000   S0 of cassette 0</span></span>
+<span class="line"><span>   S0[2]  -2.143592670888        -0.499   PPS1(98.5) DOSS_SPS_1(0.9) OSS3(0.3)</span></span>
+<span class="line"><span>   S1[2]  -1.575184105930        14.969   OSS2(99.7) OSS1(0.3)</span></span>
+<span class="line"><span>   S2[2]  -1.475834553802        17.672   OSS3(53.3) DES2(39.0) OSS4(5.3)</span></span>
+<span class="line"><span>   S3[2]  -1.222179421667        24.574   DES2(50.3) OSS3(43.3) DOSS_SPS_1(3.7)</span></span></code></pre>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Adiabatic states, cassette 3 &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   State            E [Eh]  E-E(S0) [eV]   Leading configurations (w_j in %)</span></span>
+<span class="line"><span>   -----------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>   ref     -2.125272976235         0.000   S0 of cassette 0</span></span>
+<span class="line"><span>   S0[3]   -2.157804217606        -0.885   PPS1(49.1) PPS2(48.3) DOSS_SPS_1(1.1)</span></span>
+<span class="line"><span>   S1[3]   -1.578546559161        14.877   OSS2(99.5) OSS1(0.3) OSS_DES1(0.1)</span></span>
+<span class="line"><span>   S2[3]   -1.556892128760        15.466   OSS3(46.2) DES2(35.6) DES3(7.7)</span></span>
+<span class="line"><span>   S3[3]   -1.243261461583        24.001   OSS3(45.4) DES2(44.7) OSS4(4.7)</span></span></code></pre>
+<p>Only the roots of the first cassette of a manifold carry plain labels (<code>S0</code>, <code>S1</code>, …); <code>State summary</code> lists them, and <code>Alternative configuration lists</code> matches the states of the later cassettes (<code>S0[1]</code>, …) to them. <code>ref</code> and the eV column refer to the lowest state of the first cassette of the run (<a href="#cassette-order">Cassette order</a>).</p>
+<p>Without <a href="/learn/reference/options/#row-si_reks_grad"><code>si_reks_grad</code></a> and <a href="/learn/reference/options/#row-si_reks_nac"><code>si_reks_nac</code></a>, as in both inputs above, <code>energy()</code> returns E<sub>SA</sub> (<code>CURRENT ENERGY</code> = <code>SCF TOTAL ENERGY</code>), not an SSR state energy: −1.643432513968 E<sub>h</sub> for this H₄ run, against S0 = −2.125272976235 to −2.157804217606 E<sub>h</sub> of the four cassettes. With a followed state: <a href="#si_reks_grad"><code>SI_REKS_GRAD</code></a>. Energies in the output and their variables:</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Explicit SA pool and SI cassettes"><table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Printed in</th>
+<th>Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SA-REKS ensemble energy E<sub>SA</sub></td>
+<td><code>@REKS Final Energy</code> (<code>@DF-REKS</code> with density fitting), <code>Energetics</code></td>
+<td><code>SCF TOTAL ENERGY</code></td>
+</tr>
+<tr>
+<td>SA configuration energies (PPS, OSS, …), not states</td>
+<td><code>SA-REKS energy decomposition</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>SSR states S0, S1, … of cassette e</td>
+<td><code>Adiabatic states</code></td>
+<td><code>SSR ENERGIES K=e</code></td>
+</tr>
+<tr>
+<td>Followed state, gradient</td>
+<td><code>Gradient request</code> (<code>*</code>), <code>Returned gradient</code></td>
+<td><code>CURRENT ENERGY</code>, <code>CURRENT GRADIENT</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>From Python:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">e, wfn = psi4.energy(</span><span style="color:#E7A98A">"bhhlyp"</span><span style="color:#E7E6E2">, return_wfn=</span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">)</span></span>
+<span class="line"><span style="color:#E7E6E2">ssr = wfn.array_variable(</span><span style="color:#E7A98A">"SSR ENERGIES K=0"</span><span style="color:#E7E6E2">).np.ravel()   </span><span style="color:#9AA3B3"># S0, S1, ... of cassette 0</span></span>
+<span class="line"><span style="color:#E7E6E2">e_sa = psi4.variable(</span><span style="color:#E7A98A">"SCF TOTAL ENERGY"</span><span style="color:#E7E6E2">)</span></span></code></pre>
+<h3 id="required-settings">Required and rejected settings</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Required and rejected settings"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Molecule symmetry</td>
+<td>C1; any other point group is an input error (below).</td>
+</tr>
+<tr>
+<td>Molecule multiplicity</td>
+<td>The canonical value (<a href="#reks"><code>REKS</code></a>).</td>
+</tr>
+<tr>
+<td><code>DIIS</code>, <code>SOSCF</code></td>
+<td>Switched off by REKS.</td>
+</tr>
+<tr>
+<td><code>LEVEL_SHIFT</code>, <code>LEVEL_SHIFT_CUTOFF</code></td>
+<td>Unset: REKS defaults (<a href="/learn/reference/run-control/#level-shift">Level shift</a>).</td>
+</tr>
+<tr>
+<td><code>PCM</code>, <code>DDX</code>, <code>PE</code>, <code>MOM_START</code>, <code>FRAC_START</code></td>
+<td>Rejected with an input error.</td>
+</tr>
+<tr>
+<td>VV10 functionals (<code>-V</code>, <code>-NL</code>), Laplacian-dependent meta-GGAs (e.g. <code>zlp</code>), <code>DFT_GRAC_SHIFT</code> ≠ 0</td>
+<td>Rejected with an input error.</td>
+</tr>
+</tbody>
+</table></div>
+<p>H₂ without <code>symmetry c1</code>:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>========================= REKS INPUT ERROR =========================</span></span>
+<span class="line"><span>REKS requires C1 symmetry, but the molecule has 8 irreps. Add 'symmetry c1' to the molecule.</span></span>
+<span class="line"><span>====================================================================</span></span></code></pre>
+<h3 id="worked-inputs">Worked inputs</h3>
+<p>Complete inputs, each running with this build. Run a <code>.dat</code> file with <code>psi4 file.dat</code>, a <code>.py</code> file with <code>python file.py</code>; a file with stages runs <code>python file.py &lt;stage&gt;</code>, the stages in the order listed in the file. Every other input belongs to its case.</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Worked inputs"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Calculation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../inputs/reks22_h2.dat"><code>reks22_h2.dat</code></a></td>
+<td>SSR(2,2), H₂ (0.74 Å), BH&amp;HLYP/cc-pVDZ, default pools</td>
+<td>S0 = −1.159238310496 Eh</td>
+</tr>
+<tr>
+<td><a href="../../inputs/reks44_h4_singlet_triplet.py"><code>reks44_h4_singlet_triplet.py</code></a></td>
+<td>SSR(4,4), linear H₄ (1.6 Å), BH&amp;HLYP/6-31G, DF; default SA pool, all-α determinant for SCF stability; full SI cassette on 2S = 0 and 2S = 2</td>
+<td>S0 = −2.100482886123, T1 = −2.049090638114 Eh</td>
+</tr>
+<tr>
+<td><a href="../../inputs/reks44_h4_heisenberg.dat"><code>reks44_h4_heisenberg.dat</code></a></td>
+<td>SSR(4,4), linear H₄ (1.6 Å), BH&amp;HLYP/6-31G, PK; default SA pool, all-α determinant for SCF stability; full SI cassettes on 2S = 0, 2, 4; <a href="/learn/reference/properties/#spin-state-energetics">Spin-state gaps and Heisenberg J</a></td>
+<td>S0 = −2.100474673257, T1 = −2.049091247233, Q1 = −1.889644027865 Eh</td>
+</tr>
+<tr>
+<td><a href="../../inputs/reks22_h2_triplet_gradient.dat"><code>reks22_h2_triplet_gradient.dat</code></a></td>
+<td>SSR(2,2), H₂ (1.6 Å), BH&amp;HLYP/6-31G(d); analytic gradient and relaxed properties of T1 (<a href="#si_reks_grad"><code>SI_REKS_GRAD</code></a>)</td>
+<td>T1 = −0.959546621300 Eh; dE/dz(H1) = 0.041765470832 Eh/bohr</td>
+</tr>
+</tbody>
+</table></div>
+</div></section><section class="docsec"><h2 id="catalog">Active space and catalog</h2><div class="prose">
+<p>Configurations come from binary catalogs, one per <code>(N,M)</code> and unit set, in <code>&lt;PSIDATADIR&gt;/reks_catalog</code> (a non-empty environment variable <code>PSI4_REKS_CATALOG</code> replaces the directory). A catalog lists every spin-inequivalent configuration of every spin manifold, each with a <strong>name</strong> and a <strong>type</strong>. Installed, with the number of configurations of each manifold:</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Active space and catalog"><table>
+<thead>
+<tr>
+<th><code>reks</code></th>
+<th><a href="/learn/reference/options/#row-reks_geminal_widths"><code>reks_geminal_widths</code></a></th>
+<th>Catalog</th>
+<th>Units</th>
+<th>2S</th>
+<th>Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[2, 2]</code></td>
+<td>—</td>
+<td><code>reks22</code></td>
+<td><code>[2]</code>: electron geminal (FON n)</td>
+<td>0 (3 configurations), 2 (1 configuration)</td>
+<td><a href="/learn/branch/solvers/#case-basis-c2h4">Small basis first: 6-31G(d) to cc-pVTZ</a> · <a href="/learn/path/p3/#case-c2h4-90-cold">Twisted ethylene without a seed</a> · <a href="/learn/path/p2/#case-c2h4-90">Twisted ethylene, REKS(2,2)</a> · <a href="/learn/path/p6/#case-c2h4-gradient">S1 gradient and S0/S1 coupling of twisted ethylene</a> · <a href="/learn/path/p1/#case-h2-pair">One electron pair: H₂, REKS(2,2)</a> · <a href="/learn/branch/dynamics/#case-md-c2h4">Surface hopping of ethylene on S1</a> · <a href="/learn/branch/dynamics/#case-meci-c2h4">S0/S1 MECI of ethylene with DL-FIND</a> · <a href="/learn/branch/dynamics/#case-opt-c2h4">S0 minimum of ethylene with DL-FIND</a> · <a href="/learn/branch/properties/#case-props-c2h4">Dipoles, charges, NTOs, relaxed properties and EKT</a> · <a href="/learn/branch/properties/#case-props-h2-triplet">Gradient and relaxed properties of a triplet</a></td>
+</tr>
+<tr>
+<td><code>[2, 3]</code></td>
+<td><code>[3]</code></td>
+<td><code>reks23_u3</code></td>
+<td><code>[3]</code>: electron geminal (FON n)</td>
+<td>0 (7 configurations), 2 (3 configurations)</td>
+<td><a href="/learn/branch/solvers/#case-trah-bh">TRAH for the whole SCF: states of BH</a> · <a href="/learn/branch/units/#case-wide-bh-23">Lone pair over three orbitals: BH, REKS(2,3) 3</a></td>
+</tr>
+<tr>
+<td><code>[2, 4]</code></td>
+<td><code>[4]</code></td>
+<td><code>reks24_u4</code></td>
+<td><code>[4]</code>: electron geminal (FON n)</td>
+<td>0 (13 configurations), 2 (6 configurations)</td>
+<td><a href="/learn/branch/units/#case-wide-24">Geminal over four orbitals: REKS(2,4) 4</a></td>
+</tr>
+<tr>
+<td><code>[3, 3]</code></td>
+<td>—</td>
+<td><code>reks33</code></td>
+<td><code>[2, d1]</code>: electron geminal (FON n), electron doublet</td>
+<td>1 (8 configurations), 3 (1 configuration)</td>
+<td><a href="/learn/branch/units/#case-odd-33">Implicit SOMO: REKS(3,3) 2 d1</a></td>
+</tr>
+<tr>
+<td><code>[3, 4]</code></td>
+<td><code>["2", "d2"]</code></td>
+<td><code>reks34_u2d2</code></td>
+<td><code>[2, d2]</code>: electron geminal (FON n), electron doublet</td>
+<td>1 (14 configurations), 3 (3 configurations)</td>
+<td><a href="/learn/branch/units/#case-doublet-34">Electron doublet over two orbitals: REKS(3,4) 2 d2</a></td>
+</tr>
+<tr>
+<td><code>[3, 4]</code></td>
+<td><code>[3]</code></td>
+<td><code>reks34_u3</code></td>
+<td><code>[3, d1]</code>: electron geminal (FON n), electron doublet</td>
+<td>1 (20 configurations), 3 (4 configurations)</td>
+<td><a href="/learn/branch/units/#case-odd-34-u3">Wide geminal and SOMO: REKS(3,4) 3 d1</a></td>
+</tr>
+<tr>
+<td><code>[4, 3]</code></td>
+<td><code>["h3"]</code></td>
+<td><code>reks43_uh3</code></td>
+<td><code>[h3]</code>: hole geminal (FON h)</td>
+<td>0 (7 configurations), 2 (3 configurations)</td>
+<td><a href="/learn/branch/units/#case-hole-43">Hole geminal: REKS(4,3) h3</a></td>
+</tr>
+<tr>
+<td><code>[4, 4]</code></td>
+<td>—</td>
+<td><code>reks44</code></td>
+<td><code>[2, 2]</code>: 2 × electron geminal (FON n)</td>
+<td>0 (18 configurations), 2 (11 configurations), 4 (1 configuration)</td>
+<td><a href="/learn/path/p4/#case-butadiene-44">Two pairs: butadiene, REKS(4,4)</a> · <a href="/learn/path/p5/#case-butadiene-spin">Singlets, triplets and the quintet of butadiene</a> · <a href="/learn/branch/solvers/#case-cassettes-h4">Four SI cassettes from one SCF</a> · <a href="/learn/branch/spin/#case-h4-heisenberg">Singlets, triplets and the quintet of linear H₄</a> · <a href="/learn/branch/spin/#case-h4-singlet-triplet">Singlets and triplets of linear H₄</a> · <a href="/learn/branch/solvers/#case-scan-h4">Scan with restarts: linear H₄</a></td>
+</tr>
+<tr>
+<td><code>[4, 5]</code></td>
+<td><code>[2, 3]</code></td>
+<td><code>reks45_u23</code></td>
+<td><code>[2, 3]</code>: electron geminal (FON n), electron geminal (FON n)</td>
+<td>0 (118 configurations), 2 (75 configurations), 4 (5 configurations)</td>
+<td><a href="/learn/branch/units/#case-wide-bh-45">Bond and lone pair: BH, REKS(4,5) 2 3</a></td>
+</tr>
+<tr>
+<td><code>[4, 6]</code></td>
+<td><code>[3, 3]</code></td>
+<td><code>reks46_u33</code></td>
+<td><code>[3, 3]</code>: 2 × electron geminal (FON n)</td>
+<td>0 (190 configurations), 2 (141 configurations), 4 (15 configurations)</td>
+<td><a href="/learn/branch/units/#case-wide-bh-46">Two wide geminals: BH, REKS(4,6) 3 3</a></td>
+</tr>
+<tr>
+<td><code>[5, 4]</code></td>
+<td><code>["2", "hd2"]</code></td>
+<td><code>reks54_u2hd2</code></td>
+<td><code>[2, hd2]</code>: electron geminal (FON n), hole doublet</td>
+<td>1 (14 configurations), 3 (3 configurations)</td>
+<td><a href="/learn/branch/units/#case-hole-doublet-54">Hole doublet: REKS(5,4) 2 hd2</a></td>
+</tr>
+<tr>
+<td><code>[5, 4]</code></td>
+<td><code>["h3"]</code></td>
+<td><code>reks54_uh3</code></td>
+<td><code>[h3, d1]</code>: hole geminal (FON h), electron doublet</td>
+<td>1 (20 configurations), 3 (4 configurations)</td>
+<td><a href="/learn/branch/units/#case-hole-54">Hole geminal and SOMO: REKS(5,4) h3 d1</a></td>
+</tr>
+<tr>
+<td><code>[5, 5]</code></td>
+<td>—</td>
+<td><code>reks55</code></td>
+<td><code>[2, 2, d1]</code>: 2 × electron geminal (FON n), electron doublet</td>
+<td>1 (77 configurations), 3 (28 configurations), 5 (1 configuration)</td>
+<td><a href="/learn/branch/units/#case-odd-55">Two pairs and a SOMO: REKS(5,5) 2 2 d1</a></td>
+</tr>
+<tr>
+<td><code>[6, 5]</code></td>
+<td><code>["h3", "2"]</code></td>
+<td><code>reks65_uh32</code></td>
+<td><code>[h3, 2]</code>: hole geminal (FON h), electron geminal (FON n)</td>
+<td>0 (82 configurations), 2 (55 configurations), 4 (5 configurations)</td>
+<td><a href="/learn/branch/units/#case-hole-pair-65">Hole geminal and pair: REKS(6,5) h3 2</a></td>
+</tr>
+<tr>
+<td><code>[6, 6]</code></td>
+<td>—</td>
+<td><code>reks66</code></td>
+<td><code>[2, 2, 2]</code>: 3 × electron geminal (FON n)</td>
+<td>0 (161 configurations), 2 (153 configurations), 4 (41 configurations), 6 (1 configuration)</td>
+<td><a href="/learn/branch/spin/#case-hexatriene-ladder">Spin ladder of hexatriene, 2S = 0 to 6</a> · <a href="/learn/branch/spin/#case-hexatriene-sa-t1">A triplet configuration in the SA ensemble</a> · <a href="/learn/branch/dynamics/#case-md-hexatriene">Surface hopping of hexatriene on T1</a> · <a href="/learn/branch/dynamics/#case-opt-hexatriene">T1 minimum of hexatriene</a></td>
+</tr>
+<tr>
+<td><code>[7, 6]</code></td>
+<td><code>["3", "hd3"]</code></td>
+<td><code>reks76_u3hd3</code></td>
+<td><code>[3, hd3]</code>: electron geminal (FON n), hole doublet</td>
+<td>1 (56 configurations), 3 (16 configurations)</td>
+<td><a href="/learn/branch/units/#case-doublet-76">Wide geminal and hole doublet: REKS(7,6) 3 hd3</a></td>
+</tr>
+<tr>
+<td><code>[8, 6]</code></td>
+<td><code>["h3", "h3"]</code></td>
+<td><code>reks86_uh3h3</code></td>
+<td><code>[h3, h3]</code>: 2 × hole geminal (FON h)</td>
+<td>0 (190 configurations), 2 (141 configurations), 4 (15 configurations)</td>
+<td><a href="/learn/branch/units/#case-holes-86">Two hole geminals: REKS(8,6) h3 h3</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>Odd N: the singly occupied orbital (SOMO) is implicit unless a doublet unit (<code>"dK"</code>, <code>"hdK"</code>) is listed. Any other <code>(N,M)</code> or unit set stops the run at catalog load (<a href="/learn/diagnose/#diag-catalog">Active space fails to load</a>). Units: <a href="/learn/concepts/#unit">Unit</a>; slots and seeds of each unit kind: <a href="/learn/procedure/#unit-slots">Slots of each unit kind</a>.</p>
+<h3 id="active-space">Active space</h3>
+<h4 id="reks"><a href="/learn/reference/options/#row-reks"><code>REKS</code></a></h4>
+<p>Active space <code>[N, M]</code>: N active electrons in M active orbitals; selects the catalog.</p>
+<dl class="fields"><dt>Type</dt><dd><code>[N, M]</code></dd><dt>Default</dt><dd>— (required)</dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks">reks</a>"</span><span style="color:#E7E6E2">: [4, 4],</span></span></code></pre>
+<p>Run: H₂ (1.6 Å), REKS(2,2), BH&amp;HLYP/6-31G, multiplicity 3.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>REKS requires the canonical symmetric-Ms reference: N=2 implies molecule multiplicity 1 (even N -&gt; 1, odd N -&gt; 2), but the molecule multiplicity is 3. Do not set the multiplicity to 2S+1; keep the canonical value and pick spin manifolds via <a href="/learn/reference/options/#row-sa_reks_2spin">SA_REKS_2SPIN</a> / <a href="/learn/reference/options/#row-si_reks_2spin">SI_REKS_2SPIN</a>.</span></span></code></pre>
+<ul>
+<li>N active electrons in M active orbitals, exactly two integers; a third element is an input error. Only installed catalogs run (<a href="#catalog">Active space and catalog</a>).</li>
+<li>Molecule multiplicity: 1 for even N, 2 for odd N; any other value is the error above. The spin manifolds are chosen by <a href="#sa_reks_2spin"><code>SA_REKS_2SPIN</code></a> / <a href="#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> or the ladder (<a href="#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a>).</li>
+</ul>
+<h4 id="reks_geminal_widths"><a href="/learn/reference/options/#row-reks_geminal_widths"><code>REKS_GEMINAL_WIDTHS</code></a></h4>
+<p>Units of the active space: electron or hole geminals, electron or hole doublets, one token each; selects the catalog.</p>
+<dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd><code>[]</code> (all 2)</dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks">reks</a>"</span><span style="color:#E7E6E2">: [4, 5],</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks_geminal_widths">reks_geminal_widths</a>"</span><span style="color:#E7E6E2">: [2, 3],</span></span></code></pre>
+<ul>
+<li>One token per unit of the active space, in unit order; K = width, the number of the unit's orbitals, K ≤ 8:</li>
+<li><code>K</code> or <code>"K"</code>: electron geminal, 2 electrons in K orbitals (K ≥ 2). <code>"hK"</code>: hole geminal, 2K − 2 electrons (K ≥ 3); its FON variable is the hole occupation h = 2 − n. <code>"dK"</code>: electron doublet, 1 electron (K ≥ 1). <code>"hdK"</code>: hole doublet, 2K − 1 electrons (K ≥ 2).</li>
+<li>At least one geminal and at most one doublet. For odd N without a doublet token the SOMO (<code>"d1"</code>) is implicit. Unit electrons (plus the implicit SOMO) sum to N, widths to M. Empty (default): every unit is a two-orbital electron geminal.</li>
+<li>Configurations of wider units carry orbital-letter suffixes (<code>OSSa1</code>, <code>DESb1</code>).</li>
+<li>Selects the catalog <code>reks{N}{M}_u{tokens}</code>, the tokens concatenated in unit order, the plain <code>reks{N}{M}</code> when every token is 2; the installed ones and their tokens: <a href="#catalog">Active space and catalog</a>.</li>
+</ul>
+<h3 id="naming-convention">Naming convention</h3>
+<p>Every configuration has a name of the form <code>&lt;TYPE&gt;&lt;index&gt;</code>, e.g. <code>PPS1</code>, <code>OSS2</code>, <code>T_PPS3</code>; a member of a spin-polarized set is named <code>&lt;TYPE&gt;_&lt;k&gt;</code>, e.g. <code>DOSS_SPS_0</code>, <code>TT_SPS_0</code>. A type is a <code>_</code>-separated sequence of words; a multiplier letter in front of <code>OSS</code> or <code>DES</code> counts the geminals (none = 1, <code>D</code> = 2, <code>T</code> = 3; the generator naming continues with <code>Q</code>, <code>Qu</code>, <code>S</code>, <code>Sp</code>, <code>O</code>, <code>N</code> for 4–9, which no installed catalog uses).</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Naming convention"><table>
+<thead>
+<tr>
+<th>Prefix family</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PPS</code></td>
+<td>The <strong>perfectly-paired singlet</strong>: every geminal Φ<sub>0</sub>. Every <code>(N,M)</code> catalog has at least one <code>PPS</code> configuration.</td>
+</tr>
+<tr>
+<td><code>OSS</code>, <code>DOSS</code>, <code>TOSS</code></td>
+<td>1, 2, 3 open-shell-singlet (Φ<sub>1</sub>) geminals. Installed: <code>OSS</code> in every catalog, <code>DOSS</code> in <code>(6,6)</code>, as <code>DOSS_SPS</code> in <code>(4,4)</code> and <code>(4,5)</code>, <code>TOSS</code> only as <code>TOSS_SPS</code> in <code>(6,6)</code>.</td>
+</tr>
+<tr>
+<td><code>DES</code>, <code>DDES</code>, <code>TDES</code></td>
+<td>1, 2, 3 doubly-excited (Φ<sub>2</sub>) geminals. <code>TDES</code> exists in <code>(6,6)</code> only.</td>
+</tr>
+<tr>
+<td>Compound types (<code>OSS_DES</code>, <code>DOSS_DES</code>, <code>OSS_DDES</code>)</td>
+<td>Both kinds of geminals in one configuration.</td>
+</tr>
+<tr>
+<td>A first word of k letters <code>T</code> (<code>T_PPS3</code>, <code>TT_SPS_0</code>, <code>TTT_SPS_0</code>)</td>
+<td>k triplet-coupled geminals (a <code>T</code> glued to <code>OSS</code> or <code>DES</code>, as in <code>TOSS</code>, is the multiplier 3); manifold 2S = 2k (coupling: <a href="/learn/concepts/#run-sector">Spin manifold and run sector</a>). In <code>(2,2)</code> the single 2S = 2 configuration is named <code>T1</code>.</td>
+</tr>
+<tr>
+<td><code>SPS</code> (as in <code>DOSS_SPS_0</code>)</td>
+<td>A <strong>spin-polarized</strong> configuration; member <code>k</code> of the set is orthogonalized to members 0 … k − 1.</td>
+</tr>
+<tr>
+<td>Lettered types (<code>OSSa</code>, <code>DESb</code>, <code>Ta</code>, <code>DESa_OSSb</code>, <code>TaTb_SPS</code>, <code>PPS_Da</code>, <code>T_PPSd</code>)</td>
+<td>Unit catalogs (<a href="/learn/reference/options/#row-reks_geminal_widths"><code>REKS_GEMINAL_WIDTHS</code></a>): wide, hole and doublet units.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Bulk tokens (<a href="#bulk-tokens">Bulk tokens and pattern syntax</a>) select configurations without listing names; an unknown token lists every valid type and name of the block's manifold (<a href="/learn/diagnose/#diag-unknown-token">Unknown configuration name or type</a>).</p>
+<h3 id="fon-sets">FON sets</h3>
+<p>The FON set of a configuration (column <code>FON set</code> of the SI pool tables) follows its generation, the number of open pairs (<a href="/learn/concepts/#fon-generation">FON set and generation</a>). Option: the lower bound of the free FON of that generation (<a href="/learn/reference/run-control/#reks_l_fon"><code>REKS_&lt;L&gt;_FON</code></a>).</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="FON sets"><table>
+<thead>
+<tr>
+<th>Set</th>
+<th>Generation (open pairs)</th>
+<th>Configuration types</th>
+<th>Option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td>0</td>
+<td><code>PPS</code>, <code>DES</code>, <code>DDES</code>, <code>TDES</code></td>
+<td><a href="/learn/reference/options/#row-reks_l_fon"><code>REKS_N_FON</code></a></td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td>1</td>
+<td><code>OSS</code>, <code>OSS_DES</code>, <code>OSS_DDES</code>; <code>T_PPS</code>, <code>T_DES</code>, <code>T_DDES</code></td>
+<td><a href="/learn/reference/options/#row-reks_l_fon"><code>REKS_M_FON</code></a></td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>2</td>
+<td><code>DOSS</code>, <code>DOSS_DES</code>; <code>T_OSS</code>, <code>T_OSS_DES</code>, <code>TT_PPS</code>, <code>TT_DES</code></td>
+<td><a href="/learn/reference/options/#row-reks_l_fon"><code>REKS_U_FON</code></a></td>
+</tr>
+<tr>
+<td><code>v</code>, <code>w</code>, <code>x</code>, <code>y</code>, <code>z</code></td>
+<td>3–7</td>
+<td>—</td>
+<td><a href="/learn/reference/options/#row-reks_l_fon"><code>REKS_V_FON</code></a>, <a href="/learn/reference/options/#row-reks_l_fon"><code>REKS_W_FON</code></a>, <a href="/learn/reference/options/#row-reks_l_fon"><code>REKS_X_FON</code></a>, <a href="/learn/reference/options/#row-reks_l_fon"><code>REKS_Y_FON</code></a>, <a href="/learn/reference/options/#row-reks_l_fon"><code>REKS_Z_FON</code></a></td>
+</tr>
+</tbody>
+</table></div>
+<p>The label is the set letter, the pairing-scheme digit (<code>n0</code>, <code>n1</code>), and <code>t&lt;s&gt;</code> for run sector s &gt; 0 (<code>m0t1</code>, <a href="/learn/concepts/#run-sector">Spin manifold and run sector</a>); <code>FON optimization after the SCF</code> prints the scheme in its own column (<code>n</code>, <code>mt1</code>). Spin-polarized configurations, whose pairs are all open, have no FON and show <code>-</code>.</p>
+<h3 id="pairing-schemes">Pairing schemes</h3>
+<p>No option selects a pairing scheme (<a href="/learn/concepts/#pairing-scheme">Pairing scheme</a>); the configurations of the SA pool do (<code>single-scheme:N</code>, <code>mixed-scheme:N</code>, <a href="#bulk-tokens">Bulk tokens and pattern syntax</a>). The setup report prints the schemes:</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Pairing schemes (geminal orbitals) &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   Scheme 0: (a,d) &amp; (b,c)</span></span>
+<span class="line"><span>   Scheme 1: (a,c) &amp; (b,d)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>   FON = fractional occupation number n_p of an active orbital (0..2); the FONs of a geminal sum to 2.</span></span></code></pre>
+</div></section><section class="docsec"><h2 id="bulk-tokens">Bulk tokens and pattern syntax</h2><div class="prose">
+<p>Accepted wherever a configuration name is (SA blocks, SI cassettes, <code>exclude:</code>):</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Bulk tokens and pattern syntax"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Expands to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"full"</code></td>
+<td>The entire configuration block of that manifold.</td>
+</tr>
+<tr>
+<td>A configuration <strong>type</strong> name, e.g. <code>"PPS"</code>, <code>"OSS"</code>, <code>"DOSS"</code></td>
+<td>Every configuration of that type in the manifold, lettered types (<code>OSSa</code>, <code>Ta</code>) included.</td>
+</tr>
+<tr>
+<td><code>"single-scheme:N"</code> (PSithon: <code>"single-scheme-N"</code> or <code>"single-scheme_N"</code>)</td>
+<td>Every configuration of pairing scheme <code>N</code> (0 if <code>:N</code> is omitted), plus the spin-polarized base configurations, which all schemes share.</td>
+</tr>
+<tr>
+<td><code>"mixed-scheme:N"</code></td>
+<td>The SSR state set on scheme <code>N</code>: that scheme's configurations with at most one excited geminal (Φ<sub>1</sub> or Φ<sub>2</sub>) <em>plus every open-shell-singlet configuration of the manifold</em> plus the spin-polarized base configurations. For <code>REKS(4,4)</code>, <code>mixed-scheme:0</code> = <code>PPS1, OSS1, OSS2, OSS3, OSS4, DES1, DES2, DOSS_SPS_0, DOSS_SPS_1</code>.</td>
+</tr>
+<tr>
+<td><code>"sps"</code></td>
+<td>The spin-polarized base configurations.</td>
+</tr>
+<tr>
+<td>A pattern with <code>*</code> or <code>?</code></td>
+<td>Every configuration name it glob-matches.</td>
+</tr>
+<tr>
+<td><code>"exclude:X"</code> (also <code>exclude-X</code> / <code>exclude_X</code>)</td>
+<td><strong>SI cassettes only.</strong> Removes what <code>X</code> (any form above) selects from the cassette, wherever it stands in the list, e.g. <code>["full", "exclude:sps"]</code> = the whole manifold minus the spin-polarized base.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A scheme token may union several indices: <code>"single-scheme-1-2-3"</code>, or <code>"single-scheme:1,2,3"</code> in the Python API; a literal <code>:</code> cannot be used inside a PSithon <code>.dat</code> array element, since the PSithon array parser splits on <code>:</code>. The separators <code>:</code>, <code>-</code>, <code>_</code> and <code>,</code> are equivalent; a scheme reached twice is an input error. Tokens are case-insensitive. Besides indices, a scheme token accepts scheme classes, defined for pairs relative to scheme 0 by the permutation of antibonding partners: <code>T</code> (one transposition), <code>D&lt;k&gt;</code> (<code>k</code> disjoint transpositions, <code>k ≥ 2</code>), <code>C&lt;l&gt;[X&lt;l&gt;…]</code> (cycles of the listed lengths, each <code>≥ 2</code>), e.g. <code>"single-scheme-T"</code>.</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Bulk tokens and pattern syntax"><table>
+<thead>
+<tr>
+<th></th>
+<th>SA block</th>
+<th>SI cassette</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kind</td>
+<td>weighted list</td>
+<td>set</td>
+</tr>
+<tr>
+<td>Same configuration twice (directly or by overlapping tokens)</td>
+<td>input error; combine overlapping selections into one multi-index token</td>
+<td>kept once, at its first position</td>
+</tr>
+<tr>
+<td><code>exclude:</code></td>
+<td>not accepted</td>
+<td>subtracts</td>
+</tr>
+</tbody>
+</table></div>
+</div></section><section class="docsec"><h2 id="selecting">SA pool and SI cassettes</h2><div class="prose">
+<h3 id="sa-pool">SA pool</h3>
+<h4 id="sa_reks_configs"><a href="/learn/reference/options/#row-sa_reks_configs"><code>SA_REKS_CONFIGS</code></a></h4>
+<p>SA-REKS configuration pool: one block (flat list) or one block per spin manifold (nested list) of names, indices or bulk tokens.</p>
+<dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd>PPS + OSS pool of scheme 0 on the lowest manifold, 2S = N mod 2</dd><dt>Alias</dt><dd><a href="/learn/reference/options/#row-sa_reks_configs"><code>REKS_SA_CONFIGS</code></a></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-sa_reks_configs">sa_reks_configs</a>"</span><span style="color:#E7E6E2">: [</span><span style="color:#E7A98A">"PPS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS2"</span><span style="color:#E7E6E2">],</span></span></code></pre>
+<p>Run: C₂H₄ at R(CC) 2.32 Å, REKS(4,4), BH&amp;HLYP/6-31G(d), cassettes 2S = 0, 2.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; SA pool &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Cat  Config       SA weight  Definition</span></span>
+<span class="line"><span>   ---------------------------------------------------------------</span></span>
+<span class="line"><span>      0  PPS1          0.333333  A[(core) Phi_0(a,d) * Phi_0(b,c)]</span></span>
+<span class="line"><span>      1  OSS1          0.333333  A[(core) Phi_1(a,d) * Phi_0(b,c)]</span></span>
+<span class="line"><span>      2  OSS2          0.333333  A[(core) Phi_0(a,d) * Phi_1(b,c)]</span></span>
+<span class="line"><span>   ---------------------------------------------------------------</span></span>
+<span class="line"><span>                 sum = 1.000000</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   E[SA-REKS] = 0.333333 * E(PPS1)</span></span>
+<span class="line"><span>              + 0.333333 * E(OSS1)</span></span>
+<span class="line"><span>              + 0.333333 * E(OSS2)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   Cat = catalog index of the configuration. A[...] = antisymmetrized product</span></span>
+<span class="line"><span>   of the geminals (pairing schemes above) and the doubly occupied core orbitals (core).</span></span></code></pre>
+<ul>
+<li>Flat list = one block on one spin manifold, e.g. <code>["PPS1", "OSS1", "OSS2"]</code> or by local index <code>[0, 1, 2]</code>. Elements: configuration names, local integer indices, or bulk tokens (<a href="#bulk-tokens">Bulk tokens and pattern syntax</a>).</li>
+<li>A configuration may not repeat within a block: an SA block is a weighted list (<a href="#bulk-tokens">Bulk tokens and pattern syntax</a>).</li>
+<li>Nested list = one block per spin manifold, e.g. <code>[["PPS1", "OSS1"], ["T_PPS1"]]</code>, mapped to manifolds by ladder position or by <a href="/learn/reference/options/#row-sa_reks_2spin"><code>SA_REKS_2SPIN</code></a> (<a href="#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a>).</li>
+<li>Absent: one block on the lowest manifold, 2S = N mod 2: the configurations of pairing scheme 0 with no doubly excited unit, at most one open-shell-singlet unit, no triplet word and the doublet unit at its aufbau placement, in catalog order. Defaults: <code>REKS(2,2)</code> <code>[PPS1, OSS1]</code>, <code>REKS(4,4)</code> <code>[PPS1, OSS1, OSS2]</code>, <code>REKS(6,6)</code> <code>[PPS1, OSS1, OSS2, OSS3]</code>.</li>
+<li>Check <code>sum = 1.000000</code> and that every <a href="/learn/reference/options/#row-sa_reks_extra"><code>SA_REKS_EXTRA</code></a> determinant of the input is listed (<code>Extra1</code>, …).</li>
+</ul>
+<dl class="fields"><dt>See</dt><dd><a href="#sa_reks_weights"><code>SA_REKS_WEIGHTS</code></a>, <a href="#sa_reks_extra"><code>SA_REKS_EXTRA</code></a>, <a href="/learn/concepts/#sa-ensemble">SA-REKS ensemble and weights</a></dd></dl>
+<h4 id="sa_reks_weights"><a href="/learn/reference/options/#row-sa_reks_weights"><code>SA_REKS_WEIGHTS</code></a></h4>
+<p>Weights of the SA pool entries, configurations first, then the <a href="/learn/reference/options/#row-sa_reks_extra"><code>sa_reks_extra</code></a> determinants; non-negative, summing to 1.</p>
+<dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd>uniform <code>1/n</code></dd><dt>Alias</dt><dd><a href="/learn/reference/options/#row-sa_reks_weights"><code>REKS_SA_WEIGHTS</code></a></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-sa_reks_weights">sa_reks_weights</a>"</span><span style="color:#E7E6E2">: [0.5, 0.25, 0.25],</span></span></code></pre>
+<ul>
+<li>One non-negative weight per SA pool entry, in the order typed (concatenated block order, then the <a href="/learn/reference/options/#row-sa_reks_extra"><code>SA_REKS_EXTRA</code></a> determinants), summing to 1.0 (tolerance 10<sup>-8</sup>). Omitted: uniform 1/n.</li>
+<li>A configuration or extra determinant with weight 0 leaves the SA ensemble; a zero-weight configuration that is also an SI member has its SI-only geminals' FONs optimized after the SCF.</li>
+<li>If <a href="/learn/reference/options/#row-sa_reks_2spin"><code>SA_REKS_2SPIN</code></a> lists manifolds out of ascending-2S order, configurations and weights are re-sorted jointly into ascending 2S; a weight still matches the configuration in the order typed.</li>
+</ul>
+<h4 id="sa_reks_extra"><a href="/learn/reference/options/#row-sa_reks_extra"><code>SA_REKS_EXTRA</code></a></h4>
+<p>Extra Slater determinants of the SA ensemble, as occupation vectors; each has its own weight, carries no FON and enters no SI cassette.</p>
+<dl class="fields"><dt>Type</dt><dd>array of arrays</dd><dt>Default</dt><dd>none</dd><dt>Alias</dt><dd><a href="/learn/reference/options/#row-sa_reks_extra"><code>REKS_SA_EXTRA</code></a></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-sa_reks_extra">sa_reks_extra</a>"</span><span style="color:#E7E6E2">: [[1, 1, 1, 1, 0, 0, 0, 0]],</span></span></code></pre>
+<p>Run: linear H₄ (1.2 Å), REKS(4,4), BH&amp;HLYP/6-31G, SI on 2S = 2.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; SA pool &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Cat  Config       SA weight  Definition</span></span>
+<span class="line"><span>   --------------------------------------------------------</span></span>
+<span class="line"><span>      0  PPS1          0.250000  A[Phi_0(a,d) * Phi_0(b,c)]</span></span>
+<span class="line"><span>      1  OSS1          0.250000  A[Phi_1(a,d) * Phi_0(b,c)]</span></span>
+<span class="line"><span>      2  OSS2          0.250000  A[Phi_0(a,d) * Phi_1(b,c)]</span></span>
+<span class="line"><span>         Extra1        0.250000  A[|a,b,c,d|]</span></span>
+<span class="line"><span>   --------------------------------------------------------</span></span>
+<span class="line"><span>                 sum = 1.000000</span></span></code></pre>
+<ul>
+<li>Each element is a Slater determinant given as an occupation vector <code>[alpha(M) | beta(M)]</code> of length 2M, 0/1 entries summing to N; the call above is the all-α determinant of REKS(4,4).</li>
+<li>Each determinant joins the SA ensemble with a fixed weight from the tail of <a href="/learn/reference/options/#row-sa_reks_weights"><code>SA_REKS_WEIGHTS</code></a>, adds its Kohn–Sham energy to E<sub>SA</sub>, carries no FON, and changes the SA orbitals and with them every SI state. It never enters an SI cassette.</li>
+<li>Recommended: the all-α determinant in every SA-REKS ensemble, for SCF stability and the shape of the orbitals. The code does not add it by default.</li>
+</ul>
+<h3 id="si-cassettes">SI cassettes</h3>
+<h4 id="si_reks_configs"><a href="/learn/reference/options/#row-si_reks_configs"><code>SI_REKS_CONFIGS</code></a></h4>
+<p>SI-SA-REKS cassettes: the configuration sets whose secular equations give the states, in groups per spin manifold.</p>
+<dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd>one full-block cassette, lowest manifold</dd><dt>Alias</dt><dd><a href="/learn/reference/options/#row-si_reks_configs"><code>REKS_SI_CONFIGS</code></a></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_configs">si_reks_configs</a>"</span><span style="color:#E7E6E2">: [[[</span><span style="color:#E7A98A">"PPS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"PPS2"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS1"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"OSS2"</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">"single-scheme"</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">"mixed-scheme"</span><span style="color:#E7E6E2">], [</span><span style="color:#E7A98A">"full"</span><span style="color:#E7E6E2">]]],</span></span></code></pre>
+<p>Run: C₂H₄ at R(CC) 2.32 Å, REKS(4,4), BH&amp;HLYP/6-31G(d), cassettes 2S = 0, 2.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; SI pools &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   Cassette  Spin          Configs  Method              Wfn storage</span></span>
+<span class="line"><span>   ----------------------------------------------------------------</span></span>
+<span class="line"><span>          0  2S=0 (singlet)     18  18SI-3SA-REKS(4,4)  none</span></span>
+<span class="line"><span>          1  2S=2 (triplet)     11  11SI-3SA-REKS(4,4)  none</span></span>
+<span class="line"><span>   ----------------------------------------------------------------</span></span>
+<span class="line"><span>   kSI-lSA-REKS = SSR over k configurations in the orbitals of the l-configuration SA ensemble;</span></span>
+<span class="line"><span>   Wfn storage = states stored on the wavefunction, written to *.npy by wfn.to_file (<a href="/learn/reference/options/#row-si_reks_store_states">SI_REKS_STORE_STATES</a>).</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>   Cassette 0, 2S=0 (singlet)</span></span>
+<span class="line"><span>    Cat  Config       FON set  Definition</span></span>
+<span class="line"><span>   -------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>      0  PPS1         n0       A[(core) Phi_0(a,d) * Phi_0(b,c)]</span></span>
+<span class="line"><span>      1  OSS1         m0       A[(core) Phi_1(a,d) * Phi_0(b,c)]</span></span>
+<span class="line"><span>      2  OSS2         m0       A[(core) Phi_0(a,d) * Phi_1(b,c)]</span></span></code></pre>
+<p>Run: C₂H₄ at R(CC) 2.32 Å, REKS(4,4), BH&amp;HLYP/6-31G(d), cassettes 2S = 0, 2.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; State interaction: setup over the union of the SI cassettes &lt;==</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Microstates                   37: 18 in the SA ensemble, 19 SI-only</span></span>
+<span class="line"><span>    Spin-string densities         14: 12 from the SCF, 2 built</span></span>
+<span class="line"><span>    Fock matrices, energies       19 SI-only microstates</span></span>
+<span class="line"><span>    FON optimization              3 FON sets, table below</span></span>
+<span class="line"><span>    Active-MO ERIs (pq|rs)        6 active MO pairs pq</span></span>
+<span class="line"><span>    Spin-string densities = densities of the microstate occupation bitmasks.</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>==&gt; State interaction: cassette 0, 18SI-3SA-REKS(4,4), 2S=0 (singlet) &lt;==</span></span></code></pre>
+<p>Run: linear H₄ (0.9 Å), REKS(4,4), HF/STO-3G, with the call above.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Alternative configuration lists &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   State           E [Eh]  E-E(S0) [eV]  E-E(S0) [kcal/mol]  E-E(own lowest) [eV]  Closest in cassette 0  dE_exc - closest [eV]   Main configurations (w_j in %)</span></span>
+<span class="line"><span>   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>   S0[1]  -2.140622335856        -0.418               -9.63                 0.000  S0 (99 %)                              0.000   PPS1(98.9)</span></span>
+<span class="line"><span>   S1[1]  -1.578546559161        14.877              343.08                15.295  S1 (100 %)                             0.326   OSS2(99.5) 2A(b)-&gt;3A(c)</span></span>
+<span class="line"><span>   S2[1]  -1.311136456214        22.154              510.88                22.571  -                                          -   DES2(94.3) 2A(b),2A(b)-&gt;3A(c),3A(c); DOSS_SPS_1(5.0) 1A(a)-&gt;3A(c), 2A(b)-&gt;4A(d)</span></span>
+<span class="line"><span>   S3[1]  -0.759700282426        37.159              856.91                37.577  S2 (99 %)                              0.269   OSS1(99.0) 1A(a)-&gt;4A(d)</span></span>
+<span class="line"><span>   S4[1]  -0.316996802406        49.206             1134.71                49.623  -                                          -   DOSS_SPS_0(68.2) 1A(a)-&gt;4A(d), 2A(b)-&gt;3A(c); DOSS_SPS_1(27.9) 1A(a)-&gt;3A(c), 2A(b)-&gt;4A(d); DES1(2.1) 1A(a),1A(a)-&gt;4A(d),4A(d)</span></span>
+<span class="line"><span>   S0[2]  -2.143592670888        -0.499              -11.50                 0.000  S0 (98 %)                              0.000   PPS1(98.5)</span></span>
+<span class="line"><span>   S1[2]  -1.575184105930        14.969              345.19                15.467  S1 (100 %)                             0.499   OSS2(99.7) 2A(b)-&gt;3A(c)</span></span>
+<span class="line"><span>   S2[2]  -1.475834553802        17.672              407.53                18.171  -                                          -   OSS3(53.3) 1A(a)-&gt;3A(c); DES2(39.0) 2A(b),2A(b)-&gt;3A(c),3A(c); OSS4(5.3) 2A(b)-&gt;4A(d)</span></span>
+<span class="line"><span>   S3[2]  -1.222179421667        24.574              566.70                25.073  -                                          -   DES2(50.3) 2A(b),2A(b)-&gt;3A(c),3A(c); OSS3(43.3) 1A(a)-&gt;3A(c); DOSS_SPS_1(3.7) 1A(a)-&gt;3A(c), 2A(b)-&gt;4A(d)</span></span>
+<span class="line"><span>   S4[2]  -0.949704282395        31.989              737.68                32.487  -                                          -   OSS4(89.2) 2A(b)-&gt;4A(d); DES2(4.9) 2A(b),2A(b)-&gt;3A(c),3A(c); DOSS_SPS_0(2.7) 1A(a)-&gt;4A(d), 2A(b)-&gt;3A(c)</span></span>
+<span class="line"><span>   S0[3]  -2.157804217606        -0.885              -20.41                 0.000  S0 (97 %)                              0.000   PPS1(49.1); PPS2(48.3); DOSS_SPS_1(1.1) 1A(a)-&gt;3A(c), 2A(b)-&gt;4A(d)</span></span>
+<span class="line"><span>   S1[3]  -1.578546559161        14.877              343.08                15.762  S1 (100 %)                             0.794   OSS2(99.5) 2A(b)-&gt;3A(c)</span></span>
+<span class="line"><span>   S2[3]  -1.556892128760        15.466              356.66                16.352  -                                          -   OSS3(46.2) 1A(a)-&gt;3A(c); DES2(35.6) 2A(b),2A(b)-&gt;3A(c),3A(c); DES3(7.7) 1A(a),1A(a)-&gt;3A(c),3A(c)</span></span>
+<span class="line"><span>   S3[3]  -1.243261461583        24.001              553.47                24.886  -                                          -   OSS3(45.4) 1A(a)-&gt;3A(c); DES2(44.7) 2A(b),2A(b)-&gt;3A(c),3A(c); OSS4(4.7) 2A(b)-&gt;4A(d)</span></span>
+<span class="line"><span>   S4[3]  -0.994944258185        30.758              709.29                31.643  -                                          -   OSS4(77.0) 2A(b)-&gt;4A(d); DES2(10.4) 2A(b),2A(b)-&gt;3A(c),3A(c); DOSS_SPS_0(4.9) 1A(a)-&gt;4A(d), 2A(b)-&gt;3A(c)</span></span>
+<span class="line"><span>   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span class="line"><span>   Closest = state of the first list of largest weight overlap sum_j min(w_j(A), w_j(B)) &gt;= 50 %</span></span>
+<span class="line"><span>   (configurations of |S| &gt;= 0.95 merged); dE_exc = E-E(own lowest).</span></span></code></pre>
+<ul>
+<li>3-level <code>[[[...], ...], [[...], ...], ...]</code>: one group of cassettes per outer entry, each group mapped to a spin manifold like the SA blocks (ladder position or <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a>). The call above is one group of four cassettes, each with its own states (third fragment; energies: <a href="#explicit-input">Explicit SA pool and SI cassettes</a>). A cassette is a set of names, indices or bulk tokens (<a href="#bulk-tokens">Bulk tokens and pattern syntax</a>); a repeated selection is kept at its first position. First two fragments: <code>[[["full"]], [["full"]]]</code> with <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> <code>[0, 2]</code>.</li>
+<li>2-level <code>[[...], [...], ...]</code>: the cassettes of a single group on the run's lowest manifold (or the one <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> names); legal only when <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> is absent or has length 1. The 3-level form without <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> maps group 0 to ladder position 0, the catalog's first spin sector; the two forms coincide when that is the run's lowest manifold, as in the call above.</li>
+<li>Absent: one cassette spanning the whole configuration block of the run's lowest (or <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a>-chosen) manifold. <code>[[]]</code> runs no SI step and sets no <code>SSR</code> arrays.</li>
+<li>A flat list of names (<code>["PPS1", "OSS1"]</code>) is an input error: <a href="/learn/reference/options/#row-si_reks_configs"><code>SI_REKS_CONFIGS: scalar elements are not a cassette form; use a list of cassettes [[...], ...] (2-level) or cassette groups [[[...]], ...] (3-level).</code></a></li>
+<li><code>Wfn storage</code> <code>none</code> in <code>SI pools</code> means no per-state <code>SSR … K=e</code> analysis arrays and no natural-orbital, NTO or NDO Molden files for that cassette (<a href="#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a>).</li>
+<li>Each cassette opens with a <code>State interaction: cassette e</code> header; its 2S tag appears when the run has more than one spin manifold.</li>
+<li>Two or more cassettes of one 2S add <code>Alternative configuration lists</code> after <code>State summary</code> (third fragment): the states of the later cassettes with energies relative to S0 and to their own lowest state, the closest state of the first list by weight overlap, and the main configurations.</li>
+</ul>
+<dl class="fields"><dt>See</dt><dd><a href="/learn/concepts/#si-cassette">SI cassette</a>, <a href="#si_reks_2spin"><code>SI_REKS_2SPIN</code></a>, <a href="/learn/reference/properties/#ssr-energies">SSR state energies</a></dd></dl>
+<h4 id="si_reks_print_states"><a href="/learn/reference/options/#row-si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a></h4>
+<p>States per cassette whose per-state and pair tables are printed; 0 = none, -1 = all.</p>
+<dl class="fields"><dt>Type</dt><dd>int</dd><dt>Default</dt><dd><code>5</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_print_states">si_reks_print_states</a>"</span><span style="color:#E7E6E2">: -1,</span></span></code></pre>
+<ul>
+<li>States per cassette listed in the per-state and pair tables; <code>0</code> = none, <code>-1</code> = all, on a Davidson cassette the 50 lowest (<a href="/learn/concepts/#si-solver">SI eigensolver</a>).</li>
+<li>Properties are computed for max(print, store) states (<a href="#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a>). Counts are clamped to the number of physical states.</li>
+</ul>
+<h4 id="si_reks_store_states"><a href="/learn/reference/options/#row-si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a></h4>
+<p>States per cassette whose properties are stored on the wavefunction (arrays, Molden and cube files); 0 = none, -1 = all.</p>
+<dl class="fields"><dt>Type</dt><dd>array of int</dd><dt>Default</dt><dd>all; the first 10 if <code>M ≥ 6</code> and &gt; 10 configurations</dd><dt>Alias</dt><dd><a href="/learn/reference/options/#row-si_reks_store_states"><code>REKS_SI_STORE_STATES</code></a></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_store_states">si_reks_store_states</a>"</span><span style="color:#E7E6E2">: [-1, 0],</span></span></code></pre>
+<ul>
+<li>One integer per cassette, entry t = the t-th cassette in the spin order of <a href="#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> (<a href="#cassette-order">Cassette order</a>): states whose properties are stored on the wavefunction (array variables, Molden and cube files); <code>0</code> = none, <code>-1</code> = all, on a Davidson cassette the 50 lowest (<a href="/learn/concepts/#si-solver">SI eigensolver</a>).</li>
+<li>Roots requested in <a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a>, <a href="/learn/reference/options/#row-si_reks_nac"><code>SI_REKS_NAC</code></a>, <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> keep their eigenvectors regardless.</li>
+</ul>
+<h4 id="si_reks_overlap_cutoff"><a href="/learn/reference/options/#row-si_reks_overlap_cutoff"><code>SI_REKS_OVERLAP_CUTOFF</code></a></h4>
+<p>Overlap eigenvalues <code>s ≤ cutoff · s<sub>max</sub></code> of the SI basis are treated as null space and dropped.</p>
+<dl class="fields"><dt>Type</dt><dd>double</dd><dt>Default</dt><dd><code>1e-10</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_overlap_cutoff">si_reks_overlap_cutoff</a>"</span><span style="color:#E7E6E2">: 1e-8,</span></span></code></pre>
+<ul>
+<li>Eigenvectors of the SI overlap with s ≤ cutoff · s<sub>max</sub> form the null space and are removed before diagonalization (<a href="/learn/reference/properties/#si-matrices">SI Hamiltonian and overlap</a>).</li>
+<li>Ghost roots (configurations with s just above the cutoff): <a href="/learn/concepts/#ssr-states">Adiabatic (SSR) states</a>.</li>
+<li>The printed σ = cutoff · s<sub>max</sub>: <code>Regularization … sigma = σ: the N configurations span r dimensions (K overlap null modes removed)</code>. A larger cutoff removes more modes; the number of roots is capped by r.</li>
+<li>Large active spaces, spurious lowest root: signs and the value 1e-4 in <a href="/learn/diagnose/#diag-ghost-states">Ghost states and a collapsed SI spectrum</a>.</li>
+</ul>
+<h4 id="si_reks_solver"><a href="/learn/reference/options/#row-si_reks_solver"><code>SI_REKS_SOLVER</code></a></h4>
+<p>Eigensolver of each SI cassette: LAPACK on every root, or Davidson on the lowest roots.</p>
+<dl class="fields"><dt>Type</dt><dd><code>AUTO</code>|<code>DIRECT</code>|<code>DAVIDSON</code></dd><dt>Default</dt><dd><code>AUTO</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_solver">si_reks_solver</a>"</span><span style="color:#E7E6E2">: </span><span style="color:#E7A98A">"DAVIDSON"</span><span style="color:#E7E6E2">,</span></span></code></pre>
+<p>Run: all-trans-hexatriene, REKS(6,6), BH&amp;HLYP/6-31G(d), Davidson, 3 stored states.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; SI Davidson solver (cassette 0) &lt;==</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Roots                 7 (3 requested + 4 margin) of 115</span></span>
+<span class="line"><span>    Convergence           1.000e-12</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Iter      Mean |R|       Max |R|   Remain   Applications   Time [s]</span></span>
+<span class="line"><span>    -------------------------------------------------------------------</span></span>
+<span class="line"><span>       1     7.779e-16     1.021e-15        0              8       0.00</span></span>
+<span class="line"><span>    -------------------------------------------------------------------</span></span>
+<span class="line"><span>    7 roots converged in 1 iterations, 22 operator applications.</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>    Computed states       7 of 115 (lowest roots, Davidson)</span></span></code></pre>
+<ul>
+<li><code>DIRECT</code>: every root, LAPACK on the dense Hamiltonian of the cassette. <code>DAVIDSON</code>: the lowest roots, block Davidson on the sparse Hamiltonian; how many: <a href="/learn/concepts/#si-solver">SI eigensolver</a>. <code>AUTO</code>: per cassette, <code>DIRECT</code> up to 4000 configurations, <code>DAVIDSON</code> above; the catalogs shipped with Psi4 stay below.</li>
+<li>On a Davidson cassette <code>SSR ENERGIES K=e</code> holds the computed roots, and a count <code>-1</code> in <a href="/learn/reference/options/#row-si_reks_print_states"><code>SI_REKS_PRINT_STATES</code></a>, <a href="/learn/reference/options/#row-si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a>, <a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a> or <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> stands for the 50 lowest roots.</li>
+</ul>
+<h4 id="si_reks_davidson_r_convergence"><a href="/learn/reference/options/#row-si_reks_davidson_r_convergence"><code>SI_REKS_DAVIDSON_R_CONVERGENCE</code></a></h4>
+<p>Residual norm in E_h each Davidson root of the SI problem converges to.</p>
+<dl class="fields"><dt>Type</dt><dd>double</dd><dt>Default</dt><dd><code>1e-12</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_davidson_r_convergence">si_reks_davidson_r_convergence</a>"</span><span style="color:#E7E6E2">: 1e-10,</span></span></code></pre>
+<ul>
+<li>Residual norm ‖(A − θ) x‖<sub>2</sub> (E<sub>h</sub>) every Davidson root converges to, A the SI Hamiltonian in the orthonormalized configuration basis (<a href="/learn/concepts/#si-solver">SI eigensolver</a>). A root whose residual stalls at the rounding level of its product is accepted there, and that level is printed.</li>
+<li>A value ≤ 0 stops the run: <a href="/learn/reference/options/#row-si_reks_davidson_r_convergence"><code>SI_REKS_DAVIDSON_R_CONVERGENCE is …; it must be positive (residual norm in Eh, default 1e-12).</code></a></li>
+</ul>
+</div></section><section class="docsec"><h2 id="spin-manifolds">Spin manifolds (2S) and multi-manifold runs</h2><div class="prose">
+<p>All manifolds of a run (<a href="/learn/concepts/#run-sector">Spin manifold and run sector</a>) share one SCF. Without <a href="/learn/reference/options/#row-sa_reks_configs"><code>SA_REKS_CONFIGS</code></a> the SA pool is the default pool (<a href="#sa_reks_configs"><code>SA_REKS_CONFIGS</code></a>).</p>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="Spin manifolds (2S) and multi-manifold runs"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>When</th>
+<th>Block or group i</th>
+<th>Empty block <code>[]</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ladder</td>
+<td><a href="/learn/reference/options/#row-sa_reks_2spin"><code>SA_REKS_2SPIN</code></a> / <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> absent</td>
+<td>the i-th manifold of the catalog, ascending 2S (0-based, order typed)</td>
+<td>skips that rung</td>
+</tr>
+<tr>
+<td>Explicit</td>
+<td><a href="/learn/reference/options/#row-sa_reks_2spin"><code>SA_REKS_2SPIN</code></a> / <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> given</td>
+<td>the manifold named by entry i</td>
+<td>declares the manifold: it participates with no configurations</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="spin-options">Spin-manifold options</h3>
+<h4 id="sa_reks_2spin"><a href="/learn/reference/options/#row-sa_reks_2spin"><code>SA_REKS_2SPIN</code></a></h4>
+<p>Spin manifold 2S of each SA block, one integer per block.</p>
+<dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd>ladder, lowest manifold</dd><dt>Alias</dt><dd><a href="/learn/reference/options/#row-sa_reks_2spin"><code>REKS_SA_2SPIN</code></a></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-sa_reks_2spin">sa_reks_2spin</a>"</span><span style="color:#E7E6E2">: [0, 2],</span></span></code></pre>
+<ul>
+<li>One integer 2S per SA block (explicit mode, <a href="#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a>). Entries are pairwise distinct, in any order (re-sorted ascending).</li>
+<li>Without <a href="/learn/reference/options/#row-sa_reks_configs"><code>SA_REKS_CONFIGS</code></a> only <code>[N mod 2]</code> is accepted (<code>[0]</code> for even N, <code>[1]</code> for odd N); any other value is an input error. States of higher 2S on the default ensemble: <a href="#si_reks_2spin"><code>SI_REKS_2SPIN</code></a>.</li>
+</ul>
+<h4 id="si_reks_2spin"><a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a></h4>
+<p>2S of each SI group; more than one entry requires the 3-level <a href="/learn/reference/options/#row-si_reks_configs"><code>si_reks_configs</code></a> form.</p>
+<dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd>ladder, lowest manifold</dd><dt>Alias</dt><dd><a href="/learn/reference/options/#row-si_reks_2spin"><code>REKS_SI_2SPIN</code></a></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_2spin">si_reks_2spin</a>"</span><span style="color:#E7E6E2">: [0, 2],</span></span></code></pre>
+<ul>
+<li>One integer 2S per SI group (explicit mode, <a href="#spin-manifolds">Spin manifolds (2S) and multi-manifold runs</a>), pairwise distinct, in any order; more than one entry requires the 3-level <a href="/learn/reference/options/#row-si_reks_configs"><code>si_reks_configs</code></a> form. The 2-level form is one group of cassettes on one manifold. Two entries with a 2-level <a href="/learn/reference/options/#row-si_reks_configs"><code>si_reks_configs</code></a> stop the run: <code>REKS input error: SI_REKS_2SPIN has 2 labels (one per SI group), which requires the 3-level SI_REKS_CONFIGS form [[[...]], ...] (one group of cassettes per label); got a 2-level list of cassettes.</code></li>
+<li><code>[x]</code> alone: the default SA ensemble on 2S = 0 and the default SI cassette on 2S = x (<a href="#input-patterns">Input patterns</a>).</li>
+<li>Sets the order of the SI cassettes: the spin groups follow this list, the cassettes of a group the order of its <a href="/learn/reference/options/#row-si_reks_configs"><code>SI_REKS_CONFIGS</code></a> block. The per-cassette lists <a href="#si_reks_grad"><code>SI_REKS_GRAD</code></a>, <a href="#si_reks_nac"><code>SI_REKS_NAC</code></a>, <a href="#si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> and <a href="#si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a> take their entries in this order: with <code>[2, 0]</code> entry 0 is the triplet cassette. The printed index K and the <code>K=e</code>, <code>CASSETTE e</code> names run in ascending 2S (the triplet is K = 1). Without the option (ladder) both orders are ascending 2S (<a href="#cassette-order">Cassette order</a>).</li>
+</ul>
+<h3 id="input-patterns">Input patterns</h3>
+<p>Recommended SA ensemble for states on several spin manifolds: the default 2S = 0 pool (PPS and the OSS configurations of pairing scheme 0); the T_PPS configurations that lead T1/T2 may be added, nothing of higher spin. The all-α determinant is added for SCF stability (<a href="#sa_reks_extra"><code>SA_REKS_EXTRA</code></a>).</p>
+<p>Linear H₄ (R = 1.6 Å), BH&amp;HLYP/6-31G. In all three the SA pool is the default 2S = 0 pool of REKS(4,4), <code>PPS1</code>, <code>OSS1</code>, <code>OSS2</code>; one SCF, E<sub>SA</sub> = −1.8826103083 E<sub>h</sub> in every case. The input adds the all-α determinant with an equal weight (<a href="/learn/reference/options/#row-sa_reks_extra"><code>sa_reks_extra</code></a>).</p>
+<p><strong>Triplet states only</strong></p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks">reks</a>"</span><span style="color:#E7E6E2">: [4, 4],</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-sa_reks_extra">sa_reks_extra</a>"</span><span style="color:#E7E6E2">: [[1, 1, 1, 1, 0, 0, 0, 0]],   </span><span style="color:#9AA3B3"># all-alpha determinant in SA</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_2spin">si_reks_2spin</a>"</span><span style="color:#E7E6E2">: [2],</span></span></code></pre>
+<p><a href="/learn/reference/options/#row-si_reks_configs"><code>SI_REKS_CONFIGS</code></a> is absent, so the single SI cassette is the whole 2S = 2 block: 11 configurations (<code>T_PPS1</code>–<code>4</code>, <code>T_DES1</code>–<code>4</code>, <code>T_OSS_SPS_0</code>–<code>2</code>), 11 triplet roots, printed as cassette 0. No singlet SI states are computed.</p>
+<p><strong>Singlet and triplet states</strong></p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks">reks</a>"</span><span style="color:#E7E6E2">: [4, 4],</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-sa_reks_extra">sa_reks_extra</a>"</span><span style="color:#E7E6E2">: [[1, 1, 1, 1, 0, 0, 0, 0]],</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_configs">si_reks_configs</a>"</span><span style="color:#E7E6E2">: [[[</span><span style="color:#E7A98A">"full"</span><span style="color:#E7E6E2">]], [[</span><span style="color:#E7A98A">"full"</span><span style="color:#E7E6E2">]]],   </span><span style="color:#9AA3B3"># 2S = 0, 2S = 2</span></span></code></pre>
+<p>Two SI groups without <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> take the ladder: group 0 → 2S = 0, group 1 → 2S = 2. Cassette 0: 18 singlet configurations, 16 roots (2 overlap null modes); cassette 1: the 11 triplet configurations, the same 11 roots as above. Adding <a href="/learn/reference/options/#row-si_reks_2spin"><code>"si_reks_2spin": [0, 2]</code></a> gives the identical run; <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> is needed only to skip a manifold or to change the cassette order (<a href="#cassette-order">Cassette order</a>).</p>
+<p><strong>Singlet, triplet and quintet states</strong></p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks">reks</a>"</span><span style="color:#E7E6E2">: [4, 4],</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-sa_reks_extra">sa_reks_extra</a>"</span><span style="color:#E7E6E2">: [[1, 1, 1, 1, 0, 0, 0, 0]],</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_configs">si_reks_configs</a>"</span><span style="color:#E7E6E2">: [[[</span><span style="color:#E7A98A">"full"</span><span style="color:#E7E6E2">]], [[</span><span style="color:#E7A98A">"full"</span><span style="color:#E7E6E2">]], [[</span><span style="color:#E7A98A">"full"</span><span style="color:#E7E6E2">]]],   </span><span style="color:#9AA3B3"># 2S = 0, 2, 4</span></span></code></pre>
+<p>The third group of the ladder is 2S = 4: one configuration, <code>TT_SPS_0</code>, one quintet root. The singlet and triplet cassettes are those of the previous pattern, with the same roots.</p>
+<h3 id="state-labels">State labels</h3>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="State labels"><table>
+<thead>
+<tr>
+<th>Even N, 2S</th>
+<th>0</th>
+<th>2</th>
+<th>4</th>
+<th>6</th>
+<th>8</th>
+<th>10</th>
+<th>12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Root 0, 1, …</td>
+<td><code>S0</code>, <code>S1</code>, …</td>
+<td><code>T1</code>, <code>T2</code>, …</td>
+<td><code>Q1</code></td>
+<td><code>Sp1</code></td>
+<td><code>N1</code></td>
+<td><code>U1</code></td>
+<td><code>Tr1</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="reftable-wrap" tabindex="0" role="region" aria-label="State labels"><table>
+<thead>
+<tr>
+<th>Odd N, 2S</th>
+<th>1</th>
+<th>3</th>
+<th>5</th>
+<th>7</th>
+<th>9</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Root 0, 1, …</td>
+<td><code>D0</code>, <code>D1</code>, …</td>
+<td><code>Qa1</code>, <code>Qa2</code>, …</td>
+<td><code>Sx1</code></td>
+<td><code>Oc1</code></td>
+<td><code>De1</code></td>
+<td><code>Du1</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The lowest manifold counts from 0, every other from 1. <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> accepts these labels, <a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a> takes 0-based root indices; Molden and cube file names use the labels.</p>
+<h3 id="output">Output</h3>
+<p>With SSR states on two or more manifolds the report prints <a href="/learn/reference/properties/#spin-state-energetics">Spin-state gaps and Heisenberg J</a>. Per-sector arrays carry a sector prefix for s &gt; 0 (<a href="/learn/reference/output/#variable-names">Variable names</a>).</p>
+<h3 id="cassette-order">Cassette order</h3>
+<p><a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> sets the order of the SI cassettes: SI groups as listed, the cassettes of a group in the order of its <a href="/learn/reference/options/#row-si_reks_configs"><code>SI_REKS_CONFIGS</code></a> block. The per-cassette lists <a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a>, <a href="/learn/reference/options/#row-si_reks_nac"><code>SI_REKS_NAC</code></a>, <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> and <a href="/learn/reference/options/#row-si_reks_store_states"><code>SI_REKS_STORE_STATES</code></a> take one entry per cassette in this order. The cassette blocks are printed in this order, and state energies are given relative to the lowest state of its first cassette. The cassette index K in headers and in the <code>K=e</code> and <code>CASSETTE e</code> names runs in ascending 2S. Without <a href="/learn/reference/options/#row-si_reks_2spin"><code>SI_REKS_2SPIN</code></a> (ladder) both orders are ascending 2S.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_2spin">si_reks_2spin</a>"</span><span style="color:#E7E6E2">:        [2, 0],</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_configs">si_reks_configs</a>"</span><span style="color:#E7E6E2">:      [[[0]], [[0, 1]]],   </span><span style="color:#9AA3B3"># triplet, singlet</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_grad">si_reks_grad</a>"</span><span style="color:#E7E6E2">:         [[0], []],           </span><span style="color:#9AA3B3"># T1: printed as cassette 1, SSR ROOT 0 GRADIENT CASSETTE 1</span></span>
+<span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_store_states">si_reks_store_states</a>"</span><span style="color:#E7E6E2">: [1, 0],              </span><span style="color:#9AA3B3"># 1 triplet state stored, no singlet</span></span></code></pre>
+<p>H₂ REKS(2,2): with <code>[2, 0]</code> the gradient and the stored state go to the triplet (K = 1), the triplet block is printed first and energies are given as <code>E-E(T1)</code>; with <code>[0, 2]</code> the same lists select the singlet (K = 0).</p>
+</div></section><section class="docsec"><h2 id="response">Properties, gradients, couplings</h2><div class="prose">
+<p>Relaxed properties, gradients and couplings are computed from one coupled-perturbed REKS (CP-REKS, Z-vector) solve. List-of-lists options mirror <a href="/learn/reference/options/#row-si_reks_configs"><code>SI_REKS_CONFIGS</code></a>: inner list <code>t</code> refers to the t-th cassette in the order of <a href="#cassette-order">Cassette order</a>; roots as in <a href="/learn/concepts/#ssr-states">Adiabatic (SSR) states</a>. For <a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a>, <a href="/learn/reference/options/#row-si_reks_nac"><code>SI_REKS_NAC</code></a> and <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a>, more inner lists than cassettes is an input error; fewer lists leave the remaining cassettes without requests, and <code>[]</code> requests none for its cassette.</p>
+<h3 id="state-properties">State properties</h3>
+<p><a href="/learn/reference/options/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a> selects the property blocks of the SSR states (unrelaxed densities), <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> the states that also get relaxed properties, <a href="/learn/reference/options/#row-reks_ekt"><code>REKS_EKT</code></a> ionization energies of those states. <code>State analysis</code> in the setup block lists every block; struck-through names are not computed.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7E6E2">psi4.set_options({</span></span>
+<span class="line"><span style="color:#9AA3B3">    # + TRANSITION_DIPOLE, NO_OCCUPATIONS (always on)</span></span>
+<span class="line"><span style="color:#E7A98A">    "<a href="/learn/reference/options/#row-si_reks_analysis">si_reks_analysis</a>"</span><span style="color:#E7E6E2">: [</span><span style="color:#E7A98A">"DIPOLE"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"RADICAL"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"NTO"</span><span style="color:#E7E6E2">, </span><span style="color:#E7A98A">"MULTIPOLE(3)"</span><span style="color:#E7E6E2">],</span></span>
+<span class="line"><span style="color:#9AA3B3">    # relaxed properties and EKT of S0, S1 of cassette 0</span></span>
+<span class="line"><span style="color:#E7A98A">    "<a href="/learn/reference/options/#row-si_reks_property_for">si_reks_property_for</a>"</span><span style="color:#E7E6E2">: [[</span><span style="color:#E7A98A">"S0..1"</span><span style="color:#E7E6E2">], []],</span></span>
+<span class="line"><span style="color:#E7A98A">    "<a href="/learn/reference/options/#row-reks_ekt">reks_ekt</a>"</span><span style="color:#E7E6E2">: </span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">,</span></span>
+<span class="line"><span style="color:#E7E6E2">})</span></span></code></pre>
+<h4 id="si_reks_analysis"><a href="/learn/reference/options/#row-si_reks_analysis"><code>SI_REKS_ANALYSIS</code></a></h4>
+<p>State-property blocks of the SI states to compute, print and store (moments, charges, bond indices, NTO, exciton, …).</p>
+<dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd>all blocks except multipoles &gt; 2</dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_analysis">si_reks_analysis</a>"</span><span style="color:#E7E6E2">: [</span><span style="color:#E7A98A">"all"</span><span style="color:#E7E6E2">],</span></span></code></pre>
+<p>Run: C₂H₄ at R(CC) 2.32 Å, REKS(4,4), BH&amp;HLYP/6-31G(d), cassettes 2S = 0, 2.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; State analysis [PROPERTIES] &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   DENSITIES               active 1-RDMs of the states and the adiabatic 1-RDM (stored)</span></span>
+<span class="line"><span>   DIPOLE                  permanent and difference dipoles of the states</span></span>
+<span class="line"><span>   E_TDM_VEL               velocity transition moments, oscillator strengths f_vel</span></span>
+<span class="line"><span>   EXCITON                 exciton and CT descriptors, hole/electron populations; NDOs (stored)</span></span>
+<span class="line"><span>   FRAGMENT_COUPLINGS      FCD and FED (FSD for 2S &gt; 0) fragment couplings</span></span>
+<span class="line"><span>   LOWDIN_CHARGES          Lowdin charges of the states</span></span>
+<span class="line"><span>   LOWDIN_SPINS            Lowdin spin populations of the 2S &gt; 0 states</span></span>
+<span class="line"><span>   M_TDM                   magnetic transition moments, rotatory strengths</span></span>
+<span class="line"><span>   MAYER_INDICES           Mayer bond indices of the states</span></span>
+<span class="line"><span>   MULLIKEN_CHARGES        Mulliken charges of the states</span></span>
+<span class="line"><span>   MULLIKEN_SPINS          Mulliken spin populations of the 2S &gt; 0 states</span></span>
+<span class="line"><span>   M̶U̶L̶T̶I̶P̶O̶L̶E̶(̶n̶)̶            multipoles of order 3..n of the states and transitions</span></span>
+<span class="line"><span>   NO_OCCUPATIONS          natural occupation numbers and natural orbitals of the states</span></span>
+<span class="line"><span>   NTO                     NTO weights and participation ratios; natural transition orbitals (stored)</span></span>
+<span class="line"><span>   QUADRUPOLE              quadrupoles of the states, full Cartesian and traceless</span></span>
+<span class="line"><span>   RADICAL                 radical indices; unpaired atomic populations (stored)</span></span>
+<span class="line"><span>   <a href="/learn/reference/options/#row-reks_ekt">REKS_EKT</a>                ionization energies and Dyson orbitals (EKT) of the states below</span></span>
+<span class="line"><span>   <a href="/learn/reference/options/#row-si_reks_property_for">SI_REKS_PROPERTY_FOR</a>    relaxed dipole, quadrupole and atomic charges (density P^r) of the states below</span></span>
+<span class="line"><span>   TRANSITION_CHARGES      Mulliken and Lowdin transition charges</span></span>
+<span class="line"><span>   TRANSITION_DIPOLE       transition dipoles, oscillator strengths f_len</span></span>
+<span class="line"><span>   TRANSITION_QUADRUPOLE   transition second moments, trace included</span></span>
+<span class="line"><span>   WIBERG_LOWDIN_INDICES   Wiberg-Lowdin bond indices of the states</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   Cassette  States</span></span>
+<span class="line"><span>   ----------------</span></span>
+<span class="line"><span>          0  S1, S2</span></span>
+<span class="line"><span>   ----------------</span></span></code></pre>
+<ul>
+<li>Property blocks to compute, print and store. Unset: every block except multipoles above order 2. <code>[]</code>: <code>TRANSITION_DIPOLE</code> and <code>NO_OCCUPATIONS</code>. A list: these two plus the listed names.</li>
+<li>Names: <code>DIPOLE</code>, <code>QUADRUPOLE</code>, <code>MULTIPOLE(n)</code>, <code>TRANSITION_DIPOLE</code>, <code>TRANSITION_QUADRUPOLE</code>, <code>E_TDM_VEL</code>, <code>M_TDM</code>, <code>MULLIKEN_CHARGES</code>, <code>LOWDIN_CHARGES</code>, <code>MULLIKEN_SPINS</code>, <code>LOWDIN_SPINS</code>, <code>TRANSITION_CHARGES</code>, <code>MAYER_INDICES</code>, <code>WIBERG_LOWDIN_INDICES</code>, <code>NO_OCCUPATIONS</code>, <code>DENSITIES</code>, <code>RADICAL</code>, <code>NTO</code>, <code>EXCITON</code>, <code>FRAGMENT_COUPLINGS</code>, <code>ALL</code>, case-insensitive; each property entry names its switch (<a href="/learn/reference/properties/#properties">Properties</a>). <code>MULLIKEN_SPINS</code>, <code>LOWDIN_SPINS</code> act on 2S &gt; 0 cassettes (<a href="/learn/reference/properties/#atomic-spins">Atomic spin populations of the states (2S &gt; 0)</a>).</li>
+<li>A block another listed block needs is computed without being printed or stored: <code>RADICAL</code> needs <code>NO_OCCUPATIONS</code>, <code>FRAGMENT_COUPLINGS</code> the state and transition charges and, in a 2S &gt; 0 cassette, the Löwdin spins.</li>
+<li><code>MULTIPOLE(n)</code> adds <code>DIPOLE</code> and <code>TRANSITION_DIPOLE</code>, for n ≥ 2 <code>QUADRUPOLE</code> and <code>TRANSITION_QUADRUPOLE</code>, for n ≥ 3 the multipoles of order 3..n. <code>ALL</code> switches on every name except <code>MULTIPOLE(n)</code>: <code>["ALL", "MULTIPOLE(4)"]</code> adds both.</li>
+<li><code>State analysis [PROPERTIES]</code> lists every name, <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> and <a href="/learn/reference/options/#row-reks_ekt"><code>REKS_EKT</code></a> in alphabetical order (<code>_</code> read as a space) with a description, names not run struck through; with <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> it adds the states of each cassette that receive relaxed properties (and EKT when <a href="/learn/reference/options/#row-reks_ekt"><code>REKS_EKT</code></a> is true).</li>
+</ul>
+<h4 id="si_reks_analysis_change_min"><a href="/learn/reference/options/#row-si_reks_analysis_change_min"><code>SI_REKS_ANALYSIS_CHANGE_MIN</code></a></h4>
+<p>Smallest state-to-state change of a charge or bond index that is printed.</p>
+<dl class="fields"><dt>Type</dt><dd>double</dd><dt>Default</dt><dd><code>0.1</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_analysis_change_min">si_reks_analysis_change_min</a>"</span><span style="color:#E7E6E2">: 0.05,</span></span></code></pre>
+<ul>
+<li>Smallest state-to-state change of a charge, spin population or bond index that is printed (<a href="/learn/reference/properties/#atomic-charges">Atomic charges of the states (unrelaxed)</a>, <a href="/learn/reference/properties/#atomic-spins">Atomic spin populations of the states (2S &gt; 0)</a>).</li>
+</ul>
+<h4 id="si_reks_property_for"><a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a></h4>
+<p>States, per cassette, whose dipole, quadrupole, charges and bond indices are evaluated with the relaxed (CP-REKS) density.</p>
+<dl class="fields"><dt>Type</dt><dd>array of arrays</dd><dt>Default</dt><dd><code>[]</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_property_for">si_reks_property_for</a>"</span><span style="color:#E7E6E2">: [[</span><span style="color:#E7A98A">"S1,S2"</span><span style="color:#E7E6E2">], []],</span></span></code></pre>
+<ul>
+<li>States evaluated with the relaxed density: dipole, quadrupole, Mulliken/Löwdin charges, Mayer/Wiberg indices (<a href="/learn/reference/properties/#relaxed-properties">Relaxed dipole, quadrupole and atomic charges</a>, <a href="/learn/reference/properties/#relaxed-bond-indices">Bond indices of the relaxed density</a>).</li>
+<li>Entries: indices or labels, ranges, lists (<code>"S0..5"</code>, <code>"T1"</code>), inside the per-cassette inner lists (<code>[["S0..1"]]</code>), in the spin order of <a href="#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> (<a href="#cassette-order">Cassette order</a>); a flat list is rejected.</li>
+</ul>
+<h4 id="reks_ekt"><a href="/learn/reference/options/#row-reks_ekt"><code>REKS_EKT</code></a></h4>
+<p>Enables EKT: ionization energies, pole strengths and Dyson orbitals of the <a href="/learn/reference/options/#row-si_reks_property_for"><code>si_reks_property_for</code></a> states or of the SA ensemble.</p>
+<dl class="fields"><dt>Type</dt><dd>bool</dd><dt>Default</dt><dd><code>false</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks_ekt">reks_ekt</a>"</span><span style="color:#E7E6E2">: </span><span style="color:#7FA0DE">True</span><span style="color:#E7E6E2">,</span></span></code></pre>
+<ul>
+<li>Extended Koopmans ionization energies, pole strengths and Dyson orbitals for the <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> states (<a href="/learn/reference/properties/#ekt-states">EKT ionization energies, pole strengths and Dyson orbitals of SI states</a>), otherwise for the SA ensemble (<a href="/learn/reference/properties/#ekt-ensemble">EKT ionization energies of the SA-REKS ensemble</a>).</li>
+</ul>
+<h4 id="reks_ekt_occ_tol"><a href="/learn/reference/options/#row-reks_ekt_occ_tol"><code>REKS_EKT_OCC_TOL</code></a></h4>
+<p>Cutoff on the density eigenvalues: those at or below it are dropped from the EKT metric.</p>
+<dl class="fields"><dt>Type</dt><dd>double</dd><dt>Default</dt><dd><code>1e-6</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks_ekt_occ_tol">reks_ekt_occ_tol</a>"</span><span style="color:#E7E6E2">: 1e-8,</span></span></code></pre>
+<ul>
+<li>Density eigenvalues at or below this are dropped from the EKT metric.</li>
+</ul>
+<h3 id="gradients-couplings">Gradients and couplings</h3>
+<p>Worked call, optimization and dynamics: <a href="/learn/branch/dynamics/#opt-dynamics">Optimization and dynamics</a>.</p>
+<h4 id="si_reks_grad"><a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a></h4>
+<p>Roots whose analytic gradients are computed, per cassette; the first listed root is followed (<code>CURRENT ENERGY</code>, returned gradient).</p>
+<dl class="fields"><dt>Type</dt><dd>array of arrays</dd><dt>Default</dt><dd><code>[]</code> (SA ensemble)</dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_grad">si_reks_grad</a>"</span><span style="color:#E7E6E2">: [[1, 2]],</span></span></code></pre>
+<p>Run: C₂H₄ at R(CC) 2.32 Å, REKS(4,4), BH&amp;HLYP/6-31G(d), cassettes 2S = 0, 2.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>=&gt; Gradient request &lt;=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   Cassette  States    NAC pairs</span></span>
+<span class="line"><span>   -----------------------------</span></span>
+<span class="line"><span>          0  S1 *, S2  S1/S2</span></span>
+<span class="line"><span>   -----------------------------</span></span>
+<span class="line"><span>   States = SI states whose nuclear gradient is computed. * = followed state, returned by gradient().</span></span></code></pre>
+<ul>
+<li>Roots whose gradients are computed, one inner list per cassette; inner list t = the t-th cassette in the spin order of <a href="#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> (<a href="#cassette-order">Cassette order</a>; with <a href="/learn/reference/options/#row-si_reks_2spin"><code>si_reks_2spin</code></a> <code>[2, 0]</code> list 0 is the triplet cassette); roots as in <a href="/learn/concepts/#ssr-states">Adiabatic (SSR) states</a>. Inner list <code>[-1]</code> = all roots of that cassette (<code>[[-1]]</code>), on a Davidson cassette the 50 lowest; a flat <code>[-1]</code> is an input error. More inner lists than SI cassettes stop the run before the SCF: <a href="/learn/reference/options/#row-si_reks_grad"><code>REKS input error: SI_REKS_GRAD: 2 order list(s) for 1 SI cassette(s).</code></a></li>
+<li>The followed root, marked <code>*</code> in <code>Gradient request</code>, is the first entry of the first non-empty inner list (<code>-1</code> → root 0). Without <a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a> it is the lowest root index in the pairs of the first non-empty <a href="/learn/reference/options/#row-si_reks_nac"><code>SI_REKS_NAC</code></a> list.</li>
+<li>With a followed root, <code>CURRENT ENERGY</code> is its energy, also stored as <code>REKS TARGET STATE ENERGY</code>, in <code>energy()</code> and <code>gradient()</code>; <code>gradient()</code> returns its gradient (<a href="/learn/reference/properties/#state-gradient">Nuclear gradients of SSR states</a>). Without a followed root: <a href="#explicit-input">Explicit SA pool and SI cassettes</a>.</li>
+<li><code>CURRENT DIPOLE</code> is the relaxed dipole of the followed root when <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> lists that root, and is unset otherwise.</li>
+<li>Triplet gradient of <a href="/learn/reference/options/#row-reks"><code>reks [2, 2]</code></a>: the triplet-gradient worked input (<a href="#worked-inputs">Worked inputs</a>), with <a href="/learn/reference/options/#row-si_reks_grad"><code>si_reks_grad</code></a> <code>[[], [0]]</code> following T1 of cassette 1.</li>
+</ul>
+<h4 id="si_reks_nac"><a href="/learn/reference/options/#row-si_reks_nac"><code>SI_REKS_NAC</code></a></h4>
+<p>Root pairs <code>[I, J]</code> per cassette whose nonadiabatic couplings and conical-intersection topography are computed.</p>
+<dl class="fields"><dt>Type</dt><dd>array</dd><dt>Default</dt><dd><code>[]</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-si_reks_nac">si_reks_nac</a>"</span><span style="color:#E7E6E2">: [[[1, 2]]],</span></span></code></pre>
+<ul>
+<li>Pairs <code>[I, J]</code> per SI cassette, in the spin order of <a href="#si_reks_2spin"><code>SI_REKS_2SPIN</code></a> (<a href="#cassette-order">Cassette order</a>), <code>[[[I, J], ...], ...]</code>, or <code>ALL</code>; the call above couples S1 and S2 of cassette 0. Computed in <code>gradient()</code>; the roots of each pair join the gradient targets.</li>
+<li>Publishes <code>SSR NAC I J CASSETTE e</code> (1/bohr, <a href="/learn/reference/properties/#nac">Nonadiabatic coupling vectors</a>) and the conical-intersection topography <code>SSR CI TOPOGRAPHY I J CASSETTE e</code> (<a href="/learn/reference/properties/#ci-topography">Conical-intersection topography</a>); e is the printed cassette index K (ascending 2S).</li>
+<li>Without <a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a> the followed root: <a href="#si_reks_grad"><code>SI_REKS_GRAD</code></a>.</li>
+</ul>
+<h4 id="reks_cpreks_conv"><a href="/learn/reference/options/#row-reks_cpreks_conv"><code>REKS_CPREKS_CONV</code></a></h4>
+<p>Residual threshold of the CP-REKS (Z-vector) solver. <a href="/learn/reference/options/#row-reks_cpreks_maxiter"><code>reks_cpreks_maxiter</code></a> (200) bounds its rounds.</p>
+<dl class="fields"><dt>Type</dt><dd>double</dd><dt>Default</dt><dd><code>1e-9</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks_cpreks_conv">reks_cpreks_conv</a>"</span><span style="color:#E7E6E2">: 1e-10,</span></span></code></pre>
+<p>Run: C₂H₄ at R(CC) 2.32 Å, REKS(4,4), BH&amp;HLYP/6-31G(d), cassettes 2S = 0, 2.</p>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span>==&gt; Coupled-perturbed REKS (CP-REKS, Z-vector) solver &lt;==</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    For                   relaxed properties of S1, S2 (cassette 0);</span></span>
+<span class="line"><span>                          gradients of S1, S2 (cassette 0);</span></span>
+<span class="line"><span>                          NAC S1/S2 (cassette 0)</span></span>
+<span class="line"><span>    Equations             4: 2 states + 2 for NAC S1/S2 (cassette 0)</span></span>
+<span class="line"><span>    Maxiter               200</span></span>
+<span class="line"><span>    Convergence           1.000e-09</span></span>
+<span class="line"><span>    Orbital rotations     310</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Iter      Mean |R|       Max |R|   Remain   Time [s]</span></span>
+<span class="line"><span>    ----------------------------------------------------</span></span>
+<span class="line"><span>       1     2.988e-01     9.691e-01        4       0.01</span></span>
+<span class="line"><span>       2     1.648e-01     5.702e-01        4       0.03</span></span>
+<span class="line"><span>[...]</span></span>
+<span class="line"><span>      12     1.091e-08     1.091e-08        1       0.13</span></span>
+<span class="line"><span>      13     5.914e-10     5.914e-10        0       0.14</span></span>
+<span class="line"><span>    ----------------------------------------------------</span></span>
+<span class="line"><span>    Z-vectors converged in 13 iterations.</span></span></code></pre>
+<ul>
+<li>CP-REKS (Z-vector) residual threshold, relative to max(1, ‖b‖). One solve serves the relaxed properties, gradients and NACs of the run.</li>
+<li>The solver block is printed when <a href="/learn/reference/options/#row-si_reks_property_for"><code>SI_REKS_PROPERTY_FOR</code></a> names states, or in <code>gradient()</code> with <a href="/learn/reference/options/#row-si_reks_grad"><code>SI_REKS_GRAD</code></a> or <a href="/learn/reference/options/#row-si_reks_nac"><code>SI_REKS_NAC</code></a>, at <a href="/learn/reference/options/#row-reks_report_level"><code>REKS_REPORT_LEVEL</code></a> ≥ 2 and Psi4 <code>PRINT</code> ≥ 1 (defaults).</li>
+<li>Converged: <code>Remain</code> reaches 0 and the block ends with <code>Z-vectors converged in N iterations.</code>. Non-convergence ends the run with <code>no convergence in N rounds</code>.</li>
+<li>A target t closes at max(threshold, 10 ε ‖A‖ ‖Z<sub>t</sub>‖), ε the machine epsilon, ‖A‖ = max(max<sub>i</sub> |A<sub>ii</sub>|, max ‖A d‖ over the unit search directions d): below that the residual is roundoff of the operator. Targets closed at this floor are counted after the converged line (<code>N target(s) closed at the roundoff floor 10 eps |A| |Z|</code>). When the explicit residual of a target exceeds this bound, every open target continues from its explicit residual in a new search space.</li>
+</ul>
+<h4 id="reks_cpreks_maxiter"><a href="/learn/reference/options/#row-reks_cpreks_maxiter"><code>REKS_CPREKS_MAXITER</code></a></h4>
+<p>Maximum number of rounds of the CP-REKS (Z-vector) solver; exceeding it stops the run with the residual reached.</p>
+<dl class="fields"><dt>Type</dt><dd>int</dd><dt>Default</dt><dd><code>200</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks_cpreks_maxiter">reks_cpreks_maxiter</a>"</span><span style="color:#E7E6E2">: 400,</span></span></code></pre>
+<ul>
+<li>CP-REKS rounds before an error is raised.</li>
+</ul>
+<h4 id="reks_grad_degen_tol"><a href="/learn/reference/options/#row-reks_grad_degen_tol"><code>REKS_GRAD_DEGEN_TOL</code></a></h4>
+<p>Gap below which a requested root is flagged as quasi-degenerate.</p>
+<dl class="fields"><dt>Type</dt><dd>double</dd><dt>Default</dt><dd><code>1e-6</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks_grad_degen_tol">reks_grad_degen_tol</a>"</span><span style="color:#E7E6E2">: 1e-5,</span></span></code></pre>
+<ul>
+<li>Gap (E<sub>h</sub>) below which a requested root is computed with a quasi-degeneracy warning.</li>
+<li>On a Davidson cassette, also the gap between the last requested and the last computed root below which the computed set grows (<a href="/learn/concepts/#si-solver">SI eigensolver</a>).</li>
+</ul>
+<h4 id="reks_ci_topography_gap"><a href="/learn/reference/options/#row-reks_ci_topography_gap"><code>REKS_CI_TOPOGRAPHY_GAP</code></a></h4>
+<p>Largest gap at which the topography table of a NAC pair is printed.</p>
+<dl class="fields"><dt>Type</dt><dd>double</dd><dt>Default</dt><dd><code>5e-3</code></dd></dl>
+<pre class="astro-code reks" style="background-color:#10131A;color:#E7E6E2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E7A98A">"<a href="/learn/reference/options/#row-reks_ci_topography_gap">reks_ci_topography_gap</a>"</span><span style="color:#E7E6E2">: 1e-2,</span></span></code></pre>
+<ul>
+<li>Largest pair gap (E<sub>h</sub>) at which the topography table of a NAC pair is printed (<a href="/learn/reference/properties/#ci-topography">Conical-intersection topography</a>).</li>
+</ul></div></section>
+   <nav class="pager" aria-label="Learn pages"> <a rel="prev" href="/learn/diagnose/"><small>Previous</small>Diagnose</a> <a rel="next" href="/learn/reference/run-control/"><small>Next</small>Run-control reference</a> </nav> </div> </div> </div> </main> <footer class="foot"> <div class="wrap"> <a href="/docs/#contact">Contact</a><a href="/docs/#cite">Cite</a><a href="/docs/#licence">Licence</a><a href="https://github.com/ConstLike/psi4/tree/kk/reks.studio" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://doi.org/10.26434/chemrxiv.15008475/v1" target="_blank" rel="noopener noreferrer">Paper</a><a href="/team/">Team</a> </div> </footer> <script type="module">var e=`bkref`,t=document.body.hasAttribute(`data-home`),n=()=>[...document.querySelectorAll(`a[href]`)];function r(e,t){let n;for(let t of document.querySelectorAll(`h2,h3,h4`))if(t.compareDocumentPosition(e)&Node.DOCUMENT_POSITION_FOLLOWING)n=t;else break;let r=document.title.split(` — `)[0],i=n?n.dataset.b||[...n.childNodes].filter(e=>e.nodeName!==`A`).map(e=>e.textContent).join(``).trim()||n.textContent.trim():``;return t.pathname===location.pathname?i||r:i?`${i} · ${r}`:r}var i;function a(r){if(history.state===null){let t=null;try{t=JSON.parse(sessionStorage.getItem(e)),sessionStorage.removeItem(e)}catch{}t&&t.to===location.href&&history.replaceState({b:t.b,u:t.u},``)}let a=history.state||{};if(i?.remove(),i=null,a.b&&!t){i=document.createElement(`a`),i.className=`bkp`,i.href=a.u,i.textContent=`← Back to ${a.b}`,i.onclick=e=>{e.preventDefault(),history.back()};let e=document.getElementById(location.hash.slice(1));(e?.closest(`details`)??e??document.body.lastElementChild).after(i)}let o=r.type===`popstate`;(o||r.persisted||performance.getEntriesByType(`navigation`)[0]?.type===`back_forward`)&&a.y!=null&&(document.documentElement.classList.add(`bkr`),requestAnimationFrame(()=>requestAnimationFrame(()=>{let e=a.f!=null&&n()[a.f];e?.closest(`details`)&&(e.closest(`details`).open=!0),!o&&Math.abs(scrollY-a.y)>1&&scrollTo({top:a.y,behavior:`instant`}),history.replaceState({...history.state,y:null,f:null},``),e&&(e.focus({preventScroll:!0}),e.classList.add(`bkf`),setTimeout(()=>e.classList.remove(`bkf`),2e3))})))}addEventListener(`click`,i=>{let a=i.target.closest(`a[href]`);if(!a||i.defaultPrevented||i.button||i.metaKey||i.ctrlKey||i.shiftKey||i.altKey||a.getAttribute(`target`)||a.matches(`.skip`))return;let o=new URL(a.getAttribute(`href`),location.href);if(o.origin===location.origin&&o.href!==location.href){o.pathname===location.pathname&&document.documentElement.classList.remove(`bkr`),history.replaceState({...history.state,y:scrollY,f:n().indexOf(a)},``);try{t?sessionStorage.removeItem(e):sessionStorage.setItem(e,JSON.stringify({to:o.href,b:r(a,o),u:location.href}))}catch{}}}),addEventListener(`popstate`,a),addEventListener(`pageshow`,a);</script></body> </html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Not found · REKS Studio</title>
+<script>
+(() => {
+  // /v2/<path> -> /<path>; OLD[path] = [new page, {old #id -> new page#id}]
+  const D = '/docs/', M = '/manual/', S = M + 'setup/', R = M + 'run-control/', P = M + 'reference/', O = M + 'properties/#reading-output';
+  const OLD = {
+    '/reks-studio.html': ['/', { cite: D + '#cite' }],
+    '/reks-studio-docs.html': [D, {
+      running: M + 'first-calculation/', keywords: P + '#option-table', 'active-space': S + '#active-space',
+      naming: S + '#naming-convention', sa: S + '#selecting', si: S + '#selecting', restart: R + '#restart',
+      fon: R + '#fons', deloc: R + '#geminal-deloc', solver: R + '#scf-engines', reporting: P + '#reporting',
+      troubleshooting: M + 'diagnose/#diagnose',
+    }],
+    '/reks-studio-manual.html': [M, {
+      '1-what-reks-studio-is': M + '#overview',
+      '2-minimal-working-example': M + 'first-calculation/',
+      '3-anatomy-of-a-reks-studio-input': M + 'first-calculation/',
+      '4-the-configuration-catalog-and-naming-convention': S + '#catalog',
+      'naming-convention': S + '#naming-convention',
+      'geminal-pairing-schemes': S + '#catalog',
+      '5-selecting-configurations-sa_reks_configs-and-si_reks_configs': S + '#selecting',
+      'reks-the-active-space-required': S + '#catalog',
+      'sa_reks_configs-alias-reks_sa_configs-the-scf-state-averaged-pool': S + '#selecting',
+      'sa_reks_weights-alias-reks_sa_weights': S + '#selecting',
+      'sa_reks_extra-alias-reks_sa_extra-raw-extra-determinants': S + '#selecting',
+      'si_reks_configs-alias-reks_si_configs-the-si-post-scf-cassettes': S + '#selecting',
+      'si_reks_2spin-sa_reks_2spin-aliases-reks_si_2spin-reks_sa_2spin': S + '#spin-manifolds',
+      'si_reks_report_states-alias-reks_si_report_states': O,
+      '6-bulk-tokens-and-pattern-syntax': S + '#bulk-tokens',
+      '7-spin-manifolds-2s-and-multi-sector-runs': S + '#spin-manifolds',
+      '8-guesses-restarts-and-checkpointing': R + '#guesses',
+      'the-restart-mechanism-standard-psi4': R + '#guesses',
+      'reks-specific-guess-refinements': R + '#guesses',
+      guess: P + '#guess',
+      '9-fractional-occupation-numbers-fons': R + '#fons',
+      fons: R + '#fons',
+      '10-the-scf-convergence-engines': R + '#scf-engines',
+      'the-three-engines-in-the-order-they-can-run': R + '#scf-engines',
+      'level-shift': R + '#level-shift',
+      'the-rest-of-the-gvb-diis-conditioningmonitoring-stack': R + '#scf-engines',
+      '11-delocalization-ipr-penalty': R + '#geminal-deloc',
+      '12-reporting-and-output-verbosity': O,
+      reporting: P + '#reporting',
+      '13-worked-example-1-annotated-azln_reks44py': M + 'first-calculation/',
+      '14-worked-example-2-annotated-cu2cl6mm_reks66py': M + 'first-calculation/',
+      '15-reading-reks-studio-output': O,
+      '16-troubleshooting-and-convergence-tips': M + 'diagnose/#diagnose',
+      '17-full-option-quick-reference': P + '#option-table',
+      'active-space-configuration-selection': P + '#option-table',
+      'delocalization-penalty': P + '#option-table',
+      'convergence-engines-top-level': P + '#option-table',
+      'minitrah-episode-inside-gvb-diis-expert': P + '#option-table',
+      'gvb-diis-conditioning-chain-expert': P + '#gvb-diis-conditioning-chain-expert',
+      'gvb-diis-monitors-verdicts-expert': P + '#gvb-diis-monitors-verdicts-expert',
+      '18-references': P + '#references',
+    }],
+    '/reks-studio-team.html': ['/team/', {}],
+    '/BFN_energies.svg': ['/', {}],
+    '/kkomarov.jpg': ['/team/', {}],
+    '/mfilatov.png': ['/team/', {}],
+    '/skmin.jpg': ['/team/', {}],
+  };
+  const { pathname: p, search: q, hash } = location, h = decodeURIComponent(hash.slice(1));
+  let to = null;
+  if (/^\/v2\/assets\/(kkomarov|mfilatov|skmin)\./.test(p)) {
+    to = '/team/';
+  } else if (p === '/v2' || p.startsWith('/v2/')) {
+    to = p.slice(3) || '/';
+    if (!to.endsWith('/') && !/\.[A-Za-z0-9]+$/.test(to)) to += '/';
+    to += q + hash;
+  } else if (OLD[p]) {
+    const [page, ids] = OLD[p], m = h && ids[h];
+    to = !m ? page + q + hash : m.includes('#') ? m.replace('#', q + '#') : m + q;
+  }
+  if (to) location.replace(to);
+})();
+</script>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;font:16px/1.5 system-ui,-apple-system,sans-serif;color:#1d2433;background:#fafaf7}
+main{padding:0 16px;text-align:center}
+h1{font-size:1.5rem;font-weight:600;margin:0 0 .5rem}
+a{color:#1f4fa3}
+</style>
+</head>
+<body>
+<main>
+<h1>Page not found</h1>
+<p>This address does not exist. <a href="/">REKS Studio home</a></p>
+<noscript><p>Old links (/v2/…) move without the /v2 prefix: remove it from the address.</p></noscript>
+</main>
+</body>
+</html>
