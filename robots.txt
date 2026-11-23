@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /learn/*.md$
+Disallow: /main/results/bond-breaking/index.md
+Disallow: /main/results/c2/index.md
+Disallow: /main/results/h-chains/index.md
+Disallow: /main/results/ttr/index.md
+
+Sitemap: https://reksstudio.github.io/sitemap.xml
