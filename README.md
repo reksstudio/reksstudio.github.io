@@ -46,5 +46,6 @@ Molecules and Materials. *ChemRxiv* **2026**. https://doi.org/10.26434/chemrxiv.
 ## License
 
 The content and data of this website are licensed under the Creative Commons Attribution 4.0 International License
-(CC BY 4.0), see [LICENSE](LICENSE). The bundled fonts (IBM Plex, Newsreader) keep their SIL Open Font License 1.1.
+(CC BY 4.0), see [LICENSE](LICENSE); the REKS Studio name and logo are not covered by it. The bundled fonts (IBM Plex,
+Newsreader) keep their SIL Open Font License 1.1.
 Psi4 is distributed under the GNU Lesser General Public License v3.0 in its own repository.
